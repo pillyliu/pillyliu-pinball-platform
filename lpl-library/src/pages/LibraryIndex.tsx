@@ -127,22 +127,27 @@ export default function LibraryIndex() {
             className={CONTROL_INPUT_CLASS}
           />
 
-          <select
-            value={bank === "all" ? "all" : String(bank)}
-            onChange={(e) => {
-              const v = e.target.value;
-              setBank(v === "all" ? "all" : Number(v));
-            }}
-            className={`${CONTROL_SELECT_CLASS} sm:w-48`}
-            aria-label="Filter by bank"
-          >
-            <option value="all">All banks</option>
-            {bankOptions.map((b) => (
-              <option key={b} value={String(b)}>
-                Bank {b}
-              </option>
-            ))}
-          </select>
+          <div className="relative sm:w-48">
+            <select
+              value={bank === "all" ? "all" : String(bank)}
+              onChange={(e) => {
+                const v = e.target.value;
+                setBank(v === "all" ? "all" : Number(v));
+              }}
+              className={CONTROL_SELECT_CLASS}
+              aria-label="Filter by bank"
+            >
+              <option value="all">All banks</option>
+              {bankOptions.map((b) => (
+                <option key={b} value={String(b)}>
+                  Bank {b}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
         </div>
 
         <div className="mt-6">

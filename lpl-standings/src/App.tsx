@@ -5,7 +5,6 @@ import {
     CONTROL_SELECT_CLASS,
     PRIMARY_BUTTON_CLASS,
     Panel,
-    SectionTitle,
     SiteShell,
 } from "../../shared/ui/leagueUi";
 import { NAV_LINKS } from "../../shared/ui/navLinks";
@@ -143,20 +142,23 @@ export default function App() {
             )}
 
             <Panel className="p-4">
-                <SectionTitle className="mb-3">Season</SectionTitle>
-                <div className="flex flex-wrap items-center gap-3 min-w-0">
-                    <label className="text-sm text-neutral-400">Season</label>
-                    <select
-                        value={season ?? ""}
-                        onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
-                        className={`${CONTROL_SELECT_CLASS} max-w-xs`}
-                    >
-                        {seasonList.map(s => (
-                            <option key={s} value={s}>
-                                Season {s}
-                            </option>
-                        ))}
-                    </select>
+                <div className="min-w-0">
+                    <div className="relative w-full max-w-xs">
+                        <select
+                            value={season ?? ""}
+                            onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
+                            className={CONTROL_SELECT_CLASS}
+                        >
+                            {seasonList.map(s => (
+                                <option key={s} value={s}>
+                                    Season {s}
+                                </option>
+                            ))}
+                        </select>
+                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                            ▾
+                        </span>
+                    </div>
                 </div>
             </Panel>
 

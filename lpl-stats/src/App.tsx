@@ -177,9 +177,8 @@ export default function App() {
         </Panel>
       )}
 
-      <Panel className="p-5">
-        <SectionTitle className="mb-3">Filters</SectionTitle>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <Panel className="p-4">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-4">
           <Filter
             label="Season"
             value={season}
@@ -213,7 +212,6 @@ export default function App() {
                 <th className="px-4 py-3">Season</th>
                 <th className="px-4 py-3">Player</th>
                 <th className="px-4 py-3">Bank #</th>
-                <th className="px-4 py-3">Bank Name</th>
                 <th className="px-4 py-3">Machine</th>
                 <th className="px-4 py-3">Score</th>
                 <th className="px-4 py-3">Points</th>
@@ -225,10 +223,9 @@ export default function App() {
                   key={`${r.Season}-${r.Player}-${r.BankNumber}-${r.Machine}-${idx}`}
                   className="border-b border-neutral-800/80 odd:bg-neutral-900 even:bg-neutral-950 hover:bg-sky-900/25"
                 >
-                  <td className="px-4 py-2.5">{r.Season}</td>
+                  <td className="px-4 py-2.5">{seasonNumber(r.Season)}</td>
                   <td className="px-4 py-2.5">{r.Player}</td>
                   <td className="px-4 py-2.5 tabular-nums">{r.BankNumber}</td>
-                  <td className="px-4 py-2.5">{r.Bank}</td>
                   <td className="px-4 py-2.5">{r.Machine}</td>
                   <td className="px-4 py-2.5 tabular-nums">{formatScore(r.RawScore)}</td>
                   <td className="px-4 py-2.5 tabular-nums">{formatPoints(r.Points)}</td>
@@ -236,7 +233,7 @@ export default function App() {
               ))}
               {!filtered.length && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-neutral-500">
+                  <td colSpan={6} className="px-4 py-8 text-center text-neutral-500">
                     No rows. Check filters or CSV.
                   </td>
                 </tr>
@@ -288,18 +285,32 @@ function Filter({
   }
 
   return (
-    <div className="grid gap-1.5 min-w-0">
-      <label className="text-xs uppercase tracking-[0.12em] text-neutral-500">{label}</label>
-      <select value={value} onChange={onChange} className={CONTROL_SELECT_CLASS}>
-        <option value="">All</option>
-        {opts.map((opt) => (
-          <option key={String(opt)} value={String(opt)}>
-            {String(opt)}
-          </option>
-        ))}
-      </select>
+    <div className="min-w-0">
+      <div className="relative">
+        <select value={value} onChange={onChange} className={CONTROL_SELECT_CLASS}>
+          <option value="">{`${label}: All`}</option>
+          {opts.map((opt) => (
+            <option key={String(opt)} value={String(opt)}>
+              {`${label}: ${formatFilterValue(label, opt)}`}
+            </option>
+          ))}
+        </select>
+        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+          ▾
+        </span>
+      </div>
     </div>
   );
+}
+
+function formatFilterValue(label: string, value: string | number): string {
+  if (label === "Season") return seasonNumber(String(value));
+  return String(value);
+}
+
+function seasonNumber(season: string): string {
+  const match = season.match(/\d+/);
+  return match ? match[0] : season;
 }
 
 function StatsSection({
