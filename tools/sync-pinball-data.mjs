@@ -11,6 +11,7 @@ const APP_TARGETS = {
   "lpl-library": path.join(ROOT, "lpl-library", "public", "pinball"),
   "lpl-standings": path.join(ROOT, "lpl-standings", "public", "pinball"),
   "lpl-stats": path.join(ROOT, "lpl-stats", "public", "pinball"),
+  "lpl-targets": path.join(ROOT, "lpl-targets", "public", "pinball"),
 };
 
 function parseArgs(argv) {

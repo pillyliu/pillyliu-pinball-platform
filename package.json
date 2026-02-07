@@ -10,7 +10,12 @@
     "build:lpl-library": "npm --prefix lpl-library run build",
     "build:lpl-standings": "npm --prefix lpl-standings run build",
     "build:lpl-stats": "npm --prefix lpl-stats run build",
+    "build:lpl-targets": "npm --prefix lpl-targets run build",
     "build:pillyliu-landing": "npm --prefix pillyliu-landing run build",
-    "build:all": "npm run build:pillyliu-landing && npm run build:lpl-library && npm run build:lpl-standings && npm run build:lpl-stats"
+    "build:all": "npm run build:pillyliu-landing && npm run build:lpl-library && npm run build:lpl-standings && npm run build:lpl-stats && npm run build:lpl-targets"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.13",
+    "react": "^19.2.4"
   }
 }

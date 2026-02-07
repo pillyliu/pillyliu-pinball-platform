@@ -7,7 +7,8 @@ import {
     Panel,
     SectionTitle,
     SiteShell,
-} from "./components/ui";
+} from "../../shared/ui/leagueUi";
+import { NAV_LINKS } from "../../shared/ui/navLinks";
 
 /**
  * Pinball Scores Viewer — full-width table; always shows stats panel
@@ -16,14 +17,6 @@ import {
 const DEFAULT_DATA_URL = "/pinball/data/LPL_Stats.csv";
 const EM = " \u2014 ";
 const NDASH = " \u2013 ";
-const NAV_LINKS = [
-    { href: "https://pillyliu.com/", label: "Home" },
-    { href: "https://pillyliu.com/lpl_library/", label: "Library" },
-    { href: "https://pillyliu.com/lpl_stats/", label: "Stats" },
-    { href: "https://pillyliu.com/lpl_standings/", label: "Standings" },
-    { href: "https://pillyliu.com/lpl_targets/", label: "Targets" },
-];
-
 export default function App() {
     const [rows, setRows] = useState<Row[]>([]);
     const [error, setError] = useState<string | null>(null);

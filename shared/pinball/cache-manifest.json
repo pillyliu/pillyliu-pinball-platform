@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-07T18:39:45.483Z",
+  "generatedAt": "2026-02-07T18:57:59.559Z",
   "source": "shared/pinball",
-  "totalFiles": 170,
+  "totalFiles": 171,
   "files": {
     "/pinball/data/Avenue Pinball - Current.csv": {
       "hash": "6dfd75f8c26e41dd862da5d8a1bca01b77235e0de110ce0bfe28bea4fb48a4b6",
@@ -22,6 +22,12 @@
       "mtimeMs": 1770476337585,
       "contentType": "text/csv"
     },
+    "/pinball/data/LPL_Targets.csv": {
+      "hash": "53b59a8dd3120e17156d7f235624be98d863fd6a3e2b7a80ecc259eff5769941",
+      "size": 1718,
+      "mtimeMs": 1770490227959,
+      "contentType": "text/csv"
+    },
     "/pinball/data/pinball_library.csv": {
       "hash": "3ecbd577a772c799fa77f2d72e32277eb44001c8a377174be086c0b467046702",
       "size": 10648,
@@ -29,9 +35,9 @@
       "contentType": "text/csv"
     },
     "/pinball/data/pinball_library.json": {
-      "hash": "7ca7bfa1c96444a9972ab6305386b25c386d8e392a4808c079bc3940727f0341",
-      "size": 29407,
-      "mtimeMs": 1770476337571,
+      "hash": "a95c4f4ab51fefda3627717a78a3a173cba5557da306867a887dadd396542249",
+      "size": 29869,
+      "mtimeMs": 1770489727680,
       "contentType": "application/json"
     },
     "/pinball/gameinfo/foo-fighters.md": {

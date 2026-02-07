@@ -1,15 +1,9 @@
+import { NAV_LINKS } from "../../../shared/ui/navLinks";
+
 type SiteHeaderProps = {
   title: string;
   active: "Library" | "Stats" | "Standings" | "Targets" | "Home";
 };
-
-const NAV_LINKS = [
-  { href: "https://pillyliu.com/", label: "Home" as const },
-  { href: "https://pillyliu.com/lpl_library/", label: "Library" as const },
-  { href: "https://pillyliu.com/lpl_stats/", label: "Stats" as const },
-  { href: "https://pillyliu.com/lpl_standings/", label: "Standings" as const },
-  { href: "https://pillyliu.com/lpl_targets/", label: "Targets" as const },
-];
 
 export default function SiteHeader({ title, active }: SiteHeaderProps) {
   return (
