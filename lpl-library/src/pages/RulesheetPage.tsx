@@ -6,6 +6,8 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { fetchPinballText } from "../lib/pinballCache";
+import SiteHeader from "../components/SiteHeader";
+import { Panel } from "../components/ui";
 
 function normalizeRulesheet(input: string): string {
   let s = input.replace(/\r\n/g, "\n");
@@ -136,6 +138,7 @@ export default function RulesheetPage() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
+      <SiteHeader title="Pinball Library" active="Library" />
       <div className="mx-auto max-w-4xl p-6">
         <div className="flex flex-wrap items-center gap-4">
           <Link className="text-neutral-300 underline" to="/">
@@ -153,7 +156,7 @@ export default function RulesheetPage() {
           <div className="text-sm text-neutral-400">{slug ?? ""}</div>
         </div>
 
-        <div className="mt-6 rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 p-6">
+        <Panel className="mt-6 p-6">
           {loading ? (
             <div className="text-neutral-400">Loading rulesheet…</div>
           ) : md ? (
@@ -212,7 +215,7 @@ export default function RulesheetPage() {
               </div>
             </div>
           )}
-        </div>
+        </Panel>
       </div>
     </div>
   );

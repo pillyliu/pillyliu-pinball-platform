@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { cacheAssetUrl, fetchPinballJson, fetchPinballText } from "../lib/pinballCache";
+import SiteHeader from "../components/SiteHeader";
+import { PageContainer, Panel, SectionHeading, SUBTLE_BUTTON_CLASS } from "../components/ui";
 
 type Video = { kind: string; label: string; url: string };
 
@@ -128,7 +130,8 @@ export default function GamePage() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <div className="mx-auto max-w-6xl p-6 lg:max-w-screen-2xl">
+      <SiteHeader title="Pinball Library" active="Library" />
+      <PageContainer>
         <Link className="text-neutral-300 underline" to="/">
           ← Back to library
         </Link>
@@ -139,7 +142,7 @@ export default function GamePage() {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-          <div className="rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 overflow-hidden">
+          <Panel className="overflow-hidden">
             <div className="aspect-[16/9] bg-neutral-800">
               {game.playfieldLocal ? (
                 <img
@@ -165,7 +168,7 @@ export default function GamePage() {
 
             <div className="p-4 flex flex-wrap gap-3">
               <Link
-                className="rounded-xl bg-neutral-800 px-4 py-2 text-sm hover:bg-neutral-700"
+                className={SUBTLE_BUTTON_CLASS}
                 to={`/rules/${game.slug}`}
               >
                 Rulesheet (hosted)
@@ -173,7 +176,7 @@ export default function GamePage() {
 
               {game.playfieldLocal && (
                 <a
-                  className="rounded-xl bg-neutral-800 px-4 py-2 text-sm hover:bg-neutral-700"
+                  className={SUBTLE_BUTTON_CLASS}
                   href={game.playfieldLocal}
                   target="_blank"
                   rel="noreferrer"
@@ -184,7 +187,7 @@ export default function GamePage() {
 
               {game.rulesheetUrl && (
                 <a
-                  className="rounded-xl bg-neutral-800 px-4 py-2 text-sm hover:bg-neutral-700"
+                  className={SUBTLE_BUTTON_CLASS}
                   href={game.rulesheetUrl}
                   target="_blank"
                   rel="noreferrer"
@@ -195,7 +198,7 @@ export default function GamePage() {
 
               {game.playfieldImageUrl && (
                 <a
-                  className="rounded-xl bg-neutral-800 px-4 py-2 text-sm hover:bg-neutral-700"
+                  className={SUBTLE_BUTTON_CLASS}
                   href={game.playfieldImageUrl}
                   target="_blank"
                   rel="noreferrer"
@@ -204,10 +207,10 @@ export default function GamePage() {
                 </a>
               )}
             </div>
-          </div>
+          </Panel>
 
-          <div className="rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 p-4 2xl:col-span-2">
-            <div className="text-lg font-semibold">Videos</div>
+          <Panel className="p-4 2xl:col-span-2">
+            <SectionHeading>Videos</SectionHeading>
 
             {videoCards.length === 0 ? (
               <div className="mt-4 text-neutral-400">No videos listed.</div>
@@ -249,10 +252,10 @@ export default function GamePage() {
                 </div>
               </>
             )}
-          </div>
+          </Panel>
 
-          <div className="rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 p-4">
-            <div className="text-lg font-semibold">Game Info</div>
+          <Panel className="p-4">
+            <SectionHeading>Game Info</SectionHeading>
 
             <div className="mt-4">
               {infoStatus === "loading" && (
@@ -282,14 +285,14 @@ export default function GamePage() {
                 </code>
               </div>
             </div>
-          </div>
+          </Panel>
         </div>
 
         <div className="mt-8 text-sm text-neutral-500">
           Local rulesheet page target:{" "}
           <code className="rounded bg-neutral-900 px-2 py-1 break-all">{game.rulesheetLocal}</code>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }

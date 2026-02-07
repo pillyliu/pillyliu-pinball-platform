@@ -1,5 +1,13 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import { fetchPinballText, prefetchPinballTextAssets } from "./lib/pinballCache";
+import {
+    CONTROL_INPUT_CLASS,
+    CONTROL_SELECT_CLASS,
+    PRIMARY_BUTTON_CLASS,
+    Panel,
+    SectionTitle,
+    SiteShell,
+} from "./components/ui";
 
 /**
  * Pinball Standings Viewer — scrollable in both directions (touch-friendly)
@@ -25,6 +33,14 @@ type Standing = {
     nights?: string | number;
     banks: number[];
 };
+
+const NAV_LINKS = [
+    { href: "https://pillyliu.com/", label: "Home" },
+    { href: "https://pillyliu.com/lpl_library/", label: "Library" },
+    { href: "https://pillyliu.com/lpl_stats/", label: "Stats" },
+    { href: "https://pillyliu.com/lpl_standings/", label: "Standings" },
+    { href: "https://pillyliu.com/lpl_targets/", label: "Targets" },
+];
 
 export default function App() {
     const [rows, setRows] = useState<StandRow[]>([]);
@@ -104,115 +120,112 @@ export default function App() {
     }
 
     return (
-        <div className="min-h-dvh bg-neutral-950 text-neutral-100 overflow-hidden">
-            <header className="sticky top-0 z-10 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-                <div className="mx-auto max-w-screen-2xl px-4 py-4 flex flex-wrap items-center gap-3 justify-between">
-                    <h1 className="text-lg font-bold tracking-tight">Pinball Standings</h1>
-                    {cfgMode && (
-                        <div className="flex flex-wrap items-center gap-2 min-w-0">
-                            <input
-                                value={dataUrl}
-                                onChange={e => setDataUrl(e.target.value)}
-                                placeholder="https://.../standings.csv"
-                                className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-1.5 w-full sm:w-auto sm:max-w-[420px] min-w-0"
-                            />
-                            <button
-                                onClick={saveUrlAndReload}
-                                className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500"
-                            >
-                                Load URL
-                            </button>
-                        </div>
-                    )}
-                </div>
-            </header>
-
-            <main className="mx-auto max-w-screen-2xl px-4 py-6 grid gap-6">
-                {error && (
-                    <div className="text-sm bg-red-900/30 border border-red-800 text-red-200 rounded-xl p-3">
-                        {error}
-                    </div>
-                )}
-
-                {/* Season selector */}
-                <section className="grid gap-3 rounded-2xl border border-neutral-800 p-4">
-                    <div className="flex flex-wrap items-center gap-3 min-w-0">
-                        <label className="text-sm text-neutral-400">Season</label>
-                        <select
-                            value={season ?? ""}
-                            onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
-                            className="bg-neutral-900 border border-neutral-800 rounded-xl px-3 py-2"
+        <SiteShell
+            title="League Standings"
+            activeLabel="Standings"
+            navItems={NAV_LINKS}
+            controls={
+                cfgMode ? (
+                    <div className="flex flex-wrap items-center gap-2 min-w-0 w-full md:w-auto">
+                        <input
+                            value={dataUrl}
+                            onChange={e => setDataUrl(e.target.value)}
+                            placeholder="https://.../standings.csv"
+                            className={`${CONTROL_INPUT_CLASS} w-full sm:w-auto sm:max-w-[420px] min-w-0`}
+                        />
+                        <button
+                            onClick={saveUrlAndReload}
+                            className={PRIMARY_BUTTON_CLASS}
                         >
-                            {seasonList.map(s => (
-                                <option key={s} value={s}>
-                                    Season {s}
-                                </option>
-                            ))}
-                        </select>
+                            Load URL
+                        </button>
                     </div>
-                </section>
+                ) : undefined
+            }
+        >
+            {error && (
+                <Panel className="border-red-800 bg-red-900/20 p-3">
+                    <p className="text-sm text-red-200">{error}</p>
+                </Panel>
+            )}
 
-                {/* Scrollable table */}
-                <section className="rounded-2xl border border-neutral-800 p-0 overflow-auto touch-pan-x touch-pan-y ios-scroller">
-                    <div className="min-w-max">
-                        <table className="w-full text-sm border-collapse">
-                            <thead className="bg-neutral-950 sticky top-0">
-                                <tr className="text-left text-neutral-400 border-b border-neutral-800">
-                                    <th className="py-2 px-4">#</th>
-                                    <th className="py-2 px-4">Player</th>
-                                    <th className="py-2 px-4">Season Points</th>
-                                    <th className="py-2 px-4">Eligible</th>
-                                    <th className="py-2 px-4">Nights</th>
-                                    <th className="py-2 px-4">B1</th>
-                                    <th className="py-2 px-4">B2</th>
-                                    <th className="py-2 px-4">B3</th>
-                                    <th className="py-2 px-4">B4</th>
-                                    <th className="py-2 px-4">B5</th>
-                                    <th className="py-2 px-4">B6</th>
-                                    <th className="py-2 px-4">B7</th>
-                                    <th className="py-2 px-4">B8</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {standings.map((s, i) => {
-                                    const rank = i + 1;
-                                    const top8 = rank <= 8;
-                                    const rankStyle =
-                                        rank === 1
-                                            ? "text-yellow-400"
-                                            : rank === 2
-                                                ? "text-neutral-300"
-                                                : rank === 3
-                                                    ? "text-amber-600"
-                                                    : "";
-                                    return (
-                                        <tr key={s.player} className="border-b border-neutral-900">
-                                            <td className={`py-2 px-4 tabular-nums ${rankStyle}`}>{rank}</td>
-                                            <td className={`py-2 px-4 ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
-                                                {s.player}
-                                            </td>
-                                            <td className="py-2 px-4 tabular-nums">{Math.round(s.seasonTotal)}</td>
-                                            <td className="py-2 px-4">{String(s.eligible ?? "")}</td>
-                                            <td className="py-2 px-4 tabular-nums">{String(s.nights ?? "")}</td>
-                                            {s.banks.map((b, idx) => (
-                                                <td key={idx} className="py-2 px-4 tabular-nums">{Math.round(b)}</td>
-                                            ))}
-                                        </tr>
-                                    );
-                                })}
-                                {!standings.length && (
-                                    <tr>
-                                        <td colSpan={13} className="py-6 text-center text-neutral-500">
-                                            No rows. Check CSV or season selection.
+            <Panel className="p-4">
+                <SectionTitle className="mb-3">Season</SectionTitle>
+                <div className="flex flex-wrap items-center gap-3 min-w-0">
+                    <label className="text-sm text-neutral-400">Season</label>
+                    <select
+                        value={season ?? ""}
+                        onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
+                        className={CONTROL_SELECT_CLASS}
+                    >
+                        {seasonList.map(s => (
+                            <option key={s} value={s}>
+                                Season {s}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </Panel>
+
+            <Panel className="p-0 overflow-auto touch-pan-x touch-pan-y ios-scroller">
+                <div className="min-w-max">
+                    <table className="w-full text-sm border-collapse">
+                        <thead className="bg-neutral-950 sticky top-0">
+                            <tr className="text-left text-neutral-400 border-b border-neutral-800">
+                                <th className="py-2 px-4">#</th>
+                                <th className="py-2 px-4">Player</th>
+                                <th className="py-2 px-4">Season Points</th>
+                                <th className="py-2 px-4">Eligible</th>
+                                <th className="py-2 px-4">Nights</th>
+                                <th className="py-2 px-4">B1</th>
+                                <th className="py-2 px-4">B2</th>
+                                <th className="py-2 px-4">B3</th>
+                                <th className="py-2 px-4">B4</th>
+                                <th className="py-2 px-4">B5</th>
+                                <th className="py-2 px-4">B6</th>
+                                <th className="py-2 px-4">B7</th>
+                                <th className="py-2 px-4">B8</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {standings.map((s, i) => {
+                                const rank = i + 1;
+                                const top8 = rank <= 8;
+                                const rankStyle =
+                                    rank === 1
+                                        ? "text-yellow-400"
+                                        : rank === 2
+                                            ? "text-neutral-300"
+                                            : rank === 3
+                                                ? "text-amber-600"
+                                                : "";
+                                return (
+                                    <tr key={s.player} className="border-b border-neutral-800/70">
+                                        <td className={`py-2 px-4 tabular-nums ${rankStyle}`}>{rank}</td>
+                                        <td className={`py-2 px-4 ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
+                                            {s.player}
                                         </td>
+                                        <td className="py-2 px-4 tabular-nums">{Math.round(s.seasonTotal)}</td>
+                                        <td className="py-2 px-4">{String(s.eligible ?? "")}</td>
+                                        <td className="py-2 px-4 tabular-nums">{String(s.nights ?? "")}</td>
+                                        {s.banks.map((b, idx) => (
+                                            <td key={idx} className="py-2 px-4 tabular-nums">{Math.round(b)}</td>
+                                        ))}
                                     </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </main>
-        </div>
+                                );
+                            })}
+                            {!standings.length && (
+                                <tr>
+                                    <td colSpan={13} className="py-6 text-center text-neutral-500">
+                                        No rows. Check CSV or season selection.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </Panel>
+        </SiteShell>
     );
 }
 

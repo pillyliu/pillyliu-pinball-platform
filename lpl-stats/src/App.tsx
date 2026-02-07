@@ -1,5 +1,13 @@
 ﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchPinballText, prefetchPinballTextAssets } from "./lib/pinballCache";
+import {
+    CONTROL_INPUT_CLASS,
+    CONTROL_SELECT_CLASS,
+    PRIMARY_BUTTON_CLASS,
+    Panel,
+    SectionTitle,
+    SiteShell,
+} from "./components/ui";
 
 /**
  * Pinball Scores Viewer — full-width table; always shows stats panel
@@ -8,6 +16,13 @@ import { fetchPinballText, prefetchPinballTextAssets } from "./lib/pinballCache"
 const DEFAULT_DATA_URL = "/pinball/data/LPL_Stats.csv";
 const EM = " \u2014 ";
 const NDASH = " \u2013 ";
+const NAV_LINKS = [
+    { href: "https://pillyliu.com/", label: "Home" },
+    { href: "https://pillyliu.com/lpl_library/", label: "Library" },
+    { href: "https://pillyliu.com/lpl_stats/", label: "Stats" },
+    { href: "https://pillyliu.com/lpl_standings/", label: "Standings" },
+    { href: "https://pillyliu.com/lpl_targets/", label: "Targets" },
+];
 
 export default function App() {
     const [rows, setRows] = useState<Row[]>([]);
@@ -93,106 +108,105 @@ export default function App() {
     }, [season, player, bankNumber, machine, filtered.length]);
 
     return (
-        <div className="min-h-dvh bg-neutral-950 text-neutral-100 overflow-x-hidden">
-            <header className="sticky top-0 z-10 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-                <div className="mx-auto max-w-screen-2xl px-4 py-4 flex flex-wrap items-center gap-3 justify-between">
-                    <h1 className="text-lg font-bold tracking-tight">Pinball Scores Viewer</h1>
-                    {cfgMode && (
-                        <div className="flex flex-wrap items-center gap-2 min-w-0">
-                            <input
-                                value={dataUrl}
-                                onChange={e => setDataUrl(e.target.value)}
-                                placeholder="https://.../scores.csv"
-                                className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-1.5 w-full sm:w-auto sm:max-w-[420px] min-w-0"
-                            />
-                            <button
-                                onClick={() => { localStorage.setItem("scores_csv_url", dataUrl); setDataUrl(dataUrl); }}
-                                className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500"
-                            >
-                                Load URL
-                            </button>
-                        </div>
-                    )}
+        <SiteShell
+            title="League Stats"
+            activeLabel="Stats"
+            navItems={NAV_LINKS}
+            controls={
+                cfgMode ? (
+                    <div className="flex flex-wrap items-center gap-2 min-w-0 w-full md:w-auto">
+                        <input
+                            value={dataUrl}
+                            onChange={e => setDataUrl(e.target.value)}
+                            placeholder="https://.../scores.csv"
+                            className={`${CONTROL_INPUT_CLASS} w-full sm:w-auto sm:max-w-[420px] min-w-0`}
+                        />
+                        <button
+                            onClick={() => { localStorage.setItem("scores_csv_url", dataUrl); setDataUrl(dataUrl); }}
+                            className={PRIMARY_BUTTON_CLASS}
+                        >
+                            Load URL
+                        </button>
+                    </div>
+                ) : undefined
+            }
+        >
+            {error && (
+                <Panel className="border-red-800 bg-red-900/20 p-3">
+                    <p className="text-red-200 text-sm">{error}</p>
+                </Panel>
+            )}
+
+            <Panel className="p-4">
+                <SectionTitle className="mb-3">Filters</SectionTitle>
+                <div className="grid xl:grid-cols-4 sm:grid-cols-2 gap-3">
+                    <Filter label="Season" value={season} setValue={setSeason} opts={seasons} clear={[setPlayer, setBankNumber, setMachine]} />
+                    <Filter label="Player" value={player} setValue={setPlayer} opts={players} clear={[setBankNumber, setMachine]} />
+                    <Filter label="Bank" value={bankNumber} setValue={v => setBankNumber(Number(v) || "")} opts={bankNumbers} clear={[setMachine]} />
+                    <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
                 </div>
-            </header>
+            </Panel>
 
-            <main className="mx-auto max-w-screen-2xl px-4 py-6 grid gap-6">
-                {error && <p className="text-red-400 text-sm">{error}</p>}
-
-                {/* Filters */}
-                <section className="grid gap-3 rounded-2xl border border-neutral-800 p-4">
-                    <div className="grid xl:grid-cols-4 sm:grid-cols-2 gap-3">
-                        <Filter label="Season" value={season} setValue={setSeason} opts={seasons} clear={[setPlayer, setBankNumber, setMachine]} />
-                        <Filter label="Player" value={player} setValue={setPlayer} opts={players} clear={[setBankNumber, setMachine]} />
-                        <Filter label="Bank" value={bankNumber} setValue={v => setBankNumber(Number(v) || "")} opts={bankNumbers} clear={[setMachine]} />
-                        <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
-                    </div>
-                </section>
-
-                {/* Table + always-visible stats */}
-                <section className="grid xl:grid-cols-[2fr_1fr] gap-6">
-                    {/* Table */}
-                    <div ref={tableScrollRef} className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-0 overflow-x-auto overflow-y-auto ios-scroller">
-                        <div className="block min-w-full">
-                            <table className="min-w-full text-sm border-collapse whitespace-nowrap">
-                                <thead className="bg-neutral-950 sticky top-0">
-                                    <tr className="text-left text-neutral-400 border-b border-neutral-800">
-                                        <th className="py-2 px-4">Season</th>
-                                        <th className="py-2 px-4">Player</th>
-                                        <th className="py-2 px-4">Bank #</th>
-                                        <th className="py-2 px-4">Bank Name</th>
-                                        <th className="py-2 px-4">Machine</th>
-                                        <th className="py-2 px-4">Score</th>
-                                        <th className="py-2 px-4">Points</th>
+            <section className="grid xl:grid-cols-[2fr_1fr] gap-6">
+                <Panel className="p-0 overflow-x-auto overflow-y-auto ios-scroller" >
+                    <div ref={tableScrollRef} className="block min-w-full">
+                        <table className="min-w-full text-sm border-collapse whitespace-nowrap">
+                            <thead className="bg-neutral-950 sticky top-0">
+                                <tr className="text-left text-neutral-400 border-b border-neutral-800">
+                                    <th className="py-2 px-4">Season</th>
+                                    <th className="py-2 px-4">Player</th>
+                                    <th className="py-2 px-4">Bank #</th>
+                                    <th className="py-2 px-4">Bank Name</th>
+                                    <th className="py-2 px-4">Machine</th>
+                                    <th className="py-2 px-4">Score</th>
+                                    <th className="py-2 px-4">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filtered.map((r, i) => (
+                                    <tr key={`${r.Season}-${r.Player}-${i}`} className="border-b border-neutral-800/70 hover:bg-neutral-900/40">
+                                        <td className="py-2 px-4">{r.Season}</td>
+                                        <td className="py-2 px-4">{r.Player}</td>
+                                        <td className="py-2 px-4">{r.BankNumber}</td>
+                                        <td className="py-2 px-4">{r.Bank}</td>
+                                        <td className="py-2 px-4">{r.Machine}</td>
+                                        <td className="py-2 px-4 tabular-nums">{formatScore(r.RawScore)}</td>
+                                        <td className="py-2 px-4 tabular-nums">{formatPoints(r.Points)}</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {filtered.map((r, i) => (
-                                        <tr key={`${r.Season}-${r.Player}-${i}`} className="border-b border-neutral-900 hover:bg-neutral-900/40">
-                                            <td className="py-2 px-4">{r.Season}</td>
-                                            <td className="py-2 px-4">{r.Player}</td>
-                                            <td className="py-2 px-4">{r.BankNumber}</td>
-                                            <td className="py-2 px-4">{r.Bank}</td>
-                                            <td className="py-2 px-4">{r.Machine}</td>
-                                            <td className="py-2 px-4 tabular-nums">{formatScore(r.RawScore)}</td>
-                                            <td className="py-2 px-4 tabular-nums">{formatPoints(r.Points)}</td>
-                                        </tr>
-                                    ))}
-                                    {!filtered.length && (
-                                        <tr>
-                                            <td colSpan={7} className="py-6 px-4 text-center text-neutral-500">
-                                                {"No rows"}{EM}{"check filters or CSV."}
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
+                                ))}
+                                {!filtered.length && (
+                                    <tr>
+                                        <td colSpan={7} className="py-6 px-4 text-center text-neutral-500">
+                                            {"No rows"}{EM}{"check filters or CSV."}
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
                     </div>
+                </Panel>
 
-                    {/* Stats panel (always visible) */}
-                    <aside className="rounded-2xl border border-neutral-800 p-4 bg-neutral-950/40 overflow-auto ios-scroller">
-                        <h3 className="font-semibold mb-2">Machine Stats</h3>
-                        {machine || bankNumber ? (
-                            <>
-                                <StatsSection
-                                    title="Selected Bank"
-                                    stats={bankStats}
-                                    label={`${season || "Season"}${NDASH}Bank ${bankNumber || "?"}`}
-                                />
-                                <StatsSection
-                                    title="Historical (All Seasons)"
-                                    stats={histStats}
-                                    label="All Seasons"
-                                />
-                            </>
-                        ) : (
-                            <p className="text-neutral-500 text-sm">Select a bank or machine to view detailed stats.</p>
-                        )}
-                    </aside>
-                </section>
-            </main>
-        </div>
+                <Panel className="p-4 overflow-auto ios-scroller">
+                    <SectionTitle className="mb-2">Machine Stats</SectionTitle>
+                    {machine || bankNumber ? (
+                        <>
+                            <StatsSection
+                                title="Selected Bank"
+                                stats={bankStats}
+                                label={`${season || "Season"}${NDASH}Bank ${bankNumber || "?"}`}
+                            />
+                            <StatsSection
+                                title="Historical (All Seasons)"
+                                stats={histStats}
+                                label="All Seasons"
+                            />
+                        </>
+                    ) : (
+                        <p className="text-neutral-500 text-sm">Select a bank or machine to view detailed stats.</p>
+                    )}
+                </Panel>
+            </section>
+        </SiteShell>
     );
 }
 
@@ -220,7 +234,7 @@ function Filter({
             <select
                 value={value}
                 onChange={handleChange}
-                className="bg-neutral-900 border border-neutral-800 rounded-xl px-3 py-2"
+                className={CONTROL_SELECT_CLASS}
             >
                 <option value="">All</option>
                 {opts.map(o => (

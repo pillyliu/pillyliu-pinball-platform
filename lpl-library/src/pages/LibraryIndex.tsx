@@ -5,6 +5,8 @@ import {
   fetchPinballJson,
   prefetchPinballTextAssets,
 } from "../lib/pinballCache";
+import SiteHeader from "../components/SiteHeader";
+import { CONTROL_INPUT_CLASS, CONTROL_SELECT_CLASS, PageContainer } from "../components/ui";
 
 type Video = { kind: string; label: string; url: string };
 
@@ -113,15 +115,16 @@ export default function LibraryIndex() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <div className="mx-auto max-w-6xl p-6 lg:max-w-screen-2xl">
-        <h1 className="text-3xl font-semibold">Pinball Library</h1>
+      <SiteHeader title="Pinball Library" active="Library" />
+      <PageContainer>
+        <h2 className="text-2xl font-semibold">Browse Machines</h2>
 
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search games…"
-            className="w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-800 focus:ring-neutral-600"
+            className={CONTROL_INPUT_CLASS}
           />
 
           <select
@@ -130,7 +133,7 @@ export default function LibraryIndex() {
               const v = e.target.value;
               setBank(v === "all" ? "all" : Number(v));
             }}
-            className="w-full sm:w-48 rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 outline-none ring-1 ring-neutral-800 focus:ring-neutral-600"
+            className={`${CONTROL_SELECT_CLASS} sm:w-48`}
             aria-label="Filter by bank"
           >
             <option value="all">All banks</option>
@@ -249,7 +252,7 @@ export default function LibraryIndex() {
             exists.
           </div>
         )}
-      </div>
+      </PageContainer>
     </div>
   );
 }
