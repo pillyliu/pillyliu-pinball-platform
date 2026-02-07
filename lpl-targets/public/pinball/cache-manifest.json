@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-07T18:57:59.559Z",
+  "generatedAt": "2026-02-07T22:29:53.843Z",
   "source": "shared/pinball",
-  "totalFiles": 171,
+  "totalFiles": 210,
   "files": {
     "/pinball/data/Avenue Pinball - Current.csv": {
       "hash": "6dfd75f8c26e41dd862da5d8a1bca01b77235e0de110ce0bfe28bea4fb48a4b6",
@@ -11,15 +11,15 @@
       "contentType": "text/csv"
     },
     "/pinball/data/LPL_Standings.csv": {
-      "hash": "cf52f0f70dff00db832521787ae5d107d00447dc565f37a66a2240ad2bfe3ee2",
-      "size": 21871,
-      "mtimeMs": 1770476337582,
+      "hash": "a10199b77dd631351d54349b4c705a00b66f2f4b6950dedb74acdbd4b00f33bf",
+      "size": 24546,
+      "mtimeMs": 1770497409929,
       "contentType": "text/csv"
     },
     "/pinball/data/LPL_Stats.csv": {
-      "hash": "69819884d261974d2273b114aa83d45d9969e45660e69c8ea3c8d5f27a67d2a2",
-      "size": 841325,
-      "mtimeMs": 1770476337585,
+      "hash": "29cd23100656ff45df94f5a34cb81579cc26c0875bf50a80c0a22dc7f70ea6c1",
+      "size": 862890,
+      "mtimeMs": 1770497409932,
       "contentType": "text/csv"
     },
     "/pinball/data/LPL_Targets.csv": {
@@ -40,16 +40,250 @@
       "mtimeMs": 1770489727680,
       "contentType": "application/json"
     },
+    "/pinball/gameinfo/ac-dc.md": {
+      "hash": "13947a508c6b0945be673322d503b47efe1f00d59eefa6a7845845ad281dafc9",
+      "size": 741,
+      "mtimeMs": 1770495553282,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/attack-from-mars.md": {
+      "hash": "09e7449ba06e9440d28d1294f5ced794943391a7701326c58ba8fb30b84f1b6f",
+      "size": 266,
+      "mtimeMs": 1770495553249,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/avengers-infinity-quest.md": {
+      "hash": "c14c61d350257729539aa11bb131d139d557eacf53e3791226682fb126df9de9",
+      "size": 683,
+      "mtimeMs": 1770495553472,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/black-knight-sword-of-rage.md": {
+      "hash": "306383414824fe6f4a76dc9ebbd3d123b60a69189d2405ed876f6ee054cfc1be",
+      "size": 524,
+      "mtimeMs": 1770495553603,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/cactus-canyon.md": {
+      "hash": "72b3ed55b3b459b557885223f268687e0d1fd1879de057f6c70e04b32fc935d6",
+      "size": 427,
+      "mtimeMs": 1770495553782,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/deadpool.md": {
+      "hash": "23854151f716fd9ddf0817f7e9084f8f235185a501e738693615866df545d6e8",
+      "size": 619,
+      "mtimeMs": 1770495553826,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/dungeons-and-dragons-the-tyrants-eye.md": {
+      "hash": "de3c934bf6ac6c004876a0be496ea571b11ad9b144dc507110e26ca4148e1b7a",
+      "size": 292,
+      "mtimeMs": 1770495554018,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/elviras-house-of-horrors.md": {
+      "hash": "63ae565dfccb24346fb47e9144c9ef376b2351cf9937572396a686551c011216",
+      "size": 695,
+      "mtimeMs": 1770495554127,
+      "contentType": "text/markdown"
+    },
     "/pinball/gameinfo/foo-fighters.md": {
       "hash": "6ae442936700b058248fdada1c48931076e6169abea3cc4fb4c23412757c1442",
       "size": 434,
       "mtimeMs": 1770476337580,
       "contentType": "text/markdown"
     },
+    "/pinball/gameinfo/game-of-thrones.md": {
+      "hash": "1c12ecca8597a3ddc4b8210b19d08a34abe102afea21b1fe9cea3868a7dacfb0",
+      "size": 288,
+      "mtimeMs": 1770495554382,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/ghostbusters.md": {
+      "hash": "9dac9b5b0afa0ba46912d7cd01c9fa9a69dd530130b41418bb625c61cee51dd6",
+      "size": 687,
+      "mtimeMs": 1770495554676,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/godzilla-le.md": {
+      "hash": "6c4392e7395b3ac24aeba885be48f040fbc18dfb0d7e0aac9bfaad5140af4b93",
+      "size": 270,
+      "mtimeMs": 1770495554895,
+      "contentType": "text/markdown"
+    },
     "/pinball/gameinfo/godzilla.md": {
       "hash": "698d5c9f36fc11c6bbaeb568e95b874b254f451f03ad385c8ed4d2c4e741fb73",
       "size": 936,
       "mtimeMs": 1770476337580,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/indiana-jones-the-pinball-adventure.md": {
+      "hash": "b5f0196a5722dd8158bec32046686d56f117e2bd0a9c0b8fa7bc47c739382ed4",
+      "size": 305,
+      "mtimeMs": 1770495561241,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/iron-maiden.md": {
+      "hash": "088bd4758a9b05afc0cd1e6d3867c868d060262be4f878a9065eb07ba5e0ddd7",
+      "size": 653,
+      "mtimeMs": 1770495561541,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/james-bond-007.md": {
+      "hash": "83818f11b2bf854dbbbbb09064c9096c654c81ff3c4193a91ac89d45a8b53428",
+      "size": 511,
+      "mtimeMs": 1770495561760,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/jaws.md": {
+      "hash": "0890ba83bf70659422f8798800cd1de9bccd50a37f545f04d8b9b74008285b03",
+      "size": 232,
+      "mtimeMs": 1770495562066,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/john-wick.md": {
+      "hash": "bc78945a83e3641fbdca020613b03567f4494a11b3124ac748455c3052478118",
+      "size": 242,
+      "mtimeMs": 1770495562283,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/jurassic-park.md": {
+      "hash": "827764bf93007f3cc15544c30ac52cebbd8f165d288d35caa91cb097980fb1a8",
+      "size": 657,
+      "mtimeMs": 1770495562597,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/king-kong.md": {
+      "hash": "ad9ff7ed868414af514bd99533561323aa2ca79df21cb5592e3e7c361c362b38",
+      "size": 264,
+      "mtimeMs": 1770495562799,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/kiss.md": {
+      "hash": "9ec64fdedb912cf964487b38e99aebd43e7c9a41abc92671c5b2e0e128bfac69",
+      "size": 461,
+      "mtimeMs": 1770495563137,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/medieval-madness.md": {
+      "hash": "50c60ffd7bb396a736c322c40d884358b1fde17c517ee227a22b9e061a66b368",
+      "size": 509,
+      "mtimeMs": 1770495563365,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/metallica.md": {
+      "hash": "f7c244a88d07c281d457a559c6eac2a45c88aace7e1f1611f81cd96a1a4bf29d",
+      "size": 339,
+      "mtimeMs": 1770495563645,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/monster-bash.md": {
+      "hash": "f66dd1c42fedc0715e189296fac1ca809249f55b1edb092c4e895e3a4109c18b",
+      "size": 285,
+      "mtimeMs": 1770495563863,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/pulp-fiction.md": {
+      "hash": "652fa45f19a906962723b96007941ca26d391db9f5940b0a0a3fe4270586860a",
+      "size": 552,
+      "mtimeMs": 1770495564167,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/rush.md": {
+      "hash": "37ba0aea0825978fa3645e33c026adb55eefc7a90fd07f45a6f8a5fe32df0ea1",
+      "size": 483,
+      "mtimeMs": 1770495564397,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/scared-stiff.md": {
+      "hash": "83c2e70d7f8809cf763a6e4f71727d22bc32fe5ed1b1256639b324020fea9f12",
+      "size": 256,
+      "mtimeMs": 1770495564656,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/star-trek.md": {
+      "hash": "5722867f7e85f275a1b60471f05ec06e0501273a0fd0b35d5314cb8775351972",
+      "size": 639,
+      "mtimeMs": 1770495564707,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/star-wars-fall-of-the-empire.md": {
+      "hash": "d18b9205882f01843fac1be55a859cb9cf7c4f74ff85b9ecf89592d3790c4e83",
+      "size": 667,
+      "mtimeMs": 1770495564907,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/star-wars.md": {
+      "hash": "bbd1a51590c92a8b30f3e209398fcd9709c91b7c7c8bffd058d3a68aa4e8e88f",
+      "size": 492,
+      "mtimeMs": 1770495564918,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/stranger-things.md": {
+      "hash": "017ca8af6f67d2ef9fd20f00edfefdd2ec33acf2ebb03555ed1c04f4e67baadf",
+      "size": 433,
+      "mtimeMs": 1770495565211,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/tales-of-the-arabian-nights.md": {
+      "hash": "1ef1a7b840083c4a4b0b2fe50302b2958b0cec0954c4dcd256f8873a663dfe51",
+      "size": 274,
+      "mtimeMs": 1770495565218,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/teenage-mutant-ninja-turtles.md": {
+      "hash": "c496455f782c001e91b4756e44149766da9ebccc995a67eec4952b0c81b21ac6",
+      "size": 946,
+      "mtimeMs": 1770495565430,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-addams-family.md": {
+      "hash": "bc8b68e56f71614520cb1ed9b03b5bb13b22fe93d5947a146b79d03e0359ec24",
+      "size": 320,
+      "mtimeMs": 1770495565463,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-getaway-high-speed-ii.md": {
+      "hash": "58dc0ef3cf2fadaa4f66ab1cfc1204170fa25380a672bbb12c770193ec64c09c",
+      "size": 297,
+      "mtimeMs": 1770495565741,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-mandalorian.md": {
+      "hash": "75515f59c0e2803ccf737b5c15bca88d6fdf81c5f172e505a26d55b066a99e57",
+      "size": 484,
+      "mtimeMs": 1770495565770,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-munsters.md": {
+      "hash": "373482a517f441119baffdea556fc51d5d4b8742edcd01c80df51110a30846a0",
+      "size": 481,
+      "mtimeMs": 1770495565944,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-simpsons-pinball-party.md": {
+      "hash": "8a64d73d76cc8315684ef42e7bea38a18babf85471a5adb2159ad0c4676f0ae4",
+      "size": 380,
+      "mtimeMs": 1770495565999,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/the-uncanny-x-men.md": {
+      "hash": "694bcfa5482431e2696c1416db30167ce9c91a34660e238b31d61a68601a7d90",
+      "size": 258,
+      "mtimeMs": 1770495566229,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/tron-legacy.md": {
+      "hash": "e6c36d6c6c0e4ce2d70555534f9c4bf0490f7c53dd68f0d8823cf19006f19bd2",
+      "size": 421,
+      "mtimeMs": 1770495566297,
+      "contentType": "text/markdown"
+    },
+    "/pinball/gameinfo/venom.md": {
+      "hash": "514de4a7b50d2b184b46e21fa203b10a79ec84d4fda1d7af68c4d2aa4f57079d",
+      "size": 584,
+      "mtimeMs": 1770495566436,
       "contentType": "text/markdown"
     },
     "/pinball/images/playfields/ac-dc.jpg": {

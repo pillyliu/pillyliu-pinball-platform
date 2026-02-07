@@ -31,8 +31,3 @@ body {
 #root {
   min-height: 100dvh;
 }
-
-.ios-scroller {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-}

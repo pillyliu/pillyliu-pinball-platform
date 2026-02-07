@@ -151,7 +151,7 @@ export default function LibraryIndex() {
               {sections.map((section, idx) => (
                 <div key={`${section.groupKey ?? "nogroup"}-${idx}`}>
                   {idx > 0 && (
-                    <div className="mb-6 h-px w-full bg-neutral-800" />
+                    <div className="mb-6 h-px w-full bg-white/55" />
                   )}
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

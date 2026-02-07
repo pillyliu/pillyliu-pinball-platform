@@ -5,3 +5,9 @@ dist/
 .env
 .env.*
 *.log
+
+# Generated app-local copies from sync script; canonical source is shared/pinball/gameinfo
+lpl-library/public/pinball/gameinfo/
+lpl-standings/public/pinball/gameinfo/
+lpl-stats/public/pinball/gameinfo/
+lpl-targets/public/pinball/gameinfo/

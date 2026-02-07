@@ -38,7 +38,11 @@ function scrollToHash(hash: string) {
     document.querySelector(`[id="${CSS.escape(id)}"]`);
 
   if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const header = document.querySelector("header");
+    const headerHeight =
+      header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+    const top = window.scrollY + el.getBoundingClientRect().top - headerHeight - 14;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     history.replaceState(null, "", `#${id}`);
   }
 }
@@ -62,6 +66,13 @@ export default function RulesheetPage() {
         setLoading(false);
       });
   }, [slug]);
+
+  useEffect(() => {
+    if (!md) return;
+    if (!window.location.hash) return;
+    const timer = window.setTimeout(() => scrollToHash(window.location.hash), 0);
+    return () => window.clearTimeout(timer);
+  }, [md]);
 
   const sanitizeSchema: any = useMemo(() => {
     const base: any = defaultSchema as any;
@@ -163,7 +174,7 @@ export default function RulesheetPage() {
             <article
               className="
                 prose prose-invert max-w-none
-                prose-headings:scroll-mt-24
+                prose-headings:scroll-mt-28
                 prose-a:underline
                 prose-pre:bg-neutral-950 prose-pre:ring-1 prose-pre:ring-neutral-800
                 prose-hr:border-neutral-800

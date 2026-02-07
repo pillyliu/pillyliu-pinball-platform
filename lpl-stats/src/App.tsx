@@ -1,323 +1,507 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchPinballText, prefetchPinballTextAssets } from "./lib/pinballCache";
 import {
-    CONTROL_INPUT_CLASS,
-    CONTROL_SELECT_CLASS,
-    PRIMARY_BUTTON_CLASS,
-    Panel,
-    SectionTitle,
-    SiteShell,
+  CONTROL_INPUT_CLASS,
+  CONTROL_SELECT_CLASS,
+  PRIMARY_BUTTON_CLASS,
+  Panel,
+  SectionTitle,
+  SiteShell,
 } from "../../shared/ui/leagueUi";
 import { NAV_LINKS } from "../../shared/ui/navLinks";
 
-/**
- * Pinball Scores Viewer — full-width table; always shows stats panel
- */
-
 const DEFAULT_DATA_URL = "/pinball/data/LPL_Stats.csv";
-const EM = " \u2014 ";
-const NDASH = " \u2013 ";
+
+type Row = {
+  Season: string;
+  BankNumber: number;
+  Bank: string;
+  Player: string;
+  Machine: string;
+  RawScore: number;
+  Points: number;
+};
+
+type StatResult = {
+  count: number;
+  low: number | null;
+  lowPlayer: string | null;
+  high: number | null;
+  highPlayer: string | null;
+  mean: number | null;
+  median: number | null;
+  std: number | null;
+};
+
 export default function App() {
-    const [rows, setRows] = useState<Row[]>([]);
-    const [error, setError] = useState<string | null>(null);
+  const [rows, setRows] = useState<Row[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-    // Filters
-    const [season, setSeason] = useState<string>("");
-    const [player, setPlayer] = useState<string>("");
-    const [bankNumber, setBankNumber] = useState<number | "">("");
-    const [machine, setMachine] = useState<string>("");
+  const [season, setSeason] = useState<string>("");
+  const [player, setPlayer] = useState<string>("");
+  const [bankNumber, setBankNumber] = useState<number | "">("");
+  const [machine, setMachine] = useState<string>("");
 
-    const cfgMode = useMemo(() => {
-        try { return new URLSearchParams(window.location.search).get("cfg") === "1"; }
-        catch { return false; }
-    }, []);
-
-    const [dataUrl, setDataUrl] = useState<string>(
-        () => localStorage.getItem("scores_csv_url") || DEFAULT_DATA_URL
-    );
-
-    useEffect(() => {
-        prefetchPinballTextAssets(["/pinball/data"]).catch(() => undefined);
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                setError(null);
-                const text = await fetchPinballText(dataUrl);
-                const parsed = parseScoresCSV(text);
-                setRows(parsed);
-                setSeason(""); setPlayer(""); setBankNumber(""); setMachine("");
-            } catch (e: unknown) {
-                setError(e instanceof Error ? e.message : "Failed to load CSV");
-            }
-        })();
-    }, [dataUrl]);
-
-    const seasons = useMemo(() => uniq(rows.map(r => r.Season)).sort(), [rows]);
-    const players = useMemo(
-        () => uniq(rows.filter(r => !season || r.Season === season).map(r => r.Player)).sort(),
-        [rows, season]
-    );
-    const bankNumbers = useMemo(
-        () => uniq(rows.filter(r =>
-            (!season || r.Season === season) &&
-            (!player || r.Player === player)
-        ).map(r => r.BankNumber)).sort((a, b) => Number(a) - Number(b)),
-        [rows, season, player]
-    );
-    const machines = useMemo(
-        () => uniq(rows.filter(r =>
-            (!season || r.Season === season) &&
-            (!player || r.Player === player) &&
-            (!bankNumber || r.BankNumber === bankNumber)
-        ).map(r => (r.Machine || "").trim())).filter(Boolean).sort(),
-        [rows, season, player, bankNumber]
-    );
-
-    const filtered = useMemo(() => rows.filter(r =>
-        (!season || r.Season === season) &&
-        (!player || r.Player === player) &&
-        (!bankNumber || r.BankNumber === bankNumber) &&
-        (!machine || (r.Machine || "").trim() === machine)
-    ), [rows, season, player, bankNumber, machine]);
-
-    const bankScope = useMemo(() => rows.filter(r =>
-        !!season && r.Season === season &&
-        !!bankNumber && r.BankNumber === bankNumber &&
-        !!machine && (r.Machine || "").trim() === machine
-    ), [rows, season, bankNumber, machine]);
-
-    const histScope = useMemo(() => rows.filter(r =>
-        !!machine && (r.Machine || "").trim() === machine
-    ), [rows, machine]);
-
-    const bankStats = useMemo(() => computeStats(bankScope, true), [bankScope]);
-    const histStats = useMemo(() => computeStats(histScope, false), [histScope]);
-
-    const tableScrollRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        tableScrollRef.current?.scrollTo({ left: 0 });
-    }, [season, player, bankNumber, machine, filtered.length]);
-
-    return (
-        <SiteShell
-            title="League Stats"
-            activeLabel="Stats"
-            navItems={NAV_LINKS}
-            controls={
-                cfgMode ? (
-                    <div className="flex flex-wrap items-center gap-2 min-w-0 w-full md:w-auto">
-                        <input
-                            value={dataUrl}
-                            onChange={e => setDataUrl(e.target.value)}
-                            placeholder="https://.../scores.csv"
-                            className={`${CONTROL_INPUT_CLASS} w-full sm:w-auto sm:max-w-[420px] min-w-0`}
-                        />
-                        <button
-                            onClick={() => { localStorage.setItem("scores_csv_url", dataUrl); setDataUrl(dataUrl); }}
-                            className={PRIMARY_BUTTON_CLASS}
-                        >
-                            Load URL
-                        </button>
-                    </div>
-                ) : undefined
-            }
-        >
-            {error && (
-                <Panel className="border-red-800 bg-red-900/20 p-3">
-                    <p className="text-red-200 text-sm">{error}</p>
-                </Panel>
-            )}
-
-            <Panel className="p-4">
-                <SectionTitle className="mb-3">Filters</SectionTitle>
-                <div className="grid xl:grid-cols-4 sm:grid-cols-2 gap-3">
-                    <Filter label="Season" value={season} setValue={setSeason} opts={seasons} clear={[setPlayer, setBankNumber, setMachine]} />
-                    <Filter label="Player" value={player} setValue={setPlayer} opts={players} clear={[setBankNumber, setMachine]} />
-                    <Filter label="Bank" value={bankNumber} setValue={v => setBankNumber(Number(v) || "")} opts={bankNumbers} clear={[setMachine]} />
-                    <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
-                </div>
-            </Panel>
-
-            <section className="grid xl:grid-cols-[2fr_1fr] gap-6">
-                <Panel className="p-0 overflow-x-auto overflow-y-auto ios-scroller" >
-                    <div ref={tableScrollRef} className="block min-w-full">
-                        <table className="min-w-full text-sm border-collapse whitespace-nowrap">
-                            <thead className="bg-neutral-950 sticky top-0">
-                                <tr className="text-left text-neutral-400 border-b border-neutral-800">
-                                    <th className="py-2 px-4">Season</th>
-                                    <th className="py-2 px-4">Player</th>
-                                    <th className="py-2 px-4">Bank #</th>
-                                    <th className="py-2 px-4">Bank Name</th>
-                                    <th className="py-2 px-4">Machine</th>
-                                    <th className="py-2 px-4">Score</th>
-                                    <th className="py-2 px-4">Points</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filtered.map((r, i) => (
-                                    <tr key={`${r.Season}-${r.Player}-${i}`} className="border-b border-neutral-800/70 hover:bg-neutral-900/40">
-                                        <td className="py-2 px-4">{r.Season}</td>
-                                        <td className="py-2 px-4">{r.Player}</td>
-                                        <td className="py-2 px-4">{r.BankNumber}</td>
-                                        <td className="py-2 px-4">{r.Bank}</td>
-                                        <td className="py-2 px-4">{r.Machine}</td>
-                                        <td className="py-2 px-4 tabular-nums">{formatScore(r.RawScore)}</td>
-                                        <td className="py-2 px-4 tabular-nums">{formatPoints(r.Points)}</td>
-                                    </tr>
-                                ))}
-                                {!filtered.length && (
-                                    <tr>
-                                        <td colSpan={7} className="py-6 px-4 text-center text-neutral-500">
-                                            {"No rows"}{EM}{"check filters or CSV."}
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
-                </Panel>
-
-                <Panel className="p-4 overflow-auto ios-scroller">
-                    <SectionTitle className="mb-2">Machine Stats</SectionTitle>
-                    {machine || bankNumber ? (
-                        <>
-                            <StatsSection
-                                title="Selected Bank"
-                                stats={bankStats}
-                                label={`${season || "Season"}${NDASH}Bank ${bankNumber || "?"}`}
-                            />
-                            <StatsSection
-                                title="Historical (All Seasons)"
-                                stats={histStats}
-                                label="All Seasons"
-                            />
-                        </>
-                    ) : (
-                        <p className="text-neutral-500 text-sm">Select a bank or machine to view detailed stats.</p>
-                    )}
-                </Panel>
-            </section>
-        </SiteShell>
-    );
-}
-
-/* ===== Small reusable Filter component ===== */
-function Filter({
-    label,
-    value,
-    setValue,
-    opts,
-    clear = [],
-}: {
-    label: string;
-    value: string | number | "";
-    setValue: (v: string) => void;
-    opts: (string | number)[];
-    clear?: React.Dispatch<React.SetStateAction<any>>[];
-}) {
-    function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-        clear.forEach(fn => fn(""));
-        setValue(e.target.value);
+  const cfgMode = useMemo(() => {
+    try {
+      return new URLSearchParams(window.location.search).get("cfg") === "1";
+    } catch {
+      return false;
     }
-    return (
-        <div className="grid gap-1 min-w-0">
-            <label className="text-xs text-neutral-400">{label}</label>
-            <select
-                value={value}
-                onChange={handleChange}
-                className={CONTROL_SELECT_CLASS}
+  }, []);
+
+  const [dataUrl, setDataUrl] = useState<string>(
+    () => localStorage.getItem("scores_csv_url") || DEFAULT_DATA_URL
+  );
+
+  useEffect(() => {
+    prefetchPinballTextAssets(["/pinball/data"]).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setError(null);
+        const text = await fetchPinballText(dataUrl);
+        const parsed = parseScoresCSV(text);
+        setRows(parsed);
+        setSeason("");
+        setPlayer("");
+        setBankNumber("");
+        setMachine("");
+      } catch (e: unknown) {
+        setRows([]);
+        setError(e instanceof Error ? e.message : "Failed to load CSV");
+      }
+    })();
+  }, [dataUrl]);
+
+  const seasons = useMemo(() => unique(rows.map((r) => r.Season)).sort(), [rows]);
+
+  const players = useMemo(
+    () =>
+      unique(rows.filter((r) => !season || r.Season === season).map((r) => r.Player)).sort(),
+    [rows, season]
+  );
+
+  const bankNumbers = useMemo(
+    () =>
+      unique(
+        rows
+          .filter((r) => (!season || r.Season === season) && (!player || r.Player === player))
+          .map((r) => r.BankNumber)
+      ).sort((a, b) => a - b),
+    [rows, season, player]
+  );
+
+  const machines = useMemo(
+    () =>
+      unique(
+        rows
+          .filter(
+            (r) =>
+              (!season || r.Season === season) &&
+              (!player || r.Player === player) &&
+              (!bankNumber || r.BankNumber === bankNumber)
+          )
+          .map((r) => r.Machine.trim())
+          .filter(Boolean)
+      ).sort(),
+    [rows, season, player, bankNumber]
+  );
+
+  const filtered = useMemo(
+    () =>
+      rows.filter(
+        (r) =>
+          (!season || r.Season === season) &&
+          (!player || r.Player === player) &&
+          (!bankNumber || r.BankNumber === bankNumber) &&
+          (!machine || r.Machine.trim() === machine)
+      ),
+    [rows, season, player, bankNumber, machine]
+  );
+
+  const bankScope = useMemo(
+    () =>
+      rows.filter(
+        (r) =>
+          !!season &&
+          r.Season === season &&
+          !!bankNumber &&
+          r.BankNumber === bankNumber &&
+          !!machine &&
+          r.Machine.trim() === machine
+      ),
+    [rows, season, bankNumber, machine]
+  );
+
+  const machineScope = useMemo(
+    () => rows.filter((r) => !!machine && r.Machine.trim() === machine),
+    [rows, machine]
+  );
+
+  const bankStats = useMemo(() => computeStats(bankScope, true), [bankScope]);
+  const machineStats = useMemo(() => computeStats(machineScope, false), [machineScope]);
+
+  return (
+    <SiteShell
+      title="League Stats"
+      activeLabel="Stats"
+      navItems={NAV_LINKS}
+      controls={
+        cfgMode ? (
+          <div className="flex w-full flex-wrap items-center justify-end gap-2 md:w-auto">
+            <input
+              value={dataUrl}
+              onChange={(e) => setDataUrl(e.target.value)}
+              placeholder="https://.../scores.csv"
+              className={`${CONTROL_INPUT_CLASS} w-full min-w-0 sm:max-w-[420px]`}
+            />
+            <button
+              onClick={() => {
+                localStorage.setItem("scores_csv_url", dataUrl);
+                setDataUrl(dataUrl);
+              }}
+              className={PRIMARY_BUTTON_CLASS}
             >
-                <option value="">All</option>
-                {opts.map(o => (
-                    <option key={String(o)} value={String(o)}>{String(o)}</option>
-                ))}
-            </select>
+              Load URL
+            </button>
+          </div>
+        ) : undefined
+      }
+    >
+      {error && (
+        <Panel className="border border-red-800 bg-red-900/20 p-3">
+          <p className="text-sm text-red-200">{error}</p>
+        </Panel>
+      )}
+
+      <Panel className="p-5">
+        <SectionTitle className="mb-3">Filters</SectionTitle>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <Filter
+            label="Season"
+            value={season}
+            setValue={setSeason}
+            opts={seasons}
+            clear={[setPlayer, setBankNumber, setMachine]}
+          />
+          <Filter
+            label="Player"
+            value={player}
+            setValue={setPlayer}
+            opts={players}
+            clear={[setBankNumber, setMachine]}
+          />
+          <Filter
+            label="Bank"
+            value={bankNumber}
+            setValue={(v) => setBankNumber(Number(v) || "")}
+            opts={bankNumbers}
+            clear={[setMachine]}
+          />
+          <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
         </div>
-    );
+      </Panel>
+
+      <section className="grid gap-6 xl:grid-cols-[2fr_1fr]">
+        <Panel className="overflow-auto">
+          <table className="min-w-full border-collapse text-sm whitespace-nowrap">
+            <thead className="sticky top-0 z-10 bg-neutral-950">
+              <tr className="border-b border-neutral-800 text-left text-neutral-300">
+                <th className="px-4 py-3">Season</th>
+                <th className="px-4 py-3">Player</th>
+                <th className="px-4 py-3">Bank #</th>
+                <th className="px-4 py-3">Bank Name</th>
+                <th className="px-4 py-3">Machine</th>
+                <th className="px-4 py-3">Score</th>
+                <th className="px-4 py-3">Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((r, idx) => (
+                <tr
+                  key={`${r.Season}-${r.Player}-${r.BankNumber}-${r.Machine}-${idx}`}
+                  className="border-b border-neutral-800/80 odd:bg-neutral-900 even:bg-neutral-950 hover:bg-sky-900/25"
+                >
+                  <td className="px-4 py-2.5">{r.Season}</td>
+                  <td className="px-4 py-2.5">{r.Player}</td>
+                  <td className="px-4 py-2.5 tabular-nums">{r.BankNumber}</td>
+                  <td className="px-4 py-2.5">{r.Bank}</td>
+                  <td className="px-4 py-2.5">{r.Machine}</td>
+                  <td className="px-4 py-2.5 tabular-nums">{formatScore(r.RawScore)}</td>
+                  <td className="px-4 py-2.5 tabular-nums">{formatPoints(r.Points)}</td>
+                </tr>
+              ))}
+              {!filtered.length && (
+                <tr>
+                  <td colSpan={7} className="px-4 py-8 text-center text-neutral-500">
+                    No rows. Check filters or CSV.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </Panel>
+
+        <Panel className="p-4">
+          <SectionTitle className="mb-3">Machine Stats</SectionTitle>
+          {machine || bankNumber ? (
+            <div className="space-y-4">
+              <StatsSection
+                title="Selected Bank"
+                subtitle={`${season || "Season"} - Bank ${bankNumber || "?"}`}
+                stats={bankStats}
+              />
+              <StatsSection
+                title="Historical (All Seasons)"
+                subtitle="All seasons"
+                stats={machineStats}
+              />
+            </div>
+          ) : (
+            <p className="text-sm text-neutral-500">Select a bank or machine to view detailed stats.</p>
+          )}
+        </Panel>
+      </section>
+    </SiteShell>
+  );
 }
 
-/* ===== Types & helpers ===== */
-type Row = { Season: string; BankNumber: number; Bank: string; Player: string; Machine: string; RawScore: number; Points: number; };
-type StatResult = { count: number | null; low: number | null; lowPlayer: string | null; high: number | null; highPlayer: string | null; mean: number | null; median: number | null; std: number | null; };
-function uniq<T>(a: T[]): T[] { return Array.from(new Set(a)); }
-function normStr(s: unknown): string { return (s ?? "").toString().trim(); }
-function abbrSeason(s: unknown): string { const m = String(s ?? "").match(/\d+/); return m ? `S${m[0]}` : String(s ?? ""); }
-function formatScore(n?: number | null) { if (n == null || !Number.isFinite(n) || n <= 0) return "\u2014"; return Math.round(n).toLocaleString(); }
-function formatPoints(n?: number) { if (n == null) return "\u2014"; return Math.round(n).toString(); }
+function Filter({
+  label,
+  value,
+  setValue,
+  opts,
+  clear = [],
+}: {
+  label: string;
+  value: string | number | "";
+  setValue: (v: string) => void;
+  opts: Array<string | number>;
+  clear?: Array<React.Dispatch<React.SetStateAction<any>>>;
+}) {
+  function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    clear.forEach((setClear) => setClear(""));
+    setValue(event.target.value);
+  }
 
-/* ===== Stats computation ===== */
-function computeStats(scope: Row[], isBank: boolean): StatResult {
-    const v = scope.map(r => Number(r.RawScore)).filter(n => Number.isFinite(n) && n > 0);
-    const c = v.length;
-    if (!c) return { count: 0, low: null, lowPlayer: null, high: null, highPlayer: null, mean: null, median: null, std: null };
-    const min = Math.min(...v), max = Math.max(...v);
-    const lowRow = scope.find(r => Number(r.RawScore) === min) || null;
-    const highRow = scope.find(r => Number(r.RawScore) === max) || null;
-    const mean = v.reduce((a, b) => a + b, 0) / c;
-    const sorted = [...v].sort((a, b) => a - b);
-    const median = c % 2 ? sorted[(c - 1) / 2] : (sorted[c / 2 - 1] + sorted[c / 2]) / 2;
-    const variance = v.reduce((s, x) => s + (x - mean) ** 2, 0) / c;
-    const std = Math.sqrt(variance);
+  return (
+    <div className="grid gap-1.5 min-w-0">
+      <label className="text-xs uppercase tracking-[0.12em] text-neutral-500">{label}</label>
+      <select value={value} onChange={onChange} className={CONTROL_SELECT_CLASS}>
+        <option value="">All</option>
+        {opts.map((opt) => (
+          <option key={String(opt)} value={String(opt)}>
+            {String(opt)}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function StatsSection({
+  title,
+  subtitle,
+  stats,
+}: {
+  title: string;
+  subtitle: string;
+  stats: StatResult;
+}) {
+  return (
+    <section className="rounded-xl border border-neutral-800 bg-neutral-950/70 p-3">
+      <h3 className="text-sm font-semibold text-neutral-200">{title}</h3>
+      <p className="mt-1 text-xs text-neutral-500">{subtitle}</p>
+
+      {stats.count === 0 ? (
+        <p className="mt-3 text-sm text-neutral-500">No data for current filters.</p>
+      ) : (
+        <table className="mt-3 w-full text-sm">
+          <tbody>
+            <StatRow label="High" value={formatScore(stats.high)} sub={stats.highPlayer} tone="high" />
+            <StatRow label="Low" value={formatScore(stats.low)} sub={stats.lowPlayer} tone="low" />
+            <StatRow label="Mean" value={formatScore(stats.mean)} tone="mid" />
+            <StatRow label="Median" value={formatScore(stats.median)} tone="mid" />
+            <StatRow label="Std Dev" value={formatScore(stats.std)} />
+            <StatRow label="Count" value={stats.count} />
+          </tbody>
+        </table>
+      )}
+    </section>
+  );
+}
+
+function StatRow({
+  label,
+  value,
+  sub,
+  tone,
+}: {
+  label: string;
+  value: string | number;
+  sub?: string | null;
+  tone?: "high" | "low" | "mid";
+}) {
+  const toneClass =
+    tone === "high"
+      ? "text-emerald-300"
+      : tone === "low"
+        ? "text-red-300"
+        : tone === "mid"
+          ? "text-sky-300"
+          : "text-neutral-200";
+
+  return (
+    <tr className="border-b border-neutral-800 last:border-b-0">
+      <td className="py-2 text-neutral-400">{label}</td>
+      <td className={`py-2 text-right tabular-nums ${toneClass}`}>
+        {value}
+        {sub ? <div className="text-xs text-neutral-500">by {sub}</div> : null}
+      </td>
+    </tr>
+  );
+}
+
+function unique<T>(array: T[]): T[] {
+  return Array.from(new Set(array));
+}
+
+function normalizeText(value: unknown): string {
+  return String(value ?? "").trim();
+}
+
+function shortSeason(season: string): string {
+  const match = season.match(/\d+/);
+  return match ? `S${match[0]}` : season;
+}
+
+function formatScore(value: number | null | undefined): string {
+  if (value == null || !Number.isFinite(value) || value <= 0) return "-";
+  return Math.round(value).toLocaleString();
+}
+
+function formatPoints(value: number): string {
+  if (!Number.isFinite(value)) return "-";
+  return Math.round(value).toString();
+}
+
+function computeStats(scope: Row[], bankMode: boolean): StatResult {
+  const values = scope.map((row) => row.RawScore).filter((n) => Number.isFinite(n) && n > 0);
+  if (!values.length) {
     return {
-        count: c,
-        low: min, lowPlayer: lowRow ? (isBank ? lowRow.Player : `${lowRow.Player} (${abbrSeason(lowRow.Season)})`) : null,
-        high: max, highPlayer: highRow ? (isBank ? highRow.Player : `${highRow.Player} (${abbrSeason(highRow.Season)})`) : null,
-        mean, median, std
+      count: 0,
+      low: null,
+      lowPlayer: null,
+      high: null,
+      highPlayer: null,
+      mean: null,
+      median: null,
+      std: null,
     };
+  }
+
+  const count = values.length;
+  const low = Math.min(...values);
+  const high = Math.max(...values);
+
+  const lowRow = scope.find((row) => row.RawScore === low) ?? null;
+  const highRow = scope.find((row) => row.RawScore === high) ?? null;
+
+  const lowPlayer = lowRow
+    ? bankMode
+      ? lowRow.Player
+      : `${lowRow.Player} (${shortSeason(lowRow.Season)})`
+    : null;
+
+  const highPlayer = highRow
+    ? bankMode
+      ? highRow.Player
+      : `${highRow.Player} (${shortSeason(highRow.Season)})`
+    : null;
+
+  const mean = values.reduce((sum, n) => sum + n, 0) / count;
+  const sorted = [...values].sort((a, b) => a - b);
+  const median =
+    count % 2 === 1 ? sorted[(count - 1) / 2] : (sorted[count / 2 - 1] + sorted[count / 2]) / 2;
+  const variance = values.reduce((sum, n) => sum + (n - mean) ** 2, 0) / count;
+  const std = Math.sqrt(variance);
+
+  return { count, low, lowPlayer, high, highPlayer, mean, median, std };
 }
 
-/* ===== Stats UI ===== */
-function StatsSection({ title, stats, label }: { title: string; stats: StatResult; label: string; }) {
-    return (
-        <section className="mb-4">
-            <h4 className="text-sm font-semibold text-neutral-300 mb-1">{title}</h4>
-            {stats.count === 0 ? (
-                <p className="text-neutral-500 text-sm">{"No data"}{EM}{"select filters."}</p>
-            ) : (
-                <div className="text-sm">
-                    <div className="text-xs text-neutral-400 mb-2">{label}</div>
-                    <table className="w-full text-sm border border-neutral-800 rounded-xl overflow-hidden">
-                        <tbody>
-                            <StatRow label="High" val={formatScore(stats.high)} sub={stats.highPlayer ? `by ${stats.highPlayer}` : undefined} color="emerald" />
-                            <StatRow label="Low" val={formatScore(stats.low)} sub={stats.lowPlayer ? `by ${stats.lowPlayer}` : undefined} color="red" />
-                            <StatRow label="Mean" val={formatScore(stats.mean)} color="sky" />
-                            <StatRow label="Median" val={formatScore(stats.median)} color="sky" />
-                            <StatRow label="Std Dev" val={formatScore(stats.std)} />
-                            <StatRow label="Count" val={stats.count ?? 0} />
-                        </tbody>
-                    </table>
-                </div>
-            )}
-        </section>
-    );
-}
-function StatRow({ label, val, sub, color }: { label: string; val: string | number | null; sub?: string; color?: "emerald" | "red" | "sky"; }) {
-    const col = color ? `text-${color}-400` : "";
-    return (
-        <tr className="border-b border-neutral-800">
-            <td className="px-3 py-2 text-neutral-400">{label}</td>
-            <td className={`px-3 py-2 text-right tabular-nums ${col}`}>
-                {val}{sub && <div className="text-xs text-neutral-500">{sub}</div>}
-            </td>
-        </tr>
-    );
-}
-
-/* ===== CSV Parser ===== */
 function parseScoresCSV(text: string): Row[] {
-    const lines = text.split(/\r?\n/).filter(l => l.length > 0);
-    const [head, ...body] = lines.map(l => l.split(","));
-    const headers = head.map(h => h.trim());
-    const idx = (n: string) => headers.indexOf(n);
-    return body.map(r => ({
-        Season: normStr(r[idx("Season")]),
-        BankNumber: Number(r[idx("BankNumber")]) || 0,
-        Bank: normStr(r[idx("Bank")]),
-        Player: normStr(r[idx("Player")]),
-        Machine: normStr(r[idx("Machine")]),
-        RawScore: Number(normStr(r[idx("RawScore")]) || 0),
-        Points: Number(normStr(r[idx("Points")]) || 0),
+  const matrix = parseCsv(text);
+  if (!matrix.length) return [];
+
+  const headers = matrix[0].map((h) => h.trim());
+  const body = matrix.slice(1);
+
+  const index = (name: string) => headers.indexOf(name);
+  const required = ["Season", "BankNumber", "Bank", "Player", "Machine", "RawScore", "Points"];
+  for (const column of required) {
+    if (index(column) === -1) {
+      throw new Error(`Scores CSV missing column: ${column}`);
+    }
+  }
+
+  return body
+    .filter((row) => row.length === headers.length)
+    .map((row) => ({
+      Season: normalizeText(row[index("Season")]),
+      BankNumber: Number(normalizeText(row[index("BankNumber")])) || 0,
+      Bank: normalizeText(row[index("Bank")]),
+      Player: normalizeText(row[index("Player")]),
+      Machine: normalizeText(row[index("Machine")]),
+      RawScore: Number(normalizeText(row[index("RawScore")]).replace(/,/g, "")) || 0,
+      Points: Number(normalizeText(row[index("Points")])) || 0,
     }));
+}
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let field = "";
+  let row: string[] = [];
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i];
+
+    if (inQuotes) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') {
+          field += '"';
+          i += 1;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        field += ch;
+      }
+      continue;
+    }
+
+    if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ",") {
+      row.push(field);
+      field = "";
+    } else if (ch === "\n") {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = "";
+    } else if (ch !== "\r") {
+      field += ch;
+    }
+  }
+
+  if (field.length > 0 || row.length > 0) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  return rows;
 }

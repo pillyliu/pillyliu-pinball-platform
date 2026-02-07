@@ -171,7 +171,7 @@ export default function GamePage() {
                 className={SUBTLE_BUTTON_CLASS}
                 to={`/rules/${game.slug}`}
               >
-                Rulesheet (hosted)
+                Rulesheet
               </Link>
 
               {game.playfieldLocal && (
@@ -181,29 +181,7 @@ export default function GamePage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Playfield (hosted)
-                </a>
-              )}
-
-              {game.rulesheetUrl && (
-                <a
-                  className={SUBTLE_BUTTON_CLASS}
-                  href={game.rulesheetUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Rulesheet (source)
-                </a>
-              )}
-
-              {game.playfieldImageUrl && (
-                <a
-                  className={SUBTLE_BUTTON_CLASS}
-                  href={game.playfieldImageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Playfield image (source)
+                  Playfield
                 </a>
               )}
             </div>
@@ -276,22 +254,33 @@ export default function GamePage() {
                 </div>
               )}
             </div>
-
-            <div className="mt-4 space-y-2 text-xs text-neutral-500">
-              <div>
-                Info file path:{" "}
-                <code className="rounded bg-neutral-950 px-2 py-1 break-all">
-                  /pinball/gameinfo/{game.slug}.md
-                </code>
-              </div>
-            </div>
           </Panel>
         </div>
 
-        <div className="mt-8 text-sm text-neutral-500">
-          Local rulesheet page target:{" "}
-          <code className="rounded bg-neutral-900 px-2 py-1 break-all">{game.rulesheetLocal}</code>
-        </div>
+        {(game.rulesheetUrl || game.playfieldImageUrl) && (
+          <div className="mt-8 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
+            {game.rulesheetUrl && (
+              <a
+                className="rounded-lg bg-neutral-900 px-2.5 py-1 text-xs text-neutral-200 ring-1 ring-neutral-700 hover:ring-neutral-500"
+                href={game.rulesheetUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Rulesheet (source)
+              </a>
+            )}
+            {game.playfieldImageUrl && (
+              <a
+                className="rounded-lg bg-neutral-900 px-2.5 py-1 text-xs text-neutral-200 ring-1 ring-neutral-700 hover:ring-neutral-500"
+                href={game.playfieldImageUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Playfield (source)
+              </a>
+            )}
+          </div>
+        )}
       </PageContainer>
     </div>
   );

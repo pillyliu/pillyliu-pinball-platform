@@ -38,8 +38,12 @@ function parseJson<T>(raw: string | null): T | null {
 
 function fallbackPath(path: string): string {
   const p = normalizePath(path);
-  const alt = new URL(p.replace(/^\//, ""), import.meta.env.BASE_URL).pathname;
-  return alt;
+  try {
+    const base = new URL(import.meta.env.BASE_URL, window.location.origin);
+    return new URL(p.replace(/^\//, ""), base).pathname;
+  } catch {
+    return p;
+  }
 }
 
 async function fetchResponseNetwork(path: string): Promise<{ response: Response; resolvedPath: string }> {
