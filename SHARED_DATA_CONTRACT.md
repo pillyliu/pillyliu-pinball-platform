@@ -16,6 +16,7 @@ The following app public folders are generated from `shared/pinball`:
 - `lpl-library/public/pinball`
 - `lpl-standings/public/pinball`
 - `lpl-stats/public/pinball`
+- `lpl-targets/public/pinball`
 
 ## Sync Rules
 

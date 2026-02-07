@@ -6,6 +6,7 @@
   "scripts": {
     "manifest:pinball": "node tools/build-pinball-manifest.mjs",
     "league:update-check": "node tools/league-update-check.mjs",
+    "check:smoke": "node tools/smoke-check.mjs",
     "sync:pinball": "node tools/sync-pinball-data.mjs --all",
     "build:lpl-library": "npm --prefix lpl-library run build",
     "build:lpl-standings": "npm --prefix lpl-standings run build",
