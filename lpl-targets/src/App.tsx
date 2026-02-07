@@ -110,7 +110,7 @@ export default function App() {
         </div>
       </Panel>
 
-      <Panel className="p-0 overflow-auto touch-pan-x touch-pan-y ios-scroller">
+      <Panel className="p-0 overflow-auto">
         <table className="min-w-full text-sm border-collapse">
           <thead className="sticky top-0 bg-neutral-950">
             <tr className="text-left text-neutral-400 border-b border-neutral-800">
@@ -122,7 +122,7 @@ export default function App() {
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.game} className="border-b border-neutral-800/70 odd:bg-neutral-900/40 even:bg-neutral-900/20">
+              <tr key={row.game} className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25">
                 <td className="py-2 px-4 text-neutral-100">{row.game}</td>
                 <td className="py-2 px-4 tabular-nums text-emerald-200 font-medium">{formatNumber(row.secondHighestAvg)}</td>
                 <td className="py-2 px-4 tabular-nums text-sky-200">{formatNumber(row.fourthHighestAvg)}</td>

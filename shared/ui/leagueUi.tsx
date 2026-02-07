@@ -21,9 +21,9 @@ export function SiteShell({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-dvh bg-neutral-950 text-neutral-100 overflow-x-hidden">
-      <header className="sticky top-0 z-10 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-        <div className="mx-auto max-w-screen-2xl px-4 py-4 flex flex-wrap items-center gap-4 justify-between">
+    <div className="min-h-dvh bg-neutral-950 text-neutral-100">
+      <header className="sticky top-0 z-20 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-4">
           <div>
             <div className="text-xs uppercase tracking-[0.18em] text-neutral-500">
               Pillyliu Pinball
@@ -50,9 +50,12 @@ export function SiteShell({
               );
             })}
           </nav>
-
-          {controls}
         </div>
+        {controls ? (
+          <div className="mx-auto flex max-w-screen-2xl justify-end px-4 pb-4">
+            {controls}
+          </div>
+        ) : null}
       </header>
 
       <main className="mx-auto max-w-screen-2xl px-4 py-6 grid gap-6">{children}</main>
@@ -61,13 +64,13 @@ export function SiteShell({
 }
 
 export const CONTROL_INPUT_CLASS =
-  "bg-neutral-900 border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40";
+  "w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const CONTROL_SELECT_CLASS =
-  "bg-neutral-900 border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500/40";
+  "w-full min-w-[11rem] rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const PRIMARY_BUTTON_CLASS =
-  "px-3 py-2 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50";
+  "rounded-xl bg-emerald-600 px-4 py-3 text-white hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50";
 
 export function Panel({
   children,
@@ -77,7 +80,7 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <section className={cn("rounded-2xl border border-neutral-800 bg-neutral-950/40", className)}>
+    <section className={cn("rounded-2xl bg-neutral-900 ring-1 ring-neutral-800", className)}>
       {children}
     </section>
   );

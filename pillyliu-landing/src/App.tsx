@@ -23,44 +23,49 @@ const App: React.FC = () => {
 
         <main>
             <section className="hero" id="about">
-                <div>
-                    <h2>
-                        Pinball • Pizza • Piano • Pixels &amp; Processors • Pee Doctor
-                    </h2>
-                    <div className="p-list">
-                        <span className="pill">Pinball</span>
-                        <span className="pill">Pizza</span>
-                        <span className="pill">Piano</span>
-                        <span className="pill">Pixels &amp; Processors</span>
-                        <span className="pill">Pee&nbsp;Doctor</span>
+                <div className="hero-grid">
+                    <div>
+                        <h2>
+                            Pinball • Pizza • Piano • Pixels &amp; Processors • Pee Doctor
+                        </h2>
+                        <p className="lead">
+                            Hi, I’m Peter — passionate about pinball, powered by pizza,
+                            tempered by piano, driven by pixels and processors, and proudly a
+                            pee physician (urologist).
+                        </p>
+                        <div className="cta">
+                            <a
+                                className="btn primary"
+                                href="https://pillyliu.com/lpl_stats/"
+                            >
+                                View League <strong>Stats</strong>
+                            </a>
+                            <a
+                                className="btn"
+                                href="https://pillyliu.com/lpl_standings/"
+                            >
+                                View <strong>Standings</strong>
+                            </a>
+                            <a className="btn" href="https://pillyliu.com/lpl_targets/">
+                                View <strong>Targets</strong>
+                            </a>
+                            <a className="btn" href="https://pillyliu.com/lpl_library/">
+                                Open <strong>Library</strong>
+                            </a>
+                            <a className="btn" href="http://twitch.tv/pillyliu" target="_blank" rel="noreferrer">
+                                Watch on <strong>Twitch</strong>
+                            </a>
+                        </div>
                     </div>
-                    <p className="lead">
-                        Hi, I’m Peter — passionate about pinball, powered by pizza,
-                        tempered by piano, driven by pixels and processors, and proudly a
-                        pee physician (urologist).
-                    </p>
-                    <div className="cta">
-                        <a
-                            className="btn primary"
-                            href="https://pillyliu.com/lpl_stats/"
-                        >
-                            View League <strong>Stats</strong>
-                        </a>
-                        <a
-                            className="btn"
-                            href="https://pillyliu.com/lpl_standings/"
-                        >
-                            View <strong>Standings</strong>
-                        </a>
-                        <a className="btn" href="https://pillyliu.com/lpl_targets/">
-                            View <strong>Targets</strong>
-                        </a>
-                        <a className="btn" href="https://pillyliu.com/lpl_library/">
-                          Open <strong>Library</strong>
-                      </a>
-                  </div>
-              </div>
-          </section>
+                    <figure className="hero-photo-wrap">
+                        <img
+                            className="hero-photo"
+                            src="/peter-pinball.jpg"
+                            alt="Peter Liu playing pinball"
+                        />
+                    </figure>
+                </div>
+            </section>
 
           <section id="projects">
             <h2>Projects</h2>
@@ -113,7 +118,7 @@ const App: React.FC = () => {
       </div>
   </section>
 
-  <section id="contact">
+<section id="contact">
     <h2>Contact</h2>
     <p className="muted">
         Prefer email. Smoke signals only for multiballs.
@@ -122,11 +127,15 @@ const App: React.FC = () => {
         <a className="btn" href="mailto:pillyliu@gmail.com">
             Email Peter
         </a>
+        {" "}
+        <a className="btn" href="http://twitch.tv/pillyliu" target="_blank" rel="noreferrer">
+            Twitch
+        </a>
     </p>
 </section>
 
 <footer>
-    <p>&copy; 2025 Peter Liu. Built with caffeine and curiosity.</p>
+    <p>&copy; 2026 Peter Liu. Built with caffeine and curiosity.</p>
 </footer>
 </main>
 </>

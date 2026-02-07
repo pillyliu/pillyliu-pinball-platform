@@ -149,7 +149,7 @@ export default function App() {
                     <select
                         value={season ?? ""}
                         onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
-                        className={CONTROL_SELECT_CLASS}
+                        className={`${CONTROL_SELECT_CLASS} max-w-xs`}
                     >
                         {seasonList.map(s => (
                             <option key={s} value={s}>
@@ -160,7 +160,7 @@ export default function App() {
                 </div>
             </Panel>
 
-            <Panel className="p-0 overflow-auto touch-pan-x touch-pan-y ios-scroller">
+            <Panel className="p-0 overflow-auto">
                 <div className="min-w-max">
                     <table className="w-full text-sm border-collapse">
                         <thead className="bg-neutral-950 sticky top-0">
@@ -193,7 +193,7 @@ export default function App() {
                                                 ? "text-amber-600"
                                                 : "";
                                 return (
-                                    <tr key={s.player} className="border-b border-neutral-800/70">
+                                    <tr className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25" key={s.player}>
                                         <td className={`py-2 px-4 tabular-nums ${rankStyle}`}>{rank}</td>
                                         <td className={`py-2 px-4 ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
                                             {s.player}
