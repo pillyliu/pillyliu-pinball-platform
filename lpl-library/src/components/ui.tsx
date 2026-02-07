@@ -18,7 +18,7 @@ export const CONTROL_INPUT_CLASS =
   "w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const CONTROL_SELECT_CLASS =
-  "w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
+  "w-full appearance-none rounded-xl bg-neutral-900 px-4 pr-10 py-3 text-neutral-100 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const SUBTLE_BUTTON_CLASS =
   "rounded-xl bg-neutral-800 px-4 py-2 text-sm hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-sky-500/40";
