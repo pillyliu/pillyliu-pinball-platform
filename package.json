@@ -1,0 +1,15 @@
+{
+  "name": "pillyliu-pinball-platform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "manifest:pinball": "node tools/build-pinball-manifest.mjs",
+    "sync:pinball": "node tools/sync-pinball-data.mjs --all",
+    "build:lpl-library": "npm --prefix lpl-library run build",
+    "build:lpl-standings": "npm --prefix lpl-standings run build",
+    "build:lpl-stats": "npm --prefix lpl-stats run build",
+    "build:pillyliu-landing": "npm --prefix pillyliu-landing run build",
+    "build:all": "npm run build:pillyliu-landing && npm run build:lpl-library && npm run build:lpl-standings && npm run build:lpl-stats"
+  }
+}

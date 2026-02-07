@@ -1,0 +1,17 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#38bdf8"></stop>
+      <stop offset="60%" stop-color="#0f172a"></stop>
+      <stop offset="100%" stop-color="#020617"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"></rect>
+  <!-- Pinball-ish circle -->
+  <circle cx="40" cy="22" r="8" fill="#e5e7eb"></circle>
+  <circle cx="37" cy="19" r="2.2" fill="#0f172a"></circle>
+  <!-- Stylized P -->
+  <path d="M18 46 V18 h11.5c5 0 8.5 3.3 8.5 8s-3.5 8-8.5 8H24v12z
+       M24 28h5.3c2.2 0 3.7-1.4 3.7-3s-1.5-3-3.7-3H24z" fill="#e5e7eb"></path>
+</svg>

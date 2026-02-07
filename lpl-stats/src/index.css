@@ -1,0 +1,32 @@
+:root {
+    color-scheme: dark;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    -webkit-text-size-adjust: 100%;
+    /* Tailwind */
+    /* If you prefer utilities, keep this block; otherwise add the classes to <body> via index.html */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global utilities via Tailwind */
+body {
+    @apply bg-zinc-900 text-zinc-100 overflow-x-hidden;
+}
+
+#root {
+    @apply min-h-dvh;
+}
+/* dvh = better mobile 100vh */
+
+.ios-scroller {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}

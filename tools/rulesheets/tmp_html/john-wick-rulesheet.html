@@ -1,0 +1,300 @@
+<div class="pinball-rulesheet">
+<html><head></head><body><h2>Quick Links:</h2>
+<p>[Official Rulesheet]</p>
+<ul>
+<li><a href="#heading--gameinfo">Game Information</a></li>
+<li><a href="#heading--overview">Rules Overview</a></li>
+<li><a href="#heading--layout">Layout</a></li>
+<li><a href="#heading--modesofplay">Modes of Play</a></li>
+<li><a href="#heading--skillshots">Skill Shots</a></li>
+<li><a href="#heading--jobs">Jobs</a></li>
+<li><a href="#heading--adversaries">Adversaries</a></li>
+<li><a href="#heading--multiballs">Multiballs</a>
+<ul>
+<li><a href="#heading--car">Car Chase Multiballs</a></li>
+<li><a href="#heading--excommunicado">Excommunicado Multiball</a></li>
+<li><a href="#heading--deconsecrated">Deconsecrated Multiball</a></li>
+</ul>
+</li>
+<li><a href="#heading--otherscoring">Other Scoring</a>
+<ul>
+<li><a href="#heading--enemies">Enemies</a></li>
+<li><a href="#heading--lights">Lights Out</a></li>
+<li><a href="#heading--allies">Allies</a></li>
+<li><a href="#heading--gold">Gold Coins</a></li>
+<li><a href="#heading--marker">Marker Ball Save</a></li>
+<li><a href="#heading--bonus">End-of-Ball Bonus</a></li>
+</ul>
+</li>
+<li><a href="#heading--wizard">Wizard Modes</a>
+<ul>
+<li><a href="#heading--duel">The Duel (Mini-Wizard Mode)</a></li>
+<li><a href="#heading--staircase">The Staircase (Mini-Wizard Mode)</a></li>
+<li><a href="#heading--final">Special Assignment</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="heading--gameinfo">Game Information &amp; Overview:</h2>
+<ul>
+<li>Lead Designer: Elliot Eismin</li>
+<li>Code/Rules: Tim Sexton (<em>prior to 0.94 release</em>), Mike Vinikour (MXV), Joshua Henderson</li>
+<li>Lead Mechanical Engineer: Robert Blakeman</li>
+<li>Artwork: Randy Martinez</li>
+<li>Display and Animations:</li>
+<li>Sound Design: Jerry Thompson</li>
+<li>Release Date: May 2024</li>
+<li>Wiki Rulesheet based on Code Rev: 0.99</li>
+<li><em>Edit the Code revision, if applicable, when you make changes</em></li>
+</ul>
+<p>Following the death of his beloved pet dog Daisy at the hands of a Russian crime family, John Wick comes out of retirement from his old life as a cold-blooded assassin with the sole goal of taking revenge on those who wronged him. Worse comes to worse when former associates and fellow assassins aim to take John down. With the help of Winston, owner of the New York Continental, and other allies, John must defeat the members of the High Table. <em><strong><strong>John Wick</strong></strong></em> is the first pinball machine designed by former mechanical engineer Elliot Eismin and takes influence from all four mainline films in the series.</p>
+<h2 id="heading--overview">Rules Overview:</h2>
+<ul>
+<li>Shoot the weapons case / VUK to light jobs, then VUK to start them. Lit shots during jobs are multiplied by the enemies (blue circles) in front them, which spawn as orange standup targets and the Red Circle bumper are hit.
+<ul>
+<li>Each faction has a specific perk given for cashing out their job by making the required shots, then shooting the left eject.</li>
+</ul>
+</li>
+<li>Light allies by hitting gold coin targets <em>before starting a job</em>. Then hit either the left, center, or right ramp to qualify ally for use during the next job.</li>
+<li>Defeat 10 enemies during single-ball play to light the left eject for battle. Battles are single-ball modes with a long ball save.
+<ul>
+<li>Light the escape jackpot by making lit shots and hitting the blood marker to light the left eject, then either cash out or keep the battle going with increased scoring.</li>
+</ul>
+</li>
+<li>Bash the car enough times to light car multiball at left orbit (four for the first multiball on Pro, two on Prem / LE). Default car multiball is helipad showdown, hit car to change the lit multiball.</li>
+<li>Captive ball spells WINSTON to light locks for deconsecrated multiball at the center ramp.</li>
+<li>Shooting the Red Circle bumper &amp; targets near it advance towards lighting excommunicado multiball.</li>
+<li>Blood marker (left) standup targets during normal play light outlane ball save.</li>
+</ul>
+<h2 id="heading--layout">Layout:</h2>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th><h3>Premium/LE:</h3></th>
+<th><h3>Pro:</h3></th>
+</tr>
+</thead>
+</table>
+</div><h2 id="heading--modesofplay">Modes of Play:</h2>
+<p>These modes are accessible by holding both flipper buttons during attract mode until a menu appears. The following options are available:</p>
+<ul>
+<li><strong>Standard:</strong><br>
+See below for full rulesheet.</li>
+<li><strong>Competition:</strong></li>
+<li><strong>DJ Mixer</strong><br>
+NOT a gameplay mode. This mode operates like a jukebox, allowing you to play the music featured in the machine, including a number of specific playlists.</li>
+<li><strong>Competition Install</strong><br>
+Not from the gameplay menu, but the following is changed if a Competition Install is performed from the utilities menu:</li>
+</ul>
+<h2 id="heading--skillshots">Skill Shots:</h2>
+<ul>
+<li>Plunge the ball into the right VUK, without hitting any other switches, for a crate skill shot. This starts a job + scores 1.5M if no switches were hit, advances towards lighting job + scores 750k if one switch was hit, and scores lower if switches were hit.</li>
+<li>Plunge the ball into the backdoor to the Red Circle club for a VIP skill shot. Starts at 650k.</li>
+<li>(Prem / LE) Plunge the ball behind the car for a car skill shot. Starts at 850k.</li>
+</ul>
+<h2 id="heading--jobs">Jobs:</h2>
+<p>Shoot the weapons crate or the right VUK to advance the blue lights in front of the crate. Once all three are lit solid, the right VUK will light to start the next job. Starting any job will spawn <strong><a href="#heading--enemies">enemies</a></strong> and is a quick way to spawn them if none are currently available. <strong><a href="#heading--allies">Allies</a></strong> can be used during jobs if qualified by shooting their respective shots.</p>
+<p>Each job is timed for 60 seconds, with 3 seconds added for each shot made, and every 4th job having +30 seconds added to the base timer. The timer can also be extended by 30 seconds, once per job, by completing the weapons crate targets and then shooting the right VUK to boost the timer.</p>
+<p>There are seven factions to complete jobs for and each of the seven jobs is assigned to one of the factions. You can select which faction you want to start a job for by shooting the associated shot for that faction to light its insert before you start a job.</p>
+<p><strong>Faction Directory:</strong></p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Shot</th>
+<th>Faction</th>
+<th>Faction color</th>
+<th>Job</th>
+<th>In-game Instructions</th>
+<th>Perk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left Eject</td>
+<td>Bowery</td>
+<td>Purple</td>
+<td>Night Watch</td>
+<td>Make all lit shots</td>
+<td>Add +5 seconds to all ball savers.</td>
+</tr>
+<tr>
+<td>Left Orbit</td>
+<td>New York Continental</td>
+<td>Green</td>
+<td>Assassination</td>
+<td>Reveal 3 targets</td>
+<td><strong><a href="#heading--marker">Marker ball save</a></strong> now lights at both outlanes instead of just one.</td>
+</tr>
+<tr>
+<td>Left Ramp</td>
+<td>Osaka Continental</td>
+<td>Red</td>
+<td>Security Detail</td>
+<td>Shoot lit shots</td>
+<td>All <strong><a href="#heading--multiballs">multiballs</a></strong> will now be extended when the player drains down to 1 ball. Can only be used once per ball in play.</td>
+</tr>
+<tr>
+<td>Red Circle</td>
+<td>High Table</td>
+<td>White</td>
+<td>VIP Award</td>
+<td>Lit shot moves VIP</td>
+<td><strong><a href="#heading--bonus">Bonus multiplier</a></strong> now starts at 2x every ball.</td>
+</tr>
+<tr>
+<td>Center Ramp</td>
+<td>Ruska Roma</td>
+<td>Yellow</td>
+<td>Heist</td>
+<td>Shoot lit shots</td>
+<td><strong>Motion sensors</strong> can now be used during <strong><a href="#heading--lights">Lights Out</a></strong> 2x scoring.</td>
+</tr>
+<tr>
+<td>Right Orbit</td>
+<td>Marquis de Gramont</td>
+<td>Blue</td>
+<td>Gather Intel</td>
+<td>Shoot lit ramps</td>
+<td>Add +20 seconds to <strong><a href="#heading--lights">Lights Out</a></strong> default timers.</td>
+</tr>
+<tr>
+<td>Right Ramp</td>
+<td>Tarasov Family</td>
+<td>Orange</td>
+<td>Task a Crew</td>
+<td>Shoot the lit spinner</td>
+<td>Add-a-ball to any <strong><a href="#heading--multiballs">multiball</a></strong> by holding the action button. One add-a-ball can be used per ball in play so long as the multiball extend perk isn’t available for that multiball.</td>
+</tr>
+</tbody>
+</table>
+</div><p>The final shot for each job is at the left eject shot, and awards 20% of the total score from the completed job along with the job’s completion perk described above.</p>
+<p>Play a job for all seven factions to qualify <strong><a href="#heading--duel">The Duel</a></strong>.</p>
+<p>Detailed rules for each job:</p>
+<ul>
+<li><strong>Night Watch (Bowery)</strong>: All 7 shots are lit purple. Making a shot unlights it, and one roving white shot is lit to score 2x (moving left to right across the lit shots and back). Complete all shots to light the cashout and relight every shot for a second go.</li>
+<li><strong>Assassination (New York Continental)</strong>: Shoot lit green shots to light the captive ball for kill shot. After 5 kill shots (one for every green arrow shot), the cashout is lit.</li>
+<li><strong>Security Detail (Osaka Continental)</strong>: Shoot the single blinking red shot to score; after 7 shots, the left eject will light to finish the Job.  The left ramp starts lit, and the target shot moves one to the right (excluding Red Circle) every time one is made or a Dance Floor target or bumper is hit.  Dance Floor shots (targets and bumpers) are marked with a solid red arrow, and will increase the score value for subsequent blinking red shots.</li>
+<li><strong>Escort the VIP (High Table)</strong>: Two shots are lit white at a time, one solid and one blinking. The blinking shot is a hurry up worth 5M that changes when made, and the solid shot resets the value and moves them one shot to the right of the playfield. Score 6 hurry-ups to light cashout.</li>
+<li><strong>Heist (Ruska Roma)</strong>: Shoot standups to light major shots yellow to score. Hitting the gold coin targets during single-ball play collects all lit shots, and rebounding into them off of the blood marker collects them all at 2x value. Score 6 lit shots to light cashout.</li>
+<li><strong>Gather Intel (Marquis de Gramont)</strong>: The left, center, and right ramps are lit blue. Combo the left and right ramps to score and increase a jackpot scored at the center ramp (2x if made as a combo) by their respective values. Collect 6 left / right ramp shots to light cashout.</li>
+<li><strong>Task a Crew (Tarasov Family)</strong>: Shoot flashing shots to add 100k to the left orbit spinner value, with the right ramp setting up the spinner for 2x the next award. The spinner is multiplied by any enemies at the left orbit. Rip the lit spinner 4 times to light cashout.</li>
+</ul>
+<h2 id="heading--adversaries">Adversaries:</h2>
+<p>Defeat 10 <strong><a href="#heading--enemies">enemies</a></strong> during single-ball play to light the left eject (the administration shot) for adversary battle. Enemies can still be defeated during multiball modes, but they won’t count towards lighting battle.</p>
+<p>Adversary battles are 200-second timed modes that can be changed (from left to right) with shots to the left standup targets to change which battle will start. These represent the one-on-one battles from the films, and take priority over all other game features. After enough shots are made during the battle, the blood marker will light to qualify the cashout, or a “be seeing you” bonus will be awarded which scores 25M instantly and adds 10M to <strong><a href="#heading--bonus">end-of-ball bonus</a></strong>.</p>
+<p>Each adversary battle features an “escape jackpot” that is built up as lit shots are made but must be collected, and ends the battle once scored. To light the escape jackpot, make enough lit shots (half of the ones required for “be seeing you”), then shoot the blood marker to light the left eject. If the player opts to continue the battle at this time, the multiplier for the battle’s scoring will increase by +1x to a maximum of 4x.</p>
+<p>Once any adversary battle has been played (doesn’t have to be completed), the blood marker’s obligation will be fulfilled, and ball save will be requalified at the left standup targets if it has been used. If a lit ball save hasn’t been used before a battle starts, +30 seconds will be added to the battle’s initial ball save timer of 40 seconds.</p>
+<p>When the administration light is lit, the selected adversary battle can be toggled via the blood oath standup targets or the pop bumper.</p>
+<p>The five adversaries are:</p>
+<ul>
+<li><strong>Viggo</strong>: Shoot the car or captive ball to light gold shots for bonuses. Blood marker - lit after every 6 lit shots (including car, captive ball, and gold shots). “Be seeing you” - awarded by hitting 12 lit shots.</li>
+<li><strong>Kirill</strong>: Shoot the random flashing red shots, which alternate between left and right and decrease in quantity as they are made, to light the Red Circle for their combined total + 300k, which never resets. Avoiding the Red Circle for an entire shot wave increases the award value by 1M. Blood marker - lit after 6 lit shots. “Be seeing you” - awarded after 12 lit shots.</li>
+<li><strong>Cassian</strong>: Switch frenzy mode - everything scores 2.5k and adds 10k to the jackpot. One shot is flashing purple for jackpot, which moves across the playfield as orange targets or pop bumpers are hit. The jackpot increases by 250k every time it is scored but resets when all shots are relit upon hitting 100 switches. Blood marker - lit after 3 jackpots. “Be seeing you” - awarded after 6 jackpots.</li>
+<li><strong>Ares</strong>: All shots are lit white to score increasing points, but only one shot is lit red and moves sporadically. The red shot finds Ares and scores 3M + 1.25M for each red shot made, and can be seen for a brief time with pop bumper hits or slingshot hits. Blood marker - lit after 4 red shots. “Be seeing you” - awarded after 8 red shots.</li>
+<li><strong>Zero</strong>: Combo mode. Shoot any light blue shot to score combos, then either the car, captive ball (1x collect), or left eject (2x collect) to complete them for 750k + 100k per combo completed + 250k for each combo shot made prior to collecting. Blood marker - lit after 3 combos completed. “Be seeing you” - awarded after 6 combos completed.</li>
+</ul>
+<p>Defeat all five adversaries to qualify <strong><a href="#heading--staircase">The Staircase</a></strong>.</p>
+<h2 id="heading--multiballs">Multiballs:</h2>
+<p>There are three perks that can be awarded to extend the duration of all multiballs, once per ball-in-play. Only one of these perks can be used per multiball.</p>
+<ul>
+<li><strong>Multiball Extend</strong>: Awarded from cashing out during <strong><a href="#heading--jobs">security detail</a></strong>. This allows all multiballs to be extended if all but one ball drains.</li>
+<li><strong>Add-A-Ball</strong>: Awarded from cashing out during <strong><a href="#heading--jobs">task a crew</a></strong>. This allows the player to add a ball to any multiball by <em>holding</em> the action button. If multiball extend hasn’t been used on the current ball, then it must be used first before add-a-ball can be used.</li>
+<li>Locking balls for <strong><a href="#heading--deconsecrated">deconsecrated multiball</a></strong> before starting another multiball on the Prem / LE model of <em><strong>John Wick</strong></em> allows players to <strong>swipe-a-ball</strong> from the lock by pressing the action button, if neither of the above perks have been used yet. The difficulty for lighting the next deconsecrated multiball locks will increase accordingly.</li>
+</ul>
+<p>Multiballs can also have their duration increased by cashing out <strong><a href="#heading--jobs">night watch</a></strong>, which adds +5 seconds to multiball ball savers.</p>
+<h3 id="heading--car">Car Chase Multiballs:</h3>
+<p>Bash the car to light the left orbit for Car Chase Multiball. On Prem / LE models, the car can be hit from multiple angles and will lock the ball once the multiball starts.</p>
+<p>The first multiball requires only two car hits to light, and is 2-ball (3-ball on Prem / LE). Subsequent multiballs add +1 more car hits to qualify, to a maximum of 4 (8 on Prem / LE, one hit for both front-facing and side-facing positions). On the Pro, the car must be lit by ripping the spinner first. Every car multiball played adds another ball to the multiball; after playing all four it resets to the base number +1 ball.</p>
+<p>The car jackpot starts at 2M, and pink “award” shots during the multiballs score 20% of the car jackpot. It increases in the following ways:</p>
+<ul>
+<li>Hit the car during single-ball play - adds 20% of the value for the hit (increased with spinner rips)</li>
+<li>Award shots during car multiballs (+5k)</li>
+<li>Jackpots during car multiballs (+50k)</li>
+<li>Super jackpots during car multiballs (+250k)</li>
+</ul>
+<p>There are four different Car Chase Multiballs. The game starts with <strong>helipad showdown</strong> lit, but the car multiball changes down the list every time the car is hit before starting it, wrapping around from 4 to 1.</p>
+<ul>
+<li><strong>Helipad Showdown</strong> (1): Shoot red shots to collect showdown awards and increase the jackpot awarded by hitting the car. Either a single, 2x, 3x, or 4x jackpot can be awarded based on how many “car” inserts are lit (1 additional shot is needed to light each jackpot, so 9 shots are needed for a 4x jackpot). After four jackpots have been scored, the car can be hit for a super (5x) jackpot, and the left orbit can be shot for a 2x super jackpot.</li>
+<li><strong>Taxicab Chase</strong> (2): Starts with a 15-second timed hurry-up to hit the car and lock in the hurry-up jackpot value (starting at the built car jackpot award). Shoot sets of lit chase awards to increase (and light) the jackpot at the car; the jackpot multiplier increases with each subsequent jackpot scored, and each jackpot requires one more award to light. After collecting four jackpots, the left orbit lights for a super (5x) jackpot, which can be further increased by bashing the car.</li>
+<li><strong>Motorcycle Pursuit</strong> (3): Pursuit awards are lit at the Dance Floor and either “left-side” shots (administration, left orbit, and left ramp), or “right-side” shots (center ramp, right orbit, and right ramp). Each shot made increases the car jackpot multiplier up to 4x. Hit the car to switch sides, relight the other side’s shots, and score a jackpot if at least one pursuit award was collected. After collecting four jackpots, hit the Continental for a super jackpot. On the Premium/LE, the car will block the Continental; bash it to move it out of the way for a few seconds.</li>
+<li><strong>Bagarre a Letoile</strong> (4): Shoot any ramp to light the car for jackpots, and the orbits to increase the jackpot multiplier up to 4x &amp; collect awards. The jackpot must be relit each time it has been scored. After collecting four jackpots, the car is lit to collect four super (5x) jackpots.</li>
+</ul>
+<h3 id="heading--excommunicado">Excommunicado Multiball:</h3>
+<p>Shoot the Red Circle bumper and the targets surrounding it to increase the dance floor level. When the level is at max, the next shot to the Red Circle, either directly or through the VIP lane, will start Excommunicado Multiball.</p>
+<p>Excommunicado Multiball starts with a 15-second timed single-ball phase, with a ball save, where the player can hit shots to increase the jackpot value during the subsequent multiball (200k per shot, 125k per target). During this phase, orange target hits will add 5 seconds of time. This “build phase” ends when time runs out or the ball drains. (<em>On the Prem / LE model, short-plunging the ball into the Red Circle will lock balls and increase the super jackpot value - up to four balls can be locked this way</em>).</p>
+<p>Once the timer expires, 2-ball multiball begins. Hit the gold flashing shots for jackpots and the Red Circle when lit for super jackpot. The shots pan outwards from the center, starting at the left ramp and right ramp, and ending with the left eject and right ramp. The super jackpot lights once all six jackpots have been scored.</p>
+<p>The super jackpot starts at 5M + (2.5k x enemies this game) + (25k x enemies this ball) + (150k x enemies defeated this mode).</p>
+<h3 id="heading--deconsecrated">Deconsecrated Multiball</h3>
+<p>Shoot the captive ball under the Continental to spell WINSTON and light the lock at the center ramp (virtual on Pro, physical on Prem / LE). The first multiball only requires two captive ball shots to light all three locks but the difficulty increases over the course of the game. Lock 3 balls there for Deconsecrated Multiball.</p>
+<p>During Deconsecrated Multiball, shoot the green shots to score jackpots worth 500k + (75k x enemies this mode) + (5k x enemies this ball) + (50k boost from captive ball). Hitting the captive ball will increase the super jackpot value by 200k if the super jackpot isn’t already lit. The first wave of jackpots can be scored at any shot besides the one that was just made, but subsequent jackpot waves have to be scored at unique shots and only relight once all 7 shots are made.</p>
+<p>After scoring 7 jackpots (14 jackpots for 3rd+ super jackpot phases), shoot the captive ball to start the super jackpot phase. For the next 15 seconds, the captive ball will score repeated super jackpots worth 2.5M + (2.5k x enemies this game) + (25k x enemies this ball) + (250k x enemies this mode). Once the phase ends, the player will return to scoring jackpots to relight the captive ball for super jackpots.</p>
+<h2 id="heading--otherscoring">Other Scoring:</h2>
+<h3 id="heading--enemies">Enemies:</h3>
+<p>“Enemies” are represented by the blue lit circles in front of each major shot.  As of <em>V0.95</em> (June 2025), enemies have two functions:  (1) they serve as a shot multiplier when the corresponding shot is lit during <strong><a href="#heading--jobs">Jobs</a></strong> and <strong><a href="#heading--multiballs">Multiballs</a></strong>; and (2) they qualify <strong><a href="#heading--adversaries">Adversary Battles</a></strong>.</p>
+<p>Enemies are created (“spawned”) at the start of each ball, and at timed intervals during play [<em>the timing appears to vary from 20-60 seconds, depending on the course of play</em>].  A “phone ring” sound accompanies each spawn during play, and all of the blue circles on the playfield will briefly flash.  At the start of the ball, the number of enemies that will spawn is based on the current number of the ball in play (ie. on ball 2, two enemies will spawn). During play, the number of enemies that will periodically spawn is initially set to one, but can be increased in several ways, including playing jobs or multiballs, and hitting ramps.  The initial placement of enemies is partially random, but may be influenced by player performance during the game.</p>
+<p>Enemies act as shot multipliers during <strong><a href="#heading--jobs">Jobs</a></strong> and <strong><a href="#heading--multiballs">Multiballs</a></strong> for the shots they’re placed in front of (each lit blue circle corresponds to +1x shot multiplier, up to the maximum of 3 enemies, which is a 4x multiplier for that shot). When the shot is made, the enemy is “defeated,” and is no longer lit.  Defeating enemies also increases the shot values during <strong><a href="#heading--jobs">Jobs</a></strong> and <strong><a href="#heading--multiballs">Multiballs</a></strong> by substantial amounts on the same ball, and lower amounts over the course of the game.</p>
+<p>During single-ball play, defeating a total of 10 enemies will qualify the next <strong><a href="#heading--adversaries">Adversary Battle</a></strong>. This rule is disabled during multiball play.</p>
+<p>Defeat 10 enemies during either single-ball <em>or</em> multiball play to light <strong><a href="#heading--extraballs">extra ball</a></strong>.</p>
+<h3 id="heading--allies">Allies:</h3>
+<p>As of <em>V0.97</em> (August 2025), the Ally system is a method for manipulating the location of <strong><a href="#heading--enemies">enemies</a></strong>.  Shoot the <strong><a href="#heading--gold">gold coin targets</a></strong> while no modes are running to qualify allies. Only one ally can be used per job; once all three have been used, the player can use them again.</p>
+<p>The three allies are:</p>
+<ul>
+<li><strong>Akira</strong>: Shooting the left ramp allows the player to rotate enemies one shot to the right of their current position, wrapping around to the left eject if they are at the right ramp. Holding in the left flipper while shooting the left ramp rotates enemies one shot to the left instead.</li>
+<li><strong>Charon</strong>: Shooting the center ramp creates a 4 second hurryup, during which the next set of enemies defeated will immediately replenish.  The player gets credit for defeating the enemies and any applicable shot multiplier, but the enemies will remain active at that shot to allow for another chance to score a multiplied shot value. Enemies about to be impacted by Charon flash instead of being lit solid.</li>
+<li><strong>Katia</strong>: Shooting the right ramp moves enemies to different shots, taking enemies from shots that are not presently lit for scoring and placing them on shots that are available for scoring in the present <strong><a href="#heading--jobs">Job</a></strong> or <strong><a href="#heading--multiballs">Multiball</a></strong>.  There is a left-to-right bias in the assignment of new locations, except for the scoop, which is not prioritized.</li>
+</ul>
+<h3 id="heading--lights">Lights Out / Motion Sensors:</h3>
+<p>Spell YAGA to light the action button to enable Lights Out, by cycling the lit inlanes - you can only collect YAGA letters if spotted at a lane where an insert in BABA is already lit.</p>
+<p>Lights Out turns off a majority of the playfield lighting (excluding inlanes / outlanes, the blood marker, and the shoot again insert), but doubles all scoring for 30 seconds (+20 seconds if the <strong>gather intel</strong> job was cashed out).</p>
+<p>If the player was able to cash out the <strong><a href="#heading--jobs">heist</a></strong> job mode successfully (shooting the center ramp to qualify Ruska Roma before shooting the crate), <strong>motion sensors</strong> can be used by pressing the action button during Lights Out. Motion sensors briefly relight the playfield and recharge 5 seconds after they are used.</p>
+<p>Lights Out remains lit across balls if it isn’t used but progress towards spelling YAGA resets at the end of every ball.</p>
+<h3 id="heading--gold">Gold Coins:</h3>
+<p>Bounces into the gold coin targets (above the weapons crate) light random shots for gold coins, or increase the coin value if they are already lit. The coin value starts at 10k and only one shot can be lit for a gold coin at a time. Gold coins add to <strong><a href="#heading--bonus">end-of-ball bonus</a></strong>.</p>
+<p>Gold coin target hits also light <strong><a href="#heading--allies">allies</a></strong> when the player isn’t in a mode, and collect all lit mode shots during the <strong>heist <a href="#heading--jobs">job mode</a></strong> (but only during single-ball play).</p>
+<h3 id="heading--marker">Marker Ball Save:</h3>
+<p>Hit any of the left standup targets 4 times to light an outlane for marker ball save. The flashing outlane can be changed by pressing the flippers. If a ball save is already lit, the targets will add to the value. Ball save can be re-qualified by playing an <strong><a href="#heading--adversaries">adversary battle</a></strong>, fulfilling the blood marker’s obligation in the process.</p>
+<p>If a ball save is lit, but hasn’t been collected yet, and the player starts an <strong>adversary battle</strong>, the ball save will be converted to +10 seconds of ball save time during the battle. They cannot be used during battles.</p>
+<p>If the player was able to cash out the <strong><a href="#heading--jobs">heist</a></strong> job mode successfully, both outlanes will be lit to award marker ball saves instead of just one.</p>
+<h3 id="heading--extraballs">Extra Balls:</h3>
+<p>Extra ball is lit at the left eject after:</p>
+<ul>
+<li>Defeating enough <strong><a href="#heading--enemies">enemies</a></strong> (approx. 10 for the first extra ball)</li>
+<li>Playing four <strong><a href="#heading--jobs">jobs</a></strong></li>
+</ul>
+<p>Extra balls score 10M if disabled.</p>
+<h3 id="heading--bonus">End-of-Ball Bonus:</h3>
+<p>End-of-ball bonus is determined by the following:</p>
+<ul>
+<li>1M per <strong><a href="#heading--jobs">job started</a></strong></li>
+<li>2M per <strong><a href="#heading--adversaries">adversary battle started</a></strong></li>
+<li>10M per <strong>be seeing you</strong> scored during adversary battles</li>
+</ul>
+<p>All multiplied by the bonus multiplier which increases as BABA is spelled at the inlanes. The bonus multiplier caps out at 5x, and if the <strong><a href="#heading--jobs">escort the VIP</a></strong> job mode was cashed out, the bonus multiplier starts each ball at 2x.</p>
+<h2 id="heading--wizard">Wizard Modes:</h2>
+<p><em>Note: <strong><a href="#heading--lights">Lights Out</a></strong> cannot be used during any wizard mode.</em></p>
+<h3 id="heading--duel">The Duel:</h3>
+<p><em>TBD on 0.99 code</em></p>
+<h3 id="heading--staircase">The Staircase:</h3>
+<p>The left eject and crate light to start this mini-wizard mode as soon as any of the following are fulfilled:</p>
+<ul>
+<li>All 7 <strong><a href="#heading--jobs">jobs</a></strong> are played</li>
+<li>All 5 <strong><a href="#heading--adversaries">adversary battles</a></strong> are played</li>
+<li>All 6 <strong><a href="#heading--multiballs">multiball modes</a></strong> are played</li>
+</ul>
+<p>This is a three-level wizard mode.  Ascend the staircase and defeat the enemies on each level!  There is a lengthy ball save at the beginning of the mode.</p>
+<ul>
+<li>Level 1: left ramp &amp; right ramp are lit with one enemy each</li>
+<li>Level 2: left orbit, left ramp, right orbit &amp; right ramp are lit with 2 enemies</li>
+<li>Level 3: all 6 major shots excluding center ramp are lit with 3 enemies</li>
+</ul>
+<p>Making the lit enemies shot at each level, scores 5M per shot, and lights a white arrow at that shot. Defeating all of the enemies on a level will light the center ramp for a completion bonus of 20m/20m/40m point base value.  If you collect the white arrow shots after defeating the enemies, you earn a +1 multiplier to the complete bonus for each arrow shot (maximum +2/+4/+6, as you can only collect the arrow shots once per level).  Maximum completion bonus scoring is:</p>
+<ul>
+<li>Level 1: 20m x 3 = 60m</li>
+<li>Level 2: 20m x 5 = 100m</li>
+<li>Level 3: 40m x 7 = 280m</li>
+</ul>
+<p>Shooting the center ramp to finish level 3 will start the final part of the mode where Wick &amp; Caine have to fight all the way back to the top of the stairs. This repeats the first three levels of the mode, but as a 2-ball multiball, and hitting the center ramp at the end of level 3 will complete the mini-wizard mode and send a new ball to the plunger.</p>
+<h3 id="heading--final">Special Assignment:</h3>
+<p>Lit after playing both <strong><a href="#heading--duel">The Duel</a></strong> and <strong><a href="#heading--staircase">The Staircase</a></strong>. <em>TBD on 0.99 code</em></p></body></html>
+</div>

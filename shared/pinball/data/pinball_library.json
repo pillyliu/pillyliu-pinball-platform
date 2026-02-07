@@ -1,0 +1,885 @@
+[
+  {
+    "group": 1,
+    "pos": 1,
+    "bank": 4,
+    "name": "Avengers: Infinity Quest",
+    "manufacturer": "Stern",
+    "year": 2020,
+    "slug": "avengers-infinity-quest",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2020/08/Avengers-LE-Playfield-lknawef.jpg",
+    "playfieldLocal": "/pinball/images/playfields/avengers-infinity-quest.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/avengers-infinity-quest-rulesheet/6740",
+    "rulesheetLocal": "/pinball/rulesheets/avengers-infinity-quest.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=2_xcLBHzaSo"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=mHw2DOdeHx8"
+      }
+    ]
+  },
+  {
+    "group": 1,
+    "pos": 2,
+    "bank": 6,
+    "name": "Metallica",
+    "manufacturer": "Stern",
+    "year": 2013,
+    "slug": "metallica",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/kVefWQVMmhl1f0pDbSq4Wnp1YVXJzLDTz5FZQHr8CXw/rs:fit:2048/q:85/fn:Pinside_archive_2186_2506266/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzQvOGIvZGQvNDhiZGQ5ZDQ1NmM4MjAxMzMwMDc5NjRlMzQ5MjgxNTg4NTMzNTJjMC5qcGc",
+    "playfieldLocal": "/pinball/images/playfields/metallica.jpeg",
+    "rulesheetUrl": "https://tiltforums.com/t/metallica-rulesheet/228",
+    "rulesheetLocal": "/pinball/rulesheets/metallica.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=O26SH3gNVnY"
+      }
+    ]
+  },
+  {
+    "group": 1,
+    "pos": 3,
+    "bank": null,
+    "name": "Iron Maiden",
+    "manufacturer": "Stern",
+    "year": 2018,
+    "slug": "iron-maiden",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
+    "playfieldLocal": "/pinball/images/playfields/iron-maiden.png",
+    "rulesheetUrl": "http://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
+    "rulesheetLocal": "/pinball/rulesheets/iron-maiden.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=zaCEffQkj4o"
+      }
+    ]
+  },
+  {
+    "group": 1,
+    "pos": 4,
+    "bank": 1,
+    "name": "Star Trek",
+    "manufacturer": "Stern",
+    "year": 2013,
+    "slug": "star-trek",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/10/PREM-PF.jpg",
+    "playfieldLocal": "/pinball/images/playfields/star-trek.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/star-trek-wiki/456",
+    "rulesheetLocal": "/pinball/rulesheets/star-trek.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=wYZuLK6ShUk"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=kkJn4ypmq3M"
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "pos": 1,
+    "bank": 3,
+    "name": "The Uncanny X-Men",
+    "manufacturer": "Stern",
+    "year": 2024,
+    "slug": "the-uncanny-x-men",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/the-uncanny-x-men.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
+    "rulesheetLocal": "/pinball/rulesheets/the-uncanny-x-men.md",
+    "videos": []
+  },
+  {
+    "group": 2,
+    "pos": 2,
+    "bank": 5,
+    "name": "Star Wars",
+    "manufacturer": "Stern",
+    "year": 2017,
+    "slug": "star-wars",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/10/StarWarsLE-Playfield.png",
+    "playfieldLocal": "/pinball/images/playfields/star-wars.png",
+    "rulesheetUrl": "https://tiltforums.com/t/star-wars-stern-rulesheet/2812",
+    "rulesheetLocal": "/pinball/rulesheets/star-wars.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=2jjRkzCEVto"
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "pos": 3,
+    "bank": 7,
+    "name": "The Simpsons Pinball Party",
+    "manufacturer": "Stern",
+    "year": 2003,
+    "slug": "the-simpsons-pinball-party",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/RIAZC0DAD2IUDAAgui_4rM6KDBwp6yPikbNNnlSaXpw/rs:fit:2048/q:85/fn:Pinside_archive_1143_2506249/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzMvNGIvMmEvMzRiMmFjZWNlZTU2MzNkOGViNWY1NGNjZWY0ZTkwZGU0YWEwNThlMy5qcGc",
+    "playfieldLocal": "/pinball/images/playfields/the-simpsons-pinball-party.jpg",
+    "rulesheetUrl": "https://www.pinball.org/rules/simpsonspinballparty.txt",
+    "rulesheetLocal": "/pinball/rulesheets/the-simpsons-pinball-party.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=4ARXdYALc9o"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=JU4lpB-VGEQ"
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "pos": 4,
+    "bank": 2,
+    "name": "The Mandalorian",
+    "manufacturer": "Stern",
+    "year": 2021,
+    "slug": "the-mandalorian",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2021/05/Mandalorian-LE-Playfield-01-afnkjkn3fad.jpg",
+    "playfieldLocal": "/pinball/images/playfields/the-mandalorian.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/the-mandalorian-rulesheet/7056",
+    "rulesheetLocal": "/pinball/rulesheets/the-mandalorian.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=Ew_P40Fq4EA"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 1,
+    "bank": 4,
+    "name": "The Getaway: High Speed II",
+    "manufacturer": "Williams",
+    "year": 1992,
+    "slug": "the-getaway-high-speed-ii",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/rUzfGvBQRNLLDamKPC_CI12ylcgMe8DiDUVpe79omfM/rs:fit:2048/q:85/fn:Pinside_archive_207_2353782/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzkvNmQvMjQvOTZkMjQ5NDY2YjZjMGY3MTg5YmZjYjBjOWRiNjFjMTgwZDBlZjc1Zi5qcGVn",
+    "playfieldLocal": "/pinball/images/playfields/the-getaway-high-speed-ii.jpg",
+    "rulesheetUrl": "https://www.pinball.org/rules/getaway.html",
+    "rulesheetLocal": "/pinball/rulesheets/the-getaway-high-speed-ii.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=Dhk6rcqi128"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 2,
+    "bank": 6,
+    "name": "Monster Bash",
+    "manufacturer": "Williams",
+    "year": 1998,
+    "slug": "monster-bash",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/pZuLgEgy0hWsr2i1czlrPnNHHyarew5je1FiDU6zKn4/rs:fit:2048/q:85/fn:Pinside_archive_972_3059532/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzIvMzEvNmUvMjMxNmU4ZjkwMjdkZWE2YzAwNGIzZTAzMTAyZmVmZTZlYTJjMjI5ZC5qcGc",
+    "playfieldLocal": "/pinball/images/playfields/monster-bash.jpg",
+    "rulesheetUrl": "https://pinball.org/rules/monsterbash.txt?utm_source=chatgpt.com",
+    "rulesheetLocal": "/pinball/rulesheets/monster-bash.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=5mFFmopZ5Y8"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=gVE919IMPNc"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 3,
+    "bank": 8,
+    "name": "Indiana Jones: The Pinball Adventure",
+    "manufacturer": "Williams",
+    "year": 1993,
+    "slug": "indiana-jones-the-pinball-adventure",
+    "playfieldImageUrl": "https://i0.wp.com/arcade83.us/wp-content/uploads/2022/09/e10cd8_098ae4bfb87b4ac5a401df7617fcdc65mv2.webp",
+    "playfieldLocal": "/pinball/images/playfields/indiana-jones-the-pinball-adventure.jpg",
+    "rulesheetUrl": "https://www.ipdb.org/rulesheets/1267/indiana.htm",
+    "rulesheetLocal": "/pinball/rulesheets/indiana-jones-the-pinball-adventure.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=u2G0A-BIpAY"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 4,
+    "bank": 1,
+    "name": "Cactus Canyon",
+    "manufacturer": "Bally",
+    "year": 1998,
+    "slug": "cactus-canyon",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/u2RvRbqVBaQ56LRJ5hfaX0Uq0yDOG4PbY_CvAg-mcd4/rs:fit:2048/q:85/fn:Pinside_archive_2979_2616905/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tL2QvOGMvOTIvZDhjOTJmNDNmYTFjOTFjYmZjMDRiOWU1M2E4ZWM1YzUxYzY3OTk4Ny5qcGc",
+    "playfieldLocal": "/pinball/images/playfields/cactus-canyon.jpg",
+    "rulesheetUrl": "https://gamefaqs.gamespot.com/pinball/915657-cactus-canyon/faqs/40815?raw=1",
+    "rulesheetLocal": "/pinball/rulesheets/cactus-canyon.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=j-x03RBvTs4"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 5,
+    "bank": 3,
+    "name": "Tales of the Arabian Nights",
+    "manufacturer": "Williams",
+    "year": 1996,
+    "slug": "tales-of-the-arabian-nights",
+    "playfieldImageUrl": "https://firebirdpinball.com/wp-content/uploads/2015/01/TOTAN2.jpg",
+    "playfieldLocal": "/pinball/images/playfields/tales-of-the-arabian-nights.jpg",
+    "rulesheetUrl": "https://pinball.org/rules/talesofthearabiannights.html",
+    "rulesheetLocal": "/pinball/rulesheets/tales-of-the-arabian-nights.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=tY2pFjj1Phg"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "pos": 6,
+    "bank": 5,
+    "name": "The Addams Family",
+    "manufacturer": "Bally",
+    "year": 1992,
+    "slug": "the-addams-family",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/GVc59F2RRq1K9VlRok_O3nIoAFOX6vnqlt0iSp8AShE/rs:fit:2048/q:85/fn:Pinside_archive_2_1564480/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzIvYmEvNjIvMmJhNjJjYzRjNjljMjUxY2Y4ZmY0MWUwZTI3ZjlkMjZjMGRhZTk5YS5qcGVn",
+    "playfieldLocal": "/pinball/images/playfields/the-addams-family.jpg",
+    "rulesheetUrl": "https://www.pinball.org/rules/addamsfamily.html",
+    "rulesheetLocal": "/pinball/rulesheets/the-addams-family.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=XSw7fK6x1mw"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 1,
+    "bank": 7,
+    "name": "Rush",
+    "manufacturer": "Stern",
+    "year": 2022,
+    "slug": "rush",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2022/01/Rush-LE-Playfield-gadf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/rush.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stern-rush-rulesheet/7409",
+    "rulesheetLocal": "/pinball/rulesheets/rush.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=ZphTCC_rN0s"
+      },
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 2",
+        "url": "https://www.youtube.com/watch?v=CVSaXrbxtHM"
+      },
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 3",
+        "url": "https://www.youtube.com/watch?v=h139DUjCeU0"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=l68I6GMrIN4"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 2,
+    "bank": 2,
+    "name": "Foo Fighters",
+    "manufacturer": "Stern",
+    "year": 2023,
+    "slug": "foo-fighters",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2023/02/FooFighters-LE-Playfield-akjh3f.jpg",
+    "playfieldLocal": "/pinball/images/playfields/foo-fighters.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/foo-fighters-rulesheet/8162",
+    "rulesheetLocal": "/pinball/rulesheets/foo-fighters.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=JfcJZYAnq6M"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=ZqIcJG8PA-c"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 3,
+    "bank": 4,
+    "name": "AC/DC",
+    "manufacturer": "Stern",
+    "year": 2012,
+    "slug": "ac-dc",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/10/ACDC-Premium-no-Drummer-LUCI-PF-012518.jpg",
+    "playfieldLocal": "/pinball/images/playfields/ac-dc.jpg",
+    "rulesheetUrl": "http://bit.ly/acdcrulesheet",
+    "rulesheetLocal": "/pinball/rulesheets/ac-dc.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=ci7gXjSLq9o"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=bavgiSj5DJU"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 4,
+    "bank": 6,
+    "name": "Kiss",
+    "manufacturer": "Stern",
+    "year": 2015,
+    "slug": "kiss",
+    "playfieldImageUrl": "https://imgproxy.pinside.com/ACTYe6GxLQnvnxoLH1GCkBHFA1GMAQdjYWEEcGBk4fk/rs:fit:2048/q:85/fn:Pinside_archive_2227_107333/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tL2QvYjgvOGYvZGI4OGYwNjI3ZWQwYmI3MTgxOTlhNTMzZmEzMzBmN2MxZDcwNjJjZi5qcGc",
+    "playfieldLocal": "/pinball/images/playfields/kiss.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/kiss-wiki-rulesheet/732",
+    "rulesheetLocal": "/pinball/rulesheets/kiss.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=W-VZAdtlo80"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 5,
+    "bank": 8,
+    "name": "Godzilla",
+    "manufacturer": "Stern",
+    "year": 2021,
+    "slug": "godzilla",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/godzilla.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
+    "rulesheetLocal": "/pinball/rulesheets/godzilla.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=roJbHZe4YfQ"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=qxv1rdFisR8"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 2",
+        "url": "https://www.youtube.com/watch?v=9rLcMSuommU"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 6,
+    "bank": 1,
+    "name": "Deadpool",
+    "manufacturer": "Stern",
+    "year": 2018,
+    "slug": "deadpool",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
+    "playfieldLocal": "/pinball/images/playfields/deadpool.png",
+    "rulesheetUrl": "https://tiltforums.com/t/deadpool-rulesheet/4311",
+    "rulesheetLocal": "/pinball/rulesheets/deadpool.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=7ZMPyTqiot4"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 7,
+    "bank": 3,
+    "name": "The Munsters",
+    "manufacturer": "Stern",
+    "year": 2019,
+    "slug": "the-munsters",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2019/01/Munsters-Pro-Playfield.jpg",
+    "playfieldLocal": "/pinball/images/playfields/the-munsters.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/the-munsters-rulesheet/4781",
+    "rulesheetLocal": "/pinball/rulesheets/the-munsters.md",
+    "videos": []
+  },
+  {
+    "group": 4,
+    "pos": 8,
+    "bank": 5,
+    "name": "Pulp Fiction",
+    "manufacturer": "CGC",
+    "year": 2024,
+    "slug": "pulp-fiction",
+    "playfieldImageUrl": "https://www.chicago-gaming.com/images/pfp/playfield_full.jpg",
+    "playfieldLocal": "/pinball/images/playfields/pulp-fiction.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
+    "rulesheetLocal": "/pinball/rulesheets/pulp-fiction.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=iY--DPVTWWM"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 2",
+        "url": "https://www.youtube.com/watch?v=XQSm-MeiSMg"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 9,
+    "bank": 7,
+    "name": "Tron: Legacy",
+    "manufacturer": "Stern",
+    "year": 2011,
+    "slug": "tron-legacy",
+    "playfieldImageUrl": "https://www.ipdb.org/images/5682/image-7.jpg",
+    "playfieldLocal": "/pinball/images/playfields/tron-legacy.jpg",
+    "rulesheetUrl": "https://www.pinballnews.com/games/tron/index6b.html?utm_source=chatgpt.com",
+    "rulesheetLocal": "/pinball/rulesheets/tron-legacy.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=8u1bVbwYy0U"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=ZvIeDk0y3WM"
+      }
+    ]
+  },
+  {
+    "group": 4,
+    "pos": 10,
+    "bank": 2,
+    "name": "Teenage Mutant Ninja Turtles",
+    "manufacturer": "Stern",
+    "year": 2020,
+    "slug": "teenage-mutant-ninja-turtles",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg",
+    "playfieldLocal": "/pinball/images/playfields/teenage-mutant-ninja-turtles.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stern-tmnt-rulesheet/6599",
+    "rulesheetLocal": "/pinball/rulesheets/teenage-mutant-ninja-turtles.md",
+    "videos": []
+  },
+  {
+    "group": 5,
+    "pos": 1,
+    "bank": 4,
+    "name": "Scared Stiff",
+    "manufacturer": "Bally",
+    "year": 1996,
+    "slug": "scared-stiff",
+    "playfieldImageUrl": "https://www.cometpinball.com/cdn/shop/products/CometPinballScaredStiffLEDKitPlayfield.jpg",
+    "playfieldLocal": "/pinball/images/playfields/scared-stiff.jpg",
+    "rulesheetUrl": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM?utm_source=chatgpt.com",
+    "rulesheetLocal": "/pinball/rulesheets/scared-stiff.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=0CTIo1mvTJs"
+      }
+    ]
+  },
+  {
+    "group": 5,
+    "pos": 2,
+    "bank": 6,
+    "name": "Dungeons & Dragons: The Tyrant's Eye",
+    "manufacturer": "Stern",
+    "year": 2025,
+    "slug": "dungeons-and-dragons-the-tyrants-eye",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2025/01/DungeonLETopPlayfield-adfkjehfa3.jpg",
+    "playfieldLocal": "/pinball/images/playfields/dungeons-and-dragons-the-tyrants-eye.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/9267",
+    "rulesheetLocal": "/pinball/rulesheets/dungeons-and-dragons-the-tyrants-eye.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=eLmtVP2-xyc"
+      }
+    ]
+  },
+  {
+    "group": 5,
+    "pos": 3,
+    "bank": 8,
+    "name": "Star Wars: Fall of the Empire",
+    "manufacturer": "Stern",
+    "year": 2025,
+    "slug": "star-wars-fall-of-the-empire",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
+    "playfieldLocal": "/pinball/images/playfields/star-wars-fall-of-the-empire.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
+    "rulesheetLocal": "/pinball/rulesheets/star-wars-fall-of-the-empire.md",
+    "videos": []
+  },
+  {
+    "group": 5,
+    "pos": 4,
+    "bank": 1,
+    "name": "John Wick",
+    "manufacturer": "Stern",
+    "year": 2024,
+    "slug": "john-wick",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg",
+    "playfieldLocal": "/pinball/images/playfields/john-wick.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/john-wick-rulesheet/8956",
+    "rulesheetLocal": "/pinball/rulesheets/john-wick.md",
+    "videos": []
+  },
+  {
+    "group": 5,
+    "pos": 5,
+    "bank": 3,
+    "name": "Elvira's House of Horrors",
+    "manufacturer": "Stern",
+    "year": 2019,
+    "slug": "elviras-house-of-horrors",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2023/10/ElviraPlayFieldA9145.jpg",
+    "playfieldLocal": "/pinball/images/playfields/elviras-house-of-horrors.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet-wip/5815",
+    "rulesheetLocal": "/pinball/rulesheets/elviras-house-of-horrors.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=o8vUqabRAp8"
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "pos": 1,
+    "bank": 5,
+    "name": "James Bond 007",
+    "manufacturer": "Stern",
+    "year": 2022,
+    "slug": "james-bond-007",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/james-bond-007.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stern-james-bond-rulesheet/7893",
+    "rulesheetLocal": "/pinball/rulesheets/james-bond-007.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=GnQr9qIZz_0"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=FbSbZDtegVk"
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "pos": 2,
+    "bank": 7,
+    "name": "King Kong",
+    "manufacturer": "Stern",
+    "year": 2025,
+    "slug": "king-kong",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
+    "playfieldLocal": "/pinball/images/playfields/king-kong.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
+    "rulesheetLocal": "/pinball/rulesheets/king-kong.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=OCp5Ria5IIA"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=Esw-G7rUTw8"
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "pos": 3,
+    "bank": 2,
+    "name": "Ghostbusters",
+    "manufacturer": "Stern",
+    "year": 2016,
+    "slug": "ghostbusters",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png",
+    "playfieldLocal": "/pinball/images/playfields/ghostbusters.png",
+    "rulesheetUrl": "https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358",
+    "rulesheetLocal": "/pinball/rulesheets/ghostbusters.md",
+    "videos": []
+  },
+  {
+    "group": 6,
+    "pos": 4,
+    "bank": 4,
+    "name": "Jaws",
+    "manufacturer": "Stern",
+    "year": 2024,
+    "slug": "jaws",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
+    "playfieldLocal": "/pinball/images/playfields/jaws.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/jaws-rulesheet/8781",
+    "rulesheetLocal": "/pinball/rulesheets/jaws.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=zIWTjveC9p4"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=7fVazJdhf_8"
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "pos": 5,
+    "bank": 6,
+    "name": "Jurassic Park",
+    "manufacturer": "Stern",
+    "year": 2019,
+    "slug": "jurassic-park",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
+    "playfieldLocal": "/pinball/images/playfields/jurassic-park.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
+    "rulesheetLocal": "/pinball/rulesheets/jurassic-park.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=vVs_0jqCPGA"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=ZU6byRKtsZk"
+      }
+    ]
+  },
+  {
+    "group": 6,
+    "pos": 6,
+    "bank": 2,
+    "name": "Game of Thrones",
+    "manufacturer": "Stern",
+    "year": 2015,
+    "slug": "game-of-thrones",
+    "playfieldImageUrl": "https://www.pinballnews.com/games/gameofthrones/8a.jpg",
+    "playfieldLocal": "/pinball/images/playfields/game-of-thrones.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/game-of-thrones-pinball-rulesheet/936",
+    "rulesheetLocal": "/pinball/rulesheets/game-of-thrones.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=XOfVLODSMUA"
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "pos": 1,
+    "bank": 1,
+    "name": "Attack from Mars",
+    "manufacturer": "Bally",
+    "year": 1995,
+    "slug": "attack-from-mars",
+    "playfieldImageUrl": "https://www.pinballbulbs.com/sites/default/files/attack_from_mars_white.jpg",
+    "playfieldLocal": "/pinball/images/playfields/attack-from-mars.jpg",
+    "rulesheetUrl": "https://www.pinball.org/rules/attackfrommars.html",
+    "rulesheetLocal": "/pinball/rulesheets/attack-from-mars.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=xri-ffVoPqo"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=GHujEZBkuis"
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "pos": 2,
+    "bank": 3,
+    "name": "Black Knight: Sword of Rage",
+    "manufacturer": "Stern",
+    "year": 2019,
+    "slug": "black-knight-sword-of-rage",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
+    "playfieldLocal": "/pinball/images/playfields/black-knight-sword-of-rage.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
+    "rulesheetLocal": "/pinball/rulesheets/black-knight-sword-of-rage.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=i8CZsGEcmBA"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=musEx6lbttQ"
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "pos": 3,
+    "bank": null,
+    "name": "Godzilla LE",
+    "manufacturer": "Stern",
+    "year": 2021,
+    "slug": "godzilla-le",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/godzilla-le.jpg",
+    "rulesheetUrl": null,
+    "rulesheetLocal": "/pinball/rulesheets/godzilla-le.md",
+    "videos": []
+  },
+  {
+    "group": 7,
+    "pos": 4,
+    "bank": 5,
+    "name": "Medieval Madness",
+    "manufacturer": "Williams",
+    "year": 1997,
+    "slug": "medieval-madness",
+    "playfieldImageUrl": "https://www.cometpinball.com/cdn/shop/products/CometPinballMedievalMadnessLEDKitPlayfield.jpg",
+    "playfieldLocal": "/pinball/images/playfields/medieval-madness.jpg",
+    "rulesheetUrl": "https://www.pinball.org/rules/medievalmadness.html",
+    "rulesheetLocal": "/pinball/rulesheets/medieval-madness.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=6wb_x3q3z14"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=21qTR0o5Lmc"
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "pos": 5,
+    "bank": 7,
+    "name": "Venom",
+    "manufacturer": "Stern",
+    "year": 2023,
+    "slug": "venom",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2023/07/Venom-LE-Playfield-akjnef.jpg",
+    "playfieldLocal": "/pinball/images/playfields/venom.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/venom-rulesheet/8503",
+    "rulesheetLocal": "/pinball/rulesheets/venom.md",
+    "videos": [
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=4rlIHLyfyVA"
+      }
+    ]
+  },
+  {
+    "group": 7,
+    "pos": 6,
+    "bank": 8,
+    "name": "Stranger Things",
+    "manufacturer": "Stern",
+    "year": 2019,
+    "slug": "stranger-things",
+    "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2019/12/StrangerThings-LE-Playfield-09j4gnjrf.jpg",
+    "playfieldLocal": "/pinball/images/playfields/stranger-things.jpg",
+    "rulesheetUrl": "https://tiltforums.com/t/stranger-things-rulesheet-wip/6093",
+    "rulesheetLocal": "/pinball/rulesheets/stranger-things.md",
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=3PpBgoYxgk4"
+      },
+      {
+        "kind": "gameplay",
+        "label": "Gameplay 1",
+        "url": "https://www.youtube.com/watch?v=6cX3kmMY72Y"
+      }
+    ]
+  }
+]

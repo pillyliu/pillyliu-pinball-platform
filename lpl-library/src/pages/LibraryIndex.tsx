@@ -1,0 +1,255 @@
+import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  cacheAssetUrl,
+  fetchPinballJson,
+  prefetchPinballTextAssets,
+} from "../lib/pinballCache";
+
+type Video = { kind: string; label: string; url: string };
+
+type Game = {
+  group: number | null;
+  pos?: number | null;
+  bank?: number | null;
+
+  name: string;
+  manufacturer: string | null;
+  year: number | null;
+  slug: string;
+  playfieldLocal: string;
+  rulesheetLocal: string;
+  videos: Video[];
+};
+
+type GroupSection = {
+  groupKey: number | null;
+  games: Game[];
+};
+
+function locationText(group: number | null, pos?: number | null): string | null {
+  if (typeof group !== "number" || typeof pos !== "number") return null;
+  const floor = group >= 1 && group <= 4 ? "U" : "D";
+  return `📍 ${floor}:${group}:${pos}`;
+}
+
+function metaLine(g: Game): string {
+  const parts: string[] = [];
+  parts.push(g.manufacturer ?? "—");
+  if (g.year) parts.push(String(g.year));
+
+  const loc = locationText(g.group, g.pos);
+  if (loc) parts.push(loc);
+
+  if (typeof g.bank === "number" && g.bank > 0) parts.push(`Bank ${g.bank}`);
+
+  return parts.join(" • ");
+}
+
+function playfieldImageSources(slug: string, fallback: string) {
+  const base = `/pinball/images/playfields/${slug}`;
+  return {
+    base,
+    src: `${base}_700.webp`,
+    srcSet: `${base}_700.webp 700w, ${base}_1400.webp 1400w, ${fallback} 2400w`,
+    fallback,
+  };
+}
+
+export default function LibraryIndex() {
+  const [games, setGames] = useState<Game[]>([]);
+  const [q, setQ] = useState("");
+  const [bank, setBank] = useState<number | "all">("all");
+
+  useEffect(() => {
+    fetchPinballJson<Game[]>("/pinball/data/pinball_library.json")
+      .then((data) => setGames(Array.isArray(data) ? data : []))
+      .catch(() => setGames([]));
+  }, []);
+
+  useEffect(() => {
+    prefetchPinballTextAssets().catch(() => undefined);
+  }, []);
+
+  const bankOptions = useMemo<number[]>(() => {
+    const s = new Set<number>();
+    for (const g of games) {
+      if (typeof g.bank === "number" && g.bank > 0) s.add(g.bank);
+    }
+    return Array.from(s).sort((a, b) => a - b);
+  }, [games]);
+
+  const filtered = useMemo(() => {
+    const query = q.trim().toLowerCase();
+
+    return games.filter((g) => {
+      const matchesQuery =
+        !query ||
+        `${g.name} ${g.manufacturer ?? ""} ${g.year ?? ""}`
+          .toLowerCase()
+          .includes(query);
+
+      const matchesBank =
+        bank === "all" || (typeof g.bank === "number" && g.bank === bank);
+
+      return matchesQuery && matchesBank;
+    });
+  }, [games, q, bank]);
+
+  const sections = useMemo<GroupSection[]>(() => {
+    const out: GroupSection[] = [];
+    for (const g of filtered) {
+      const last = out[out.length - 1];
+      if (!last || last.groupKey !== g.group) {
+        out.push({ groupKey: g.group ?? null, games: [g] });
+      } else {
+        last.games.push(g);
+      }
+    }
+    return out;
+  }, [filtered]);
+
+  const showGroupedView = bank === "all";
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-neutral-100">
+      <div className="mx-auto max-w-6xl p-6 lg:max-w-screen-2xl">
+        <h1 className="text-3xl font-semibold">Pinball Library</h1>
+
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search games…"
+            className="w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-800 focus:ring-neutral-600"
+          />
+
+          <select
+            value={bank === "all" ? "all" : String(bank)}
+            onChange={(e) => {
+              const v = e.target.value;
+              setBank(v === "all" ? "all" : Number(v));
+            }}
+            className="w-full sm:w-48 rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 outline-none ring-1 ring-neutral-800 focus:ring-neutral-600"
+            aria-label="Filter by bank"
+          >
+            <option value="all">All banks</option>
+            {bankOptions.map((b) => (
+              <option key={b} value={String(b)}>
+                Bank {b}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mt-6">
+          {showGroupedView ? (
+            <div className="space-y-8">
+              {sections.map((section, idx) => (
+                <div key={`${section.groupKey ?? "nogroup"}-${idx}`}>
+                  {idx > 0 && (
+                    <div className="mb-6 h-px w-full bg-neutral-800" />
+                  )}
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {section.games.map((g) => {
+                      const image = playfieldImageSources(g.slug, g.playfieldLocal);
+                      return (
+                        <Link
+                          key={g.slug}
+                          to={`/game/${g.slug}`}
+                          className="group rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 hover:ring-neutral-600 transition overflow-hidden"
+                        >
+                          <div className="aspect-[16/9] bg-neutral-800">
+                            <img
+                              src={image.src}
+                              srcSet={image.srcSet}
+                              sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                              alt={`${g.name} playfield`}
+                              className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
+                              onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
+                              onError={(e) => {
+                                const el = e.currentTarget as HTMLImageElement;
+                                el.removeAttribute("srcset");
+                                el.removeAttribute("sizes");
+                                el.src = image.fallback;
+                              }}
+                            />
+                          </div>
+
+                          <div className="p-4">
+                            <div className="text-lg font-semibold">{g.name}</div>
+
+                            <div className="mt-1 text-sm text-neutral-400">
+                              {metaLine(g)}
+                            </div>
+
+                            <div className="mt-3 text-sm text-neutral-300">
+                              Videos: {g.videos.length}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {filtered.map((g) => {
+                const image = playfieldImageSources(g.slug, g.playfieldLocal);
+                return (
+                  <Link
+                    key={g.slug}
+                    to={`/game/${g.slug}`}
+                    className="group rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 hover:ring-neutral-600 transition overflow-hidden"
+                  >
+                    <div className="aspect-[16/9] bg-neutral-800">
+                      <img
+                        src={image.src}
+                        srcSet={image.srcSet}
+                        sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                        alt={`${g.name} playfield`}
+                        className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
+                        onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
+                        onError={(e) => {
+                          const el = e.currentTarget as HTMLImageElement;
+                          el.removeAttribute("srcset");
+                          el.removeAttribute("sizes");
+                          el.src = image.fallback;
+                        }}
+                      />
+                    </div>
+
+                    <div className="p-4">
+                      <div className="text-lg font-semibold">{g.name}</div>
+
+                      <div className="mt-1 text-sm text-neutral-400">
+                        {metaLine(g)}
+                      </div>
+
+                      <div className="mt-3 text-sm text-neutral-300">
+                        Videos: {g.videos.length}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {games.length === 0 && (
+          <div className="mt-8 text-neutral-400">
+            No data loaded. Confirm{" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">
+              public/pinball/data/pinball_library.json
+            </code>{" "}
+            exists.
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

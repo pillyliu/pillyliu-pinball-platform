@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>LPL Score Targets - Pillyliu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg: #05060a;
+            --bg-elevated: #111827;
+            --border-subtle: #1f2933;
+            --accent: #22c55e;
+            --accent-soft: rgba(34, 197, 94, 0.12);
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --text-soft: #6b7280;
+            --text-strong: #f9fafb;
+            --table-header: #111827;
+            --row-hover: rgba(55, 65, 81, 0.4);
+            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+            --radius-lg: 1.25rem;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            color: var(--text-main);
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--text-strong);
+        }
+
+        .tag {
+            padding: 0.18rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            color: var(--text-soft);
+            background: linear-gradient( 135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.5) );
+        }
+
+        .subtitle {
+            margin-top: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 640px;
+        }
+
+        .legend {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+            font-size: 0.82rem;
+            color: var(--text-soft);
+        }
+
+            .legend span {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                white-space: nowrap;
+            }
+
+        .pill {
+            width: 11px;
+            height: 11px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(34, 197, 94, 0.8);
+        }
+
+        .pill-mid {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.9);
+        }
+
+        .pill-floor {
+            background: rgba(148, 163, 184, 0.18);
+            border-color: rgba(148, 163, 184, 0.8);
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(15, 23, 42, 0.95);
+            box-shadow: var(--shadow-soft);
+            padding: 1rem 1rem 1.1rem;
+        }
+
+        .table-wrapper {
+            margin-top: 0.5rem;
+            border-radius: calc(var(--radius-lg) - 0.5rem);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+            font-size: 0.9rem;
+        }
+
+        thead {
+            background: linear-gradient( 135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9) );
+        }
+
+        th, td {
+            padding: 0.6rem 0.9rem;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+            th:first-child,
+            td:first-child {
+                text-align: left;
+            }
+
+        th {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-soft);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: inherit;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        tbody tr:nth-child(odd) {
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        tbody tr:hover {
+            background: var(--row-hover);
+        }
+
+        td {
+            border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+            color: var(--text-main);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cell-great {
+            color: #bbf7d0;
+            font-weight: 500;
+        }
+
+        .cell-target {
+            color: #bfdbfe;
+        }
+
+        .cell-floor {
+            color: #e5e7eb;
+            opacity: 0.92;
+        }
+
+        .footer-note {
+            margin-top: 0.85rem;
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+
+            .footer-note strong {
+                color: var(--text-main);
+                font-weight: 500;
+            }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 0.85rem;
+            }
+
+            .table-wrapper {
+                border-radius: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="header">
+            <div class="title-row">
+                <h1>LPL Score Targets by Game</h1>
+                <span class="tag">League Practice Benchmarks</span>
+            </div>
+            <p class="subtitle">
+                Benchmarks are based on historical LPL league results across all seasons
+                where each game appeared. For each game, scores are derived from per-bank
+                results using 2nd / 4th / 8th highest averages with sample-size adjustments.
+            </p>
+            <div class="legend">
+                <span><span class="pill"></span> <strong>2nd Highest Avg</strong> - "Great game" score</span>
+                <span><span class="pill pill-mid"></span> <strong>4th Highest Avg</strong> - Main target</span>
+                <span><span class="pill pill-floor"></span> <strong>8th Highest Avg</strong> - Solid floor</span>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="table-wrapper">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Game</th>
+                                <th>2nd Highest Avg</th>
+                                <th>4th Highest Avg</th>
+                                <th>8th Highest Avg</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Avengers: Infinity Quest</td>
+                                <td class="cell-great">173,438,323</td>
+                                <td class="cell-target">88,524,766</td>
+                                <td class="cell-floor">39,851,803</td>
+                            </tr>
+                            <tr>
+                                <td>Kiss</td>
+                                <td class="cell-great">198,506,351</td>
+                                <td class="cell-target">97,959,214</td>
+                                <td class="cell-floor">36,089,540</td>
+                            </tr>
+                            <tr>
+                                <td>Cactus Canyon</td>
+                                <td class="cell-great">47,757,329</td>
+                                <td class="cell-target">27,567,623</td>
+                                <td class="cell-floor">14,452,827</td>
+                            </tr>
+                            <tr>
+                                <td>Uncanny X-Men</td>
+                                <td class="cell-great">225,283,763</td>
+                                <td class="cell-target">108,327,713</td>
+                                <td class="cell-floor">63,821,317</td>
+                            </tr>
+                            <tr>
+                                <td>Jurassic Park (Stern 2019)</td>
+                                <td class="cell-great">319,640,285</td>
+                                <td class="cell-target">126,326,601</td>
+                                <td class="cell-floor">58,637,502</td>
+                            </tr>
+                            <tr>
+                                <td>Tales of the Arabian Nights</td>
+                                <td class="cell-great">15,762,751</td>
+                                <td class="cell-target">9,345,267</td>
+                                <td class="cell-floor">5,556,107</td>
+                            </tr>
+                            <tr>
+                                <td>The Munsters</td>
+                                <td class="cell-great">82,533,584</td>
+                                <td class="cell-target">34,629,771</td>
+                                <td class="cell-floor">17,369,006</td>
+                            </tr>
+                            <tr>
+                                <td>Medieval Madness</td>
+                                <td class="cell-great">46,553,686</td>
+                                <td class="cell-target">29,361,166</td>
+                                <td class="cell-floor">14,409,182</td>
+                            </tr>
+                            <tr>
+                                <td>AC/DC</td>
+                                <td class="cell-great">78,885,896</td>
+                                <td class="cell-target">46,469,006</td>
+                                <td class="cell-floor">19,681,744</td>
+                            </tr>
+                            <tr>
+                                <td>Star Wars (2017)</td>
+                                <td class="cell-great">1,096,631,040</td>
+                                <td class="cell-target">647,340,570</td>
+                                <td class="cell-floor">319,976,625</td>
+                            </tr>
+                            <tr>
+                                <td>James Bond</td>
+                                <td class="cell-great">358,874,928</td>
+                                <td class="cell-target">200,180,907</td>
+                                <td class="cell-floor">82,457,332</td>
+                            </tr>
+                            <tr>
+                                <td>Indiana Jones</td>
+                                <td class="cell-great">291,687,662</td>
+                                <td class="cell-target">177,986,136</td>
+                                <td class="cell-floor">81,470,450</td>
+                            </tr>
+                            <tr>
+                                <td>Metallica</td>
+                                <td class="cell-great">77,377,060</td>
+                                <td class="cell-target">43,847,284</td>
+                                <td class="cell-floor">17,158,523</td>
+                            </tr>
+                            <tr>
+                                <td>Godzilla</td>
+                                <td class="cell-great">646,887,088</td>
+                                <td class="cell-target">286,268,525</td>
+                                <td class="cell-floor">123,536,572</td>
+                            </tr>
+                            <tr>
+                                <td>Dungeons and Dragons</td>
+                                <td class="cell-great">418,422,050</td>
+                                <td class="cell-target">182,415,065</td>
+                                <td class="cell-floor">123,730,030</td>
+                            </tr>
+                            <tr>
+                                <td>Game of Thrones</td>
+                                <td class="cell-great">949,759,118</td>
+                                <td class="cell-target">326,708,555</td>
+                                <td class="cell-floor">99,242,412</td>
+                            </tr>
+                            <tr>
+                                <td>The Simpsons Pinball Party</td>
+                                <td class="cell-great">21,891,586</td>
+                                <td class="cell-target">14,562,712</td>
+                                <td class="cell-floor">6,092,065</td>
+                            </tr>
+                            <tr>
+                                <td>The Getaway</td>
+                                <td class="cell-great">101,330,386</td>
+                                <td class="cell-target">59,599,913</td>
+                                <td class="cell-floor">31,934,372</td>
+                            </tr>
+                            <tr>
+                                <td>Monster Bash</td>
+                                <td class="cell-great">140,207,751</td>
+                                <td class="cell-target">77,290,194</td>
+                                <td class="cell-floor">33,846,092</td>
+                            </tr>
+                            <tr>
+                                <td>Venom</td>
+                                <td class="cell-great">305,244,276</td>
+                                <td class="cell-target">125,417,334</td>
+                                <td class="cell-floor">53,133,636</td>
+                            </tr>
+                            <tr>
+                                <td>King Kong</td>
+                                <td class="cell-great">446,519,150</td>
+                                <td class="cell-target">105,609,360</td>
+                                <td class="cell-floor">76,835,450</td>
+                            </tr>
+                            <tr>
+                                <td>Rush</td>
+                                <td class="cell-great">339,038,483</td>
+                                <td class="cell-target">95,538,978</td>
+                                <td class="cell-floor">50,832,140</td>
+                            </tr>
+                            <tr>
+                                <td>Deadpool</td>
+                                <td class="cell-great">358,162,103</td>
+                                <td class="cell-target">146,074,855</td>
+                                <td class="cell-floor">69,866,975</td>
+                            </tr>
+                            <tr>
+                                <td>John Wick</td>
+                                <td class="cell-great">177,005,389</td>
+                                <td class="cell-target">142,548,085</td>
+                                <td class="cell-floor">60,787,832</td>
+                            </tr>
+                            <tr>
+                                <td>Attack From Mars</td>
+                                <td class="cell-great">5,521,789,989</td>
+                                <td class="cell-target">3,115,115,261</td>
+                                <td class="cell-floor">1,766,530,554</td>
+                            </tr>
+                            <tr>
+                                <td>Foo Fighters</td>
+                                <td class="cell-great">437,507,022</td>
+                                <td class="cell-target">118,516,715</td>
+                                <td class="cell-floor">52,503,338</td>
+                            </tr>
+                            <tr>
+                                <td>The Mandalorian</td>
+                                <td class="cell-great">246,663,781</td>
+                                <td class="cell-target">139,131,898</td>
+                                <td class="cell-floor">54,050,835</td>
+                            </tr>
+                            <tr>
+                                <td>Tron</td>
+                                <td class="cell-great">32,748,236</td>
+                                <td class="cell-target">20,993,568</td>
+                                <td class="cell-floor">12,428,468</td>
+                            </tr>
+                            <tr>
+                                <td>TMNT</td>
+                                <td class="cell-great">20,008,656</td>
+                                <td class="cell-target">13,337,749</td>
+                                <td class="cell-floor">7,479,849</td>
+                            </tr>
+                            <tr>
+                                <td>Ghostbusters</td>
+                                <td class="cell-great">721,735,856</td>
+                                <td class="cell-target">238,692,633</td>
+                                <td class="cell-floor">85,037,818</td>
+                            </tr>
+                            <tr>
+                                <td>Stranger Things</td>
+                                <td class="cell-great">269,360,318</td>
+                                <td class="cell-target">180,571,244</td>
+                                <td class="cell-floor">110,080,667</td>
+                            </tr>
+                            <tr>
+                                <td>Star Trek</td>
+                                <td class="cell-great">115,837,761</td>
+                                <td class="cell-target">68,886,970</td>
+                                <td class="cell-floor">27,550,663</td>
+                            </tr>
+                            <tr>
+                                <td>Pulp Fiction</td>
+                                <td class="cell-great">2,137,055</td>
+                                <td class="cell-target">1,124,280</td>
+                                <td class="cell-floor">708,345</td>
+                            </tr>
+                            <tr>
+                                <td>Elvira's House of Horrors</td>
+                                <td class="cell-great">68,770,087</td>
+                                <td class="cell-target">38,590,427</td>
+                                <td class="cell-floor">18,216,957</td>
+                            </tr>
+                            <tr>
+                                <td>Black Knight: Sword of Rage</td>
+                                <td class="cell-great">160,663,925</td>
+                                <td class="cell-target">62,325,610</td>
+                                <td class="cell-floor">40,949,470</td>
+                            </tr>
+                            <tr>
+                                <td>The Addams Family</td>
+                                <td class="cell-great">126,854,859</td>
+                                <td class="cell-target">77,135,279</td>
+                                <td class="cell-floor">38,020,435</td>
+                            </tr>
+                            <tr>
+                                <td>Scared Stiff</td>
+                                <td class="cell-great">18,537,846</td>
+                                <td class="cell-target">13,171,488</td>
+                                <td class="cell-floor">6,029,324</td>
+                            </tr>
+                            <tr>
+                                <td>Fall of the Empire</td>
+                                <td class="cell-great">548,469,290</td>
+                                <td class="cell-target">308,139,210</td>
+                                <td class="cell-floor">40,719,400</td>
+                            </tr>
+                            <tr>
+                                <td>Jaws</td>
+                                <td class="cell-great">523,921,050</td>
+                                <td class="cell-target">325,577,015</td>
+                                <td class="cell-floor">155,754,968</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="footer-note">
+                <strong>Method:</strong> For each game, scores are grouped by season and bank. When a full field played,
+                the 2nd / 4th / 8th highest scores are taken. When about half the league played, we use mean(1st &amp; 2nd),
+                3rd, and 4th. These values are then averaged across all appearances for that game.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
