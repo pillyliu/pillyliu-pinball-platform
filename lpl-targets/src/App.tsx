@@ -121,27 +121,6 @@ export default function App() {
           For each game, scores are derived from per-bank results using 2nd / 4th / 8th highest averages
           with sample-size adjustments.
         </p>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <label htmlFor="targets-sort-mode" className="text-sm font-medium text-neutral-300">
-            Sort by
-          </label>
-          <div className="relative w-full min-[460px]:w-auto min-[460px]:min-w-[16rem]">
-            <select
-              id="targets-sort-mode"
-              value={sortMode}
-              onChange={(e) => setSortMode(e.target.value as SortMode)}
-              className={CONTROL_SELECT_CLASS}
-              aria-label="Sort targets table"
-            >
-              <option value="location">Location (Group, Pos)</option>
-              <option value="bank">Bank (then Location)</option>
-              <option value="alphabetical">Alphabetical (Game)</option>
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-              ▾
-            </span>
-          </div>
-        </div>
         <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-400">
           <span className="inline-flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full border border-emerald-400/80 bg-emerald-400/20" />
@@ -155,6 +134,27 @@ export default function App() {
             <span className="h-2.5 w-2.5 rounded-full border border-neutral-400/80 bg-neutral-400/20" />
             <strong className="text-neutral-300">8th Highest Avg</strong> - Solid floor
           </span>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <label htmlFor="targets-sort-mode" className="text-sm font-medium text-neutral-300">
+            Sort by
+          </label>
+          <div className="relative w-full min-[460px]:w-auto min-[460px]:min-w-[8rem]">
+            <select
+              id="targets-sort-mode"
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className={`${CONTROL_SELECT_CLASS} min-w-[8rem] py-2 text-sm`}
+              aria-label="Sort targets table"
+            >
+              <option value="location">Location (Group, Pos)</option>
+              <option value="bank">Bank (then Location)</option>
+              <option value="alphabetical">Alphabetical (Game)</option>
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
         </div>
       </Panel>
 
