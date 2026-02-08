@@ -221,7 +221,7 @@ export default function RulesheetPage() {
               <div className="mt-2 text-neutral-400">
                 Expected file:
                 <code className="ml-2 rounded bg-neutral-950 px-2 py-1">
-                  public/pinball/rulesheets/{slug}.md
+                  shared/pinball/rulesheets/{slug}.md
                 </code>
               </div>
             </div>

@@ -2,35 +2,34 @@
 
 ## Goal
 
-Use one canonical dataset for all pinball pages so updates are made once and distributed consistently.
+Use one canonical dataset for all pinball pages so updates are made once and deployed once.
 
 ## Canonical Source
 
-- Shared source-of-truth directory:
+- Source-of-truth directory:
   - `shared/pinball`
 
-## App Targets
+## Distribution Model
 
-The following app public folders are generated from `shared/pinball`:
-
-- `lpl-library/public/pinball`
-- `lpl-standings/public/pinball`
-- `lpl-stats/public/pinball`
-- `lpl-targets/public/pinball`
+- App bundles do not include their own `pinball` payload anymore.
+- Production serves canonical shared data at:
+  - `/pinball/...`
+- Apps consume absolute `/pinball/...` URLs at runtime.
 
 ## Sync Rules
 
-- Do not manually edit `public/pinball` inside those apps.
+- Do not manually edit app-local `public/pinball` content.
 - Edit files only in `shared/pinball`.
-- Run sync before builds:
-  - all apps: `npm run sync:pinball` (repo root)
-  - single app: `npm run sync:pinball` inside app folder
-- Manifest and update log are generated automatically during sync:
+- Generate manifest/update log from root:
+  - `npm run sync:pinball`
+- Optional legacy command to copy canonical data into each app `public/pinball`:
+  - `npm run sync:pinball:apps`
+- Manifest and update log are generated in:
   - `shared/pinball/cache-manifest.json`
   - `shared/pinball/cache-update-log.json`
 
 ## Why This Exists
 
-- Keeps `/pinball/...` URLs stable for current website/app behavior.
-- Prevents data drift between page projects.
-- Sets up a clean foundation for hash manifests, selective refresh, and offline caching.
+- Prevents drift and duplicate static payload across app builds.
+- Reduces app `dist` size and noisy git churn.
+- Keeps deploy flow simple: upload `shared/pinball` once, upload app bundles separately.

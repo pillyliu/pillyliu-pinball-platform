@@ -255,11 +255,11 @@ export default function LibraryIndex() {
 
         {games.length === 0 && (
           <div className="mt-8 text-neutral-400">
-            No data loaded. Confirm{" "}
+            No data loaded. Confirm canonical file{" "}
             <code className="rounded bg-neutral-900 px-2 py-1">
-              public/pinball/data/pinball_library.json
+              shared/pinball/data/pinball_library.json
             </code>{" "}
-            exists.
+            exists and has been deployed to <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/pinball_library.json</code>.
           </div>
         )}
       </PageContainer>

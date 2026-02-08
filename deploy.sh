@@ -39,7 +39,7 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
 fi
 
 if [[ "$SKIP_BUILD" -eq 0 ]]; then
-  echo "Running sync/build/smoke..."
+  echo "Running canonical pinball manifest + build + smoke..."
   npm run sync:pinball
   npm run build:all
   npm run check:smoke

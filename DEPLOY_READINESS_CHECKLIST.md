@@ -31,6 +31,10 @@ Expected built route outputs:
 - `lpl-stats/dist` for `/lpl_stats`
 - `lpl-targets/dist` for `/lpl_targets`
 
+Note:
+- Pinball app `dist` folders should not carry their own `dist/pinball` payload.
+- Canonical pinball data is deployed once from `shared/pinball` to `/pinball`.
+
 ## 4) Run Smoke Check
 
 From repo root:
@@ -41,11 +45,11 @@ npm run check:smoke
 
 This checks:
 - Each app has `dist/index.html` and built assets.
-- Pinball apps contain:
-  - `dist/pinball/cache-manifest.json`
-  - `dist/pinball/cache-update-log.json`
-  - required data files in `dist/pinball/data`
-- Required data files are present in manifest keys.
+- Canonical shared pinball data exists and is valid:
+  - `shared/pinball/cache-manifest.json`
+  - `shared/pinball/cache-update-log.json`
+  - required files in `shared/pinball/data`
+  - required `/pinball/data/...` keys are present in manifest.
 
 ## 5) Deploy
 

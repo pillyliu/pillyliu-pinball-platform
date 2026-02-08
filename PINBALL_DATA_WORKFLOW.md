@@ -22,7 +22,7 @@ This document captures how pinball data/assets are currently sourced and maintai
 - Update Avenue game data in Google Sheets.
 - Consume published CSV export.
 - Generate `pinball_library.json` using `build_pinball_library.ts`.
-- Sync data to app public folders before build/deploy.
+- Regenerate canonical manifest/update log before build/deploy.
 
 ### 2) Standings + Stats CSVs
 

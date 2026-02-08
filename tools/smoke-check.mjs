@@ -4,11 +4,11 @@ import path from "node:path";
 const ROOT = process.cwd();
 
 const APPS = [
-  { name: "pillyliu-landing", requiresPinballDist: false },
-  { name: "lpl-library", requiresPinballDist: true },
-  { name: "lpl-standings", requiresPinballDist: true },
-  { name: "lpl-stats", requiresPinballDist: true },
-  { name: "lpl-targets", requiresPinballDist: true },
+  { name: "pillyliu-landing" },
+  { name: "lpl-library" },
+  { name: "lpl-standings" },
+  { name: "lpl-stats" },
+  { name: "lpl-targets" },
 ];
 
 const REQUIRED_DATA_FILES = [
@@ -58,19 +58,22 @@ async function validateApp(app) {
     errors.push(`Missing dist assets: ${rel(assetsDir)}`);
   }
 
-  if (!app.requiresPinballDist) return errors;
+  return errors;
+}
 
-  const pinballDist = path.join(distDir, "pinball");
-  const manifestPath = path.join(pinballDist, "cache-manifest.json");
-  const updateLogPath = path.join(pinballDist, "cache-update-log.json");
-  const dataDir = path.join(pinballDist, "data");
+async function validateSharedPinball() {
+  const errors = [];
+  const sharedPinballDir = path.join(ROOT, "shared", "pinball");
+  const manifestPath = path.join(sharedPinballDir, "cache-manifest.json");
+  const updateLogPath = path.join(sharedPinballDir, "cache-update-log.json");
+  const dataDir = path.join(sharedPinballDir, "data");
 
   if (!(await exists(manifestPath))) {
-    errors.push(`Missing pinball manifest: ${rel(manifestPath)}`);
+    errors.push(`Missing canonical pinball manifest: ${rel(manifestPath)}`);
     return errors;
   }
   if (!(await exists(updateLogPath))) {
-    errors.push(`Missing pinball update log: ${rel(updateLogPath)}`);
+    errors.push(`Missing canonical pinball update log: ${rel(updateLogPath)}`);
   }
 
   let manifest = null;
@@ -90,7 +93,7 @@ async function validateApp(app) {
     if (manifest?.files) {
       const key = `/pinball/data/${filename}`;
       if (!manifest.files[key]) {
-        errors.push(`Manifest missing file key: ${key} (${app.name})`);
+        errors.push(`Manifest missing file key: ${key} (shared/pinball)`);
       }
     }
   }
@@ -110,6 +113,15 @@ async function main() {
     } else {
       console.log(`[OK] ${app.name}`);
     }
+  }
+
+  const pinballErrors = await validateSharedPinball();
+  if (pinballErrors.length) {
+    allErrors.push(...pinballErrors);
+    console.error("\n[FAIL] shared/pinball");
+    for (const error of pinballErrors) console.error(`- ${error}`);
+  } else {
+    console.log("[OK] shared/pinball");
   }
 
   if (allErrors.length) {
