@@ -4,7 +4,7 @@ import {
   cacheAssetUrl,
   fetchPinballJson,
   prefetchPinballTextAssets,
-} from "../lib/pinballCache";
+} from "../../../shared/ui/pinballCache";
 import SiteHeader from "../components/SiteHeader";
 import {
   APP_BACKGROUND_STYLE,

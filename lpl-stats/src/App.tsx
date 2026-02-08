@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchPinballText, prefetchPinballTextAssets } from "./lib/pinballCache";
+import { fetchPinballText, prefetchPinballTextAssets } from "../../shared/ui/pinballCache";
 import {
   CONTROL_INPUT_CLASS,
   CONTROL_SELECT_CLASS,

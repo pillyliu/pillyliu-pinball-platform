@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { cacheAssetUrl, fetchPinballJson, fetchPinballText } from "../lib/pinballCache";
+import { cacheAssetUrl, fetchPinballJson, fetchPinballText } from "../../../shared/ui/pinballCache";
 import SiteHeader from "../components/SiteHeader";
 import {
   APP_BACKGROUND_STYLE,

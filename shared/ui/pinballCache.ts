@@ -77,8 +77,7 @@ export async function loadManifest(): Promise<Manifest | null> {
       try {
         const res = await fetch(MANIFEST_URL, { cache: "no-store" });
         if (!res.ok) return null;
-        const json = (await res.json()) as Manifest;
-        return json;
+        return (await res.json()) as Manifest;
       } catch {
         return null;
       }
@@ -146,9 +145,7 @@ export async function prefetchPinballTextAssets(pathPrefixes: string[] = []): Pr
 
     writes.push(
       fetchResponseNetwork(path)
-        .then(({ response, resolvedPath }) => {
-          return cache.put(resolvedPath, response.clone());
-        })
+        .then(({ response, resolvedPath }) => cache.put(resolvedPath, response.clone()))
         .then(() => undefined)
         .catch(() => undefined)
     );

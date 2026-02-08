@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
-import { fetchPinballText } from "../lib/pinballCache";
+import { fetchPinballText } from "../../../shared/ui/pinballCache";
 import SiteHeader from "../components/SiteHeader";
 import { APP_BACKGROUND_STYLE, Panel } from "../components/ui";
 
