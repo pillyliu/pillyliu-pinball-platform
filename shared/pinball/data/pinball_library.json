@@ -807,26 +807,10 @@
     "year": 2021,
     "slug": "godzilla-le",
     "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
-    "playfieldLocal": "/pinball/images/playfields/godzilla.jpg",
-    "rulesheetUrl": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
-    "rulesheetLocal": "/pinball/rulesheets/godzilla.md",
-    "videos": [
-      {
-        "kind": "tutorial",
-        "label": "Tutorial 1",
-        "url": "https://www.youtube.com/watch?v=roJbHZe4YfQ"
-      },
-      {
-        "kind": "gameplay",
-        "label": "Gameplay 1",
-        "url": "https://www.youtube.com/watch?v=qxv1rdFisR8"
-      },
-      {
-        "kind": "gameplay",
-        "label": "Gameplay 2",
-        "url": "https://www.youtube.com/watch?v=9rLcMSuommU"
-      }
-    ]
+    "playfieldLocal": "/pinball/images/playfields/godzilla-le.jpg",
+    "rulesheetUrl": null,
+    "rulesheetLocal": "/pinball/rulesheets/godzilla-le.md",
+    "videos": []
   },
   {
     "group": 7,

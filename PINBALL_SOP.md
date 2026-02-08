@@ -184,12 +184,8 @@ From `lpl-library`:
 cd lpl-library
 npx tsx scripts/build_pinball_library.ts ../shared/pinball/data/Avenue\ Pinball\ -\ Current.csv
 ```
-
-Then copy the generated JSON into shared canonical location if needed:
-
-```bash
-cp public/pinball/data/pinball_library.json ../shared/pinball/data/pinball_library.json
-```
+This now writes directly to canonical:
+- `shared/pinball/data/pinball_library.json`
 
 ### 4) Ensure playfield images exist
 
@@ -244,7 +240,7 @@ cd tools/rulesheets
 node export_rulesheets.mjs
 ```
 
-3. Copy resulting `.md` files into shared canonical folder (if generated elsewhere):
+3. Export writes directly to canonical folder:
 - `shared/pinball/rulesheets/`
 
 ### Non-TiltForums rulesheets

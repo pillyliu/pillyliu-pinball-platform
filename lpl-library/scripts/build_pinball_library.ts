@@ -2,7 +2,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import Papa from "papaparse";
-import { PLAYFIELD_MAP } from "./playfield-map";
 
 type RawRow = {
   Group?: unknown;
@@ -51,8 +50,10 @@ type LibraryItem = {
   videos: LibraryVideo[];
 };
 
-const PLAYFIELD_SRC_DIR = path.resolve("playfield-archive");
-const PLAYFIELD_DEST_DIR = path.resolve("public/pinball/images/playfields");
+const SHARED_PINBALL_DIR = path.resolve("../shared/pinball");
+const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
+const SHARED_PINBALL_IMAGES_DIR = path.join(SHARED_PINBALL_DIR, "images", "playfields");
+const SUPPORTED_PLAYFIELD_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 
 function slugify(input: string): string {
   return input
@@ -124,32 +125,32 @@ function isBlankRow(row: RawRow): boolean {
 }
 
 function hostedPlayfieldPath(slug: string): string | null {
-  const srcFile = PLAYFIELD_MAP[slug];
-  if (!srcFile) return null;
-  const ext = path.extname(srcFile);
-  if (!ext) return null;
-  return `/pinball/images/playfields/${slug}${ext}`;
+  for (const ext of SUPPORTED_PLAYFIELD_EXTENSIONS) {
+    const candidate = path.join(SHARED_PINBALL_IMAGES_DIR, `${slug}${ext}`);
+    if (fs.existsSync(candidate)) {
+      return `/pinball/images/playfields/${slug}${ext}`;
+    }
+  }
+  return null;
 }
 
 function resolveCsvPath(): string {
   // CLI usage:
-  //   tsx scripts/build_pinball_library.ts "Avenue Pinball - Current.csv"
-  // or:
-  //   tsx scripts/build_pinball_library.ts public/pinball/data/"Avenue Pinball - Current.csv"
+  //   tsx scripts/build_pinball_library.ts "../shared/pinball/data/Avenue Pinball - Current.csv"
   const arg = process.argv[2];
   if (arg) return path.resolve(arg);
 
   // Preferred default (new Google export name)
-  const preferred = path.resolve("public/pinball/data/Avenue Pinball - Current.csv");
+  const preferred = path.join(SHARED_PINBALL_DATA_DIR, "Avenue Pinball - Current.csv");
   if (fs.existsSync(preferred)) return preferred;
 
   // Backward-compatible fallback
-  return path.resolve("public/pinball/data/pinball_library.csv");
+  return path.join(SHARED_PINBALL_DATA_DIR, "pinball_library.csv");
 }
 
 function main() {
   const csvPath = resolveCsvPath();
-  const outPath = path.resolve("public/pinball/data/pinball_library.json");
+  const outPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library.json");
 
   if (!fs.existsSync(csvPath)) {
     throw new Error(`Missing CSV at: ${csvPath}`);
@@ -223,29 +224,6 @@ function main() {
 
     return a.name.localeCompare(b.name);
   });
-
-  // Copy playfield images based on mapping (no conversion)
-  fs.mkdirSync(PLAYFIELD_DEST_DIR, { recursive: true });
-
-  for (const item of items) {
-    const srcFile = PLAYFIELD_MAP[item.slug];
-    if (!srcFile) {
-      console.warn(`No playfield mapping for slug: ${item.slug}`);
-      continue;
-    }
-
-    const srcPath = path.join(PLAYFIELD_SRC_DIR, srcFile);
-    if (!fs.existsSync(srcPath)) {
-      console.warn(`Mapped playfield not found: ${srcPath}`);
-      continue;
-    }
-
-    const ext = path.extname(srcFile);
-    const destPath = path.join(PLAYFIELD_DEST_DIR, `${item.slug}${ext}`);
-
-    if (fs.existsSync(destPath)) continue; // do not overwrite
-    fs.copyFileSync(srcPath, destPath);
-  }
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(items, null, 2), "utf8");

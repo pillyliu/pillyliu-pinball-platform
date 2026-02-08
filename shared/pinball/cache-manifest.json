@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-08T04:53:23.417Z",
+  "generatedAt": "2026-02-08T05:00:57.217Z",
   "source": "shared/pinball",
   "totalFiles": 210,
   "files": {
@@ -35,9 +35,9 @@
       "contentType": "text/csv"
     },
     "/pinball/data/pinball_library.json": {
-      "hash": "a95c4f4ab51fefda3627717a78a3a173cba5557da306867a887dadd396542249",
-      "size": 29869,
-      "mtimeMs": 1770489727680,
+      "hash": "7ca7bfa1c96444a9972ab6305386b25c386d8e392a4808c079bc3940727f0341",
+      "size": 29407,
+      "mtimeMs": 1770526781361,
       "contentType": "application/json"
     },
     "/pinball/gameinfo/ac-dc.md": {

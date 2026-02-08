@@ -6,8 +6,8 @@ import * as cheerio from "cheerio";
 
 const URLS_FILE = path.resolve("tiltforums_urls.txt");
 
-// Output folder in your Vite app
-const OUT_DIR = path.resolve("../../public/pinball/rulesheets");
+// Canonical output folder for deployed shared pinball data
+const OUT_DIR = path.resolve("../../shared/pinball/rulesheets");
 const TMP_DIR = path.resolve("./tmp_html");
 
 function normalizeTopicUrl(u) {

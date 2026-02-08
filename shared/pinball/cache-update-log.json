@@ -2,6 +2,28 @@
   "schemaVersion": 1,
   "events": [
     {
+      "generatedAt": "2026-02-08T05:00:57.217Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 210,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-08T04:59:44.994Z",
+      "addedCount": 0,
+      "changedCount": 1,
+      "removedCount": 0,
+      "totalFiles": 210,
+      "added": [],
+      "changed": [
+        "/pinball/data/pinball_library.json"
+      ],
+      "removed": []
+    },
+    {
       "generatedAt": "2026-02-08T04:53:23.417Z",
       "addedCount": 0,
       "changedCount": 0,
@@ -1023,30 +1045,10 @@
       "added": [],
       "changed": [],
       "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T18:52:47.913Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 171,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T18:52:45.436Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 171,
-      "added": [],
-      "changed": [],
-      "removed": []
     }
   ],
   "latest": {
-    "generatedAt": "2026-02-08T04:53:23.417Z",
+    "generatedAt": "2026-02-08T05:00:57.217Z",
     "addedCount": 0,
     "changedCount": 0,
     "removedCount": 0,
