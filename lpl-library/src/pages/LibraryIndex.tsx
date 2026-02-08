@@ -232,7 +232,7 @@ export default function LibraryIndex() {
                     <div className="mb-6 h-px w-full bg-white/55" />
                   )}
 
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
                     {section.games.map((g) => {
                       const image = playfieldImageSources(g.slug, g.playfieldLocal);
                       return (
@@ -245,7 +245,7 @@ export default function LibraryIndex() {
                             <img
                               src={image.src}
                               srcSet={image.srcSet}
-                              sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                              sizes="(min-width: 1024px) 325px, 50vw"
                               alt={`${g.name} playfield`}
                               className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                               onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
@@ -284,7 +284,7 @@ export default function LibraryIndex() {
                     <div className="mb-6 h-px w-full bg-white/55" />
                   )}
 
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
                     {section.games.map((g) => {
                       const image = playfieldImageSources(g.slug, g.playfieldLocal);
                       return (
@@ -297,7 +297,7 @@ export default function LibraryIndex() {
                             <img
                               src={image.src}
                               srcSet={image.srcSet}
-                              sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                              sizes="(min-width: 1024px) 325px, 50vw"
                               alt={`${g.name} playfield`}
                               className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                               onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
@@ -329,7 +329,7 @@ export default function LibraryIndex() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {filtered.map((g) => {
                 const image = playfieldImageSources(g.slug, g.playfieldLocal);
                 return (
@@ -342,7 +342,7 @@ export default function LibraryIndex() {
                       <img
                         src={image.src}
                         srcSet={image.srcSet}
-                        sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1024px) 325px, 50vw"
                         alt={`${g.name} playfield`}
                         className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                         onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
