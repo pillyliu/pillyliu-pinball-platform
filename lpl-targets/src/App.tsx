@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchPinballText, prefetchPinballTextAssets } from "../../shared/ui/pinballCache";
+import { fetchPinballJson, fetchPinballText, prefetchPinballTextAssets } from "../../shared/ui/pinballCache";
 import {
   CONTROL_INPUT_CLASS,
+  CONTROL_SELECT_CLASS,
   PRIMARY_BUTTON_CLASS,
   Panel,
   SiteShell,
@@ -17,9 +18,26 @@ type TargetRow = {
   eighthHighestAvg: number;
 };
 
+type GameMeta = {
+  name: string;
+  group?: number | null;
+  pos?: number | null;
+  bank?: number | null;
+};
+
+type SortMode = "location" | "bank" | "alphabetical";
+
+type EnrichedTargetRow = TargetRow & {
+  group: number | null;
+  pos: number | null;
+  bank: number | null;
+};
+
 export default function App() {
   const [rows, setRows] = useState<TargetRow[]>([]);
+  const [metaRows, setMetaRows] = useState<GameMeta[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [sortMode, setSortMode] = useState<SortMode>("location");
 
   const cfgMode = useMemo(() => {
     try {
@@ -35,6 +53,12 @@ export default function App() {
 
   useEffect(() => {
     prefetchPinballTextAssets(["/pinball/data"]).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    fetchPinballJson<GameMeta[]>("/pinball/data/pinball_library.json")
+      .then((data) => setMetaRows(Array.isArray(data) ? data : []))
+      .catch(() => setMetaRows([]));
   }, []);
 
   useEffect(() => {
@@ -54,6 +78,9 @@ export default function App() {
     localStorage.setItem("targets_csv_url", dataUrl);
     setDataUrl(dataUrl);
   }
+
+  const metaByName = useMemo(() => buildMetaByName(metaRows), [metaRows]);
+  const sortedRows = useMemo(() => sortRows(rows, metaByName, sortMode), [rows, metaByName, sortMode]);
 
   return (
     <SiteShell
@@ -94,6 +121,27 @@ export default function App() {
           For each game, scores are derived from per-bank results using 2nd / 4th / 8th highest averages
           with sample-size adjustments.
         </p>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <label htmlFor="targets-sort-mode" className="text-sm font-medium text-neutral-300">
+            Sort by
+          </label>
+          <div className="relative w-full min-[460px]:w-auto min-[460px]:min-w-[16rem]">
+            <select
+              id="targets-sort-mode"
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className={CONTROL_SELECT_CLASS}
+              aria-label="Sort targets table"
+            >
+              <option value="location">Location (Group, Pos)</option>
+              <option value="bank">Bank (then Location)</option>
+              <option value="alphabetical">Alphabetical (Game)</option>
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
+        </div>
         <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-400">
           <span className="inline-flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full border border-emerald-400/80 bg-emerald-400/20" />
@@ -115,15 +163,19 @@ export default function App() {
           <thead className="sticky top-0 bg-neutral-950">
             <tr className="text-left text-neutral-400 border-b border-neutral-800">
               <th className="py-2 px-4">Game</th>
+              <th className="py-2 px-4">Location</th>
+              <th className="py-2 px-4">Bank</th>
               <th className="py-2 px-4">2nd Highest Avg</th>
               <th className="py-2 px-4">4th Highest Avg</th>
               <th className="py-2 px-4">8th Highest Avg</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {sortedRows.map((row) => (
               <tr key={row.game} className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25">
                 <td className="py-2 px-4 text-neutral-100">{row.game}</td>
+                <td className="py-2 px-4 tabular-nums text-neutral-300">{formatLocation(row.group, row.pos)}</td>
+                <td className="py-2 px-4 tabular-nums text-neutral-300">{formatBank(row.bank)}</td>
                 <td className="py-2 px-4 tabular-nums text-emerald-200 font-medium">{formatNumber(row.secondHighestAvg)}</td>
                 <td className="py-2 px-4 tabular-nums text-sky-200">{formatNumber(row.fourthHighestAvg)}</td>
                 <td className="py-2 px-4 tabular-nums text-neutral-200/90">{formatNumber(row.eighthHighestAvg)}</td>
@@ -131,7 +183,7 @@ export default function App() {
             ))}
             {!rows.length && (
               <tr>
-                <td colSpan={4} className="py-6 text-center text-neutral-500">
+                <td colSpan={6} className="py-6 text-center text-neutral-500">
                   No rows. Check CSV path and content.
                 </td>
               </tr>
@@ -154,6 +206,105 @@ export default function App() {
 function formatNumber(value: number): string {
   if (!Number.isFinite(value)) return "-";
   return Math.round(value).toLocaleString();
+}
+
+function formatLocation(group: number | null, pos: number | null): string {
+  if (!Number.isFinite(group ?? Number.NaN) || !Number.isFinite(pos ?? Number.NaN)) return "-";
+  return `${group}:${pos}`;
+}
+
+function formatBank(bank: number | null): string {
+  if (!Number.isFinite(bank ?? Number.NaN) || (bank ?? 0) <= 0) return "-";
+  return String(bank);
+}
+
+function sortRows(
+  rows: TargetRow[],
+  metaByName: Map<string, GameMeta>,
+  sortMode: SortMode
+): EnrichedTargetRow[] {
+  const enriched: EnrichedTargetRow[] = rows.map((row) => {
+    const meta = metaByName.get(normalizeGameName(row.game));
+    return {
+      ...row,
+      group: typeof meta?.group === "number" ? meta.group : null,
+      pos: typeof meta?.pos === "number" ? meta.pos : null,
+      bank: typeof meta?.bank === "number" ? meta.bank : null,
+    };
+  });
+
+  enriched.sort((a, b) => {
+    if (sortMode === "alphabetical") {
+      return alpha(a.game, b.game);
+    }
+
+    if (sortMode === "bank") {
+      return (
+        compareMaybeNumber(a.bank, b.bank) ||
+        compareMaybeNumber(a.group, b.group) ||
+        compareMaybeNumber(a.pos, b.pos) ||
+        alpha(a.game, b.game)
+      );
+    }
+
+    return (
+      compareMaybeNumber(a.group, b.group) ||
+      compareMaybeNumber(a.pos, b.pos) ||
+      alpha(a.game, b.game)
+    );
+  });
+
+  return enriched;
+}
+
+function buildMetaByName(rows: GameMeta[]): Map<string, GameMeta> {
+  const map = new Map<string, GameMeta>();
+  for (const row of rows) {
+    const canonical = normalizeGameName(row.name ?? "");
+    if (!canonical) continue;
+    map.set(canonical, row);
+  }
+
+  for (const [source, target] of Object.entries(NAME_ALIASES)) {
+    const canonicalTarget = normalizeGameName(target);
+    const meta = map.get(canonicalTarget);
+    if (!meta) continue;
+    map.set(normalizeGameName(source), meta);
+  }
+
+  return map;
+}
+
+const NAME_ALIASES: Record<string, string> = {
+  "Uncanny X-Men": "The Uncanny X-Men",
+  "Jurassic Park (Stern 2019)": "Jurassic Park",
+  "Star Wars (2017)": "Star Wars",
+  "James Bond": "James Bond 007",
+  "Indiana Jones": "Indiana Jones: The Pinball Adventure",
+  "Dungeons and Dragons": "Dungeons & Dragons: The Tyrant's Eye",
+  "The Getaway": "The Getaway: High Speed II",
+  "Attack From Mars": "Attack from Mars",
+  Tron: "Tron: Legacy",
+  TMNT: "Teenage Mutant Ninja Turtles",
+  "Fall of the Empire": "Star Wars: Fall of the Empire",
+};
+
+function normalizeGameName(value: string): string {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function compareMaybeNumber(a: number | null, b: number | null): number {
+  const left = typeof a === "number" && Number.isFinite(a) ? a : Number.MAX_SAFE_INTEGER;
+  const right = typeof b === "number" && Number.isFinite(b) ? b : Number.MAX_SAFE_INTEGER;
+  return left - right;
+}
+
+function alpha(a: string, b: string): number {
+  return a.localeCompare(b, undefined, { sensitivity: "base" });
 }
 
 function parseTargetsCSV(text: string): TargetRow[] {
