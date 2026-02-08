@@ -38,6 +38,7 @@ export default function App() {
   const [metaRows, setMetaRows] = useState<GameMeta[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [sortMode, setSortMode] = useState<SortMode>("location");
+  const [bankFilter, setBankFilter] = useState<number | "all">("all");
 
   const cfgMode = useMemo(() => {
     try {
@@ -81,6 +82,20 @@ export default function App() {
 
   const metaByName = useMemo(() => buildMetaByName(metaRows), [metaRows]);
   const sortedRows = useMemo(() => sortRows(rows, metaByName, sortMode), [rows, metaByName, sortMode]);
+  const bankOptions = useMemo<number[]>(() => {
+    const s = new Set<number>();
+    for (const row of sortedRows) {
+      if (typeof row.bank === "number" && Number.isFinite(row.bank) && row.bank > 0) s.add(row.bank);
+    }
+    return Array.from(s).sort((a, b) => a - b);
+  }, [sortedRows]);
+  const filteredRows = useMemo(
+    () =>
+      sortedRows.filter(
+        (row) => bankFilter === "all" || (typeof row.bank === "number" && row.bank === bankFilter)
+      ),
+    [sortedRows, bankFilter]
+  );
 
   return (
     <SiteShell
@@ -135,11 +150,8 @@ export default function App() {
             <strong className="text-neutral-300">8th Highest Avg</strong> - Solid floor
           </span>
         </div>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <label htmlFor="targets-sort-mode" className="text-sm font-medium text-neutral-300">
-            Sort by
-          </label>
-          <div className="relative w-full min-[460px]:w-auto min-[460px]:min-w-[8rem]">
+        <div className="mt-4 grid w-full grid-cols-2 gap-3 sm:max-w-[30rem]">
+          <div className="relative">
             <select
               id="targets-sort-mode"
               value={sortMode}
@@ -147,9 +159,30 @@ export default function App() {
               className={`${CONTROL_SELECT_CLASS} min-w-[8rem] py-2 text-sm`}
               aria-label="Sort targets table"
             >
-              <option value="location">Location (Group, Pos)</option>
-              <option value="bank">Bank (then Location)</option>
-              <option value="alphabetical">Alphabetical (Game)</option>
+              <option value="location">Sort: Location</option>
+              <option value="bank">Sort: Bank</option>
+              <option value="alphabetical">Sort: Alphabetical</option>
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
+          <div className="relative">
+            <select
+              value={bankFilter === "all" ? "all" : String(bankFilter)}
+              onChange={(e) => {
+                const v = e.target.value;
+                setBankFilter(v === "all" ? "all" : Number(v));
+              }}
+              className={`${CONTROL_SELECT_CLASS} min-w-[8rem] py-2 text-sm`}
+              aria-label="Filter targets by bank"
+            >
+              <option value="all">All banks</option>
+              {bankOptions.map((b) => (
+                <option key={b} value={String(b)}>
+                  Bank {b}
+                </option>
+              ))}
             </select>
             <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
               ▾
@@ -171,7 +204,7 @@ export default function App() {
             </tr>
           </thead>
           <tbody>
-            {sortedRows.map((row) => (
+            {filteredRows.map((row) => (
               <tr key={row.game} className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25">
                 <td className="py-2 px-4 text-neutral-100">{row.game}</td>
                 <td className="py-2 px-4 tabular-nums text-neutral-300">{formatLocation(row.group, row.pos)}</td>
@@ -181,7 +214,7 @@ export default function App() {
                 <td className="py-2 px-4 tabular-nums text-neutral-200/90">{formatNumber(row.eighthHighestAvg)}</td>
               </tr>
             ))}
-            {!rows.length && (
+            {!filteredRows.length && (
               <tr>
                 <td colSpan={6} className="py-6 text-center text-neutral-500">
                   No rows. Check CSV path and content.
