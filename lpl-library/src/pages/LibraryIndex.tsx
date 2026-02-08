@@ -63,9 +63,7 @@ function metaLine(g: Game): string {
 function playfieldImageSources(slug: string, fallback: string) {
   const base = `/pinball/images/playfields/${slug}`;
   return {
-    base,
     src: `${base}_700.webp`,
-    srcSet: `${base}_700.webp 700w, ${base}_1400.webp 1400w, ${fallback} 2400w`,
     fallback,
   };
 }
@@ -244,15 +242,13 @@ export default function LibraryIndex() {
                           <div className="aspect-[16/9] bg-neutral-800">
                             <img
                               src={image.src}
-                              srcSet={image.srcSet}
-                              sizes="(min-width: 1024px) 325px, 50vw"
+                              loading="lazy"
+                              decoding="async"
                               alt={`${g.name} playfield`}
                               className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                               onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
                               onError={(e) => {
                                 const el = e.currentTarget as HTMLImageElement;
-                                el.removeAttribute("srcset");
-                                el.removeAttribute("sizes");
                                 el.src = image.fallback;
                               }}
                             />
@@ -296,15 +292,13 @@ export default function LibraryIndex() {
                           <div className="aspect-[16/9] bg-neutral-800">
                             <img
                               src={image.src}
-                              srcSet={image.srcSet}
-                              sizes="(min-width: 1024px) 325px, 50vw"
+                              loading="lazy"
+                              decoding="async"
                               alt={`${g.name} playfield`}
                               className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                               onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
                               onError={(e) => {
                                 const el = e.currentTarget as HTMLImageElement;
-                                el.removeAttribute("srcset");
-                                el.removeAttribute("sizes");
                                 el.src = image.fallback;
                               }}
                             />
@@ -341,15 +335,13 @@ export default function LibraryIndex() {
                     <div className="aspect-[16/9] bg-neutral-800">
                       <img
                         src={image.src}
-                        srcSet={image.srcSet}
-                        sizes="(min-width: 1024px) 325px, 50vw"
+                        loading="lazy"
+                        decoding="async"
                         alt={`${g.name} playfield`}
                         className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
                         onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
                         onError={(e) => {
                           const el = e.currentTarget as HTMLImageElement;
-                          el.removeAttribute("srcset");
-                          el.removeAttribute("sizes");
                           el.src = image.fallback;
                         }}
                       />
