@@ -179,7 +179,7 @@ export default function App() {
       )}
 
       <Panel className="p-4">
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-[minmax(0,3fr)_minmax(0,7fr)] gap-x-3 gap-y-2 lg:grid-cols-4 lg:gap-2">
           <Filter
             label="Season"
             value={season}
@@ -212,7 +212,7 @@ export default function App() {
               <tr className="border-b border-neutral-800 text-left text-neutral-300">
                 <th className="px-4 py-3">Season</th>
                 <th className="px-4 py-3">Player</th>
-                <th className="px-4 py-3">Bank #</th>
+                <th className="px-4 py-3">Bank</th>
                 <th className="px-4 py-3">Machine</th>
                 <th className="px-4 py-3">Score</th>
                 <th className="px-4 py-3">Points</th>
@@ -246,18 +246,11 @@ export default function App() {
         <Panel className="p-4">
           <SectionTitle className="mb-3">Machine Stats</SectionTitle>
           {machine || bankNumber ? (
-            <div className="space-y-4">
-              <StatsSection
-                title="Selected Bank"
-                subtitle={`${season || "Season"} - Bank ${bankNumber || "?"}`}
-                stats={bankStats}
-              />
-              <StatsSection
-                title="Historical (All Seasons)"
-                subtitle="All seasons"
-                stats={machineStats}
-              />
-            </div>
+            <MachineStatsTable
+              selectedLabel={`S${seasonNumber(season || "?")} B${bankNumber || "?"}`}
+              seasonStats={bankStats}
+              allSeasonsStats={machineStats}
+            />
           ) : (
             <p className="text-sm text-neutral-500">Select a bank or machine to view detailed stats.</p>
           )}
@@ -286,13 +279,18 @@ function Filter({
   }
 
   return (
-    <div className="min-w-0">
+    <div className="min-w-0 w-full">
       <div className="relative">
-        <select value={value} onChange={onChange} className={CONTROL_SELECT_CLASS}>
-          <option value="">{`${label}: All`}</option>
+        <select
+          value={value}
+          onChange={onChange}
+          style={{ minWidth: 0 }}
+          className={`${CONTROL_SELECT_CLASS} min-w-0 w-full max-w-full`}
+        >
+          <option value="">{formatAllFilterOption(label)}</option>
           {opts.map((opt) => (
             <option key={String(opt)} value={String(opt)}>
-              {`${label}: ${formatFilterValue(label, opt)}`}
+              {formatFilterOption(label, opt)}
             </option>
           ))}
         </select>
@@ -309,50 +307,111 @@ function formatFilterValue(label: string, value: string | number): string {
   return String(value);
 }
 
+function formatFilterOption(label: string, value: string | number): string {
+  const formatted = formatFilterValue(label, value);
+  if (label === "Season") return `S${formatted}`;
+  if (label === "Bank") return `B${formatted}`;
+  if (label === "Player" || label === "Machine") return formatted;
+  return `${label}: ${formatted}`;
+}
+
+function formatAllFilterOption(label: string): string {
+  if (label === "Season") return "S: All";
+  if (label === "Bank") return "B: All";
+  return `${label}: All`;
+}
+
 function seasonNumber(season: string): string {
   const match = season.match(/\d+/);
   return match ? match[0] : season;
 }
 
-function StatsSection({
-  title,
-  subtitle,
-  stats,
+function MachineStatsTable({
+  selectedLabel,
+  seasonStats,
+  allSeasonsStats,
 }: {
-  title: string;
-  subtitle: string;
-  stats: StatResult;
+  selectedLabel: string;
+  seasonStats: StatResult;
+  allSeasonsStats: StatResult;
 }) {
-  return (
-    <section className="rounded-xl border border-neutral-800 bg-neutral-950/70 p-3">
-      <h3 className="text-sm font-semibold text-neutral-200">{title}</h3>
-      <p className="mt-1 text-xs text-neutral-500">{subtitle}</p>
+  const rows: Array<{
+    label: string;
+    tone?: "high" | "low" | "mid";
+    seasonValue: string | number;
+    seasonSub?: string | null;
+    allValue: string | number;
+    allSub?: string | null;
+  }> = [
+    {
+      label: "High",
+      tone: "high",
+      seasonValue: formatScore(seasonStats.high),
+      seasonSub: seasonStats.highPlayer,
+      allValue: formatScore(allSeasonsStats.high),
+      allSub: allSeasonsStats.highPlayer,
+    },
+    {
+      label: "Low",
+      tone: "low",
+      seasonValue: formatScore(seasonStats.low),
+      seasonSub: seasonStats.lowPlayer,
+      allValue: formatScore(allSeasonsStats.low),
+      allSub: allSeasonsStats.lowPlayer,
+    },
+    {
+      label: "Avg",
+      tone: "mid",
+      seasonValue: formatScore(seasonStats.mean),
+      allValue: formatScore(allSeasonsStats.mean),
+    },
+    {
+      label: "Med",
+      tone: "mid",
+      seasonValue: formatScore(seasonStats.median),
+      allValue: formatScore(allSeasonsStats.median),
+    },
+    {
+      label: "Std",
+      seasonValue: formatScore(seasonStats.std),
+      allValue: formatScore(allSeasonsStats.std),
+    },
+    {
+      label: "Count",
+      seasonValue: seasonStats.count.toLocaleString(),
+      allValue: allSeasonsStats.count.toLocaleString(),
+    },
+  ];
 
-      {stats.count === 0 ? (
-        <p className="mt-3 text-sm text-neutral-500">No data for current filters.</p>
-      ) : (
-        <table className="mt-3 w-full text-sm">
-          <tbody>
-            <StatRow label="High" value={formatScore(stats.high)} sub={stats.highPlayer} tone="high" />
-            <StatRow label="Low" value={formatScore(stats.low)} sub={stats.lowPlayer} tone="low" />
-            <StatRow label="Mean" value={formatScore(stats.mean)} tone="mid" />
-            <StatRow label="Median" value={formatScore(stats.median)} tone="mid" />
-            <StatRow label="Std Dev" value={formatScore(stats.std)} />
-            <StatRow label="Count" value={stats.count} />
-          </tbody>
-        </table>
-      )}
-    </section>
+  return (
+    <div className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950/70">
+      <table className="min-w-full text-sm">
+        <thead>
+          <tr className="text-left text-xs uppercase tracking-wide text-neutral-400">
+            <th className="w-[24%] px-3 py-2.5 font-medium sm:px-4" />
+            <th className="w-[38%] px-3 py-2.5 font-medium sm:px-4">{selectedLabel}</th>
+            <th className="w-[38%] px-3 py-2.5 font-medium sm:px-4">All Seasons</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.label} className="align-top odd:bg-neutral-900/45">
+              <td className="px-3 py-2.5 text-neutral-300 sm:px-4">{row.label}</td>
+              <StatValueCell value={row.seasonValue} sub={row.seasonSub} tone={row.tone} />
+              <StatValueCell value={row.allValue} sub={row.allSub} tone={row.tone} />
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
-function StatRow({
-  label,
+function StatValueCell({
   value,
   sub,
   tone,
 }: {
-  label: string;
   value: string | number;
   sub?: string | null;
   tone?: "high" | "low" | "mid";
@@ -367,13 +426,10 @@ function StatRow({
           : "text-neutral-200";
 
   return (
-    <tr className="border-b border-neutral-800 last:border-b-0">
-      <td className="py-2 text-neutral-400">{label}</td>
-      <td className={`py-2 text-right tabular-nums ${toneClass}`}>
-        {value}
-        {sub ? <div className="text-xs text-neutral-500">by {sub}</div> : null}
-      </td>
-    </tr>
+    <td className={`px-3 py-2.5 tabular-nums ${toneClass} sm:px-4`}>
+      <div>{value}</div>
+      {sub ? <div className="text-xs text-neutral-500">{sub}</div> : null}
+    </td>
   );
 }
 

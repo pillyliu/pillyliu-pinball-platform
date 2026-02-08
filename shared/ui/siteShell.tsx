@@ -1,7 +1,12 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { NavLabel } from "./navLinks";
 
 type NavItem = { href: string; label: NavLabel };
+
+const SHELL_SIDE_INSET_STYLE: CSSProperties = {
+  paddingLeft: "max(1rem, env(safe-area-inset-left))",
+  paddingRight: "max(1rem, env(safe-area-inset-right))",
+};
 
 function cn(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
@@ -31,7 +36,10 @@ export function SiteShell({
       }}
     >
       <header className="sticky top-0 z-20 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+        <div
+          className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 py-4"
+          style={SHELL_SIDE_INSET_STYLE}
+        >
           <div>
             <div className="text-xs uppercase tracking-[0.18em] text-neutral-500">{brandLabel}</div>
             <h1 className="text-lg font-bold tracking-tight">{title}</h1>
@@ -58,13 +66,15 @@ export function SiteShell({
           </nav>
         </div>
         {controls ? (
-          <div className="mx-auto flex max-w-screen-2xl justify-end px-4 pb-4">
+          <div className="mx-auto flex max-w-screen-2xl justify-end pb-4" style={SHELL_SIDE_INSET_STYLE}>
             {controls}
           </div>
         ) : null}
       </header>
 
-      <main className="mx-auto max-w-screen-2xl px-4 py-6 grid gap-6">{children}</main>
+      <main className="mx-auto grid max-w-screen-2xl gap-6 py-6" style={SHELL_SIDE_INSET_STYLE}>
+        {children}
+      </main>
     </div>
   );
 }
