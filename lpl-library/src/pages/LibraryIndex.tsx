@@ -34,6 +34,8 @@ type GroupSection = {
   games: Game[];
 };
 
+type SortMode = "location" | "bank" | "alphabetical";
+
 function locationText(group: number | null, pos?: number | null): string | null {
   if (typeof group !== "number" || typeof pos !== "number") return null;
   const floor = group >= 1 && group <= 4 ? "U" : "D";
@@ -63,10 +65,17 @@ function playfieldImageSources(slug: string, fallback: string) {
   };
 }
 
+function compareMaybeNumber(a: number | null | undefined, b: number | null | undefined): number {
+  const left = typeof a === "number" && Number.isFinite(a) ? a : Number.MAX_SAFE_INTEGER;
+  const right = typeof b === "number" && Number.isFinite(b) ? b : Number.MAX_SAFE_INTEGER;
+  return left - right;
+}
+
 export default function LibraryIndex() {
   const [games, setGames] = useState<Game[]>([]);
   const [q, setQ] = useState("");
   const [bank, setBank] = useState<number | "all">("all");
+  const [sortMode, setSortMode] = useState<SortMode>("location");
 
   useEffect(() => {
     fetchPinballJson<Game[]>("/pinball/data/pinball_library.json")
@@ -89,7 +98,7 @@ export default function LibraryIndex() {
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return games.filter((g) => {
+    const scoped = games.filter((g) => {
       const matchesQuery =
         !query ||
         `${g.name} ${g.manufacturer ?? ""} ${g.year ?? ""}`
@@ -101,7 +110,28 @@ export default function LibraryIndex() {
 
       return matchesQuery && matchesBank;
     });
-  }, [games, q, bank]);
+
+    return [...scoped].sort((a, b) => {
+      if (sortMode === "alphabetical") {
+        return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+      }
+
+      if (sortMode === "bank") {
+        return (
+          compareMaybeNumber(a.bank, b.bank) ||
+          compareMaybeNumber(a.group, b.group) ||
+          compareMaybeNumber(a.pos, b.pos) ||
+          a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+        );
+      }
+
+      return (
+        compareMaybeNumber(a.group, b.group) ||
+        compareMaybeNumber(a.pos, b.pos) ||
+        a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+      );
+    });
+  }, [games, q, bank, sortMode]);
 
   const sections = useMemo<GroupSection[]>(() => {
     const out: GroupSection[] = [];
@@ -116,7 +146,7 @@ export default function LibraryIndex() {
     return out;
   }, [filtered]);
 
-  const showGroupedView = bank === "all";
+  const showGroupedView = bank === "all" && sortMode === "location";
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
@@ -124,7 +154,7 @@ export default function LibraryIndex() {
       <PageContainer>
         <h2 className="text-2xl font-semibold">Browse Machines</h2>
 
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="mt-4 flex flex-col gap-3">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -132,26 +162,44 @@ export default function LibraryIndex() {
             className={CONTROL_INPUT_CLASS}
           />
 
-          <div className="relative sm:w-48">
-            <select
-              value={bank === "all" ? "all" : String(bank)}
-              onChange={(e) => {
-                const v = e.target.value;
-                setBank(v === "all" ? "all" : Number(v));
-              }}
-              className={CONTROL_SELECT_CLASS}
-              aria-label="Filter by bank"
-            >
-              <option value="all">All banks</option>
-              {bankOptions.map((b) => (
-                <option key={b} value={String(b)}>
-                  Bank {b}
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-              ▾
-            </span>
+          <div className="grid grid-cols-2 gap-3 sm:max-w-[28rem]">
+            <div className="relative">
+              <select
+                value={sortMode}
+                onChange={(e) => setSortMode(e.target.value as SortMode)}
+                className={CONTROL_SELECT_CLASS}
+                aria-label="Sort games"
+              >
+                <option value="location">Sort: Location</option>
+                <option value="bank">Sort: Bank</option>
+                <option value="alphabetical">Sort: Alphabetical</option>
+              </select>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                ▾
+              </span>
+            </div>
+
+            <div className="relative">
+              <select
+                value={bank === "all" ? "all" : String(bank)}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setBank(v === "all" ? "all" : Number(v));
+                }}
+                className={CONTROL_SELECT_CLASS}
+                aria-label="Filter by bank"
+              >
+                <option value="all">All banks</option>
+                {bankOptions.map((b) => (
+                  <option key={b} value={String(b)}>
+                    Bank {b}
+                  </option>
+                ))}
+              </select>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                ▾
+              </span>
+            </div>
           </div>
         </div>
 

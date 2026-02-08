@@ -1,9 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-08T05:40:41.386Z",
+  "generatedAt": "2026-02-08T16:51:45.767Z",
   "source": "shared/pinball",
-  "totalFiles": 210,
+  "totalFiles": 212,
   "files": {
+    "/pinball/.DS_Store": {
+      "hash": "79713b91656ac9c2c3d38209837c7662e42f27def506982ceecb5c2402116d08",
+      "size": 6148,
+      "mtimeMs": 1770562160644,
+      "contentType": "application/octet-stream"
+    },
     "/pinball/data/Avenue Pinball - Current.csv": {
       "hash": "6dfd75f8c26e41dd862da5d8a1bca01b77235e0de110ce0bfe28bea4fb48a4b6",
       "size": 10832,
@@ -285,6 +291,12 @@
       "size": 584,
       "mtimeMs": 1770495566436,
       "contentType": "text/markdown"
+    },
+    "/pinball/images/.DS_Store": {
+      "hash": "7e8369f6fc3c177f48821b280de4a1ce5e9da19b9e0b6df18c2ec44d2b919658",
+      "size": 6148,
+      "mtimeMs": 1770560842223,
+      "contentType": "application/octet-stream"
     },
     "/pinball/images/playfields/ac-dc.jpg": {
       "hash": "3a3361dfb3848011fb20acd1bc21cfb4ea0b099384ea2108413ad27006bc154e",
