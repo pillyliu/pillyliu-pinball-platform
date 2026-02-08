@@ -34,6 +34,11 @@ type GroupSection = {
   games: Game[];
 };
 
+type BankSection = {
+  bankKey: number | null;
+  games: Game[];
+};
+
 type SortMode = "location" | "bank" | "alphabetical";
 
 function locationText(group: number | null, pos?: number | null): string | null {
@@ -146,7 +151,22 @@ export default function LibraryIndex() {
     return out;
   }, [filtered]);
 
+  const bankSections = useMemo<BankSection[]>(() => {
+    const out: BankSection[] = [];
+    for (const g of filtered) {
+      const key = typeof g.bank === "number" && Number.isFinite(g.bank) ? g.bank : null;
+      const last = out[out.length - 1];
+      if (!last || last.bankKey !== key) {
+        out.push({ bankKey: key, games: [g] });
+      } else {
+        last.games.push(g);
+      }
+    }
+    return out;
+  }, [filtered]);
+
   const showGroupedView = bank === "all" && sortMode === "location";
+  const showBankSectionedView = bank === "all" && sortMode === "bank";
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
@@ -154,15 +174,15 @@ export default function LibraryIndex() {
       <PageContainer>
         <h2 className="text-2xl font-semibold">Browse Machines</h2>
 
-        <div className="mt-4 flex flex-col gap-3">
+        <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search games…"
-            className={CONTROL_INPUT_CLASS}
+            className={`${CONTROL_INPUT_CLASS} md:flex-1`}
           />
 
-          <div className="grid grid-cols-2 gap-3 sm:max-w-[28rem]">
+          <div className="grid w-full grid-cols-2 gap-3 md:w-[28rem] md:flex-none">
             <div className="relative">
               <select
                 value={sortMode}
@@ -208,6 +228,58 @@ export default function LibraryIndex() {
             <div className="space-y-8">
               {sections.map((section, idx) => (
                 <div key={`${section.groupKey ?? "nogroup"}-${idx}`}>
+                  {idx > 0 && (
+                    <div className="mb-6 h-px w-full bg-white/55" />
+                  )}
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {section.games.map((g) => {
+                      const image = playfieldImageSources(g.slug, g.playfieldLocal);
+                      return (
+                        <Link
+                          key={g.slug}
+                          to={`/game/${g.slug}`}
+                          className="group rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 hover:ring-neutral-600 transition overflow-hidden"
+                        >
+                          <div className="aspect-[16/9] bg-neutral-800">
+                            <img
+                              src={image.src}
+                              srcSet={image.srcSet}
+                              sizes="(min-width: 1024px) 325px, (min-width: 640px) 50vw, 100vw"
+                              alt={`${g.name} playfield`}
+                              className="h-full w-full object-cover opacity-90 group-hover:opacity-100"
+                              onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
+                              onError={(e) => {
+                                const el = e.currentTarget as HTMLImageElement;
+                                el.removeAttribute("srcset");
+                                el.removeAttribute("sizes");
+                                el.src = image.fallback;
+                              }}
+                            />
+                          </div>
+
+                          <div className="p-4">
+                            <div className="text-lg font-semibold">{g.name}</div>
+
+                            <div className="mt-1 text-sm text-neutral-400">
+                              {metaLine(g)}
+                            </div>
+
+                            <div className="mt-3 text-sm text-neutral-300">
+                              Videos: {g.videos.length}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : showBankSectionedView ? (
+            <div className="space-y-8">
+              {bankSections.map((section, idx) => (
+                <div key={`${section.bankKey ?? "nobank"}-${idx}`}>
                   {idx > 0 && (
                     <div className="mb-6 h-px w-full bg-white/55" />
                   )}
