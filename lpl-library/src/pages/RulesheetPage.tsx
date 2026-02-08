@@ -49,33 +49,47 @@ function scrollToHash(hash: string) {
 
 export default function RulesheetPage() {
   const { slug } = useParams();
-  const [md, setMd] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [rulesheetState, setRulesheetState] = useState<{
+    slug: string | null;
+    md: string | null;
+    status: "idle" | "loaded" | "missing";
+  }>({
+    slug: null,
+    md: null,
+    status: "idle",
+  });
 
   useEffect(() => {
     if (!slug) return;
-
-    setLoading(true);
     fetchPinballText(`/pinball/rulesheets/${slug}.md`)
       .then((text) => {
-        setMd(text ? normalizeRulesheet(text) : null);
-        setLoading(false);
+        setRulesheetState({
+          slug,
+          md: text ? normalizeRulesheet(text) : null,
+          status: "loaded",
+        });
       })
       .catch(() => {
-        setMd(null);
-        setLoading(false);
+        setRulesheetState({
+          slug,
+          md: null,
+          status: "missing",
+        });
       });
   }, [slug]);
 
   useEffect(() => {
-    if (!md) return;
+    if (!rulesheetState.md) return;
     if (!window.location.hash) return;
     const timer = window.setTimeout(() => scrollToHash(window.location.hash), 0);
     return () => window.clearTimeout(timer);
-  }, [md]);
+  }, [rulesheetState.md]);
 
-  const sanitizeSchema: any = useMemo(() => {
-    const base: any = defaultSchema as any;
+  const sanitizeSchema = useMemo(() => {
+    const base = defaultSchema as {
+      tagNames?: string[];
+      attributes?: Record<string, string[] | undefined>;
+    };
 
     // Your rulesheets include raw HTML anchors like:
     // <span id="heading--..."></span>
@@ -119,12 +133,12 @@ export default function RulesheetPage() {
       attributes: {
         ...attrs,
 
-        "*": [...((attrs["*"] as any[]) ?? []), "id", "class", "title"],
+        "*": [...(attrs["*"] ?? []), "id", "class", "title"],
 
-        a: [...((attrs.a as any[]) ?? []), "href", "target", "rel"],
+        a: [...(attrs.a ?? []), "href", "target", "rel"],
 
         img: [
-          ...((attrs.img as any[]) ?? []),
+          ...(attrs.img ?? []),
           "src",
           "alt",
           "width",
@@ -133,19 +147,22 @@ export default function RulesheetPage() {
           "decoding",
         ],
 
-        span: [...((attrs.span as any[]) ?? []), "id", "class"],
+        span: [...(attrs.span ?? []), "id", "class"],
 
-        div: [...((attrs.div as any[]) ?? []), "id", "class"],
+        div: [...(attrs.div ?? []), "id", "class"],
 
-        h1: [...((attrs.h1 as any[]) ?? []), "id", "class"],
-        h2: [...((attrs.h2 as any[]) ?? []), "id", "class"],
-        h3: [...((attrs.h3 as any[]) ?? []), "id", "class"],
-        h4: [...((attrs.h4 as any[]) ?? []), "id", "class"],
-        h5: [...((attrs.h5 as any[]) ?? []), "id", "class"],
-        h6: [...((attrs.h6 as any[]) ?? []), "id", "class"],
+        h1: [...(attrs.h1 ?? []), "id", "class"],
+        h2: [...(attrs.h2 ?? []), "id", "class"],
+        h3: [...(attrs.h3 ?? []), "id", "class"],
+        h4: [...(attrs.h4 ?? []), "id", "class"],
+        h5: [...(attrs.h5 ?? []), "id", "class"],
+        h6: [...(attrs.h6 ?? []), "id", "class"],
       },
     };
   }, []);
+
+  const loading = slug ? rulesheetState.slug !== slug : false;
+  const md = rulesheetState.slug === slug ? rulesheetState.md : null;
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>

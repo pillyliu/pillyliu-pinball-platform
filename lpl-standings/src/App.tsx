@@ -23,7 +23,7 @@ type StandRow = {
     rank?: string | number;
     eligible?: string | number;
     nights?: string | number;
-    [k: string]: any;
+    [k: string]: string | number | undefined;
 };
 
 type Standing = {
@@ -64,8 +64,9 @@ export default function App() {
                 if (demoMode) { setRows(parseStandingsCSV(DEMO_CSV)); return; }
                 const text = await fetchPinballText(dataUrl);
                 setRows(parseStandingsCSV(text));
-            } catch (e: any) {
-                setError(e?.message || "Failed to load standings CSV");
+            } catch (error: unknown) {
+                const message = error instanceof Error ? error.message : String(error ?? "");
+                setError(message || "Failed to load standings CSV");
                 setRows([]);
             }
         })();
@@ -89,7 +90,7 @@ export default function App() {
         const sel = rows.filter(r => coerceSeason(r.season) === season);
         if (!sel.length) return [];
 
-        const toNum = (v: any) => Number(v) || 0;
+        const toNum = (v: unknown) => Number(v) || 0;
         const mapped: Standing[] = sel.map(r => ({
             player: String(r.player ?? "").trim(),
             seasonTotal: toNum(r.total),
@@ -227,9 +228,9 @@ export default function App() {
 /* ========================= Helpers ========================= */
 
 function uniq<T>(array: T[]): T[] {
-    return Array.from(new Set(array as any));
+    return Array.from(new Set(array));
 }
-function coerceSeason(s: any): number {
+function coerceSeason(s: string | number | null | undefined): number {
     const m = String(s ?? "").match(/\d+/);
     return m ? Number(m[0]) : Number(s) || 0;
 }
@@ -258,11 +259,15 @@ function parseStandingsCSV(text: string): StandRow[] {
     for (const n of need)
         if (!headers.includes(n)) throw new Error(`Standings CSV missing column: ${n}`);
 
-    return body.filter(r => r.length === headers.length).map(r => {
-        const obj: any = {};
-        headers.forEach((h, i) => (obj[h] = r[i]));
-        return obj as StandRow;
-    });
+    return body
+        .filter(r => r.length === headers.length)
+        .map((r) => {
+            const obj: Record<string, string> = {};
+            headers.forEach((h, i) => {
+                obj[h] = r[i] ?? "";
+            });
+            return obj as StandRow;
+        });
 }
 
 /* ========================= DEMO CSV ========================= */

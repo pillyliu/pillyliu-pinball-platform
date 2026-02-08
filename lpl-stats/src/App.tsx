@@ -185,21 +185,21 @@ export default function App() {
             value={season}
             setValue={setSeason}
             opts={seasons}
-            clear={[setPlayer, setBankNumber, setMachine]}
+            clear={[() => setPlayer(""), () => setBankNumber(""), () => setMachine("")]}
           />
           <Filter
             label="Player"
             value={player}
             setValue={setPlayer}
             opts={players}
-            clear={[setBankNumber, setMachine]}
+            clear={[() => setBankNumber(""), () => setMachine("")]}
           />
           <Filter
             label="Bank"
             value={bankNumber}
             setValue={(v) => setBankNumber(Number(v) || "")}
             opts={bankNumbers}
-            clear={[setMachine]}
+            clear={[() => setMachine("")]}
           />
           <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
         </div>
@@ -278,10 +278,10 @@ function Filter({
   value: string | number | "";
   setValue: (v: string) => void;
   opts: Array<string | number>;
-  clear?: Array<React.Dispatch<React.SetStateAction<any>>>;
+  clear?: Array<() => void>;
 }) {
   function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    clear.forEach((setClear) => setClear(""));
+    clear.forEach((setClear) => setClear());
     setValue(event.target.value);
   }
 

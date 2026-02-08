@@ -62,17 +62,22 @@ function playfieldImageSources(slug: string, playfieldLocal: string | null) {
 export default function GamePage() {
   const { slug } = useParams();
   const [game, setGame] = useState<Game | null>(null);
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
 
-  const [infoMd, setInfoMd] = useState<string | null>(null);
-  const [infoStatus, setInfoStatus] = useState<
-    "idle" | "loading" | "loaded" | "missing" | "error"
-  >("idle");
+  const [infoState, setInfoState] = useState<{
+    slug: string | null;
+    md: string | null;
+    status: "idle" | "loaded" | "missing" | "error";
+  }>({
+    slug: null,
+    md: null,
+    status: "idle",
+  });
 
   useEffect(() => {
     fetchPinballJson<Game[]>("/pinball/data/pinball_library.json")
       .then((data) => {
-        const found = Array.isArray(data) ? data.find((g: any) => g.slug === slug) : null;
+        const found = Array.isArray(data) ? data.find((g) => g.slug === slug) : null;
         setGame(found ?? null);
       })
       .catch(() => setGame(null));
@@ -80,18 +85,22 @@ export default function GamePage() {
 
   useEffect(() => {
     if (!slug) return;
-    setInfoStatus("loading");
-    setInfoMd(null);
 
     fetchPinballText(`/pinball/gameinfo/${slug}.md`)
       .then((text) => {
-        setInfoMd(text);
-        setInfoStatus("loaded");
+        setInfoState({
+          slug,
+          md: text,
+          status: "loaded",
+        });
       })
       .catch((error) => {
         const message = error instanceof Error ? error.message : String(error ?? "");
-        setInfoStatus(message.includes("404") ? "missing" : "error");
-        setInfoMd(null);
+        setInfoState({
+          slug,
+          md: null,
+          status: message.includes("404") ? "missing" : "error",
+        });
       });
   }, [slug]);
 
@@ -102,9 +111,21 @@ export default function GamePage() {
       .filter((v) => Boolean(v.id)) as Array<Video & { id: string }>;
   }, [game]);
 
-  useEffect(() => {
-    if (videoCards.length && !activeVideo) setActiveVideo(videoCards[0].id);
-  }, [videoCards, activeVideo]);
+  const activeVideo = useMemo(() => {
+    if (!videoCards.length) return null;
+    if (selectedVideoId && videoCards.some((v) => v.id === selectedVideoId)) {
+      return selectedVideoId;
+    }
+    return videoCards[0].id;
+  }, [videoCards, selectedVideoId]);
+
+  const infoStatus = useMemo(() => {
+    if (!slug) return "idle";
+    if (infoState.slug !== slug) return "loading";
+    return infoState.status;
+  }, [slug, infoState.slug, infoState.status]);
+
+  const infoMd = infoState.slug === slug ? infoState.md : null;
 
   const metaLine = useMemo(() => {
     if (!game) return "—";
@@ -216,7 +237,7 @@ export default function GamePage() {
                   {videoCards.map((v) => (
                     <button
                       key={v.label}
-                      onClick={() => setActiveVideo(v.id)}
+                      onClick={() => setSelectedVideoId(v.id)}
                       className={`rounded-xl ring-1 p-2 text-left transition ${
                         activeVideo === v.id
                           ? "bg-neutral-800 ring-neutral-600"
