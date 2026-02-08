@@ -64,8 +64,9 @@ export default function App() {
         setError(null);
         const text = await fetchPinballText(dataUrl);
         const parsed = parseScoresCSV(text);
+        const latestSeason = getLatestSeason(parsed);
         setRows(parsed);
-        setSeason("");
+        setSeason(latestSeason);
         setPlayer("");
         setBankNumber("");
         setMachine("");
@@ -378,6 +379,17 @@ function StatRow({
 
 function unique<T>(array: T[]): T[] {
   return Array.from(new Set(array));
+}
+
+function seasonSortValue(season: string): number {
+  const match = season.match(/\d+/);
+  return match ? Number(match[0]) : Number.NEGATIVE_INFINITY;
+}
+
+function getLatestSeason(rows: Row[]): string {
+  const seasons = unique(rows.map((row) => row.Season).filter(Boolean));
+  if (!seasons.length) return "";
+  return seasons.sort((a, b) => seasonSortValue(b) - seasonSortValue(a) || b.localeCompare(a))[0];
 }
 
 function normalizeText(value: unknown): string {
