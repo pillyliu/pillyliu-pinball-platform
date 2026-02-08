@@ -3,7 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { cacheAssetUrl, fetchPinballJson, fetchPinballText } from "../lib/pinballCache";
 import SiteHeader from "../components/SiteHeader";
-import { PageContainer, Panel, SectionHeading, SUBTLE_BUTTON_CLASS } from "../components/ui";
+import {
+  APP_BACKGROUND_STYLE,
+  PageContainer,
+  Panel,
+  SectionHeading,
+  SUBTLE_BUTTON_CLASS,
+} from "../components/ui";
 
 type Video = { kind: string; label: string; url: string };
 
@@ -117,7 +123,7 @@ export default function GamePage() {
 
   if (!game) {
     return (
-      <div className="min-h-screen bg-neutral-950 text-neutral-100 p-6">
+      <div className="min-h-screen text-neutral-100 p-6" style={APP_BACKGROUND_STYLE}>
         <Link className="text-neutral-300 underline" to="/">
           ← Back
         </Link>
@@ -129,7 +135,7 @@ export default function GamePage() {
   const playfieldImage = playfieldImageSources(game.slug, game.playfieldLocal);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100">
+    <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
       <SiteHeader title="Pinball Library" active="Library" />
       <PageContainer>
         <Link className="text-neutral-300 underline" to="/">

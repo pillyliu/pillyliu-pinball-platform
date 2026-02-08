@@ -11,23 +11,29 @@ export function SiteShell({
   title,
   activeLabel,
   navItems,
+  brandLabel = "PILLYLIU PINBALL",
   controls,
   children,
 }: {
   title: string;
   activeLabel: NavLabel;
   navItems: readonly NavItem[];
+  brandLabel?: string;
   controls?: ReactNode;
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-dvh bg-neutral-950 text-neutral-100">
+    <div
+      className="min-h-dvh text-neutral-100"
+      style={{
+        background:
+          "radial-gradient(70% 70% at 20% -10%, rgba(56, 189, 248, 0.13), transparent 70%) top center / 100% 48rem no-repeat, radial-gradient(65% 65% at 90% -20%, rgba(14, 165, 233, 0.08), transparent 72%) top center / 100% 52rem no-repeat, #0a0a0a",
+      }}
+    >
       <header className="sticky top-0 z-20 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-4">
           <div>
-            <div className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-              Pillyliu Pinball
-            </div>
+            <div className="text-xs uppercase tracking-[0.18em] text-neutral-500">{brandLabel}</div>
             <h1 className="text-lg font-bold tracking-tight">{title}</h1>
           </div>
 

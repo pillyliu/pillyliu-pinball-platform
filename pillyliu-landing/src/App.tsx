@@ -6,8 +6,8 @@ const App: React.FC = () => {
         <header>
             <div className="nav">
                 <div className="brand">
+                    <span className="tag">PILLYLIU</span>
                     <h1>Peter Liu</h1>
-                    <span className="tag">pillyliu</span>
                 </div>
                 <nav className="links">
                     <a href="#about">About</a>
@@ -26,7 +26,7 @@ const App: React.FC = () => {
                 <div className="hero-grid">
                     <div>
                         <h2>
-                            Pinball • Pizza • Piano • Pixels &amp; Processors • Pee Doctor
+                            Pinball • Pizza • Piano • Processors • Physician
                         </h2>
                         <p className="lead">
                             Hi, I’m Peter — passionate about pinball, powered by pizza,

@@ -6,7 +6,12 @@ import {
   prefetchPinballTextAssets,
 } from "../lib/pinballCache";
 import SiteHeader from "../components/SiteHeader";
-import { CONTROL_INPUT_CLASS, CONTROL_SELECT_CLASS, PageContainer } from "../components/ui";
+import {
+  APP_BACKGROUND_STYLE,
+  CONTROL_INPUT_CLASS,
+  CONTROL_SELECT_CLASS,
+  PageContainer,
+} from "../components/ui";
 
 type Video = { kind: string; label: string; url: string };
 
@@ -114,7 +119,7 @@ export default function LibraryIndex() {
   const showGroupedView = bank === "all";
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100">
+    <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
       <SiteHeader title="Pinball Library" active="Library" />
       <PageContainer>
         <h2 className="text-2xl font-semibold">Browse Machines</h2>

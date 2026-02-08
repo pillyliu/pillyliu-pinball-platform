@@ -6,7 +6,7 @@ import {
     PRIMARY_BUTTON_CLASS,
     Panel,
     SiteShell,
-} from "../../shared/ui/leagueUi";
+} from "../../shared/ui/siteShell";
 import { NAV_LINKS } from "../../shared/ui/navLinks";
 
 /**

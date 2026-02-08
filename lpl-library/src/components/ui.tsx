@@ -4,6 +4,11 @@ function cn(...parts: Array<string | null | undefined | false>) {
   return parts.filter(Boolean).join(" ");
 }
 
+export const APP_BACKGROUND_STYLE = {
+  background:
+    "radial-gradient(70% 70% at 20% -10%, rgba(56, 189, 248, 0.13), transparent 70%) top center / 100% 48rem no-repeat, radial-gradient(65% 65% at 90% -20%, rgba(14, 165, 233, 0.08), transparent 72%) top center / 100% 52rem no-repeat, #0a0a0a",
+} as const;
+
 export function PageContainer({
   children,
   className,

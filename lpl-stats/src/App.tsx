@@ -7,7 +7,7 @@ import {
   Panel,
   SectionTitle,
   SiteShell,
-} from "../../shared/ui/leagueUi";
+} from "../../shared/ui/siteShell";
 import { NAV_LINKS } from "../../shared/ui/navLinks";
 
 const DEFAULT_DATA_URL = "/pinball/data/LPL_Stats.csv";
