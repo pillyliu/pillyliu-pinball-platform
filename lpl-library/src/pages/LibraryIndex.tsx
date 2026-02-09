@@ -10,6 +10,7 @@ import {
   APP_BACKGROUND_STYLE,
   CONTROL_INPUT_CLASS,
   CONTROL_SELECT_CLASS,
+  PAGE_SIDE_INSET_STYLE,
   PageContainer,
 } from "../components/ui";
 
@@ -165,60 +166,70 @@ export default function LibraryIndex() {
 
   const showGroupedView = bank === "all" && sortMode === "location";
   const showBankSectionedView = bank === "all" && sortMode === "bank";
+  const controls = (
+    <div className="rounded-xl bg-neutral-950/35 px-2 py-2 backdrop-blur-[1px]">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center">
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Search games…"
+          className={`${CONTROL_INPUT_CLASS} md:flex-1`}
+        />
+
+        <div className="grid w-full grid-cols-2 gap-3 md:w-[28rem] md:flex-none">
+          <div className="relative">
+            <select
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className={CONTROL_SELECT_CLASS}
+              aria-label="Sort games"
+            >
+              <option value="location">Sort: Location</option>
+              <option value="bank">Sort: Bank</option>
+              <option value="alphabetical">Sort: Alphabetical</option>
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
+
+          <div className="relative">
+            <select
+              value={bank === "all" ? "all" : String(bank)}
+              onChange={(e) => {
+                const v = e.target.value;
+                setBank(v === "all" ? "all" : Number(v));
+              }}
+              className={CONTROL_SELECT_CLASS}
+              aria-label="Filter by bank"
+            >
+              <option value="all">All banks</option>
+              {bankOptions.map((b) => (
+                <option key={b} value={String(b)}>
+                  Bank {b}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+              ▾
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
       <SiteHeader title="Pinball Library" active="Library" />
-      <PageContainer>
-        <h2 className="text-2xl font-semibold">Browse Machines</h2>
-
-        <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-center">
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search games…"
-            className={`${CONTROL_INPUT_CLASS} md:flex-1`}
-          />
-
-          <div className="grid w-full grid-cols-2 gap-3 md:w-[28rem] md:flex-none">
-            <div className="relative">
-              <select
-                value={sortMode}
-                onChange={(e) => setSortMode(e.target.value as SortMode)}
-                className={CONTROL_SELECT_CLASS}
-                aria-label="Sort games"
-              >
-                <option value="location">Sort: Location</option>
-                <option value="bank">Sort: Bank</option>
-                <option value="alphabetical">Sort: Alphabetical</option>
-              </select>
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-                ▾
-              </span>
-            </div>
-
-            <div className="relative">
-              <select
-                value={bank === "all" ? "all" : String(bank)}
-                onChange={(e) => {
-                  const v = e.target.value;
-                  setBank(v === "all" ? "all" : Number(v));
-                }}
-                className={CONTROL_SELECT_CLASS}
-                aria-label="Filter by bank"
-              >
-                <option value="all">All banks</option>
-                {bankOptions.map((b) => (
-                  <option key={b} value={String(b)}>
-                    Bank {b}
-                  </option>
-                ))}
-              </select>
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-                ▾
-              </span>
-            </div>
+      <PageContainer className="pt-0">
+        <div className="library-controls-fixed z-10">
+          <div className="mx-auto max-w-screen-2xl" style={PAGE_SIDE_INSET_STYLE}>
+            {controls}
           </div>
+        </div>
+        <div className="mb-4 opacity-0 pointer-events-none" aria-hidden>
+          {controls}
         </div>
 
         <div className="mt-6">

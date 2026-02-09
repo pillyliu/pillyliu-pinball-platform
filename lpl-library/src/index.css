@@ -4,12 +4,16 @@
 
 :root {
   color-scheme: dark;
+  --library-controls-top: 5.25rem;
+  --library-controls-top-sm: 5.5rem;
+  --library-controls-top-portrait: calc(8rem + env(safe-area-inset-top));
 }
 
 html,
 body,
 #root {
   min-height: 100%;
+  min-height: 100dvh;
 }
 
 body {
@@ -22,4 +26,22 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.library-controls-fixed {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--library-controls-top);
+}
+
+@media (min-width: 640px) {
+  .library-controls-fixed {
+    top: var(--library-controls-top-sm);
+  }
+}
+
+@media (orientation: portrait) and (max-width: 639px) {
+  .library-controls-fixed {
+    top: var(--library-controls-top-portrait);
+  }
 }

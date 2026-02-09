@@ -61,7 +61,10 @@ export default function App() {
         (async () => {
             try {
                 setError(null);
-                if (demoMode) { setRows(parseStandingsCSV(DEMO_CSV)); return; }
+                if (demoMode) {
+                    setRows(parseStandingsCSV(DEMO_CSV));
+                    return;
+                }
                 const text = await fetchPinballText(dataUrl);
                 setRows(parseStandingsCSV(text));
             } catch (error: unknown) {
@@ -142,45 +145,43 @@ export default function App() {
                 </Panel>
             )}
 
-            <Panel className="p-4">
-                <div className="min-w-0">
-                    <div className="relative w-full max-w-xs">
-                        <select
-                            value={season ?? ""}
-                            onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
-                            className={CONTROL_SELECT_CLASS}
-                        >
-                            {seasonList.map(s => (
-                                <option key={s} value={s}>
-                                    Season {s}
-                                </option>
-                            ))}
-                        </select>
-                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-                            ▾
-                        </span>
-                    </div>
+            <section className="py-0">
+                <div className="relative w-full max-w-xs">
+                    <select
+                        value={season ?? ""}
+                        onChange={e => setSeason(Number(e.target.value) || seasonList.at(-1) || 0)}
+                        className={CONTROL_SELECT_CLASS}
+                    >
+                        {seasonList.map(s => (
+                            <option key={s} value={s}>
+                                Season {s}
+                            </option>
+                        ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                        ▾
+                    </span>
                 </div>
-            </Panel>
+            </section>
 
-            <Panel className="p-0 overflow-auto">
+            <Panel className="table-start-offset p-0 table-scroll-panel">
                 <div className="min-w-max">
                     <table className="w-full text-sm border-collapse">
-                        <thead className="bg-neutral-950 sticky top-0">
+                        <thead className="bg-neutral-950 sticky top-0 z-10">
                             <tr className="text-left text-neutral-400 border-b border-neutral-800">
-                                <th className="py-2 px-4">#</th>
-                                <th className="py-2 px-4">Player</th>
-                                <th className="py-2 px-4">Season Points</th>
-                                <th className="py-2 px-4">Eligible</th>
-                                <th className="py-2 px-4">Nights</th>
-                                <th className="py-2 px-4">B1</th>
-                                <th className="py-2 px-4">B2</th>
-                                <th className="py-2 px-4">B3</th>
-                                <th className="py-2 px-4">B4</th>
-                                <th className="py-2 px-4">B5</th>
-                                <th className="py-2 px-4">B6</th>
-                                <th className="py-2 px-4">B7</th>
-                                <th className="py-2 px-4">B8</th>
+                                <th className="table-head-cell">#</th>
+                                <th className="table-head-cell">Player</th>
+                                <th className="table-head-cell">Season Points</th>
+                                <th className="table-head-cell">Eligible</th>
+                                <th className="table-head-cell">Nights</th>
+                                <th className="table-head-cell">B1</th>
+                                <th className="table-head-cell">B2</th>
+                                <th className="table-head-cell">B3</th>
+                                <th className="table-head-cell">B4</th>
+                                <th className="table-head-cell">B5</th>
+                                <th className="table-head-cell">B6</th>
+                                <th className="table-head-cell">B7</th>
+                                <th className="table-head-cell">B8</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -196,16 +197,19 @@ export default function App() {
                                                 ? "text-amber-600"
                                                 : "";
                                 return (
-                                    <tr className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25" key={s.player}>
-                                        <td className={`py-2 px-4 tabular-nums ${rankStyle}`}>{rank}</td>
-                                        <td className={`py-2 px-4 ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
+                                    <tr
+                                        className="table-body-row"
+                                        key={s.player}
+                                    >
+                                        <td className={`table-body-cell tabular-nums ${rankStyle}`}>{rank}</td>
+                                        <td className={`table-body-cell ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
                                             {s.player}
                                         </td>
-                                        <td className="py-2 px-4 tabular-nums">{Math.round(s.seasonTotal)}</td>
-                                        <td className="py-2 px-4">{String(s.eligible ?? "")}</td>
-                                        <td className="py-2 px-4 tabular-nums">{String(s.nights ?? "")}</td>
+                                        <td className="table-body-cell tabular-nums">{Math.round(s.seasonTotal)}</td>
+                                        <td className="table-body-cell">{String(s.eligible ?? "")}</td>
+                                        <td className="table-body-cell tabular-nums">{String(s.nights ?? "")}</td>
                                         {s.banks.map((b, idx) => (
-                                            <td key={idx} className="py-2 px-4 tabular-nums">{Math.round(b)}</td>
+                                            <td key={idx} className="table-body-cell tabular-nums">{Math.round(b)}</td>
                                         ))}
                                     </tr>
                                 );

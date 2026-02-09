@@ -178,7 +178,7 @@ export default function App() {
         </Panel>
       )}
 
-      <Panel className="p-4">
+      <section className="py-0">
         <div className="grid grid-cols-[minmax(0,3fr)_minmax(0,7fr)] gap-x-3 gap-y-2 lg:grid-cols-4 lg:gap-2">
           <Filter
             label="Season"
@@ -203,33 +203,33 @@ export default function App() {
           />
           <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
         </div>
-      </Panel>
+      </section>
 
-      <section className="grid gap-6 xl:grid-cols-[2fr_1fr]">
-        <Panel className="overflow-auto">
+      <section className="table-start-offset grid gap-5 xl:grid-cols-[2fr_1fr]">
+        <Panel className="table-scroll-panel">
           <table className="min-w-full border-collapse text-sm whitespace-nowrap">
             <thead className="sticky top-0 z-10 bg-neutral-950">
               <tr className="border-b border-neutral-800 text-left text-neutral-300">
-                <th className="px-4 py-3">Season</th>
-                <th className="px-4 py-3">Player</th>
-                <th className="px-4 py-3">Bank</th>
-                <th className="px-4 py-3">Machine</th>
-                <th className="px-4 py-3">Score</th>
-                <th className="px-4 py-3">Points</th>
+                <th className="table-head-cell">Season</th>
+                <th className="table-head-cell">Player</th>
+                <th className="table-head-cell">Bank</th>
+                <th className="table-head-cell">Machine</th>
+                <th className="table-head-cell">Score</th>
+                <th className="table-head-cell">Points</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((r, idx) => (
                 <tr
                   key={`${r.Season}-${r.Player}-${r.BankNumber}-${r.Machine}-${idx}`}
-                  className="border-b border-neutral-800/80 odd:bg-neutral-900 even:bg-neutral-950 hover:bg-sky-900/25"
+                  className="table-body-row"
                 >
-                  <td className="px-4 py-2.5">{seasonNumber(r.Season)}</td>
-                  <td className="px-4 py-2.5">{r.Player}</td>
-                  <td className="px-4 py-2.5 tabular-nums">{r.BankNumber}</td>
-                  <td className="px-4 py-2.5">{r.Machine}</td>
-                  <td className="px-4 py-2.5 tabular-nums">{formatScore(r.RawScore)}</td>
-                  <td className="px-4 py-2.5 tabular-nums">{formatPoints(r.Points)}</td>
+                  <td className="table-body-cell">{seasonNumber(r.Season)}</td>
+                  <td className="table-body-cell">{r.Player}</td>
+                  <td className="table-body-cell tabular-nums">{r.BankNumber}</td>
+                  <td className="table-body-cell">{r.Machine}</td>
+                  <td className="table-body-cell tabular-nums">{formatScore(r.RawScore)}</td>
+                  <td className="table-body-cell tabular-nums">{formatPoints(r.Points)}</td>
                 </tr>
               ))}
               {!filtered.length && (
@@ -384,30 +384,27 @@ function MachineStatsTable({
   ];
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950/70">
-      <table className="min-w-full text-sm">
-        <thead>
-          <tr className="text-left text-xs uppercase tracking-wide text-neutral-400">
-            <th className="w-[24%] px-3 py-2.5 font-medium sm:px-4" />
-            <th className="w-[38%] px-3 py-2.5 font-medium sm:px-4">{selectedLabel}</th>
-            <th className="w-[38%] px-3 py-2.5 font-medium sm:px-4">All Seasons</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.label} className="align-top odd:bg-neutral-900/45">
-              <td className="px-3 py-2.5 text-neutral-300 sm:px-4">{row.label}</td>
-              <StatValueCell value={row.seasonValue} sub={row.seasonSub} tone={row.tone} />
-              <StatValueCell value={row.allValue} sub={row.allSub} tone={row.tone} />
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="text-sm">
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1.3fr)] gap-x-3 border-b border-neutral-800/80 px-3 py-2 text-left text-xs uppercase tracking-wide text-neutral-400 sm:px-4">
+        <div />
+        <div>{selectedLabel}</div>
+        <div>All Seasons</div>
+      </div>
+      {rows.map((row) => (
+        <div
+          key={row.label}
+          className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1.3fr)] gap-x-3 border-b border-neutral-800/70 px-3 py-2.5 align-top odd:bg-neutral-900/45 sm:px-4"
+        >
+          <div className="text-neutral-300">{row.label}</div>
+          <StatValueBlock value={row.seasonValue} sub={row.seasonSub} tone={row.tone} />
+          <StatValueBlock value={row.allValue} sub={row.allSub} tone={row.tone} />
+        </div>
+      ))}
     </div>
   );
 }
 
-function StatValueCell({
+function StatValueBlock({
   value,
   sub,
   tone,
@@ -426,10 +423,10 @@ function StatValueCell({
           : "text-neutral-200";
 
   return (
-    <td className={`px-3 py-2.5 tabular-nums ${toneClass} sm:px-4`}>
+    <div className={`tabular-nums ${toneClass}`}>
       <div>{value}</div>
       {sub ? <div className="text-xs text-neutral-500">{sub}</div> : null}
-    </td>
+    </div>
   );
 }
 

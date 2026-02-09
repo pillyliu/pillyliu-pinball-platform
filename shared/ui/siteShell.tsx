@@ -72,7 +72,7 @@ export function SiteShell({
         ) : null}
       </header>
 
-      <main className="mx-auto grid max-w-screen-2xl gap-6 py-6" style={SHELL_SIDE_INSET_STYLE}>
+      <main className="mx-auto grid max-w-screen-2xl gap-6 pb-6 pt-4" style={SHELL_SIDE_INSET_STYLE}>
         {children}
       </main>
     </div>
@@ -80,10 +80,10 @@ export function SiteShell({
 }
 
 export const CONTROL_INPUT_CLASS =
-  "w-full rounded-xl bg-neutral-900 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
+  "w-full rounded-xl bg-neutral-900 px-4 py-2.5 text-sm text-neutral-100 placeholder:text-neutral-500 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const CONTROL_SELECT_CLASS =
-  "w-full min-w-[11rem] appearance-none rounded-xl bg-neutral-900 px-4 pr-10 py-3 text-neutral-100 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
+  "w-full min-w-[11rem] appearance-none rounded-xl bg-neutral-900 px-4 pr-10 py-2.5 text-sm text-neutral-100 outline-none ring-1 ring-neutral-700 focus:ring-2 focus:ring-sky-500/40";
 
 export const PRIMARY_BUTTON_CLASS =
   "rounded-xl bg-emerald-600 px-4 py-3 text-white hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50";

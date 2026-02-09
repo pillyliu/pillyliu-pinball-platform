@@ -1,9 +1,15 @@
 import { NAV_LINKS } from "../../../shared/ui/navLinks";
+import type { CSSProperties } from "react";
 
 type SiteHeaderProps = {
   title: string;
   active: "Library" | "Stats" | "Standings" | "Targets" | "Home";
   brandLabel?: string;
+};
+
+const SIDE_INSET_STYLE: CSSProperties = {
+  paddingLeft: "max(1rem, env(safe-area-inset-left))",
+  paddingRight: "max(1rem, env(safe-area-inset-right))",
 };
 
 export default function SiteHeader({
@@ -13,7 +19,10 @@ export default function SiteHeader({
 }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-20 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-      <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+      <div
+        className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between gap-4 py-4"
+        style={SIDE_INSET_STYLE}
+      >
         <div>
           <div className="text-xs uppercase tracking-[0.18em] text-neutral-500">
             {brandLabel}

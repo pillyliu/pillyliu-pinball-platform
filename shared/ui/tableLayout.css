@@ -1,0 +1,68 @@
+/* Shared table/layout primitives for stats, standings, and targets. */
+:root {
+  --table-start-offset: -10px;
+  --table-note-offset: -0.75rem;
+  --table-h-mobile: clamp(24rem, 72dvh, 58rem);
+  --table-h-landscape-mobile: clamp(14rem, 64dvh, 34rem);
+  --table-h-desktop: clamp(25rem, 74dvh, 60rem);
+}
+
+.table-start-offset {
+  margin-top: var(--table-start-offset);
+}
+
+.table-content-inset {
+  padding-inline: 0.25rem;
+}
+
+.table-scroll-panel {
+  overflow: auto;
+  max-height: var(--table-h-mobile);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .table-scroll-panel {
+    max-height: var(--table-h-landscape-mobile);
+  }
+}
+
+@media (min-width: 1024px) {
+  .table-scroll-panel {
+    max-height: var(--table-h-desktop);
+    overflow-x: auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .table-scroll-panel::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+.table-head-cell {
+  padding: 0.625rem 1rem;
+}
+
+.table-body-row {
+  border-bottom: 1px solid rgb(38 38 38 / 0.8);
+  background-color: rgb(10 10 10);
+}
+
+.table-body-row:nth-child(odd) {
+  background-color: rgb(23 23 23);
+}
+
+.table-body-row:hover {
+  background-color: rgb(12 74 110 / 0.25);
+}
+
+.table-body-cell {
+  padding: 0.625rem 1rem;
+}
+
+.table-note {
+  margin-top: var(--table-note-offset);
+}

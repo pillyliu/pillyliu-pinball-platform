@@ -124,94 +124,89 @@ export default function App() {
         </Panel>
       )}
 
-      <Panel className="p-4">
-        <div className="flex flex-wrap items-end gap-2">
-          <h2 className="text-xl font-bold tracking-tight text-neutral-100">LPL Score Targets by Game</h2>
-          <span className="rounded-full border border-neutral-600 bg-neutral-900 px-2.5 py-1 text-xs uppercase tracking-[0.14em] text-neutral-400">
-            League Practice Benchmarks
-          </span>
-        </div>
-        <p className="mt-2 max-w-4xl text-sm text-neutral-400">
-          Benchmarks are based on historical LPL league results across all seasons where each game appeared.
-          For each game, scores are derived from per-bank results using 2nd / 4th / 8th highest averages
-          with sample-size adjustments.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-400">
-          <span className="inline-flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full border border-emerald-400/80 bg-emerald-400/20" />
-            <strong className="text-neutral-300">2nd Highest Avg</strong> - Great game score
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full border border-sky-400/80 bg-sky-400/20" />
-            <strong className="text-neutral-300">4th Highest Avg</strong> - Main target
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full border border-neutral-400/80 bg-neutral-400/20" />
-            <strong className="text-neutral-300">8th Highest Avg</strong> - Solid floor
-          </span>
-        </div>
-        <div className="mt-4 grid w-full grid-cols-2 gap-3 sm:max-w-[30rem]">
-          <div className="relative">
-            <select
-              id="targets-sort-mode"
-              value={sortMode}
-              onChange={(e) => setSortMode(e.target.value as SortMode)}
-              className={`${CONTROL_SELECT_CLASS} min-w-[8rem] py-2 text-sm`}
-              aria-label="Sort targets table"
-            >
-              <option value="location">Sort: Location</option>
-              <option value="bank">Sort: Bank</option>
-              <option value="alphabetical">Sort: Alphabetical</option>
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-              ▾
+      <section className="targets-top-area table-content-inset">
+        <div className="targets-top-row">
+          <div className="targets-legend flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-400">
+            <span className="inline-flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full border border-emerald-400/80 bg-emerald-400/20" />
+              <strong className="text-neutral-300">2nd Highest</strong> - "Great" game
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full border border-sky-400/80 bg-sky-400/20" />
+              <strong className="text-neutral-300">4th Highest</strong> - Main target
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full border border-neutral-400/80 bg-neutral-400/20" />
+              <strong className="text-neutral-300">8th Highest</strong> - Solid floor
             </span>
           </div>
-          <div className="relative">
-            <select
-              value={bankFilter === "all" ? "all" : String(bankFilter)}
-              onChange={(e) => {
-                const v = e.target.value;
-                setBankFilter(v === "all" ? "all" : Number(v));
-              }}
-              className={`${CONTROL_SELECT_CLASS} min-w-[8rem] py-2 text-sm`}
-              aria-label="Filter targets by bank"
-            >
-              <option value="all">All banks</option>
-              {bankOptions.map((b) => (
-                <option key={b} value={String(b)}>
-                  Bank {b}
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
-              ▾
-            </span>
-          </div>
-        </div>
-      </Panel>
 
-      <Panel className="p-0 overflow-auto">
+          <div className="targets-filters grid w-full grid-cols-2 gap-3 sm:max-w-[30rem]">
+            <div className="relative">
+              <select
+                id="targets-sort-mode"
+                value={sortMode}
+                onChange={(e) => setSortMode(e.target.value as SortMode)}
+                className={`${CONTROL_SELECT_CLASS} min-w-[8rem]`}
+                aria-label="Sort targets table"
+              >
+                <option value="location">Sort: Location</option>
+                <option value="bank">Sort: Bank</option>
+                <option value="alphabetical">Sort: Alphabetical</option>
+              </select>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                ▾
+              </span>
+            </div>
+            <div className="relative">
+              <select
+                value={bankFilter === "all" ? "all" : String(bankFilter)}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setBankFilter(v === "all" ? "all" : Number(v));
+                }}
+                className={`${CONTROL_SELECT_CLASS} min-w-[8rem]`}
+                aria-label="Filter targets by bank"
+              >
+                <option value="all">All banks</option>
+                {bankOptions.map((b) => (
+                  <option key={b} value={String(b)}>
+                    Bank {b}
+                  </option>
+                ))}
+              </select>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                ▾
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Panel className="table-start-offset p-0 table-scroll-panel">
         <table className="min-w-full text-sm border-collapse">
-          <thead className="sticky top-0 bg-neutral-950">
+          <thead className="sticky top-0 z-10 bg-neutral-950">
             <tr className="text-left text-neutral-400 border-b border-neutral-800">
-              <th className="py-2 px-4">Game</th>
-              <th className="py-2 px-4">Location</th>
-              <th className="py-2 px-4">Bank</th>
-              <th className="py-2 px-4">2nd Highest Avg</th>
-              <th className="py-2 px-4">4th Highest Avg</th>
-              <th className="py-2 px-4">8th Highest Avg</th>
+              <th className="table-head-cell">Game</th>
+              <th className="table-head-cell">Location</th>
+              <th className="table-head-cell">Bank</th>
+              <th className="table-head-cell">2nd Highest</th>
+              <th className="table-head-cell">4th Highest</th>
+              <th className="table-head-cell">8th Highest</th>
             </tr>
           </thead>
           <tbody>
             {filteredRows.map((row) => (
-              <tr key={row.game} className="border-b border-neutral-800/70 odd:bg-neutral-900/70 even:bg-neutral-950/90 hover:bg-sky-900/25">
-                <td className="py-2 px-4 text-neutral-100">{row.game}</td>
-                <td className="py-2 px-4 tabular-nums text-neutral-300">{formatLocation(row.group, row.pos)}</td>
-                <td className="py-2 px-4 tabular-nums text-neutral-300">{formatBank(row.bank)}</td>
-                <td className="py-2 px-4 tabular-nums text-emerald-200 font-medium">{formatNumber(row.secondHighestAvg)}</td>
-                <td className="py-2 px-4 tabular-nums text-sky-200">{formatNumber(row.fourthHighestAvg)}</td>
-                <td className="py-2 px-4 tabular-nums text-neutral-200/90">{formatNumber(row.eighthHighestAvg)}</td>
+              <tr
+                key={row.game}
+                className="table-body-row"
+              >
+                <td className="table-body-cell text-neutral-100">{row.game}</td>
+                <td className="table-body-cell tabular-nums text-neutral-300">{formatLocation(row.group, row.pos)}</td>
+                <td className="table-body-cell tabular-nums text-neutral-300">{formatBank(row.bank)}</td>
+                <td className="table-body-cell tabular-nums text-emerald-200 font-medium">{formatNumber(row.secondHighestAvg)}</td>
+                <td className="table-body-cell tabular-nums text-sky-200">{formatNumber(row.fourthHighestAvg)}</td>
+                <td className="table-body-cell tabular-nums text-neutral-200/90">{formatNumber(row.eighthHighestAvg)}</td>
               </tr>
             ))}
             {!filteredRows.length && (
@@ -225,13 +220,13 @@ export default function App() {
         </table>
       </Panel>
 
-      <Panel className="p-4">
-        <p className="text-xs text-neutral-400">
-          <strong className="text-neutral-300">Method:</strong> For each game, scores are grouped by season and bank.
-          When a full field played, the 2nd / 4th / 8th highest scores are taken. When about half the league played,
-          we use mean(1st &amp; 2nd), 3rd, and 4th. These values are then averaged across all appearances for that game.
+      <section className="table-note table-content-inset">
+        <p className="text-sm text-neutral-300">
+          Benchmarks are based on historical LPL league results across all seasons where each game appeared. For
+          each game, scores are derived from per-bank results using 2nd / 4th / 8th highest averages with
+          sample-size adjustments. These values are then averaged across all bank appearances for that game.
         </p>
-      </Panel>
+      </section>
     </SiteShell>
   );
 }

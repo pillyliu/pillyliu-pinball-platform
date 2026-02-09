@@ -31,3 +31,31 @@ body {
 #root {
   min-height: 100dvh;
 }
+
+.targets-top-area {
+  margin-top: 0;
+}
+
+.targets-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.targets-filters {
+  align-self: stretch;
+}
+
+@media (orientation: landscape) {
+  .targets-top-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .targets-filters {
+    flex: 0 0 auto;
+    width: min(100%, 30rem);
+  }
+}

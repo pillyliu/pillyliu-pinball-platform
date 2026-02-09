@@ -7,7 +7,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { fetchPinballText } from "../../../shared/ui/pinballCache";
 import SiteHeader from "../components/SiteHeader";
-import { APP_BACKGROUND_STYLE, Panel } from "../components/ui";
+import { APP_BACKGROUND_STYLE, PageContainer, Panel } from "../components/ui";
 
 function normalizeRulesheet(input: string): string {
   let s = input.replace(/\r\n/g, "\n");
@@ -167,7 +167,7 @@ export default function RulesheetPage() {
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
       <SiteHeader title="Pinball Library" active="Library" />
-      <div className="mx-auto max-w-4xl p-6">
+      <PageContainer className="max-w-4xl">
         <div className="flex flex-wrap items-center gap-4">
           <Link className="text-neutral-300 underline" to="/">
             ← Library
@@ -244,7 +244,7 @@ export default function RulesheetPage() {
             </div>
           )}
         </Panel>
-      </div>
+      </PageContainer>
     </div>
   );
 }
