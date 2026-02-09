@@ -1,14 +1,18 @@
+import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import LibraryIndex from "./pages/LibraryIndex";
-import GamePage from "./pages/GamePage";
-import RulesheetPage from "./pages/RulesheetPage";
+
+const LibraryIndex = lazy(() => import("./pages/LibraryIndex"));
+const GamePage = lazy(() => import("./pages/GamePage"));
+const RulesheetPage = lazy(() => import("./pages/RulesheetPage"));
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LibraryIndex />} />
-      <Route path="/game/:slug" element={<GamePage />} />
-      <Route path="/rules/:slug" element={<RulesheetPage />} />
-    </Routes>
+    <Suspense fallback={<div className="p-6 text-neutral-300">Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<LibraryIndex />} />
+        <Route path="/game/:slug" element={<GamePage />} />
+        <Route path="/rules/:slug" element={<RulesheetPage />} />
+      </Routes>
+    </Suspense>
   );
 }
