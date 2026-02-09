@@ -28,6 +28,7 @@ npm run check:smoke         # smoke check builds + shared/pinball contract
 
 ## Further Docs
 
+- `PILLYLIU_WEB_DESIGN_SYSTEM.md` - shared UI/design contract (required before UI/layout changes)
 - `PINBALL_SOP.md` - operational runbook
 - `DEPLOY_READINESS_CHECKLIST.md` - pre/post deploy checklist
 - `SHARED_DATA_CONTRACT.md` - shared pinball contract
