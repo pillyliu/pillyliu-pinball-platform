@@ -1,7 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import type { NavLabel } from "./navLinks";
-
-type NavItem = { href: string; label: NavLabel };
+type NavItem = { href: string; label: string };
 
 const SHELL_SIDE_INSET_STYLE: CSSProperties = {
   paddingLeft: "max(1rem, env(safe-area-inset-left))",
@@ -21,7 +19,7 @@ export function SiteShell({
   children,
 }: {
   title: string;
-  activeLabel: NavLabel;
+  activeLabel: string;
   navItems: readonly NavItem[];
   brandLabel?: string;
   controls?: ReactNode;

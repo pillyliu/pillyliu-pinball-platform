@@ -1,145 +1,120 @@
-﻿import React from "react";
+import { SiteShell } from '../../shared/ui/siteShell';
 
-const App: React.FC = () => {
-    return (
-        <>
-        <header>
-            <div className="nav">
-                <div className="brand">
-                    <span className="tag">PILLYLIU</span>
-                    <h1>Peter Liu</h1>
-                </div>
-                <nav className="links">
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="https://pillyliu.com/lpl_stats/">Stats</a>
-                    <a href="https://pillyliu.com/lpl_standings/">Standings</a>
-                    <a href="https://pillyliu.com/lpl_targets/">Targets</a>
-                    <a href="https://pillyliu.com/lpl_library/">Library</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+const CTA_BUTTON_CLASS =
+  'inline-flex items-center rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-neutral-200 transition hover:border-neutral-500 hover:text-neutral-50';
+
+const CARD_BUTTON_CLASS =
+  'mt-3 inline-flex items-center rounded-xl border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm font-medium text-neutral-200 transition hover:border-neutral-500 hover:text-neutral-50';
+
+export default function App() {
+  const landingNavItems = [
+    { href: '#about', label: 'About' },
+    { href: '#projects', label: 'Projects' },
+    { href: 'https://pillyliu.com/lpl_stats/', label: 'Stats' },
+    { href: 'https://pillyliu.com/lpl_standings/', label: 'Standings' },
+    { href: 'https://pillyliu.com/lpl_targets/', label: 'Targets' },
+    { href: 'https://pillyliu.com/lpl_library/', label: 'Library' },
+  ] as const;
+
+  return (
+    <SiteShell
+      title='Peter Liu'
+      activeLabel='Home'
+      navItems={landingNavItems}
+      brandLabel='PILLYLIU'
+    >
+      <section id='about' className='scroll-mt-24 rounded-2xl border border-neutral-800 bg-neutral-900/70 p-5 md:p-6'>
+        <div className='grid gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-start'>
+          <div>
+            <h2 className='m-0 text-[clamp(1.55rem,2.8vw,2.35rem)] font-semibold leading-[1.18] tracking-[-0.02em] text-neutral-100'>
+              Pinball • Pizza • Piano • Processors • Physician
+            </h2>
+            <p className='mt-2.5 text-neutral-400'>
+              Hi, I&apos;m Peter - passionate about pinball, powered by pizza, tempered by piano, driven by pixels and
+              processors, and proudly a pee physician (urologist).
+            </p>
+            <div className='mt-4 flex flex-wrap gap-2.5'>
+              <a className={`${CTA_BUTTON_CLASS} border-emerald-500/60 bg-emerald-600/25 text-emerald-100`} href='https://pillyliu.com/lpl_stats/'>
+                View League <strong className='ml-1'>Stats</strong>
+              </a>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_standings/'>
+                View <strong className='ml-1'>Standings</strong>
+              </a>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_targets/'>
+                View <strong className='ml-1'>Targets</strong>
+              </a>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_library/'>
+                Open <strong className='ml-1'>Library</strong>
+              </a>
+              <a className={CTA_BUTTON_CLASS} href='http://twitch.tv/pillyliu' target='_blank' rel='noreferrer'>
+                Watch on <strong className='ml-1'>Twitch</strong>
+              </a>
             </div>
-        </header>
+          </div>
 
-        <main>
-            <section className="hero" id="about">
-                <div className="hero-grid">
-                    <div>
-                        <h2>
-                            Pinball • Pizza • Piano • Processors • Physician
-                        </h2>
-                        <p className="lead">
-                            Hi, I’m Peter — passionate about pinball, powered by pizza,
-                            tempered by piano, driven by pixels and processors, and proudly a
-                            pee physician (urologist).
-                        </p>
-                        <div className="cta">
-                            <a
-                                className="btn primary"
-                                href="https://pillyliu.com/lpl_stats/"
-                            >
-                                View League <strong>Stats</strong>
-                            </a>
-                            <a
-                                className="btn"
-                                href="https://pillyliu.com/lpl_standings/"
-                            >
-                                View <strong>Standings</strong>
-                            </a>
-                            <a className="btn" href="https://pillyliu.com/lpl_targets/">
-                                View <strong>Targets</strong>
-                            </a>
-                            <a className="btn" href="https://pillyliu.com/lpl_library/">
-                                Open <strong>Library</strong>
-                            </a>
-                            <a className="btn" href="http://twitch.tv/pillyliu" target="_blank" rel="noreferrer">
-                                Watch on <strong>Twitch</strong>
-                            </a>
-                        </div>
-                    </div>
-                    <figure className="hero-photo-wrap">
-                        <img
-                            className="hero-photo"
-                            src="/peter-pinball.jpg"
-                            alt="Peter Liu playing pinball"
-                        />
-                    </figure>
-                </div>
-            </section>
+          <figure className='m-0 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900'>
+            <img
+              className='block h-full min-h-[210px] w-full object-cover md:min-h-[270px] md:max-h-[360px]'
+              src='/peter-pinball.jpg'
+              alt='Peter Liu playing pinball'
+            />
+          </figure>
+        </div>
+      </section>
 
-          <section id="projects">
-            <h2>Projects</h2>
-            <div className="card-grid">
-                <article className="card">
-                    <h3>League Stats Viewer</h3>
-                    <p className="muted">
-                        Interactive filters with machine-specific analytics.
-                    </p>
-                    <p>
-                        <a className="btn" href="https://pillyliu.com/lpl_stats/">
-                            Open Stats
-                        </a>
-                    </p>
-                </article>
-
-                <article className="card">
-                    <h3>Standings Dashboard</h3>
-                    <p className="muted">
-                        Latest season by default; quick switch to past seasons.
-                    </p>
-                    <p>
-                        <a className="btn" href="https://pillyliu.com/lpl_standings/">
-                            Open Standings
-                        </a>
-                    </p>
-                </article>
-
-                <article className="card">
-                    <h3>Performance Targets</h3>
-                    <p className="muted">
-                        Percentile-based goals per machine for practice &amp;
-                        competition.
-                    </p>
-                    <p>
-                        <a className="btn" href="https://pillyliu.com/lpl_targets/">
-                            Open Targets
-                        </a>
-                    </p>
-                </article>
-                <article className="card">
-                  <h3>Pinball Library</h3>
-                  <p className="muted">Rulesheets, guides, and machine pages — all in one place.</p>
-                  <p>
-                    <a className="btn" href="https://pillyliu.com/lpl_library/">
-                      Open Library
-                  </a>
-              </p>
+      <section id='projects' className='scroll-mt-24 rounded-2xl border border-neutral-800 bg-neutral-900/70 p-5 md:p-6'>
+        <h2 className='m-0 text-lg font-semibold tracking-tight text-neutral-100'>Projects</h2>
+        <div className='mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4'>
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>League Stats Viewer</h3>
+            <p className='mt-2 text-sm text-neutral-400'>Interactive filters with machine-specific analytics.</p>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_stats/'>
+              Open Stats
+            </a>
           </article>
-      </div>
-  </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p className="muted">
-        Prefer email. Smoke signals only for multiballs.
-    </p>
-    <p>
-        <a className="btn" href="mailto:pillyliu@gmail.com">
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>Standings Dashboard</h3>
+            <p className='mt-2 text-sm text-neutral-400'>Latest season by default; quick switch to past seasons.</p>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_standings/'>
+              Open Standings
+            </a>
+          </article>
+
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>Performance Targets</h3>
+            <p className='mt-2 text-sm text-neutral-400'>Percentile-based goals per machine for practice and competition.</p>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_targets/'>
+              Open Targets
+            </a>
+          </article>
+
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>Pinball Library</h3>
+            <p className='mt-2 text-sm text-neutral-400'>Rulesheets, guides, and machine pages - all in one place.</p>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_library/'>
+              Open Library
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-5 md:p-6'>
+        <h2 className='m-0 text-lg font-semibold tracking-tight text-neutral-100'>Contact</h2>
+        <p className='mt-2 text-sm text-neutral-400'>Prefer email. Smoke signals only for multiballs.</p>
+        <p className='mt-3'>
+          <a className={CARD_BUTTON_CLASS} href='mailto:pillyliu@gmail.com'>
             Email Peter
-        </a>
-        {" "}
-        <a className="btn" href="http://twitch.tv/pillyliu" target="_blank" rel="noreferrer">
+          </a>{' '}
+          <a className={CARD_BUTTON_CLASS} href='http://twitch.tv/pillyliu' target='_blank' rel='noreferrer'>
             Twitch
-        </a>
-    </p>
-</section>
+          </a>
+        </p>
+      </section>
 
-<footer>
-    <p>&copy; 2026 Peter Liu. Built with caffeine and curiosity.</p>
-</footer>
-</main>
-</>
-);
-};
-
-export default App;
+      <footer className='px-1 text-sm text-neutral-500'>
+        <p>&copy; 2026 Peter Liu. Built with caffeine and curiosity.</p>
+      </footer>
+    </SiteShell>
+  );
+}
