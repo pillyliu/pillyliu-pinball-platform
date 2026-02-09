@@ -47,11 +47,21 @@ fi
 
 echo "Deploying landing..."
 rsync "${RSYNC_OPTS[@]}" pillyliu-landing/dist/assets/ "${REMOTE}/assets/"
-rsync -avz -e "$RSYNC_SSH" pillyliu-landing/dist/index.html "${REMOTE}/index.html"
-rsync -avz -e "$RSYNC_SSH" pillyliu-landing/dist/favicon.svg "${REMOTE}/favicon.svg"
-if [[ -f "pillyliu-landing/dist/peter-pinball.jpg" ]]; then
-  rsync -avz -e "$RSYNC_SSH" pillyliu-landing/dist/peter-pinball.jpg "${REMOTE}/peter-pinball.jpg"
-fi
+for file in \
+  index.html \
+  favicon.ico \
+  favicon-16x16.png \
+  favicon-32x32.png \
+  apple-touch-icon.png \
+  android-chrome-192x192.png \
+  android-chrome-512x512.png \
+  site.webmanifest \
+  peter-pinball.jpg
+do
+  if [[ -f "pillyliu-landing/dist/${file}" ]]; then
+    rsync -avz -e "$RSYNC_SSH" "pillyliu-landing/dist/${file}" "${REMOTE}/${file}"
+  fi
+done
 
 echo "Deploying canonical pinball data..."
 rsync "${RSYNC_OPTS[@]}" shared/pinball/ "${REMOTE}/pinball/"
