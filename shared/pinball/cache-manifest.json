@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-11T08:48:54.863Z",
+  "generatedAt": "2026-02-12T21:37:48.395Z",
   "source": "shared/pinball",
-  "totalFiles": 212,
+  "totalFiles": 213,
   "files": {
     "/pinball/.DS_Store": {
       "hash": "79713b91656ac9c2c3d38209837c7662e42f27def506982ceecb5c2402116d08",
@@ -45,6 +45,12 @@
       "size": 29407,
       "mtimeMs": 1770526781361,
       "contentType": "application/json"
+    },
+    "/pinball/data/redacted_players.csv": {
+      "hash": "36905266b31c8dc08cc8b4cdd6e2f4629063b1f6397c08607863079b23ccb469",
+      "size": 21,
+      "mtimeMs": 1770931494143,
+      "contentType": "text/csv"
     },
     "/pinball/gameinfo/ac-dc.md": {
       "hash": "13947a508c6b0945be673322d503b47efe1f00d59eefa6a7845845ad281dafc9",

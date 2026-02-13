@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import { fetchPinballText, prefetchPinballTextAssets } from "../../shared/ui/pinballCache";
+import { formatPlayerDisplayName, loadRedactedPlayers } from "../../shared/ui/playerRedaction";
 import {
     CONTROL_INPUT_CLASS,
     CONTROL_SELECT_CLASS,
@@ -36,6 +37,7 @@ type Standing = {
 
 export default function App() {
     const [rows, setRows] = useState<StandRow[]>([]);
+    const [redactedPlayers, setRedactedPlayers] = useState<Set<string>>(new Set());
     const [error, setError] = useState<string | null>(null);
     const [season, setSeason] = useState<number | null>(null);
 
@@ -55,6 +57,12 @@ export default function App() {
 
     useEffect(() => {
         prefetchPinballTextAssets(["/pinball/data"]).catch(() => undefined);
+    }, []);
+
+    useEffect(() => {
+        loadRedactedPlayers()
+            .then((players) => setRedactedPlayers(players))
+            .catch(() => setRedactedPlayers(new Set()));
     }, []);
 
     useEffect(() => {
@@ -109,6 +117,16 @@ export default function App() {
         }
         return mapped.sort((a, b) => b.seasonTotal - a.seasonTotal);
     }, [rows, season]);
+
+    const displayNameByPlayer = useMemo(() => {
+        const map = new Map<string, string>();
+        for (const row of standings) {
+            if (!map.has(row.player)) {
+                map.set(row.player, formatPlayerDisplayName(row.player, redactedPlayers));
+            }
+        }
+        return map;
+    }, [standings, redactedPlayers]);
 
     function saveUrlAndReload() {
         localStorage.setItem("standings_csv_url", dataUrl);
@@ -203,7 +221,7 @@ export default function App() {
                                     >
                                         <td className={`table-body-cell tabular-nums ${rankStyle}`}>{rank}</td>
                                         <td className={`table-body-cell ${top8 ? "font-semibold" : ""} break-words max-w-[14rem]`}>
-                                            {s.player}
+                                            {displayNameByPlayer.get(s.player) ?? s.player}
                                         </td>
                                         <td className="table-body-cell tabular-nums">{Math.round(s.seasonTotal)}</td>
                                         <td className="table-body-cell">{String(s.eligible ?? "")}</td>

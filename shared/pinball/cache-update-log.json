@@ -2,6 +2,92 @@
   "schemaVersion": 1,
   "events": [
     {
+      "generatedAt": "2026-02-12T21:37:48.395Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T21:31:01.425Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T21:25:38.692Z",
+      "addedCount": 0,
+      "changedCount": 1,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [
+        "/pinball/data/redacted_players.csv"
+      ],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T21:22:11.507Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T19:40:17.039Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T19:40:05.103Z",
+      "addedCount": 0,
+      "changedCount": 1,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [
+        "/pinball/data/redacted_players.csv"
+      ],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-12T19:37:56.632Z",
+      "addedCount": 1,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [
+        "/pinball/data/redacted_players.csv"
+      ],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-11T08:50:55.461Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 212,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
       "generatedAt": "2026-02-11T08:48:54.863Z",
       "addedCount": 0,
       "changedCount": 1,
@@ -930,93 +1016,13 @@
       "added": [],
       "changed": [],
       "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:03:31.497Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:55:12.004Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:55:09.537Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:55:06.971Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:46:33.430Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:46:30.866Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:46:28.259Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T22:39:31.051Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
     }
   ],
   "latest": {
-    "generatedAt": "2026-02-11T08:48:54.863Z",
+    "generatedAt": "2026-02-12T21:37:48.395Z",
     "addedCount": 0,
-    "changedCount": 1,
+    "changedCount": 0,
     "removedCount": 0,
-    "totalFiles": 212
+    "totalFiles": 213
   }
 }

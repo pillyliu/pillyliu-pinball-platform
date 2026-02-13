@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchPinballText, prefetchPinballTextAssets } from "../../shared/ui/pinballCache";
+import { formatPlayerDisplayName, loadRedactedPlayers } from "../../shared/ui/playerRedaction";
 import {
   CONTROL_INPUT_CLASS,
   CONTROL_SELECT_CLASS,
@@ -26,8 +27,10 @@ type StatResult = {
   count: number;
   low: number | null;
   lowPlayer: string | null;
+  lowSeason: string | null;
   high: number | null;
   highPlayer: string | null;
+  highSeason: string | null;
   mean: number | null;
   median: number | null;
   std: number | null;
@@ -35,6 +38,7 @@ type StatResult = {
 
 export default function App() {
   const [rows, setRows] = useState<Row[]>([]);
+  const [redactedPlayers, setRedactedPlayers] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
 
   const [season, setSeason] = useState<string>("");
@@ -56,6 +60,12 @@ export default function App() {
 
   useEffect(() => {
     prefetchPinballTextAssets(["/pinball/data"]).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    loadRedactedPlayers()
+      .then((players) => setRedactedPlayers(players))
+      .catch(() => setRedactedPlayers(new Set()));
   }, []);
 
   useEffect(() => {
@@ -144,6 +154,15 @@ export default function App() {
 
   const bankStats = useMemo(() => computeStats(bankScope, true), [bankScope]);
   const machineStats = useMemo(() => computeStats(machineScope, false), [machineScope]);
+  const displayPlayerByRawName = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const row of rows) {
+      if (!map.has(row.Player)) {
+        map.set(row.Player, formatPlayerDisplayName(row.Player, redactedPlayers));
+      }
+    }
+    return map;
+  }, [rows, redactedPlayers]);
 
   return (
     <SiteShell
@@ -193,6 +212,7 @@ export default function App() {
             setValue={setPlayer}
             opts={players}
             clear={[() => setBankNumber(""), () => setMachine("")]}
+            formatOptionLabel={(option) => formatPlayerDisplayName(String(option), redactedPlayers)}
           />
           <Filter
             label="Bank"
@@ -225,7 +245,7 @@ export default function App() {
                   className="table-body-row"
                 >
                   <td className="table-body-cell">{seasonNumber(r.Season)}</td>
-                  <td className="table-body-cell">{r.Player}</td>
+                  <td className="table-body-cell">{displayPlayerByRawName.get(r.Player) ?? r.Player}</td>
                   <td className="table-body-cell tabular-nums">{r.BankNumber}</td>
                   <td className="table-body-cell">{r.Machine}</td>
                   <td className="table-body-cell tabular-nums">{formatScore(r.RawScore)}</td>
@@ -250,6 +270,7 @@ export default function App() {
               selectedLabel={`S${seasonNumber(season || "?")} B${bankNumber || "?"}`}
               seasonStats={bankStats}
               allSeasonsStats={machineStats}
+              formatPlayerLabel={(name) => formatPlayerDisplayName(name, redactedPlayers)}
             />
           ) : (
             <p className="text-sm text-neutral-500">Select a bank or machine to view detailed stats.</p>
@@ -266,12 +287,14 @@ function Filter({
   setValue,
   opts,
   clear = [],
+  formatOptionLabel,
 }: {
   label: string;
   value: string | number | "";
   setValue: (v: string) => void;
   opts: Array<string | number>;
   clear?: Array<() => void>;
+  formatOptionLabel?: (value: string | number) => string;
 }) {
   function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
     clear.forEach((setClear) => setClear());
@@ -290,7 +313,7 @@ function Filter({
           <option value="">{formatAllFilterOption(label)}</option>
           {opts.map((opt) => (
             <option key={String(opt)} value={String(opt)}>
-              {formatFilterOption(label, opt)}
+              {formatOptionLabel?.(opt) ?? formatFilterOption(label, opt)}
             </option>
           ))}
         </select>
@@ -330,10 +353,12 @@ function MachineStatsTable({
   selectedLabel,
   seasonStats,
   allSeasonsStats,
+  formatPlayerLabel,
 }: {
   selectedLabel: string;
   seasonStats: StatResult;
   allSeasonsStats: StatResult;
+  formatPlayerLabel: (name: string) => string;
 }) {
   const rows: Array<{
     label: string;
@@ -347,17 +372,25 @@ function MachineStatsTable({
       label: "High",
       tone: "high",
       seasonValue: formatScore(seasonStats.high),
-      seasonSub: seasonStats.highPlayer,
+      seasonSub: renderStatPlayerLabel(seasonStats.highPlayer, seasonStats.highSeason, formatPlayerLabel),
       allValue: formatScore(allSeasonsStats.high),
-      allSub: allSeasonsStats.highPlayer,
+      allSub: renderStatPlayerLabel(
+        allSeasonsStats.highPlayer,
+        allSeasonsStats.highSeason,
+        formatPlayerLabel
+      ),
     },
     {
       label: "Low",
       tone: "low",
       seasonValue: formatScore(seasonStats.low),
-      seasonSub: seasonStats.lowPlayer,
+      seasonSub: renderStatPlayerLabel(seasonStats.lowPlayer, seasonStats.lowSeason, formatPlayerLabel),
       allValue: formatScore(allSeasonsStats.low),
-      allSub: allSeasonsStats.lowPlayer,
+      allSub: renderStatPlayerLabel(
+        allSeasonsStats.lowPlayer,
+        allSeasonsStats.lowSeason,
+        formatPlayerLabel
+      ),
     },
     {
       label: "Avg",
@@ -402,6 +435,16 @@ function MachineStatsTable({
       ))}
     </div>
   );
+}
+
+function renderStatPlayerLabel(
+  player: string | null,
+  season: string | null,
+  formatPlayerLabel: (name: string) => string
+): string | null {
+  if (!player) return null;
+  const displayName = formatPlayerLabel(player);
+  return season ? `${displayName} (${season})` : displayName;
 }
 
 function StatValueBlock({
@@ -471,8 +514,10 @@ function computeStats(scope: Row[], bankMode: boolean): StatResult {
       count: 0,
       low: null,
       lowPlayer: null,
+      lowSeason: null,
       high: null,
       highPlayer: null,
+      highSeason: null,
       mean: null,
       median: null,
       std: null,
@@ -486,17 +531,10 @@ function computeStats(scope: Row[], bankMode: boolean): StatResult {
   const lowRow = scope.find((row) => row.RawScore === low) ?? null;
   const highRow = scope.find((row) => row.RawScore === high) ?? null;
 
-  const lowPlayer = lowRow
-    ? bankMode
-      ? lowRow.Player
-      : `${lowRow.Player} (${shortSeason(lowRow.Season)})`
-    : null;
-
-  const highPlayer = highRow
-    ? bankMode
-      ? highRow.Player
-      : `${highRow.Player} (${shortSeason(highRow.Season)})`
-    : null;
+  const lowPlayer = lowRow?.Player ?? null;
+  const lowSeason = lowRow && !bankMode ? shortSeason(lowRow.Season) : null;
+  const highPlayer = highRow?.Player ?? null;
+  const highSeason = highRow && !bankMode ? shortSeason(highRow.Season) : null;
 
   const mean = values.reduce((sum, n) => sum + n, 0) / count;
   const sorted = [...values].sort((a, b) => a - b);
@@ -505,7 +543,7 @@ function computeStats(scope: Row[], bankMode: boolean): StatResult {
   const variance = values.reduce((sum, n) => sum + (n - mean) ** 2, 0) / count;
   const std = Math.sqrt(variance);
 
-  return { count, low, lowPlayer, high, highPlayer, mean, median, std };
+  return { count, low, lowPlayer, lowSeason, high, highPlayer, highSeason, mean, median, std };
 }
 
 function parseScoresCSV(text: string): Row[] {
