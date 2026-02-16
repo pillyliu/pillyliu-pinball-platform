@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644"
 source_updated_at: "2025-11-29T20:14:02.663Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

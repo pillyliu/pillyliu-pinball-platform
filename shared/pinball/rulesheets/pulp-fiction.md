@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/pulp-fiction-rulesheet/8471"
 source_updated_at: "2024-03-13T16:10:26.310Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/pulp-fiction-rulesheet/8471">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

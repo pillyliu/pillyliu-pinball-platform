@@ -2,6 +2,90 @@
   "schemaVersion": 1,
   "events": [
     {
+      "generatedAt": "2026-02-16T03:40:33.459Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-16T00:52:49.144Z",
+      "addedCount": 0,
+      "changedCount": 29,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [
+        "/pinball/data/LPL_Stats.csv",
+        "/pinball/rulesheets/avengers-infinity-quest.md",
+        "/pinball/rulesheets/black-knight-sword-of-rage.md",
+        "/pinball/rulesheets/deadpool.md",
+        "/pinball/rulesheets/dungeons-and-dragons-the-tyrants-eye.md",
+        "/pinball/rulesheets/elviras-house-of-horrors.md",
+        "/pinball/rulesheets/foo-fighters.md",
+        "/pinball/rulesheets/game-of-thrones.md",
+        "/pinball/rulesheets/ghostbusters.md",
+        "/pinball/rulesheets/godzilla.md",
+        "/pinball/rulesheets/iron-maiden.md",
+        "/pinball/rulesheets/james-bond-007.md",
+        "/pinball/rulesheets/jaws.md",
+        "/pinball/rulesheets/john-wick.md",
+        "/pinball/rulesheets/jurassic-park.md",
+        "/pinball/rulesheets/king-kong.md",
+        "/pinball/rulesheets/kiss.md",
+        "/pinball/rulesheets/metallica.md",
+        "/pinball/rulesheets/pulp-fiction.md",
+        "/pinball/rulesheets/rush.md",
+        "/pinball/rulesheets/star-trek.md",
+        "/pinball/rulesheets/star-wars-fall-of-the-empire.md",
+        "/pinball/rulesheets/star-wars.md",
+        "/pinball/rulesheets/stranger-things.md",
+        "/pinball/rulesheets/teenage-mutant-ninja-turtles.md",
+        "/pinball/rulesheets/the-mandalorian.md",
+        "/pinball/rulesheets/the-munsters.md",
+        "/pinball/rulesheets/the-uncanny-x-men.md",
+        "/pinball/rulesheets/venom.md"
+      ],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-14T16:36:38.413Z",
+      "addedCount": 0,
+      "changedCount": 0,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-14T16:32:08.054Z",
+      "addedCount": 0,
+      "changedCount": 1,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [
+        "/pinball/data/LPL_Stats.csv"
+      ],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-13T03:06:26.227Z",
+      "addedCount": 0,
+      "changedCount": 1,
+      "removedCount": 0,
+      "totalFiles": 213,
+      "added": [],
+      "changed": [
+        "/pinball/data/LPL_Stats.csv"
+      ],
+      "removed": []
+    },
+    {
       "generatedAt": "2026-02-12T21:37:48.395Z",
       "addedCount": 0,
       "changedCount": 0,
@@ -966,60 +1050,10 @@
       "added": [],
       "changed": [],
       "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:10:24.601Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:04:10.781Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:04:10.780Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:03:36.643Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-07T23:03:34.108Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 210,
-      "added": [],
-      "changed": [],
-      "removed": []
     }
   ],
   "latest": {
-    "generatedAt": "2026-02-12T21:37:48.395Z",
+    "generatedAt": "2026-02-16T03:40:33.459Z",
     "addedCount": 0,
     "changedCount": 0,
     "removedCount": 0,

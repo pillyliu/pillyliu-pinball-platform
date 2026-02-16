@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/the-mandalorian-rulesheet/7056"
 source_updated_at: "2023-11-14T16:19:21.950Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/the-mandalorian-rulesheet/7056">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## <a href="#table-of-contents-1" id="table-of-contents-1" class="anchor"></a>Table of contents

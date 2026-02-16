@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-02-12T21:37:48.395Z",
+  "generatedAt": "2026-02-16T03:40:33.459Z",
   "source": "shared/pinball",
   "totalFiles": 213,
   "files": {
@@ -23,9 +23,9 @@
       "contentType": "text/csv"
     },
     "/pinball/data/LPL_Stats.csv": {
-      "hash": "a84146d4c3a38278509008cb2c43098dc0d5f3436d97131524f01a9bd6233946",
-      "size": 870165,
-      "mtimeMs": 1770799726348,
+      "hash": "d78beedbba8312810188e83a4d3b6464a0ab0681ce9271361cde87a5a68e97c6",
+      "size": 1053740,
+      "mtimeMs": 1771151909738,
       "contentType": "text/csv"
     },
     "/pinball/data/LPL_Targets.csv": {
@@ -1055,15 +1055,15 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/avengers-infinity-quest.md": {
-      "hash": "e27a056d2daf760e3fdf02199c4c6092eb41a1a5c2b43d0efaf36c7d2d69602e",
-      "size": 54619,
-      "mtimeMs": 1770476337572,
+      "hash": "13d583330fafa24f0534c21ea5b6c819426d292c572ad821e795ca817fe92498",
+      "size": 54881,
+      "mtimeMs": 1771202933117,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/black-knight-sword-of-rage.md": {
-      "hash": "14d65e4d2b3df5b489a5a1420ecf178fa75891d039fde4aaab603f31762a679a",
-      "size": 19993,
-      "mtimeMs": 1770476337577,
+      "hash": "534c38732350935b2a3513b468288e10c2570b8c892bd56d89aae44247d27831",
+      "size": 20258,
+      "mtimeMs": 1771202933127,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/cactus-canyon.md": {
@@ -1073,45 +1073,45 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/deadpool.md": {
-      "hash": "a4324ad278c0718560b69bc74d8a3336d47de2b3b960c13e216424547b685ff3",
-      "size": 23857,
-      "mtimeMs": 1770476337579,
+      "hash": "7b7380b43c1e3c737fbd68d56a32af67e189a9c1531b0608addeff43308c1fcb",
+      "size": 24104,
+      "mtimeMs": 1771202933140,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/dungeons-and-dragons-the-tyrants-eye.md": {
-      "hash": "f823e3ef7801823f65827da78ad222982b85b05b5c0e8f266cd303ccf3f2150a",
-      "size": 50432,
-      "mtimeMs": 1770476337576,
+      "hash": "f5216c96ecbed7a8088f33a560964bbd8341e88fc6b1aea45c9bb46820daef90",
+      "size": 50703,
+      "mtimeMs": 1771202933148,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/elviras-house-of-horrors.md": {
-      "hash": "c69aa4261fb0a7f58f64ec7a97fb643e71cc65f8d1d8846f79a8be6a3a31c280",
-      "size": 30057,
-      "mtimeMs": 1770476337573,
+      "hash": "29f8cd1a817839085194a523c84d2d91a15383d7c1c4c8a8a55f03086357f00f",
+      "size": 30325,
+      "mtimeMs": 1771202933157,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/foo-fighters.md": {
-      "hash": "7c648918098d6cb344bca16fa64e02c8ee28af5736a15c25a6e491efa33b62e5",
-      "size": 48227,
-      "mtimeMs": 1770476337575,
+      "hash": "237c1bf2dbb65fdfcac7db73b6dd1e275f06bf5f634feb308e4b92078bf2b3cf",
+      "size": 48478,
+      "mtimeMs": 1771202933165,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/game-of-thrones.md": {
-      "hash": "aed4fe8f00a72c07283811f727876e02e972872d859d62e5aeb9cd9042bb4da3",
-      "size": 34084,
-      "mtimeMs": 1770476337576,
+      "hash": "9eacfeeaa9bcbccaa3f3f1e29f4f8b8b1a85c4485a45e559d9545fc767452722",
+      "size": 34345,
+      "mtimeMs": 1771202933173,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/ghostbusters.md": {
-      "hash": "2d5d91722744765938d6c9edbeae75aec463deb9c4c09a7a45eaf7762ece93a0",
-      "size": 18178,
-      "mtimeMs": 1770476337573,
+      "hash": "1deddc595de8c94062a950f7fcdb0fb805432acb2356a2f62f0968a5772e2ebb",
+      "size": 18437,
+      "mtimeMs": 1771202933181,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/godzilla.md": {
-      "hash": "682e4e671b39091505c7b7ce2258d197ab55ca6acb1b685c00dddd09413a019b",
-      "size": 65858,
-      "mtimeMs": 1770476337578,
+      "hash": "da7415da714432ab1f4d04a13ac8cfc15b546073de1f2cec905f81909b272e83",
+      "size": 66111,
+      "mtimeMs": 1771202933189,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/indiana-jones-the-pinball-adventure.md": {
@@ -1121,45 +1121,45 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/iron-maiden.md": {
-      "hash": "15e845d2126596df2de1d3ac3954f3085112219d93cfe6a9c46f1f2ff4206346",
-      "size": 33864,
-      "mtimeMs": 1770476337579,
+      "hash": "3c5266072d09d8e27730e12b2dacd13dc73330185ea04d537eda7551cacb0182",
+      "size": 34121,
+      "mtimeMs": 1771202933200,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/james-bond-007.md": {
-      "hash": "fc3b8e67038779333df5c648c7bd0f5fc9f1897c472efab002eabe3ec5c21937",
-      "size": 47056,
-      "mtimeMs": 1770476337577,
+      "hash": "6f6999aaf13988e9a25c028caa0053f184fa3a7eb46362d89c4dc4a034f6d578",
+      "size": 47311,
+      "mtimeMs": 1771202933208,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/jaws.md": {
-      "hash": "4e10b4ffec4bbb043aa539df2e155ab7600afc6819ae6a94243e6038518f0862",
-      "size": 59236,
-      "mtimeMs": 1770476337579,
+      "hash": "2874b461c5bd2afaa7824c7b37a126f4fa99121759ec57f1391482848094371e",
+      "size": 59479,
+      "mtimeMs": 1771202933214,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/john-wick.md": {
-      "hash": "11a5ff92d8b41c45f9c1b33b40031b9dcdca211db4e291c1a43db81908a5ae61",
-      "size": 28943,
-      "mtimeMs": 1770476337572,
+      "hash": "ff70864d8fef45fdac4d831be26e8995d1fc3273e4c3d66bf5087f1e0bc06ce4",
+      "size": 29191,
+      "mtimeMs": 1771202933222,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/jurassic-park.md": {
-      "hash": "683cd1745820d80b5e722c8d0f631e1ec9d5675a45ac143b056d181c8b6be47a",
-      "size": 60920,
-      "mtimeMs": 1770476337576,
+      "hash": "8225568fdcfff3e49c7b3c9fb28bf73d98d4d2a64055db0f1145de4d37996a77",
+      "size": 61178,
+      "mtimeMs": 1771202933230,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/king-kong.md": {
-      "hash": "f5dbc48acc481974e200d251e10cc8cdbe3836475e3d97d0d070febe75ef655f",
-      "size": 42407,
-      "mtimeMs": 1770476337575,
+      "hash": "23871697914e4ef48f9549ebbf75deb670686dfc4c2f2a838393e915fc44e475",
+      "size": 42677,
+      "mtimeMs": 1771202933238,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/kiss.md": {
-      "hash": "5468c278e39775c99a200a1a3b00259e588870b72c3ad4f71bc19fa4da374557",
-      "size": 19207,
-      "mtimeMs": 1770476337572,
+      "hash": "1e6627ab98572b3f2e10c831c612f4fc3a8bf39ca2ad610f8aa9a3e7d44ddcac",
+      "size": 19454,
+      "mtimeMs": 1771202933245,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/medieval-madness.md": {
@@ -1169,9 +1169,9 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/metallica.md": {
-      "hash": "7635e58a96c27d621226173ded91845fb73837515f6922b87e2275fe0480bded",
-      "size": 26161,
-      "mtimeMs": 1770476337574,
+      "hash": "401ca838359790c1a9a6bb44b42822caa3d53dd6a691908d721f6fa6e52efca9",
+      "size": 26408,
+      "mtimeMs": 1771202933257,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/monster-bash.md": {
@@ -1181,15 +1181,15 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/pulp-fiction.md": {
-      "hash": "cbf4ce205eadeb970b77747902f8b4ebb56882d23759c7983e9dffea77024237",
-      "size": 16669,
-      "mtimeMs": 1770476337573,
+      "hash": "0733225820f760aa99113c8b26518bbfb0097492dddc2d2892fbd0b8fbb7f672",
+      "size": 16920,
+      "mtimeMs": 1771202933268,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/rush.md": {
-      "hash": "e73a39f8bdb9b5ee471b48a19bd1c8f9fcdad9f07bb54f134585ea34e286965e",
-      "size": 44407,
-      "mtimeMs": 1770476337573,
+      "hash": "4865b8652476e5063c70f2e5fc453ef8c3ece10f7b62548947c61de3f863ed38",
+      "size": 44656,
+      "mtimeMs": 1771202933275,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/scared-stiff.md": {
@@ -1199,27 +1199,27 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/star-trek.md": {
-      "hash": "80d5a3f72d2b492ec014fbcbff91763feffa2097e6b93544d0ef9a57beaf9974",
-      "size": 26846,
-      "mtimeMs": 1770476337575,
+      "hash": "ccc513c36b8eeec91d81c4866259f88acaf1d8994a6a9c5af04873e8c4046b59",
+      "size": 27088,
+      "mtimeMs": 1771202933288,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/star-wars-fall-of-the-empire.md": {
-      "hash": "985c46c6b0718c243b7d895aa533a8564c0cb0457981a6d58339ccc8b8c071b5",
-      "size": 31095,
-      "mtimeMs": 1770476337575,
+      "hash": "6d3daba44e2fe048def4d600692037e413745ac50cd43784952024fc9b485fcc",
+      "size": 31362,
+      "mtimeMs": 1771202933296,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/star-wars.md": {
-      "hash": "6a48a269a75f02ecf2cff828fe88f6226558ab4e74f7eaf1272070232326ddbc",
-      "size": 25637,
-      "mtimeMs": 1770476337576,
+      "hash": "94e3e7528ec8fba23f1734b6758c0706d8f346fcf2e1f02f724121d18c907376",
+      "size": 25891,
+      "mtimeMs": 1771202933303,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/stranger-things.md": {
-      "hash": "497d659e48d17419a798570513f9cddd7974849e6eddb7496b73b36d3753ba15",
-      "size": 34042,
-      "mtimeMs": 1770476337578,
+      "hash": "073fd6aaf7a82068148c44697517f3622c8da41d8ade8bcfff4bff14a3f8b3c3",
+      "size": 34300,
+      "mtimeMs": 1771202933311,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/tales-of-the-arabian-nights.md": {
@@ -1229,9 +1229,9 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/teenage-mutant-ninja-turtles.md": {
-      "hash": "67b2a102e78ea03c45392401abd717f9e6b6922befa7c5c901874a208543e19f",
-      "size": 46545,
-      "mtimeMs": 1770476337578,
+      "hash": "1f8d8bc69f7f4ea1de0dce5bbda51f631217b38d0f1ffc86e4d9f8a8e7164e50",
+      "size": 46794,
+      "mtimeMs": 1771202933323,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/the-addams-family.md": {
@@ -1247,15 +1247,15 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/the-mandalorian.md": {
-      "hash": "2923a7131fe2db0a55c1754e92e5d87d8d15708aa7dd9e401e1b92fa5c2ee7ce",
-      "size": 35750,
-      "mtimeMs": 1770476337576,
+      "hash": "bf5ae0f248bdb567330401b484d229c098bc4c205d0229b0f9987c7e24b2a6b7",
+      "size": 36004,
+      "mtimeMs": 1771202933338,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/the-munsters.md": {
-      "hash": "57df7eeec8e2ea766ee654bf3ea9692606fe83cce8ece04f451295e1740782e4",
-      "size": 25668,
-      "mtimeMs": 1770476337577,
+      "hash": "80c9ca57d610e277f21a3460f82e1be2873638ac5d16fd01ead1b2e939a78bdb",
+      "size": 25919,
+      "mtimeMs": 1771202933345,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/the-simpsons-pinball-party.md": {
@@ -1265,9 +1265,9 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/the-uncanny-x-men.md": {
-      "hash": "6042eabcc509d42b1e7659dd1e89ce209baf3574ee687327acd31de75cef0f85",
-      "size": 31604,
-      "mtimeMs": 1770476337572,
+      "hash": "64c9bc1d3b55c92f9b97bfaeeba038ffbc80c8e24c6309a79fc92752ef3916fd",
+      "size": 31860,
+      "mtimeMs": 1771202933356,
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/tron-legacy.md": {
@@ -1277,9 +1277,9 @@
       "contentType": "text/markdown"
     },
     "/pinball/rulesheets/venom.md": {
-      "hash": "05d591c5dc9b1ef3a4f7e1ef128a79f68ce3e4a361c6de5c897d49da9dac26c6",
-      "size": 35922,
-      "mtimeMs": 1770476337579,
+      "hash": "841817584b7f0d9e56205f4f815b7bcc56fbdec21a7533f6fedb4a1776bf95fc",
+      "size": 36166,
+      "mtimeMs": 1771202933366,
       "contentType": "text/markdown"
     }
   }

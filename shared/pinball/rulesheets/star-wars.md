@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/star-wars-stern-rulesheet/2812"
 source_updated_at: "2025-09-23T17:51:47.296Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/star-wars-stern-rulesheet/2812">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

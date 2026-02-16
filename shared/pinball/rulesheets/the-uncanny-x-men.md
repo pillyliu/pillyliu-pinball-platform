@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100"
 source_updated_at: "2026-01-30T00:30:38.141Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

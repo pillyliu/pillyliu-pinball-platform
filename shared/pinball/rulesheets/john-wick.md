@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/john-wick-rulesheet/8956"
 source_updated_at: "2025-12-19T06:22:24.428Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/john-wick-rulesheet/8956">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

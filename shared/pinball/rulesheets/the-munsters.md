@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/the-munsters-rulesheet/4781"
 source_updated_at: "2024-07-08T21:21:09.199Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/the-munsters-rulesheet/4781">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

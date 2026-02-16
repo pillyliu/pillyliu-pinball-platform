@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/stranger-things-rulesheet-wip/6093"
 source_updated_at: "2024-10-25T17:29:25.990Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/stranger-things-rulesheet-wip/6093">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

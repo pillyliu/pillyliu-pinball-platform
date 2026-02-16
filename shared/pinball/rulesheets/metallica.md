@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/metallica-rulesheet/228"
 source_updated_at: "2025-09-12T05:36:05.769Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/metallica-rulesheet/228">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 This rulesheet is based off of the work of Adam Kiesler and others. Permission was received to post it here for editing.

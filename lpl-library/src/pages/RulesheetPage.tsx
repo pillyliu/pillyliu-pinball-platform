@@ -98,6 +98,7 @@ export default function RulesheetPage() {
     // 2) DO NOT clobber/prefix ids (otherwise ids become "user-content-...")
     const extraTags = [
       "span",
+      "small",
       "div",
       "img",
       "table",
@@ -196,6 +197,11 @@ export default function RulesheetPage() {
                 prose-pre:bg-neutral-950 prose-pre:ring-1 prose-pre:ring-neutral-800
                 prose-hr:border-neutral-800
                 prose-table:block prose-table:overflow-x-auto
+                [&_.rulesheet-attribution]:block
+                [&_.rulesheet-attribution]:text-[0.78rem]
+                [&_.rulesheet-attribution]:leading-5
+                [&_.rulesheet-attribution]:text-neutral-400
+                [&_.rulesheet-attribution]:mb-3
               "
             >
               <ReactMarkdown

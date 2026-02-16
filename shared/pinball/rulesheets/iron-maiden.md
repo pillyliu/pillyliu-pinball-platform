@@ -4,6 +4,9 @@ source: "http://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787"
 source_updated_at: "2022-08-30T20:18:09.443Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="http://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

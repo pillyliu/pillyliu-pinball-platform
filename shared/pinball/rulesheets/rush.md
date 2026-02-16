@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/stern-rush-rulesheet/7409"
 source_updated_at: "2026-01-13T13:42:02.907Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/stern-rush-rulesheet/7409">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 <a href="https://insider.sternpinball.com/documents/16/Rush-Rulesheet.pdf" rel="noopener nofollow ugc">Stern Rulesheet PDF</a>

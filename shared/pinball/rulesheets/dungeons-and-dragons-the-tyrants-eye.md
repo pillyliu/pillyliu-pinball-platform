@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/926
 source_updated_at: "2026-01-29T22:10:47.626Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/9267">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 # Quick Links:

@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358"
 source_updated_at: "2025-10-20T14:20:42.768Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 **Skill Shot**  

@@ -207,19 +207,19 @@ export default function App() {
             clear={[() => setPlayer(""), () => setBankNumber(""), () => setMachine("")]}
           />
           <Filter
+            label="Bank"
+            value={bankNumber}
+            setValue={(v) => setBankNumber(Number(v) || "")}
+            opts={bankNumbers}
+            clear={[() => setMachine("")]}
+          />
+          <Filter
             label="Player"
             value={player}
             setValue={setPlayer}
             opts={players}
             clear={[() => setBankNumber(""), () => setMachine("")]}
             formatOptionLabel={(option) => formatPlayerDisplayName(String(option), redactedPlayers)}
-          />
-          <Filter
-            label="Bank"
-            value={bankNumber}
-            setValue={(v) => setBankNumber(Number(v) || "")}
-            opts={bankNumbers}
-            clear={[() => setMachine("")]}
           />
           <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />
         </div>
@@ -231,8 +231,8 @@ export default function App() {
             <thead className="sticky top-0 z-10 bg-neutral-950">
               <tr className="border-b border-neutral-800 text-left text-neutral-300">
                 <th className="table-head-cell">Season</th>
-                <th className="table-head-cell">Player</th>
                 <th className="table-head-cell">Bank</th>
+                <th className="table-head-cell">Player</th>
                 <th className="table-head-cell">Machine</th>
                 <th className="table-head-cell">Score</th>
                 <th className="table-head-cell">Points</th>
@@ -245,8 +245,8 @@ export default function App() {
                   className="table-body-row"
                 >
                   <td className="table-body-cell">{seasonNumber(r.Season)}</td>
-                  <td className="table-body-cell">{displayPlayerByRawName.get(r.Player) ?? r.Player}</td>
                   <td className="table-body-cell tabular-nums">{r.BankNumber}</td>
+                  <td className="table-body-cell">{displayPlayerByRawName.get(r.Player) ?? r.Player}</td>
                   <td className="table-body-cell">{r.Machine}</td>
                   <td className="table-body-cell tabular-nums">{formatScore(r.RawScore)}</td>
                   <td className="table-body-cell tabular-nums">{formatPoints(r.Points)}</td>

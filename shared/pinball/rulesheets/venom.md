@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/venom-rulesheet/8503"
 source_updated_at: "2025-08-05T14:17:30.984Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/venom-rulesheet/8503">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick Links:

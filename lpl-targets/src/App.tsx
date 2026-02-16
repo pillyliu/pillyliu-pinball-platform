@@ -152,7 +152,7 @@ export default function App() {
               >
                 <option value="location">Sort: Location</option>
                 <option value="bank">Sort: Bank</option>
-                <option value="alphabetical">Sort: Alphabetical</option>
+                <option value="alphabetical">Sort: A-Z</option>
               </select>
               <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
                 ▾

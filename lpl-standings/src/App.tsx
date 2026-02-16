@@ -208,11 +208,11 @@ export default function App() {
                                 const top8 = rank <= 8;
                                 const rankStyle =
                                     rank === 1
-                                        ? "text-yellow-400"
+                                        ? "text-amber-300 font-bold"
                                         : rank === 2
-                                            ? "text-neutral-300"
+                                            ? "text-slate-200 font-bold"
                                             : rank === 3
-                                                ? "text-amber-600"
+                                                ? "text-orange-300 font-bold"
                                                 : "";
                                 return (
                                     <tr

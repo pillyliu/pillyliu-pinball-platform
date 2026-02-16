@@ -4,6 +4,9 @@ source: "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet-wip/5815"
 source_updated_at: "2025-11-24T00:36:54.523Z"
 ---
 
+<small class="rulesheet-attribution">Source: Tilt Forums community rulesheet | Original thread: <a href="https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet-wip/5815">link</a> | License: CC BY-NC-SA 3.0 | Reformatted for readability and mobile use.</small>
+
+
 <div class="pinball-rulesheet">
 
 ## Quick links
