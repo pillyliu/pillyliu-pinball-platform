@@ -26,10 +26,10 @@ npm run build:all
 
 Expected built route outputs:
 - `pillyliu-landing/dist` for `/`
-- `lpl-library/dist` for `/lpl_library`
-- `lpl-standings/dist` for `/lpl_standings`
-- `lpl-stats/dist` for `/lpl_stats`
-- `lpl-targets/dist` for `/lpl_targets`
+- `lpl-library/dist` for `/lpl-library`
+- `lpl-standings/dist` for `/lpl-standings`
+- `lpl-stats/dist` for `/lpl-stats`
+- `lpl-targets/dist` for `/lpl-targets`
 
 Note:
 - Pinball app `dist` folders should not carry their own `dist/pinball` payload.
@@ -61,10 +61,10 @@ This checks:
 
 Verify in browser:
 - `https://pillyliu.com/`
-- `https://pillyliu.com/lpl_library/`
-- `https://pillyliu.com/lpl_standings/`
-- `https://pillyliu.com/lpl_stats/`
-- `https://pillyliu.com/lpl_targets/`
+- `https://pillyliu.com/lpl-library/`
+- `https://pillyliu.com/lpl-standings/`
+- `https://pillyliu.com/lpl-stats/`
+- `https://pillyliu.com/lpl-targets/`
 
 Check:
 - Pages render without broken assets.

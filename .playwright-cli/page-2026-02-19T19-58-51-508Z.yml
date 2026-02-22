@@ -1,0 +1,2470 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "pillyliu" [ref=e6] [cursor=pointer]:
+            - /url: /pinball/my-pinside
+          - link "":
+            - /url: /pinball/my-pinside/signout
+            - generic [ref=e7] [cursor=pointer]: 
+        - link " 0" [ref=e9] [cursor=pointer]:
+          - /url: /pinball/connect/pinsidemail
+          - generic [ref=e10]: 
+          - text: "0"
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/connect/notifications
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/connect/pulse
+          - generic [ref=e16]: 
+        - text: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e19]: 
+        - generic [ref=e20]:
+          - link "" [ref=e21] [cursor=pointer]:
+            - /url: /pinball/search
+            - generic [ref=e22]: 
+          - text: 
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e25]: 
+        - link "" [ref=e27] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e28]: 
+        - text: 
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - text: 
+          - link [ref=e32] [cursor=pointer]:
+            - /url: /
+            - img [ref=e33]
+          - generic [ref=e34]:
+            - link "machines" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e37] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e38] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e39] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e40] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e41] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e42] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e43] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e44] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e45] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e47]:
+          - link "" [ref=e48] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e49]: 
+          - text: »
+          - link "Pinside Marketplace" [ref=e50] [cursor=pointer]:
+            - /url: /pinball/market
+          - text: »
+          - link "Classified ads" [ref=e51] [cursor=pointer]:
+            - /url: /pinball/market/classifieds
+          - text: »
+          - link "Ads archive" [ref=e52] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e53]:
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - link "Pinside.com logo" [ref=e57] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e58]
+          - list [ref=e60]:
+            - listitem [ref=e61]:
+              - link "machines" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e63]:
+              - link "top 100" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e65]:
+              - link "community" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e67]:
+              - link "TV" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e69]:
+              - link "pin map" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e71]:
+              - link "forum" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e73]:
+              - link "biz" [ref=e74] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e75]:
+              - link "shops" [ref=e76] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e77]:
+              - link "market" [ref=e78] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e79]:
+              - link "events" [ref=e80] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e81]:
+              - link "HQ" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e83]:
+          - 'link "Photo: pinballphotos" [ref=e84] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e86]: 
+      - generic [ref=e87]:
+        - generic [ref=e89]:
+          - list [ref=e90]:
+            - listitem [ref=e91]:
+              - text: »
+              - link "Pinside Marketplace" [ref=e92] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e93]:
+              - text: »
+              - link "Classified ads" [ref=e94] [cursor=pointer]:
+                - /url: /pinball/market/classifieds
+            - listitem [ref=e95]:
+              - text: »
+              - link "Ads archive" [ref=e96] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&keywords=Metallica&sort_by=ad_end_date&sort_order=DESC
+          - link "" [ref=e97] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e98]: 
+        - generic [ref=e100]:
+          - generic:
+            - list:
+              - listitem [ref=e101]:
+                - link "Splash Marketplace overview" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/market
+                  - text: Splash
+                  - generic [ref=e103]: Marketplace overview
+              - listitem [ref=e104]:
+                - link "Classified ads Used games & parts" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds
+                  - text: Classified ads
+                  - generic [ref=e106]: Used games & parts
+              - listitem [ref=e107]:
+                - link "Ads Map Ads on the map" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/market/map
+                  - text: Ads Map
+                  - generic [ref=e109]: Ads on the map
+              - listitem [ref=e110]:
+                - link "Top Seller Ads Pinside's best sellers!" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/market/top-sellers
+                  - text: Top Seller Ads
+                  - generic [ref=e112]: Pinside's best sellers!
+              - listitem [ref=e113]:
+                - link "New games (NIB) Brand new in box" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/market/new-games
+                  - text: New games (NIB)
+                  - generic [ref=e115]: Brand new in box
+              - listitem [ref=e116]:
+                - link "Your favorites And recommendations" [ref=e117] [cursor=pointer]:
+                  - /url: /pinball/market/personal
+                  - text: Your favorites
+                  - generic [ref=e118]: And recommendations
+              - listitem [ref=e119]:
+                - link " Place an ad Create a new ad listing" [ref=e120] [cursor=pointer]:
+                  - /url: /pinball/market/place
+                  - generic [ref=e121]:
+                    - generic [ref=e122]: 
+                    - text: Place an ad
+                  - generic [ref=e123]: Create a new ad listing
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - generic [ref=e127]:
+          - heading "Pinside Marketplace archive" [level=1] [ref=e128]
+          - paragraph [ref=e129]: The Pinside Marketplace Archive contains ads placed since the launch of our Market, back in 2008. You can use it to help determine game value and by looking at past marketplace ads in our market archive.
+        - generic [ref=e131]:
+          - link [ref=e132] [cursor=pointer]:
+            - /url: /pinball/market/place
+            - img [ref=e133]
+          - heading "Place YOUR ad!" [level=1] [ref=e134]
+          - paragraph [ref=e135]:
+            - text: Have something to sell? Or looking for a specific game or part?
+            - link "Place your ad" [ref=e136] [cursor=pointer]:
+              - /url: /pinball/market/place
+      - generic [ref=e138]:
+        - link "Find used games & parts Active classified ads" [ref=e139] [cursor=pointer]:
+          - /url: /pinball/market/classifieds
+          - text: Find used games & parts
+          - generic [ref=e140]: Active classified ads
+        - link "Research old ad listings Archived classified ads" [ref=e141] [cursor=pointer]:
+          - /url: /pinball/market/classifieds/archive
+          - text: Research old ad listings
+          - generic [ref=e142]: Archived classified ads
+      - generic [ref=e144]:
+        - generic [ref=e146]:
+          - group "Keyword search" [ref=e147]:
+            - generic [ref=e148]: Keyword search
+            - textbox "Keyword(s)" [ref=e150]: Metallica
+            - list
+          - group "Item condition" [ref=e151]:
+            - generic [ref=e152]: Item condition
+            - combobox [ref=e153]:
+              - option "-" [selected]
+              - option "Pre-order spot for a game (Personal only)"
+              - option "NIB - New in box (distributor/business)"
+              - option "NIB - New in box (personal)"
+              - option "OIB - Old in box (older than 3 years, never unboxed)"
+              - option "As new - New out of box (first owner)"
+              - option "HUO - Documented (Home Used Only)"
+              - option "HUO - Undocumented (Home Used Only)"
+              - option "HUO - Needs work"
+              - option "Fully restored (full original status)"
+              - option "Partially restored (almost original)"
+              - option "Fully shopped/refurbished"
+              - option "Partially shopped/refurbished"
+              - option "Used - shows wear but 100% working and clean"
+              - option "Used - shows wear, needs some work"
+              - option "Used - shows wear, needs major work"
+              - option "Routed - fresh off route"
+              - option "Functional - needs minor work"
+              - option "Functional - needs major work"
+              - option "As is"
+          - group "Game specifics" [ref=e154]:
+            - generic [ref=e155]: Game specifics
+            - combobox [ref=e156]:
+              - option "[All game types]" [selected]
+              - option "(Electro) Mechanical"
+              - option "Solid state"
+            - combobox [ref=e157]:
+              - option "[All Manufacturers]" [selected]
+              - option "Allied Leisure"
+              - option "Alvin G. & Co"
+              - option "American Pinball"
+              - option "Atari"
+              - option "Bell Games"
+              - option "Bally"
+              - option "Capcom"
+              - option "Chicago Gaming"
+              - option "Data East"
+              - option "Game Plan"
+              - option "Genco"
+              - option "Gottlieb"
+              - option "Jersey Jack Pinball"
+              - option "Multimorphic"
+              - option "Rally"
+              - option "Sega"
+              - option "Segasa"
+              - option "Spooky Pinball"
+              - option "Stern Pinball (modern)"
+              - option "Stern (classic)"
+              - option "Williams"
+              - option "Zaccaria"
+              - option "Other manufacturers"
+            - textbox "From year" [ref=e159]
+            - textbox "To year" [ref=e161]
+          - group "Distance" [ref=e162]:
+            - generic [ref=e163]: Distance
+            - combobox [ref=e164]:
+              - option "Anywhere (no limit on distance)" [selected]
+              - option "25 miles / 40 km"
+              - option "50 miles / 80 km"
+              - option "100 miles / 160 km"
+              - option "200 miles / 320 km"
+              - option "300 miles / 480 km"
+              - option "400 miles / 640 km"
+              - option "500 miles / 804 km"
+              - option "1000 miles / 1600 km"
+          - group "Sort by" [ref=e165]:
+            - generic [ref=e166]: Sort by
+            - combobox [ref=e167]:
+              - option "Item distance"
+              - option "Date ended" [selected]
+              - option "Date added"
+              - option "Price"
+            - combobox [ref=e168]:
+              - option "Ascending order"
+              - option "Descending order" [selected]
+          - generic [ref=e169]:
+            - button "Apply filters" [ref=e170] [cursor=pointer]
+            - button "reset form" [ref=e172]
+          - generic [ref=e173]:
+            - img [ref=e174]
+            - paragraph [ref=e175]: A yellow background means a filter is set different than its defaults.
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - heading "Archived Ads matching query “Metallica”" [level=1] [ref=e178]
+            - paragraph [ref=e179]: Found 1374 ads matching your search query.
+            - generic [ref=e180]:
+              - generic [ref=e182]:
+                - generic [ref=e183]: SOLD!
+                - link [ref=e184] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207894
+                - generic [ref=e185]:
+                  - generic [ref=e187]: Machine - For Sale
+                  - generic [ref=e188]:
+                    - link "Metallica (Pro) 405 total games, everything works" [ref=e189] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207894
+                    - text: Archived
+                  - generic [ref=e190]:
+                    - strong [ref=e191]: HUO - Documented (Home Used Only)
+                    - text: "- “Metallica Pro. Build date June 14, 2017. Model/Rev Pinball I-00-E0*Metallica I bought this in 2017 for kids and I to have something fun to do together. Kids have gone to colle...”"
+                  - generic [ref=e192]:
+                    - generic [ref=e193]:
+                      - generic [ref=e194]: 
+                      - text: 2026-02-03
+                    - generic [ref=e195]:
+                      - img [ref=e196]
+                      - text: Iowa City, IA (373 mi)
+                    - generic [ref=e197]:
+                      - generic [ref=e198]: 
+                      - link "1whatever" [ref=e199] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/1whatever/market
+                    - generic [ref=e200]:
+                      - generic [ref=e201]: 
+                      - text: 5,900 (OBO)
+                - generic [ref=e202]:
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: 
+                    - strong [ref=e205]: "Archived after:"
+                    - text: 15 days
+                  - generic [ref=e206]:
+                    - generic [ref=e207]: 
+                    - strong [ref=e208]: "Viewed:"
+                    - text: 241 times
+                  - generic [ref=e209]:
+                    - generic [ref=e210]: 
+                    - strong [ref=e211]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e212]:
+                    - generic [ref=e213]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e215]:
+                - link [ref=e216] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207484
+                - generic [ref=e217]:
+                  - generic [ref=e219]: Machine - For Sale
+                  - generic [ref=e220]:
+                    - link "Metallica (Premium)" [ref=e221] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207484
+                    - text: Featured Archived
+                  - generic [ref=e222]:
+                    - strong [ref=e223]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Beautiful, purple powder coated. Includes - impossible to find sparky topper, sparky shooter, mirror art blades, pin stadium, color dmd, speaker lights, upgraded speakers and sub, ...”"
+                  - generic [ref=e224]:
+                    - generic [ref=e225]:
+                      - generic [ref=e226]: 
+                      - text: 2026-01-06
+                    - generic [ref=e227]:
+                      - img [ref=e228]
+                      - text: Voorhees, NJ (529 mi)
+                    - generic [ref=e229]:
+                      - generic [ref=e230]: 
+                      - link "joshkleinman" [ref=e231] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/joshkleinman/market
+                      - generic [ref=e232]: 
+                    - generic [ref=e233]:
+                      - generic [ref=e234]: 
+                      - text: 8,500 (OBO)
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - generic [ref=e237]: 
+                    - strong [ref=e238]: "Archived after:"
+                    - text: 42 days
+                  - generic [ref=e239]:
+                    - generic [ref=e240]: 
+                    - strong [ref=e241]: "Viewed:"
+                    - text: 173 times
+                  - generic [ref=e243]:
+                    - generic [ref=e244]: 
+                    - strong [ref=e245]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e247]:
+                - link [ref=e248] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205004
+                - generic [ref=e249]:
+                  - generic [ref=e251]: Machine - For Sale
+                  - generic [ref=e252]:
+                    - link "Metallica Premium" [ref=e253] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205004
+                    - text: Archived
+                  - generic [ref=e254]:
+                    - strong [ref=e255]: HUO - Undocumented (Home Used Only)
+                    - text: "- “https://youtube.com/shorts/sx9QHrFgneA Pingraffix edition and Pinball Refinery did the custom purple powder coating. Shaker motor, LED interactive artblades, including backbox pa...”"
+                  - generic [ref=e256]:
+                    - generic [ref=e257]:
+                      - generic [ref=e258]: 
+                      - text: 2026-01-23
+                    - generic [ref=e259]:
+                      - img [ref=e260]
+                      - text: Medford, NJ (535 mi)
+                    - generic [ref=e261]:
+                      - generic [ref=e262]: 
+                      - link "NRM3333" [ref=e263] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/nrm3333/market
+                    - generic [ref=e264]:
+                      - generic [ref=e265]: 
+                      - text: 7,250
+                - generic [ref=e266]:
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: 
+                    - strong [ref=e269]: "Archived after:"
+                    - text: 20 days
+                  - generic [ref=e270]:
+                    - generic [ref=e271]: 
+                    - strong [ref=e272]: "Viewed:"
+                    - text: 353 times
+                  - generic [ref=e274]:
+                    - generic [ref=e275]: 
+                    - strong [ref=e276]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e278]:
+                - link [ref=e279] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206533
+                - generic [ref=e280]:
+                  - generic [ref=e282]: Machine - For Sale
+                  - generic [ref=e283]:
+                    - link "Metallica (Pro) Color DMD, Topper, Blades. Loaded" [ref=e284] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206533
+                    - text: Archived
+                  - generic [ref=e285]:
+                    - strong [ref=e286]: Fully restored (full original status)
+                    - text: "- “Have to make room. Decided to put my Metallica Pro Pinball up for sale. Wasnt planning on selling it but life happens. Has color Display, side art, Shaker, topper. Signed by orig...”"
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - generic [ref=e289]: 
+                      - text: 2026-01-29
+                    - generic [ref=e290]:
+                      - img [ref=e291]
+                      - text: Rockford, IL (238 mi)
+                    - generic [ref=e292]:
+                      - generic [ref=e293]: 
+                      - link "Three60in" [ref=e294] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/three60in/market
+                    - generic [ref=e295]:
+                      - generic [ref=e296]: 
+                      - text: 6,000
+                    - generic [ref=e298]: 
+                - generic [ref=e299]:
+                  - generic [ref=e300]:
+                    - generic [ref=e301]: 
+                    - strong [ref=e302]: "Archived after:"
+                    - text: 14 days
+                  - generic [ref=e303]:
+                    - generic [ref=e304]: 
+                    - strong [ref=e305]: "Viewed:"
+                    - text: 359 times
+                  - generic [ref=e307]:
+                    - generic [ref=e308]: 
+                    - strong [ref=e309]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e311]:
+                - generic [ref=e312]: SOLD!
+                - link [ref=e313] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/208868
+                - generic [ref=e314]:
+                  - generic [ref=e316]: Machine - For Trade
+                  - generic [ref=e317]:
+                    - 'link "For Trade: Metallica Remastered (Premium)" [ref=e318] [cursor=pointer]':
+                      - /url: /pinball/market/classifieds/archive/208868
+                    - text: Archived
+                  - generic [ref=e319]:
+                    - strong [ref=e320]: As new - New out of box (first owner)
+                    - text: "- “Looking to trade my recently opened Metallica Remastered for an Elvira's House of Horrors. Would also consider Jaws Premium. 481 total plays on my machine. Thanks.”"
+                  - generic [ref=e321]:
+                    - generic [ref=e322]:
+                      - generic [ref=e323]: 
+                      - text: 2026-02-02
+                    - generic [ref=e324]:
+                      - img [ref=e325]
+                      - text: Cleveland, OH (163 mi)
+                    - generic [ref=e326]:
+                      - generic [ref=e327]: 
+                      - link "rjbowes3" [ref=e328] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/rjbowes3/market
+                    - generic [ref=e329]:
+                      - text: Trade±
+                      - generic [ref=e330]: 
+                      - text: 8,200 (OBO)
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - generic [ref=e333]: 
+                    - strong [ref=e334]: "Archived after:"
+                    - text: 8 days
+                  - generic [ref=e335]:
+                    - generic [ref=e336]: 
+                    - strong [ref=e337]: "Viewed:"
+                    - text: 329 times
+                  - generic [ref=e338]:
+                    - generic [ref=e339]: 
+                    - strong [ref=e340]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e341]:
+                    - generic [ref=e342]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e344]:
+                - generic [ref=e345]: SOLD!
+                - link [ref=e346] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207897
+                - generic [ref=e347]:
+                  - generic [ref=e349]: Machine - For Sale
+                  - generic [ref=e350]:
+                    - link "Metallica Remastered (LE)" [ref=e351] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207897
+                    - text: Archived
+                  - generic [ref=e352]:
+                    - strong [ref=e353]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Metallica remastered LE with new stern topper installed and full pin woofer sound kit plus Klipsch subwoofer, external volume and sound calibration + menu control panel (that’s a...”"
+                  - generic [ref=e354]:
+                    - generic [ref=e355]:
+                      - generic [ref=e356]: 
+                      - text: 2026-01-13
+                    - generic [ref=e357]:
+                      - img [ref=e358]
+                      - text: Snohomish, WA (1,848 mi)
+                    - generic [ref=e359]:
+                      - generic [ref=e360]: 
+                      - link "Beeski" [ref=e361] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/beeski/market
+                      - generic [ref=e362]: 
+                    - generic [ref=e363]:
+                      - generic [ref=e364]: 
+                      - text: 13,000 (Firm)
+                - generic [ref=e365]:
+                  - generic [ref=e366]:
+                    - generic [ref=e367]: 
+                    - strong [ref=e368]: "Archived after:"
+                    - text: 26 days
+                  - generic [ref=e369]:
+                    - generic [ref=e370]: 
+                    - strong [ref=e371]: "Viewed:"
+                    - text: 400 times
+                  - generic [ref=e372]:
+                    - generic [ref=e373]: 
+                    - strong [ref=e374]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e375]:
+                    - generic [ref=e376]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e378]:
+                - generic [ref=e379]: SOLD!
+                - link [ref=e380] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/208855
+                - generic [ref=e381]:
+                  - generic [ref=e383]: Machine - For Sale
+                  - generic [ref=e384]:
+                    - link "Metallica Remastered (LE) with topper" [ref=e385] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/208855
+                    - text: Archived
+                  - generic [ref=e386]:
+                    - strong [ref=e387]: As new - New out of box (first owner)
+                    - text: "- “Just took this beauty in from the original owner. The cabinet and playfield are flawless and beautiful. Game comes with the stern topper as it's only mod. Under 300 plays, one owne...”"
+                  - generic [ref=e388]:
+                    - generic [ref=e389]:
+                      - generic [ref=e390]: 
+                      - text: 2026-02-02
+                    - generic [ref=e391]:
+                      - img [ref=e392]
+                      - text: Wolcott, CT (590 mi)
+                    - generic [ref=e393]:
+                      - generic [ref=e394]: 
+                      - link "MikeyPins" [ref=e395] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/mikeypins/market
+                      - generic [ref=e396]: 
+                    - generic [ref=e397]:
+                      - generic [ref=e398]: 
+                      - text: 14,000
+                    - generic [ref=e400]: 
+                - generic [ref=e401]:
+                  - generic [ref=e402]:
+                    - generic [ref=e403]: 
+                    - strong [ref=e404]: "Archived after:"
+                    - text: 3 days
+                  - generic [ref=e405]:
+                    - generic [ref=e406]: 
+                    - strong [ref=e407]: "Viewed:"
+                    - text: 132 times
+                  - generic [ref=e408]:
+                    - generic [ref=e409]: 
+                    - strong [ref=e410]: "Status:"
+                    - text: Traded
+                  - generic [ref=e411]:
+                    - generic [ref=e412]: 
+                    - text: Contributed to Pinside
+                  - link " Got positive feedback" [ref=e414] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/mikeypins/feedback
+                    - generic [ref=e415]: 
+                    - text: Got positive feedback
+              - generic [ref=e417]:
+                - link [ref=e418] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/208833
+                - generic [ref=e419]:
+                  - generic [ref=e421]: Machine - For Sale
+                  - generic [ref=e422]:
+                    - link "Metallica Remastered (Premium)" [ref=e423] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/208833
+                    - text: Archived
+                  - generic [ref=e424]:
+                    - strong [ref=e425]: HUO - Documented (Home Used Only)
+                    - text: "- “Like new condition 675 total plays Mods as follows: Shaker Motor Expression Cabinet lighting and art blades Pinwoofer Powerwave Super Kit Pinwoofer PixlWav Expression Lighting Sp...”"
+                  - generic [ref=e426]:
+                    - generic [ref=e427]:
+                      - generic [ref=e428]: 
+                      - text: 2026-02-01
+                    - generic [ref=e429]:
+                      - img [ref=e430]
+                      - text: Aurora, OH (186 mi)
+                    - generic [ref=e431]:
+                      - generic [ref=e432]: 
+                      - link "rjalley12" [ref=e433] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/rjalley12/market
+                      - generic [ref=e434]: 
+                    - generic [ref=e435]:
+                      - generic [ref=e436]: 
+                      - text: 9,000 (Firm)
+                - generic [ref=e437]:
+                  - generic [ref=e438]:
+                    - generic [ref=e439]: 
+                    - strong [ref=e440]: "Archived after:"
+                    - text: 1 day
+                  - generic [ref=e441]:
+                    - generic [ref=e442]: 
+                    - strong [ref=e443]: "Viewed:"
+                    - text: 79 times
+                  - generic [ref=e445]:
+                    - generic [ref=e446]: 
+                    - strong [ref=e447]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e449]:
+                - link [ref=e450] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204938
+                - generic [ref=e451]:
+                  - generic [ref=e453]: Machine - For Sale
+                  - generic [ref=e454]:
+                    - link "Metallica Remastered (Premium)" [ref=e455] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204938
+                    - text: Archived
+                  - generic [ref=e456]:
+                    - strong [ref=e457]: NIB - New in box (personal)
+                    - text: "- “NIB- still on the pallet. Comes with 1 year warrenty. 33x33x5ft I also have Jurrasic Park Prem Kong Prem D&D prem X-Men Prem Pick up in Mesa or I can have them delivere...”"
+                  - generic [ref=e458]:
+                    - generic [ref=e459]:
+                      - generic [ref=e460]: 
+                      - text: 2025-11-17
+                    - generic [ref=e461]:
+                      - img [ref=e462]
+                      - text: Mesa, AZ (1,618 mi)
+                    - generic [ref=e463]:
+                      - generic [ref=e464]: 
+                      - link "PinballPixie" [ref=e465] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/pinballpixie/market
+                      - generic [ref=e466]: 
+                    - generic [ref=e467]:
+                      - generic [ref=e468]: 
+                      - text: 8,800
+                - generic [ref=e469]:
+                  - generic [ref=e470]:
+                    - generic [ref=e471]: 
+                    - strong [ref=e472]: "Archived after:"
+                    - text: 76 days
+                  - generic [ref=e473]:
+                    - generic [ref=e474]: 
+                    - strong [ref=e475]: "Viewed:"
+                    - text: 341 times
+                  - generic [ref=e477]:
+                    - generic [ref=e478]: 
+                    - strong [ref=e479]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e481]:
+                - generic [ref=e482]: SOLD!
+                - link [ref=e483] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207789
+                - generic [ref=e484]:
+                  - generic [ref=e486]: Machine - For Trade
+                  - generic [ref=e487]:
+                    - link "Metallica Remastered (Premium)" [ref=e488] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207789
+                    - text: Featured Archived
+                  - generic [ref=e489]:
+                    - strong [ref=e490]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Metallica Remastered very low plays ! Looks Great no wear or marks on playfield or cabinet! Has LED expression speakers Update kit! Has few mods in play field! Check out pics! F...”"
+                  - generic [ref=e491]:
+                    - generic [ref=e492]:
+                      - generic [ref=e493]: 
+                      - text: 2026-01-11
+                    - generic [ref=e494]:
+                      - img [ref=e495]
+                      - text: Ontario, OH (166 mi)
+                    - generic [ref=e496]:
+                      - generic [ref=e497]: 
+                      - link "JETJIMBO777" [ref=e498] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/jetjimbo777/market
+                      - generic [ref=e499]: 
+                    - generic [ref=e500]:
+                      - text: Trade±
+                      - generic [ref=e501]: 
+                      - text: 8,500 (OBO)
+                    - generic [ref=e503]: 
+                - generic [ref=e504]:
+                  - generic [ref=e505]:
+                    - generic [ref=e506]: 
+                    - strong [ref=e507]: "Archived after:"
+                    - text: 20 days
+                  - generic [ref=e508]:
+                    - generic [ref=e509]: 
+                    - strong [ref=e510]: "Viewed:"
+                    - text: 247 times
+                  - generic [ref=e511]:
+                    - generic [ref=e512]: 
+                    - strong [ref=e513]: "Status:"
+                    - text: Traded
+                  - generic [ref=e514]:
+                    - generic [ref=e515]: 
+                    - text: Contributed to Pinside
+                  - link " Got positive feedback" [ref=e517] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/jetjimbo777/feedback
+                    - generic [ref=e518]: 
+                    - text: Got positive feedback
+              - generic [ref=e520]:
+                - link [ref=e521] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207722
+                - generic [ref=e522]:
+                  - generic [ref=e524]: Machine - For Sale
+                  - generic [ref=e525]:
+                    - 'link "FS/T: Metallica Premium - LOW Plays, ColorDMD" [ref=e526] [cursor=pointer]':
+                      - /url: /pinball/market/classifieds/archive/207722
+                    - text: Archived
+                  - generic [ref=e527]:
+                    - strong [ref=e528]: HUO - Undocumented (Home Used Only)
+                    - text: "- “For Sale/Trade in Minneapolis: HUO 2013 Stern “Metallica” Premium * Plays great * Looks great * Low plays * Home use only (audits show zero lifetime paid credits) Mods/upgra...”"
+                  - generic [ref=e529]:
+                    - generic [ref=e530]:
+                      - generic [ref=e531]: 
+                      - text: 2026-01-10
+                    - generic [ref=e532]:
+                      - img [ref=e533]
+                      - text: Minneapolis, MN (468 mi)
+                    - generic [ref=e534]:
+                      - generic [ref=e535]: 
+                      - link "Jason_Jehosaphat" [ref=e536] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/jason_jehosaphat/market
+                      - generic [ref=e537]: 
+                    - generic [ref=e538]:
+                      - generic [ref=e539]: 
+                      - text: 6,350 (OBO)
+                - generic [ref=e540]:
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: 
+                    - strong [ref=e543]: "Archived after:"
+                    - text: 20 days
+                  - generic [ref=e544]:
+                    - generic [ref=e545]: 
+                    - strong [ref=e546]: "Viewed:"
+                    - text: 751 times
+                  - generic [ref=e548]:
+                    - generic [ref=e549]: 
+                    - strong [ref=e550]: "Status:"
+                    - text: Not sold
+              - generic [ref=e552]:
+                - link [ref=e553] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204450
+                - generic [ref=e554]:
+                  - generic [ref=e556]: Machine - For Sale
+                  - generic [ref=e557]:
+                    - link "Metallica (Pro)" [ref=e558] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204450
+                    - text: Archived
+                  - generic [ref=e559]:
+                    - strong [ref=e560]: HUO - Documented (Home Used Only)
+                    - text: "- “Stern Metallica (Pro) Pinball Machine. I purchased it new (comes with the original goodie bag and both sets of keys) and never placed it on a route. It was only used at home. ...”"
+                  - generic [ref=e561]:
+                    - generic [ref=e562]:
+                      - generic [ref=e563]: 
+                      - text: 2025-12-22
+                    - generic [ref=e564]:
+                      - img [ref=e565]
+                      - text: Johnson City, TN (489 mi)
+                    - generic [ref=e566]:
+                      - generic [ref=e567]: 
+                      - link "DJSLYKE" [ref=e568] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/djslyke/market
+                    - generic [ref=e569]:
+                      - generic [ref=e570]: 
+                      - text: 5,000
+                - generic [ref=e571]:
+                  - generic [ref=e572]:
+                    - generic [ref=e573]: 
+                    - strong [ref=e574]: "Archived after:"
+                    - text: 37 days
+                  - generic [ref=e575]:
+                    - generic [ref=e576]: 
+                    - strong [ref=e577]: "Viewed:"
+                    - text: 410 times
+                  - generic [ref=e579]:
+                    - generic [ref=e580]: 
+                    - strong [ref=e581]: "Status:"
+                    - text: Not sold
+              - generic [ref=e583]:
+                - generic [ref=e584]: SOLD!
+                - link [ref=e585] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207702
+                - generic [ref=e586]:
+                  - generic [ref=e588]: Machine - For Trade
+                  - generic [ref=e589]:
+                    - link "Metallica Remastered (Premium)" [ref=e590] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207702
+                    - text: Archived
+                  - generic [ref=e591]:
+                    - strong [ref=e592]: HUO - Documented (Home Used Only)
+                    - text: "- “Metallica Remastered (Premium), priced to sell. No issues, and looks and plays like new (approximately 900 plays). Expression lights installed. *Ready for Pickup or Happy to Pac...”"
+                  - generic [ref=e593]:
+                    - generic [ref=e594]:
+                      - generic [ref=e595]: 
+                      - text: 2026-01-10
+                    - generic [ref=e596]:
+                      - img [ref=e597]
+                      - text: Kalamazoo, MI (68 mi)
+                    - generic [ref=e598]:
+                      - generic [ref=e599]: 
+                      - link "legionsoup" [ref=e600] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/legionsoup/market
+                    - generic [ref=e601]:
+                      - text: Trade±
+                      - generic [ref=e602]: 
+                      - text: 8,200 (OBO)
+                - generic [ref=e603]:
+                  - generic [ref=e604]:
+                    - generic [ref=e605]: 
+                    - strong [ref=e606]: "Archived after:"
+                    - text: 18 days
+                  - generic [ref=e607]:
+                    - generic [ref=e608]: 
+                    - strong [ref=e609]: "Viewed:"
+                    - text: 405 times
+                  - generic [ref=e610]:
+                    - generic [ref=e611]: 
+                    - strong [ref=e612]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e613]:
+                    - generic [ref=e614]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e616]:
+                - link [ref=e617] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207577
+                - generic [ref=e618]:
+                  - generic [ref=e620]: Machine - For Sale
+                  - generic [ref=e621]:
+                    - link "Metallica Remastered (Premium)- HUO" [ref=e622] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207577
+                    - text: Featured Archived
+                  - generic [ref=e623]:
+                    - strong [ref=e624]: As new - New out of box (first owner)
+                    - text: "- “122 plays. Just unboxed this game 2 weeks ago. Basically brand new! One of the best modern pins ever made This is a rare chance to get a near-new Metallica Remastered Premium w...”"
+                  - generic [ref=e625]:
+                    - generic [ref=e626]:
+                      - generic [ref=e627]: 
+                      - text: 2026-01-08
+                    - generic [ref=e628]:
+                      - img [ref=e629]
+                      - text: Reno, NV (1,845 mi)
+                    - generic [ref=e630]:
+                      - generic [ref=e631]: 
+                      - link "bpriest45" [ref=e632] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/bpriest45/market
+                    - generic [ref=e633]:
+                      - generic [ref=e634]: 
+                      - text: 8,900 (OBO)
+                - generic [ref=e635]:
+                  - generic [ref=e636]:
+                    - generic [ref=e637]: 
+                    - strong [ref=e638]: "Archived after:"
+                    - text: 19 days
+                  - generic [ref=e639]:
+                    - generic [ref=e640]: 
+                    - strong [ref=e641]: "Viewed:"
+                    - text: 209 times
+                  - generic [ref=e643]:
+                    - generic [ref=e644]: 
+                    - strong [ref=e645]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e647]:
+                - link [ref=e648] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/208360
+                - generic [ref=e649]:
+                  - generic [ref=e651]: Machine - For Sale
+                  - generic [ref=e652]:
+                    - link "Metallica Remastered (Premium)" [ref=e653] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/208360
+                    - text: Archived
+                  - generic [ref=e654]:
+                    - strong [ref=e655]: As new - New out of box (first owner)
+                    - text: "- “Like new Metallica Remastered. 500 plays. Is on route but cleaned weekly and doesn’t get that much play. Cliffy slot protectors on inlanes and shooter lane protector since day on...”"
+                  - generic [ref=e656]:
+                    - generic [ref=e657]:
+                      - generic [ref=e658]: 
+                      - text: 2026-01-22
+                    - generic [ref=e659]:
+                      - img [ref=e660]
+                      - text: Blacksburg, VA (436 mi)
+                    - generic [ref=e661]:
+                      - generic [ref=e662]: 
+                      - link "staRgraZer" [ref=e663] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/stargrazer/market
+                      - generic [ref=e664]: 
+                    - generic [ref=e665]:
+                      - generic [ref=e666]: 
+                      - text: 8,450 (Firm)
+                    - generic [ref=e668]: 
+                - generic [ref=e669]:
+                  - generic [ref=e670]:
+                    - generic [ref=e671]: 
+                    - strong [ref=e672]: "Archived after:"
+                    - text: 1 day
+                  - generic [ref=e673]:
+                    - generic [ref=e674]: 
+                    - strong [ref=e675]: "Viewed:"
+                    - text: 107 times
+                  - generic [ref=e677]:
+                    - generic [ref=e678]: 
+                    - strong [ref=e679]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e681]:
+                - link [ref=e682] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207529
+                - generic [ref=e683]:
+                  - generic [ref=e685]: Machine - For Sale
+                  - generic [ref=e686]:
+                    - link "Metallica (Premium)" [ref=e687] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207529
+                    - text: Featured Archived
+                  - generic [ref=e688]:
+                    - strong [ref=e689]: HUO - Undocumented (Home Used Only)
+                    - text: "- “For Sale: Stern Metallica Premium Pinball Machine HUO - In beautiful shape - Presents new. MODS: Shaker Motor, Side Art Blades, Shooter knob, Color DMD. We’re open to trades. ...”"
+                  - generic [ref=e690]:
+                    - generic [ref=e691]:
+                      - generic [ref=e692]: 
+                      - text: 2026-01-07
+                    - generic [ref=e693]:
+                      - img [ref=e694]
+                      - text: Fort Worth, TX (986 mi)
+                    - generic [ref=e695]:
+                      - generic [ref=e696]: 
+                      - link "Cris-Pinballer" [ref=e697] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/cris-pinballer/market
+                      - generic [ref=e698]: 
+                    - generic [ref=e699]:
+                      - generic [ref=e700]: 
+                      - text: 7,499
+                - generic [ref=e701]:
+                  - generic [ref=e702]:
+                    - generic [ref=e703]: 
+                    - strong [ref=e704]: "Archived after:"
+                    - text: 13 days
+                  - generic [ref=e705]:
+                    - generic [ref=e706]: 
+                    - strong [ref=e707]: "Viewed:"
+                    - text: 113 times
+                  - generic [ref=e709]:
+                    - generic [ref=e710]: 
+                    - strong [ref=e711]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e713]:
+                - link [ref=e714] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/193662
+                - generic [ref=e715]:
+                  - generic [ref=e717]: Machine - For Sale
+                  - generic [ref=e718]:
+                    - link "Metallica Remastered (LE)" [ref=e719] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/193662
+                    - text: Archived
+                  - generic [ref=e720]:
+                    - strong [ref=e721]: HUO - Documented (Home Used Only)
+                    - text: "- “Less than 200 plays. Has shooter rod Topper Volume control in door Pinblaster Upgraded speakers and subs (pinsound) Lane protector Plastic protectors Skull justice hammer mod. I st...”"
+                  - generic [ref=e722]:
+                    - generic [ref=e723]:
+                      - generic [ref=e724]: 
+                      - text: 2025-08-26
+                    - generic [ref=e725]:
+                      - img [ref=e726]
+                      - text: Gresham, OR (1,880 mi)
+                    - generic [ref=e727]:
+                      - generic [ref=e728]: 
+                      - link "PNW-KMD" [ref=e729] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/pnw-kmd/market
+                    - generic [ref=e730]:
+                      - generic [ref=e731]: 
+                      - text: 16,000 (Firm)
+                - generic [ref=e732]:
+                  - generic [ref=e733]:
+                    - generic [ref=e734]: 
+                    - strong [ref=e735]: "Archived after:"
+                    - text: 147 days
+                  - generic [ref=e736]:
+                    - generic [ref=e737]: 
+                    - strong [ref=e738]: "Viewed:"
+                    - text: 729 times
+                  - generic [ref=e740]:
+                    - generic [ref=e741]: 
+                    - strong [ref=e742]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e744]:
+                - generic [ref=e745]: SOLD!
+                - link [ref=e746] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205800
+                - generic [ref=e747]:
+                  - generic [ref=e749]: Machine - For Sale
+                  - generic [ref=e750]:
+                    - link "Metallica Remastered (LE)" [ref=e751] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205800
+                    - text: Featured Archived
+                  - generic [ref=e752]:
+                    - strong [ref=e753]: HUO - Documented (Home Used Only)
+                    - text: "- “HUO Mint - Less than 300 plays! Cash on Glass. No trades. I need to make room! I also have Diddy's Remastered Cemetery mod NIB if you're interested.”"
+                  - generic [ref=e754]:
+                    - generic [ref=e755]:
+                      - generic [ref=e756]: 
+                      - text: 2025-12-03
+                    - generic [ref=e757]:
+                      - img [ref=e758]
+                      - text: Chesterfield, MO (430 mi)
+                    - generic [ref=e759]:
+                      - generic [ref=e760]: 
+                      - link "clarkmu22" [ref=e761] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/clarkmu22/market
+                      - generic [ref=e762]: 
+                    - generic [ref=e763]:
+                      - generic [ref=e764]: 
+                      - text: 12,950 (OBO)
+                - generic [ref=e765]:
+                  - generic [ref=e766]:
+                    - generic [ref=e767]: 
+                    - strong [ref=e768]: "Archived after:"
+                    - text: 48 days
+                  - generic [ref=e769]:
+                    - generic [ref=e770]: 
+                    - strong [ref=e771]: "Viewed:"
+                    - text: 758 times
+                  - generic [ref=e772]:
+                    - generic [ref=e773]: 
+                    - strong [ref=e774]: "Status:"
+                    - text: Traded
+                  - generic [ref=e775]:
+                    - generic [ref=e776]: 
+                    - text: Contributed to Pinside
+                  - link " Got positive feedback" [ref=e778] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/clarkmu22/feedback
+                    - generic [ref=e779]: 
+                    - text: Got positive feedback
+              - generic [ref=e781]:
+                - link [ref=e782] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/201562
+                - generic [ref=e783]:
+                  - generic [ref=e785]: Machine - For Trade
+                  - generic [ref=e786]:
+                    - link "Metallica (Pro)" [ref=e787] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/201562
+                    - text: Archived
+                  - generic [ref=e788]:
+                    - strong [ref=e789]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Beautiful pro with many extras. Shooter Rod, topper, etched mirrored art blades, speaker lights,pinstadiums, shaker motor. Game plays perfect. Looking for something on my wishlist....”"
+                  - generic [ref=e790]:
+                    - generic [ref=e791]:
+                      - generic [ref=e792]: 
+                      - text: 2026-01-11
+                    - generic [ref=e793]:
+                      - img [ref=e794]
+                      - text: Louisville, OH (209 mi)
+                    - generic [ref=e795]:
+                      - generic [ref=e796]: 
+                      - link "seger10494" [ref=e797] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/seger10494/market
+                      - generic [ref=e798]: 
+                    - generic [ref=e799]:
+                      - text: Trade±
+                      - generic [ref=e800]: 
+                      - text: 5,600
+                    - generic [ref=e802]: 
+                - generic [ref=e803]:
+                  - generic [ref=e804]:
+                    - generic [ref=e805]: 
+                    - strong [ref=e806]: "Archived after:"
+                    - text: 8 days
+                  - generic [ref=e807]:
+                    - generic [ref=e808]: 
+                    - strong [ref=e809]: "Viewed:"
+                    - text: 754 times
+                  - generic [ref=e811]:
+                    - generic [ref=e812]: 
+                    - strong [ref=e813]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e815]:
+                - link [ref=e816] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207778
+                - generic [ref=e817]:
+                  - generic [ref=e819]: Machine - For Sale
+                  - generic [ref=e820]:
+                    - link "Metallica (Premium) HUO ColorDMD" [ref=e821] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207778
+                    - text: Archived
+                  - generic [ref=e822]:
+                    - strong [ref=e823]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Perfect shape Plays great LCD Color DMD Flipper Fidelity sound system upgrade Holographic topper Flipper Fidelity backboard illumination Powerblades Snake mod Shooter rod upgrade ...”"
+                  - generic [ref=e824]:
+                    - generic [ref=e825]:
+                      - generic [ref=e826]: 
+                      - text: 2026-01-11
+                    - generic [ref=e827]:
+                      - img [ref=e828]
+                      - text: Greensboro, NC (523 mi)
+                    - generic [ref=e829]:
+                      - generic [ref=e830]: 
+                      - link "Turtlepower169" [ref=e831] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/turtlepower169/market
+                    - generic [ref=e832]:
+                      - generic [ref=e833]: 
+                      - text: 6,500 (OBO)
+                - generic [ref=e834]:
+                  - generic [ref=e835]:
+                    - generic [ref=e836]: 
+                    - strong [ref=e837]: "Archived after:"
+                    - text: 7 days
+                  - generic [ref=e838]:
+                    - generic [ref=e839]: 
+                    - strong [ref=e840]: "Viewed:"
+                    - text: 106 times
+                  - generic [ref=e842]:
+                    - generic [ref=e843]: 
+                    - strong [ref=e844]: "Status:"
+                    - text: Not sold
+              - generic [ref=e846]:
+                - link [ref=e847] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206436
+                - generic [ref=e848]:
+                  - generic [ref=e850]: Machine - For Sale
+                  - generic [ref=e851]:
+                    - link "Metallica (Premium) with mods, excellent condition" [ref=e852] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206436
+                    - text: Featured Archived
+                  - generic [ref=e853]:
+                    - strong [ref=e854]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Recently lowered price. Up for sale is my Metallica Premium. The pin is completely dialed in, with zero issues—excellent playfield and cabinet condition. I am the second owner...”"
+                  - generic [ref=e855]:
+                    - generic [ref=e856]:
+                      - generic [ref=e857]: 
+                      - text: 2025-12-15
+                    - generic [ref=e858]:
+                      - img [ref=e859]
+                      - text: Fort Collins, CO (1,076 mi)
+                    - generic [ref=e860]:
+                      - generic [ref=e861]: 
+                      - link "ColoradoJordan" [ref=e862] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/coloradojordan/market
+                      - generic [ref=e863]: 
+                    - generic [ref=e864]:
+                      - generic [ref=e865]: 
+                      - text: 6,400 (OBO)
+                - generic [ref=e866]:
+                  - generic [ref=e867]:
+                    - generic [ref=e868]: 
+                    - strong [ref=e869]: "Archived after:"
+                    - text: 34 days
+                  - generic [ref=e870]:
+                    - generic [ref=e871]: 
+                    - strong [ref=e872]: "Viewed:"
+                    - text: 444 times
+                  - generic [ref=e874]:
+                    - generic [ref=e875]: 
+                    - strong [ref=e876]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e878]:
+                - generic [ref=e879]: SOLD!
+                - link [ref=e880] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207291
+                - generic [ref=e881]:
+                  - generic [ref=e883]: Machine - For Sale
+                  - generic [ref=e884]:
+                    - link "Metallica Remastered (LE)" [ref=e885] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207291
+                    - text: Archived
+                  - generic [ref=e886]:
+                    - strong [ref=e887]: HUO - Documented (Home Used Only)
+                    - text: "- “no trades spotless flawless couple small appearance mods best version of best game. I just don't keep any home games these days as I don't have time. I sold most last year and ...”"
+                  - generic [ref=e888]:
+                    - generic [ref=e889]:
+                      - generic [ref=e890]: 
+                      - text: 2026-01-03
+                    - generic [ref=e891]:
+                      - img [ref=e892]
+                      - text: Atlanta, GA (615 mi)
+                    - generic [ref=e893]:
+                      - generic [ref=e894]: 
+                      - link "ATLpb" [ref=e895] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/atlpb/market
+                      - generic [ref=e896]: 
+                    - generic [ref=e897]:
+                      - generic [ref=e898]: 
+                      - text: 13,800
+                    - generic [ref=e900]: 
+                - generic [ref=e901]:
+                  - generic [ref=e902]:
+                    - generic [ref=e903]: 
+                    - strong [ref=e904]: "Archived after:"
+                    - text: 13 days
+                  - generic [ref=e905]:
+                    - generic [ref=e906]: 
+                    - strong [ref=e907]: "Viewed:"
+                    - text: 875 times
+                  - generic [ref=e908]:
+                    - generic [ref=e909]: 
+                    - strong [ref=e910]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e911]:
+                    - generic [ref=e912]: 
+                    - text: Contributed to Pinside
+                  - link " Got positive feedback" [ref=e914] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/atlpb/feedback
+                    - generic [ref=e915]: 
+                    - text: Got positive feedback
+              - generic [ref=e917]:
+                - link [ref=e918] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206195
+                - generic [ref=e919]:
+                  - generic [ref=e921]: Machine - For Sale
+                  - generic [ref=e922]:
+                    - link "Metallica Remastered (Premium)" [ref=e923] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206195
+                    - text: Archived
+                  - generic [ref=e924]:
+                    - strong [ref=e925]: As new - New out of box (first owner)
+                    - text: "- “Have a Rockin Christmas! Metallica Remastered Premium Pinball Light use/Display Game Like New Condition, approx 200 plays $8999.00 Trades Accepted Can and Will Ship USA Arcad...”"
+                  - generic [ref=e926]:
+                    - generic [ref=e927]:
+                      - generic [ref=e928]: 
+                      - text: 2025-12-10
+                    - generic [ref=e929]:
+                      - img [ref=e930]
+                      - text: Indianapolis, IN (225 mi)
+                    - generic [ref=e931]:
+                      - generic [ref=e932]: 
+                      - link "ArcadeRescue911" [ref=e933] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/arcaderescue911/market
+                    - generic [ref=e934]:
+                      - generic [ref=e935]: 
+                      - text: 8,999 (OBO)
+                - generic [ref=e936]:
+                  - generic [ref=e937]:
+                    - generic [ref=e938]: 
+                    - strong [ref=e939]: "Archived after:"
+                    - text: 36 days
+                  - generic [ref=e940]:
+                    - generic [ref=e941]: 
+                    - strong [ref=e942]: "Viewed:"
+                    - text: 222 times
+                  - generic [ref=e944]:
+                    - generic [ref=e945]: 
+                    - strong [ref=e946]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e948]:
+                - link [ref=e949] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207581
+                - generic [ref=e950]:
+                  - generic [ref=e952]: Machine - For Sale
+                  - generic [ref=e953]:
+                    - 'link "FOR SALE: Metallica Remastered Premium Edition" [ref=e954] [cursor=pointer]':
+                      - /url: /pinball/market/classifieds/archive/207581
+                    - text: Archived
+                  - generic [ref=e955]:
+                    - strong [ref=e956]: HUO - Undocumented (Home Used Only)
+                    - text: "- “FOR SALE: Metallica Remastered Premium Edition Pinball Machine - Preowned, Great Condition, 300 Plays (estimate) - Insider Connected Online System $8,799 Trades Accepted We Ca...”"
+                  - generic [ref=e957]:
+                    - generic [ref=e958]:
+                      - generic [ref=e959]: 
+                      - text: 2026-01-08
+                    - generic [ref=e960]:
+                      - img [ref=e961]
+                      - text: Evansville, IN (370 mi)
+                    - generic [ref=e962]:
+                      - generic [ref=e963]: 
+                      - link "ZMeny" [ref=e964] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/zmeny/market
+                      - generic [ref=e965]: 
+                    - generic [ref=e966]:
+                      - generic [ref=e967]: 
+                      - text: 8,799 (OBO)
+                    - generic [ref=e969]: 
+                - generic [ref=e970]:
+                  - generic [ref=e971]:
+                    - generic [ref=e972]: 
+                    - strong [ref=e973]: "Archived after:"
+                    - text: 6 days
+                  - generic [ref=e974]:
+                    - generic [ref=e975]: 
+                    - strong [ref=e976]: "Viewed:"
+                    - text: 217 times
+                  - generic [ref=e978]:
+                    - generic [ref=e979]: 
+                    - strong [ref=e980]: "Status:"
+                    - text: Not sold
+              - generic [ref=e982]:
+                - link [ref=e983] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206393
+                - generic [ref=e984]:
+                  - generic [ref=e986]: Machine - For Sale
+                  - generic [ref=e987]:
+                    - link "Metallica Remastered (LE)" [ref=e988] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206393
+                    - text: Archived
+                  - generic [ref=e989]:
+                    - strong [ref=e990]: HUO - Documented (Home Used Only)
+                    - text: "- “Stern 2024 Metallica Remastered Limited edition #129 of 500. Very clean example with Stern Metallica Topper & LED launcher. Only 126 plays with 382 balls played. Located in S...”"
+                  - generic [ref=e991]:
+                    - generic [ref=e992]:
+                      - generic [ref=e993]: 
+                      - text: 2025-12-14
+                    - generic [ref=e994]:
+                      - img [ref=e995]
+                      - text: Delray Beach, FL (1,153 mi)
+                    - generic [ref=e996]:
+                      - generic [ref=e997]: 
+                      - link "Koala" [ref=e998] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/koala/market
+                    - generic [ref=e999]:
+                      - generic [ref=e1000]: 
+                      - text: 15,500 (OBO)
+                - generic [ref=e1001]:
+                  - generic [ref=e1002]:
+                    - generic [ref=e1003]: 
+                    - strong [ref=e1004]: "Archived after:"
+                    - text: 29 days
+                  - generic [ref=e1005]:
+                    - generic [ref=e1006]: 
+                    - strong [ref=e1007]: "Viewed:"
+                    - text: 152 times
+                  - generic [ref=e1009]:
+                    - generic [ref=e1010]: 
+                    - strong [ref=e1011]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1013]:
+                - link [ref=e1014] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/207528
+                - generic [ref=e1015]:
+                  - generic [ref=e1017]: Machine - For Sale
+                  - generic [ref=e1018]:
+                    - link "Metallica Remastered (Premium)" [ref=e1019] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/207528
+                    - text: Featured Archived
+                  - generic [ref=e1020]:
+                    - strong [ref=e1021]: HUO - Documented (Home Used Only)
+                    - text: "- “For Sale: Stern Metallica Remastered Premium Pinball Machine HUO - Like New Condition. Game needed new SD Card. Before the new SD card it had less than 200 plays. We’re open t...”"
+                  - generic [ref=e1022]:
+                    - generic [ref=e1023]:
+                      - generic [ref=e1024]: 
+                      - text: 2026-01-07
+                    - generic [ref=e1025]:
+                      - img [ref=e1026]
+                      - text: Fort Worth, TX (986 mi)
+                    - generic [ref=e1027]:
+                      - generic [ref=e1028]: 
+                      - link "Cris-Pinballer" [ref=e1029] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/cris-pinballer/market
+                      - generic [ref=e1030]: 
+                    - generic [ref=e1031]:
+                      - generic [ref=e1032]: 
+                      - text: 8,499
+                - generic [ref=e1033]:
+                  - generic [ref=e1034]:
+                    - generic [ref=e1035]: 
+                    - strong [ref=e1036]: "Archived after:"
+                    - text: 3 days
+                  - generic [ref=e1037]:
+                    - generic [ref=e1038]: 
+                    - strong [ref=e1039]: "Viewed:"
+                    - text: 96 times
+                  - generic [ref=e1041]:
+                    - generic [ref=e1042]: 
+                    - strong [ref=e1043]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1045]:
+                - link [ref=e1046] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/201989
+                - generic [ref=e1047]:
+                  - generic [ref=e1049]: Machine - For Sale
+                  - generic [ref=e1050]:
+                    - link "FS:Metallica Remaster prem - Lots of mods (FT Elton / GNR)" [ref=e1051] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/201989
+                    - text: Archived
+                  - generic [ref=e1052]:
+                    - strong [ref=e1053]: HUO - Documented (Home Used Only)
+                    - text: "- “Offering up a mint HUO METALLICA Remastered with 67 plays - will go up. Unboxed where it sits. It’s fully loaded with the following mods: - Stern expression cabinet lights -...”"
+                  - generic [ref=e1054]:
+                    - generic [ref=e1055]:
+                      - generic [ref=e1056]: 
+                      - text: 2025-12-17
+                    - generic [ref=e1057]:
+                      - img [ref=e1058]
+                      - text: Columbus, OH (206 mi)
+                    - generic [ref=e1059]:
+                      - generic [ref=e1060]: 
+                      - link "foxvader" [ref=e1061] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/foxvader/market
+                      - generic [ref=e1062]: 
+                    - generic [ref=e1063]:
+                      - generic [ref=e1064]: 
+                      - text: 9,999
+                - generic [ref=e1065]:
+                  - generic [ref=e1066]:
+                    - generic [ref=e1067]: 
+                    - strong [ref=e1068]: "Archived after:"
+                    - text: 19 days
+                  - generic [ref=e1069]:
+                    - generic [ref=e1070]: 
+                    - strong [ref=e1071]: "Viewed:"
+                    - text: 634 times
+                  - generic [ref=e1073]:
+                    - generic [ref=e1074]: 
+                    - strong [ref=e1075]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e1077]:
+                - generic [ref=e1078]: SOLD!
+                - link [ref=e1079] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206462
+                - generic [ref=e1080]:
+                  - generic [ref=e1082]: Machine - For Sale
+                  - generic [ref=e1083]:
+                    - link "Metallica Remastered (Premium)" [ref=e1084] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206462
+                    - text: Featured Archived
+                  - generic [ref=e1085]:
+                    - strong [ref=e1086]: As new - New out of box (first owner)
+                    - text: "- “New condition. Only 220 plays. I’m only selling to make room for another machine. Added side art.”"
+                  - generic [ref=e1087]:
+                    - generic [ref=e1088]:
+                      - generic [ref=e1089]: 
+                      - text: 2025-12-15
+                    - generic [ref=e1090]:
+                      - img [ref=e1091]
+                      - text: Novi, MI (51 mi)
+                    - generic [ref=e1092]:
+                      - generic [ref=e1093]: 
+                      - link "Bigajoe" [ref=e1094] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/bigajoe/market
+                      - generic [ref=e1095]: 
+                    - generic [ref=e1096]:
+                      - generic [ref=e1097]: 
+                      - text: 8,000 (Firm)
+                - generic [ref=e1098]:
+                  - generic [ref=e1099]:
+                    - generic [ref=e1100]: 
+                    - strong [ref=e1101]: "Archived after:"
+                    - text: 20 days
+                  - generic [ref=e1102]:
+                    - generic [ref=e1103]: 
+                    - strong [ref=e1104]: "Viewed:"
+                    - text: 557 times
+                  - generic [ref=e1105]:
+                    - generic [ref=e1106]: 
+                    - strong [ref=e1107]: "Status:"
+                    - text: Sold (amount undisclosed)
+                  - generic [ref=e1108]:
+                    - generic [ref=e1109]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e1111]:
+                - link [ref=e1112] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204875
+                - generic [ref=e1113]:
+                  - generic [ref=e1115]: Machine - For Trade
+                  - generic [ref=e1116]:
+                    - link "Metallica (Premium)" [ref=e1117] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204875
+                    - text: Archived
+                  - generic [ref=e1118]:
+                    - strong [ref=e1119]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Priced to go now! I want Godzilla premium. Would love to trade, can add cash. HUO 860 plays Metallic Premium OG with lots of upgrades. Color DMD, Flipper Fidelity Upgraded Audio, D...”"
+                  - generic [ref=e1120]:
+                    - generic [ref=e1121]:
+                      - generic [ref=e1122]: 
+                      - text: 2025-11-16
+                    - generic [ref=e1123]:
+                      - img [ref=e1124]
+                      - text: Columbia, MS (849 mi)
+                    - generic [ref=e1125]:
+                      - generic [ref=e1126]: 
+                      - link "gage5000" [ref=e1127] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/gage5000/market
+                    - generic [ref=e1128]:
+                      - text: Trade±
+                      - generic [ref=e1129]: 
+                      - text: 7,500
+                - generic [ref=e1130]:
+                  - generic [ref=e1131]:
+                    - generic [ref=e1132]: 
+                    - strong [ref=e1133]: "Archived after:"
+                    - text: 49 days
+                  - generic [ref=e1134]:
+                    - generic [ref=e1135]: 
+                    - strong [ref=e1136]: "Viewed:"
+                    - text: 219 times
+                  - generic [ref=e1138]:
+                    - generic [ref=e1139]: 
+                    - strong [ref=e1140]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1142]:
+                - link [ref=e1143] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206976
+                - generic [ref=e1144]:
+                  - generic [ref=e1146]: Machine - For Sale
+                  - generic [ref=e1147]:
+                    - link "Metallica (Premium)" [ref=e1148] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206976
+                    - text: Archived
+                  - generic [ref=e1149]:
+                    - strong [ref=e1150]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Near mint, low play Metallica Premium. You won’t find a nicer one. Under 275 lifetime plays. Upgrades include shaker motor, mirror blades, titan rubber, color dmd, plastic protec...”"
+                  - generic [ref=e1151]:
+                    - generic [ref=e1152]:
+                      - generic [ref=e1153]: 
+                      - text: 2025-12-28
+                    - generic [ref=e1154]:
+                      - img [ref=e1155]
+                      - text: Athens, AL (566 mi)
+                    - generic [ref=e1156]:
+                      - generic [ref=e1157]: 
+                      - link "BigGeorge3" [ref=e1158] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/biggeorge3/market
+                    - generic [ref=e1159]:
+                      - generic [ref=e1160]: 
+                      - text: 8,250 (OBO)
+                - generic [ref=e1161]:
+                  - generic [ref=e1162]:
+                    - generic [ref=e1163]: 
+                    - strong [ref=e1164]: "Archived after:"
+                    - text: 6 days
+                  - generic [ref=e1165]:
+                    - generic [ref=e1166]: 
+                    - strong [ref=e1167]: "Viewed:"
+                    - text: 105 times
+                  - generic [ref=e1169]:
+                    - generic [ref=e1170]: 
+                    - strong [ref=e1171]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1173]:
+                - link [ref=e1174] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205765
+                - generic [ref=e1175]:
+                  - generic [ref=e1177]: Machine - For Sale
+                  - generic [ref=e1178]:
+                    - link "Metallica Remastered (Premium) NEW IN BOX FREE DELIVERY" [ref=e1179] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205765
+                    - text: Archived
+                  - generic [ref=e1180]:
+                    - strong [ref=e1181]: NIB - New in box (personal)
+                    - text: "- “Brand new. NIB. I will consider local delivery around Marietta, Atlanta area. Pickup 9100 Delivery 9200.”"
+                  - generic [ref=e1182]:
+                    - generic [ref=e1183]:
+                      - generic [ref=e1184]: 
+                      - text: 2025-12-02
+                    - generic [ref=e1185]:
+                      - img [ref=e1186]
+                      - text: Marietta, GA (608 mi)
+                    - generic [ref=e1187]:
+                      - generic [ref=e1188]: 
+                      - link "GingerMan078" [ref=e1189] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/gingerman078/market
+                      - generic [ref=e1190]: 
+                    - generic [ref=e1191]:
+                      - generic [ref=e1192]: 
+                      - text: 9,200 (Firm)
+                - generic [ref=e1193]:
+                  - generic [ref=e1194]:
+                    - generic [ref=e1195]: 
+                    - strong [ref=e1196]: "Archived after:"
+                    - text: 32 days
+                  - generic [ref=e1197]:
+                    - generic [ref=e1198]: 
+                    - strong [ref=e1199]: "Viewed:"
+                    - text: 161 times
+                  - generic [ref=e1201]:
+                    - generic [ref=e1202]: 
+                    - strong [ref=e1203]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1205]:
+                - link [ref=e1206] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206446
+                - generic [ref=e1207]:
+                  - generic [ref=e1209]: Machine - For Sale
+                  - generic [ref=e1210]:
+                    - link "Metallica Remastered (LE) Mint Free Local Delivery in ATL" [ref=e1211] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206446
+                    - text: Archived
+                  - generic [ref=e1212]:
+                    - strong [ref=e1213]: As new - New out of box (first owner)
+                    - text: "- “Mint Condition, even still has some shrink wrap on translite. ~205 plays. . I also have a NIB premium inquire if interested. Ready to go. Easy load out. Will deliver within reaso...”"
+                  - generic [ref=e1214]:
+                    - generic [ref=e1215]:
+                      - generic [ref=e1216]: 
+                      - text: 2025-12-15
+                    - generic [ref=e1217]:
+                      - img [ref=e1218]
+                      - text: Marietta, GA (608 mi)
+                    - generic [ref=e1219]:
+                      - generic [ref=e1220]: 
+                      - link "GingerMan078" [ref=e1221] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/gingerman078/market
+                      - generic [ref=e1222]: 
+                    - generic [ref=e1223]:
+                      - generic [ref=e1224]: 
+                      - text: 15,000
+                - generic [ref=e1225]:
+                  - generic [ref=e1226]:
+                    - generic [ref=e1227]: 
+                    - strong [ref=e1228]: "Archived after:"
+                    - text: 19 days
+                  - generic [ref=e1229]:
+                    - generic [ref=e1230]: 
+                    - strong [ref=e1231]: "Viewed:"
+                    - text: 189 times
+                  - generic [ref=e1233]:
+                    - generic [ref=e1234]: 
+                    - strong [ref=e1235]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1237]:
+                - link [ref=e1238] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206498
+                - generic [ref=e1239]:
+                  - generic [ref=e1241]: Machine - For Sale
+                  - generic [ref=e1242]:
+                    - link "Metallica (Premium) w/mods!" [ref=e1243] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206498
+                    - text: Archived
+                  - generic [ref=e1244]:
+                    - strong [ref=e1245]: Used - shows wear but 100% working and clean
+                    - text: "- “For sale is my STERN Metallica Premium (2013) The body and playfield are clean Many mods such as a color DMD, mirror blades, silicon flipper rubbers Hammer works! Sparky works...”"
+                  - generic [ref=e1246]:
+                    - generic [ref=e1247]:
+                      - generic [ref=e1248]: 
+                      - text: 2025-12-16
+                    - generic [ref=e1249]:
+                      - img [ref=e1250]
+                      - text: Daytona, FL (955 mi)
+                    - generic [ref=e1251]:
+                      - generic [ref=e1252]: 
+                      - link "billyk" [ref=e1253] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/billyk/market
+                      - generic [ref=e1254]: 
+                    - generic [ref=e1255]:
+                      - generic [ref=e1256]: 
+                      - text: 6,900 (OBO)
+                - generic [ref=e1257]:
+                  - generic [ref=e1258]:
+                    - generic [ref=e1259]: 
+                    - strong [ref=e1260]: "Archived after:"
+                    - text: 18 days
+                  - generic [ref=e1261]:
+                    - generic [ref=e1262]: 
+                    - strong [ref=e1263]: "Viewed:"
+                    - text: 167 times
+                  - generic [ref=e1265]:
+                    - generic [ref=e1266]: 
+                    - strong [ref=e1267]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e1269]:
+                - link [ref=e1270] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/189350
+                - generic [ref=e1271]:
+                  - generic [ref=e1273]: Machine - For Sale
+                  - generic [ref=e1274]:
+                    - link "Metallica Remastered (LE)" [ref=e1275] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/189350
+                    - text: Archived
+                  - generic [ref=e1276]:
+                    - strong [ref=e1277]: As new - New out of box (first owner)
+                    - text: "- “Metallica Remastered LE - Showroom Floor Model This machine was unboxed in our showroom in December and has been here since. Please contact me through Pinside or you can email...”"
+                  - generic [ref=e1278]:
+                    - generic [ref=e1279]:
+                      - generic [ref=e1280]: 
+                      - text: 2025-11-05
+                    - generic [ref=e1281]:
+                      - img [ref=e1282]
+                      - text: Anaheim, CA (1,901 mi)
+                    - generic [ref=e1283]:
+                      - generic [ref=e1284]: 
+                      - link "Captains_Arcade" [ref=e1285] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/captains_arcade/market
+                      - generic [ref=e1286]: 
+                    - generic [ref=e1287]:
+                      - generic [ref=e1288]: 
+                      - text: 16,500
+                - generic [ref=e1289]:
+                  - generic [ref=e1290]:
+                    - generic [ref=e1291]: 
+                    - strong [ref=e1292]: "Archived after:"
+                    - text: 58 days
+                  - generic [ref=e1293]:
+                    - generic [ref=e1294]: 
+                    - strong [ref=e1295]: "Viewed:"
+                    - text: 1818 times
+                  - generic [ref=e1297]:
+                    - generic [ref=e1298]: 
+                    - strong [ref=e1299]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e1301]:
+                - generic [ref=e1302]: SOLD!
+                - link [ref=e1303] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206454
+                - generic [ref=e1304]:
+                  - generic [ref=e1306]: Machine - For Sale
+                  - generic [ref=e1307]:
+                    - link "NIB Metallica Remastered (Premium)" [ref=e1308] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206454
+                    - text: Archived
+                  - generic [ref=e1309]:
+                    - strong [ref=e1310]: NIB - New in box (personal)
+                    - text: "- “New inbox, Stern Metallica remastered premium still strapped to the Stern pallet. Local pick up in Central Ohio or can ship at buyers expense Seller can assist with setting up sh...”"
+                  - generic [ref=e1311]:
+                    - generic [ref=e1312]:
+                      - generic [ref=e1313]: 
+                      - text: 2025-12-15
+                    - generic [ref=e1314]:
+                      - img [ref=e1315]
+                      - text: Franklin, OH (221 mi)
+                    - generic [ref=e1316]:
+                      - generic [ref=e1317]: 
+                      - link "joefox22" [ref=e1318] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/joefox22/market
+                      - generic [ref=e1319]: 
+                    - generic [ref=e1320]:
+                      - generic [ref=e1321]: 
+                      - text: 8,700 (OBO)
+                    - generic [ref=e1323]: 
+                - generic [ref=e1324]:
+                  - generic [ref=e1325]:
+                    - generic [ref=e1326]: 
+                    - strong [ref=e1327]: "Archived after:"
+                    - text: 16 days
+                  - generic [ref=e1328]:
+                    - generic [ref=e1329]: 
+                    - strong [ref=e1330]: "Viewed:"
+                    - text: 226 times
+                  - generic [ref=e1331]:
+                    - generic [ref=e1332]: 
+                    - strong [ref=e1333]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e1334]:
+                    - generic [ref=e1335]: 
+                    - text: Contributed to Pinside
+                  - link " Got positive feedback" [ref=e1337] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/joefox22/feedback
+                    - generic [ref=e1338]: 
+                    - text: Got positive feedback
+              - generic [ref=e1340]:
+                - link [ref=e1341] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/194561
+                - generic [ref=e1342]:
+                  - generic [ref=e1344]: Machine - For Sale
+                  - generic [ref=e1345]:
+                    - link "Metallica (Premium) - Reduced!" [ref=e1346] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/194561
+                    - text: Archived
+                  - generic [ref=e1347]:
+                    - strong [ref=e1348]: As new - New out of box (first owner)
+                    - text: "- “This Metallica Premium pinball machine is like new. It has had only one owner and is home-use only. The machine features a great playfield layout with wonderful flow and exciting ...”"
+                  - generic [ref=e1349]:
+                    - generic [ref=e1350]:
+                      - generic [ref=e1351]: 
+                      - text: 2025-12-12
+                    - generic [ref=e1352]:
+                      - img [ref=e1353]
+                      - text: Mahomet, IL (272 mi)
+                    - generic [ref=e1354]:
+                      - generic [ref=e1355]: 
+                      - link "JohnBillerman" [ref=e1356] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/johnbillerman/market
+                    - generic [ref=e1357]:
+                      - generic [ref=e1358]: 
+                      - text: 7,100 (OBO)
+                - generic [ref=e1359]:
+                  - generic [ref=e1360]:
+                    - generic [ref=e1361]: 
+                    - strong [ref=e1362]: "Archived after:"
+                    - text: 17 days
+                  - generic [ref=e1363]:
+                    - generic [ref=e1364]: 
+                    - strong [ref=e1365]: "Viewed:"
+                    - text: 1098 times
+                  - generic [ref=e1367]:
+                    - generic [ref=e1368]: 
+                    - strong [ref=e1369]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1371]:
+                - link [ref=e1372] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/203487
+                - generic [ref=e1373]:
+                  - generic [ref=e1375]: Machine - For Trade
+                  - generic [ref=e1376]:
+                    - link "Metallica Remastered (Premium)" [ref=e1377] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/203487
+                    - text: Archived
+                  - generic [ref=e1378]:
+                    - strong [ref=e1379]: HUO - Documented (Home Used Only)
+                    - text: "- “Absolutely gorgeous and loaded Metallica for sale or trade - excellent condition and plays amazing.. loaded this game up with the intention bolting it to the ground but interested ...”"
+                  - generic [ref=e1380]:
+                    - generic [ref=e1381]:
+                      - generic [ref=e1382]: 
+                      - text: 2025-12-09
+                    - generic [ref=e1383]:
+                      - img [ref=e1384]
+                      - text: Providence, NC (508 mi)
+                    - generic [ref=e1385]:
+                      - generic [ref=e1386]: 
+                      - link "fairplay" [ref=e1387] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/fairplay/market
+                      - generic [ref=e1388]: 
+                    - generic [ref=e1389]:
+                      - text: Trade±
+                      - generic [ref=e1390]: 
+                      - text: 10,500 (OBO)
+                - generic [ref=e1391]:
+                  - generic [ref=e1392]:
+                    - generic [ref=e1393]: 
+                    - strong [ref=e1394]: "Archived after:"
+                    - text: 18 days
+                  - generic [ref=e1395]:
+                    - generic [ref=e1396]: 
+                    - strong [ref=e1397]: "Viewed:"
+                    - text: 1482 times
+                  - generic [ref=e1399]:
+                    - generic [ref=e1400]: 
+                    - strong [ref=e1401]: "Status:"
+                    - text: Not sold
+              - generic [ref=e1403]:
+                - link [ref=e1404] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205178
+                - generic [ref=e1405]:
+                  - generic [ref=e1407]: Machine - For Sale
+                  - generic [ref=e1408]:
+                    - link "Metallica Remastered LE…" [ref=e1409] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205178
+                    - generic [ref=e1411]: 
+                    - text: Featured Archived
+                  - generic [ref=e1412]:
+                    - strong [ref=e1413]: HUO - Documented (Home Used Only)
+                    - text: "- “MINT 250 plays.”"
+                  - generic [ref=e1414]:
+                    - generic [ref=e1415]:
+                      - generic [ref=e1416]: 
+                      - text: 2025-12-21
+                    - generic [ref=e1417]:
+                      - img [ref=e1418]
+                      - text: Old Saybrook, CT (625 mi)
+                    - generic [ref=e1419]:
+                      - generic [ref=e1420]: 
+                      - link "frankmac" [ref=e1421] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/frankmac/market
+                      - generic [ref=e1422]: 
+                    - generic [ref=e1423]:
+                      - generic [ref=e1424]: 
+                      - text: 12,499 (OBO)
+                    - generic [ref=e1426]: 
+                - generic [ref=e1427]:
+                  - generic [ref=e1428]:
+                    - generic [ref=e1429]: 
+                    - strong [ref=e1430]: "Archived after:"
+                    - text: 5 days
+                  - generic [ref=e1431]:
+                    - generic [ref=e1432]: 
+                    - strong [ref=e1433]: "Viewed:"
+                    - text: 660 times
+                  - generic [ref=e1435]:
+                    - generic [ref=e1436]: 
+                    - strong [ref=e1437]: "Status:"
+                    - text: Not sold
+              - generic [ref=e1439]:
+                - link [ref=e1440] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/206003
+                - generic [ref=e1441]:
+                  - generic [ref=e1443]: Machine - For Trade
+                  - generic [ref=e1444]:
+                    - link "Metallica Remastered (Premium)" [ref=e1445] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/206003
+                    - text: Archived
+                  - generic [ref=e1446]:
+                    - strong [ref=e1447]: HUO - Documented (Home Used Only)
+                    - text: "- “Second owner, home use only. Looks, plays, and sounds great. Interested in Jaws, Uncanny X-Men, King Kong, FF Prem/LE, Simpsons Pinball Party, or let me know what you’ve got.”"
+                  - generic [ref=e1448]:
+                    - generic [ref=e1449]:
+                      - generic [ref=e1450]: 
+                      - text: 2025-12-06
+                    - generic [ref=e1451]:
+                      - img [ref=e1452]
+                      - text: La Grange, IL (189 mi)
+                    - generic [ref=e1453]:
+                      - generic [ref=e1454]: 
+                      - link "ofasparrow" [ref=e1455] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/ofasparrow/market
+                      - generic [ref=e1456]: 
+                    - generic [ref=e1457]:
+                      - text: Trade±
+                      - generic [ref=e1458]: 
+                      - text: 8,500 (OBO)
+                - generic [ref=e1459]:
+                  - generic [ref=e1460]:
+                    - generic [ref=e1461]: 
+                    - strong [ref=e1462]: "Archived after:"
+                    - text: 15 days
+                  - generic [ref=e1463]:
+                    - generic [ref=e1464]: 
+                    - strong [ref=e1465]: "Viewed:"
+                    - text: 232 times
+                  - generic [ref=e1467]:
+                    - generic [ref=e1468]: 
+                    - strong [ref=e1469]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e1471]:
+                - generic [ref=e1472]: SOLD!
+                - link [ref=e1473] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/198715
+                - generic [ref=e1474]:
+                  - generic [ref=e1476]: Machine - For Sale
+                  - generic [ref=e1477]:
+                    - link "Metallica (Pro)" [ref=e1478] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/198715
+                    - text: Archived
+                  - generic [ref=e1479]:
+                    - strong [ref=e1480]: HUO - Documented (Home Used Only)
+                    - text: "- “An original Metallica Pro home use only in excellent condition! Well maintained pin owned since 2019. Firm price but priced to sell.”"
+                  - generic [ref=e1481]:
+                    - generic [ref=e1482]:
+                      - generic [ref=e1483]: 
+                      - text: 2025-11-18
+                    - generic [ref=e1484]:
+                      - img [ref=e1485]
+                      - text: Devon, PA (501 mi)
+                    - generic [ref=e1486]:
+                      - generic [ref=e1487]: 
+                      - link "frankpolizzi" [ref=e1488] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/frankpolizzi/market
+                    - generic [ref=e1489]:
+                      - generic [ref=e1490]: 
+                      - text: 5,000
+                - generic [ref=e1491]:
+                  - generic [ref=e1492]:
+                    - generic [ref=e1493]: 
+                    - strong [ref=e1494]: "Archived after:"
+                    - text: 32 days
+                  - generic [ref=e1495]:
+                    - generic [ref=e1496]: 
+                    - strong [ref=e1497]: "Viewed:"
+                    - text: 810 times
+                  - generic [ref=e1498]:
+                    - generic [ref=e1499]: 
+                    - strong [ref=e1500]: "Status:"
+                    - text: Sold for $ 5,000
+                  - generic [ref=e1501]:
+                    - generic [ref=e1502]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e1504]:
+                - link [ref=e1505] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204134
+                - generic [ref=e1506]:
+                  - generic [ref=e1508]: Machine - For Sale
+                  - generic [ref=e1509]:
+                    - link "Metallica (Pro)" [ref=e1510] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204134
+                    - text: Archived
+                  - generic [ref=e1511]:
+                    - strong [ref=e1512]: HUO - Documented (Home Used Only)
+                    - text: "- “Im the original owner, bought this one brand new out of the box, and it’s been home use only since day one — never routed or operated. It’s in excellent condition and plays f...”"
+                  - generic [ref=e1513]:
+                    - generic [ref=e1514]:
+                      - generic [ref=e1515]: 
+                      - text: 2025-12-17
+                    - generic [ref=e1516]:
+                      - img [ref=e1517]
+                      - text: Moscow Mills, MO (430 mi)
+                    - generic [ref=e1518]:
+                      - generic [ref=e1519]: 
+                      - link "butterz" [ref=e1520] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/butterz/market
+                    - generic [ref=e1521]:
+                      - generic [ref=e1522]: 
+                      - text: 6,000
+                - generic [ref=e1523]:
+                  - generic [ref=e1524]:
+                    - generic [ref=e1525]: 
+                    - strong [ref=e1526]: "Archived after:"
+                    - text: 3 days
+                  - generic [ref=e1527]:
+                    - generic [ref=e1528]: 
+                    - strong [ref=e1529]: "Viewed:"
+                    - text: 259 times
+                  - generic [ref=e1531]:
+                    - generic [ref=e1532]: 
+                    - strong [ref=e1533]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1535]:
+                - generic [ref=e1536]: SOLD!
+                - link [ref=e1537] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205267
+                - generic [ref=e1538]:
+                  - generic [ref=e1540]: Machine - For Sale
+                  - generic [ref=e1541]:
+                    - link "For sale metallica remastered LE with topper" [ref=e1542] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205267
+                    - text: Featured Archived
+                  - generic [ref=e1543]:
+                    - strong [ref=e1544]: As new - New out of box (first owner)
+                    - text: "- “Original owner, Stern topper, stern shooter rod, magnetic speaker panel decal, magnetic coin door decal, lots of very cool mods,ONLY 63 PLAYS mint, mint, mint condition absolutely ...”"
+                  - generic [ref=e1545]:
+                    - generic [ref=e1546]:
+                      - generic [ref=e1547]: 
+                      - text: 2025-11-23
+                    - generic [ref=e1548]:
+                      - img [ref=e1549]
+                      - text: Plantsville, CT (585 mi)
+                    - generic [ref=e1550]:
+                      - generic [ref=e1551]: 
+                      - link "Wally16" [ref=e1552] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/wally16/market
+                      - generic [ref=e1553]: 
+                    - generic [ref=e1554]:
+                      - generic [ref=e1555]: 
+                      - text: 13,500
+                    - generic [ref=e1557]: 
+                - generic [ref=e1558]:
+                  - generic [ref=e1559]:
+                    - generic [ref=e1560]: 
+                    - strong [ref=e1561]: "Archived after:"
+                    - text: 25 days
+                  - generic [ref=e1562]:
+                    - generic [ref=e1563]: 
+                    - strong [ref=e1564]: "Viewed:"
+                    - text: 338 times
+                  - generic [ref=e1565]:
+                    - generic [ref=e1566]: 
+                    - strong [ref=e1567]: "Status:"
+                    - text: Sold for $ 13,500
+                  - generic [ref=e1568]:
+                    - generic [ref=e1569]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e1571]:
+                - link [ref=e1572] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204972
+                - generic [ref=e1573]:
+                  - generic [ref=e1575]: Machine - For Sale
+                  - generic [ref=e1576]:
+                    - link "Metallica Remastered (Premium)" [ref=e1577] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204972
+                    - text: Archived
+                  - generic [ref=e1578]:
+                    - strong [ref=e1579]: HUO - Documented (Home Used Only)
+                    - text: "- “One owner Metallica Remastered Premium. Upgrades include shaker motor, expression lighting, and hands on black lights. Machine runs beautifully, but starting to look for a Harry ...”"
+                  - generic [ref=e1580]:
+                    - generic [ref=e1581]:
+                      - generic [ref=e1582]: 
+                      - text: 2025-11-18
+                    - generic [ref=e1583]:
+                      - img [ref=e1584]
+                      - text: Dudley, MA (638 mi)
+                    - generic [ref=e1585]:
+                      - generic [ref=e1586]: 
+                      - link "Shady32" [ref=e1587] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/shady32/market
+                    - generic [ref=e1588]:
+                      - generic [ref=e1589]: 
+                      - text: 8,400
+                - generic [ref=e1590]:
+                  - generic [ref=e1591]:
+                    - generic [ref=e1592]: 
+                    - strong [ref=e1593]: "Archived after:"
+                    - text: 29 days
+                  - generic [ref=e1594]:
+                    - generic [ref=e1595]: 
+                    - strong [ref=e1596]: "Viewed:"
+                    - text: 248 times
+                  - generic [ref=e1598]:
+                    - generic [ref=e1599]: 
+                    - strong [ref=e1600]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1602]:
+                - link [ref=e1603] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205108
+                - generic [ref=e1604]:
+                  - generic [ref=e1606]: Machine - For Trade
+                  - generic [ref=e1607]:
+                    - link "Metallica Remastered (Premium)" [ref=e1608] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205108
+                    - text: Archived
+                  - generic [ref=e1609]:
+                    - strong [ref=e1610]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Very low play Metallica Premium Less than 200 plays Perfect shape Expression art blades More pictures available upon request Will trade towards a dune or potter”"
+                  - generic [ref=e1611]:
+                    - generic [ref=e1612]:
+                      - generic [ref=e1613]: 
+                      - text: 2025-11-20
+                    - generic [ref=e1614]:
+                      - img [ref=e1615]
+                      - text: Romeoville, IL (204 mi)
+                    - generic [ref=e1616]:
+                      - generic [ref=e1617]: 
+                      - link "partyguy1516" [ref=e1618] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/partyguy1516/market
+                      - generic [ref=e1619]: 
+                    - generic [ref=e1620]:
+                      - text: Trade±
+                      - generic [ref=e1621]: 
+                      - text: 8,700 (OBO)
+                    - generic [ref=e1623]: 
+                - generic [ref=e1624]:
+                  - generic [ref=e1625]:
+                    - generic [ref=e1626]: 
+                    - strong [ref=e1627]: "Archived after:"
+                    - text: 26 days
+                  - generic [ref=e1628]:
+                    - generic [ref=e1629]: 
+                    - strong [ref=e1630]: "Viewed:"
+                    - text: 296 times
+                  - generic [ref=e1632]:
+                    - generic [ref=e1633]: 
+                    - strong [ref=e1634]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1636]:
+                - generic [ref=e1637]: SOLD!
+                - link [ref=e1638] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/203895
+                - generic [ref=e1639]:
+                  - generic [ref=e1641]: Machine - For Sale
+                  - generic [ref=e1642]:
+                    - link "Metallica (Premium)" [ref=e1643] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/203895
+                    - text: Archived
+                  - generic [ref=e1644]:
+                    - strong [ref=e1645]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Stern Metallica Premium Pinball HUO. Get the original Metallica with the colorful Dirty Donny artwork. This game is super clean, with a lot extras included. You get colorDMD LED ve...”"
+                  - generic [ref=e1646]:
+                    - generic [ref=e1647]:
+                      - generic [ref=e1648]: 
+                      - text: 2025-10-30
+                    - generic [ref=e1649]:
+                      - img [ref=e1650]
+                      - text: San Diego, CA (1,900 mi)
+                    - generic [ref=e1651]:
+                      - generic [ref=e1652]: 
+                      - link "SDAmusements" [ref=e1653] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/sdamusements/market
+                      - generic [ref=e1654]: 
+                    - generic [ref=e1655]:
+                      - generic [ref=e1656]: 
+                      - text: 7,995
+                    - generic [ref=e1658]: 
+                - generic [ref=e1659]:
+                  - generic [ref=e1660]:
+                    - generic [ref=e1661]: 
+                    - strong [ref=e1662]: "Archived after:"
+                    - text: 47 days
+                  - generic [ref=e1663]:
+                    - generic [ref=e1664]: 
+                    - strong [ref=e1665]: "Viewed:"
+                    - text: 140 times
+                  - generic [ref=e1666]:
+                    - generic [ref=e1667]: 
+                    - strong [ref=e1668]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e1669]:
+                    - generic [ref=e1670]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e1672]:
+                - link [ref=e1673] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205609
+                - generic [ref=e1674]:
+                  - generic [ref=e1676]: Machine - For Trade
+                  - generic [ref=e1677]:
+                    - link "Metallica (Premium)" [ref=e1678] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205609
+                    - text: Archived
+                  - generic [ref=e1679]:
+                    - strong [ref=e1680]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Trades: X-Men Premium/LE, Halloween, Labyrinth, Texas Chainsaw Massacre Up for sale or trade is a spectacular specimen of an OG Metallica Premium. If you're into the OG, this one'...”"
+                  - generic [ref=e1681]:
+                    - generic [ref=e1682]:
+                      - generic [ref=e1683]: 
+                      - text: 2025-12-09
+                    - generic [ref=e1684]:
+                      - img [ref=e1685]
+                      - text: Fishers, IN (210 mi)
+                    - generic [ref=e1686]:
+                      - generic [ref=e1687]: 
+                      - link "Joniano" [ref=e1688] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/joniano/market
+                      - generic [ref=e1689]: 
+                    - generic [ref=e1690]:
+                      - text: Trade±
+                      - generic [ref=e1691]: 
+                      - text: 7,151
+                - generic [ref=e1692]:
+                  - generic [ref=e1693]:
+                    - generic [ref=e1694]: 
+                    - strong [ref=e1695]: "Archived after:"
+                    - text: 7 days
+                  - generic [ref=e1696]:
+                    - generic [ref=e1697]: 
+                    - strong [ref=e1698]: "Viewed:"
+                    - text: 244 times
+                  - generic [ref=e1700]:
+                    - generic [ref=e1701]: 
+                    - strong [ref=e1702]: "Status:"
+                    - text: Didn't sell to Pinsider
+              - generic [ref=e1704]:
+                - link [ref=e1705] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204627
+                - generic [ref=e1706]:
+                  - generic [ref=e1708]: Machine - For Sale
+                  - generic [ref=e1709]:
+                    - link "Metallica Remastered (LE) Free Local Delivery" [ref=e1710] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204627
+                    - text: Archived
+                  - generic [ref=e1711]:
+                    - strong [ref=e1712]: HUO - Documented (Home Used Only)
+                    - text: "- “Mint Condition, even still has some shrink wrap on translite. ~200 plays. . I also have a NIB premium inquire if interested. Ready to go. Easy load out. Will deliver within re...”"
+                  - generic [ref=e1713]:
+                    - generic [ref=e1714]:
+                      - generic [ref=e1715]: 
+                      - text: 2025-11-13
+                    - generic [ref=e1716]:
+                      - img [ref=e1717]
+                      - text: Marietta, GA (608 mi)
+                    - generic [ref=e1718]:
+                      - generic [ref=e1719]: 
+                      - link "GingerMan078" [ref=e1720] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/gingerman078/market
+                      - generic [ref=e1721]: 
+                    - generic [ref=e1722]:
+                      - generic [ref=e1723]: 
+                      - text: 15,035 (Firm)
+                - generic [ref=e1724]:
+                  - generic [ref=e1725]:
+                    - generic [ref=e1726]: 
+                    - strong [ref=e1727]: "Archived after:"
+                    - text: 32 days
+                  - generic [ref=e1728]:
+                    - generic [ref=e1729]: 
+                    - strong [ref=e1730]: "Viewed:"
+                    - text: 280 times
+                  - generic [ref=e1732]:
+                    - generic [ref=e1733]: 
+                    - strong [ref=e1734]: "Status:"
+                    - text: Not sold
+              - generic [ref=e1736]:
+                - link [ref=e1737] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/202137
+                - generic [ref=e1738]:
+                  - generic [ref=e1740]: Machine - For Sale
+                  - generic [ref=e1741]:
+                    - link "Metallica Remastered (Premium)" [ref=e1742] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/202137
+                    - text: Featured Archived
+                  - generic [ref=e1743]:
+                    - strong [ref=e1744]: As is
+                    - text: "- “Like new condition ,not 1 nick or ding anywhere.Couldnt find a description for game condition that matched. Comes with Pinwoofer amp and speaker upgrade Stern expression lights and...”"
+                  - generic [ref=e1745]:
+                    - generic [ref=e1746]:
+                      - generic [ref=e1747]: 
+                      - text: 2025-09-28
+                    - generic [ref=e1748]:
+                      - img [ref=e1749]
+                      - text: San Jose, CA (2,003 mi)
+                    - generic [ref=e1750]:
+                      - generic [ref=e1751]: 
+                      - link "Jamesays" [ref=e1752] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/jamesays/market
+                      - generic [ref=e1753]: 
+                    - generic [ref=e1754]:
+                      - generic [ref=e1755]: 
+                      - text: 10,000 (OBO)
+                    - generic [ref=e1757]: 
+                - generic [ref=e1758]:
+                  - generic [ref=e1759]:
+                    - generic [ref=e1760]: 
+                    - strong [ref=e1761]: "Archived after:"
+                    - text: 76 days
+                  - generic [ref=e1762]:
+                    - generic [ref=e1763]: 
+                    - strong [ref=e1764]: "Viewed:"
+                    - text: 330 times
+                  - generic [ref=e1766]:
+                    - generic [ref=e1767]: 
+                    - strong [ref=e1768]: "Status:"
+                    - text: "Not sold: Decided to keep game"
+              - generic [ref=e1770]:
+                - generic [ref=e1771]: SOLD!
+                - link [ref=e1772] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/204318
+                - generic [ref=e1773]:
+                  - generic [ref=e1775]: Machine - For Sale
+                  - generic [ref=e1776]:
+                    - link "Metallica Master of Puppets (LE)" [ref=e1777] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/204318
+                    - text: Archived
+                  - generic [ref=e1778]:
+                    - strong [ref=e1779]: HUO - Documented (Home Used Only)
+                    - text: "- “Metallica LE - MINT condition. There is not a single issue with this game. IDK the play count for certain but the play meter shows under 60. This system did not track lifetime play...”"
+                  - generic [ref=e1780]:
+                    - generic [ref=e1781]:
+                      - generic [ref=e1782]: 
+                      - text: 2025-11-08
+                    - generic [ref=e1783]:
+                      - img [ref=e1784]
+                      - text: Wood Dale, IL (191 mi)
+                    - generic [ref=e1785]:
+                      - generic [ref=e1786]: 
+                      - link "inhomearcades" [ref=e1787] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/inhomearcades/market
+                      - generic [ref=e1788]: 
+                    - generic [ref=e1789]:
+                      - generic [ref=e1790]: 
+                      - text: 9,250
+                    - generic [ref=e1792]: 
+                - generic [ref=e1793]:
+                  - generic [ref=e1794]:
+                    - generic [ref=e1795]: 
+                    - strong [ref=e1796]: "Archived after:"
+                    - text: 32 days
+                  - generic [ref=e1797]:
+                    - generic [ref=e1798]: 
+                    - strong [ref=e1799]: "Viewed:"
+                    - text: 283 times
+                  - generic [ref=e1800]:
+                    - generic [ref=e1801]: 
+                    - strong [ref=e1802]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e1803]:
+                    - generic [ref=e1804]: 
+                    - text: Contributed to Pinside
+              - generic [ref=e1806]:
+                - generic [ref=e1807]: SOLD!
+                - link [ref=e1808] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/archive/205065
+                - generic [ref=e1809]:
+                  - generic [ref=e1811]: Machine - For Sale
+                  - generic [ref=e1812]:
+                    - link "Metallica Master of Puppets (LE)" [ref=e1813] [cursor=pointer]:
+                      - /url: /pinball/market/classifieds/archive/205065
+                    - text: Featured Archived
+                  - generic [ref=e1814]:
+                    - strong [ref=e1815]: HUO - Undocumented (Home Used Only)
+                    - text: "- “Home use only, Mint condition. Additional photos/videos will be provided upon request for any specific part that you'd like to see. Listing will be updated with more photos and lin...”"
+                  - generic [ref=e1816]:
+                    - generic [ref=e1817]:
+                      - generic [ref=e1818]: 
+                      - text: 2025-11-20
+                    - generic [ref=e1819]:
+                      - img [ref=e1820]
+                      - text: Lisle, IL (199 mi)
+                    - generic [ref=e1821]:
+                      - generic [ref=e1822]: 
+                      - link "EOC_Audio" [ref=e1823] [cursor=pointer]:
+                        - /url: /pinball/community/pinsiders/eoc_audio/market
+                    - generic [ref=e1824]:
+                      - generic [ref=e1825]: 
+                      - text: 10,000 (OBO)
+                - generic [ref=e1826]:
+                  - generic [ref=e1827]:
+                    - generic [ref=e1828]: 
+                    - strong [ref=e1829]: "Archived after:"
+                    - text: 19 days
+                  - generic [ref=e1830]:
+                    - generic [ref=e1831]: 
+                    - strong [ref=e1832]: "Viewed:"
+                    - text: 219 times
+                  - generic [ref=e1833]:
+                    - generic [ref=e1834]: 
+                    - strong [ref=e1835]: "Status:"
+                    - text: Sold (amount private)
+                  - generic [ref=e1836]:
+                    - generic [ref=e1837]: 
+                    - text: Contributed to Pinside
+          - generic [ref=e1838]:
+            - generic [ref=e1839]:
+              - link "Next " [ref=e1840] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/2?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+                - text: Next
+                - generic [ref=e1841]: 
+              - link "1" [ref=e1842] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "2" [ref=e1843] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/2?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "3" [ref=e1844] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/3?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "4" [ref=e1845] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/4?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "5" [ref=e1846] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/5?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "6" [ref=e1847] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/6?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "7" [ref=e1848] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/7?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "8" [ref=e1849] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/8?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "9" [ref=e1850] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/9?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "10" [ref=e1851] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/10?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - link "11" [ref=e1852] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/11?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+              - text: ...
+              - link "28" [ref=e1853] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive/page/28?keywords=Metallica&s=1&sort_by=ad_end_date&sort_order=DESC
+            - generic [ref=e1854]: Found 1,374 ads matching your search query. Currently showing results page 1 of 28.
+      - generic [ref=e1855]:
+        - generic [ref=e1857]:
+          - heading "Find pinball ads" [level=2] [ref=e1858]
+          - paragraph [ref=e1859]: Are you looking for nearby ads, without any specifics in mind? Check out our
+        - link "ads-on-map click here to locate ads on a map" [ref=e1864] [cursor=pointer]:
+          - /url: /pinball/market/classifieds/map
+          - img "ads-on-map" [ref=e1865]
+          - text: click here to locate ads on a map
+  - text:    
+  - generic [ref=e1869]:
+    - link [ref=e1871] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e1872]
+    - generic [ref=e1873]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e1874]:
+        - generic [ref=e1875]: 
+        - text: Page rendered in 0.62664s
+      - generic [ref=e1876]:
+        - generic [ref=e1877]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e1878] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e1879]:
+        - link " Help" [ref=e1880] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e1881]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e1882] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e1883]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e1884] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e1885]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e1886] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e1887]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e1888] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e1889]: 
+          - text: Top
+    - link [ref=e1891] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e1892]
+  - list [ref=e1893]

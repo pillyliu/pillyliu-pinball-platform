@@ -1,0 +1,190 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - text: 
+        - link [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img [ref=e23]
+        - generic [ref=e24]:
+          - link "machines" [ref=e25] [cursor=pointer]:
+            - /url: /pinball/machine
+          - link "top 100" [ref=e26] [cursor=pointer]:
+            - /url: /pinball/top-100
+          - link "community" [ref=e27] [cursor=pointer]:
+            - /url: /pinball/community
+          - link "TV" [ref=e28] [cursor=pointer]:
+            - /url: /pinball/tv
+          - link "pin map" [ref=e29] [cursor=pointer]:
+            - /url: /pinball/map
+          - link "forum" [ref=e30] [cursor=pointer]:
+            - /url: /pinball/forum
+          - link "biz" [ref=e31] [cursor=pointer]:
+            - /url: /pinball/biz
+          - link "shops" [ref=e32] [cursor=pointer]:
+            - /url: /pinball/shops
+          - link "market" [ref=e33] [cursor=pointer]:
+            - /url: /pinball/market
+          - link "events" [ref=e34] [cursor=pointer]:
+            - /url: /pinball/events
+          - link "HQ" [ref=e35] [cursor=pointer]:
+            - /url: /pinball/hq
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - link "Pinside.com logo" [ref=e40] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e41]
+          - list [ref=e43]:
+            - listitem [ref=e44]:
+              - link "machines" [ref=e45] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e46]:
+              - link "top 100" [ref=e47] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e48]:
+              - link "community" [ref=e49] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e50]:
+              - link "TV" [ref=e51] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e52]:
+              - link "pin map" [ref=e53] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e54]:
+              - link "forum" [ref=e55] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e56]:
+              - link "biz" [ref=e57] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e58]:
+              - link "shops" [ref=e59] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e60]:
+              - link "market" [ref=e61] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e62]:
+              - link "events" [ref=e63] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e64]:
+              - link "HQ" [ref=e65] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e66]:
+          - 'link "Photo: TractorDoc" [ref=e67] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/tractordoc
+          - link "" [ref=e68] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e69]: 
+      - generic [ref=e70]:
+        - link "" [ref=e73] [cursor=pointer]:
+          - /url: "#scrollbottom"
+          - generic [ref=e74]: 
+        - generic [ref=e76]:
+          - generic:
+            - list:
+              - listitem [ref=e77]:
+                - link "Splash Marketplace overview" [ref=e78] [cursor=pointer]:
+                  - /url: /pinball/market
+                  - text: Splash
+                  - generic [ref=e79]: Marketplace overview
+              - listitem [ref=e80]:
+                - link "Classified ads Used games & parts" [ref=e81] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds
+                  - text: Classified ads
+                  - generic [ref=e82]: Used games & parts
+              - listitem [ref=e83]:
+                - link "Ads Map Ads on the map" [ref=e84] [cursor=pointer]:
+                  - /url: /pinball/market/map
+                  - text: Ads Map
+                  - generic [ref=e85]: Ads on the map
+              - listitem [ref=e86]:
+                - link "Top Seller Ads Pinside's best sellers!" [ref=e87] [cursor=pointer]:
+                  - /url: /pinball/market/top-sellers
+                  - text: Top Seller Ads
+                  - generic [ref=e88]: Pinside's best sellers!
+              - listitem [ref=e89]:
+                - link "New games (NIB) Brand new in box" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/market/new-games
+                  - text: New games (NIB)
+                  - generic [ref=e91]: Brand new in box
+              - listitem [ref=e92]:
+                - link " Place an ad Create a new ad listing" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/market/place
+                  - generic [ref=e94]:
+                    - generic [ref=e95]: 
+                    - text: Place an ad
+                  - generic [ref=e96]: Create a new ad listing
+    - generic [ref=e98]:
+      - generic [ref=e100]:
+        - heading "Oops!" [level=1] [ref=e101]
+        - heading "Oops, that ad was not found!" [level=3] [ref=e102]
+        - paragraph [ref=e103]:
+          - text: The ad does not exist or it has expired from the market place.
+          - link "Take me back to the Pinside market place classifieds" [ref=e104] [cursor=pointer]:
+            - /url: /pinball/market/classifieds
+          - text: .
+      - generic [ref=e106]:
+        - heading "Looking for something?" [level=3] [ref=e107]
+        - generic [ref=e108]:
+          - textbox "Enter a search query here..." [ref=e109]
+          - button " Search" [ref=e110] [cursor=pointer]:
+            - generic [ref=e111]: 
+            - text: Search
+          - paragraph [ref=e112]: Search all of Pinside from one search box! Enter a game name, location name, Pinsider name or something to find on the forums.
+  - text:    
+  - generic [ref=e115]:
+    - link [ref=e117] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e118]
+    - generic [ref=e119]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e120]:
+        - generic [ref=e121]: 
+        - text: Page rendered in 0.0159s
+      - generic [ref=e122]:
+        - generic [ref=e123]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e124] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e125]:
+        - link " Help" [ref=e126] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e127]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e128] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e129]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e130] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e131]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e132] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e133]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e134] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e135]: 
+          - text: Top

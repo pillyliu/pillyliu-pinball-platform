@@ -5,10 +5,10 @@ Monorepo for `pillyliu.com` and related pinball apps.
 ## Apps
 
 - `pillyliu-landing` -> `/`
-- `lpl-library` -> `/lpl_library/`
-- `lpl-standings` -> `/lpl_standings/`
-- `lpl-stats` -> `/lpl_stats/`
-- `lpl-targets` -> `/lpl_targets/`
+- `lpl-library` -> `/lpl-library/`
+- `lpl-standings` -> `/lpl-standings/`
+- `lpl-stats` -> `/lpl-stats/`
+- `lpl-targets` -> `/lpl-targets/`
 
 ## Canonical Data Model
 

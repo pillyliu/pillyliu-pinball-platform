@@ -50,6 +50,9 @@ This document captures how pinball data/assets are currently sourced and maintai
 - Rulesheets were then converted to Markdown.
 - For non-TiltForums sources, text was manually brought in and formatted.
 - Table-of-contents sections with anchors were added, while preserving original rules text as closely as possible.
+- Current one-command flow:
+  - `npm run rulesheets:refresh`
+  - This runs: Google Sheet -> `tools/rulesheets/tiltforums_urls.txt` sync -> markdown export to `shared/pinball/rulesheets/<gameslug>.md` -> sync to web app public folders and iOS/Android starter-pack bundles.
 
 ### 5) Game Info Markdown (`gameinfo/*.md`)
 

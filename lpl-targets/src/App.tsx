@@ -20,16 +20,18 @@ type TargetRow = {
 
 type GameMeta = {
   name: string;
+  location?: string | null;
   group?: number | null;
-  pos?: number | null;
+  position?: number | null;
   bank?: number | null;
 };
 
 type SortMode = "location" | "bank" | "alphabetical";
 
 type EnrichedTargetRow = TargetRow & {
+  location: string | null;
   group: number | null;
-  pos: number | null;
+  position: number | null;
   bank: number | null;
 };
 
@@ -202,7 +204,7 @@ export default function App() {
                 className="table-body-row"
               >
                 <td className="table-body-cell text-neutral-100">{row.game}</td>
-                <td className="table-body-cell tabular-nums text-neutral-300">{formatLocation(row.group, row.pos)}</td>
+                <td className="table-body-cell tabular-nums text-neutral-300">{formatLocation(row.location, row.group, row.position)}</td>
                 <td className="table-body-cell tabular-nums text-neutral-300">{formatBank(row.bank)}</td>
                 <td className="table-body-cell tabular-nums text-emerald-200 font-medium">{formatNumber(row.secondHighestAvg)}</td>
                 <td className="table-body-cell tabular-nums text-sky-200">{formatNumber(row.fourthHighestAvg)}</td>
@@ -236,9 +238,10 @@ function formatNumber(value: number): string {
   return Math.round(value).toLocaleString();
 }
 
-function formatLocation(group: number | null, pos: number | null): string {
-  if (!Number.isFinite(group ?? Number.NaN) || !Number.isFinite(pos ?? Number.NaN)) return "-";
-  return `${group}:${pos}`;
+function formatLocation(location: string | null, group: number | null, position: number | null): string {
+  if (!Number.isFinite(group ?? Number.NaN) || !Number.isFinite(position ?? Number.NaN)) return "-";
+  const loc = location?.trim();
+  return loc ? `📍 ${loc}:${group}:${position}` : `📍 ${group}:${position}`;
 }
 
 function formatBank(bank: number | null): string {
@@ -255,8 +258,9 @@ function sortRows(
     const meta = metaByName.get(normalizeGameName(row.game));
     return {
       ...row,
+      location: typeof meta?.location === "string" && meta.location.trim() ? meta.location.trim() : null,
       group: typeof meta?.group === "number" ? meta.group : null,
-      pos: typeof meta?.pos === "number" ? meta.pos : null,
+      position: typeof meta?.position === "number" ? meta.position : null,
       bank: typeof meta?.bank === "number" ? meta.bank : null,
     };
   });
@@ -270,14 +274,14 @@ function sortRows(
       return (
         compareMaybeNumber(a.bank, b.bank) ||
         compareMaybeNumber(a.group, b.group) ||
-        compareMaybeNumber(a.pos, b.pos) ||
+        compareMaybeNumber(a.position, b.position) ||
         alpha(a.game, b.game)
       );
     }
 
     return (
       compareMaybeNumber(a.group, b.group) ||
-      compareMaybeNumber(a.pos, b.pos) ||
+      compareMaybeNumber(a.position, b.position) ||
       alpha(a.game, b.game)
     );
   });

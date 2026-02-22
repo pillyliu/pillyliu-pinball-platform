@@ -14,8 +14,10 @@ import {
 type Video = { kind: string; label: string; url: string };
 
 type Game = {
+  area?: string | null;
+  location?: string | null; // legacy field fallback
   group?: number | null;
-  pos?: number | null;
+  position?: number | null;
   bank?: number | null;
 
   name: string;
@@ -43,10 +45,12 @@ function youtubeId(url: string): string | null {
   }
 }
 
-function locationText(group?: number | null, pos?: number | null): string | null {
-  if (typeof group !== "number" || typeof pos !== "number") return null;
-  const floor = group >= 1 && group <= 4 ? "U" : "D";
-  return `📍 ${floor}:${group}:${pos}`;
+function locationText(location?: string | null, group?: number | null, position?: number | null): string | null {
+  if (typeof group !== "number" || typeof position !== "number") return null;
+  if (location && location.trim()) {
+    return `📍 ${location.trim()}:${group}:${position}`;
+  }
+  return `📍 ${group}:${position}`;
 }
 
 function playfieldImageSources(slug: string, playfieldLocal: string | null) {
@@ -75,9 +79,17 @@ export default function GamePage() {
   });
 
   useEffect(() => {
-    fetchPinballJson<Game[]>("/pinball/data/pinball_library.json")
+    fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
       .then((data) => {
-        const found = Array.isArray(data) ? data.find((g) => g.slug === slug) : null;
+        const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
+        const games = Array.isArray(root)
+          ? root
+          : Array.isArray(root?.games)
+            ? root.games
+            : Array.isArray(root?.items)
+              ? root.items
+              : [];
+        const found = games.find((g) => g.slug === slug) ?? null;
         setGame(found ?? null);
       })
       .catch(() => setGame(null));
@@ -134,7 +146,7 @@ export default function GamePage() {
     parts.push(game.manufacturer ?? "—");
     if (game.year) parts.push(String(game.year));
 
-    const loc = locationText(game.group, game.pos);
+    const loc = locationText(game.area ?? game.location, game.group, game.position);
     if (loc) parts.push(loc);
 
     if (typeof game.bank === "number" && game.bank > 0) parts.push(`Bank ${game.bank}`);

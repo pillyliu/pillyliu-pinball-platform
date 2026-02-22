@@ -10,10 +10,10 @@ export default function App() {
   const landingNavItems = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
-    { href: 'https://pillyliu.com/lpl_stats/', label: 'Stats' },
-    { href: 'https://pillyliu.com/lpl_standings/', label: 'Standings' },
-    { href: 'https://pillyliu.com/lpl_targets/', label: 'Targets' },
-    { href: 'https://pillyliu.com/lpl_library/', label: 'Library' },
+    { href: 'https://pillyliu.com/lpl-stats/', label: 'Stats' },
+    { href: 'https://pillyliu.com/lpl-standings/', label: 'Standings' },
+    { href: 'https://pillyliu.com/lpl-targets/', label: 'Targets' },
+    { href: 'https://pillyliu.com/lpl-library/', label: 'Library' },
   ] as const;
 
   return (
@@ -34,16 +34,16 @@ export default function App() {
               processors, and proudly a pee physician (urologist).
             </p>
             <div className='mt-4 flex flex-wrap gap-2.5'>
-              <a className={`${CTA_BUTTON_CLASS} border-emerald-500/60 bg-emerald-600/25 text-emerald-100`} href='https://pillyliu.com/lpl_stats/'>
+              <a className={`${CTA_BUTTON_CLASS} border-emerald-500/60 bg-emerald-600/25 text-emerald-100`} href='https://pillyliu.com/lpl-stats/'>
                 View League <strong className='ml-1'>Stats</strong>
               </a>
-              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_standings/'>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl-standings/'>
                 View <strong className='ml-1'>Standings</strong>
               </a>
-              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_targets/'>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl-targets/'>
                 View <strong className='ml-1'>Targets</strong>
               </a>
-              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl_library/'>
+              <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl-library/'>
                 Open <strong className='ml-1'>Library</strong>
               </a>
               <a className={CTA_BUTTON_CLASS} href='http://twitch.tv/pillyliu' target='_blank' rel='noreferrer'>
@@ -68,7 +68,7 @@ export default function App() {
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>League Stats Viewer</h3>
             <p className='mt-2 text-sm text-neutral-400'>Interactive filters with machine-specific analytics.</p>
-            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_stats/'>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl-stats/'>
               Open Stats
             </a>
           </article>
@@ -76,7 +76,7 @@ export default function App() {
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>Standings Dashboard</h3>
             <p className='mt-2 text-sm text-neutral-400'>Latest season by default; quick switch to past seasons.</p>
-            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_standings/'>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl-standings/'>
               Open Standings
             </a>
           </article>
@@ -84,7 +84,7 @@ export default function App() {
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>Performance Targets</h3>
             <p className='mt-2 text-sm text-neutral-400'>Percentile-based goals per machine for practice and competition.</p>
-            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_targets/'>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl-targets/'>
               Open Targets
             </a>
           </article>
@@ -92,7 +92,7 @@ export default function App() {
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>Pinball Library</h3>
             <p className='mt-2 text-sm text-neutral-400'>Rulesheets, guides, and machine pages - all in one place.</p>
-            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl_library/'>
+            <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl-library/'>
               Open Library
             </a>
           </article>

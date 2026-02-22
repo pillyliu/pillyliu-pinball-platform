@@ -4,8 +4,12 @@ import path from "node:path";
 import Papa from "papaparse";
 
 type RawRow = {
+  Venue?: unknown;
+  Area?: unknown;
+  AreaOrder?: unknown;
+  Location?: unknown;
   Group?: unknown;
-  Pos?: unknown;
+  Position?: unknown;
   Bank?: unknown;
 
   Game?: unknown;
@@ -16,15 +20,25 @@ type RawRow = {
   Rulesheet?: unknown;
 
   Tutorial?: unknown;
+  "Tutorial 1"?: unknown;
   Gameplay?: unknown;
+  "Gameplay 1"?: unknown;
   "Gameplay 2"?: unknown;
+  "Gameplay 3"?: unknown;
+  "Gameplay 4"?: unknown;
   "Tutorial 2"?: unknown;
   "Tutorial 3"?: unknown;
+  "Tutorial 4"?: unknown;
+  Competition?: unknown;
+  "Competition 1"?: unknown;
+  "Competition 2"?: unknown;
+  "Competition 3"?: unknown;
+  "Competition 4"?: unknown;
 
   [key: string]: unknown;
 };
 
-type VideoKind = "tutorial" | "gameplay";
+type VideoKind = "tutorial" | "gameplay" | "competition";
 
 type LibraryVideo = {
   kind: VideoKind;
@@ -33,8 +47,14 @@ type LibraryVideo = {
 };
 
 type LibraryItem = {
+  libraryId: string;
+  libraryName: string;
+  libraryType: "venue" | "category";
+  venueName: string;
+  area: string | null;
+  areaOrder: number | null;
   group: number | null;
-  pos: number | null;  // new: position within group (physical ordering)
+  position: number | null;
   bank: number | null; // new: current season bank (1-8)
 
   name: string;
@@ -83,27 +103,45 @@ function cleanUrl(v?: unknown): string | null {
 function buildVideos(row: RawRow): LibraryVideo[] {
   const out: LibraryVideo[] = [];
 
-  const tutorialCols: Array<[keyof RawRow, string]> = [
-    ["Tutorial", "Tutorial 1"],
-    ["Tutorial 2", "Tutorial 2"],
-    ["Tutorial 3", "Tutorial 3"],
+  const tutorialCols: Array<[[keyof RawRow, ...(keyof RawRow)[]], string]> = [
+    [["Tutorial 1", "Tutorial"], "Tutorial 1"],
+    [["Tutorial 2"], "Tutorial 2"],
+    [["Tutorial 3"], "Tutorial 3"],
+    [["Tutorial 4"], "Tutorial 4"],
   ];
 
-  const gameplayCols: Array<[keyof RawRow, string]> = [
-    ["Gameplay", "Gameplay 1"],
-    ["Gameplay 2", "Gameplay 2"],
+  const gameplayCols: Array<[[keyof RawRow, ...(keyof RawRow)[]], string]> = [
+    [["Gameplay 1", "Gameplay"], "Gameplay 1"],
+    [["Gameplay 2"], "Gameplay 2"],
+    [["Gameplay 3"], "Gameplay 3"],
+    [["Gameplay 4"], "Gameplay 4"],
+  ];
+  const competitionCols: Array<[[keyof RawRow, ...(keyof RawRow)[]], string]> = [
+    [["Competition 1", "Competition"], "Competition 1"],
+    [["Competition 2"], "Competition 2"],
+    [["Competition 3"], "Competition 3"],
+    [["Competition 4"], "Competition 4"],
   ];
 
-  for (const [col, label] of tutorialCols) {
-    const url = cleanUrl(row[col]);
+  for (const [colAliases, label] of tutorialCols) {
+    const url = colAliases.map((c) => cleanUrl(row[c])).find((v) => v);
     if (url) out.push({ kind: "tutorial", label, url });
   }
-  for (const [col, label] of gameplayCols) {
-    const url = cleanUrl(row[col]);
+  for (const [colAliases, label] of gameplayCols) {
+    const url = colAliases.map((c) => cleanUrl(row[c])).find((v) => v);
     if (url) out.push({ kind: "gameplay", label, url });
+  }
+  for (const [colAliases, label] of competitionCols) {
+    const url = colAliases.map((c) => cleanUrl(row[c])).find((v) => v);
+    if (url) out.push({ kind: "competition", label, url });
   }
 
   return out;
+}
+
+function toAreaOrNull(v?: unknown): string | null {
+  const s = String(v ?? "").trim();
+  return s || null;
 }
 
 function isDuplicateHeaderRow(row: RawRow): boolean {
@@ -116,12 +154,15 @@ function isDuplicateHeaderRow(row: RawRow): boolean {
 
 function isBlankRow(row: RawRow): boolean {
   const game = String(row.Game ?? "").trim();
+  const venue = String(row.Venue ?? "").trim();
+  const area = String(row.Area ?? row.Location ?? "").trim();
+  const areaOrder = String(row.AreaOrder ?? "").trim();
   const group = String(row.Group ?? "").trim();
+  const position = String(row.Position ?? "").trim();
   const manufacturer = String(row.Manufacturer ?? "").trim();
   const year = String(row.Year ?? "").trim();
-  const pos = String(row.Pos ?? "").trim();
   const bank = String(row.Bank ?? "").trim();
-  return !game && !group && !manufacturer && !year && !pos && !bank;
+  return !game && !venue && !area && !areaOrder && !group && !position && !manufacturer && !year && !bank;
 }
 
 function hostedPlayfieldPath(slug: string): string | null {
@@ -160,7 +201,7 @@ function main() {
 
   const parsed = Papa.parse<RawRow>(csvText, {
     header: true,
-    skipEmptyLines: false,
+    skipEmptyLines: true,
   });
 
   if (parsed.errors?.length) {
@@ -186,9 +227,13 @@ function main() {
     slugCounts.set(baseSlug, count);
     const slug = count === 1 ? baseSlug : `${baseSlug}-${count}`;
 
+    const area = toAreaOrNull(row.Area ?? row.Location);
+    const areaOrder = toIntOrNull(row.AreaOrder);
     const group = toIntOrNull(row.Group);
-    const pos = toIntOrNull(row.Pos);
+    const position = toIntOrNull(row.Position);
     const bank = toIntOrNull(row.Bank);
+    const venueName = String(row.Venue ?? "").trim() || "The Avenue";
+    const libraryId = slugify(venueName);
 
     const manufacturer = String(row.Manufacturer ?? "").trim() || null;
     const year = toIntOrNull(row.Year);
@@ -197,8 +242,14 @@ function main() {
     const rulesheetUrl = cleanUrl(row.Rulesheet);
 
     items.push({
+      libraryId,
+      libraryName: venueName,
+      libraryType: "venue",
+      venueName,
+      area,
+      areaOrder,
       group,
-      pos,
+      position,
       bank,
       name,
       manufacturer,
@@ -212,14 +263,22 @@ function main() {
     });
   }
 
-  // Sort: group asc, then pos asc (within group), then name to stabilize
+  // Sort: area asc, then group asc, then position asc (within group), then name to stabilize
   items.sort((a, b) => {
+    const oa = a.areaOrder ?? 9999;
+    const ob = b.areaOrder ?? 9999;
+    if (oa !== ob) return oa - ob;
+
+    const la = a.area ?? "zzzz";
+    const lb = b.area ?? "zzzz";
+    if (la !== lb) return la.localeCompare(lb);
+
     const ga = a.group ?? 9999;
     const gb = b.group ?? 9999;
     if (ga !== gb) return ga - gb;
 
-    const pa = a.pos ?? 9999;
-    const pb = b.pos ?? 9999;
+    const pa = a.position ?? 9999;
+    const pb = b.position ?? 9999;
     if (pa !== pb) return pa - pb;
 
     return a.name.localeCompare(b.name);

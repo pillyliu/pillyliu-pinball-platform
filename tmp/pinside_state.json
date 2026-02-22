@@ -1,0 +1,57 @@
+{
+  "cookies": [
+    {
+      "name": "pinsideSession",
+      "value": "p374nvg7h4lbohld0fpvg5dtdo",
+      "domain": ".pinside.com",
+      "path": "/",
+      "expires": 1771559724.432863,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_pk_id.1.fa1f",
+      "value": "ad73119992de4e86.1771530802.",
+      "domain": "pinside.com",
+      "path": "/",
+      "expires": 1805486002,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_pk_ses.1.fa1f",
+      "value": "1",
+      "domain": "pinside.com",
+      "path": "/",
+      "expires": 1771532808,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cf_clearance",
+      "value": "3Ezjm9p.YWNsoeNT8z2nIzv2EWBBL9o8DUNV2vPwH.8-1771530802-1.2.1.1-NQOlprF77CocPpu.oy9I8IIYbuNRs4OOae2PaH79DHMfzHfRhAd9.ge4Lz.LvL82Qmaoyfyeg7qL_OQ298bf9SXP.btQVGWBPPtFhPicq1cGYhzzX83qbebT4HEMcXyEwDNOF.hxMB.P00HZzaBg9lxF7jPncs8IpO1Jr.ZAmsfTenKCvXnsRB1S.QDAaemNS46_MLMKhRxs2dKVwsCl3zxotifoUE82TV.W_RqhDD8",
+      "domain": ".pinside.com",
+      "path": "/",
+      "expires": 1803066802.424667,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://pinside.com",
+      "_crHasCrossSiteAncestor": false
+    },
+    {
+      "name": "pinsideCake",
+      "value": "YTozOntzOjE6InUiO3M6MTg0OiJkZWY1MDIwMGIzMTA5ZDgwZDZmYmFhNjgzNjVhMmViNTA0Yzc1ODViZjZhZTYyMDJiNjQ0YjE5NmYzNWEzODg3NjNkYmQ0MTY2NDlkNDQzMDBlZTg1MDNkODc2ZTFlMGQxYjkxNGVhNmQ3MmNjNjI4MTU4MjBlM2M5NWFmZmVmNzRhYjc1M2I2NWQzN2ZkMDA4MzQ5ODBmN2E3MGM2Y2E0Mzg2NmE1OGUwNWVjZWFjMTcxNzNkZjgyIjtzOjE6InAiO3M6MTk2OiJkZWY1MDIwMDE3NzMxODIyMzMyOGY0MDFhNTNhYTI1OTQ2NjFjZjRhYWFkZTJiOGZjZmVmMzc1MDEwYzk2ZjI3NjljMTcyZGFmZDdjOTI2YWRiOTc2ZWE2Y2VmYmNhYTA5ZTJhMzhkOTAyMDJiZjViZThkMTI3OTk4ZDdlOTI4MjVjMGFlZDVkOTgyYTBjYjg4YjUyYzJmODY2ODgyMGNiYmRhNzU0ZThiZjVkZTdlODg5ODI3MzlmMWUzNDYzZGMzNWQ4IjtzOjU6InRva2VuIjtzOjMyOiJlZmYwNmI2OTQ0ZDE5OGM0MmIwMTYyMDhhYzJiNDRkOCI7fQ%3D%3D",
+      "domain": ".pinside.com",
+      "path": "/",
+      "expires": 1774122924.432931,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

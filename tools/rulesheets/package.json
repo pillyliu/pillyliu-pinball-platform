@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate-layout": "node migrate_pinball_sheet_layout.mjs",
+    "sync-urls": "node sync_tiltforums_urls_from_sheet.mjs",
+    "export": "node export_rulesheets.mjs",
+    "refresh": "node refresh_rulesheets_from_avenue_sheet.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "googleapis": "^171.4.0"
   }
 }

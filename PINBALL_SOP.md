@@ -53,6 +53,9 @@ npm run league:update-check
 # generate canonical manifest/update log from shared/pinball
 npm run sync:pinball
 
+# refresh Tilt Forums rulesheets from Avenue sheet and sync web + mobile starter packs
+npm run rulesheets:refresh
+
 # full build (all apps)
 npm run build:all
 ```

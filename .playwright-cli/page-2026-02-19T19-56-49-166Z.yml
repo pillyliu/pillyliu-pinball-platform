@@ -1,0 +1,558 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "pillyliu" [ref=e6] [cursor=pointer]:
+            - /url: /pinball/my-pinside
+          - link "":
+            - /url: /pinball/my-pinside/signout
+            - generic [ref=e7] [cursor=pointer]: 
+        - link " 0" [ref=e9] [cursor=pointer]:
+          - /url: /pinball/connect/pinsidemail
+          - generic [ref=e10]: 
+          - text: "0"
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/connect/notifications
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/connect/pulse
+          - generic [ref=e16]: 
+        - text: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e19]: 
+        - generic [ref=e20]:
+          - link "" [ref=e21] [cursor=pointer]:
+            - /url: /pinball/search
+            - generic [ref=e22]: 
+          - text: 
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e25]: 
+        - link "" [ref=e27] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e28]: 
+        - text: 
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - text: 
+          - link [ref=e32] [cursor=pointer]:
+            - /url: /
+            - img [ref=e33]
+          - generic [ref=e34]:
+            - link "machines" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e37] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e38] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e39] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e40] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e41] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e42] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e43] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e44] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e45] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e47]:
+          - link "" [ref=e48] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e49]: 
+          - text: »
+          - link "Pinside Marketplace" [ref=e50] [cursor=pointer]:
+            - /url: /pinball/market
+          - text: »
+          - link "Classified ads" [ref=e51] [cursor=pointer]:
+            - /url: /pinball/market/classifieds
+          - text: »
+          - link "Ads archive" [ref=e52] [cursor=pointer]:
+            - /url: /pinball/market/classifieds/archive
+          - text: »
+          - 'link "Ad #207484" [ref=e53] [cursor=pointer]':
+            - /url: ""
+    - generic [ref=e54]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - link "Pinside.com logo" [ref=e58] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e59]
+          - list [ref=e61]:
+            - listitem [ref=e62]:
+              - link "machines" [ref=e63] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e64]:
+              - link "top 100" [ref=e65] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e66]:
+              - link "community" [ref=e67] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e68]:
+              - link "TV" [ref=e69] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e70]:
+              - link "pin map" [ref=e71] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e72]:
+              - link "forum" [ref=e73] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e74]:
+              - link "biz" [ref=e75] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e76]:
+              - link "shops" [ref=e77] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e78]:
+              - link "market" [ref=e79] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e80]:
+              - link "events" [ref=e81] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e82]:
+              - link "HQ" [ref=e83] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e84]:
+          - 'link "Photo: ImNotNorm" [ref=e85] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/imnotnorm
+          - link "" [ref=e86] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e87]: 
+      - generic [ref=e88]:
+        - generic [ref=e90]:
+          - list [ref=e91]:
+            - listitem [ref=e92]:
+              - text: »
+              - link "Pinside Marketplace" [ref=e93] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e94]:
+              - text: »
+              - link "Classified ads" [ref=e95] [cursor=pointer]:
+                - /url: /pinball/market/classifieds
+            - listitem [ref=e96]:
+              - text: »
+              - link "Ads archive" [ref=e97] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive
+            - listitem [ref=e98]:
+              - text: »
+              - 'link "Ad #207484" [ref=e99] [cursor=pointer]':
+                - /url: /pinball/market/classifieds/archive/207484
+          - link "" [ref=e100] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e101]: 
+        - generic [ref=e103]:
+          - generic:
+            - list:
+              - listitem [ref=e104]:
+                - link "Splash Marketplace overview" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/market
+                  - text: Splash
+                  - generic [ref=e106]: Marketplace overview
+              - listitem [ref=e107]:
+                - link "Classified ads Used games & parts" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds
+                  - text: Classified ads
+                  - generic [ref=e109]: Used games & parts
+              - listitem [ref=e110]:
+                - link "Ads Map Ads on the map" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/market/map
+                  - text: Ads Map
+                  - generic [ref=e112]: Ads on the map
+              - listitem [ref=e113]:
+                - link "Top Seller Ads Pinside's best sellers!" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/market/top-sellers
+                  - text: Top Seller Ads
+                  - generic [ref=e115]: Pinside's best sellers!
+              - listitem [ref=e116]:
+                - link "New games (NIB) Brand new in box" [ref=e117] [cursor=pointer]:
+                  - /url: /pinball/market/new-games
+                  - text: New games (NIB)
+                  - generic [ref=e118]: Brand new in box
+              - listitem [ref=e119]:
+                - link "Your favorites And recommendations" [ref=e120] [cursor=pointer]:
+                  - /url: /pinball/market/personal
+                  - text: Your favorites
+                  - generic [ref=e121]: And recommendations
+              - listitem [ref=e122]:
+                - link " Place an ad Create a new ad listing" [ref=e123] [cursor=pointer]:
+                  - /url: /pinball/market/place
+                  - generic [ref=e124]:
+                    - generic [ref=e125]: 
+                    - text: Place an ad
+                  - generic [ref=e126]: Create a new ad listing
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: ARCHIVED
+          - heading "Archived ad" [level=2] [ref=e133]
+          - paragraph [ref=e134]:
+            - text: Pinside keeps a record of old ads in its
+            - link "Market Archive" [ref=e135] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive
+            - text: ", for historical purposes and as a price reference. This ad has been ended by its seller and is now archived."
+        - generic [ref=e136]:
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - link " 3" [ref=e140] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e141]:  3
+              - text: 
+            - heading "Game - for sale" [level=2] [ref=e142]
+            - 'heading "For sale: Metallica (Premium)" [level=1] [ref=e143]'
+            - generic [ref=e144]:
+              - generic [ref=e145]: 
+              - text: Featured Ad
+            - text: 
+            - paragraph [ref=e146]:
+              - text: "Added: 2026-01-06 2:29:44 pm EST • Ended: February 17th, 2026"
+              - text: "Condition: HUO - Undocumented (Home Used Only)"
+          - generic [ref=e147]:
+            - generic [ref=e149]:
+              - heading "Linked to game" [level=3] [ref=e150]
+              - list [ref=e152]:
+                - listitem [ref=e153]:
+                  - img [ref=e154]
+                  - link "Metallica (Premium)" [ref=e156] [cursor=pointer]:
+                    - /url: /pinball/archive/metallica-premium
+                  - generic [ref=e157]: Stern, 2013
+            - generic [ref=e160]:
+              - heading "Price" [level=3] [ref=e161]
+              - paragraph [ref=e162]:
+                - strong [ref=e163]: USD 8,500 (OBO)
+              - paragraph [ref=e164]:
+                - generic [ref=e165]: 
+                - text: Open for offers
+            - paragraph [ref=e168]: Beautiful, purple powder coated. Includes - impossible to find sparky topper, sparky shooter, mirror art blades, pin stadium, color dmd, speaker lights, upgraded speakers and sub, flipper toppers, shaker, external volume, speaker overlay and probably more that im forgetting. NO TRADES. I can also take cc with a 4% charge.
+            - generic [ref=e170]:
+              - heading "Item photos" [level=3] [ref=e171]
+              - generic [ref=e173]:
+                - link "IMG_1805.jpg" [ref=e175] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/9SLTQOFlZVUJEJfbU7Oo0iU2C1bPk9WAE2z30Kzjwic/rs:fit:3000:3000/fn:pinside_market_207484_55a45f433708/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/hWmi4LG0gM_gcDuxiQtfZwUa8yh3V23Yotayvz7OVBit8NVKQ9NNO9DbysljINpTh5LUU4RVDRqTTXH6sgkbE0bt6hZzhpk6UPIldSxdtZP15Gpk1cvLbjB6cR1Pb_ZF.jpg
+                  - img "IMG_1805.jpg" [ref=e176]
+                - link "IMG_1806.jpg" [ref=e178] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/7luxIOBtkXaTNVIEh5K5FQndf3PMaHnE0NE_JOvPDew/rs:fit:3000:3000/fn:pinside_market_207484_1_d53b78b5b25b/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/kEkgGhrAYig-xL6kDdc6FNrAeCJ0GQVGY73dFcc_K4-TwYDKxHgAVNyXLijYw_3J1fcW6FRSIT1pJ8za5jiqnxm__KRAhKtcuTUh23PgyRHFmcYSsHIFRkqQiV3CQY9L.jpg
+                  - img "IMG_1806.jpg" [ref=e179]
+                - link "IMG_1808.jpg" [ref=e181] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/lGrad-vGlocfNgXjn1FCkFtDDsJvZBOOtxrQY-KkWrc/rs:fit:3000:3000/fn:pinside_market_207484_2_a8354143b134/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/l3b_-bkOIjrL87IW3Xyt0B8n-bvJl9sb3ByQCtewWWWgekYM0Gh8QdGwvguGOdAb_mlsD3MS60vYBJi8ntvDbcR6kNIbBxos-lUTPzlHu-t7boGfx856XGx9TNbbaXFZ.jpg
+                  - img "IMG_1808.jpg" [ref=e182]
+                - link "IMG_1809.jpg" [ref=e184] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/Gwd4Cd7IQ_-l1yPpwAF9qjfzIh9PGbF3e7Ti3nI26J4/rs:fit:3000:3000/fn:pinside_market_207484_3_54d3ac9fd883/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/cpueLpQIJqSQT2kjRftDq8u3NElNZhGQsBNoRvKdfmK-aKN961z32KDZMRPL16sISgXivFp-5K_Ojqa3YNtX9cYrSF2F0ztl0Pekdxyzg42eTbaGR5snzg0NotP5ePXC.jpg
+                  - img "IMG_1809.jpg" [ref=e185]
+                - link "IMG_1810.jpg" [ref=e187] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/wuWNWQjiMFlRSHYfDjaOollhjMsCPqa9OLCY-CrTtgA/rs:fit:3000:3000/fn:pinside_market_207484_4_7a9a35e7c8fb/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/c1GOSoJOYjG9fLQhMLmnav4sMjegqIZjPi54TDods_eRtV5vQXSrfeqjMMPRQ_uVwAHBMueK8NSsVm0JdyttlLulnyT8jR8vxUde0w5cQ7GHXNetnKF66TcVafNPnCD-.jpg
+                  - img "IMG_1810.jpg" [ref=e188]
+                - link "IMG_1811.jpg" [ref=e190] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/3Oeoo6hyAVHZRDUWbUVuZnyjRwrAVHsN7GIDyPEO62o/rs:fit:3000:3000/fn:pinside_market_207484_5_a1afebd75711/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/no2ZI-WLs1GfO6zFRV6p--wT6OVwJMYeEBIBxoUkWafbe07c7DE5RyptAeY1tYXXYpHMOHp9RHqFRPigSLLJEbXIACXPZGR65Dyv3iltxbud8PB5jcIwvxlwGEXWCgK9.jpg
+                  - img "IMG_1811.jpg" [ref=e191]
+                - link "IMG_1812.jpg" [ref=e193] [cursor=pointer]:
+                  - /url: https://imgproxy.pinside.com/Nc4m0ekabd8Vi4EYMWDtSZ5noEzBR78p-_VOdTR3piQ/rs:fit:3000:3000/fn:pinside_market_207484_6_4f0948c2271a/wm:0.8:soea:10:10:0.07/wmu:aHR0cHM6Ly9waW5zaWRlLmNvbS9pbWcvbG9nby9waW5zaWRlLXdhdGVybWFyay1mdWxsLW9wLnN2Zw/enc/1UhldSCeMxn9bOfOjFQdZmPnSF6x59qsKsv0KjjNfmSS9rWz25B8cL9Cw7XDDnRfwWDLwNGIQfU-sGmc6XM5M6xAEHPR0-DhLvy9J2a0pDZviA07_AHucmB_JQ3twLIR.jpg
+                  - img "IMG_1812.jpg" [ref=e194]
+              - generic [ref=e195]:
+                - text: »
+                - link "Show all 7 images" [ref=e196] [cursor=pointer]:
+                  - /url: "#"
+              - paragraph [ref=e197]: Photos not showing? Make sure your ad blocker plugin is not hiding them.
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - heading "Added by" [level=3] [ref=e202]
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - generic [ref=e206]:
+                    - link "" [ref=e207] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman
+                      - generic [ref=e208]: 
+                    - link "" [ref=e209] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e210]: 
+                    - link "" [ref=e211] [cursor=pointer]:
+                      - /url: "#"
+                      - generic [ref=e212]: 
+                    - link "" [ref=e213] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman/contact?linkid=207484&linktype=ad&subject=Regarding+your+Pinside+ad+207484:+For+sale:+Metallica+(Premium)&url=https://pinside.com/pinball/market/classifieds/ad/207484#pagetop
+                      - generic [ref=e214]: 
+                  - link "???" [ref=e217] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/joshkleinman/scores
+                - generic [ref=e218]:
+                  - heading "joshkleinman " [level=3] [ref=e219]:
+                    - link "joshkleinman" [ref=e220] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman
+                    - link "" [ref=e221] [cursor=pointer]:
+                      - /url: /pinball/donate
+                      - generic [ref=e222]: 
+                  - paragraph [ref=e223]:
+                    - generic [ref=e224]:
+                      - generic [ref=e225]: 
+                      - text: Pinside+ Frequent
+                    - generic [ref=e226]: 
+                  - paragraph [ref=e227]:
+                    - link "US Voorhees, NJ" [ref=e228] [cursor=pointer]:
+                      - /url: /pinball/map/pinsiders/joshkleinman
+                      - img "US" [ref=e229]
+                      - text: Voorhees, NJ
+                  - paragraph [ref=e230]:
+                    - link " 6y" [ref=e231] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman
+                      - generic [ref=e232]: 
+                      - text: 6y
+                    - link " 32,250" [ref=e233] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman/achievements
+                      - generic [ref=e234]: 
+                      - text: 32,250
+                    - link " 11" [ref=e235] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joshkleinman/forum
+                      - generic [ref=e236]: 
+                      - text: "11"
+            - generic [ref=e237]:
+              - heading "Contact" [level=3] [ref=e238]
+              - paragraph [ref=e239]: Note! This is an archived ad. No longer for sale!
+            - generic [ref=e240]:
+              - heading "Seller insights" [level=3] [ref=e241]
+              - paragraph [ref=e242]: These are joshkleinman's market stats.
+              - generic [ref=e244]:
+                - generic [ref=e245]:
+                  - heading "All ads" [level=3] [ref=e246]
+                  - generic [ref=e247]:
+                    - generic [ref=e248]:
+                      - generic [ref=e249]: Active
+                      - strong [ref=e250]:
+                        - link "0" [ref=e251] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/active
+                    - generic [ref=e253]:
+                      - generic [ref=e254]: Archived
+                      - strong [ref=e255]:
+                        - link "41" [ref=e256] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/all-archived
+                - generic [ref=e257]:
+                  - heading "Archived ads" [level=3] [ref=e258]
+                  - generic [ref=e259]:
+                    - generic [ref=e260]:
+                      - generic [ref=e261]: Games
+                      - strong [ref=e262]:
+                        - link "40" [ref=e263] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/archived-games-listed
+                    - generic [ref=e265]:
+                      - generic [ref=e266]: Parts
+                      - strong [ref=e267]:
+                        - link "1" [ref=e268] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/archived-parts-listed
+                - generic [ref=e269]:
+                  - heading "Success" [level=3] [ref=e270]
+                  - generic [ref=e271]:
+                    - generic [ref=e272]:
+                      - generic [ref=e273]: Sold
+                      - strong [ref=e274]:
+                        - link "5" [ref=e275] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/archived-ads-sold
+                    - generic [ref=e277]:
+                      - generic [ref=e278]: Unsold
+                      - strong [ref=e279]:
+                        - link "36" [ref=e280] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/market/archived-ads-unsold
+                - generic [ref=e281]:
+                  - heading "Feedback score" [level=3] [ref=e282]
+                  - generic [ref=e283]:
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: Total
+                      - strong [ref=e286]:
+                        - link "2" [ref=e287] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/feedback
+                    - generic [ref=e289]:
+                      - generic [ref=e290]: Positive %
+                      - strong [ref=e291]:
+                        - link "100.0%" [ref=e292] [cursor=pointer]:
+                          - /url: /pinball/community/pinsiders/joshkleinman/feedback
+                - paragraph [ref=e293]:
+                  - link " Go to joshkleinman's stats page" [ref=e294] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/joshkleinman/market
+                    - generic [ref=e295]: 
+                    - text: Go to joshkleinman's stats page
+            - generic [ref=e296]:
+              - heading "Listing result" [level=3] [ref=e297]
+              - paragraph [ref=e298]:
+                - generic [ref=e299]: 
+                - text: The seller marked this ad as "not sold". The item did not sell through Pinside so there's no listing result.
+            - generic [ref=e300]:
+              - heading "Item location" [level=3] [ref=e301]
+              - paragraph [ref=e302]: Voorhees , NJ, US
+              - link [ref=e303] [cursor=pointer]:
+                - /url: /pinball/map/classifieds#13/39.8512162/-74.9619779
+                - img [ref=e305]
+              - paragraph [ref=e306]: That's roughly 530 miles away from you.
+            - generic [ref=e307]:
+              - heading "Forum" [level=3] [ref=e308]
+              - paragraph [ref=e309]:
+                - generic [ref=e310]: 
+                - link "Embed this ad in a forum post" [ref=e311] [cursor=pointer]:
+                  - /url: "#"
+      - generic [ref=e313]:
+        - heading "Recommended shop items!" [level=1] [ref=e314]
+        - paragraph [ref=e315]: Interested in this game? Also check out these recommended Pinside Shops items!
+        - generic [ref=e316]:
+          - generic [ref=e318]:
+            - link [ref=e319] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14060-metallica-lighted-apron-0159
+            - generic [ref=e320]: "From: $ 59.99"
+            - generic [ref=e321]:
+              - generic [ref=e322]: Lighting - Other
+              - link "Metallica Lighted Apron 0159" [ref=e324] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14060-metallica-lighted-apron-0159
+              - generic [ref=e326]:
+                - generic [ref=e327]: 
+                - text: Lighted Pinball Mods
+          - generic [ref=e330]:
+            - link [ref=e331] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1697-nimr0d-pinball/15623-metallica-skull-sidekick-and-sidekickxl-beverage-holder
+            - generic [ref=e332]: "From: $ 79.00"
+            - generic [ref=e333]:
+              - generic [ref=e334]: Cabinet - Other
+              - link "Metallica Skull Sidekick™ and SidekickXL™ Beverage Holder" [ref=e336] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1697-nimr0d-pinball/15623-metallica-skull-sidekick-and-sidekickxl-beverage-holder
+              - generic [ref=e338]:
+                - generic [ref=e339]: 
+                - text: nimr0d Pinball
+          - generic [ref=e342]:
+            - link [ref=e343] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1032-lighted-pinball-mods/13986-metallica-album-lighted-pinball-apronarch-0080
+            - generic [ref=e344]: "From: $ 59.99"
+            - generic [ref=e345]:
+              - generic [ref=e346]: Lighting - Other
+              - link "Metallica album Lighted Pinball Apron/Arch 0080" [ref=e348] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/13986-metallica-album-lighted-pinball-apronarch-0080
+              - generic [ref=e350]:
+                - generic [ref=e351]: 
+                - text: Lighted Pinball Mods
+          - generic [ref=e354]:
+            - link [ref=e355] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1350-custom-pinball/18142-metallica-shooter-knob
+            - generic [ref=e356]: € 100.00
+            - generic [ref=e357]:
+              - generic [ref=e358]: Cabinet - Shooter Rods
+              - generic [ref=e359]:
+                - link "Metallica Shooter Knob" [ref=e360] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1350-custom-pinball/18142-metallica-shooter-knob
+                - text: New!
+              - generic [ref=e362]:
+                - generic [ref=e363]: 
+                - text: Custom Pinball
+          - generic [ref=e366]:
+            - link [ref=e367] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14058-metallica-lighted-apron-0157
+            - generic [ref=e368]: "From: $ 59.99"
+            - generic [ref=e369]:
+              - generic [ref=e370]: Lighting - Other
+              - link "Metallica Lighted Apron 0157" [ref=e372] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14058-metallica-lighted-apron-0157
+              - generic [ref=e374]:
+                - generic [ref=e375]: 
+                - text: Lighted Pinball Mods
+          - generic [ref=e378]:
+            - link [ref=e379] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1231-cointakercom/13171-cook-you-up-good-electric-towers
+            - generic [ref=e380]: $ 109.95
+            - generic [ref=e381]:
+              - generic [ref=e382]: Playfield - Other
+              - link "COOK YOU UP GOOD ELECTRIC TOWERS" [ref=e384] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1231-cointakercom/13171-cook-you-up-good-electric-towers
+              - generic [ref=e386]:
+                - generic [ref=e387]: 
+                - text: COINTAKER.COM
+          - generic [ref=e390]:
+            - link [ref=e391] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1350-custom-pinball/18143-metallica-shooter-knob-v2
+            - generic [ref=e392]: € 100.00
+            - generic [ref=e393]:
+              - generic [ref=e394]: Cabinet - Shooter Rods
+              - generic [ref=e395]:
+                - link "Metallica Shooter Knob V2" [ref=e396] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1350-custom-pinball/18143-metallica-shooter-knob-v2
+                - text: New!
+              - generic [ref=e398]:
+                - generic [ref=e399]: 
+                - text: Custom Pinball
+          - generic [ref=e402]:
+            - link [ref=e403] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1684-pinball-stuff/16118-gallery-wrapped-or-framed-metallica-playfield-canvas
+            - generic [ref=e404]: "From: $ 109.00"
+            - generic [ref=e405]:
+              - generic [ref=e406]: Gameroom - Decorations
+              - link "Gallery Wrapped or Framed Metallica Playfield Canvas" [ref=e408] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1684-pinball-stuff/16118-gallery-wrapped-or-framed-metallica-playfield-canvas
+              - generic [ref=e410]:
+                - generic [ref=e411]: 
+                - text: Pinball Stuff
+          - generic [ref=e414]:
+            - link [ref=e415] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1032-lighted-pinball-mods/13301-metallica-rails-armor-stern-pinball-2404
+            - generic [ref=e416]: $ 219.99
+            - generic [ref=e417]:
+              - generic [ref=e418]: Hardware
+              - link "Metallica Rails armor Stern pinball 2404" [ref=e420] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/13301-metallica-rails-armor-stern-pinball-2404
+              - generic [ref=e422]:
+                - generic [ref=e423]: 
+                - text: Lighted Pinball Mods
+          - generic [ref=e426]:
+            - link [ref=e427] [cursor=pointer]:
+              - /url: /pinball/shops/shop/1603-high-on-pinball/13489-metallica-le-lockbar-magnet-masters-of-puppets
+            - generic [ref=e428]: € 21.00
+            - generic [ref=e429]:
+              - generic [ref=e430]: Playfield - Other
+              - link "Metallica LE lockbar magnet - Masters of Puppets" [ref=e432] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1603-high-on-pinball/13489-metallica-le-lockbar-magnet-masters-of-puppets
+              - generic [ref=e434]:
+                - generic [ref=e435]: 
+                - text: High on Pinball
+        - paragraph [ref=e438]:
+          - text: »
+          - link "View all 96 shop items for this game" [ref=e439] [cursor=pointer]:
+            - /url: /pinball/shops/games/metallica-premium
+  - text:    
+  - generic [ref=e442]:
+    - link [ref=e444] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e445]
+    - generic [ref=e446]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e447]:
+        - generic [ref=e448]: 
+        - text: Page rendered in 0.1646s
+      - generic [ref=e449]:
+        - generic [ref=e450]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e451] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e452]:
+        - link " Help" [ref=e453] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e454]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e455] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e456]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e457] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e458]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e459] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e460]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e461] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e462]: 
+          - text: Top
+    - link [ref=e464] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e465]

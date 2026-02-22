@@ -1,0 +1,367 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinside Marketplace" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/market
+          - text: »
+          - link "Classified ads" [ref=e42] [cursor=pointer]:
+            - /url: /pinball/market/classifieds
+          - text: »
+          - link "Ads archive" [ref=e43] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e44]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - link "Pinside.com logo" [ref=e48] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e49]
+          - list [ref=e51]:
+            - listitem [ref=e52]:
+              - link "machines" [ref=e53] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e54]:
+              - link "top 100" [ref=e55] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e56]:
+              - link "community" [ref=e57] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e58]:
+              - link "TV" [ref=e59] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e60]:
+              - link "pin map" [ref=e61] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e62]:
+              - link "forum" [ref=e63] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e64]:
+              - link "biz" [ref=e65] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e66]:
+              - link "shops" [ref=e67] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e68]:
+              - link "market" [ref=e69] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e70]:
+              - link "events" [ref=e71] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e72]:
+              - link "HQ" [ref=e73] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e74]:
+          - 'link "Photo: robin" [ref=e75] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e76] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e77]: 
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - text: »
+              - link "Pinside Marketplace" [ref=e83] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e84]:
+              - text: »
+              - link "Classified ads" [ref=e85] [cursor=pointer]:
+                - /url: /pinball/market/classifieds
+            - listitem [ref=e86]:
+              - text: »
+              - link "Ads archive" [ref=e87] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive
+          - link "" [ref=e88] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e89]: 
+        - generic [ref=e91]:
+          - generic:
+            - list:
+              - listitem [ref=e92]:
+                - link "Splash Marketplace overview" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/market
+                  - text: Splash
+                  - generic [ref=e94]: Marketplace overview
+              - listitem [ref=e95]:
+                - link "Classified ads Used games & parts" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds
+                  - text: Classified ads
+                  - generic [ref=e97]: Used games & parts
+              - listitem [ref=e98]:
+                - link "Ads Map Ads on the map" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/market/map
+                  - text: Ads Map
+                  - generic [ref=e100]: Ads on the map
+              - listitem [ref=e101]:
+                - link "Top Seller Ads Pinside's best sellers!" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/market/top-sellers
+                  - text: Top Seller Ads
+                  - generic [ref=e103]: Pinside's best sellers!
+              - listitem [ref=e104]:
+                - link "New games (NIB) Brand new in box" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/market/new-games
+                  - text: New games (NIB)
+                  - generic [ref=e106]: Brand new in box
+              - listitem [ref=e107]:
+                - link " Place an ad Create a new ad listing" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/market/place
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: 
+                    - text: Place an ad
+                  - generic [ref=e111]: Create a new ad listing
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - generic [ref=e115]:
+          - heading "Pinside Marketplace archive" [level=1] [ref=e116]
+          - paragraph [ref=e117]: The Pinside Marketplace Archive contains ads placed since the launch of our Market, back in 2008. You can use it to help determine game value and by looking at past marketplace ads in our market archive.
+        - generic [ref=e119]:
+          - link [ref=e120] [cursor=pointer]:
+            - /url: /pinball/market/place
+            - img [ref=e121]
+          - heading "Place YOUR ad!" [level=1] [ref=e122]
+          - paragraph [ref=e123]:
+            - text: Have something to sell? Or looking for a specific game or part?
+            - link "Place your ad" [ref=e124] [cursor=pointer]:
+              - /url: /pinball/market/place
+      - generic [ref=e126]:
+        - link "Find used games & parts Active classified ads" [ref=e127] [cursor=pointer]:
+          - /url: /pinball/market/classifieds
+          - text: Find used games & parts
+          - generic [ref=e128]: Active classified ads
+        - link "Research old ad listings Archived classified ads" [ref=e129] [cursor=pointer]:
+          - /url: /pinball/market/classifieds/archive
+          - text: Research old ad listings
+          - generic [ref=e130]: Archived classified ads
+      - generic [ref=e132]:
+        - generic [ref=e134]:
+          - group "Keyword search" [ref=e135]:
+            - generic [ref=e136]: Keyword search
+            - textbox "Keyword(s)" [ref=e138]
+            - list
+          - group "Item condition" [ref=e139]:
+            - generic [ref=e140]: Item condition
+            - combobox [ref=e141]:
+              - option "-" [selected]
+              - option "Pre-order spot for a game (Personal only)"
+              - option "NIB - New in box (distributor/business)"
+              - option "NIB - New in box (personal)"
+              - option "OIB - Old in box (older than 3 years, never unboxed)"
+              - option "As new - New out of box (first owner)"
+              - option "HUO - Documented (Home Used Only)"
+              - option "HUO - Undocumented (Home Used Only)"
+              - option "HUO - Needs work"
+              - option "Fully restored (full original status)"
+              - option "Partially restored (almost original)"
+              - option "Fully shopped/refurbished"
+              - option "Partially shopped/refurbished"
+              - option "Used - shows wear but 100% working and clean"
+              - option "Used - shows wear, needs some work"
+              - option "Used - shows wear, needs major work"
+              - option "Routed - fresh off route"
+              - option "Functional - needs minor work"
+              - option "Functional - needs major work"
+              - option "As is"
+          - group "Game specifics" [ref=e142]:
+            - generic [ref=e143]: Game specifics
+            - combobox [ref=e144]:
+              - option "[All game types]" [selected]
+              - option "(Electro) Mechanical"
+              - option "Solid state"
+            - combobox [ref=e145]:
+              - option "[All Manufacturers]" [selected]
+              - option "Allied Leisure"
+              - option "Alvin G. & Co"
+              - option "American Pinball"
+              - option "Atari"
+              - option "Bell Games"
+              - option "Bally"
+              - option "Capcom"
+              - option "Chicago Gaming"
+              - option "Data East"
+              - option "Game Plan"
+              - option "Genco"
+              - option "Gottlieb"
+              - option "Jersey Jack Pinball"
+              - option "Multimorphic"
+              - option "Rally"
+              - option "Sega"
+              - option "Segasa"
+              - option "Spooky Pinball"
+              - option "Stern Pinball (modern)"
+              - option "Stern (classic)"
+              - option "Williams"
+              - option "Zaccaria"
+              - option "Other manufacturers"
+            - textbox "From year" [ref=e147]
+            - textbox "To year" [ref=e149]
+          - group "Distance" [ref=e150]:
+            - generic [ref=e151]: Distance
+            - combobox [ref=e152]:
+              - option "Anywhere (no limit on distance)" [selected]
+              - option "25 miles / 40 km"
+              - option "50 miles / 80 km"
+              - option "100 miles / 160 km"
+              - option "200 miles / 320 km"
+              - option "300 miles / 480 km"
+              - option "400 miles / 640 km"
+              - option "500 miles / 804 km"
+              - option "1000 miles / 1600 km"
+          - group "Sort by" [ref=e153]:
+            - generic [ref=e154]: Sort by
+            - combobox [ref=e155]:
+              - option "Item distance"
+              - option "Date ended" [selected]
+              - option "Date added"
+              - option "Price"
+            - combobox [ref=e156]:
+              - option "Ascending order"
+              - option "Descending order" [selected]
+          - generic [ref=e157]:
+            - button "Apply filters" [ref=e158] [cursor=pointer]
+            - button "reset form" [ref=e160]
+          - generic [ref=e161]:
+            - img [ref=e162]
+            - paragraph [ref=e163]: A yellow background means a filter is set different than its defaults.
+        - generic [ref=e165]:
+          - heading "Archived Ads" [level=1] [ref=e166]
+          - paragraph [ref=e167]:
+            - text: There are currently 104832 ads in the
+            - link "Pinside Marketplace Archive" [ref=e168] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive
+            - text: .
+          - paragraph [ref=e170]:
+            - text: Please
+            - link "sign in" [ref=e171] [cursor=pointer]:
+              - /url: /pinball/my-pinside
+            - text: to view Archived Marketplace Ads.
+        - generic [ref=e172]:
+          - generic [ref=e173]:
+            - link "Next " [ref=e174] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/2
+              - text: Next
+              - generic [ref=e175]: 
+            - link "1" [ref=e176] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive
+            - link "2" [ref=e177] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/2
+            - link "3" [ref=e178] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/3
+            - link "4" [ref=e179] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/4
+            - link "5" [ref=e180] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/5
+            - link "6" [ref=e181] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/6
+            - link "7" [ref=e182] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/7
+            - link "8" [ref=e183] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/8
+            - link "9" [ref=e184] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/9
+            - link "10" [ref=e185] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/10
+            - link "11" [ref=e186] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/11
+            - text: ...
+            - link "2097" [ref=e187] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/archive/page/2097
+          - generic [ref=e188]: There are currently 104,832 ads in the Pinside Marketplace Archive. Currently showing results page 1 of 2,097.
+    - generic [ref=e189]:
+      - generic [ref=e191]:
+        - heading "Find pinball ads" [level=2] [ref=e192]
+        - paragraph [ref=e193]: Are you looking for nearby ads, without any specifics in mind? Check out our
+      - link "ads-on-map click here to locate ads on a map" [ref=e198] [cursor=pointer]:
+        - /url: /pinball/market/classifieds/map
+        - img "ads-on-map" [ref=e199]
+        - text: click here to locate ads on a map
+  - text:    
+  - generic [ref=e203]:
+    - link [ref=e205] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e206]
+    - generic [ref=e207]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e208]:
+        - generic [ref=e209]: 
+        - text: Page rendered in 0.89626s
+      - generic [ref=e210]:
+        - generic [ref=e211]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e212] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e213]:
+        - link " Help" [ref=e214] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e215]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e216] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e217]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e218] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e219]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e220] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e221]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e222] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e223]: 
+          - text: Top
+  - list [ref=e224]

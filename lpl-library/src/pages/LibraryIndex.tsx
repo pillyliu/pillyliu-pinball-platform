@@ -17,8 +17,18 @@ import {
 type Video = { kind: string; label: string; url: string };
 
 type Game = {
+  libraryId?: string | null;
+  sourceId?: string | null;
+  libraryName?: string | null;
+  sourceName?: string | null;
+  libraryType?: string | null;
+  sourceType?: string | null;
+  venueName?: string | null;
+  area?: string | null;
+  areaOrder?: number | null;
+  location?: string | null; // legacy field fallback
   group: number | null;
-  pos?: number | null;
+  position?: number | null;
   bank?: number | null;
 
   name: string;
@@ -30,7 +40,15 @@ type Game = {
   videos: Video[];
 };
 
+type LibrarySourceType = "venue" | "category";
+type LibrarySource = {
+  id: string;
+  name: string;
+  type: LibrarySourceType;
+};
+
 type GroupSection = {
+  locationKey: string | null;
   groupKey: number | null;
   games: Game[];
 };
@@ -40,12 +58,14 @@ type BankSection = {
   games: Game[];
 };
 
-type SortMode = "location" | "bank" | "alphabetical";
+type SortMode = "area" | "bank" | "alphabetical" | "year";
 
-function locationText(group: number | null, pos?: number | null): string | null {
-  if (typeof group !== "number" || typeof pos !== "number") return null;
-  const floor = group >= 1 && group <= 4 ? "U" : "D";
-  return `📍 ${floor}:${group}:${pos}`;
+function locationText(location?: string | null, group?: number | null, position?: number | null): string | null {
+  if (typeof group !== "number" || typeof position !== "number") return null;
+  if (location && location.trim()) {
+    return `📍 ${location.trim()}:${group}:${position}`;
+  }
+  return `📍 ${group}:${position}`;
 }
 
 function metaLine(g: Game): string {
@@ -53,7 +73,7 @@ function metaLine(g: Game): string {
   parts.push(g.manufacturer ?? "—");
   if (g.year) parts.push(String(g.year));
 
-  const loc = locationText(g.group, g.pos);
+  const loc = locationText(g.area ?? g.location, g.group, g.position);
   if (loc) parts.push(loc);
 
   if (typeof g.bank === "number" && g.bank > 0) parts.push(`Bank ${g.bank}`);
@@ -75,34 +95,156 @@ function compareMaybeNumber(a: number | null | undefined, b: number | null | und
   return left - right;
 }
 
+function sourceTypeOf(game: Game): LibrarySourceType {
+  const raw = (game.libraryType ?? game.sourceType ?? "").trim().toLowerCase();
+  return raw === "category" || raw === "manufacturer" ? "category" : "venue";
+}
+
+function sourceNameOf(game: Game): string {
+  return (
+    game.libraryName?.trim() ||
+    game.sourceName?.trim() ||
+    game.venueName?.trim() ||
+    "The Avenue"
+  );
+}
+
+function slugifySourceId(value: string): string {
+  return (
+    value
+      .trim()
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "the-avenue"
+  );
+}
+
+function sourceIdOf(game: Game): string {
+  return (
+    game.libraryId?.trim() ||
+    game.sourceId?.trim() ||
+    slugifySourceId(sourceNameOf(game))
+  );
+}
+
+function normalizeSourceType(raw?: string | null): LibrarySourceType {
+  const value = String(raw ?? "").trim().toLowerCase();
+  return value === "category" || value === "manufacturer" ? "category" : "venue";
+}
+
+function deriveLibraryPayload(raw: unknown): { games: Game[]; sources: LibrarySource[] } {
+  const fallbackSource: LibrarySource = { id: "the-avenue", name: "The Avenue", type: "venue" };
+  const root = raw as
+    | Game[]
+    | { games?: Game[]; items?: Game[]; sources?: Array<{ id?: string; name?: string; type?: string }> }
+    | null;
+  const games = Array.isArray(root)
+    ? root
+    : Array.isArray(root?.games)
+      ? root.games
+      : Array.isArray(root?.items)
+        ? root.items
+        : [];
+  const providedSources = !Array.isArray(root) && Array.isArray(root?.sources)
+    ? root.sources
+        .filter((s) => s && typeof s.id === "string" && s.id.trim())
+        .map((s) => ({
+          id: String(s.id).trim(),
+          name: (typeof s.name === "string" && s.name.trim()) ? s.name.trim() : String(s.id).trim(),
+          type: normalizeSourceType(s.type),
+        }))
+    : [];
+  if (providedSources.length) return { games, sources: providedSources };
+  const byId = new Map<string, LibrarySource>();
+  for (const game of games) {
+    const id = sourceIdOf(game);
+    if (byId.has(id)) continue;
+    byId.set(id, { id, name: sourceNameOf(game), type: sourceTypeOf(game) });
+  }
+  const sources = byId.size ? [...byId.values()] : [fallbackSource];
+  return { games, sources };
+}
+
 export default function LibraryIndex() {
   const [games, setGames] = useState<Game[]>([]);
+  const [sources, setSources] = useState<LibrarySource[]>([]);
+  const [selectedSourceId, setSelectedSourceId] = useState("the-avenue");
   const [q, setQ] = useState("");
   const [bank, setBank] = useState<number | "all">("all");
-  const [sortMode, setSortMode] = useState<SortMode>("location");
+  const [sortMode, setSortMode] = useState<SortMode>("area");
 
   useEffect(() => {
-    fetchPinballJson<Game[]>("/pinball/data/pinball_library.json")
-      .then((data) => setGames(Array.isArray(data) ? data : []))
-      .catch(() => setGames([]));
+    fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+      .then((data) => {
+        const payload = deriveLibraryPayload(data);
+        setGames(payload.games);
+        setSources(payload.sources);
+        const selected = payload.sources.find((s) => s.id === selectedSourceId) ?? payload.sources[0];
+        if (selected) {
+          setSelectedSourceId(selected.id);
+        }
+      })
+      .catch(() => {
+        setGames([]);
+        setSources([{ id: "the-avenue", name: "The Avenue", type: "venue" }]);
+        setSelectedSourceId("the-avenue");
+      });
   }, []);
 
   useEffect(() => {
     prefetchPinballTextAssets().catch(() => undefined);
   }, []);
 
+  const selectedSource = useMemo(
+    () => sources.find((s) => s.id === selectedSourceId) ?? sources[0] ?? null,
+    [sources, selectedSourceId],
+  );
+
+  const sourceScopedGames = useMemo(() => {
+    if (!selectedSource) return games;
+    return games.filter((g) => sourceIdOf(g) === selectedSource.id);
+  }, [games, selectedSource]);
+
+  const supportsBankFilter = useMemo(() => {
+    if (!selectedSource) return false;
+    if (selectedSource.type !== "venue") return false;
+    return sourceScopedGames.some((g) => typeof g.bank === "number" && g.bank > 0);
+  }, [selectedSource, sourceScopedGames]);
+
+  const availableSortModes = useMemo<SortMode[]>(() => {
+    if (!selectedSource) return ["area", "alphabetical"];
+    if (selectedSource.type === "category") return ["year", "alphabetical"];
+    const venueModes: SortMode[] = ["area"];
+    if (supportsBankFilter) venueModes.push("bank");
+    venueModes.push("alphabetical", "year");
+    return venueModes;
+  }, [selectedSource, supportsBankFilter]);
+
+  useEffect(() => {
+    if (!availableSortModes.includes(sortMode)) {
+      const fallback = selectedSource?.type === "category" ? "year" : "area";
+      setSortMode(availableSortModes.includes(fallback) ? fallback : availableSortModes[0]);
+    }
+  }, [availableSortModes, sortMode, selectedSource]);
+
+  useEffect(() => {
+    if (!supportsBankFilter) setBank("all");
+  }, [supportsBankFilter]);
+
   const bankOptions = useMemo<number[]>(() => {
     const s = new Set<number>();
-    for (const g of games) {
+    for (const g of sourceScopedGames) {
       if (typeof g.bank === "number" && g.bank > 0) s.add(g.bank);
     }
     return Array.from(s).sort((a, b) => a - b);
-  }, [games]);
+  }, [sourceScopedGames]);
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
+    const effectiveBank = supportsBankFilter ? bank : "all";
 
-    const scoped = games.filter((g) => {
+    const scoped = sourceScopedGames.filter((g) => {
       const matchesQuery =
         !query ||
         `${g.name} ${g.manufacturer ?? ""} ${g.year ?? ""}`
@@ -110,12 +252,18 @@ export default function LibraryIndex() {
           .includes(query);
 
       const matchesBank =
-        bank === "all" || (typeof g.bank === "number" && g.bank === bank);
+        effectiveBank === "all" || (typeof g.bank === "number" && g.bank === effectiveBank);
 
       return matchesQuery && matchesBank;
     });
 
     return [...scoped].sort((a, b) => {
+      if (sortMode === "year") {
+        return (
+          compareMaybeNumber(a.year, b.year) ||
+          a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+        );
+      }
       if (sortMode === "alphabetical") {
         return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
       }
@@ -124,25 +272,27 @@ export default function LibraryIndex() {
         return (
           compareMaybeNumber(a.bank, b.bank) ||
           compareMaybeNumber(a.group, b.group) ||
-          compareMaybeNumber(a.pos, b.pos) ||
+          compareMaybeNumber(a.position, b.position) ||
           a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
         );
       }
 
       return (
+        compareMaybeNumber(a.areaOrder, b.areaOrder) ||
         compareMaybeNumber(a.group, b.group) ||
-        compareMaybeNumber(a.pos, b.pos) ||
+        compareMaybeNumber(a.position, b.position) ||
         a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
       );
     });
-  }, [games, q, bank, sortMode]);
+  }, [sourceScopedGames, q, bank, sortMode, supportsBankFilter]);
 
   const sections = useMemo<GroupSection[]>(() => {
     const out: GroupSection[] = [];
     for (const g of filtered) {
+      const locationKey = null;
       const last = out[out.length - 1];
-      if (!last || last.groupKey !== g.group) {
-        out.push({ groupKey: g.group ?? null, games: [g] });
+      if (!last || last.locationKey !== locationKey || last.groupKey !== g.group) {
+        out.push({ locationKey, groupKey: g.group ?? null, games: [g] });
       } else {
         last.games.push(g);
       }
@@ -164,8 +314,9 @@ export default function LibraryIndex() {
     return out;
   }, [filtered]);
 
-  const showGroupedView = bank === "all" && sortMode === "location";
-  const showBankSectionedView = bank === "all" && sortMode === "bank";
+  const effectiveBank = supportsBankFilter ? bank : "all";
+  const showGroupedView = effectiveBank === "all" && sortMode === "area";
+  const showBankSectionedView = effectiveBank === "all" && sortMode === "bank";
   const controls = (
     <div className="rounded-xl bg-neutral-950/35 px-2 py-2 backdrop-blur-[1px]">
       <div className="flex flex-col gap-3 md:flex-row md:items-center">
@@ -176,17 +327,25 @@ export default function LibraryIndex() {
           className={`${CONTROL_INPUT_CLASS} md:flex-1`}
         />
 
-        <div className="grid w-full grid-cols-2 gap-3 md:w-[28rem] md:flex-none">
+        <div className="grid w-full grid-cols-2 gap-3 md:w-[42rem] md:flex-none md:grid-cols-3">
           <div className="relative">
             <select
-              value={sortMode}
-              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              value={selectedSource?.id ?? selectedSourceId}
+              onChange={(e) => {
+                const source = sources.find((s) => s.id === e.target.value);
+                if (!source) return;
+                setSelectedSourceId(source.id);
+                setBank("all");
+                setSortMode(source.type === "category" ? "year" : "area");
+              }}
               className={CONTROL_SELECT_CLASS}
-              aria-label="Sort games"
+              aria-label="Select library"
             >
-              <option value="location">Sort: Location</option>
-              <option value="bank">Sort: Bank</option>
-              <option value="alphabetical">Sort: A-Z</option>
+              {sources.map((source) => (
+                <option key={source.id} value={source.id}>
+                  {source.name}
+                </option>
+              ))}
             </select>
             <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
               ▾
@@ -195,18 +354,20 @@ export default function LibraryIndex() {
 
           <div className="relative">
             <select
-              value={bank === "all" ? "all" : String(bank)}
-              onChange={(e) => {
-                const v = e.target.value;
-                setBank(v === "all" ? "all" : Number(v));
-              }}
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
               className={CONTROL_SELECT_CLASS}
-              aria-label="Filter by bank"
+              aria-label="Sort games"
             >
-              <option value="all">All banks</option>
-              {bankOptions.map((b) => (
-                <option key={b} value={String(b)}>
-                  Bank {b}
+              {availableSortModes.map((mode) => (
+                <option key={mode} value={mode}>
+                  {mode === "area"
+                    ? "Sort: Area"
+                    : mode === "bank"
+                      ? "Sort: Bank"
+                      : mode === "year"
+                        ? "Sort: Year"
+                        : "Sort: A-Z"}
                 </option>
               ))}
             </select>
@@ -214,6 +375,30 @@ export default function LibraryIndex() {
               ▾
             </span>
           </div>
+
+          {supportsBankFilter && (
+            <div className="relative">
+              <select
+                value={bank === "all" ? "all" : String(bank)}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setBank(v === "all" ? "all" : Number(v));
+                }}
+                className={CONTROL_SELECT_CLASS}
+                aria-label="Filter by bank"
+              >
+                <option value="all">All banks</option>
+                {bankOptions.map((b) => (
+                  <option key={b} value={String(b)}>
+                    Bank {b}
+                  </option>
+                ))}
+              </select>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xl text-neutral-300">
+                ▾
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
