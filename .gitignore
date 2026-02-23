@@ -5,3 +5,9 @@ dist/
 .env
 .env.*
 *.log
+
+# Local/generated pinball tooling artifacts
+.pinball-public-backup/
+tmp/
+tools/rulesheets/.playwright-cli/
+tools/rulesheets/tmp_html/
