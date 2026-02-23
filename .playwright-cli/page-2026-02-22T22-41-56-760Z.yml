@@ -1,0 +1,897 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Jurassic Park (Premium)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: pinballphotos" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Jurassic Park (Premium)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Jurassic Park (Premium)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/jurassic-park-premium/gallery
+            - img "Jurassic Park (Premium)" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/stern
+              - img [ref=e126]
+            - heading "Stern" [level=2] [ref=e127]
+            - heading "Jurassic Park (Premium)" [level=1] [ref=e128]
+            - generic [ref=e129]:
+              - text: Rotating Newton Ball Jeep
+              - text: Ball Eating Dinosaur
+              - text: Raptor Pen with Moving Target
+            - generic [ref=e130]:
+              - heading "Tags:" [level=3] [ref=e131]
+              - link "DINOSAURS" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=dinosaurs
+              - link "LICENSED" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=licensed
+              - link "movie" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "T-REX" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/machine?tags=t-rex
+              - link "edit tags" [ref=e137] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=2791
+        - generic [ref=e140]:
+          - paragraph [ref=e141]: "This title is part of group: \"Jurassic Park (Stern)\""
+          - generic [ref=e142]:
+            - link "Jurassic Park (Pro)" [ref=e143] [cursor=pointer]:
+              - /url: /pinball/machine/jurassic-park-stern/
+              - img [ref=e144]
+              - generic [ref=e146]:
+                - text: Jurassic Park
+                - text: (Pro)
+            - link "Jurassic Park (Premium)" [ref=e147] [cursor=pointer]:
+              - /url: /pinball/machine/jurassic-park-premium/
+              - img [ref=e148]
+              - generic [ref=e150]:
+                - text: Jurassic Park
+                - text: (Premium)
+            - link "Jurassic Park (Limited Edition)" [ref=e151] [cursor=pointer]:
+              - /url: /pinball/machine/jurassic-park-limited-edition/
+              - img [ref=e152]
+              - generic [ref=e154]:
+                - text: Jurassic Park
+                - text: (Limited Edition)
+            - link "Jurassic Park (30th Anniversary LE)" [ref=e155] [cursor=pointer]:
+              - /url: /pinball/machine/jurassic-park-30th/
+              - img [ref=e156]
+              - generic [ref=e158]:
+                - text: Jurassic Park
+                - text: (30th Anniversary LE)
+        - generic [ref=e159]:
+          - generic:
+            - generic [ref=e161]:
+              - heading "Design team" [level=3] [ref=e162]
+              - generic [ref=e163]:
+                - generic [ref=e164]:
+                  - text: "Game Design:"
+                  - link "Keith Elwin" [ref=e165] [cursor=pointer]:
+                    - /url: /pinball/machine/keith-elwin
+                - generic [ref=e166]:
+                  - text: "Engineering/mechanics:"
+                  - link "Harrison Drake" [ref=e167] [cursor=pointer]:
+                    - /url: /pinball/machine/harrison-drake
+                - generic [ref=e168]:
+                  - text: "Software:"
+                  - link "Rick Naegele" [ref=e169] [cursor=pointer]:
+                    - /url: /pinball/machine/rick-naegele
+                - generic [ref=e170]:
+                  - text: "Artwork:"
+                  - link "Jonathan Bergeron" [ref=e171] [cursor=pointer]:
+                    - /url: /pinball/machine/jonathan-bergeron
+                - generic [ref=e172]:
+                  - text: "Animation:"
+                  - link "Chuck Ernst" [ref=e173] [cursor=pointer]:
+                    - /url: /pinball/machine/chuck-ernst
+                  - link "Danai Kittivathana" [ref=e174] [cursor=pointer]:
+                    - /url: /pinball/machine/danai-kittivathana
+                  - link "Joshua Clay" [ref=e175] [cursor=pointer]:
+                    - /url: /pinball/machine/joshua-clay
+                  - link "Mark Galvez" [ref=e176] [cursor=pointer]:
+                    - /url: /pinball/machine/mark-galvez
+                  - link "Zac Stark" [ref=e177] [cursor=pointer]:
+                    - /url: /pinball/machine/zac-stark
+                - generic [ref=e178]:
+                  - text: "Sound:"
+                  - link "Jerry Thompson" [ref=e179] [cursor=pointer]:
+                    - /url: /pinball/machine/jerry-thompson
+                - generic [ref=e180]:
+                  - text: "Music:"
+                  - link "John Williams" [ref=e181] [cursor=pointer]:
+                    - /url: /pinball/machine/john-williams
+                  - link "Ken Hale" [ref=e182] [cursor=pointer]:
+                    - /url: /pinball/machine/ken-hale
+                - generic [ref=e183]:
+                  - text: "Callouts:"
+                  - link "Rick Zieff" [ref=e184] [cursor=pointer]:
+                    - /url: /pinball/machine/rick-zieff
+            - generic [ref=e186]:
+              - heading "Game details" [level=3] [ref=e187]
+              - generic [ref=e188]:
+                - generic [ref=e189]: PinsideID
+                - generic [ref=e190]: "2791"
+              - generic [ref=e191]:
+                - generic [ref=e192]: Manufactured by
+                - link "Stern Pinball, Inc." [ref=e194] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=105#results
+              - generic [ref=e195]:
+                - generic [ref=e196]: Date
+                - generic [ref=e197]: July 2019
+              - generic [ref=e198]:
+                - generic [ref=e199]: Type
+                - img [ref=e200]
+                - text: Solid state
+              - generic [ref=e201]:
+                - generic [ref=e202]: Generation
+                - link "Stern SPIKE 2 System" [ref=e204] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=63#results
+              - generic [ref=e205]:
+                - generic [ref=e206]: Release
+                - generic [ref=e207]: In production
+              - generic [ref=e208]:
+                - generic [ref=e209]: Estimated value
+                - generic [ref=e210]: $7400 - $8600
+              - generic [ref=e211]:
+                - generic [ref=e212]: Cabinet
+                - generic [ref=e213]: Normal
+              - generic [ref=e214]:
+                - generic [ref=e215]: Display type
+                - generic [ref=e216]: LCD Display
+              - generic [ref=e217]:
+                - generic [ref=e218]: Players
+                - generic [ref=e219]: "4"
+              - generic [ref=e220]:
+                - generic [ref=e221]: Flippers
+                - generic [ref=e222]: "3"
+              - generic [ref=e223]:
+                - generic [ref=e224]: Ramps
+                - generic [ref=e225]: "4"
+              - generic [ref=e226]:
+                - generic [ref=e227]: Multiball
+                - generic [ref=e228]: "6"
+              - generic [ref=e229]:
+                - generic [ref=e230]: IPDB
+                - link "#6574" [ref=e232] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=6574
+              - generic [ref=e233]:
+                - generic [ref=e234]: Latest software
+                - generic [ref=e235]: V1.15.0 - November 26, 2024
+          - generic [ref=e236]:
+            - list:
+              - listitem [ref=e237]:
+                - link "View all details" [ref=e238] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/details
+              - listitem [ref=e239]:
+                - link "Edit game details" [ref=e240] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=2791
+        - generic [ref=e243]:
+          - heading "Promotional" [level=3] [ref=e244]
+          - generic [ref=e245]:
+            - link [ref=e247] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/ZhzQf8un29b0w-PR6aAqxkDSNOS1cgFGfn-W9OB2Psw/rs:fit:2048/fn:pinside_archive_2791_5408c65dc135/enc/oFJSpG6ubw8Y1z6tZCUx8S9K0URKmj70TBz-DRzbEn7e7mLCnhRb6vSraMxsWam1Kcsy-k1HnucrJaXW2X_ItbuF-VOV9SRrynl-d2pRk3rNefxn5z6J_WMBFfXqYL6E.jpg
+              - img [ref=e248]
+            - link [ref=e250] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/Os1iSZE121MdTVdG32DwgI4m8kHPVBl0rnHmKvpt9Ng/rs:fit:2048/fn:pinside_archive_2791_b473940a80d3/enc/XKNLhAvwv3g4nVxdosIETaNMaQuFUfgnX6n71Wj_c_etbVaZaIVNYTSXVYystj_7KnXyqunJIC07cDnxyfNesd-8ujfVdU0S6sf7ZogZrqlOfHg4p0u6KctNRYXdG10S.pdf
+              - img [ref=e251]
+          - paragraph [ref=e252]: Click on a flyer image for full size.
+        - generic [ref=e253]:
+          - heading "Price history" [level=2] [ref=e256]
+          - generic [ref=e262]:
+            - heading "Price estimate" [level=3] [ref=e263]
+            - paragraph [ref=e264]:
+              - text: This game
+              - link "has been listed" [ref=e265] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2791#results
+              - text: a total number of 807 times on the Pinside Marketplace, most recently on 2026-02-20.
+            - separator [ref=e266]
+            - paragraph [ref=e267]: This past year, we've seen it listed 132 times. The median asking price (trimmed median) was $8,000
+            - separator [ref=e268]
+            - paragraph [ref=e269]:
+              - text: »
+              - link "Find ads for this game" [ref=e270] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/market
+            - paragraph [ref=e271]:
+              - text: »
+              - link "View archived ads" [ref=e272] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2791
+        - generic [ref=e273]:
+          - generic [ref=e275]:
+            - heading "Game quote" [level=3] [ref=e276]
+            - table [ref=e278]:
+              - rowgroup [ref=e279]:
+                - row "\"Control room ready!\"" [ref=e280]:
+                  - cell "\"Control room ready!\"" [ref=e281]
+          - generic [ref=e282]:
+            - list:
+              - listitem [ref=e283]:
+                - link "Show another!" [ref=e284] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - generic [ref=e287]:
+              - heading "Pinside rating" [level=3] [ref=e288]
+              - paragraph [ref=e289]:
+                - text: This game has received
+                - strong [ref=e290]: 913 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e292]: 8.806 out of 10.
+              - generic [ref=e295]: "8.806"
+            - generic [ref=e307]:
+              - heading "Top 100 ranking" [level=3] [ref=e308]
+              - paragraph [ref=e309]:
+                - text: This game ranks 1st in the game group "Jurassic Park (Stern)". The group itself
+                - strong [ref=e310]:
+                  - text: "ranks #6 in the"
+                  - link "Pinside Pinball Top 100" [ref=e311] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e312]:
+              - heading "Rating comments" [level=3] [ref=e313]
+              - paragraph [ref=e314]:
+                - text: There
+                - link "are 397 rating comments" [ref=e315] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/ratings
+                - text: for this game.
+          - generic [ref=e317]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e318]
+            - generic [ref=e321]:
+              - paragraph [ref=e324]:
+                - strong [ref=e325]: "1501"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e328]:
+                - strong [ref=e329]: "962"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e332]:
+                - strong [ref=e333]: "220"
+                - text: public locations to play this machine.
+          - generic [ref=e335]:
+            - list:
+              - listitem [ref=e336]:
+                - link "Add your rating!" [ref=e337] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/ratings/edit?r=/pinball/machine/jurassic-park-premium
+              - listitem [ref=e338]:
+                - link "Show all rating comments" [ref=e339] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/ratings
+          - generic [ref=e341]:
+            - list:
+              - listitem [ref=e342]:
+                - link "Log in to manage your collection and wishlist." [ref=e343] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e344]:
+                - link "Visit map!" [ref=e345] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/owners
+        - generic [ref=e348]:
+          - heading "Gallery - Featured images" [level=3] [ref=e349]
+          - paragraph
+          - list [ref=e350]:
+            - listitem [ref=e351]:
+              - link [ref=e352] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e353]
+            - listitem [ref=e354]:
+              - link [ref=e355] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e356]
+            - listitem [ref=e357]:
+              - link [ref=e358] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e359]
+            - listitem [ref=e360]:
+              - link [ref=e361] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e362]
+            - listitem [ref=e363]:
+              - link [ref=e364] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e365]
+            - listitem [ref=e366]:
+              - link [ref=e367] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e368]
+            - listitem [ref=e369]:
+              - link [ref=e370] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e371]
+            - listitem [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e374]
+            - listitem [ref=e375]:
+              - link [ref=e376] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e377]
+            - listitem [ref=e378]:
+              - link [ref=e379] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e380]
+            - listitem [ref=e381]:
+              - link [ref=e382] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e383]
+            - listitem [ref=e384]:
+              - link [ref=e385] [cursor=pointer]:
+                - /url: /pinball/machine/jurassic-park-premium/gallery
+                - img [ref=e386]
+          - paragraph
+          - generic [ref=e387]:
+            - list:
+              - listitem [ref=e388]:
+                - link "Visit the gallery for all images!" [ref=e389] [cursor=pointer]:
+                  - /url: /pinball/machine/jurassic-park-premium/gallery
+        - generic [ref=e391]:
+          - heading "Game-related shop items!" [level=3] [ref=e392]
+          - paragraph [ref=e393]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e394]: Jurassic Park (Premium)
+            - text: .
+          - generic [ref=e395]:
+            - generic [ref=e397]:
+              - link [ref=e398] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1505-duke-pinball/08780-jurassic-park-glass-cover
+              - generic [ref=e399]: $ 50.00
+              - generic [ref=e400]:
+                - generic [ref=e401]: Playfield - Protection
+                - link "Jurassic Park Glass Cover" [ref=e403] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1505-duke-pinball/08780-jurassic-park-glass-cover
+                - generic [ref=e405]:
+                  - generic [ref=e406]: 
+                  - text: Duke Pinball
+            - generic [ref=e409]:
+              - link [ref=e410] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1403-pinball-fuzz/06962-jurassic-park-coin-door-magnet
+              - generic [ref=e411]: $ 8.00
+              - generic [ref=e412]:
+                - generic [ref=e413]: Cabinet - Other
+                - link "Jurassic Park coin door magnet" [ref=e415] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1403-pinball-fuzz/06962-jurassic-park-coin-door-magnet
+                - generic [ref=e417]:
+                  - generic [ref=e418]: 
+                  - text: Pinball Fuzz
+            - generic [ref=e421]:
+              - link [ref=e422] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1057-super-skill-shot-shop/13272-jurassic-park-amber-shooter-rod-
+              - generic [ref=e423]: "From: $ 150.00"
+              - generic [ref=e424]:
+                - generic [ref=e425]: Cabinet - Shooter Rods
+                - link "JURASSIC PARK AMBER SHOOTER ROD" [ref=e427] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1057-super-skill-shot-shop/13272-jurassic-park-amber-shooter-rod-
+                - generic [ref=e429]:
+                  - generic [ref=e430]: 
+                  - text: Super Skill Shot Shop
+            - generic [ref=e433]:
+              - link [ref=e434] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1338-pino-pinball-mods-shop/05235-mosquitos-inserts
+              - generic [ref=e435]: "From: € 36.00"
+              - generic [ref=e436]:
+                - generic [ref=e437]: Playfield - Toys/Add-ons
+                - link "MOSQUITOS INSERTS" [ref=e439] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1338-pino-pinball-mods-shop/05235-mosquitos-inserts
+                - generic [ref=e441]:
+                  - generic [ref=e442]: 
+                  - text: Pino Pinball Mods Shop
+            - generic [ref=e445]:
+              - link [ref=e446] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15387-stern-jurassic-park-premium-le-pinball-rubber-ring-kit
+              - generic [ref=e447]: $ 24.99
+              - generic [ref=e448]:
+                - generic [ref=e449]: Rubber/Silicone
+                - link "Stern Jurassic Park Premium / LE Pinball Rubber Ring Kit" [ref=e451] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15387-stern-jurassic-park-premium-le-pinball-rubber-ring-kit
+                - generic [ref=e453]:
+                  - generic [ref=e454]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e457]:
+              - link [ref=e458] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1267-cento-creations/10390-jurassic-park-apron-wall-decals-sold-as-a-pair
+              - generic [ref=e459]: $ 29.99
+              - generic [ref=e460]:
+                - generic [ref=e461]: Playfield - Decals
+                - link "Jurassic Park APRON WALL DECALS ( SOLD AS A PAIR)" [ref=e463] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1267-cento-creations/10390-jurassic-park-apron-wall-decals-sold-as-a-pair
+                - generic [ref=e465]:
+                  - generic [ref=e466]: 
+                  - text: Cento Creations
+            - generic [ref=e469]:
+              - link [ref=e470] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1508-pin-decals/14476-jurassic-park-action-button-decal
+              - generic [ref=e471]: € 20.00
+              - generic [ref=e472]:
+                - generic [ref=e473]: Playfield - Decals
+                - link "Jurassic park action button decal" [ref=e475] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1508-pin-decals/14476-jurassic-park-action-button-decal
+                - generic [ref=e477]:
+                  - generic [ref=e478]: 
+                  - text: Pin-Decals
+            - generic [ref=e481]:
+              - link [ref=e482] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1299-maine-home-recreation/05313-jurassic-park-art-blades-
+              - generic [ref=e483]: $ 99.99
+              - generic [ref=e484]:
+                - generic [ref=e485]: Cabinet - Decals
+                - link "Jurassic Park Art Blades" [ref=e487] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1299-maine-home-recreation/05313-jurassic-park-art-blades-
+                - generic [ref=e489]:
+                  - generic [ref=e490]: 
+                  - text: Maine Home Recreation
+            - generic [ref=e493]:
+              - link [ref=e494] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1259-silverball-designs/05847-slingshots-return-lanes-and-pops-jurassic-park-pro-only
+              - generic [ref=e495]: $ 20.00
+              - generic [ref=e496]:
+                - generic [ref=e497]: Playfield - Protection
+                - link "Slingshots, Return Lanes and POP's- Jurassic Park PRO ONLY" [ref=e499] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1259-silverball-designs/05847-slingshots-return-lanes-and-pops-jurassic-park-pro-only
+                - generic [ref=e501]:
+                  - generic [ref=e502]: 
+                  - text: SilverBall Designs
+            - generic [ref=e505]:
+              - link [ref=e506] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1456-chainsawmods/15691-stern-and-data-east-jurassic-park-amber-pop-bumper-covers-copy
+              - generic [ref=e507]: "From: $ 64.00"
+              - generic [ref=e508]:
+                - generic [ref=e509]: Playfield - Toys/Add-ons
+                - link "Stern and Data East Jurassic Park Amber Pop Bumper Covers (COPY)" [ref=e511] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1456-chainsawmods/15691-stern-and-data-east-jurassic-park-amber-pop-bumper-covers-copy
+                - generic [ref=e513]:
+                  - generic [ref=e514]: 
+                  - text: ChainsawMods
+          - paragraph [ref=e517]:
+            - text: »
+            - link "View all 142 parts for this game on its Shops page" [ref=e518] [cursor=pointer]:
+              - /url: /pinball/shops/games/jurassic-park-premium
+        - generic [ref=e520]:
+          - heading "Market value" [level=3] [ref=e521]
+          - paragraph [ref=e522]:
+            - text: There are currently 16 ads for this game on our Market place. Showing the first 12 ads,
+            - link "click here to see all ads" [ref=e523] [cursor=pointer]:
+              - /url: /pinball/market/classifieds?s=1&ad_machine_keys%5B%5D=2791&ad_what%5B%5D=machine&ad_wantedforsale%5B%5D=forsale#results
+            - text: .
+          - generic [ref=e524]:
+            - generic [ref=e526]:
+              - link [ref=e527] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209989
+              - generic [ref=e528]:
+                - text: Trade±
+                - generic [ref=e529]: 
+                - text: 8,500
+              - generic [ref=e530]:
+                - generic [ref=e531]: Machine - For Trade
+                - generic [ref=e532]:
+                  - 'link "For trade: Jurassic Park (Premium)" [ref=e533] [cursor=pointer]':
+                    - /url: /pinball/market/classifieds/ad/209989
+                  - text: New ad!
+                - generic [ref=e534]:
+                  - generic [ref=e535]:
+                    - img [ref=e536]
+                    - text: Lancaster, PA
+                  - generic [ref=e537]:
+                    - generic [ref=e538]: 
+                    - link "brucipher" [ref=e539] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/brucipher/market
+                    - generic [ref=e540]: 
+            - generic [ref=e542]:
+              - link [ref=e543] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207715
+              - generic [ref=e544]:
+                - generic [ref=e545]: 
+                - text: 8,500
+              - generic [ref=e546]:
+                - generic [ref=e547]: Machine - For Sale
+                - link "Jurassic Park (Premium) LOW plays" [ref=e549] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207715
+                - generic [ref=e550]:
+                  - generic [ref=e551]:
+                    - img [ref=e552]
+                    - text: Germantown, WI
+                  - generic [ref=e553]:
+                    - generic [ref=e554]: 
+                    - link "Mjp23" [ref=e555] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/mjp23/market
+            - generic [ref=e557]:
+              - link [ref=e558] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209841
+              - generic [ref=e559]:
+                - generic [ref=e560]: 
+                - text: 8,700
+              - generic [ref=e561]:
+                - generic [ref=e562]: Machine - For Sale
+                - generic [ref=e563]:
+                  - link "Jurassic Park (Premium) with unique mods!" [ref=e564] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/209841
+                  - text: Featured
+                - generic [ref=e565]:
+                  - generic [ref=e566]:
+                    - img [ref=e567]
+                    - text: Lake Forest, CA
+                  - generic [ref=e568]:
+                    - generic [ref=e569]: 
+                    - link "pixelpete" [ref=e570] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/pixelpete/market
+                    - generic [ref=e571]: 
+            - generic [ref=e573]:
+              - link [ref=e574] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209829
+              - generic [ref=e575]:
+                - generic [ref=e576]: 
+                - text: 8,900 (OBO)
+              - generic [ref=e577]:
+                - generic [ref=e578]: Machine - For Sale
+                - link "Jurassic Park (Premium)" [ref=e580] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209829
+                - generic [ref=e581]:
+                  - generic [ref=e582]:
+                    - img [ref=e583]
+                    - text: Meridian, ID
+                  - generic [ref=e584]:
+                    - generic [ref=e585]: 
+                    - link "Dopest_Trip" [ref=e586] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/dopest_trip/market
+                    - generic [ref=e587]: 
+            - generic [ref=e589]:
+              - link [ref=e590] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209622
+              - generic [ref=e591]:
+                - generic [ref=e592]: 
+                - text: 8,450
+              - generic [ref=e593]:
+                - generic [ref=e594]: Machine - For Sale
+                - link "Jurassic Park (Premium)" [ref=e596] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209622
+                - generic [ref=e597]:
+                  - generic [ref=e598]:
+                    - img [ref=e599]
+                    - text: Orange, CA
+                  - generic [ref=e600]:
+                    - generic [ref=e601]: 
+                    - link "davelarson" [ref=e602] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/davelarson/market
+                    - generic [ref=e603]: 
+                  - generic [ref=e605]: 
+            - generic [ref=e607]:
+              - link [ref=e608] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207245
+              - generic [ref=e609]:
+                - text: Trade±
+                - generic [ref=e610]: 
+                - text: 8,300 (OBO)
+              - generic [ref=e611]:
+                - generic [ref=e612]: Machine - For Trade
+                - link "Jurassic Park (Premium)" [ref=e614] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207245
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - img [ref=e617]
+                    - text: Milford, CT
+                  - generic [ref=e618]:
+                    - generic [ref=e619]: 
+                    - link "AutomatedServices" [ref=e620] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/automatedservices/market
+                    - generic [ref=e621]: 
+                  - generic [ref=e623]: 
+            - generic [ref=e625]:
+              - link [ref=e626] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207221
+              - generic [ref=e627]:
+                - generic [ref=e628]: 
+                - text: 7,500 (Firm)
+              - generic [ref=e629]:
+                - generic [ref=e630]: Machine - For Sale
+                - link "Jurassic Park (Premium)" [ref=e632] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207221
+                - generic [ref=e633]:
+                  - generic [ref=e634]:
+                    - img [ref=e635]
+                    - text: Fredericksburg, VA
+                  - generic [ref=e636]:
+                    - generic [ref=e637]: 
+                    - link "SkillShot" [ref=e638] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/skillshot/market
+            - generic [ref=e640]:
+              - link [ref=e641] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209000
+              - generic [ref=e643]:
+                - generic [ref=e644]: 
+                - text: 8,500
+              - generic [ref=e645]:
+                - generic [ref=e646]: Machine - For Sale
+                - generic [ref=e647]:
+                  - link "Jurassic Park (Premium)" [ref=e648] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/209000
+                  - text: Pending
+                - generic [ref=e649]:
+                  - generic [ref=e650]:
+                    - img [ref=e651]
+                    - text: Russell, PA
+                  - generic [ref=e652]:
+                    - generic [ref=e653]: 
+                    - link "Nver" [ref=e654] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/nver/market
+            - generic [ref=e656]:
+              - link [ref=e657] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208084
+              - generic [ref=e658]:
+                - generic [ref=e659]: 
+                - text: 7,900 (OBO)
+              - generic [ref=e660]:
+                - generic [ref=e661]: Machine - For Sale
+                - link "Jurassic Park (Premium) 209 plays" [ref=e663] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208084
+                - generic [ref=e664]:
+                  - generic [ref=e665]:
+                    - img [ref=e666]
+                    - text: Los Angeles, CA
+                  - generic [ref=e667]:
+                    - generic [ref=e668]: 
+                    - link "benibarj" [ref=e669] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/benibarj/market
+            - generic [ref=e671]:
+              - link [ref=e672] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208141
+              - generic [ref=e673]:
+                - generic [ref=e674]: 
+                - text: 9,500
+              - generic [ref=e675]:
+                - generic [ref=e676]: Machine - For Sale
+                - link "Jurassic Park (Premium) Lots of mods" [ref=e678] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208141
+                - generic [ref=e679]:
+                  - generic [ref=e680]:
+                    - img [ref=e681]
+                    - text: Little River, SC
+                  - generic [ref=e682]:
+                    - generic [ref=e683]: 
+                    - link "JEverhart42" [ref=e684] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/jeverhart42/market
+                    - generic [ref=e685]: 
+                  - generic [ref=e687]: 
+            - generic [ref=e689]:
+              - link [ref=e690] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207798
+              - generic [ref=e691]:
+                - generic [ref=e692]: 
+                - text: 8,000 (Firm)
+              - generic [ref=e693]:
+                - generic [ref=e694]: Machine - For Sale
+                - link "Jurassic Park (Premium)" [ref=e696] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207798
+                - generic [ref=e697]:
+                  - generic [ref=e698]:
+                    - img [ref=e699]
+                    - text: Bloomfield Hills, MI
+                  - generic [ref=e700]:
+                    - generic [ref=e701]: 
+                    - link "istr8nm" [ref=e702] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/istr8nm/market
+            - generic [ref=e704]:
+              - link [ref=e705] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207278
+              - generic [ref=e706]:
+                - generic [ref=e707]: 
+                - text: 9,500
+              - generic [ref=e708]:
+                - generic [ref=e709]: Machine - For Sale
+                - link "Jurassic Park (Premium)" [ref=e711] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207278
+                - generic [ref=e712]:
+                  - generic [ref=e713]:
+                    - img [ref=e714]
+                    - text: Anaheim, CA
+                  - generic [ref=e715]:
+                    - generic [ref=e716]: 
+                    - link "Captains_Arcade" [ref=e717] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/captains_arcade/market
+                    - generic [ref=e718]: 
+      - generic [ref=e720]:
+        - img [ref=e721]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e722]
+        - link " Support Pinside" [ref=e723] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e724]: 
+          - text: Support Pinside
+        - paragraph [ref=e725]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e726] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e729]:
+    - link [ref=e731] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e732]
+    - generic [ref=e733]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e734]:
+        - generic [ref=e735]: 
+        - text: Page rendered in 1.68742s
+      - generic [ref=e736]:
+        - generic [ref=e737]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e738] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e739]:
+        - link " Help" [ref=e740] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e741]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e742] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e743]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e744] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e745]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e746] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e747]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e748] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e749]: 
+          - text: Top

@@ -15,16 +15,54 @@ const WEB_APP_TARGETS = {
   "lpl-targets": path.join(ROOT, "lpl-targets", "public", "pinball"),
 };
 
-const STARTER_PACK_TARGETS = {
-  "ios-starter-pack": path.resolve(
-    ROOT,
-    "../Pinball App/Pinball App 2/Pinball App 2/PinballStarter.bundle/pinball"
-  ),
-  "android-starter-pack": path.resolve(
-    ROOT,
-    "../Pinball App/Pinball App Android/app/src/main/assets/starter-pack/pinball"
-  ),
-};
+function parseExtraTargetsFromEnv(envKey) {
+  const raw = process.env[envKey];
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => path.resolve(ROOT, p));
+}
+
+function buildStarterPackTargets() {
+  const defaults = [
+    [
+      "ios-starter-pack",
+      path.resolve(
+        ROOT,
+        "../Pinball App/Pinball App 2/Pinball App 2/PinballStarter.bundle/pinball"
+      ),
+    ],
+    [
+      "android-starter-pack",
+      path.resolve(
+        ROOT,
+        "../Pinball App/Pinball App Android/app/src/main/assets/starter-pack/pinball"
+      ),
+    ],
+  ];
+
+  const extraIos = parseExtraTargetsFromEnv("PINBALL_IOS_STARTER_PACK_TARGETS");
+  const extraAndroid = parseExtraTargetsFromEnv("PINBALL_ANDROID_STARTER_PACK_TARGETS");
+  const seen = new Set(defaults.map(([, target]) => target));
+  const out = [...defaults];
+
+  for (const [idx, target] of extraIos.entries()) {
+    if (seen.has(target)) continue;
+    seen.add(target);
+    out.push([`ios-starter-pack-extra-${idx + 1}`, target]);
+  }
+  for (const [idx, target] of extraAndroid.entries()) {
+    if (seen.has(target)) continue;
+    seen.add(target);
+    out.push([`android-starter-pack-extra-${idx + 1}`, target]);
+  }
+
+  return Object.fromEntries(out);
+}
+
+const STARTER_PACK_TARGETS = buildStarterPackTargets();
 
 const AVENUE_CSV_PATH = path.join(
   ROOT,
@@ -100,6 +138,88 @@ async function pruneStarterPackPlayfieldImages(target) {
   console.log(`Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed} non-_700.webp files)`);
 }
 
+async function readJson(filePath) {
+  return JSON.parse(await fs.readFile(filePath, "utf8"));
+}
+
+function pickPreferredAssetPath(assets, practiceKey, legacyKey) {
+  const practice = typeof assets?.[practiceKey] === "string" ? assets[practiceKey].trim() : "";
+  if (practice) return practice;
+  const legacy = typeof assets?.[legacyKey] === "string" ? assets[legacyKey].trim() : "";
+  return legacy || null;
+}
+
+async function pruneStarterPackLegacyMarkdown(target) {
+  const v2Path = path.join(target, "data", "pinball_library_v2.json");
+  const hasV2 = await pathExists(v2Path);
+  if (!hasV2) {
+    console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v2Path)}`);
+    return;
+  }
+
+  const v2 = await readJson(v2Path);
+  const items = Array.isArray(v2?.items) ? v2.items : [];
+  const keepMarkdownPaths = new Set();
+
+  for (const item of items) {
+    const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
+      ? item.assets
+      : {};
+    const gameinfoPath = pickPreferredAssetPath(assets, "gameinfo_local_practice", "gameinfo_local_legacy");
+    const rulesheetPath = pickPreferredAssetPath(assets, "rulesheet_local_practice", "rulesheet_local_legacy");
+    if (gameinfoPath?.startsWith("/pinball/")) keepMarkdownPaths.add(gameinfoPath);
+    if (rulesheetPath?.startsWith("/pinball/")) keepMarkdownPaths.add(rulesheetPath);
+  }
+
+  let removed = 0;
+  let skipped = 0;
+  for (const subdir of ["gameinfo", "rulesheets"]) {
+    const dir = path.join(target, subdir);
+    const entries = await fs.readdir(dir, { withFileTypes: true }).catch(() => []);
+    for (const entry of entries) {
+      if (!entry.isFile()) continue;
+      const name = entry.name;
+      if (!name.endsWith(".md")) continue;
+
+      const isNewStyle =
+        (subdir === "gameinfo" && name.endsWith("-gameinfo.md")) ||
+        (subdir === "rulesheets" && name.endsWith("-rulesheet.md"));
+      if (isNewStyle) continue;
+
+      const webPath = `/pinball/${subdir}/${name}`;
+      if (keepMarkdownPaths.has(webPath)) {
+        skipped += 1;
+        continue;
+      }
+
+      await fs.rm(path.join(dir, name), { force: true });
+      removed += 1;
+    }
+  }
+
+  console.log(
+    `Pruned starter-pack legacy markdown in ${path.relative(ROOT, target)} (removed ${removed}, kept ${skipped} referenced old-style files)`
+  );
+}
+
+async function pruneStarterPackJunkFiles(target) {
+  const candidates = [
+    path.join(target, ".DS_Store"),
+    path.join(target, "images", ".DS_Store"),
+    path.join(target, "images", "playfields", ".DS_Store"),
+  ];
+  let removed = 0;
+  for (const file of candidates) {
+    if (await pathExists(file)) {
+      await fs.rm(file, { force: true });
+      removed += 1;
+    }
+  }
+  if (removed > 0) {
+    console.log(`Pruned starter-pack junk files in ${path.relative(ROOT, target)} (removed ${removed} .DS_Store file(s))`);
+  }
+}
+
 async function syncWebApp(appName) {
   const target = WEB_APP_TARGETS[appName];
   if (!target) {
@@ -121,6 +241,8 @@ async function syncStarterPacks() {
     }
     await syncPath(name, target);
     await pruneStarterPackPlayfieldImages(target);
+    await pruneStarterPackLegacyMarkdown(target);
+    await pruneStarterPackJunkFiles(target);
   }
 }
 
@@ -137,9 +259,14 @@ async function rebuildLibraryJsonFromAvenue() {
   );
 }
 
+async function rebuildLibraryJsonV2() {
+  await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v2.ts"], path.join(ROOT, "lpl-library"));
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   await rebuildLibraryJsonFromAvenue();
+  await rebuildLibraryJsonV2();
   await buildPinballManifest();
 
   if (args.allTargets) {

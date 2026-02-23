@@ -1,0 +1,692 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Toy Story 4 (LE)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Toy Story 4 (LE)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-toy-story-4-le
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Toy Story 4 (LE)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+            - img "Toy Story 4 (LE)" [ref=e121]
+          - generic [ref=e123]:
+            - heading "Jersey Jack" [level=2] [ref=e124]
+            - heading "Toy Story 4 (LE)" [level=1] [ref=e125]
+            - generic [ref=e126]:
+              - text: Jersey Jack Pinball and Disney Pixar bring you the ultimate Toy Story adventure. Join Woody, Buzz, Bo Peep and the rest of the gang on a road trip to the carnival with Bonnie and Forky.
+              - text: LIMITED EDITION
+              - text: Exclusive Limited Edition Art Package by John Youssi
+              - text: Imagination Blue Powder Coated Armor
+              - text: Individually Numbered LE Plaque – Limited to 5,000 Units
+              - text: Custom Voice Narration by Tim Allen (Buzz Lightyear)
+              - text: Pinball Version of “You’ve Got a Friend in Me” by Randy Newman
+              - text: 27 inch Backbox LCD Display With Scenes From The Film
+              - text: 10 inch Carnival Game LCD Playfield Display
+              - text: 120 Watt 2.1 Stereo Sound System with Subwoofer
+              - text: 300+ Individually Controlled RGB LEDs
+              - text: JJP Exclusive HotRail Lighting System
+              - text: Star Adventurer RGB LED Stunt Deck Marquee
+              - text: Duke Caboom Stunt Ramp with Benson Posts
+              - text: Gabby Gabby Pop-Up Mech
+              - text: Second Chance Antique Store Mystery Scoop
+              - text: “Take A Chance” Spinning Wheel Mechanism
+              - text: Road Trip Physical 3-Ball Lock with Drop Target
+              - text: 5 FORKY Targets
+              - text: 4 Buzz Pop Bumpers
+              - text: 2 Woody and Bo Peep Spinners – 1 Captive Ball
+              - text: Shaker Motor & Invisiglass
+              - text: Photo Booth Camera
+              - text: Wi-Fi Enabled + Bluetooth Audio
+              - text: "Notes:"
+              - text: Joe Katz is lead programmer.
+            - generic [ref=e127]:
+              - heading "Tags:" [level=3] [ref=e128]
+              - link "Carnival" [ref=e129] [cursor=pointer]:
+                - /url: /pinball/machine?tags=carnival
+              - link "movie" [ref=e130] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "edit tags" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=3046
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: "This title is part of group: \"Toy Story 4\""
+          - generic [ref=e137]:
+            - link "Toy Story 4 (LE)" [ref=e138] [cursor=pointer]:
+              - /url: /pinball/machine/jjp-toy-story-4-le/
+              - img [ref=e139]
+              - generic [ref=e141]:
+                - text: Toy Story 4
+                - text: (LE)
+            - link "Toy Story 4 (CE)" [ref=e142] [cursor=pointer]:
+              - /url: /pinball/machine/jjp-toy-story-4-ce/
+              - img [ref=e143]
+              - generic [ref=e145]:
+                - text: Toy Story 4
+                - text: (CE)
+        - generic [ref=e146]:
+          - generic:
+            - generic [ref=e148]:
+              - heading "Design team" [level=3] [ref=e149]
+              - generic [ref=e150]:
+                - generic [ref=e151]:
+                  - text: "Game Design:"
+                  - link "Pat Lawlor" [ref=e152] [cursor=pointer]:
+                    - /url: /pinball/machine/pat-lawlor
+                - generic [ref=e153]:
+                  - text: "Engineering/mechanics:"
+                  - link "Chris Talko" [ref=e154] [cursor=pointer]:
+                    - /url: /pinball/machine/chris-talko
+                  - link "Nick Jensen" [ref=e155] [cursor=pointer]:
+                    - /url: /pinball/machine/nick-jensen
+                  - link "Peter Dorn" [ref=e156] [cursor=pointer]:
+                    - /url: /pinball/machine/peter-dorn
+                - generic [ref=e157]:
+                  - text: "Software:"
+                  - link "Bill Grupp" [ref=e158] [cursor=pointer]:
+                    - /url: /pinball/machine/bill-grupp
+                  - link "Duncan Brown" [ref=e159] [cursor=pointer]:
+                    - /url: /pinball/machine/duncan-brown
+                  - link "Joe Katz" [ref=e160] [cursor=pointer]:
+                    - /url: /pinball/machine/joe-katz
+                  - link "JT Harkey" [ref=e161] [cursor=pointer]:
+                    - /url: /pinball/machine/jt-harkey
+                  - link "Keith P. Johnson" [ref=e162] [cursor=pointer]:
+                    - /url: /pinball/machine/keith-p-johnson
+                  - link "Ted Estes" [ref=e163] [cursor=pointer]:
+                    - /url: /pinball/machine/ted-estes
+                - generic [ref=e164]:
+                  - text: "Artwork:"
+                  - link "John Youssi" [ref=e165] [cursor=pointer]:
+                    - /url: /pinball/machine/john-youssi
+                - generic [ref=e166]:
+                  - text: "Animation:"
+                  - link "Jean-Paul de Win" [ref=e167] [cursor=pointer]:
+                    - /url: /pinball/machine/jean-paul-de-win
+                  - link "Mark Moliter" [ref=e168] [cursor=pointer]:
+                    - /url: /pinball/machine/mark-moliter
+                - generic [ref=e169]:
+                  - text: "Music:"
+                  - link "Unlock Audio" [ref=e170] [cursor=pointer]:
+                    - /url: /pinball/machine/unlock-audio
+                - generic [ref=e171]:
+                  - text: "Callouts:"
+                  - link "Jim Hanks" [ref=e172] [cursor=pointer]:
+                    - /url: /pinball/machine/jim-hanks
+                  - link "Tim Allen" [ref=e173] [cursor=pointer]:
+                    - /url: /pinball/machine/tim-allen
+            - generic [ref=e175]:
+              - heading "Game details" [level=3] [ref=e176]
+              - generic [ref=e177]:
+                - generic [ref=e178]: PinsideID
+                - generic [ref=e179]: "3046"
+              - generic [ref=e180]:
+                - generic [ref=e181]: Manufactured by
+                - link "Jersey Jack Pinball" [ref=e183] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=131#results
+              - generic [ref=e184]:
+                - generic [ref=e185]: Date
+                - generic [ref=e186]: June 2022
+              - generic [ref=e187]:
+                - generic [ref=e188]: Type
+                - img [ref=e189]
+                - text: Solid state
+              - generic [ref=e190]:
+                - generic [ref=e191]: Release
+                - generic [ref=e192]: 5,000 produced
+              - generic [ref=e193]:
+                - generic [ref=e194]: Estimated value
+                - generic [ref=e195]: $6660 - $7740
+              - generic [ref=e196]:
+                - generic [ref=e197]: Cabinet
+                - generic [ref=e198]: Normal
+              - generic [ref=e199]:
+                - generic [ref=e200]: Display type
+                - generic [ref=e201]: LCD Display
+              - generic [ref=e202]:
+                - generic [ref=e203]: Players
+                - generic [ref=e204]: "4"
+              - generic [ref=e205]:
+                - generic [ref=e206]: Flippers
+                - generic [ref=e207]: "3"
+              - generic [ref=e208]:
+                - generic [ref=e209]: Ramps
+                - generic [ref=e210]: "3"
+              - generic [ref=e211]:
+                - generic [ref=e212]: Multiball
+                - generic [ref=e213]: "6"
+              - generic [ref=e214]:
+                - generic [ref=e215]: Latest software
+                - generic [ref=e216]: V1.13 - November 16, 2023
+          - generic [ref=e217]:
+            - list:
+              - listitem [ref=e218]:
+                - link "View all details" [ref=e219] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/details
+              - listitem [ref=e220]:
+                - link "Edit game details" [ref=e221] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=3046
+        - generic [ref=e224]:
+          - heading "Promotional" [level=3] [ref=e225]
+          - generic [ref=e226]:
+            - link [ref=e228] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/lc8CA4Xgpe7-gj7PldEY1dzXUjco6vdLtTsIkIzG2Wo/rs:fit:2048/fn:pinside_archive_3046_aae815e06f31/enc/jWvWStflQQwmWfex7s3tcUX3I0vR-dfJXGJ8q4-SrWloHFUCWqYmTxF71Z4lbGuO6wbSEPG6tsabu5I2NlUgs-7ApX7BHhTMjqQtNtoXG1C6xhsKTsXQ3q9g3pfjuR28.png
+              - img [ref=e229]
+            - link [ref=e231] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/pIB0BInRX-mlqsxHn9lweB6lm6R9mBAn-yKJ6ABMUFw/rs:fit:2048/fn:pinside_archive_3046_467297e74275/enc/A8TnwaZF6KIY6DsRpJ4cCR0vVzb8c5SJf_8pfpB6WF1HLoknMa8EqWqX17SoKJJFb36al31MZXcVrbn9YSLi1kCa3y8EAZ18iN9vSC3EfIMiho9eYi_Wx3e5lR7QQFZy.png
+              - img [ref=e232]
+            - link [ref=e234] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/R-8xSo8YLY9JPu3eqfR_PmHGAFFjDcB0OZGuOl3sFFs/rs:fit:2048/fn:pinside_archive_3046_239f1fabd6a2/enc/u2WuLwcYqYLEUK7o8LBME-iqukemc2zJf0cE-5ujAeotZRMbZeeBRgzN7raYIqAUZpanP1F1Jk4sddZ03a478IiHyOoiAUdQ3DM0HdwLpYfPy7zXJ3zF5gXHfrGsKqar.png
+              - img [ref=e235]
+            - link [ref=e237] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/w7kxABXJMaLWAg640RJvc-pEj11unhkUvzmGrV1xbVs/rs:fit:2048/fn:pinside_archive_3046_6fedeb321921/enc/9RLPDju4uiwqHoxPY91dTJO9kk4yoHUKZEb6hsLb6tzW7NXm5IgM9z1Nam8TbH4U4s_iU07K5bwHCzjLPGMsEVdFM0-kFI_ZBSeKwAqiZaSSD6AITkvv1CDFWWDfxLO2.pdf
+              - img [ref=e238]
+            - link [ref=e240] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/Zxscuy2nDV4VvT2bvHhA2c1TWGCC4oKWfghSlkSoRng/rs:fit:2048/fn:pinside_archive_3046_ba0c4308b1a0/enc/DIJuP3FHhq30d2zV7w9verTpN7EmUiIK2jW6bSC4-rsj8itbZUaP42fVukryIAeSjbGa86nZaBKGAsFlNMg-zFOW9VOAeYb4UI9AcNKSOuFGtv56ocBN4EwDJPCmLVte.pdf
+              - img [ref=e241]
+          - paragraph [ref=e242]: Click on a flyer image for full size.
+        - generic [ref=e243]:
+          - heading "Price history" [level=2] [ref=e246]
+          - generic [ref=e252]:
+            - heading "Price estimate" [level=3] [ref=e253]
+            - paragraph [ref=e254]:
+              - text: This game
+              - link "has been listed" [ref=e255] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3046#results
+              - text: a total number of 218 times on the Pinside Marketplace, most recently on 2026-01-29.
+            - separator [ref=e256]
+            - paragraph [ref=e257]: This past year, we've seen it listed 41 times. The median asking price (trimmed median) was $7,150
+            - separator [ref=e258]
+            - paragraph [ref=e259]:
+              - text: »
+              - link "Find ads for this game" [ref=e260] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-toy-story-4-le/market
+            - paragraph [ref=e261]:
+              - text: »
+              - link "View archived ads" [ref=e262] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3046
+        - generic [ref=e263]:
+          - generic [ref=e265]:
+            - heading "Game quote" [level=3] [ref=e266]
+            - table [ref=e268]:
+              - rowgroup [ref=e269]:
+                - row "\"You're my favorite deputy!\"" [ref=e270]:
+                  - cell "\"You're my favorite deputy!\"" [ref=e271]
+          - generic [ref=e272]:
+            - list:
+              - listitem [ref=e273]:
+                - link "Show another!" [ref=e274] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - heading "Pinside rating" [level=3] [ref=e278]
+              - paragraph [ref=e279]:
+                - text: This game has received
+                - strong [ref=e280]: 238 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e282]: 8.020 out of 10.
+              - generic [ref=e285]: "8.02"
+            - generic [ref=e297]:
+              - heading "Top 100 ranking" [level=3] [ref=e298]
+              - paragraph [ref=e299]:
+                - text: This game ranks 2nd in the game group "Toy Story 4". The group itself
+                - strong [ref=e300]:
+                  - text: "ranks #65 in the"
+                  - link "Pinside Pinball Top 100" [ref=e301] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e302]:
+              - heading "Rating comments" [level=3] [ref=e303]
+              - paragraph [ref=e304]:
+                - text: There
+                - link "are 113 rating comments" [ref=e305] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/ratings
+                - text: for this game.
+          - generic [ref=e307]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e308]
+            - generic [ref=e311]:
+              - paragraph [ref=e314]:
+                - strong [ref=e315]: "287"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e318]:
+                - strong [ref=e319]: "201"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e322]:
+                - strong [ref=e323]: "140"
+                - text: public locations to play this machine.
+          - generic [ref=e325]:
+            - list:
+              - listitem [ref=e326]:
+                - link "Add your rating!" [ref=e327] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/ratings/edit?r=/pinball/machine/jjp-toy-story-4-le
+              - listitem [ref=e328]:
+                - link "Show all rating comments" [ref=e329] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/ratings
+          - generic [ref=e331]:
+            - list:
+              - listitem [ref=e332]:
+                - link "Log in to manage your collection and wishlist." [ref=e333] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e334]:
+                - link "Visit map!" [ref=e335] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/owners
+        - generic [ref=e338]:
+          - heading "Gallery - Featured images" [level=3] [ref=e339]
+          - paragraph
+          - list [ref=e340]:
+            - listitem [ref=e341]:
+              - link [ref=e342] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+                - img [ref=e343]
+            - listitem [ref=e344]:
+              - link [ref=e345] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+                - img [ref=e346]
+            - listitem [ref=e347]:
+              - link [ref=e348] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+                - img [ref=e349]
+          - paragraph
+          - generic [ref=e350]:
+            - list:
+              - listitem [ref=e351]:
+                - link "Visit the gallery for all images!" [ref=e352] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-toy-story-4-le/gallery
+        - generic [ref=e354]:
+          - heading "Game-related shop items!" [level=3] [ref=e355]
+          - paragraph [ref=e356]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e357]: Toy Story 4 (LE)
+            - text: .
+          - generic [ref=e358]:
+            - generic [ref=e360]:
+              - link [ref=e361] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1016-lermods/07102-toy-story-4-illuminated-interactive-duke-caboom
+              - generic [ref=e362]: $ 114.00
+              - generic [ref=e363]:
+                - generic [ref=e364]: Playfield - Toys/Add-ons
+                - link "Toy Story 4 Illuminated Interactive Duke Caboom" [ref=e366] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1016-lermods/07102-toy-story-4-illuminated-interactive-duke-caboom
+                - generic [ref=e368]:
+                  - generic [ref=e369]: 
+                  - text: Lermods
+            - generic [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1231-cointakercom/17647-toy-story-carnival-ramp
+              - generic [ref=e374]: $ 529.99
+              - generic [ref=e375]:
+                - generic [ref=e376]: Playfield - Toys/Add-ons
+                - link "TOY STORY CARNIVAL RAMP" [ref=e378] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1231-cointakercom/17647-toy-story-carnival-ramp
+                - generic [ref=e380]:
+                  - generic [ref=e381]: 
+                  - text: COINTAKER.COM
+            - generic [ref=e384]:
+              - link [ref=e385] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1057-super-skill-shot-shop/15693-luxo-ball-start-button
+              - generic [ref=e386]: $ 150.00
+              - generic [ref=e387]:
+                - generic [ref=e388]: Cabinet - Shooter Rods
+                - link "Luxo Ball Start Button" [ref=e390] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1057-super-skill-shot-shop/15693-luxo-ball-start-button
+                - generic [ref=e392]:
+                  - generic [ref=e393]: 
+                  - text: Super Skill Shot Shop
+            - generic [ref=e396]:
+              - link [ref=e397] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1016-lermods/07103-toy-story-4-pinball-gabby-pop-up-illumination
+              - generic [ref=e398]: $ 38.00
+              - generic [ref=e399]:
+                - generic [ref=e400]: Lighting - Led
+                - link "Toy Story 4 Pinball Gabby Pop Up Illumination" [ref=e402] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1016-lermods/07103-toy-story-4-pinball-gabby-pop-up-illumination
+                - generic [ref=e404]:
+                  - generic [ref=e405]: 
+                  - text: Lermods
+            - generic [ref=e408]:
+              - link [ref=e409] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/10967-toy-story-hologram-topper-sd-card-only
+              - generic [ref=e410]: $ 49.99
+              - generic [ref=e411]:
+                - generic [ref=e412]: Lighting - Other
+                - link "toy story hologram topper sd card only" [ref=e414] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/10967-toy-story-hologram-topper-sd-card-only
+                - generic [ref=e416]:
+                  - generic [ref=e417]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e420]:
+              - link [ref=e421] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1350-custom-pinball/18167-toy-story-4-shooter-knob
+              - generic [ref=e422]: € 100.00
+              - generic [ref=e423]:
+                - generic [ref=e424]: Cabinet - Shooter Rods
+                - generic [ref=e425]:
+                  - link "Toy Story 4 Shooter Knob" [ref=e426] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1350-custom-pinball/18167-toy-story-4-shooter-knob
+                  - text: New!
+                - generic [ref=e428]:
+                  - generic [ref=e429]: 
+                  - text: Custom Pinball
+            - generic [ref=e432]:
+              - link [ref=e433] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1282-rocket-city-pinball/07011-3d-start-button-toy-story-4
+              - generic [ref=e434]: $ 30.00
+              - generic [ref=e435]:
+                - generic [ref=e436]: Cabinet - Other
+                - link "3D Start Button -- Toy Story 4" [ref=e438] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1282-rocket-city-pinball/07011-3d-start-button-toy-story-4
+                - generic [ref=e440]:
+                  - generic [ref=e441]: 
+                  - text: Rocket City Pinball
+            - generic [ref=e444]:
+              - link [ref=e445] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1463-arcade-cabinetscom/14231-pinbawlers-ez-install-shooter-plate-for-jjp-toy-story-4
+              - generic [ref=e446]: "From: $ 55.00"
+              - generic [ref=e447]:
+                - generic [ref=e448]: Cabinet - Shooter Rods
+                - link "Pinbawlers EZ install Shooter Plate for JJP Toy Story 4" [ref=e450] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1463-arcade-cabinetscom/14231-pinbawlers-ez-install-shooter-plate-for-jjp-toy-story-4
+                - generic [ref=e452]:
+                  - generic [ref=e453]: 
+                  - text: arcade-cabinets.com
+            - generic [ref=e456]:
+              - link [ref=e457] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1160-classic-game-rooms/06972-toy-story-limited-edition-pinball-machine-
+              - generic [ref=e458]: $ 9,999.00
+              - generic [ref=e459]:
+                - generic [ref=e460]: Pinball Machine
+                - link "Toy Story Limited Edition Pinball Machine" [ref=e462] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1160-classic-game-rooms/06972-toy-story-limited-edition-pinball-machine-
+                - generic [ref=e464]:
+                  - generic [ref=e465]: 
+                  - text: Classic Game Rooms
+            - generic [ref=e468]:
+              - link [ref=e469] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1391-ravspec/06850-extended-play-coil-coolers-jjp-willy-wonka-toy-story-4
+              - generic [ref=e470]: "From: $ 90.00"
+              - generic [ref=e471]:
+                - generic [ref=e472]: Playfield - Other
+                - link "Extended Play Coil Coolers - JJP Willy Wonka / Toy Story 4" [ref=e474] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1391-ravspec/06850-extended-play-coil-coolers-jjp-willy-wonka-toy-story-4
+                - generic [ref=e476]:
+                  - generic [ref=e477]: 
+                  - text: RavSpec
+          - paragraph [ref=e480]:
+            - text: »
+            - link "View all 28 parts for this game on its Shops page" [ref=e481] [cursor=pointer]:
+              - /url: /pinball/shops/games/jjp-toy-story-4-le
+        - generic [ref=e483]:
+          - heading "Market value" [level=3] [ref=e484]
+          - paragraph [ref=e485]: There are currently 3 ads for this game on our Market place.
+          - generic [ref=e486]:
+            - generic [ref=e488]:
+              - link [ref=e489] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/190650
+              - generic [ref=e490]:
+                - generic [ref=e491]: 
+                - text: 8,999
+              - generic [ref=e492]:
+                - generic [ref=e493]: Machine - For Sale
+                - link "Toy Story 4 (LE) TOPPER-FL MDL FULL WARR FREE SHP" [ref=e495] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/190650
+                - generic [ref=e496]:
+                  - generic [ref=e497]:
+                    - img [ref=e498]
+                    - text: Milford, CT
+                  - generic [ref=e499]:
+                    - generic [ref=e500]: 
+                    - link "AutomatedServices" [ref=e501] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/automatedservices/market
+                    - generic [ref=e502]: 
+                  - generic [ref=e504]: 
+            - generic [ref=e506]:
+              - link [ref=e507] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/204591
+              - generic [ref=e508]:
+                - generic [ref=e509]: 
+                - text: 7,275 (OBO)
+              - generic [ref=e510]:
+                - generic [ref=e511]: Machine - For Sale
+                - link "Toy Story 4 (LE)" [ref=e513] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/204591
+                - generic [ref=e514]:
+                  - generic [ref=e515]:
+                    - img [ref=e516]
+                    - text: Cypress, TX
+                  - generic [ref=e517]:
+                    - generic [ref=e518]: 
+                    - link "Mcgringoloco" [ref=e519] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/mcgringoloco/market
+                    - generic [ref=e520]: 
+            - generic [ref=e522]:
+              - link [ref=e523] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208673
+              - generic [ref=e524]:
+                - text: Trade±
+                - generic [ref=e525]: 
+                - text: 7,500 (OBO)
+              - generic [ref=e526]:
+                - generic [ref=e527]: Machine - For Trade
+                - link "Toy Story 4 (LE)" [ref=e529] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208673
+                - generic [ref=e530]:
+                  - generic [ref=e531]:
+                    - img [ref=e532]
+                    - text: New Hyde Park, NY
+                  - generic [ref=e533]:
+                    - generic [ref=e534]: 
+                    - link "vic_vp" [ref=e535] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/vic_vp/market
+      - generic [ref=e537]:
+        - img [ref=e538]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e539]
+        - link " Support Pinside" [ref=e540] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e541]: 
+          - text: Support Pinside
+        - paragraph [ref=e542]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e543] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e546]:
+    - link [ref=e548] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e549]
+    - generic [ref=e550]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e551]:
+        - generic [ref=e552]: 
+        - text: Page rendered in 1.42687s
+      - generic [ref=e553]:
+        - generic [ref=e554]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e555] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e556]:
+        - link " Help" [ref=e557] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e558]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e559] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e560]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e561] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e562]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e563] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e564]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e565] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e566]: 
+          - text: Top

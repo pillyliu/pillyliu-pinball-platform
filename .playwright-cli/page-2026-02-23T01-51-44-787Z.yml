@@ -1,0 +1,605 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Space Station" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Space Station" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/space-station
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Space Station" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/space-station/gallery
+            - img "Space Station" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/williams
+              - img [ref=e126]
+            - heading "Williams" [level=2] [ref=e127]
+            - heading "Space Station" [level=1] [ref=e128]
+            - paragraph [ref=e130]: Space Station is a pinball machine from December 1987, manufactured by Williams Electronic Games, Inc.
+            - generic [ref=e131]:
+              - heading "Tags:" [level=3] [ref=e132]
+              - link "SCI-FI" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=sci-fi
+              - link "space" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=space
+              - link "edit tags" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=422
+        - generic [ref=e137]:
+          - generic:
+            - generic [ref=e139]:
+              - heading "Design team" [level=3] [ref=e140]
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - text: "Concept:"
+                  - link "Barry Oursler" [ref=e143] [cursor=pointer]:
+                    - /url: /pinball/machine/barry-oursler
+                - generic [ref=e144]:
+                  - text: "Game Design:"
+                  - link "Barry Oursler" [ref=e145] [cursor=pointer]:
+                    - /url: /pinball/machine/barry-oursler
+                - generic [ref=e146]:
+                  - text: "Software:"
+                  - link "Ed Boon" [ref=e147] [cursor=pointer]:
+                    - /url: /pinball/machine/ed-boon
+                - generic [ref=e148]:
+                  - text: "Artwork:"
+                  - link "Tim Elliot" [ref=e149] [cursor=pointer]:
+                    - /url: /pinball/machine/tim-elliot
+                - generic [ref=e150]:
+                  - text: "Sound:"
+                  - link "Brian Schmidt" [ref=e151] [cursor=pointer]:
+                    - /url: /pinball/machine/brian-schmidt
+                - generic [ref=e152]:
+                  - text: "Music:"
+                  - link "Brian Schmidt" [ref=e153] [cursor=pointer]:
+                    - /url: /pinball/machine/brian-schmidt
+                - generic [ref=e154]:
+                  - text: "Callouts:"
+                  - link "Steve Ritchie" [ref=e155] [cursor=pointer]:
+                    - /url: /pinball/machine/steve-ritchie
+            - generic [ref=e157]:
+              - heading "Game details" [level=3] [ref=e158]
+              - generic [ref=e159]:
+                - generic [ref=e160]: PinsideID
+                - generic [ref=e161]: "422"
+              - generic [ref=e162]:
+                - generic [ref=e163]: Manufactured by
+                - link "Williams Electronic Games, Inc." [ref=e165] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=83#results
+              - generic [ref=e166]:
+                - generic [ref=e167]: Date
+                - generic [ref=e168]: December 1987
+              - generic [ref=e169]:
+                - generic [ref=e170]: Type
+                - img [ref=e171]
+                - text: Solid state
+              - generic [ref=e172]:
+                - generic [ref=e173]: Generation
+                - link "Williams System 11B" [ref=e175] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=43#results
+              - generic [ref=e176]:
+                - generic [ref=e177]: Release
+                - generic [ref=e178]: 3,800 produced
+              - generic [ref=e179]:
+                - generic [ref=e180]: Estimated value
+                - generic [ref=e181]: $2770 - $3230
+              - generic [ref=e182]:
+                - generic [ref=e183]: Cabinet
+                - generic [ref=e184]: Normal
+              - generic [ref=e185]:
+                - generic [ref=e186]: Display type
+                - generic [ref=e187]: Alphanumeric
+              - generic [ref=e188]:
+                - generic [ref=e189]: Players
+                - generic [ref=e190]: "4"
+              - generic [ref=e191]:
+                - generic [ref=e192]: Flippers
+                - generic [ref=e193]: "2"
+              - generic [ref=e194]:
+                - generic [ref=e195]: Ramps
+                - generic [ref=e196]: "1"
+              - generic [ref=e197]:
+                - generic [ref=e198]: Multiball
+                - generic [ref=e199]: "3"
+              - generic [ref=e200]:
+                - generic [ref=e201]: IPDB
+                - link "#2261" [ref=e203] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=2261
+              - generic [ref=e204]:
+                - generic [ref=e205]: Latest software
+                - generic [ref=e206]: Unknown
+          - generic [ref=e207]:
+            - list:
+              - listitem [ref=e208]:
+                - link "View all details" [ref=e209] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/details
+              - listitem [ref=e210]:
+                - link "Edit game details" [ref=e211] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=422
+        - generic [ref=e214]:
+          - heading "Promotional" [level=3] [ref=e215]
+          - generic [ref=e216]:
+            - link [ref=e218] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/hpZQSQXdpXTal2gRW-WFSNIKexVncRuu6UKs70a2Ot8/rs:fit:2048/fn:pinside_archive_422_19d558e2f0e6/enc/4wAd_mh9Vtc0QCIAGOxM3JbB13rgTc9I6Ma--wTkwWnNeaHeNkf6OMIbOgUdZnAiJIR5M6MJ1zyXvVyrhsMkFq0DiOlC2coYTRHBr9oCW-AvhKAildonbkIHWRf-7aeK.jpg
+              - img [ref=e219]
+            - link [ref=e221] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/2M45kFw2z5TAndiTTZ2dKhx2Ig5IjUkjgOcbpLx180U/rs:fit:2048/fn:pinside_archive_422_ca1aeeb7abb4/enc/T4sRF7qTbYCPAZjLJ9NjJkszrWWYGFCVkecxjH387l2npuuT3vYNc6gGcIiHc4RQ7MXefLB6pk2l_mVQ94IMm5992iECicup6OYL5SMnhXwqhEAO65tZ7nJ7CrgdV9B6.jpg
+              - img [ref=e222]
+            - link [ref=e224] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/W59_ioVLhf2HHcAo-QfpbDa7eq1kCuvy0ryHqQ4vlKU/rs:fit:2048/fn:pinside_archive_422_8f54c924dd8c/enc/qFXg5SBCllpVdsm4QXLhtBPitQhAACXPC2pVUv-RpD6l7ldUS8jlL1890MOOfV3m63dPO0mysU1AbpnXcpXgFOE6WpbHiuP78F21BXFg-z0AXjqMJj6ohEX5oaZwg70p.jpg
+              - img [ref=e225]
+            - link [ref=e227] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/y4FS2BHNTeW1ptKpsGQSsnnpIKmROKAqwP6l-_wwty0/rs:fit:2048/fn:pinside_archive_422_e6dbfcc185a1/enc/VBj9ZcDAA_r3_yJxpeUBr6dpEL5yC1D2-We3_fFp-u0EP3hk2K7blQEGB7a90xFX9xQ0u5MP2W87aKkPYIzpQKDFR3K-Z9UX-CAhegY1Q0t9sAuWYfXHjrsQNU9TtSjb.jpg
+              - img [ref=e228]
+          - paragraph [ref=e229]: Click on a flyer image for full size.
+        - generic [ref=e230]:
+          - heading "Price history" [level=2] [ref=e233]
+          - generic [ref=e239]:
+            - heading "Price estimate" [level=3] [ref=e240]
+            - paragraph [ref=e241]:
+              - text: This game
+              - link "has been listed" [ref=e242] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=422#results
+              - text: a total number of 152 times on the Pinside Marketplace, most recently on 2025-12-22.
+            - separator [ref=e243]
+            - paragraph [ref=e244]: This past year, we've seen it listed 11 times. The median asking price (trimmed median) was $3,000
+            - separator [ref=e245]
+            - paragraph [ref=e246]:
+              - text: »
+              - link "Find ads for this game" [ref=e247] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/market
+            - paragraph [ref=e248]:
+              - text: »
+              - link "View archived ads" [ref=e249] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=422
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - heading "Marketing slogan" [level=3] [ref=e253]
+            - table [ref=e255]:
+              - rowgroup [ref=e256]:
+                - 'row "\"Williams Pinball #1 in ALL worlds \"" [ref=e257]':
+                  - 'cell "\"Williams Pinball #1 in ALL worlds \"" [ref=e258]'
+          - generic [ref=e259]:
+            - list:
+              - listitem [ref=e260]:
+                - link "Show another!" [ref=e261] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - generic [ref=e264]:
+              - heading "Pinside rating" [level=3] [ref=e265]
+              - paragraph [ref=e266]:
+                - text: This game has received
+                - strong [ref=e267]: 178 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e269]: 7.744 out of 10.
+              - generic [ref=e272]: "7.744"
+            - generic [ref=e284]:
+              - heading "Top 100 ranking" [level=3] [ref=e285]
+              - paragraph [ref=e286]:
+                - text: This game ranks
+                - strong [ref=e287]: "#154"
+                - text: in the
+                - link "Pinside Pinball Top 100" [ref=e288] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e289]:
+              - heading "Rating comments" [level=3] [ref=e290]
+              - paragraph [ref=e291]:
+                - text: There
+                - link "are 94 rating comments" [ref=e292] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/ratings
+                - text: for this game.
+          - generic [ref=e294]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e295]
+            - generic [ref=e298]:
+              - paragraph [ref=e301]:
+                - strong [ref=e302]: "344"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e305]:
+                - strong [ref=e306]: "462"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e309]:
+                - strong [ref=e310]: "54"
+                - text: public locations to play this machine.
+          - generic [ref=e312]:
+            - list:
+              - listitem [ref=e313]:
+                - link "Add your rating!" [ref=e314] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/ratings/edit?r=/pinball/machine/space-station
+              - listitem [ref=e315]:
+                - link "Show all rating comments" [ref=e316] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/ratings
+          - generic [ref=e318]:
+            - list:
+              - listitem [ref=e319]:
+                - link "Log in to manage your collection and wishlist." [ref=e320] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e321]:
+                - link "Visit map!" [ref=e322] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/owners
+        - generic [ref=e325]:
+          - heading "Gallery - Featured images" [level=3] [ref=e326]
+          - paragraph
+          - list [ref=e327]:
+            - listitem [ref=e328]:
+              - link [ref=e329] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e330]
+            - listitem [ref=e331]:
+              - link [ref=e332] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e333]
+            - listitem [ref=e334]:
+              - link [ref=e335] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e336]
+            - listitem [ref=e337]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e339]
+            - listitem [ref=e340]:
+              - link [ref=e341] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e342]
+            - listitem [ref=e343]:
+              - link [ref=e344] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e345]
+            - listitem [ref=e346]:
+              - link [ref=e347] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e348]
+            - listitem [ref=e349]:
+              - link [ref=e350] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e351]
+            - listitem [ref=e352]:
+              - link [ref=e353] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e354]
+            - listitem [ref=e355]:
+              - link [ref=e356] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e357]
+            - listitem [ref=e358]:
+              - link [ref=e359] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e360]
+            - listitem [ref=e361]:
+              - link [ref=e362] [cursor=pointer]:
+                - /url: /pinball/machine/space-station/gallery
+                - img [ref=e363]
+          - paragraph
+          - generic [ref=e364]:
+            - list:
+              - listitem [ref=e365]:
+                - link "Visit the gallery for all images!" [ref=e366] [cursor=pointer]:
+                  - /url: /pinball/machine/space-station/gallery
+        - generic [ref=e368]:
+          - heading "Game-related shop items!" [level=3] [ref=e369]
+          - paragraph [ref=e370]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e371]: Space Station
+            - text: .
+          - generic [ref=e372]:
+            - generic [ref=e374]:
+              - link [ref=e375] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/16652-williams-space-station-pinball-machine-maintenance-kit
+              - generic [ref=e376]: $ 54.99
+              - generic [ref=e377]:
+                - generic [ref=e378]: Cleaner
+                - link "Williams Space Station Pinball Machine Maintenance Kit" [ref=e380] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/16652-williams-space-station-pinball-machine-maintenance-kit
+                - generic [ref=e382]:
+                  - generic [ref=e383]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e386]:
+              - link [ref=e387] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1282-rocket-city-pinball/05085-3d-coin-reject-buttons-space-station
+              - generic [ref=e388]: "From: $ 35.00"
+              - generic [ref=e389]:
+                - generic [ref=e390]: Cabinet - Other
+                - link "3D Coin Reject Buttons -- Space Station" [ref=e392] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1282-rocket-city-pinball/05085-3d-coin-reject-buttons-space-station
+                - generic [ref=e394]:
+                  - generic [ref=e395]: 
+                  - text: Rocket City Pinball
+            - generic [ref=e398]:
+              - link [ref=e399] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06286-rom-space-station-sound
+              - generic [ref=e400]: $ 27.95
+              - generic [ref=e401]:
+                - generic [ref=e402]: Eproms
+                - link "ROM SPACE STATION -SOUND" [ref=e404] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06286-rom-space-station-sound
+                - generic [ref=e406]:
+                  - generic [ref=e407]: 
+                  - text: Pinballrom
+            - generic [ref=e410]:
+              - link [ref=e411] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1708-xpin/14410-xp-wms11415-ffbfbr
+              - generic [ref=e412]: "From: $ 289.99"
+              - generic [ref=e413]:
+                - generic [ref=e414]: Displays
+                - link "XP-WMS11415-F/FB/FBR" [ref=e416] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1708-xpin/14410-xp-wms11415-ffbfbr
+                - generic [ref=e418]:
+                  - generic [ref=e419]: 
+                  - text: Xpin
+            - generic [ref=e422]:
+              - link [ref=e423] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/16651-williams-space-station-pinball-machine-rubber-ring-kit
+              - generic [ref=e424]: $ 23.99
+              - generic [ref=e425]:
+                - generic [ref=e426]: Rubber/Silicone
+                - link "Williams Space Station Pinball Machine Rubber Ring Kit" [ref=e428] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/16651-williams-space-station-pinball-machine-rubber-ring-kit
+                - generic [ref=e430]:
+                  - generic [ref=e431]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e434]:
+              - link [ref=e435] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1708-xpin/14568-williams-interconnect-board
+              - generic [ref=e436]: $ 49.99
+              - generic [ref=e437]:
+                - generic [ref=e438]: Boards
+                - link "Williams Interconnect Board" [ref=e440] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1708-xpin/14568-williams-interconnect-board
+                - generic [ref=e442]:
+                  - generic [ref=e443]: 
+                  - text: Xpin
+            - generic [ref=e446]:
+              - link [ref=e447] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06285-rom-space-station-cpu-
+              - generic [ref=e448]: $ 18.95
+              - generic [ref=e449]:
+                - generic [ref=e450]: Eproms
+                - link "ROM SPACE STATION -CPU" [ref=e452] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06285-rom-space-station-cpu-
+                - generic [ref=e454]:
+                  - generic [ref=e455]: 
+                  - text: Pinballrom
+            - generic [ref=e458]:
+              - link [ref=e459] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1083-matt-s-basement-arcade/01578-space-station-pinball-rom-upgrade
+              - generic [ref=e460]: "From: $ 19.99"
+              - generic [ref=e461]:
+                - generic [ref=e462]: Eproms
+                - link "Space Station Pinball - Rom Upgrade" [ref=e464] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1083-matt-s-basement-arcade/01578-space-station-pinball-rom-upgrade
+                - generic [ref=e466]:
+                  - generic [ref=e467]: 
+                  - text: Matt's Basement Arcade
+            - generic [ref=e470]:
+              - link [ref=e471] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1477-slipstream-mod-shop/10423-spaceman-topper
+              - generic [ref=e472]: $ 50.00
+              - generic [ref=e473]:
+                - generic [ref=e474]: Cabinet - Toppers
+                - link "Spaceman Topper" [ref=e476] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1477-slipstream-mod-shop/10423-spaceman-topper
+                - generic [ref=e478]:
+                  - generic [ref=e479]: 
+                  - text: Slipstream Mod Shop
+        - generic [ref=e482]:
+          - heading "Market value" [level=3] [ref=e483]
+          - paragraph [ref=e484]:
+            - text: There are currently no ads for this game on the
+            - link "Marketplace" [ref=e485] [cursor=pointer]:
+              - /url: /pinball/market/classifieds
+            - text: .
+      - generic [ref=e487]:
+        - img [ref=e488]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e489]
+        - link " Support Pinside" [ref=e490] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e491]: 
+          - text: Support Pinside
+        - paragraph [ref=e492]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e493] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e496]:
+    - link [ref=e498] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e499]
+    - generic [ref=e500]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e501]:
+        - generic [ref=e502]: 
+        - text: Page rendered in 1.61573s
+      - generic [ref=e503]:
+        - generic [ref=e504]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e505] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e506]:
+        - link " Help" [ref=e507] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e508]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e509] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e510]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e511] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e512]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e513] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e514]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e515] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e516]: 
+          - text: Top

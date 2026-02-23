@@ -1,0 +1,543 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Joust" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Joust" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/joust
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/joust
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Joust" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/joust/gallery
+            - img "Joust" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/williams
+              - img [ref=e126]
+            - heading "Williams" [level=2] [ref=e127]
+            - heading "Joust" [level=1] [ref=e128]
+            - paragraph [ref=e130]: Joust is a pinball machine from April 1983, manufactured by Williams Electronic Games, Inc.
+            - generic [ref=e131]:
+              - heading "Tags:" [level=3] [ref=e132]
+              - link "HEAD-TO-HEAD" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=head-to-head
+              - link "VIDEO-GAME" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=video-game
+              - link "edit tags" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=261
+        - generic [ref=e137]:
+          - generic:
+            - generic [ref=e139]:
+              - heading "Design team" [level=3] [ref=e140]
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - text: "Game Design:"
+                  - link "Barry Oursler" [ref=e143] [cursor=pointer]:
+                    - /url: /pinball/machine/barry-oursler
+                - generic [ref=e144]:
+                  - text: "Software:"
+                  - link "Cary Kolker" [ref=e145] [cursor=pointer]:
+                    - /url: /pinball/machine/cary-kolker
+                - generic [ref=e146]:
+                  - text: "Artwork:"
+                  - link "Constantino Mitchell" [ref=e147] [cursor=pointer]:
+                    - /url: /pinball/machine/constantino-mitchell
+                  - link "Jeanine Mitchell" [ref=e148] [cursor=pointer]:
+                    - /url: /pinball/machine/jeanine-mitchell
+                - generic [ref=e149]:
+                  - text: "Sound:"
+                  - link "John Kotlarik" [ref=e150] [cursor=pointer]:
+                    - /url: /pinball/machine/john-kotlarik
+                  - link "Tim Murphy" [ref=e151] [cursor=pointer]:
+                    - /url: /pinball/machine/tim-murphy
+            - generic [ref=e153]:
+              - heading "Game details" [level=3] [ref=e154]
+              - generic [ref=e155]:
+                - generic [ref=e156]: PinsideID
+                - generic [ref=e157]: "261"
+              - generic [ref=e158]:
+                - generic [ref=e159]: Manufactured by
+                - link "Williams Electronic Games, Inc." [ref=e161] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=83#results
+              - generic [ref=e162]:
+                - generic [ref=e163]: Date
+                - generic [ref=e164]: April 1983
+              - generic [ref=e165]:
+                - generic [ref=e166]: Type
+                - img [ref=e167]
+                - text: Solid state
+              - generic [ref=e168]:
+                - generic [ref=e169]: Generation
+                - link "Williams System 7" [ref=e171] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=49#results
+              - generic [ref=e172]:
+                - generic [ref=e173]: Release
+                - generic [ref=e174]: 402 produced
+              - generic [ref=e175]:
+                - generic [ref=e176]: Estimated value
+                - generic [ref=e177]: $9990 - $11610
+              - generic [ref=e178]:
+                - generic [ref=e179]: Cabinet
+                - generic [ref=e180]: Head to head
+              - generic [ref=e181]:
+                - generic [ref=e182]: Display type
+                - generic [ref=e183]: Digital
+              - generic [ref=e184]:
+                - generic [ref=e185]: Players
+                - generic [ref=e186]: "2"
+              - generic [ref=e187]:
+                - generic [ref=e188]: Flippers
+                - generic [ref=e189]: "4"
+              - generic [ref=e190]:
+                - generic [ref=e191]: Ramps
+                - generic [ref=e192]: "0"
+              - generic [ref=e193]:
+                - generic [ref=e194]: Multiball
+                - generic [ref=e195]: "4"
+              - generic [ref=e196]:
+                - generic [ref=e197]: IPDB
+                - link "#1316" [ref=e199] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=1316
+              - generic [ref=e200]:
+                - generic [ref=e201]: Latest software
+                - generic [ref=e202]: Unknown
+          - generic [ref=e203]:
+            - list:
+              - listitem [ref=e204]:
+                - link "View all details" [ref=e205] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/details
+              - listitem [ref=e206]:
+                - link "Edit game details" [ref=e207] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=261
+        - generic [ref=e210]:
+          - heading "Promotional" [level=3] [ref=e211]
+          - generic [ref=e212]:
+            - link [ref=e214] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/WCz_1zM75A-c3P8u-72HbNojkSSkvOd4fwWJxs4e7HU/rs:fit:2048/fn:pinside_archive_261_a72e59c8c0af/enc/0yU3u9qn_Wu5fcY7HsrHGJ8caDEcZmIXcG1OaHlq1487vpaYHfn4V0lexz1Nb07cuPvoVT1xTcGj9ASfZ7LDZdHk22mW_TgL8d4dxM9UayvBBmzbZI4E0DoF3-g7-Pye.jpg
+              - img [ref=e215]
+            - link [ref=e217] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/bz0cc9qeZtO8TXIF3vWEQ1uj1ohF_EOPG0UMmrVf5Nk/rs:fit:2048/fn:pinside_archive_261_4bc61c7c2b40/enc/PA5HNx_ZrvxhYeSa1-Ni3hmTzcYIgapy4QTrgua-UR7XbHKQgznkOGU4qSrk-IDyoK6ftREfvRYu65N68SMP4KDD66lr7qYzZeBmh4DiHLj39mqw7jtYddfhkKIDvm40.jpg
+              - img [ref=e218]
+            - link [ref=e220] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/NjupzFai-qozYVQ3WeSXx0Vqsf6_HlGDZ0XjsGNRv9w/rs:fit:2048/fn:pinside_archive_261_3cfb0ddb1176/enc/E57oer3w54cncTMCln_R9CZ1uKl_c6N2fkuKP3tYJ2GgYtZ9MtBj8csprCN9UbllHD3YD6uT-8CHNvy4mSqkKTK6EmpGgc7H0E0jibxGCa2S0O8FCMrXqANl_wH8he3i.jpg
+              - img [ref=e221]
+            - link [ref=e223] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/2M8pkA5uMYpTUN3wRvWTnoJRaLcUkwBwaS0sGY34j_A/rs:fit:2048/fn:pinside_archive_261_065ad29de9de/enc/8UKPdX1oWkw9mM1GBCD0jm8tXnpI23WFvkNSjvtBYoSfDr_MA90vCaxkAy-xXfjh6srmTYlgpwMjOu3n7-7qqnll76p7gSnXzPR_GVbJVZgowjQPz8Rqg1ZmZoheVpUP.jpg
+              - img [ref=e224]
+          - paragraph [ref=e225]: Click on a flyer image for full size.
+        - generic [ref=e226]:
+          - heading "Price history" [level=2] [ref=e229]
+          - generic [ref=e235]:
+            - heading "Price estimate" [level=3] [ref=e236]
+            - paragraph [ref=e237]:
+              - text: This game
+              - link "has been listed" [ref=e238] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=261#results
+              - text: a total number of 42 times on the Pinside Marketplace, most recently on 2025-08-08.
+            - separator [ref=e239]
+            - paragraph [ref=e240]: In the past 2 years, we've seen it listed 8 times. The median asking price (trimmed median) was $10,750
+            - separator [ref=e241]
+            - paragraph [ref=e242]:
+              - text: »
+              - link "Find ads for this game" [ref=e243] [cursor=pointer]:
+                - /url: /pinball/machine/joust/market
+            - paragraph [ref=e244]:
+              - text: »
+              - link "View archived ads" [ref=e245] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=261
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]:
+              - heading "Pinside rating" [level=3] [ref=e249]
+              - paragraph [ref=e250]:
+                - strong [ref=e251]: This game has received 34 approved Pinsider ratings.
+                - text: 16 more approved ratings are needed to get a rating and for it to be eligible for the
+                - link "Pinside Pinball Top 100" [ref=e252] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: ranking.
+            - generic [ref=e253]:
+              - heading "Rating comments" [level=3] [ref=e254]
+              - paragraph [ref=e255]:
+                - text: There
+                - link "are 21 rating comments" [ref=e256] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/ratings
+                - text: for this game.
+          - generic [ref=e258]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e259]
+            - generic [ref=e262]:
+              - paragraph [ref=e265]:
+                - strong [ref=e266]: "61"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e269]:
+                - strong [ref=e270]: "253"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e273]:
+                - strong [ref=e274]: "13"
+                - text: public locations to play this machine.
+          - generic [ref=e276]:
+            - list:
+              - listitem [ref=e277]:
+                - link "Add your rating!" [ref=e278] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/ratings/edit?r=/pinball/machine/joust
+              - listitem [ref=e279]:
+                - link "Show all rating comments" [ref=e280] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/ratings
+          - generic [ref=e282]:
+            - list:
+              - listitem [ref=e283]:
+                - link "Log in to manage your collection and wishlist." [ref=e284] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e285]:
+                - link "Visit map!" [ref=e286] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/owners
+        - generic [ref=e289]:
+          - heading "Gallery - Featured images" [level=3] [ref=e290]
+          - paragraph
+          - list [ref=e291]:
+            - listitem [ref=e292]:
+              - link [ref=e293] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e294]
+            - listitem [ref=e295]:
+              - link [ref=e296] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e297]
+            - listitem [ref=e298]:
+              - link [ref=e299] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e300]
+            - listitem [ref=e301]:
+              - link [ref=e302] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e303]
+            - listitem [ref=e304]:
+              - link [ref=e305] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e306]
+            - listitem [ref=e307]:
+              - link [ref=e308] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e309]
+            - listitem [ref=e310]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e312]
+            - listitem [ref=e313]:
+              - link [ref=e314] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e315]
+            - listitem [ref=e316]:
+              - link [ref=e317] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e318]
+            - listitem [ref=e319]:
+              - link [ref=e320] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e321]
+            - listitem [ref=e322]:
+              - link [ref=e323] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e324]
+            - listitem [ref=e325]:
+              - link [ref=e326] [cursor=pointer]:
+                - /url: /pinball/machine/joust/gallery
+                - img [ref=e327]
+          - paragraph
+          - generic [ref=e328]:
+            - list:
+              - listitem [ref=e329]:
+                - link "Visit the gallery for all images!" [ref=e330] [cursor=pointer]:
+                  - /url: /pinball/machine/joust/gallery
+        - generic [ref=e332]:
+          - heading "Game-related shop items!" [level=3] [ref=e333]
+          - paragraph [ref=e334]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e335]: Joust
+            - text: .
+          - generic [ref=e336]:
+            - generic [ref=e338]:
+              - link [ref=e339] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/17740-williams-joust-pinball-machine-maintenance-tune-up-kit
+              - generic [ref=e340]: $ 49.99
+              - generic [ref=e341]:
+                - generic [ref=e342]: Cleaner
+                - link "Williams Joust Pinball Machine Maintenance Tune Up Kit" [ref=e344] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/17740-williams-joust-pinball-machine-maintenance-tune-up-kit
+                - generic [ref=e346]:
+                  - generic [ref=e347]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e350]:
+              - link [ref=e351] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1298-jk-pinball/04584-joust-keychain
+              - generic [ref=e352]: $ 25.00
+              - generic [ref=e353]:
+                - generic [ref=e354]: Various Other Swag
+                - link "Joust Keychain" [ref=e356] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1298-jk-pinball/04584-joust-keychain
+                - generic [ref=e358]:
+                  - generic [ref=e359]: 
+                  - text: JK Pinball
+            - generic [ref=e362]:
+              - link [ref=e363] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06233-rom-joust-sound
+              - generic [ref=e364]: $ 11.95
+              - generic [ref=e365]:
+                - generic [ref=e366]: Eproms
+                - link "ROM JOUST -SOUND" [ref=e368] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06233-rom-joust-sound
+                - generic [ref=e370]:
+                  - generic [ref=e371]: 
+                  - text: Pinballrom
+            - generic [ref=e374]:
+              - link [ref=e375] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1042-mircoplayfields/01770-joust-playfield
+              - generic [ref=e376]: $ 1,159.00
+              - generic [ref=e377]:
+                - generic [ref=e378]: Flipper Parts
+                - link "JOUST playfield" [ref=e380] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1042-mircoplayfields/01770-joust-playfield
+                - generic [ref=e382]:
+                  - generic [ref=e383]: 
+                  - text: Mircoplayfields
+            - generic [ref=e386]:
+              - link [ref=e387] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06232-rom-joust-cpu-
+              - generic [ref=e388]: $ 36.95
+              - generic [ref=e389]:
+                - generic [ref=e390]: Eproms
+                - link "ROM JOUST -CPU" [ref=e392] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06232-rom-joust-cpu-
+                - generic [ref=e394]:
+                  - generic [ref=e395]: 
+                  - text: Pinballrom
+            - generic [ref=e398]:
+              - link [ref=e399] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/17741-williams-joust-pinball-machine-rubber-ring-kit
+              - generic [ref=e400]: $ 25.99
+              - generic [ref=e401]:
+                - generic [ref=e402]: Rubber/Silicone
+                - link "Williams Joust Pinball Machine Rubber Ring Kit" [ref=e404] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/17741-williams-joust-pinball-machine-rubber-ring-kit
+                - generic [ref=e406]:
+                  - generic [ref=e407]: 
+                  - text: Patelrock Pinball
+        - generic [ref=e410]:
+          - heading "Market value" [level=3] [ref=e411]
+          - paragraph [ref=e412]:
+            - text: There are currently no ads for this game on the
+            - link "Marketplace" [ref=e413] [cursor=pointer]:
+              - /url: /pinball/market/classifieds
+            - text: .
+      - generic [ref=e415]:
+        - img [ref=e416]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e417]
+        - link " Support Pinside" [ref=e418] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e419]: 
+          - text: Support Pinside
+        - paragraph [ref=e420]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e421] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e424]:
+    - link [ref=e426] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e427]
+    - generic [ref=e428]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e429]:
+        - generic [ref=e430]: 
+        - text: Page rendered in 1.30446s
+      - generic [ref=e431]:
+        - generic [ref=e432]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e433] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e434]:
+        - link " Help" [ref=e435] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e436]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e437] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e438]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e439] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e440]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e441] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e442]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e443] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e444]: 
+          - text: Top

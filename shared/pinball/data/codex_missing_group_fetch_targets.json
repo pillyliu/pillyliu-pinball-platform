@@ -1,0 +1,1634 @@
+{
+  "generated_at": "2026-02-23T01:26:21.684Z",
+  "workbook": "Codex Pinball Library",
+  "spreadsheetId": "1ZzHHFvIsfIZv5ghd4vDXi7G99ILhbgPHk3Lg6SbJFMQ",
+  "total_unique_slugs": 193,
+  "items": [
+    {
+      "slug": "4-square",
+      "pinside_slug": "4-square",
+      "game": "4 Square",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1971"
+    },
+    {
+      "slug": "abba-voyage-collector-edition",
+      "pinside_slug": "abba-voyage-collector-edition",
+      "game": "ABBA",
+      "variant": null,
+      "manufacturer": "Pinball Brothers",
+      "year": "2024"
+    },
+    {
+      "slug": "abra-ca-dabra",
+      "pinside_slug": "abra-ca-dabra",
+      "game": "Abra Ca Dabra",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1975"
+    },
+    {
+      "slug": "addams-family-gold-special-collectors-edition",
+      "pinside_slug": "addams-family-gold-special-collectors-edition",
+      "game": "The Addams Family Gold",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1994"
+    },
+    {
+      "slug": "aerosmith-pro",
+      "pinside_slug": "aerosmith-pro",
+      "game": "Aerosmith",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2017"
+    },
+    {
+      "slug": "ali",
+      "pinside_slug": "ali",
+      "game": "Ali",
+      "variant": null,
+      "manufacturer": "Stern Electronics",
+      "year": "1980"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "pinside_slug": "alices-adventures-in-wonderland",
+      "game": "Alice's Adventures in Wonderland",
+      "variant": null,
+      "manufacturer": "Dutch Pinball",
+      "year": "2024"
+    },
+    {
+      "slug": "alien-ripley-version",
+      "pinside_slug": "alien-ripley-version",
+      "game": "Alien: Ellen Ripley Edition",
+      "variant": null,
+      "manufacturer": "Pinball Brothers",
+      "year": "2023"
+    },
+    {
+      "slug": "americas_most_haunted",
+      "pinside_slug": "americas_most_haunted",
+      "game": "America's Most Haunted",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2014"
+    },
+    {
+      "slug": "ap-galactic-tank-force-de",
+      "pinside_slug": "ap-galactic-tank-force-de",
+      "game": "Galactic Tank Force",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2023"
+    },
+    {
+      "slug": "attack-from-mars-remake-le",
+      "pinside_slug": "attack-from-mars-remake-le",
+      "game": "Attack From Mars",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1995"
+    },
+    {
+      "slug": "attack-from-mars-remake-special",
+      "pinside_slug": "attack-from-mars-remake-special",
+      "game": "Attack From Mars",
+      "variant": "Remake",
+      "manufacturer": "Chicago Gaming",
+      "year": "2017"
+    },
+    {
+      "slug": "austin-powers",
+      "pinside_slug": "austin-powers",
+      "game": "Austin Powers",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2001"
+    },
+    {
+      "slug": "avatar-battle-for-pandora-ce",
+      "pinside_slug": "avatar-battle-for-pandora-ce",
+      "game": "Avatar: The Battle for Pandora",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2024"
+    },
+    {
+      "slug": "avatar-le",
+      "pinside_slug": "avatar-le",
+      "game": "Avatar",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2010"
+    },
+    {
+      "slug": "bad-cats",
+      "pinside_slug": "bad-cats",
+      "game": "Bad Cats",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1989"
+    },
+    {
+      "slug": "barnyard",
+      "pinside_slug": "barnyard",
+      "game": "Barnyard",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2017"
+    },
+    {
+      "slug": "barracora",
+      "pinside_slug": "barracora",
+      "game": "Barracora",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1981"
+    },
+    {
+      "slug": "barry-os-bbq-challenge-classic",
+      "pinside_slug": "barry-os-bbq-challenge-classic",
+      "game": "Barry O's Barbecue Challenge",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2024"
+    },
+    {
+      "slug": "batman-66",
+      "pinside_slug": "batman-66",
+      "game": "Batman 66",
+      "variant": "Premium",
+      "manufacturer": "Stern",
+      "year": "2016"
+    },
+    {
+      "slug": "batman-the-dark-knight",
+      "pinside_slug": "batman-the-dark-knight",
+      "game": "Batman (The Dark Knight)",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2008"
+    },
+    {
+      "slug": "beetlejuice",
+      "pinside_slug": "beetlejuice",
+      "game": "Beetlejuice",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2025"
+    },
+    {
+      "slug": "big-brave",
+      "pinside_slug": "big-brave",
+      "game": "Big Brave",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1974"
+    },
+    {
+      "slug": "big-buck-hunter",
+      "pinside_slug": "big-buck-hunter",
+      "game": "Big Buck Hunter Pro",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2010"
+    },
+    {
+      "slug": "big-guns",
+      "pinside_slug": "big-guns",
+      "game": "Big Guns",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1987"
+    },
+    {
+      "slug": "big-house",
+      "pinside_slug": "big-house",
+      "game": "Big House",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1989"
+    },
+    {
+      "slug": "big-hurt",
+      "pinside_slug": "big-hurt",
+      "game": "Frank Thomas' Big Hurt",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1995"
+    },
+    {
+      "slug": "big-lebowski",
+      "pinside_slug": "big-lebowski",
+      "game": "The Big Lebowski",
+      "variant": null,
+      "manufacturer": "Dutch Pinball",
+      "year": "2015"
+    },
+    {
+      "slug": "black-hole",
+      "pinside_slug": "black-hole",
+      "game": "Black Hole",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1981"
+    },
+    {
+      "slug": "black-knight-2000",
+      "pinside_slug": "black-knight-2000",
+      "game": "Black Knight 2000",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1989"
+    },
+    {
+      "slug": "blackout",
+      "pinside_slug": "blackout",
+      "game": "Blackout",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1980"
+    },
+    {
+      "slug": "blue-chip",
+      "pinside_slug": "blue-chip",
+      "game": "Blue Chip",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1976"
+    },
+    {
+      "slug": "bobby-orrs-power-play",
+      "pinside_slug": "bobby-orrs-power-play",
+      "game": "Bobby Orr's Power Play",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1977"
+    },
+    {
+      "slug": "bram-stokers-dracula",
+      "pinside_slug": "bram-stokers-dracula",
+      "game": "Bram Stoker's Dracula",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1993"
+    },
+    {
+      "slug": "bugs-bunnys-birthday-ball",
+      "pinside_slug": "bugs-bunnys-birthday-ball",
+      "game": "Bugs Bunny's Birthday Ball",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1991"
+    },
+    {
+      "slug": "cannon_lagoon",
+      "pinside_slug": "cannon_lagoon",
+      "game": "Cannon Lagoon",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2017"
+    },
+    {
+      "slug": "centaur",
+      "pinside_slug": "centaur",
+      "game": "Centaur",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1981"
+    },
+    {
+      "slug": "cgc-cactus-canyon-classic",
+      "pinside_slug": "cgc-cactus-canyon-classic",
+      "game": "Cactus Canyon Remake",
+      "variant": null,
+      "manufacturer": "CGC",
+      "year": "2021"
+    },
+    {
+      "slug": "cgc-cactus-canyon-le",
+      "pinside_slug": "cgc-cactus-canyon-le",
+      "game": "Cactus Canyon",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1998"
+    },
+    {
+      "slug": "congo",
+      "pinside_slug": "congo",
+      "game": "Congo",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1995"
+    },
+    {
+      "slug": "corvette",
+      "pinside_slug": "corvette",
+      "game": "Corvette",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1994"
+    },
+    {
+      "slug": "cosmic-cart-racing",
+      "pinside_slug": "cosmic-cart-racing",
+      "game": "Cosmic Cart Racing",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2018"
+    },
+    {
+      "slug": "csi",
+      "pinside_slug": "csi",
+      "game": "CSI: Crime Scene Investigation",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2008"
+    },
+    {
+      "slug": "dale-jr",
+      "pinside_slug": "dale-jr",
+      "game": "Dale Jr.",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2007"
+    },
+    {
+      "slug": "dealers-choice",
+      "pinside_slug": "dealers-choice",
+      "game": "Dealer's Choice",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1974"
+    },
+    {
+      "slug": "demolition-man",
+      "pinside_slug": "demolition-man",
+      "game": "Demolition Man",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1994"
+    },
+    {
+      "slug": "dialed-in",
+      "pinside_slug": "dialed-in",
+      "game": "Dialed In!",
+      "variant": "LE",
+      "manufacturer": "Jersey Jack",
+      "year": "2017"
+    },
+    {
+      "slug": "dipsy-doodle",
+      "pinside_slug": "dipsy-doodle",
+      "game": "Dipsy Doodle",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1970"
+    },
+    {
+      "slug": "dominos-spectacular-pinball-adventure",
+      "pinside_slug": "dominos-spectacular-pinball-adventure",
+      "game": "Domino's Spectacular Pinball Adventure",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2016"
+    },
+    {
+      "slug": "dungeons-dragons-the-tyrants-eye-le",
+      "pinside_slug": "dungeons-dragons-the-tyrants-eye-le",
+      "game": "Dungeons & Dragons: The Tyrant's Eye",
+      "variant": "LE",
+      "manufacturer": "Stern",
+      "year": "2025"
+    },
+    {
+      "slug": "eight-ball",
+      "pinside_slug": "eight-ball",
+      "game": "Eight Ball",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1977"
+    },
+    {
+      "slug": "elton-john-pe",
+      "pinside_slug": "elton-john-pe",
+      "game": "Elton John",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2023"
+    },
+    {
+      "slug": "elviras-house-of-horrors-premium",
+      "pinside_slug": "elviras-house-of-horrors-premium",
+      "game": "Elvira's House of Horrors",
+      "variant": "Premium",
+      "manufacturer": "Stern",
+      "year": "2019"
+    },
+    {
+      "slug": "elvis",
+      "pinside_slug": "elvis",
+      "game": "Elvis",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2004"
+    },
+    {
+      "slug": "family-guy",
+      "pinside_slug": "family-guy",
+      "game": "Family Guy",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2007"
+    },
+    {
+      "slug": "final-resistance",
+      "pinside_slug": "final-resistance",
+      "game": "Final Resistance",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2023"
+    },
+    {
+      "slug": "fire",
+      "pinside_slug": "fire",
+      "game": "Fire!",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1987"
+    },
+    {
+      "slug": "fireball-bally",
+      "pinside_slug": "fireball-bally",
+      "game": "Fireball",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1971"
+    },
+    {
+      "slug": "flight-2000",
+      "pinside_slug": "flight-2000",
+      "game": "Flight 2000",
+      "variant": null,
+      "manufacturer": "Stern Electronics",
+      "year": "1980"
+    },
+    {
+      "slug": "flintstones",
+      "pinside_slug": "flintstones",
+      "game": "The Flintstones",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1994"
+    },
+    {
+      "slug": "freedom",
+      "pinside_slug": "freedom",
+      "game": "Freedom",
+      "variant": "SS",
+      "manufacturer": "Bally",
+      "year": "1976"
+    },
+    {
+      "slug": "funhouse",
+      "pinside_slug": "funhouse",
+      "game": "Funhouse",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1990"
+    },
+    {
+      "slug": "future-spa",
+      "pinside_slug": "future-spa",
+      "game": "Future Spa",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1979"
+    },
+    {
+      "slug": "galaxy",
+      "pinside_slug": "galaxy",
+      "game": "Galaxy",
+      "variant": null,
+      "manufacturer": "Stern Electronics",
+      "year": "1980"
+    },
+    {
+      "slug": "ghostbusters-le",
+      "pinside_slug": "ghostbusters-le",
+      "game": "Ghostbusters",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2016"
+    },
+    {
+      "slug": "golden-arrow",
+      "pinside_slug": "golden-arrow",
+      "game": "Golden Arrow",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1977"
+    },
+    {
+      "slug": "gottlieb-300",
+      "pinside_slug": "gottlieb-300",
+      "game": "300",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1975"
+    },
+    {
+      "slug": "grand-slam-rally",
+      "pinside_slug": "grand-slam-rally",
+      "game": "Grand Slam Rally",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2018"
+    },
+    {
+      "slug": "guns-n-roses",
+      "pinside_slug": "guns-n-roses",
+      "game": "Guns 'N Roses",
+      "variant": null,
+      "manufacturer": "Data East",
+      "year": "1994"
+    },
+    {
+      "slug": "halloween",
+      "pinside_slug": "halloween",
+      "game": "Halloween",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2021"
+    },
+    {
+      "slug": "happy-clown",
+      "pinside_slug": "happy-clown",
+      "game": "Happy Clown",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1964"
+    },
+    {
+      "slug": "harley-davidson-stern",
+      "pinside_slug": "harley-davidson-stern",
+      "game": "Harley-Davidson",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "1999"
+    },
+    {
+      "slug": "harry-potter-wizard-edition",
+      "pinside_slug": "harry-potter-wizard-edition",
+      "game": "Harry Potter",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2025"
+    },
+    {
+      "slug": "haunted-house",
+      "pinside_slug": "haunted-house",
+      "game": "Haunted House",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1982"
+    },
+    {
+      "slug": "heads-up",
+      "pinside_slug": "heads-up",
+      "game": "Heads Up!",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2021"
+    },
+    {
+      "slug": "heist",
+      "pinside_slug": "heist",
+      "game": "Heist",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2020"
+    },
+    {
+      "slug": "high-roller-casino",
+      "pinside_slug": "high-roller-casino",
+      "game": "High Roller Casino",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2001"
+    },
+    {
+      "slug": "hook",
+      "pinside_slug": "hook",
+      "game": "Hook",
+      "variant": null,
+      "manufacturer": "Data East",
+      "year": "1992"
+    },
+    {
+      "slug": "hot-wheels-american-pinball",
+      "pinside_slug": "hot-wheels-american-pinball",
+      "game": "Hot Wheels",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2020"
+    },
+    {
+      "slug": "houdini",
+      "pinside_slug": "houdini",
+      "game": "Houdini: Master of Mystery",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2017"
+    },
+    {
+      "slug": "indiana-jones-stern",
+      "pinside_slug": "indiana-jones-stern",
+      "game": "Indiana Jones",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2008"
+    },
+    {
+      "slug": "indiana-jones-the-pinball-adventure",
+      "pinside_slug": "indiana-jones-the-pinball-adventure",
+      "game": "Indiana Jones: The Pinball Adventure",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1993"
+    },
+    {
+      "slug": "iron-maiden-legacy-of-the-beast-pro",
+      "pinside_slug": "iron-maiden-legacy-of-the-beast-pro",
+      "game": "Iron Maiden: Legacy of the Beast",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2018"
+    },
+    {
+      "slug": "iron-man",
+      "pinside_slug": "iron-man",
+      "game": "Iron Man",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2010"
+    },
+    {
+      "slug": "iron-man-ve",
+      "pinside_slug": "iron-man-ve",
+      "game": "Iron Man",
+      "variant": "Vault Edition",
+      "manufacturer": "Stern",
+      "year": "2014"
+    },
+    {
+      "slug": "jack-in-the-box",
+      "pinside_slug": "jack-in-the-box",
+      "game": "Jack in the Box",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1973"
+    },
+    {
+      "slug": "jacks-to-open",
+      "pinside_slug": "jacks-to-open",
+      "game": "Jacks to Open",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1984"
+    },
+    {
+      "slug": "jjp-godfather-ce",
+      "pinside_slug": "jjp-godfather-ce",
+      "game": "The Godfather",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2023"
+    },
+    {
+      "slug": "jjp-pirates-of-the-caribbean",
+      "pinside_slug": "jjp-pirates-of-the-caribbean",
+      "game": "Pirates of the Caribbean",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2018"
+    },
+    {
+      "slug": "jjp-toy-story-4-le",
+      "pinside_slug": "jjp-toy-story-4-le",
+      "game": "Toy Story 4",
+      "variant": "LE",
+      "manufacturer": "Jersey Jack",
+      "year": "2022"
+    },
+    {
+      "slug": "john-wick-le",
+      "pinside_slug": "john-wick-le",
+      "game": "John Wick",
+      "variant": "LE",
+      "manufacturer": "Stern",
+      "year": "2024"
+    },
+    {
+      "slug": "johnny-mnemonic",
+      "pinside_slug": "johnny-mnemonic",
+      "game": "Johnny Mnemonic",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1995"
+    },
+    {
+      "slug": "joker-poker",
+      "pinside_slug": "joker-poker",
+      "game": "Joker Poker",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1978"
+    },
+    {
+      "slug": "jokerz",
+      "pinside_slug": "jokerz",
+      "game": "Jokerz",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1988"
+    },
+    {
+      "slug": "joust",
+      "pinside_slug": "joust",
+      "game": "Joust",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1983"
+    },
+    {
+      "slug": "jungle-lord",
+      "pinside_slug": "jungle-lord",
+      "game": "Jungle Lord",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1981"
+    },
+    {
+      "slug": "jungle-queen",
+      "pinside_slug": "jungle-queen",
+      "game": "Jungle Queen",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1977"
+    },
+    {
+      "slug": "jurassic-park-limited-edition",
+      "pinside_slug": "jurassic-park-limited-edition",
+      "game": "Jurassic Park",
+      "variant": "LE",
+      "manufacturer": "Stern",
+      "year": "2019"
+    },
+    {
+      "slug": "king-pin-gottlieb",
+      "pinside_slug": "king-pin-gottlieb",
+      "game": "King Pin",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1973"
+    },
+    {
+      "slug": "kiss",
+      "pinside_slug": "kiss",
+      "game": "Kiss",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1978"
+    },
+    {
+      "slug": "knockout",
+      "pinside_slug": "knockout",
+      "game": "Knockout",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1974"
+    },
+    {
+      "slug": "laser-ball",
+      "pinside_slug": "laser-ball",
+      "game": "Laser Ball",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1979"
+    },
+    {
+      "slug": "legends-of-valhalla-ap",
+      "pinside_slug": "legends-of-valhalla-ap",
+      "game": "Legends of Valhalla (Classic)",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2021"
+    },
+    {
+      "slug": "lethal-weapon-3",
+      "pinside_slug": "lethal-weapon-3",
+      "game": "Lethal Weapon 3",
+      "variant": null,
+      "manufacturer": "Data East",
+      "year": "1992"
+    },
+    {
+      "slug": "lexy_lightspeed",
+      "pinside_slug": "lexy_lightspeed",
+      "game": "Lexy Lightspeed - Escape from Earth",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2017"
+    },
+    {
+      "slug": "lexy-lightspeed-secret-agent-showdown",
+      "pinside_slug": "lexy-lightspeed-secret-agent-showdown",
+      "game": "Lexy Lightspeed - Secret Agent Showdown",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2017"
+    },
+    {
+      "slug": "lightning",
+      "pinside_slug": "lightning",
+      "game": "Lightning",
+      "variant": null,
+      "manufacturer": "Stern Electronics",
+      "year": "1981"
+    },
+    {
+      "slug": "lord-of-the-rings",
+      "pinside_slug": "lord-of-the-rings",
+      "game": "Lord of the Rings",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2003"
+    },
+    {
+      "slug": "lucky-ace-williams",
+      "pinside_slug": "lucky-ace-williams",
+      "game": "Lucky Ace",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1974"
+    },
+    {
+      "slug": "mad-world",
+      "pinside_slug": "mad-world",
+      "game": "Mad World",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1964"
+    },
+    {
+      "slug": "medieval-madness-merlin-edition",
+      "pinside_slug": "medieval-madness-merlin-edition",
+      "game": "Medieval Madness (Merlin Edition)",
+      "variant": null,
+      "manufacturer": "CGC",
+      "year": "2025"
+    },
+    {
+      "slug": "medieval-madness-remake-standard",
+      "pinside_slug": "medieval-madness-remake-standard",
+      "game": "Medieval Madness Remake",
+      "variant": null,
+      "manufacturer": "CGC",
+      "year": "2015"
+    },
+    {
+      "slug": "merlins-arcade",
+      "pinside_slug": "merlins-arcade",
+      "game": "Merlin's Arcade",
+      "variant": null,
+      "manufacturer": "Turner",
+      "year": "2025"
+    },
+    {
+      "slug": "metallica-pro",
+      "pinside_slug": "metallica-pro",
+      "game": "Metallica",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2013"
+    },
+    {
+      "slug": "monopoly",
+      "pinside_slug": "monopoly",
+      "game": "Monopoly",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2001"
+    },
+    {
+      "slug": "monte-carlo",
+      "pinside_slug": "monte-carlo",
+      "game": "Monte Carlo",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1987"
+    },
+    {
+      "slug": "mousin-around",
+      "pinside_slug": "mousin-around",
+      "game": "Mousin' Around!",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1989"
+    },
+    {
+      "slug": "mustang_le",
+      "pinside_slug": "mustang_le",
+      "game": "Mustang",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2014"
+    },
+    {
+      "slug": "mystic",
+      "pinside_slug": "mystic",
+      "game": "Mystic",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1979"
+    },
+    {
+      "slug": "nba",
+      "pinside_slug": "nba",
+      "game": "NBA",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2009"
+    },
+    {
+      "slug": "nfl-football",
+      "pinside_slug": "nfl-football",
+      "game": "NFL",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2001"
+    },
+    {
+      "slug": "no-good-gofers",
+      "pinside_slug": "no-good-gofers",
+      "game": "No Good Gofers",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1997"
+    },
+    {
+      "slug": "oktoberfest",
+      "pinside_slug": "oktoberfest",
+      "game": "Oktoberfest",
+      "variant": null,
+      "manufacturer": "American Pinball",
+      "year": "2018"
+    },
+    {
+      "slug": "outer-space",
+      "pinside_slug": "outer-space",
+      "game": "Outer Space",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1972"
+    },
+    {
+      "slug": "party-animal",
+      "pinside_slug": "party-animal",
+      "game": "Party Animal",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1987"
+    },
+    {
+      "slug": "pinball-brothers-alien-standard",
+      "pinside_slug": "pinball-brothers-alien-standard",
+      "game": "Alien",
+      "variant": null,
+      "manufacturer": "Pinball Brothers",
+      "year": "2020"
+    },
+    {
+      "slug": "pirates-of-the-caribbean",
+      "pinside_slug": "pirates-of-the-caribbean",
+      "game": "Pirates of the Caribbean",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2006"
+    },
+    {
+      "slug": "playboy-stern",
+      "pinside_slug": "playboy-stern",
+      "game": "Playboy",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2002"
+    },
+    {
+      "slug": "pokemon-premium",
+      "pinside_slug": "pokemon-premium",
+      "game": "Pokémon",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2026"
+    },
+    {
+      "slug": "police-force",
+      "pinside_slug": "police-force",
+      "game": "Police Force",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1989"
+    },
+    {
+      "slug": "portal",
+      "pinside_slug": "portal",
+      "game": "Portal",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2025"
+    },
+    {
+      "slug": "predator",
+      "pinside_slug": "predator",
+      "game": "Predator",
+      "variant": null,
+      "manufacturer": "Pinball Brothers",
+      "year": "2025"
+    },
+    {
+      "slug": "rick-and-morty-blood-suckers-edition",
+      "pinside_slug": "rick-and-morty-blood-suckers-edition",
+      "game": "Rick and Morty (Blood Sucker Edition)",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2020"
+    },
+    {
+      "slug": "ripleys-believe-it-or-not",
+      "pinside_slug": "ripleys-believe-it-or-not",
+      "game": "Ripley's Believe It or Not!",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2004"
+    },
+    {
+      "slug": "river-boat",
+      "pinside_slug": "river-boat",
+      "game": "River Boat",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1964"
+    },
+    {
+      "slug": "road-show-red-and-teds",
+      "pinside_slug": "road-show-red-and-teds",
+      "game": "Red & Ted's Road Show",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1994"
+    },
+    {
+      "slug": "rob-zombies-spookshow-international",
+      "pinside_slug": "rob-zombies-spookshow-international",
+      "game": "Rob Zombie's Spookshow International",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2016"
+    },
+    {
+      "slug": "rocs",
+      "pinside_slug": "rocs",
+      "game": "ROCs",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2020"
+    },
+    {
+      "slug": "rollercoaster-tycoon",
+      "pinside_slug": "rollercoaster-tycoon",
+      "game": "RollerCoaster Tycoon",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2002"
+    },
+    {
+      "slug": "rollergames",
+      "pinside_slug": "rollergames",
+      "game": "Rollergames",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1990"
+    },
+    {
+      "slug": "rolling-stones",
+      "pinside_slug": "rolling-stones",
+      "game": "Rolling Stones",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1979"
+    },
+    {
+      "slug": "royal-rumble-wwf",
+      "pinside_slug": "royal-rumble-wwf",
+      "game": "WWF Royal Rumble",
+      "variant": null,
+      "manufacturer": "Data East",
+      "year": "1994"
+    },
+    {
+      "slug": "rush-le",
+      "pinside_slug": "rush-le",
+      "game": "Rush",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2022"
+    },
+    {
+      "slug": "safe-cracker",
+      "pinside_slug": "safe-cracker",
+      "game": "Safe Cracker",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1996"
+    },
+    {
+      "slug": "scuba",
+      "pinside_slug": "scuba",
+      "game": "Scuba",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1970"
+    },
+    {
+      "slug": "sharkeys-shootout",
+      "pinside_slug": "sharkeys-shootout",
+      "game": "Sharkey's Shootout",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2000"
+    },
+    {
+      "slug": "shoot-n-scoot",
+      "pinside_slug": "shoot-n-scoot",
+      "game": "Shoot 'n Scoot",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2020"
+    },
+    {
+      "slug": "shrek",
+      "pinside_slug": "shrek",
+      "game": "Shrek",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2008"
+    },
+    {
+      "slug": "sorcerers-apprentice",
+      "pinside_slug": "sorcerers-apprentice",
+      "game": "Sorcerer's Apprentice",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2021"
+    },
+    {
+      "slug": "space-shuttle",
+      "pinside_slug": "space-shuttle",
+      "game": "Space Shuttle",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1984"
+    },
+    {
+      "slug": "space-station",
+      "pinside_slug": "space-station",
+      "game": "Space Station",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1987"
+    },
+    {
+      "slug": "spiderman",
+      "pinside_slug": "spiderman",
+      "game": "Spider-Man",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2007"
+    },
+    {
+      "slug": "spirit-of-76",
+      "pinside_slug": "spirit-of-76",
+      "game": "The Spirit of 76",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1975"
+    },
+    {
+      "slug": "spooky-pinball-allice-cooper-nightmare-castle",
+      "pinside_slug": "spooky-pinball-allice-cooper-nightmare-castle",
+      "game": "Alice Cooper's Nightmare Castle",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2018"
+    },
+    {
+      "slug": "star-wars-pro",
+      "pinside_slug": "star-wars-pro",
+      "game": "Star Wars",
+      "variant": "Premium",
+      "manufacturer": "Stern",
+      "year": "2017"
+    },
+    {
+      "slug": "stars",
+      "pinside_slug": "stars",
+      "game": "Stars",
+      "variant": null,
+      "manufacturer": "Stern Electronics",
+      "year": "1978"
+    },
+    {
+      "slug": "stern-24",
+      "pinside_slug": "stern-24",
+      "game": "24",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2009"
+    },
+    {
+      "slug": "stern-guardians-of-the-galaxy",
+      "pinside_slug": "stern-guardians-of-the-galaxy",
+      "game": "Guardians of the Galaxy",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2017"
+    },
+    {
+      "slug": "stern-led-zeppelin-pro",
+      "pinside_slug": "stern-led-zeppelin-pro",
+      "game": "Led Zeppelin",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2020"
+    },
+    {
+      "slug": "stranger-things-le",
+      "pinside_slug": "stranger-things-le",
+      "game": "Stranger Things",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2019"
+    },
+    {
+      "slug": "striker-xtreme",
+      "pinside_slug": "striker-xtreme",
+      "game": "Striker Xtreme",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2000"
+    },
+    {
+      "slug": "sunshine",
+      "pinside_slug": "sunshine",
+      "game": "Sunshine",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1958"
+    },
+    {
+      "slug": "super-mario-bros",
+      "pinside_slug": "super-mario-bros",
+      "game": "Super Mario Bros.",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1992"
+    },
+    {
+      "slug": "surf-champ",
+      "pinside_slug": "surf-champ",
+      "game": "Surf Champ",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1976"
+    },
+    {
+      "slug": "swords-of-fury",
+      "pinside_slug": "swords-of-fury",
+      "game": "Swords Of Fury",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1988"
+    },
+    {
+      "slug": "target-pool",
+      "pinside_slug": "target-pool",
+      "game": "Target Pool",
+      "variant": null,
+      "manufacturer": "Gottlieb",
+      "year": "1969"
+    },
+    {
+      "slug": "taxi",
+      "pinside_slug": "taxi",
+      "game": "Taxi",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1988"
+    },
+    {
+      "slug": "teenage-mutant-ninja-turtles-le",
+      "pinside_slug": "teenage-mutant-ninja-turtles-le",
+      "game": "Teenage Mutant Ninja Turtles",
+      "variant": "LE",
+      "manufacturer": "Stern",
+      "year": "2020"
+    },
+    {
+      "slug": "the_walking_dead",
+      "pinside_slug": "the_walking_dead",
+      "game": "The Walking Dead",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2014"
+    },
+    {
+      "slug": "the-addams-family",
+      "pinside_slug": "the-addams-family",
+      "game": "The Addams Family",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1992"
+    },
+    {
+      "slug": "the-hobbit",
+      "pinside_slug": "the-hobbit",
+      "game": "The Hobbit",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2016"
+    },
+    {
+      "slug": "the-princess-bride",
+      "pinside_slug": "the-princess-bride",
+      "game": "The Princess Bride",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2024"
+    },
+    {
+      "slug": "the-simpsons-pinball-party",
+      "pinside_slug": "the-simpsons-pinball-party",
+      "game": "The Simpsons Pinball Party",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2003"
+    },
+    {
+      "slug": "the-uncanny-x-men-le",
+      "pinside_slug": "the-uncanny-x-men-le",
+      "game": "The Uncanny X-Men",
+      "variant": "LE",
+      "manufacturer": "Stern",
+      "year": "2024"
+    },
+    {
+      "slug": "time-fantasy",
+      "pinside_slug": "time-fantasy",
+      "game": "Time Fantasy",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1983"
+    },
+    {
+      "slug": "time-warp",
+      "pinside_slug": "time-warp",
+      "game": "Time Warp",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1979"
+    },
+    {
+      "slug": "tommy-pinball-wizard",
+      "pinside_slug": "tommy-pinball-wizard",
+      "game": "The Who's Tommy Pinball Wizard",
+      "variant": null,
+      "manufacturer": "Data East",
+      "year": "1994"
+    },
+    {
+      "slug": "tp-ninja-eclipse",
+      "pinside_slug": "tp-ninja-eclipse",
+      "game": "Ninja Eclipse (First Edition)",
+      "variant": null,
+      "manufacturer": "Turner",
+      "year": "2024"
+    },
+    {
+      "slug": "tri-zone",
+      "pinside_slug": "tri-zone",
+      "game": "Tri Zone",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1979"
+    },
+    {
+      "slug": "truck-stop",
+      "pinside_slug": "truck-stop",
+      "game": "Truck Stop",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1988"
+    },
+    {
+      "slug": "twilight-zone",
+      "pinside_slug": "twilight-zone",
+      "game": "Twilight Zone",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1993"
+    },
+    {
+      "slug": "ultraman",
+      "pinside_slug": "ultraman",
+      "game": "Ultraman: Kaiju Rumble",
+      "variant": null,
+      "manufacturer": "Spooky",
+      "year": "2021"
+    },
+    {
+      "slug": "weird-als-museum-of-natural-hilarity",
+      "pinside_slug": "weird-als-museum-of-natural-hilarity",
+      "game": "Weird Al's Museum of Natural Hilarity",
+      "variant": null,
+      "manufacturer": "Multimorphic",
+      "year": "2022"
+    },
+    {
+      "slug": "wheel-of-fortune",
+      "pinside_slug": "wheel-of-fortune",
+      "game": "Wheel of Fortune",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2007"
+    },
+    {
+      "slug": "white-water",
+      "pinside_slug": "white-water",
+      "game": "White Water",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1993"
+    },
+    {
+      "slug": "willy-wonka-and-the-chocolate-factory-standard",
+      "pinside_slug": "willy-wonka-and-the-chocolate-factory-standard",
+      "game": "Willy Wonka & The Chocolate Factory",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2019"
+    },
+    {
+      "slug": "winchester-mystery-house",
+      "pinside_slug": "winchester-mystery-house",
+      "game": "Winchester Mystery House",
+      "variant": null,
+      "manufacturer": "Barrels of Fun",
+      "year": "2025"
+    },
+    {
+      "slug": "winner-williams",
+      "pinside_slug": "winner-williams",
+      "game": "Winner",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1972"
+    },
+    {
+      "slug": "wizard-of-oz-ecle",
+      "pinside_slug": "wizard-of-oz-ecle",
+      "game": "The Wizard of Oz",
+      "variant": null,
+      "manufacturer": "Jersey Jack",
+      "year": "2013"
+    },
+    {
+      "slug": "world-cup",
+      "pinside_slug": "world-cup",
+      "game": "World Cup",
+      "variant": null,
+      "manufacturer": "Williams",
+      "year": "1978"
+    },
+    {
+      "slug": "world-poker-tour",
+      "pinside_slug": "world-poker-tour",
+      "game": "World Poker Tour",
+      "variant": null,
+      "manufacturer": "Stern",
+      "year": "2006"
+    },
+    {
+      "slug": "x-men",
+      "pinside_slug": "x-men",
+      "game": "X-Men",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": "2012"
+    },
+    {
+      "slug": "xs-and-os",
+      "pinside_slug": "xs-and-os",
+      "game": "X's & O's",
+      "variant": null,
+      "manufacturer": "Bally",
+      "year": "1984"
+    }
+  ],
+  "per_tab": [
+    {
+      "title": "Crazy Quarters Arcade",
+      "missing_with_slug": 0,
+      "unique_targets_added": 0
+    },
+    {
+      "title": "Clubhouse Arcade",
+      "missing_with_slug": 67,
+      "unique_targets_added": 67
+    },
+    {
+      "title": "Sparks Pinball Museum & Arcade",
+      "missing_with_slug": 55,
+      "unique_targets_added": 47
+    },
+    {
+      "title": "Pinball Pete's East Lansing",
+      "missing_with_slug": 13,
+      "unique_targets_added": 9
+    },
+    {
+      "title": "The Avenue Cafe",
+      "missing_with_slug": 0,
+      "unique_targets_added": 0
+    },
+    {
+      "title": "RLM Amusements",
+      "missing_with_slug": 0,
+      "unique_targets_added": 0
+    },
+    {
+      "title": "Modern Sterns",
+      "missing_with_slug": 36,
+      "unique_targets_added": 22
+    },
+    {
+      "title": "JJP",
+      "missing_with_slug": 10,
+      "unique_targets_added": 7
+    },
+    {
+      "title": "Spooky",
+      "missing_with_slug": 8,
+      "unique_targets_added": 8
+    },
+    {
+      "title": "Barrels of Fun",
+      "missing_with_slug": 1,
+      "unique_targets_added": 1
+    },
+    {
+      "title": "Turner",
+      "missing_with_slug": 2,
+      "unique_targets_added": 2
+    },
+    {
+      "title": "American Pinball",
+      "missing_with_slug": 6,
+      "unique_targets_added": 6
+    },
+    {
+      "title": "Multimorphic",
+      "missing_with_slug": 15,
+      "unique_targets_added": 15
+    },
+    {
+      "title": "CGC",
+      "missing_with_slug": 4,
+      "unique_targets_added": 3
+    },
+    {
+      "title": "Pinball Brothers",
+      "missing_with_slug": 4,
+      "unique_targets_added": 4
+    },
+    {
+      "title": "Dutch Pinball",
+      "missing_with_slug": 2,
+      "unique_targets_added": 2
+    }
+  ]
+}

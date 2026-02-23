@@ -1,0 +1,909 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Godzilla (Premium)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: pinballphotos" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Godzilla (Premium)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Godzilla (Premium)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/godzilla-premium/gallery
+            - img "Godzilla (Premium)" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/stern
+              - img [ref=e126]
+            - heading "Stern" [level=2] [ref=e127]
+            - heading "Godzilla (Premium)" [level=1] [ref=e128]
+            - generic [ref=e129]:
+              - text: "Extra on the premium model:"
+              - text: Dynamic mechanical motorized collapsing skyscraper building bash toy diverts path of shots to intersecting ramps based on floor position
+              - text: Vertical upkicking skyway ramp capable of physically locking 3 pinballs on roof of building
+              - text: Chrome right helix wireform ramp return from left subway halfpipe ramp or right cityscape ramp through building diverter based on floor position
+              - text: Chrome left wireform ramp return from left subway halfpipe ramp or right cityscape ramp through building diverter based on floor position
+              - text: Animated breakaway bridge ramp can collapse and drop pinballs onto the playfield or divert pinballs back to the flipper
+              - text: Mechagodzilla motorized rotating 3 bank of stand-up targets reveal a spinning target and jump ramp
+              - text: Magnetic ball catching custom molded Mechagodzilla sculpture
+              - text: Custom molded Godzilla sculpture
+            - generic [ref=e130]:
+              - heading "Tags:" [level=3] [ref=e131]
+              - link "aerosmith" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=aerosmith
+              - link "BLUE-OYSTER-CULT" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=blue-oyster-cult
+              - link "COMEDY" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=comedy
+              - link "GODZILLA" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/machine?tags=godzilla
+              - link "monsters" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/machine?tags=monsters
+              - link "edit tags" [ref=e138] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=2987
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: "This title is part of group: \"Godzilla\""
+          - generic [ref=e143]:
+            - link "Godzilla (Pro)" [ref=e144] [cursor=pointer]:
+              - /url: /pinball/machine/godzilla-pro/
+              - img [ref=e145]
+              - generic [ref=e147]:
+                - text: Godzilla
+                - text: (Pro)
+            - link "Godzilla (Premium)" [ref=e148] [cursor=pointer]:
+              - /url: /pinball/machine/godzilla-premium/
+              - img [ref=e149]
+              - generic [ref=e151]:
+                - text: Godzilla
+                - text: (Premium)
+            - link "Godzilla (Limited Edition)" [ref=e152] [cursor=pointer]:
+              - /url: /pinball/machine/godzilla-limited-edition/
+              - img [ref=e153]
+              - generic [ref=e155]:
+                - text: Godzilla
+                - text: (Limited Edition)
+            - link "Godzilla (70th Anniversary Premium)" [ref=e156] [cursor=pointer]:
+              - /url: /pinball/machine/stern-godzilla-70th-anniversary-premium/
+              - img [ref=e157]
+              - generic [ref=e159]:
+                - text: Godzilla
+                - text: (70th Anniversary Premium)
+        - generic [ref=e160]:
+          - generic:
+            - generic [ref=e162]:
+              - heading "Design team" [level=3] [ref=e163]
+              - generic [ref=e164]:
+                - generic [ref=e165]:
+                  - text: "Game Design:"
+                  - link "Keith Elwin" [ref=e166] [cursor=pointer]:
+                    - /url: /pinball/machine/keith-elwin
+                - generic [ref=e167]:
+                  - text: "Engineering/mechanics:"
+                  - link "Harrison Drake" [ref=e168] [cursor=pointer]:
+                    - /url: /pinball/machine/harrison-drake
+                - generic [ref=e169]:
+                  - text: "Software:"
+                  - link "Brett Z Rubin" [ref=e170] [cursor=pointer]:
+                    - /url: /pinball/machine/brett-z-rubin
+                  - link "Corey Stup" [ref=e171] [cursor=pointer]:
+                    - /url: /pinball/machine/corey-stup
+                  - link "Dean Grover" [ref=e172] [cursor=pointer]:
+                    - /url: /pinball/machine/dean-grover
+                  - link "Mike Kyzivat" [ref=e173] [cursor=pointer]:
+                    - /url: /pinball/machine/mike-kyzivat
+                  - link "Rick Naegele" [ref=e174] [cursor=pointer]:
+                    - /url: /pinball/machine/rick-naegele
+                - generic [ref=e175]:
+                  - text: "Artwork:"
+                  - link "Zombie Yeti" [ref=e176] [cursor=pointer]:
+                    - /url: /pinball/machine/zombie-yeti
+                - generic [ref=e177]:
+                  - text: "Animation:"
+                  - link "Chuck Ernst" [ref=e178] [cursor=pointer]:
+                    - /url: /pinball/machine/chuck-ernst
+                  - link "Danai Kittivathana" [ref=e179] [cursor=pointer]:
+                    - /url: /pinball/machine/danai-kittivathana
+                  - link "Olivia Jensen" [ref=e180] [cursor=pointer]:
+                    - /url: /pinball/machine/olivia-jensen
+                - generic [ref=e181]:
+                  - text: "Sound:"
+                  - link "Jerry Thompson" [ref=e182] [cursor=pointer]:
+                    - /url: /pinball/machine/jerry-thompson
+                - generic [ref=e183]:
+                  - text: "Callouts:"
+                  - link "Rick Zieff" [ref=e184] [cursor=pointer]:
+                    - /url: /pinball/machine/rick-zieff
+            - generic [ref=e186]:
+              - heading "Game details" [level=3] [ref=e187]
+              - generic [ref=e188]:
+                - generic [ref=e189]: PinsideID
+                - generic [ref=e190]: "2987"
+              - generic [ref=e191]:
+                - generic [ref=e192]: Manufactured by
+                - link "Stern Pinball, Inc." [ref=e194] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=105#results
+              - generic [ref=e195]:
+                - generic [ref=e196]: Date
+                - generic [ref=e197]: September 2021
+              - generic [ref=e198]:
+                - generic [ref=e199]: Type
+                - img [ref=e200]
+                - text: Solid state
+              - generic [ref=e201]:
+                - generic [ref=e202]: Generation
+                - link "Stern SPIKE 2 System" [ref=e204] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=63#results
+              - generic [ref=e205]:
+                - generic [ref=e206]: Release
+                - generic [ref=e207]: In production
+              - generic [ref=e208]:
+                - generic [ref=e209]: MSRP (September 2021)
+                - generic [ref=e210]: $8999
+              - generic [ref=e211]:
+                - generic [ref=e212]: Estimated value
+                - generic [ref=e213]: $7860 - $9140
+              - generic [ref=e214]:
+                - generic [ref=e215]: Cabinet
+                - generic [ref=e216]: Normal
+              - generic [ref=e217]:
+                - generic [ref=e218]: Display type
+                - generic [ref=e219]: LCD Display
+              - generic [ref=e220]:
+                - generic [ref=e221]: Players
+                - generic [ref=e222]: "4"
+              - generic [ref=e223]:
+                - generic [ref=e224]: Flippers
+                - generic [ref=e225]: "3"
+              - generic [ref=e226]:
+                - generic [ref=e227]: Ramps
+                - generic [ref=e228]: "3"
+              - generic [ref=e229]:
+                - generic [ref=e230]: Multiball
+                - generic [ref=e231]: "6"
+              - generic [ref=e232]:
+                - generic [ref=e233]: IPDB
+                - link "#6842" [ref=e235] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=6842
+              - generic [ref=e236]:
+                - generic [ref=e237]: Latest software
+                - generic [ref=e238]: V1.13.0 - October 10, 2025
+          - generic [ref=e239]:
+            - list:
+              - listitem [ref=e240]:
+                - link "View all details" [ref=e241] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/details
+              - listitem [ref=e242]:
+                - link "Edit game details" [ref=e243] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=2987
+        - generic [ref=e246]:
+          - heading "Promotional" [level=3] [ref=e247]
+          - link [ref=e250] [cursor=pointer]:
+            - /url: https://imgproxy.pinside.com/U3gvlMeML6LVsRbhYhbZ_zl6zH_ebM1GQKu4F13ffKc/rs:fit:2048/fn:pinside_archive_2987_9bb26d0627a8/enc/wTLZLoTdDKV-7ZnouLL_SZ5OTOw3XxsMN39B8hLTEeRsnJVvtz_mnyKWSs35-CXs6EJBrhunhWaunyKEKxUBHSttBLSBFB3i4AcVgUiyjqKx30E9t0Ir29LSnDOjMbeu.pdf
+            - img [ref=e251]
+          - paragraph [ref=e252]: Click on a flyer image for full size.
+        - generic [ref=e253]:
+          - heading "Price history" [level=2] [ref=e256]
+          - generic [ref=e262]:
+            - heading "Price estimate" [level=3] [ref=e263]
+            - paragraph [ref=e264]:
+              - text: This game
+              - link "has been listed" [ref=e265] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2987#results
+              - text: a total number of 917 times on the Pinside Marketplace, most recently on 2026-02-17.
+            - separator [ref=e266]
+            - paragraph [ref=e267]: This past year, we've seen it listed 202 times. The median asking price (trimmed median) was $8,500
+            - separator [ref=e268]
+            - paragraph [ref=e269]:
+              - text: »
+              - link "Find ads for this game" [ref=e270] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/market
+            - paragraph [ref=e271]:
+              - text: »
+              - link "View archived ads" [ref=e272] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2987
+        - generic [ref=e273]:
+          - generic [ref=e275]:
+            - heading "Game quote" [level=3] [ref=e276]
+            - table [ref=e278]:
+              - rowgroup [ref=e279]:
+                - row "\"It’s not long now, and the building will give way.\"" [ref=e280]:
+                  - cell "\"It’s not long now, and the building will give way.\"" [ref=e281]
+          - generic [ref=e282]:
+            - list:
+              - listitem [ref=e283]:
+                - link "Show another!" [ref=e284] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - generic [ref=e287]:
+              - heading "Pinside rating" [level=3] [ref=e288]
+              - paragraph [ref=e289]:
+                - text: This game has received
+                - strong [ref=e290]: 1287 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e292]: 9.140 out of 10.
+              - generic [ref=e295]: "9.14"
+            - generic [ref=e307]:
+              - heading "Top 100 ranking" [level=3] [ref=e308]
+              - paragraph [ref=e309]:
+                - text: This game ranks 1st in the game group "Godzilla". The group itself
+                - strong [ref=e310]:
+                  - text: "ranks #1 in the"
+                  - link "Pinside Pinball Top 100" [ref=e311] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e312]:
+              - heading "Rating comments" [level=3] [ref=e313]
+              - paragraph [ref=e314]:
+                - text: There
+                - link "are 580 rating comments" [ref=e315] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/ratings
+                - text: for this game.
+          - generic [ref=e317]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e318]
+            - generic [ref=e321]:
+              - paragraph [ref=e324]:
+                - strong [ref=e325]: "2847"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e328]:
+                - strong [ref=e329]: "1215"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e332]:
+                - strong [ref=e333]: "390"
+                - text: public locations to play this machine.
+          - generic [ref=e335]:
+            - list:
+              - listitem [ref=e336]:
+                - link "Add your rating!" [ref=e337] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/ratings/edit?r=/pinball/machine/godzilla-premium
+              - listitem [ref=e338]:
+                - link "Show all rating comments" [ref=e339] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/ratings
+          - generic [ref=e341]:
+            - list:
+              - listitem [ref=e342]:
+                - link "Log in to manage your collection and wishlist." [ref=e343] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e344]:
+                - link "Visit map!" [ref=e345] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/owners
+        - generic [ref=e348]:
+          - heading "Gallery - Featured images" [level=3] [ref=e349]
+          - paragraph
+          - list [ref=e350]:
+            - listitem [ref=e351]:
+              - link [ref=e352] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e353]
+            - listitem [ref=e354]:
+              - link [ref=e355] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e356]
+            - listitem [ref=e357]:
+              - link [ref=e358] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e359]
+            - listitem [ref=e360]:
+              - link [ref=e361] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e362]
+            - listitem [ref=e363]:
+              - link [ref=e364] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e365]
+            - listitem [ref=e366]:
+              - link [ref=e367] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e368]
+            - listitem [ref=e369]:
+              - link [ref=e370] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e371]
+            - listitem [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e374]
+            - listitem [ref=e375]:
+              - link [ref=e376] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e377]
+            - listitem [ref=e378]:
+              - link [ref=e379] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e380]
+            - listitem [ref=e381]:
+              - link [ref=e382] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e383]
+            - listitem [ref=e384]:
+              - link [ref=e385] [cursor=pointer]:
+                - /url: /pinball/machine/godzilla-premium/gallery
+                - img [ref=e386]
+          - paragraph
+          - generic [ref=e387]:
+            - list:
+              - listitem [ref=e388]:
+                - link "Visit the gallery for all images!" [ref=e389] [cursor=pointer]:
+                  - /url: /pinball/machine/godzilla-premium/gallery
+        - generic [ref=e391]:
+          - heading "Game-related shop items!" [level=3] [ref=e392]
+          - paragraph [ref=e393]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e394]: Godzilla (Premium)
+            - text: .
+          - generic [ref=e395]:
+            - generic [ref=e397]:
+              - link [ref=e398] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1437-performance-pinball/07845-godzilla-bridge-playfield-jack-combo-free-insert-set
+              - generic [ref=e399]: $ 135.00
+              - generic [ref=e400]:
+                - generic [ref=e401]: Playfield - Toys/Add-ons
+                - generic [ref=e402]:
+                  - link "Godzilla Bridge + Playfield Jack Combo + Free insert set" [ref=e403] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1437-performance-pinball/07845-godzilla-bridge-playfield-jack-combo-free-insert-set
+                  - text: Showcase
+                - generic [ref=e405]:
+                  - generic [ref=e406]: 
+                  - text: Performance Pinball
+            - generic [ref=e409]:
+              - generic [ref=e410]: Featured!
+              - link [ref=e411] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1437-performance-pinball/07228-godzilla-premium-le-bridge-mod
+              - generic [ref=e412]: $ 85.00
+              - generic [ref=e413]:
+                - generic [ref=e414]: Playfield - Toys/Add-ons
+                - generic [ref=e415]:
+                  - link "Godzilla Premium / LE Bridge Mod" [ref=e416] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1437-performance-pinball/07228-godzilla-premium-le-bridge-mod
+                  - text: Featured
+                - generic [ref=e418]:
+                  - generic [ref=e419]: 
+                  - text: Performance Pinball
+            - generic [ref=e422]:
+              - link [ref=e423] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1018-pingraffix-pinside-shop/11682-godzilla-atomic-powerbladez-animated-art-blades
+              - generic [ref=e424]: $ 355.99
+              - generic [ref=e425]:
+                - generic [ref=e426]: Cabinet - Armor And Blades
+                - link "Godzilla Atomic PowerBladez - Animated Art Blades" [ref=e428] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1018-pingraffix-pinside-shop/11682-godzilla-atomic-powerbladez-animated-art-blades
+                - generic [ref=e430]:
+                  - generic [ref=e431]: 
+                  - text: PinGraffix Pinside Shop
+            - generic [ref=e434]:
+              - link [ref=e435] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1338-pino-pinball-mods-shop/08054-mechagodzilla-shield-spinner-mod-for-premle
+              - generic [ref=e436]: € 57.00
+              - generic [ref=e437]:
+                - generic [ref=e438]: Playfield - Toys/Add-ons
+                - link "MECHAGODZILLA SHIELD SPINNER MOD FOR PREM/LE" [ref=e440] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1338-pino-pinball-mods-shop/08054-mechagodzilla-shield-spinner-mod-for-premle
+                - generic [ref=e442]:
+                  - generic [ref=e443]: 
+                  - text: Pino Pinball Mods Shop
+            - generic [ref=e446]:
+              - link [ref=e447] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1684-pinball-stuff/16112-gallery-wrapped-or-framed-godzilla-70th-playfield-canvas
+              - generic [ref=e448]: "From: $ 109.00"
+              - generic [ref=e449]:
+                - generic [ref=e450]: Gameroom - Decorations
+                - link "Gallery Wrapped or Framed Godzilla 70th Playfield Canvas" [ref=e452] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1684-pinball-stuff/16112-gallery-wrapped-or-framed-godzilla-70th-playfield-canvas
+                - generic [ref=e454]:
+                  - generic [ref=e455]: 
+                  - text: Pinball Stuff
+            - generic [ref=e458]:
+              - link [ref=e459] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1472-crcades/16749-godzilla-70th-magna-grab-shooter-rod-and-plate-set-crcades
+              - generic [ref=e460]: $ 219.95
+              - generic [ref=e461]:
+                - generic [ref=e462]: Cabinet - Shooter Rods
+                - generic [ref=e463]:
+                  - link "GODZILLA 70th MAGNA GRAB Shooter Rod and Plate Set - CRCades" [ref=e464] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1472-crcades/16749-godzilla-70th-magna-grab-shooter-rod-and-plate-set-crcades
+                  - text: Pre-order!
+                - generic [ref=e466]:
+                  - generic [ref=e467]: 
+                  - text: CRCades
+            - generic [ref=e470]:
+              - link [ref=e471] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1618-dr-pinball/13433-godzilla-70th-speaker-inserts-v2-black-inset-
+              - generic [ref=e472]: $ 22.00
+              - generic [ref=e473]:
+                - generic [ref=e474]: Lighting - Other
+                - link "Godzilla 70th Speaker Inserts V2 Black Inset" [ref=e476] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1618-dr-pinball/13433-godzilla-70th-speaker-inserts-v2-black-inset-
+                - generic [ref=e478]:
+                  - generic [ref=e479]: 
+                  - text: Dr Pinball
+            - generic [ref=e482]:
+              - link [ref=e483] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1390-kindashirty/13588-godzilla-pintee
+              - generic [ref=e484]: $ 30.00
+              - generic [ref=e485]:
+                - generic [ref=e486]: Apparel - Unisex
+                - link "Godzilla PinTee" [ref=e488] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1390-kindashirty/13588-godzilla-pintee
+                - generic [ref=e490]:
+                  - generic [ref=e491]: 
+                  - text: KindaShirty
+            - generic [ref=e494]:
+              - link [ref=e495] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1505-duke-pinball/11688-godzilla-japanese-70th-anniversary-glass-cover-
+              - generic [ref=e496]: $ 50.00
+              - generic [ref=e497]:
+                - generic [ref=e498]: Playfield - Protection
+                - link "Godzilla Japanese 70th Anniversary Glass Cover" [ref=e500] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1505-duke-pinball/11688-godzilla-japanese-70th-anniversary-glass-cover-
+                - generic [ref=e502]:
+                  - generic [ref=e503]: 
+                  - text: Duke Pinball
+            - generic [ref=e506]:
+              - link [ref=e507] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1505-duke-pinball/14223-godzilla-70th-rubber-backed-glassdust-cover
+              - generic [ref=e508]: $ 85.00
+              - generic [ref=e509]:
+                - generic [ref=e510]: Playfield - Protection
+                - generic [ref=e511]:
+                  - link "Godzilla 70th RUBBER Backed Glass/Dust Cover" [ref=e512] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1505-duke-pinball/14223-godzilla-70th-rubber-backed-glassdust-cover
+                  - text: Pre-order!
+                - generic [ref=e514]:
+                  - generic [ref=e515]: 
+                  - text: Duke Pinball
+          - paragraph [ref=e518]:
+            - text: »
+            - link "View all 270 parts for this game on its Shops page" [ref=e519] [cursor=pointer]:
+              - /url: /pinball/shops/games/godzilla-premium
+        - generic [ref=e521]:
+          - heading "Market value" [level=3] [ref=e522]
+          - paragraph [ref=e523]:
+            - text: There are currently 14 ads for this game on our Market place. Showing the first 12 ads,
+            - link "click here to see all ads" [ref=e524] [cursor=pointer]:
+              - /url: /pinball/market/classifieds?s=1&ad_machine_keys%5B%5D=2987&ad_what%5B%5D=machine&ad_wantedforsale%5B%5D=forsale#results
+            - text: .
+          - generic [ref=e525]:
+            - generic [ref=e527]:
+              - link [ref=e528] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208001
+              - generic [ref=e530]:
+                - generic [ref=e531]: 
+                - text: 9,999
+              - generic [ref=e532]:
+                - generic [ref=e533]: Machine - For Sale
+                - generic [ref=e534]:
+                  - 'link "For Sale: Godzilla Premium with Upgrades & Mods" [ref=e535] [cursor=pointer]':
+                    - /url: /pinball/market/classifieds/ad/208001
+                  - text: Pending
+                - generic [ref=e536]:
+                  - generic [ref=e537]:
+                    - img [ref=e538]
+                    - text: Albany, NY
+                  - generic [ref=e539]:
+                    - generic [ref=e540]: 
+                    - link "MiniPinHead" [ref=e541] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/minipinhead/market
+                    - generic [ref=e542]: 
+            - generic [ref=e544]:
+              - link [ref=e545] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/207473
+              - generic [ref=e546]:
+                - generic [ref=e547]: 
+                - text: 8,500 (Firm)
+              - generic [ref=e548]:
+                - generic [ref=e549]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e551] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/207473
+                - generic [ref=e552]:
+                  - generic [ref=e553]:
+                    - img [ref=e554]
+                    - text: Flemington, MO
+                  - generic [ref=e555]:
+                    - generic [ref=e556]: 
+                    - link "hsh247" [ref=e557] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/hsh247/market
+            - generic [ref=e559]:
+              - link [ref=e560] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209668
+              - generic [ref=e562]:
+                - generic [ref=e563]: 
+                - text: 8,250
+              - generic [ref=e564]:
+                - generic [ref=e565]: Machine - For Sale
+                - generic [ref=e566]:
+                  - link "Godzilla (Premium)" [ref=e567] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/209668
+                  - text: Pending
+                - generic [ref=e568]:
+                  - generic [ref=e569]:
+                    - img [ref=e570]
+                    - text: Harrisonburg, VA
+                  - generic [ref=e571]:
+                    - generic [ref=e572]: 
+                    - link "salimus78" [ref=e573] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/salimus78/market
+                    - generic [ref=e574]: 
+            - generic [ref=e576]:
+              - link [ref=e577] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209156
+              - generic [ref=e578]:
+                - text: Trade±
+                - generic [ref=e579]: 
+                - text: 9,499 (OBO)
+              - generic [ref=e580]:
+                - generic [ref=e581]: Machine - For Trade
+                - link "Loaded HUO Godzilla (Premium)" [ref=e583] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209156
+                - generic [ref=e584]:
+                  - generic [ref=e585]:
+                    - img [ref=e586]
+                    - text: Wake Forest, NC
+                  - generic [ref=e587]:
+                    - generic [ref=e588]: 
+                    - link "DannyRetro" [ref=e589] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/dannyretro/market
+                    - generic [ref=e590]: 
+                  - generic [ref=e592]: 
+            - generic [ref=e594]:
+              - link [ref=e595] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209569
+              - generic [ref=e596]:
+                - generic [ref=e597]: 
+                - text: 9,250 (OBO)
+              - generic [ref=e598]:
+                - generic [ref=e599]: Machine - For Sale
+                - link "Godzilla (Premium) + Topper" [ref=e601] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209569
+                - generic [ref=e602]:
+                  - generic [ref=e603]:
+                    - img [ref=e604]
+                    - text: Winter Garden, FL
+                  - generic [ref=e605]:
+                    - generic [ref=e606]: 
+                    - link "Squireg33" [ref=e607] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/squireg33/market
+                    - generic [ref=e608]: 
+            - generic [ref=e610]:
+              - link [ref=e611] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209426
+              - generic [ref=e612]:
+                - generic [ref=e613]: 
+                - text: 9,750
+              - generic [ref=e614]:
+                - generic [ref=e615]: Machine - For Sale
+                - link "Godzilla (Premium) with topper and premium mods" [ref=e617] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209426
+                - generic [ref=e618]:
+                  - generic [ref=e619]:
+                    - img [ref=e620]
+                    - text: Wolcott, CT
+                  - generic [ref=e621]:
+                    - generic [ref=e622]: 
+                    - link "MikeyPins" [ref=e623] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/mikeypins/market
+                    - generic [ref=e624]: 
+                  - generic [ref=e626]: 
+            - generic [ref=e628]:
+              - link [ref=e629] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209346
+              - generic [ref=e630]:
+                - generic [ref=e631]: 
+                - text: 8,600
+              - generic [ref=e632]:
+                - generic [ref=e633]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e635] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209346
+                - generic [ref=e636]:
+                  - generic [ref=e637]:
+                    - img [ref=e638]
+                    - text: New Castle, CO
+                  - generic [ref=e639]:
+                    - generic [ref=e640]: 
+                    - link "BrokenMachines" [ref=e641] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/brokenmachines/market
+            - generic [ref=e643]:
+              - link [ref=e644] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/192719
+              - generic [ref=e645]:
+                - generic [ref=e646]: 
+                - text: 9,499
+              - generic [ref=e647]:
+                - generic [ref=e648]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e650] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/192719
+                - generic [ref=e651]:
+                  - generic [ref=e652]:
+                    - img [ref=e653]
+                    - text: Philadelphia, PA
+                  - generic [ref=e654]:
+                    - generic [ref=e655]: 
+                    - link "Smith1369" [ref=e656] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/smith1369/market
+                    - generic [ref=e657]: 
+                  - generic [ref=e659]: 
+            - generic [ref=e661]:
+              - link [ref=e662] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/206840
+              - generic [ref=e663]:
+                - generic [ref=e664]: 
+                - text: 9,000 (OBO)
+              - generic [ref=e665]:
+                - generic [ref=e666]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e668] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/206840
+                - generic [ref=e669]:
+                  - generic [ref=e670]:
+                    - img [ref=e671]
+                    - text: Fairfax, VA
+                  - generic [ref=e672]:
+                    - generic [ref=e673]: 
+                    - link "JD58337" [ref=e674] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/jd58337/market
+                    - generic [ref=e675]: 
+            - generic [ref=e677]:
+              - link [ref=e678] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208503
+              - generic [ref=e679]:
+                - generic [ref=e680]: 
+                - text: 8,500 (OBO)
+              - generic [ref=e681]:
+                - generic [ref=e682]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e684] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208503
+                - generic [ref=e685]:
+                  - generic [ref=e686]:
+                    - img [ref=e687]
+                    - text: Greenville, NC
+                  - generic [ref=e688]:
+                    - generic [ref=e689]: 
+                    - link "wolfj0022" [ref=e690] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/wolfj0022/market
+            - generic [ref=e692]:
+              - link [ref=e693] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208456
+              - generic [ref=e694]:
+                - text: Trade±
+                - generic [ref=e695]: 
+                - text: 8,600 (OBO)
+              - generic [ref=e696]:
+                - generic [ref=e697]: Machine - For Trade
+                - link "Godzilla (Premium)" [ref=e699] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208456
+                - generic [ref=e700]:
+                  - generic [ref=e701]:
+                    - img [ref=e702]
+                    - text: Charleston, WV
+                  - generic [ref=e703]:
+                    - generic [ref=e704]: 
+                    - link "Maxdavee" [ref=e705] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/maxdavee/market
+            - generic [ref=e707]:
+              - link [ref=e708] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/203341
+              - generic [ref=e709]:
+                - generic [ref=e710]: 
+                - text: 9,000 (OBO)
+              - generic [ref=e711]:
+                - generic [ref=e712]: Machine - For Sale
+                - link "Godzilla (Premium)" [ref=e714] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/203341
+                - generic [ref=e715]:
+                  - generic [ref=e716]:
+                    - img [ref=e717]
+                    - text: Denver, NC
+                  - generic [ref=e718]:
+                    - generic [ref=e719]: 
+                    - link "Scuba-Kraken" [ref=e720] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/scuba-kraken/market
+      - generic [ref=e722]:
+        - img [ref=e723]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e724]
+        - link " Support Pinside" [ref=e725] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e726]: 
+          - text: Support Pinside
+        - paragraph [ref=e727]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e728] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e731]:
+    - link [ref=e733] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e734]
+    - generic [ref=e735]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e736]:
+        - generic [ref=e737]: 
+        - text: Page rendered in 2.00122s
+      - generic [ref=e738]:
+        - generic [ref=e739]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e740] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e741]:
+        - link " Help" [ref=e742] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e743]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e744] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e745]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e746] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e747]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e748] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e749]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e750] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e751]: 
+          - text: Top

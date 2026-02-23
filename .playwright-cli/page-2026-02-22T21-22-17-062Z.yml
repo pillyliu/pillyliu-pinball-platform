@@ -1,0 +1,573 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Monster Bash (Special Edition)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Monster Bash (Special Edition)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Monster Bash (Special Edition)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+            - img "Monster Bash (Special Edition)" [ref=e121]
+          - generic [ref=e123]:
+            - heading "Chicago Gaming Co." [level=2] [ref=e124]
+            - heading "Monster Bash (Special Edition)" [level=1] [ref=e125]
+            - generic [ref=e126]:
+              - text: Monster Bash is the highly anticipated third game in Chicago Gaming's series of remakes of the greatest Bally and Williams pinball machines.
+              - text: The Special Edition has interactive RGB GI lighting, LED lit moving targets and popper, HD color upgrade, XL display, enhanced sound system, and improved playfield monsters.
+            - generic [ref=e127]:
+              - heading "Tags:" [level=3] [ref=e128]
+              - link "monsters" [ref=e129] [cursor=pointer]:
+                - /url: /pinball/machine?tags=monsters
+              - link "edit tags" [ref=e131] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=2700
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: "This title is part of group: \"Monster Bash\""
+          - generic [ref=e136]:
+            - link "Monster Bash" [ref=e137] [cursor=pointer]:
+              - /url: /pinball/machine/monster-bash/
+              - img [ref=e138]
+              - generic [ref=e139]: Monster Bash
+            - link "Monster Bash (Classic Edition)" [ref=e140] [cursor=pointer]:
+              - /url: /pinball/machine/monster-bash-standard-edition/
+              - img [ref=e141]
+              - generic [ref=e143]:
+                - text: Monster Bash
+                - text: (Classic Edition)
+            - link "Monster Bash (Limited Edition)" [ref=e144] [cursor=pointer]:
+              - /url: /pinball/machine/monster-bash-limited-edition/
+              - img [ref=e145]
+              - generic [ref=e147]:
+                - text: Monster Bash
+                - text: (Limited Edition)
+            - link "Monster Bash (Special Edition)" [ref=e148] [cursor=pointer]:
+              - /url: /pinball/machine/monster-bash-collectors-edition/
+              - img [ref=e149]
+              - generic [ref=e151]:
+                - text: Monster Bash
+                - text: (Special Edition)
+        - generic [ref=e152]:
+          - generic:
+            - generic [ref=e154]:
+              - heading "Design team" [level=3] [ref=e155]
+              - generic [ref=e156]:
+                - generic [ref=e157]:
+                  - text: "Game Design:"
+                  - link "George Gomez" [ref=e158] [cursor=pointer]:
+                    - /url: /pinball/machine/george-gomez
+                - generic [ref=e159]:
+                  - text: "Artwork:"
+                  - link "Kevin O'Connor" [ref=e160] [cursor=pointer]:
+                    - /url: /pinball/machine/kevin-o-connor
+            - generic [ref=e162]:
+              - heading "Game details" [level=3] [ref=e163]
+              - generic [ref=e164]:
+                - generic [ref=e165]: PinsideID
+                - generic [ref=e166]: "2700"
+              - generic [ref=e167]:
+                - generic [ref=e168]: Manufactured by
+                - link "Chicago Gaming Company" [ref=e170] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=159#results
+              - generic [ref=e171]:
+                - generic [ref=e172]: Date
+                - generic [ref=e173]: October 2018
+              - generic [ref=e174]:
+                - generic [ref=e175]: Type
+                - img [ref=e176]
+                - text: Solid state
+              - generic [ref=e177]:
+                - generic [ref=e178]: Estimated value
+                - generic [ref=e179]: $8320 - $9680
+              - generic [ref=e180]:
+                - generic [ref=e181]: Cabinet
+                - generic [ref=e182]: Normal
+              - generic [ref=e183]:
+                - generic [ref=e184]: Display type
+                - generic [ref=e185]: Dot Matrix
+              - generic [ref=e186]:
+                - generic [ref=e187]: Players
+                - generic [ref=e188]: "4"
+              - generic [ref=e189]:
+                - generic [ref=e190]: Flippers
+                - generic [ref=e191]: "2"
+              - generic [ref=e192]:
+                - generic [ref=e193]: Ramps
+                - generic [ref=e194]: "3"
+              - generic [ref=e195]:
+                - generic [ref=e196]: Multiball
+                - generic [ref=e197]: "4"
+              - generic [ref=e198]:
+                - generic [ref=e199]: IPDB
+                - link "#6571" [ref=e201] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=6571
+              - generic [ref=e202]:
+                - generic [ref=e203]: Latest software
+                - generic [ref=e204]: V1.0.2
+          - generic [ref=e205]:
+            - list:
+              - listitem [ref=e206]:
+                - link "View all details" [ref=e207] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/details
+              - listitem [ref=e208]:
+                - link "Edit game details" [ref=e209] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=2700
+        - generic [ref=e212]:
+          - heading "Promotional" [level=3] [ref=e213]
+          - link [ref=e216] [cursor=pointer]:
+            - /url: https://imgproxy.pinside.com/YKBS500BfjHmeUHN4vWwrSK8SCzwJrZ_7vhFQnR3biU/rs:fit:2048/fn:pinside_archive_2700_7d7eff667266/enc/MuzC8X8t-Pw8_6rPTJeegf7vubzAGun6ecqhM1ya1Jxs14y1GkRaahufR7vGybRWzDy3hdKydVPFU8vyKPLLKWWipeFA_9no3vwTFt40ma8FvqQZBNYVaCBjRs03YAm4.png
+            - img [ref=e217]
+          - paragraph [ref=e218]: Click on a flyer image for full size.
+        - generic [ref=e219]:
+          - heading "Price history" [level=2] [ref=e222]
+          - generic [ref=e228]:
+            - heading "Price estimate" [level=3] [ref=e229]
+            - paragraph [ref=e230]:
+              - text: This game
+              - link "has been listed" [ref=e231] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2700#results
+              - text: a total number of 204 times on the Pinside Marketplace, most recently on 2026-02-08.
+            - separator [ref=e232]
+            - paragraph [ref=e233]: This past year, we've seen it listed 7 times. The median asking price (trimmed median) was $9,000
+            - separator [ref=e234]
+            - paragraph [ref=e235]:
+              - text: »
+              - link "Find ads for this game" [ref=e236] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition/market
+            - paragraph [ref=e237]:
+              - text: »
+              - link "View archived ads" [ref=e238] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2700
+        - generic [ref=e239]:
+          - generic [ref=e241]:
+            - heading "Game quote" [level=3] [ref=e242]
+            - table [ref=e244]:
+              - rowgroup [ref=e245]:
+                - row "\"Get ready to rock!\"" [ref=e246]:
+                  - cell "\"Get ready to rock!\"" [ref=e247]
+          - generic [ref=e248]:
+            - list:
+              - listitem [ref=e249]:
+                - link "Show another!" [ref=e250] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - heading "Pinside rating" [level=3] [ref=e254]
+              - paragraph [ref=e255]:
+                - text: This game has received
+                - strong [ref=e256]: 205 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e258]: 8.674 out of 10.
+              - generic [ref=e261]: "8.674"
+            - generic [ref=e273]:
+              - heading "Top 100 ranking" [level=3] [ref=e274]
+              - paragraph [ref=e275]:
+                - text: This game ranks 3rd in the game group "Monster Bash". The group itself
+                - strong [ref=e276]:
+                  - text: "ranks #10 in the"
+                  - link "Pinside Pinball Top 100" [ref=e277] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e278]:
+              - heading "Rating comments" [level=3] [ref=e279]
+              - paragraph [ref=e280]:
+                - text: There
+                - link "are 88 rating comments" [ref=e281] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/ratings
+                - text: for this game.
+          - generic [ref=e283]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e284]
+            - generic [ref=e287]:
+              - paragraph [ref=e290]:
+                - strong [ref=e291]: "236"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e294]:
+                - strong [ref=e295]: "542"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e298]:
+                - strong [ref=e299]: "40"
+                - text: public locations to play this machine.
+          - generic [ref=e301]:
+            - list:
+              - listitem [ref=e302]:
+                - link "Add your rating!" [ref=e303] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/ratings/edit?r=/pinball/machine/monster-bash-collectors-edition
+              - listitem [ref=e304]:
+                - link "Show all rating comments" [ref=e305] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/ratings
+          - generic [ref=e307]:
+            - list:
+              - listitem [ref=e308]:
+                - link "Log in to manage your collection and wishlist." [ref=e309] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e310]:
+                - link "Visit map!" [ref=e311] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/owners
+        - generic [ref=e314]:
+          - heading "Gallery - Featured images" [level=3] [ref=e315]
+          - paragraph
+          - list [ref=e316]:
+            - listitem [ref=e317]:
+              - link [ref=e318] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+                - img [ref=e319]
+            - listitem [ref=e320]:
+              - link [ref=e321] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+                - img [ref=e322]
+            - listitem [ref=e323]:
+              - link [ref=e324] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+                - img [ref=e325]
+            - listitem [ref=e326]:
+              - link [ref=e327] [cursor=pointer]:
+                - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+                - img [ref=e328]
+          - paragraph
+          - generic [ref=e329]:
+            - list:
+              - listitem [ref=e330]:
+                - link "Visit the gallery for all images!" [ref=e331] [cursor=pointer]:
+                  - /url: /pinball/machine/monster-bash-collectors-edition/gallery
+        - generic [ref=e333]:
+          - heading "Game-related shop items!" [level=3] [ref=e334]
+          - paragraph [ref=e335]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e336]: Monster Bash (Special Edition)
+            - text: .
+          - generic [ref=e337]:
+            - generic [ref=e339]:
+              - link [ref=e340] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1083-matt-s-basement-arcade/00919-monster-bash-pinball-rom-upgrade
+              - generic [ref=e341]: "From: $ 12.99"
+              - generic [ref=e342]:
+                - generic [ref=e343]: Eproms
+                - link "Monster Bash Pinball - Rom Upgrade" [ref=e345] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1083-matt-s-basement-arcade/00919-monster-bash-pinball-rom-upgrade
+                - generic [ref=e347]:
+                  - generic [ref=e348]: 
+                  - text: Matt's Basement Arcade
+            - generic [ref=e351]:
+              - link [ref=e352] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1516-hit-the-lights/10723-pinsignal-for-monster-bash-cgc-
+              - generic [ref=e353]: € 99.00
+              - generic [ref=e354]:
+                - generic [ref=e355]: Lighting - Under Cabinet
+                - link "Pinsignal for Monster Bash (CGC)" [ref=e357] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1516-hit-the-lights/10723-pinsignal-for-monster-bash-cgc-
+                - generic [ref=e359]:
+                  - generic [ref=e360]: 
+                  - text: Hit the Lights
+            - generic [ref=e363]:
+              - link [ref=e364] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11534-monster-bash-lighted-magnetic-hinges-covers-b1220
+              - generic [ref=e365]: $ 139.99
+              - generic [ref=e366]:
+                - generic [ref=e367]: Lighting - Other
+                - link "Monster Bash Lighted Magnetic Hinges Covers B1220" [ref=e369] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11534-monster-bash-lighted-magnetic-hinges-covers-b1220
+                - generic [ref=e371]:
+                  - generic [ref=e372]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e375]:
+              - link [ref=e376] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1136-pinball-photos-llc/04498-professional-pinball-art-print-monster-bash
+              - generic [ref=e377]: "From: $ 55.00"
+              - generic [ref=e378]:
+                - generic [ref=e379]: Gameroom - Decorations
+                - link "Professional Pinball Art Print - Monster Bash" [ref=e381] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1136-pinball-photos-llc/04498-professional-pinball-art-print-monster-bash
+                - generic [ref=e383]:
+                  - generic [ref=e384]: 
+                  - text: Pinball Photos LLC
+            - generic [ref=e387]:
+              - link [ref=e388] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15514-williams-monster-bash-pinball-machine-rubber-ring-kit
+              - generic [ref=e389]: $ 22.99
+              - generic [ref=e390]:
+                - generic [ref=e391]: Rubber/Silicone
+                - link "Williams Monster Bash Pinball Machine Rubber Ring Kit" [ref=e393] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15514-williams-monster-bash-pinball-machine-rubber-ring-kit
+                - generic [ref=e395]:
+                  - generic [ref=e396]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e399]:
+              - link [ref=e400] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11533-monster-bash-lighted-magnetic-hinges-covers-b1215
+              - generic [ref=e401]: $ 139.99
+              - generic [ref=e402]:
+                - generic [ref=e403]: Lighting - Other
+                - link "Monster Bash Lighted Magnetic Hinges Covers B1215" [ref=e405] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11533-monster-bash-lighted-magnetic-hinges-covers-b1215
+                - generic [ref=e407]:
+                  - generic [ref=e408]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e411]:
+              - link [ref=e412] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1028-lee-s-parts/00284-mb-frankenstein-lights
+              - generic [ref=e413]: $ 46.99
+              - generic [ref=e414]:
+                - generic [ref=e415]: Lighting - Interactive
+                - link "MB Frankenstein Lights" [ref=e417] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1028-lee-s-parts/00284-mb-frankenstein-lights
+                - generic [ref=e419]:
+                  - generic [ref=e420]: 
+                  - text: Lee's Parts
+            - generic [ref=e423]:
+              - link [ref=e424] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11535-monster-bash-lighted-magnetic-hinges-covers-b1225
+              - generic [ref=e425]: $ 139.99
+              - generic [ref=e426]:
+                - generic [ref=e427]: Lighting - Other
+                - link "Monster Bash Lighted Magnetic Hinges Covers B1225" [ref=e429] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11535-monster-bash-lighted-magnetic-hinges-covers-b1225
+                - generic [ref=e431]:
+                  - generic [ref=e432]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e435]:
+              - link [ref=e436] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11537-monster-bash-lighted-magnetic-hinges-covers-b1241
+              - generic [ref=e437]: $ 139.99
+              - generic [ref=e438]:
+                - generic [ref=e439]: Lighting - Other
+                - link "Monster Bash Lighted Magnetic Hinges Covers B1241" [ref=e441] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11537-monster-bash-lighted-magnetic-hinges-covers-b1241
+                - generic [ref=e443]:
+                  - generic [ref=e444]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e447]:
+              - link [ref=e448] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1350-custom-pinball/15343-light-up-coffin-mod
+              - generic [ref=e449]: € 70.00
+              - generic [ref=e450]:
+                - generic [ref=e451]: Playfield - Toys/Add-ons
+                - link "Light-Up Coffin Mod" [ref=e453] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1350-custom-pinball/15343-light-up-coffin-mod
+                - generic [ref=e455]:
+                  - generic [ref=e456]: 
+                  - text: Custom Pinball
+          - paragraph [ref=e459]:
+            - text: »
+            - link "View all 43 parts for this game on its Shops page" [ref=e460] [cursor=pointer]:
+              - /url: /pinball/shops/games/monster-bash-collectors-edition
+        - generic [ref=e462]:
+          - heading "Market value" [level=3] [ref=e463]
+          - paragraph [ref=e464]:
+            - text: There are currently no ads for this game on the
+            - link "Marketplace" [ref=e465] [cursor=pointer]:
+              - /url: /pinball/market/classifieds
+            - text: .
+      - generic [ref=e467]:
+        - img [ref=e468]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e469]
+        - link " Support Pinside" [ref=e470] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e471]: 
+          - text: Support Pinside
+        - paragraph [ref=e472]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e473] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e476]:
+    - link [ref=e478] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e479]
+    - generic [ref=e480]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e481]:
+        - generic [ref=e482]: 
+        - text: Page rendered in 1.46745s
+      - generic [ref=e483]:
+        - generic [ref=e484]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e485] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e486]:
+        - link " Help" [ref=e487] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e488]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e489] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e490]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e491] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e492]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e493] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e494]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e495] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e496]: 
+          - text: Top

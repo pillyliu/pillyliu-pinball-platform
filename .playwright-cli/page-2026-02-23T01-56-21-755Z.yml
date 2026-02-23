@@ -1,0 +1,527 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Tri Zone" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: pinballphotos" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Tri Zone" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Tri Zone" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/tri-zone/gallery
+            - img "Tri Zone" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/williams
+              - img [ref=e126]
+            - heading "Williams" [level=2] [ref=e127]
+            - heading "Tri Zone" [level=1] [ref=e128]
+            - generic [ref=e129]:
+              - text: The TRI ZONE serial-model was produced in summer and autumn 1979 with a black cabinet. The test-samples from early 1979 were the 'red models' with different playfield-art.
+              - text: TRI ZONE is the last pinball-machine by french artist Christian Marche who left the USA to return to France in 1979, his first machine being SHANGRI-LA.
+        - generic [ref=e130]:
+          - generic:
+            - generic [ref=e132]:
+              - heading "Design team" [level=3] [ref=e133]
+              - generic [ref=e134]:
+                - generic [ref=e135]:
+                  - text: "Game Design:"
+                  - link "Tony Kraemer" [ref=e136] [cursor=pointer]:
+                    - /url: /pinball/machine/tony-kraemer
+                - generic [ref=e137]:
+                  - text: "Software:"
+                  - link "Paul Dussault" [ref=e138] [cursor=pointer]:
+                    - /url: /pinball/machine/paul-dussault
+                - generic [ref=e139]:
+                  - text: "Artwork:"
+                  - link "Christian Marche" [ref=e140] [cursor=pointer]:
+                    - /url: /pinball/machine/christian-marche
+                - generic [ref=e141]:
+                  - text: "Sound:"
+                  - link "Paul Dussault" [ref=e142] [cursor=pointer]:
+                    - /url: /pinball/machine/paul-dussault
+            - generic [ref=e144]:
+              - heading "Game details" [level=3] [ref=e145]
+              - generic [ref=e146]:
+                - generic [ref=e147]: PinsideID
+                - generic [ref=e148]: "511"
+              - generic [ref=e149]:
+                - generic [ref=e150]: Manufactured by
+                - link "Williams Electronic Games, Inc." [ref=e152] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=83#results
+              - generic [ref=e153]:
+                - generic [ref=e154]: Date
+                - generic [ref=e155]: July 1979
+              - generic [ref=e156]:
+                - generic [ref=e157]: Type
+                - img [ref=e158]
+                - text: Solid state
+              - generic [ref=e159]:
+                - generic [ref=e160]: Generation
+                - link "Williams System 6" [ref=e162] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=47#results
+              - generic [ref=e163]:
+                - generic [ref=e164]: Release
+                - generic [ref=e165]: 7,250 produced
+              - generic [ref=e166]:
+                - generic [ref=e167]: Estimated value
+                - generic [ref=e168]: $1110 - $1290
+              - generic [ref=e169]:
+                - generic [ref=e170]: Cabinet
+                - generic [ref=e171]: Normal
+              - generic [ref=e172]:
+                - generic [ref=e173]: Display type
+                - generic [ref=e174]: Digital
+              - generic [ref=e175]:
+                - generic [ref=e176]: Players
+                - generic [ref=e177]: "4"
+              - generic [ref=e178]:
+                - generic [ref=e179]: Flippers
+                - generic [ref=e180]: "2"
+              - generic [ref=e181]:
+                - generic [ref=e182]: Ramps
+                - generic [ref=e183]: "0"
+              - generic [ref=e184]:
+                - generic [ref=e185]: Multiball
+                - generic [ref=e186]: "0"
+              - generic [ref=e187]:
+                - generic [ref=e188]: IPDB
+                - link "#2641" [ref=e190] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=2641
+              - generic [ref=e191]:
+                - generic [ref=e192]: Latest software
+                - generic [ref=e193]: Unknown
+          - generic [ref=e194]:
+            - list:
+              - listitem [ref=e195]:
+                - link "View all details" [ref=e196] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/details
+              - listitem [ref=e197]:
+                - link "Edit game details" [ref=e198] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=511
+        - generic [ref=e201]:
+          - heading "Promotional" [level=3] [ref=e202]
+          - generic [ref=e203]:
+            - link [ref=e205] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/bJp7w2EaGW0Xcbe6VJ4OUNb-zmJoYLVphkm_vppvJsU/rs:fit:2048/fn:pinside_archive_511_0e97c27e869e/enc/YuELpm5oxsYZcD4r5RHq3Px_Eaksl6R5TmdykiGrrQQR5-kcjMEM4FBrQ-f5E7-HaNyi45ZpsqxV7VPcScVxbpWdTSByyRY0Xd5wAR-jWD6r0It4O7dNd6DLr-khxxz-.jpg
+              - img [ref=e206]
+            - link [ref=e208] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/Gew3hqV1hErCR_VujPh2b9WrehG2_IYiGKg2-2fg_eA/rs:fit:2048/fn:pinside_archive_511_79fbfc028b53/enc/snp-MSx-LtrwXwCyod77R2Kzo4ZejWQ-NtmOpHkxJ3n5Y2OtqJvxIAspkqGIkl4EFZNgvv8UFaaIR2am4qzj_Qo7PDiHpAUHZmbEtZPVLDkFUhnC2zlSMpf5QuKEXA1b.jpg
+              - img [ref=e209]
+          - paragraph [ref=e210]: Click on a flyer image for full size.
+        - generic [ref=e211]:
+          - heading "Price history" [level=2] [ref=e214]
+          - generic [ref=e220]:
+            - heading "Price estimate" [level=3] [ref=e221]
+            - paragraph [ref=e222]:
+              - text: This game
+              - link "has been listed" [ref=e223] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=511#results
+              - text: a total number of 47 times on the Pinside Marketplace, most recently on 2025-08-05.
+            - separator [ref=e224]
+            - paragraph [ref=e225]: In the past 2 years, we've seen it listed 8 times. The median asking price (trimmed median) was $1,175
+            - separator [ref=e226]
+            - paragraph [ref=e227]:
+              - text: »
+              - link "Find ads for this game" [ref=e228] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/market
+            - paragraph [ref=e229]:
+              - text: »
+              - link "View archived ads" [ref=e230] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=511
+        - generic [ref=e231]:
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - heading "Pinside rating" [level=3] [ref=e234]
+              - paragraph [ref=e235]:
+                - strong [ref=e236]: This game has received 33 approved Pinsider ratings.
+                - text: 17 more approved ratings are needed to get a rating and for it to be eligible for the
+                - link "Pinside Pinball Top 100" [ref=e237] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: ranking.
+            - generic [ref=e238]:
+              - heading "Rating comments" [level=3] [ref=e239]
+              - paragraph [ref=e240]:
+                - text: There
+                - link "are 18 rating comments" [ref=e241] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/ratings
+                - text: for this game.
+          - generic [ref=e243]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e244]
+            - generic [ref=e247]:
+              - paragraph [ref=e250]:
+                - strong [ref=e251]: "139"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e254]:
+                - strong [ref=e255]: "37"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e258]:
+                - strong [ref=e259]: "16"
+                - text: public locations to play this machine.
+          - generic [ref=e261]:
+            - list:
+              - listitem [ref=e262]:
+                - link "Add your rating!" [ref=e263] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/ratings/edit?r=/pinball/machine/tri-zone
+              - listitem [ref=e264]:
+                - link "Show all rating comments" [ref=e265] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/ratings
+          - generic [ref=e267]:
+            - list:
+              - listitem [ref=e268]:
+                - link "Log in to manage your collection and wishlist." [ref=e269] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e270]:
+                - link "Visit map!" [ref=e271] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/owners
+        - generic [ref=e274]:
+          - heading "Gallery - Featured images" [level=3] [ref=e275]
+          - paragraph
+          - list [ref=e276]:
+            - listitem [ref=e277]:
+              - link [ref=e278] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e279]
+            - listitem [ref=e280]:
+              - link [ref=e281] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e282]
+            - listitem [ref=e283]:
+              - link [ref=e284] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e285]
+            - listitem [ref=e286]:
+              - link [ref=e287] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e288]
+            - listitem [ref=e289]:
+              - link [ref=e290] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e291]
+            - listitem [ref=e292]:
+              - link [ref=e293] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e294]
+            - listitem [ref=e295]:
+              - link [ref=e296] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e297]
+            - listitem [ref=e298]:
+              - link [ref=e299] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e300]
+            - listitem [ref=e301]:
+              - link [ref=e302] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e303]
+            - listitem [ref=e304]:
+              - link [ref=e305] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e306]
+            - listitem [ref=e307]:
+              - link [ref=e308] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e309]
+            - listitem [ref=e310]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: /pinball/machine/tri-zone/gallery
+                - img [ref=e312]
+          - paragraph
+          - generic [ref=e313]:
+            - list:
+              - listitem [ref=e314]:
+                - link "Visit the gallery for all images!" [ref=e315] [cursor=pointer]:
+                  - /url: /pinball/machine/tri-zone/gallery
+        - generic [ref=e317]:
+          - heading "Game-related shop items!" [level=3] [ref=e318]
+          - paragraph [ref=e319]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e320]: Tri Zone
+            - text: .
+          - generic [ref=e321]:
+            - generic [ref=e323]:
+              - link [ref=e324] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1256-upkick-pinball/04015-tri-zone-slingshot-and-center-drop-plastic-protectors
+              - generic [ref=e325]: $ 10.00
+              - generic [ref=e326]:
+                - generic [ref=e327]: Playfield - Protection
+                - link "Tri Zone Slingshot and Center Drop Plastic Protectors" [ref=e329] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1256-upkick-pinball/04015-tri-zone-slingshot-and-center-drop-plastic-protectors
+                - generic [ref=e331]:
+                  - generic [ref=e332]: 
+                  - text: UpKick Pinball
+            - generic [ref=e335]:
+              - link [ref=e336] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15298-williams-tri-zone-pinball-machine-rubber-ring-kit
+              - generic [ref=e337]: $ 22.99
+              - generic [ref=e338]:
+                - generic [ref=e339]: Rubber/Silicone
+                - link "Williams Tri Zone Pinball Machine Rubber Ring Kit" [ref=e341] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15298-williams-tri-zone-pinball-machine-rubber-ring-kit
+                - generic [ref=e343]:
+                  - generic [ref=e344]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e347]:
+              - link [ref=e348] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06309-rom-tri-zone-sound
+              - generic [ref=e349]: $ 9.95
+              - generic [ref=e350]:
+                - generic [ref=e351]: Eproms
+                - link "ROM TRI-ZONE -SOUND" [ref=e353] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06309-rom-tri-zone-sound
+                - generic [ref=e355]:
+                  - generic [ref=e356]: 
+                  - text: Pinballrom
+            - generic [ref=e359]:
+              - link [ref=e360] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1258-starcade-amusement/04647--williams-tri-zone-playfield-plastic-set-new-30-487
+              - generic [ref=e361]: $ 109.00
+              - generic [ref=e362]:
+                - generic [ref=e363]: Playfield - Plastics
+                - link "Williams - Tri-Zone Playfield Plastic Set - New - 30-487" [ref=e365] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1258-starcade-amusement/04647--williams-tri-zone-playfield-plastic-set-new-30-487
+                - generic [ref=e367]:
+                  - generic [ref=e368]: 
+                  - text: Starcade Amusement
+            - generic [ref=e371]:
+              - link [ref=e372] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15299-williams-tri-zone-pinball-machine-maintenance-tune-up-kit
+              - generic [ref=e373]: $ 45.99
+              - generic [ref=e374]:
+                - generic [ref=e375]: Cleaner
+                - link "Williams Tri Zone Pinball Machine Maintenance Tune Up Kit" [ref=e377] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15299-williams-tri-zone-pinball-machine-maintenance-tune-up-kit
+                - generic [ref=e379]:
+                  - generic [ref=e380]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e383]:
+              - link [ref=e384] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06308-rom-tri-zone-cpu
+              - generic [ref=e385]: $ 27.95
+              - generic [ref=e386]:
+                - generic [ref=e387]: Eproms
+                - link "ROM TRI-ZONE -CPU" [ref=e389] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06308-rom-tri-zone-cpu
+                - generic [ref=e391]:
+                  - generic [ref=e392]: 
+                  - text: Pinballrom
+        - generic [ref=e395]:
+          - heading "Market value" [level=3] [ref=e396]
+          - paragraph [ref=e397]:
+            - text: There are currently no ads for this game on the
+            - link "Marketplace" [ref=e398] [cursor=pointer]:
+              - /url: /pinball/market/classifieds
+            - text: .
+      - generic [ref=e400]:
+        - img [ref=e401]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e402]
+        - link " Support Pinside" [ref=e403] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e404]: 
+          - text: Support Pinside
+        - paragraph [ref=e405]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e406] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e409]:
+    - link [ref=e411] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e412]
+    - generic [ref=e413]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e414]:
+        - generic [ref=e415]: 
+        - text: Page rendered in 1.24688s
+      - generic [ref=e416]:
+        - generic [ref=e417]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e418] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e419]:
+        - link " Help" [ref=e420] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e421]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e422] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e423]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e424] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e425]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e426] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e427]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e428] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e429]: 
+          - text: Top

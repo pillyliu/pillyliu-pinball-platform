@@ -1,0 +1,753 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Bram Stoker's Dracula" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Bram Stoker's Dracula" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Bram Stoker's Dracula" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/bram-stokers-dracula/gallery
+            - img "Bram Stoker's Dracula" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/williams
+              - img [ref=e126]
+            - heading "Williams" [level=2] [ref=e127]
+            - heading "Bram Stoker's Dracula" [level=1] [ref=e128]
+            - generic [ref=e129]: This machine was designed by Barry Oursler for Williams in 1993. The machine was based on the 1992 movie of the same name and features many toys based on the movie. The primary challenge of the machine is to stack 3 multiballs (Castle, Coffin, & Mist), kill bats and rats, and earn big points in the process of doing so. Toys in the game include a revolutionary magnet that can throw the ball along a trail for Mist multiball, and two separate lock traps for "Castle" and "Coffin" multiballs.
+            - generic [ref=e130]:
+              - heading "Tags:" [level=3] [ref=e131]
+              - link "horror" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=horror
+              - link "monsters" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=monsters
+              - link "movie" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "Vampire" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/machine?tags=vampire
+              - link "edit tags" [ref=e137] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=574
+        - generic [ref=e138]:
+          - generic:
+            - generic [ref=e140]:
+              - heading "Design team" [level=3] [ref=e141]
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - text: "Game Design:"
+                  - link "Barry Oursler" [ref=e144] [cursor=pointer]:
+                    - /url: /pinball/machine/barry-oursler
+                  - link "Mark Sprenger" [ref=e145] [cursor=pointer]:
+                    - /url: /pinball/machine/mark-sprenger
+                - generic [ref=e146]:
+                  - text: "Engineering/mechanics:"
+                  - link "Zofia Bil" [ref=e147] [cursor=pointer]:
+                    - /url: /pinball/machine/zofia-bil
+                - generic [ref=e148]:
+                  - text: "Software:"
+                  - link "Bill Pfutzenreuter" [ref=e149] [cursor=pointer]:
+                    - /url: /pinball/machine/bill-pfutzenreuter
+                - generic [ref=e150]:
+                  - text: "Artwork:"
+                  - link "Mark Sprenger" [ref=e151] [cursor=pointer]:
+                    - /url: /pinball/machine/mark-sprenger
+                - generic [ref=e152]:
+                  - text: "Animation:"
+                  - link "Scott Slomiany" [ref=e153] [cursor=pointer]:
+                    - /url: /pinball/machine/scott-slomiany
+                - generic [ref=e154]:
+                  - text: "Sound:"
+                  - link "Paul Heitsch" [ref=e155] [cursor=pointer]:
+                    - /url: /pinball/machine/paul-heitsch
+                - generic [ref=e156]:
+                  - text: "Music:"
+                  - link "Paul Heitsch" [ref=e157] [cursor=pointer]:
+                    - /url: /pinball/machine/paul-heitsch
+                - generic [ref=e158]:
+                  - text: "Callouts:"
+                  - link "Tim Kitzrow" [ref=e159] [cursor=pointer]:
+                    - /url: /pinball/machine/tim-kitzrow
+            - generic [ref=e161]:
+              - heading "Game details" [level=3] [ref=e162]
+              - generic [ref=e163]:
+                - generic [ref=e164]: PinsideID
+                - generic [ref=e165]: "574"
+              - generic [ref=e166]:
+                - generic [ref=e167]: Manufactured by
+                - link "Williams Electronic Games, Inc." [ref=e169] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=83#results
+              - generic [ref=e170]:
+                - generic [ref=e171]: Date
+                - generic [ref=e172]: April 1993
+              - generic [ref=e173]:
+                - generic [ref=e174]: Type
+                - img [ref=e175]
+                - text: Solid state
+              - generic [ref=e176]:
+                - generic [ref=e177]: Generation
+                - link "Williams WPC (Fliptronics 2)" [ref=e179] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=56#results
+              - generic [ref=e180]:
+                - generic [ref=e181]: Release
+                - generic [ref=e182]: 6,801 produced
+              - generic [ref=e183]:
+                - generic [ref=e184]: Estimated value
+                - generic [ref=e185]: $4620 - $5380
+              - generic [ref=e186]:
+                - generic [ref=e187]: Cabinet
+                - generic [ref=e188]: Normal
+              - generic [ref=e189]:
+                - generic [ref=e190]: Display type
+                - generic [ref=e191]: Dot Matrix
+              - generic [ref=e192]:
+                - generic [ref=e193]: Players
+                - generic [ref=e194]: "4"
+              - generic [ref=e195]:
+                - generic [ref=e196]: Flippers
+                - generic [ref=e197]: "2"
+              - generic [ref=e198]:
+                - generic [ref=e199]: Ramps
+                - generic [ref=e200]: "2"
+              - generic [ref=e201]:
+                - generic [ref=e202]: Multiball
+                - generic [ref=e203]: "4"
+              - generic [ref=e204]:
+                - generic [ref=e205]: IPDB
+                - link "#3072" [ref=e207] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=3072
+              - generic [ref=e208]:
+                - generic [ref=e209]: Latest software
+                - generic [ref=e210]: Unknown
+          - generic [ref=e211]:
+            - list:
+              - listitem [ref=e212]:
+                - link "View all details" [ref=e213] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/details
+              - listitem [ref=e214]:
+                - link "Edit game details" [ref=e215] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=574
+        - generic [ref=e218]:
+          - heading "Promotional" [level=3] [ref=e219]
+          - generic [ref=e220]:
+            - link [ref=e222] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/yvyvuBd7t1HxoppaAq_ZPyNJTIeV_PwkQRfaIZIGJ24/rs:fit:2048/fn:pinside_archive_574_097325fd0049/enc/u8PzqvGYzWT68B4qo9lEzJbQgaIOPcrUstO4cidhm5y36by1fQKGeidGUDIoZ3NU0Gs4SR3njTB18Xd_Fa6_iIGCMmMf7R6cFW3p5nNxdXlEuGMin9GIKZGX_LxM-8U_.jpg
+              - img [ref=e223]
+            - link [ref=e225] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/ra66LeGuJvRB79n0Tz522uwa9spHE7rVnbbIutxHcN0/rs:fit:2048/fn:pinside_archive_574_3f05d77f48fb/enc/LCEVgq1gsqx4vkaskwoeJmoCDP1DJuESzgNfG8XSTyvJmDYPQTf_3m-IMIBxuGejMPp6bnVUs1ypz675Q2GhCSdPiW17Gh1XOVYJy_3-tyCFUM6td-ubA2p48_guqzZQ.jpg
+              - img [ref=e226]
+            - link [ref=e228] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/FduCHxElBikCSASy9gwi0YbmvEEQcfjLYsCdt77YYVI/rs:fit:2048/fn:pinside_archive_574_1b0030011ae4/enc/7s3JCILGUe9F1elyy2y8Bvu4KakoPcDubI9x40-bZilucsMpI9wW41t4ZIgDdD4TpGDKBm10yDcjlwr4Op1rAsS2qhxWqeWuOreFd4oJ1JMousfC-BynIiC0NMvvIXEh.jpg
+              - img [ref=e229]
+            - link [ref=e231] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/edFMRVjCZMHpbo_CaKG7fx6iHpe2ebBDxI2hp3pmYwo/rs:fit:2048/fn:pinside_archive_574_09c2d1c26203/enc/AFxV-EOzkwx_JyBo2nQfG5rRwAk68aHdeYpWeGP6v4GolBikJJLs_XLpKPxfShzOWt6V_ygsyJnGZYfMbvXisEEsk4l02RQUvfeMnivkHSnEhvhRCxDsL8FOVABrfbe3.jpg
+              - img [ref=e232]
+            - link [ref=e234] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/rrDs5cL1chABpqxjyUM_TUAUKq0BZVKr30vqsoeSIJI/rs:fit:2048/fn:pinside_archive_574_da7d2ed087a4/enc/N-yS9DybIGhkq2dxjRYfWXA3ONDfSMh2F9d-dntuIRg_04-Kh0Xnh6lgMp7W1qIi1ODAyJuD0n7i9V7-3ePQzfYjgpj-n8kACeEAFwG1pUIqUy5xELbgjaqvLe7H8DD_.jpg
+              - img [ref=e235]
+          - paragraph [ref=e236]: Click on a flyer image for full size.
+        - generic [ref=e237]:
+          - heading "Price history" [level=2] [ref=e240]
+          - generic [ref=e246]:
+            - heading "Price estimate" [level=3] [ref=e247]
+            - paragraph [ref=e248]:
+              - text: This game
+              - link "has been listed" [ref=e249] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=574#results
+              - text: a total number of 449 times on the Pinside Marketplace, most recently on 2026-02-18.
+            - separator [ref=e250]
+            - paragraph [ref=e251]: This past year, we've seen it listed 37 times. The median asking price (trimmed median) was $4,975
+            - separator [ref=e252]
+            - paragraph [ref=e253]:
+              - text: »
+              - link "Find ads for this game" [ref=e254] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/market
+            - paragraph [ref=e255]:
+              - text: »
+              - link "View archived ads" [ref=e256] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=574
+        - generic [ref=e257]:
+          - generic [ref=e259]:
+            - heading "Game quote" [level=3] [ref=e260]
+            - table [ref=e262]:
+              - rowgroup [ref=e263]:
+                - row "\"Listen to them, the children of the night.\"" [ref=e264]:
+                  - cell "\"Listen to them, the children of the night.\"" [ref=e265]
+          - generic [ref=e266]:
+            - list:
+              - listitem [ref=e267]:
+                - link "Show another!" [ref=e268] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - generic [ref=e271]:
+              - heading "Pinside rating" [level=3] [ref=e272]
+              - paragraph [ref=e273]:
+                - text: This game has received
+                - strong [ref=e274]: 660 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e276]: 8.204 out of 10.
+              - generic [ref=e279]: "8.204"
+            - generic [ref=e291]:
+              - heading "Top 100 ranking" [level=3] [ref=e292]
+              - paragraph [ref=e293]:
+                - text: This game ranks
+                - strong [ref=e294]: "#74"
+                - text: in the
+                - link "Pinside Pinball Top 100" [ref=e295] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e296]:
+              - heading "Rating comments" [level=3] [ref=e297]
+              - paragraph [ref=e298]:
+                - text: There
+                - link "are 394 rating comments" [ref=e299] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/ratings
+                - text: for this game.
+          - generic [ref=e301]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e302]
+            - generic [ref=e305]:
+              - paragraph [ref=e308]:
+                - strong [ref=e309]: "1146"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e312]:
+                - strong [ref=e313]: "964"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e316]:
+                - strong [ref=e317]: "168"
+                - text: public locations to play this machine.
+          - generic [ref=e319]:
+            - list:
+              - listitem [ref=e320]:
+                - link "Add your rating!" [ref=e321] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/ratings/edit?r=/pinball/machine/bram-stokers-dracula
+              - listitem [ref=e322]:
+                - link "Show all rating comments" [ref=e323] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/ratings
+          - generic [ref=e325]:
+            - list:
+              - listitem [ref=e326]:
+                - link "Log in to manage your collection and wishlist." [ref=e327] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e328]:
+                - link "Visit map!" [ref=e329] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/owners
+        - generic [ref=e332]:
+          - heading "Gallery - Featured images" [level=3] [ref=e333]
+          - paragraph
+          - list [ref=e334]:
+            - listitem [ref=e335]:
+              - link [ref=e336] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e337]
+            - listitem [ref=e338]:
+              - link [ref=e339] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e340]
+            - listitem [ref=e341]:
+              - link [ref=e342] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e343]
+            - listitem [ref=e344]:
+              - link [ref=e345] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e346]
+            - listitem [ref=e347]:
+              - link [ref=e348] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e349]
+            - listitem [ref=e350]:
+              - link [ref=e351] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e352]
+            - listitem [ref=e353]:
+              - link [ref=e354] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e355]
+            - listitem [ref=e356]:
+              - link [ref=e357] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e358]
+            - listitem [ref=e359]:
+              - link [ref=e360] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e361]
+            - listitem [ref=e362]:
+              - link [ref=e363] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e364]
+            - listitem [ref=e365]:
+              - link [ref=e366] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e367]
+            - listitem [ref=e368]:
+              - link [ref=e369] [cursor=pointer]:
+                - /url: /pinball/machine/bram-stokers-dracula/gallery
+                - img [ref=e370]
+          - paragraph
+          - generic [ref=e371]:
+            - list:
+              - listitem [ref=e372]:
+                - link "Visit the gallery for all images!" [ref=e373] [cursor=pointer]:
+                  - /url: /pinball/machine/bram-stokers-dracula/gallery
+        - generic [ref=e375]:
+          - heading "Game-related shop items!" [level=3] [ref=e376]
+          - paragraph [ref=e377]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e378]: Bram Stoker's Dracula
+            - text: .
+          - generic [ref=e379]:
+            - generic [ref=e381]:
+              - link [ref=e382] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11485-bram-stokers-dracula-lighted-magnetic-hinges-b0304
+              - generic [ref=e383]: $ 139.99
+              - generic [ref=e384]:
+                - generic [ref=e385]: Lighting - Other
+                - link "Bram Stokers Dracula Lighted Magnetic Hinges B0304" [ref=e387] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/11485-bram-stokers-dracula-lighted-magnetic-hinges-b0304
+                - generic [ref=e389]:
+                  - generic [ref=e390]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e393]:
+              - link [ref=e394] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1039-metal-mods/00464-bsd-bram-stokers-dracula-blood-chrome-cap-set-of-1
+              - generic [ref=e395]: $ 5.00
+              - generic [ref=e396]:
+                - generic [ref=e397]: Playfield - Decals
+                - link "BSD Bram Stoker's DRACULA \"Blood\" Chrome Cap set of 1" [ref=e399] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1039-metal-mods/00464-bsd-bram-stokers-dracula-blood-chrome-cap-set-of-1
+                - generic [ref=e401]:
+                  - generic [ref=e402]: 
+                  - text: Metal-Mods
+            - generic [ref=e405]:
+              - link [ref=e406] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06168-rom-bram-stokers-dracula-cpu
+              - generic [ref=e407]: $ 18.95
+              - generic [ref=e408]:
+                - generic [ref=e409]: Eproms
+                - link "ROM BRAM STOKER’S DRACULA -CPU" [ref=e411] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06168-rom-bram-stokers-dracula-cpu
+                - generic [ref=e413]:
+                  - generic [ref=e414]: 
+                  - text: Pinballrom
+            - generic [ref=e417]:
+              - link [ref=e418] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06169-rom-bram-stokers-dracula-sound
+              - generic [ref=e419]: $ 27.95
+              - generic [ref=e420]:
+                - generic [ref=e421]: Eproms
+                - link "ROM BRAM STOKER’S DRACULA -SOUND" [ref=e423] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06169-rom-bram-stokers-dracula-sound
+                - generic [ref=e425]:
+                  - generic [ref=e426]: 
+                  - text: Pinballrom
+            - generic [ref=e429]:
+              - link [ref=e430] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1521-no-gouge-pinball/11748-10-opto-board-a-15430-small-version-replacement-free-ship
+              - generic [ref=e431]: $ 99.99
+              - generic [ref=e432]:
+                - generic [ref=e433]: Boards
+                - link "10 Opto Board A-15430 (Small Version) Replacement Free Ship" [ref=e435] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1521-no-gouge-pinball/11748-10-opto-board-a-15430-small-version-replacement-free-ship
+                - generic [ref=e437]:
+                  - generic [ref=e438]: 
+                  - text: NO GOUGE PINBALL™
+            - generic [ref=e441]:
+              - link [ref=e442] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1259-silverball-designs/04330-slingshot-amp-return-lane-set-bram-strokers-dracula-
+              - generic [ref=e443]: $ 19.95
+              - generic [ref=e444]:
+                - generic [ref=e445]: Playfield - Protection
+                - link "Slingshot & Return Lane Set - Bram Stroker's Dracula" [ref=e447] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1259-silverball-designs/04330-slingshot-amp-return-lane-set-bram-strokers-dracula-
+                - generic [ref=e449]:
+                  - generic [ref=e450]: 
+                  - text: SilverBall Designs
+            - generic [ref=e453]:
+              - link [ref=e454] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/01027-bram-stokers-dracula-bsd-led-colored-speaker-panel-basic
+              - generic [ref=e455]: $ 159.99
+              - generic [ref=e456]:
+                - generic [ref=e457]: Lighting - Other
+                - generic [ref=e458]:
+                  - link "Bram Stoker's Dracula BSD -LED Colored Speaker Panel -BASIC" [ref=e459] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1032-lighted-pinball-mods/01027-bram-stokers-dracula-bsd-led-colored-speaker-panel-basic
+                  - text: Out of stock
+                - generic [ref=e461]:
+                  - generic [ref=e462]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e465]:
+              - link [ref=e466] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1039-metal-mods/09548-bsd-bram-stokers-dracula-3-black-bat-decals-
+              - generic [ref=e467]: $ 15.00
+              - generic [ref=e468]:
+                - generic [ref=e469]: Playfield - Decals
+                - link "BSD Bram Stoker's DRACULA 3 black bat decals" [ref=e471] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1039-metal-mods/09548-bsd-bram-stokers-dracula-3-black-bat-decals-
+                - generic [ref=e473]:
+                  - generic [ref=e474]: 
+                  - text: Metal-Mods
+            - generic [ref=e477]:
+              - link [ref=e478] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1042-mircoplayfields/01605-dracula-playfield
+              - generic [ref=e479]: $ 1,159.00
+              - generic [ref=e480]:
+                - generic [ref=e481]: Flipper Parts
+                - link "Dracula playfield" [ref=e483] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1042-mircoplayfields/01605-dracula-playfield
+                - generic [ref=e485]:
+                  - generic [ref=e486]: 
+                  - text: Mircoplayfields
+            - generic [ref=e489]:
+              - link [ref=e490] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1521-no-gouge-pinball/13215-24-opto-board-a-15646-replacement-free-ship-dumbass
+              - generic [ref=e491]: $ 95.00
+              - generic [ref=e492]:
+                - generic [ref=e493]: Boards
+                - link "24 Opto Board A-15646 Replacement Free Ship @Dumbass" [ref=e495] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1521-no-gouge-pinball/13215-24-opto-board-a-15646-replacement-free-ship-dumbass
+                - generic [ref=e497]:
+                  - generic [ref=e498]: 
+                  - text: NO GOUGE PINBALL™
+          - paragraph [ref=e501]:
+            - text: »
+            - link "View all 43 parts for this game on its Shops page" [ref=e502] [cursor=pointer]:
+              - /url: /pinball/shops/games/bram-stokers-dracula
+        - generic [ref=e504]:
+          - heading "Market value" [level=3] [ref=e505]
+          - paragraph [ref=e506]: There are currently 6 ads for this game on our Market place.
+          - generic [ref=e507]:
+            - generic [ref=e509]:
+              - link [ref=e510] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209791
+              - generic [ref=e511]:
+                - generic [ref=e512]: 
+                - text: 5,000
+              - generic [ref=e513]:
+                - generic [ref=e514]: Machine - For Sale
+                - link "Bram Stoker's Dracula" [ref=e516] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209791
+                - generic [ref=e517]:
+                  - generic [ref=e518]:
+                    - img [ref=e519]
+                    - text: Denver, CO
+                  - generic [ref=e520]:
+                    - generic [ref=e521]: 
+                    - link "Vonbaronmattso" [ref=e522] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/vonbaronmattso/market
+                    - generic [ref=e523]: 
+                  - generic [ref=e525]: 
+            - generic [ref=e527]:
+              - link [ref=e528] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209762
+              - generic [ref=e529]:
+                - generic [ref=e530]: 
+                - text: 5,200 (Firm)
+              - generic [ref=e531]:
+                - generic [ref=e532]: Machine - For Sale
+                - link "Bram Stoker's Dracula" [ref=e534] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209762
+                - generic [ref=e535]:
+                  - generic [ref=e536]:
+                    - img [ref=e537]
+                    - text: South Run, VA
+                  - generic [ref=e538]:
+                    - generic [ref=e539]: 
+                    - link "Johnbeatle" [ref=e540] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/johnbeatle/market
+                    - generic [ref=e541]: 
+            - generic [ref=e543]:
+              - link [ref=e544] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209666
+              - generic [ref=e546]:
+                - generic [ref=e547]: 
+                - text: 5,150 (OBO)
+              - generic [ref=e548]:
+                - generic [ref=e549]: Machine - For Sale
+                - generic [ref=e550]:
+                  - link "Bram Stoker's Dracula" [ref=e551] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/209666
+                  - generic [ref=e553]: 
+                  - text: Featured Pending
+                - generic [ref=e554]:
+                  - generic [ref=e555]:
+                    - img [ref=e556]
+                    - text: Bismarck, ND
+                  - generic [ref=e557]:
+                    - generic [ref=e558]: 
+                    - link "JDelzer" [ref=e559] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/jdelzer/market
+                    - generic [ref=e560]: 
+            - generic [ref=e562]:
+              - link [ref=e563] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209422
+              - generic [ref=e564]:
+                - generic [ref=e565]: 
+                - text: 5,500
+              - generic [ref=e566]:
+                - generic [ref=e567]: Machine - For Sale
+                - link "Bram Stoker's Dracula (Kruzman coated)" [ref=e569] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209422
+                - generic [ref=e570]:
+                  - generic [ref=e571]:
+                    - img [ref=e572]
+                    - text: Madison, WI
+                  - generic [ref=e573]:
+                    - generic [ref=e574]: 
+                    - link "rockwell" [ref=e575] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/rockwell/market
+                    - generic [ref=e576]: 
+            - generic [ref=e578]:
+              - link [ref=e579] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/205082
+              - generic [ref=e581]:
+                - text: Trade±
+                - generic [ref=e582]: 
+                - text: 5,000
+              - generic [ref=e583]:
+                - generic [ref=e584]: Machine - For Trade
+                - generic [ref=e585]:
+                  - link "Bram Stoker's Dracula" [ref=e586] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/205082
+                  - text: Pending
+                - generic [ref=e587]:
+                  - generic [ref=e588]:
+                    - img [ref=e589]
+                    - text: Coos Bay, OR
+                  - generic [ref=e590]:
+                    - generic [ref=e591]: 
+                    - link "Merendino" [ref=e592] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/merendino/market
+                    - generic [ref=e593]: 
+            - generic [ref=e595]:
+              - link [ref=e596] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/201412
+              - generic [ref=e597]:
+                - generic [ref=e598]: 
+                - text: 5,500 (OBO)
+              - generic [ref=e599]:
+                - generic [ref=e600]: Machine - For Sale
+                - link "Bram Stoker's Dracula" [ref=e602] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/201412
+                - generic [ref=e603]:
+                  - generic [ref=e604]:
+                    - img [ref=e605]
+                    - text: Denville, NJ
+                  - generic [ref=e606]:
+                    - generic [ref=e607]: 
+                    - link "NJPinball" [ref=e608] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/njpinball/market
+                    - generic [ref=e609]: 
+      - generic [ref=e611]:
+        - img [ref=e612]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e613]
+        - link " Support Pinside" [ref=e614] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e615]: 
+          - text: Support Pinside
+        - paragraph [ref=e616]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e617] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e620]:
+    - link [ref=e622] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e623]
+    - generic [ref=e624]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e625]:
+        - generic [ref=e626]: 
+        - text: Page rendered in 1.76814s
+      - generic [ref=e627]:
+        - generic [ref=e628]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e629] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e630]:
+        - link " Help" [ref=e631] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e632]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e633] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e634]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e635] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e636]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e637] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e638]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e639] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e640]: 
+          - text: Top

@@ -1,0 +1,771 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link " Sign in" [ref=e6] [cursor=pointer]:
+        - /url: /pinball/my-pinside/signin
+        - generic [ref=e7]: 
+        - text: Sign in
+      - link "" [ref=e9] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e10]: 
+      - link "" [ref=e12] [cursor=pointer]:
+        - /url: /pinball/donate
+        - generic [ref=e13]: 
+      - link "" [ref=e15] [cursor=pointer]:
+        - /url: /pinball/search
+        - generic [ref=e16]: 
+      - link "" [ref=e18] [cursor=pointer]:
+        - /url: /pinball/help
+        - generic [ref=e19]: 
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - text: 
+        - link [ref=e23] [cursor=pointer]:
+          - /url: /
+          - img [ref=e24]
+        - generic [ref=e25]:
+          - link "machines" [ref=e26] [cursor=pointer]:
+            - /url: /pinball/machine
+          - link "top 100" [ref=e27] [cursor=pointer]:
+            - /url: /pinball/top-100
+          - link "community" [ref=e28] [cursor=pointer]:
+            - /url: /pinball/community
+          - link "TV" [ref=e29] [cursor=pointer]:
+            - /url: /pinball/tv
+          - link "pin map" [ref=e30] [cursor=pointer]:
+            - /url: /pinball/map
+          - link "forum" [ref=e31] [cursor=pointer]:
+            - /url: /pinball/forum
+          - link "biz" [ref=e32] [cursor=pointer]:
+            - /url: /pinball/biz
+          - link "shops" [ref=e33] [cursor=pointer]:
+            - /url: /pinball/shops
+          - link "market" [ref=e34] [cursor=pointer]:
+            - /url: /pinball/market
+          - link "events" [ref=e35] [cursor=pointer]:
+            - /url: /pinball/events
+          - link "HQ" [ref=e36] [cursor=pointer]:
+            - /url: /pinball/hq
+      - generic [ref=e38]:
+        - link "" [ref=e39] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e40]: 
+        - text: »
+        - link "Pinball database" [ref=e41] [cursor=pointer]:
+          - /url: ""
+  - generic [ref=e42]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - link "Pinside.com logo" [ref=e46] [cursor=pointer]:
+          - /url: /
+          - img "Pinside.com logo" [ref=e47]
+        - list [ref=e49]:
+          - listitem [ref=e50]:
+            - link "machines" [ref=e51] [cursor=pointer]:
+              - /url: /pinball/machine
+          - listitem [ref=e52]:
+            - link "top 100" [ref=e53] [cursor=pointer]:
+              - /url: /pinball/top-100
+          - listitem [ref=e54]:
+            - link "community" [ref=e55] [cursor=pointer]:
+              - /url: /pinball/community
+          - listitem [ref=e56]:
+            - link "TV" [ref=e57] [cursor=pointer]:
+              - /url: /pinball/tv
+          - listitem [ref=e58]:
+            - link "pin map" [ref=e59] [cursor=pointer]:
+              - /url: /pinball/map
+          - listitem [ref=e60]:
+            - link "forum" [ref=e61] [cursor=pointer]:
+              - /url: /pinball/forum
+          - listitem [ref=e62]:
+            - link "biz" [ref=e63] [cursor=pointer]:
+              - /url: /pinball/biz
+          - listitem [ref=e64]:
+            - link "shops" [ref=e65] [cursor=pointer]:
+              - /url: /pinball/shops
+          - listitem [ref=e66]:
+            - link "market" [ref=e67] [cursor=pointer]:
+              - /url: /pinball/market
+          - listitem [ref=e68]:
+            - link "events" [ref=e69] [cursor=pointer]:
+              - /url: /pinball/events
+          - listitem [ref=e70]:
+            - link "HQ" [ref=e71] [cursor=pointer]:
+              - /url: /pinball/hq
+      - generic [ref=e72]:
+        - 'link "Photo: robin" [ref=e73] [cursor=pointer]':
+          - /url: /pinball/community/pinsiders/robin
+        - link "" [ref=e74] [cursor=pointer]:
+          - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+          - generic [ref=e75]: 
+    - generic [ref=e78]:
+      - list [ref=e79]:
+        - listitem [ref=e80]:
+          - text: »
+          - link "Pinball database" [ref=e81] [cursor=pointer]:
+            - /url: /pinball/machine/?query=Star%20Wars
+      - link "" [ref=e82] [cursor=pointer]:
+        - /url: "#scrollbottom"
+        - generic [ref=e83]: 
+  - generic [ref=e84]:
+    - generic [ref=e85]:
+      - generic [ref=e87]:
+        - heading "The Pinside Pinball Machine Database" [level=1] [ref=e88]
+        - paragraph [ref=e89]: The Pinside database currently holds 3,165 games, ranging from the early 1930's up to today. Each game has its own archive page, to which Pinsiders can add game details, photos, reviews and much more!
+      - link [ref=e91] [cursor=pointer]:
+        - /url: /pinball/machine/star-wars-fall-of-the-empire-pro
+    - generic [ref=e92]:
+      - generic [ref=e94]:
+        - heading "Quick search" [level=2] [ref=e95]
+        - paragraph [ref=e96]:
+          - text: Enter (part of) a machine name
+          - generic [ref=e97]:
+            - text: (e.g. '
+            - link "family" [ref=e98] [cursor=pointer]:
+              - /url: /pinball/machine/?query=family
+            - text: "'), an abbreviation (e.g. '"
+            - link "tz" [ref=e99] [cursor=pointer]:
+              - /url: /pinball/machine/?query=tz
+            - text: "')"
+        - generic [ref=e100]:
+          - generic [ref=e101] [cursor=pointer]: Machine name / abbreviation
+          - generic [ref=e102]:
+            - textbox [ref=e103]: Star Wars
+            - button " Find games" [ref=e104] [cursor=pointer]:
+              - generic [ref=e105]: 
+              - text: Find games
+          - text: 
+      - generic [ref=e108]:
+        - link "Random machine":
+          - /url: /pinball/machine/random
+          - img "Random machine" [ref=e109] [cursor=pointer]
+        - heading "Random!" [level=2] [ref=e110]:
+          - link "Random!" [ref=e111] [cursor=pointer]:
+            - /url: /pinball/machine/random
+        - paragraph [ref=e112]: Click the question mark and be surprised by a random archive pick!
+    - generic [ref=e113]:
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - heading "Game Search" [level=2] [ref=e117]
+          - group "Keyword search" [ref=e118]:
+            - generic [ref=e119]: Keyword search
+            - textbox "Keyword(s)" [ref=e121]: Star Wars
+          - group "Tag search" [ref=e122]:
+            - generic [ref=e123]: Tag search
+            - generic [ref=e126]: + Find by tags
+          - group "Manufactured" [ref=e127]:
+            - generic [ref=e128]: Manufactured
+            - textbox "From year" [ref=e130]
+            - textbox "To year" [ref=e132]
+          - group "Manufacturer" [ref=e133]:
+            - generic [ref=e134] [cursor=pointer]:
+              - checkbox "toggle all" [checked] [ref=e135]
+              - text: toggle all
+            - generic [ref=e136]: Manufacturer
+            - generic:
+              - generic [ref=e137] [cursor=pointer]:
+                - checkbox "American Pinball" [ref=e138]
+                - text: American Pinball
+              - generic [ref=e139] [cursor=pointer]:
+                - checkbox "Bally" [ref=e140]
+                - text: Bally
+              - generic [ref=e141] [cursor=pointer]:
+                - checkbox "Capcom" [ref=e142]
+                - text: Capcom
+              - generic [ref=e143] [cursor=pointer]:
+                - checkbox "Data East" [ref=e144]
+                - text: Data East
+              - generic [ref=e145] [cursor=pointer]:
+                - checkbox "Game Plan" [ref=e146]
+                - text: Game Plan
+              - generic [ref=e147] [cursor=pointer]:
+                - checkbox "Gottlieb" [ref=e148]
+                - text: Gottlieb
+              - generic [ref=e149] [cursor=pointer]:
+                - checkbox "Jersey Jack Pinball" [ref=e150]
+                - text: Jersey Jack Pinball
+              - generic [ref=e151] [cursor=pointer]:
+                - checkbox "Multimorphic" [ref=e152]
+                - text: Multimorphic
+              - generic [ref=e153] [cursor=pointer]:
+                - checkbox "Sega" [ref=e154]
+                - text: Sega
+              - generic [ref=e155] [cursor=pointer]:
+                - checkbox "Spooky Pinball" [ref=e156]
+                - text: Spooky Pinball
+              - generic [ref=e157] [cursor=pointer]:
+                - checkbox "Stern Pinball (modern)" [ref=e158]
+                - text: Stern Pinball (modern)
+              - generic [ref=e159] [cursor=pointer]:
+                - checkbox "Stern (classic)" [ref=e160]
+                - text: Stern (classic)
+              - generic [ref=e161] [cursor=pointer]:
+                - checkbox "Williams" [ref=e162]
+                - text: Williams
+              - generic [ref=e163] [cursor=pointer]:
+                - checkbox "Zaccaria" [ref=e164]
+                - text: Zaccaria
+            - link "» Show all" [ref=e165] [cursor=pointer]:
+              - /url: "#"
+          - group "Release type" [ref=e166]:
+            - generic [ref=e167]: Release type
+            - combobox [ref=e168]:
+              - option "All" [selected]
+              - option "Commercial"
+              - option "Prototype"
+              - option "Homebrew"
+              - option "Custom"
+          - group "Game Generation (board set)" [ref=e169]:
+            - generic [ref=e170]: Game Generation (board set)
+            - combobox [ref=e171]:
+              - option "All generations" [selected]
+              - option "Atari Generation/System 1"
+              - option "Atari Generation/System 2"
+              - option "Atari Generation/System 3"
+              - option "Bally MPU A082-91494-A000"
+              - option "Bally MPU A084-91786-AH06 (6803)"
+              - option "Bally MPU AS-2518-133"
+              - option "Bally MPU AS-2518-17"
+              - option "Bally MPU AS-2518-35"
+              - option "Capcom A0015405"
+              - option "DataEast/Sega Version 1"
+              - option "DataEast/Sega Version 2"
+              - option "DataEast/Sega Version 3"
+              - option "DataEast/Sega Version 3b"
+              - option "Day One D1PSB"
+              - option "FAST Pinball"
+              - option "Game Plan MPU-1"
+              - option "Game Plan MPU-2"
+              - option "Gottlieb System 1"
+              - option "Gottlieb System 3"
+              - option "Gottlieb System 80"
+              - option "Gottlieb System 80A"
+              - option "Gottlieb System 80B"
+              - option "Mr. Game 1B11188/0"
+              - option "Multimorphic P-ROC"
+              - option "Multimorphic P3-ROC"
+              - option "NSM Control-Unit 217838"
+              - option "P3 Pinball Platform"
+              - option "PinHeck System"
+              - option "Playmatic MPU 1"
+              - option "Playmatic MPU 2"
+              - option "Playmatic MPU 3"
+              - option "Playmatic MPU 4"
+              - option "Playmatic MPU 5"
+              - option "Razorback+"
+              - option "Recel System III"
+              - option "Sega 95534"
+              - option "Sega 95680"
+              - option "Sega 96054"
+              - option "Sega/Stern Whitestar"
+              - option "Stern M-100 MPU"
+              - option "Stern M-200 MPU"
+              - option "Stern SAM System"
+              - option "Stern SPIKE 2 System"
+              - option "Stern SPIKE 3"
+              - option "Stern SPIKE System"
+              - option "Stern Whitestar (modified)"
+              - option "Technoplay '2-2C 8008 LS' (68000 CPU)"
+              - option "Unspecified"
+              - option "Williams Pinball 2000"
+              - option "Williams System 11"
+              - option "Williams System 11A"
+              - option "Williams System 11B"
+              - option "Williams System 11C"
+              - option "Williams System 3"
+              - option "Williams System 4"
+              - option "Williams System 6"
+              - option "Williams System 6A"
+              - option "Williams System 7"
+              - option "Williams System 8"
+              - option "Williams System 9"
+              - option "Williams WPC (Alpha Numeric)"
+              - option "Williams WPC (DCS)"
+              - option "Williams WPC (Dot Matrix)"
+              - option "Williams WPC (Fliptronics 1)"
+              - option "Williams WPC (Fliptronics 2)"
+              - option "Williams WPC Security (WPC-S)"
+              - option "Williams WPC-95"
+              - option "Zaccaria Generation 1"
+              - option "Zaccaria Generation 2"
+          - group "Sort order" [ref=e172]:
+            - generic [ref=e173]: Sort order
+            - combobox [ref=e174]:
+              - option "Date" [selected]
+              - option "Name"
+              - option "Rating"
+            - combobox [ref=e175]:
+              - option "Ascending"
+              - option "Descending" [selected]
+        - generic [ref=e176]:
+          - button " Reset" [ref=e177] [cursor=pointer]:
+            - generic [ref=e178]: 
+            - text: Reset
+          - button " Find games" [ref=e179] [cursor=pointer]:
+            - generic [ref=e180]: 
+            - text: Find games
+      - generic [ref=e181]:
+        - generic [ref=e182]:
+          - heading "Search results" [level=2] [ref=e183]
+          - paragraph [ref=e184]: There are 16 games matching your search query for 'Star Wars'.
+        - list [ref=e185]:
+          - listitem [ref=e186]:
+            - list [ref=e188]:
+              - link " Wishlist" [ref=e189] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e190]: 
+                - text: Wishlist
+              - link " Collection" [ref=e191] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e192]: 
+                - text: Collection
+              - link " Find on market" [ref=e193] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3334
+                - generic [ref=e194]: 
+                - text: Find on market
+            - generic [ref=e195]:
+              - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e196] [cursor=pointer]':
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro
+                - 'img "Star Wars: Fall of the Empire (Pro)" [ref=e197]'
+              - 'heading "Star Wars: Fall of the Empire (Pro)" [level=2] [ref=e198]':
+                - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e199] [cursor=pointer]':
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro
+              - generic [ref=e200]:
+                - generic [ref=e201]: SS
+                - heading "Stern, 2025" [level=5] [ref=e202]
+                - text: In production
+                - text: "Pinside average rating: 7.032"
+          - listitem [ref=e203]:
+            - list [ref=e205]:
+              - link " Wishlist" [ref=e206] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e207]: 
+                - text: Wishlist
+              - link " Collection" [ref=e208] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e209]: 
+                - text: Collection
+              - link " Find on market" [ref=e210] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3335
+                - generic [ref=e211]: 
+                - text: Find on market
+            - generic [ref=e212]:
+              - 'link "Star Wars: Fall of the Empire (Premium)" [ref=e213] [cursor=pointer]':
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-premium
+                - 'img "Star Wars: Fall of the Empire (Premium)" [ref=e214]'
+              - 'heading "Star Wars: Fall of the Empire (Premium)" [level=2] [ref=e215]':
+                - 'link "Star Wars: Fall of the Empire (Premium)" [ref=e216] [cursor=pointer]':
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-premium
+              - generic [ref=e217]:
+                - generic [ref=e218]: SS
+                - heading "Stern, 2025" [level=5] [ref=e219]
+                - text: In production
+          - listitem [ref=e220]:
+            - list [ref=e222]:
+              - link " Wishlist" [ref=e223] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e224]: 
+                - text: Wishlist
+              - link " Collection" [ref=e225] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e226]: 
+                - text: Collection
+              - link " Find on market" [ref=e227] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3336
+                - generic [ref=e228]: 
+                - text: Find on market
+            - generic [ref=e229]:
+              - 'link "Star Wars: Fall of the Empire (LE)" [ref=e230] [cursor=pointer]':
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-le
+                - 'img "Star Wars: Fall of the Empire (LE)" [ref=e231]'
+              - 'heading "Star Wars: Fall of the Empire (LE)" [level=2] [ref=e232]':
+                - 'link "Star Wars: Fall of the Empire (LE)" [ref=e233] [cursor=pointer]':
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-le
+              - generic [ref=e234]:
+                - generic [ref=e235]: SS
+                - heading "Stern, 2025" [level=5] [ref=e236]
+                - text: In production
+                - text: "Pinside average rating: 7.715"
+          - listitem [ref=e237]:
+            - list [ref=e239]:
+              - link " Wishlist" [ref=e240] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e241]: 
+                - text: Wishlist
+              - link " Collection" [ref=e242] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e243]: 
+                - text: Collection
+              - link " Find on market" [ref=e244] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3332
+                - generic [ref=e245]: 
+                - text: Find on market
+            - generic [ref=e246]:
+              - link "Star Wars (Home Edition Plus)" [ref=e247] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-home-edition-plus
+                - img "Star Wars (Home Edition Plus)" [ref=e248]
+              - heading "Star Wars (Home Edition Plus)" [level=2] [ref=e249]:
+                - link "Star Wars (Home Edition Plus)" [ref=e250] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-home-edition-plus
+              - generic [ref=e251]:
+                - generic [ref=e252]: SS
+                - heading "Stern, 2025" [level=5] [ref=e253]
+                - text: In production
+          - listitem [ref=e254]:
+            - list [ref=e256]:
+              - link " Wishlist" [ref=e257] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e258]: 
+                - text: Wishlist
+              - link " Collection" [ref=e259] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e260]: 
+                - text: Collection
+              - link " Find on market" [ref=e261] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3221
+                - generic [ref=e262]: 
+                - text: Find on market
+            - generic [ref=e263]:
+              - link "Star Wars Comic (Home Edition)" [ref=e264] [cursor=pointer]:
+                - /url: /pinball/machine/stern-star-wars-comic-home-edition
+                - img "Star Wars Comic (Home Edition)" [ref=e265]
+              - heading "Star Wars Comic (Home Edition)" [level=2] [ref=e266]:
+                - link "Star Wars Comic (Home Edition)" [ref=e267] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-star-wars-comic-home-edition
+              - generic [ref=e268]:
+                - generic [ref=e269]: SS
+                - heading "Stern, 2020" [level=5] [ref=e270]
+          - listitem [ref=e271]:
+            - list [ref=e273]:
+              - link " Wishlist" [ref=e274] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e275]: 
+                - text: Wishlist
+              - link " Collection" [ref=e276] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e277]: 
+                - text: Collection
+              - link " Find on market" [ref=e278] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2863
+                - generic [ref=e279]: 
+                - text: Find on market
+            - generic [ref=e280]:
+              - link "Star Wars Comic Art (Premium)" [ref=e281] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-comic-art-premium
+                - img "Star Wars Comic Art (Premium)" [ref=e282]
+              - heading "Star Wars Comic Art (Premium)" [level=2] [ref=e283]:
+                - link "Star Wars Comic Art (Premium)" [ref=e284] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-comic-art-premium
+              - generic [ref=e285]:
+                - generic [ref=e286]: SS
+                - heading "Stern, 2019" [level=5] [ref=e287]
+                - text: "Pinside average rating: 8.411"
+          - listitem [ref=e288]:
+            - list [ref=e290]:
+              - link " Wishlist" [ref=e291] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e292]: 
+                - text: Wishlist
+              - link " Collection" [ref=e293] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e294]: 
+                - text: Collection
+              - link " Find on market" [ref=e295] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2862
+                - generic [ref=e296]: 
+                - text: Find on market
+            - generic [ref=e297]:
+              - link "Star Wars Comic Art (Pro)" [ref=e298] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-comic-art-pro
+                - img "Star Wars Comic Art (Pro)" [ref=e299]
+              - heading "Star Wars Comic Art (Pro)" [level=2] [ref=e300]:
+                - link "Star Wars Comic Art (Pro)" [ref=e301] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-comic-art-pro
+              - generic [ref=e302]:
+                - generic [ref=e303]: SS
+                - heading "Stern, 2019" [level=5] [ref=e304]
+                - text: In production
+          - listitem [ref=e305]:
+            - list [ref=e307]:
+              - link " Wishlist" [ref=e308] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e309]: 
+                - text: Wishlist
+              - link " Collection" [ref=e310] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e311]: 
+                - text: Collection
+              - link " Find on market" [ref=e312] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2838
+                - generic [ref=e313]: 
+                - text: Find on market
+            - generic [ref=e314]:
+              - link "Star Wars (Home Edition)" [ref=e315] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-home-edition
+                - img "Star Wars (Home Edition)" [ref=e316]
+              - heading "Star Wars (Home Edition)" [level=2] [ref=e317]:
+                - link "Star Wars (Home Edition)" [ref=e318] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-home-edition
+              - generic [ref=e319]:
+                - generic [ref=e320]: SS
+                - heading "Stern, 2019" [level=5] [ref=e321]
+          - listitem [ref=e322]:
+            - list [ref=e324]:
+              - link " Wishlist" [ref=e325] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e326]: 
+                - text: Wishlist
+              - link " Collection" [ref=e327] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e328]: 
+                - text: Collection
+              - link " Find on market" [ref=e329] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2496
+                - generic [ref=e330]: 
+                - text: Find on market
+            - generic [ref=e331]:
+              - link "Star Wars Death Star One" [ref=e332] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-death-star-one
+                - img "Star Wars Death Star One" [ref=e333]
+              - heading "Star Wars Death Star One" [level=2] [ref=e334]:
+                - link "Star Wars Death Star One" [ref=e335] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-death-star-one
+              - generic [ref=e336]:
+                - generic [ref=e337]: SS
+                - generic [ref=e338]: Home-brew
+                - heading "WA Pinball, 2017" [level=5] [ref=e339]
+                - text: Home-brew game, 1 produced
+          - listitem [ref=e340]:
+            - list [ref=e342]:
+              - link " Wishlist" [ref=e343] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e344]: 
+                - text: Wishlist
+              - link " Collection" [ref=e345] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e346]: 
+                - text: Collection
+              - link " Find on market" [ref=e347] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2476
+                - generic [ref=e348]: 
+                - text: Find on market
+            - generic [ref=e349]:
+              - link "Star Wars (Pro)" [ref=e350] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-stern
+                - img "Star Wars (Pro)" [ref=e351]
+              - heading "Star Wars (Pro)" [level=2] [ref=e352]:
+                - link "Star Wars (Pro)" [ref=e353] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-stern
+              - generic [ref=e354]:
+                - generic [ref=e355]: SS
+                - heading "Stern, 2017" [level=5] [ref=e356]
+                - text: "Pinside average rating: 7.641"
+          - listitem [ref=e357]:
+            - list [ref=e359]:
+              - link " Wishlist" [ref=e360] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e361]: 
+                - text: Wishlist
+              - link " Collection" [ref=e362] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e363]: 
+                - text: Collection
+              - link " Find on market" [ref=e364] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=2477
+                - generic [ref=e365]: 
+                - text: Find on market
+            - generic [ref=e366]:
+              - link "Star Wars (Premium)" [ref=e367] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-stern-premium
+                - img "Star Wars (Premium)" [ref=e368]
+              - heading "Star Wars (Premium)" [level=2] [ref=e369]:
+                - link "Star Wars (Premium)" [ref=e370] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-stern-premium
+              - generic [ref=e371]:
+                - generic [ref=e372]: SS
+                - heading "Stern, 2017" [level=5] [ref=e373]
+                - text: "Pinside average rating: 8.252"
+          - listitem [ref=e374]:
+            - list [ref=e376]:
+              - link " Wishlist" [ref=e377] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e378]: 
+                - text: Wishlist
+              - link " Collection" [ref=e379] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e380]: 
+                - text: Collection
+              - link " Find on market" [ref=e381] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=3090
+                - generic [ref=e382]: 
+                - text: Find on market
+            - generic [ref=e383]:
+              - link "Star Wars (LE)" [ref=e384] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-stern-le
+                - img "Star Wars (LE)" [ref=e385]
+              - heading "Star Wars (LE)" [level=2] [ref=e386]:
+                - link "Star Wars (LE)" [ref=e387] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-stern-le
+              - generic [ref=e388]:
+                - generic [ref=e389]: SS
+                - heading "Stern, 2017" [level=5] [ref=e390]
+                - text: 800 produced
+          - listitem [ref=e391]:
+            - list [ref=e393]:
+              - link " Wishlist" [ref=e394] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e395]: 
+                - text: Wishlist
+              - link " Collection" [ref=e396] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e397]: 
+                - text: Collection
+              - link " Find on market" [ref=e398] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=981
+                - generic [ref=e399]: 
+                - text: Find on market
+            - generic [ref=e400]:
+              - link "Star Wars Episode I" [ref=e401] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-episode-i
+                - img "Star Wars Episode I" [ref=e402]
+              - heading "Star Wars Episode I" [level=2] [ref=e403]:
+                - link "Star Wars Episode I" [ref=e404] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-episode-i
+              - generic [ref=e405]:
+                - generic [ref=e406]: SS
+                - heading "Williams, 1999" [level=5] [ref=e407]
+                - text: 3,525 produced
+                - text: "Pinside average rating: 7.223"
+          - listitem [ref=e408]:
+            - list [ref=e410]:
+              - link " Wishlist" [ref=e411] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e412]: 
+                - text: Wishlist
+              - link " Collection" [ref=e413] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e414]: 
+                - text: Collection
+              - link " Find on market" [ref=e415] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=871
+                - generic [ref=e416]: 
+                - text: Find on market
+            - generic [ref=e417]:
+              - link "Star Wars Trilogy" [ref=e418] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-trilogy
+                - img "Star Wars Trilogy" [ref=e419]
+              - heading "Star Wars Trilogy" [level=2] [ref=e420]:
+                - link "Star Wars Trilogy" [ref=e421] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-trilogy
+              - generic [ref=e422]:
+                - generic [ref=e423]: SS
+                - heading "Sega, 1997" [level=5] [ref=e424]
+                - text: 2,250 produced
+                - text: "Pinside average rating: 7.226"
+          - listitem [ref=e425]:
+            - list [ref=e427]:
+              - link " Wishlist" [ref=e428] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e429]: 
+                - text: Wishlist
+              - link " Collection" [ref=e430] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e431]: 
+                - text: Collection
+              - link " Find on market" [ref=e432] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=446
+                - generic [ref=e433]: 
+                - text: Find on market
+            - generic [ref=e434]:
+              - link "Star Wars" [ref=e435] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars
+                - img "Star Wars" [ref=e436]
+              - heading "Star Wars" [level=2] [ref=e437]:
+                - link "Star Wars" [ref=e438] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars
+              - generic [ref=e439]:
+                - generic [ref=e440]: SS
+                - heading "Data East, 1992" [level=5] [ref=e441]
+                - text: 10,400 produced
+                - text: "Pinside average rating: 7.652"
+          - listitem [ref=e442]:
+            - list [ref=e444]:
+              - link " Wishlist" [ref=e445] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e446]: 
+                - text: Wishlist
+              - link " Collection" [ref=e447] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e448]: 
+                - text: Collection
+              - link " Find on market" [ref=e449] [cursor=pointer]:
+                - /url: /pinball/market/classifieds?ad_machine_key=1100
+                - generic [ref=e450]: 
+                - text: Find on market
+            - generic [ref=e451]:
+              - link "Star Wars" [ref=e452] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa
+                - img "Star Wars" [ref=e453]
+              - heading "Star Wars" [level=2] [ref=e454]:
+                - link "Star Wars" [ref=e455] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa
+              - generic [ref=e456]:
+                - generic [ref=e457]: SS
+                - heading "Segasa-Sonic, 1987" [level=5] [ref=e458]
+    - generic [ref=e460]:
+      - generic [ref=e462]:
+        - heading "Recent Pinsider highscores" [level=2] [ref=e463]
+        - paragraph [ref=e464]: Recently logged high scores by Pinsiders.
+        - generic [ref=e466]:
+          - img [ref=e467]
+          - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e468]
+          - link " Support Pinside" [ref=e469] [cursor=pointer]:
+            - /url: /pinball/donate
+            - generic [ref=e470]: 
+            - text: Support Pinside
+          - paragraph [ref=e471]:
+            - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+            - link "joining Pinside+" [ref=e472] [cursor=pointer]:
+              - /url: /pinball/donate
+            - text: to support the site and get exclusive member benefits!
+      - text:    
+      - generic [ref=e475]:
+        - link [ref=e477] [cursor=pointer]:
+          - /url: "#top"
+          - img [ref=e478]
+        - generic [ref=e479]:
+          - text: © 2001-2026 Pinside.com All rights reserved.
+          - generic [ref=e480]:
+            - generic [ref=e481]: 
+            - text: Page rendered in 0.47405s
+          - generic [ref=e482]:
+            - generic [ref=e483]: 
+            - text: Image processing powered by the awesome
+            - link "imgproxy" [ref=e484] [cursor=pointer]:
+              - /url: https://imgproxy.net
+          - generic [ref=e485]:
+            - link " Help" [ref=e486] [cursor=pointer]:
+              - /url: /pinball/help
+              - generic [ref=e487]: 
+              - text: Help
+            - text: –
+            - link " Contact" [ref=e488] [cursor=pointer]:
+              - /url: /pinball/contact
+              - generic [ref=e489]: 
+              - text: Contact
+            - text: –
+            - link " About Pinside" [ref=e490] [cursor=pointer]:
+              - /url: /pinball/help
+              - generic [ref=e491]: 
+              - text: About Pinside
+            - text: –
+            - link " Support Pinside" [ref=e492] [cursor=pointer]:
+              - /url: /pinball/donate
+              - generic [ref=e493]: 
+              - text: Support Pinside
+            - text: –
+            - link " Top" [ref=e494] [cursor=pointer]:
+              - /url: "#top"
+              - generic [ref=e495]: 
+              - text: Top

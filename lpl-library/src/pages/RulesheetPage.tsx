@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { fetchPinballText } from "../../../shared/ui/pinballCache";
+import { fetchPinballJson } from "../../../shared/ui/pinballCache";
 import SiteHeader from "../components/SiteHeader";
 import { APP_BACKGROUND_STYLE, PageContainer, Panel } from "../components/ui";
 
@@ -49,6 +50,14 @@ function scrollToHash(hash: string) {
 
 export default function RulesheetPage() {
   const { slug } = useParams();
+  const [resolveStatus, setResolveStatus] = useState<"idle" | "loading" | "done">("idle");
+  const [resolvedGame, setResolvedGame] = useState<{
+    routeId: string;
+    legacySlug: string | null;
+    practiceIdentity: string | null;
+    rulesheetPractice: string | null;
+    rulesheetLegacy: string | null;
+  } | null>(null);
   const [rulesheetState, setRulesheetState] = useState<{
     slug: string | null;
     md: string | null;
@@ -60,23 +69,102 @@ export default function RulesheetPage() {
   });
 
   useEffect(() => {
-    if (!slug) return;
-    fetchPinballText(`/pinball/rulesheets/${slug}.md`)
-      .then((text) => {
-        setRulesheetState({
-          slug,
-          md: text ? normalizeRulesheet(text) : null,
-          status: "loaded",
+    if (!slug) {
+      setResolveStatus("done");
+      setResolvedGame(null);
+      return;
+    }
+    let cancelled = false;
+    setResolveStatus("loading");
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
+      .then((raw) => {
+        if (cancelled) return;
+        if (!raw || typeof raw !== "object" || Array.isArray(raw) || (raw as { version?: unknown }).version !== 2) {
+          setResolvedGame(null);
+          setResolveStatus("done");
+          return;
+        }
+        const items = Array.isArray((raw as { items?: unknown[] }).items) ? (raw as { items: unknown[] }).items : [];
+        const found = items.find((it) => {
+          const item = (it ?? {}) as Record<string, unknown>;
+          const routeId = String(item.library_entry_id ?? "").trim();
+          const pinsideId = String(item.pinside_id ?? "").trim();
+          const legacySlug = String(item.pinside_slug ?? "").trim();
+          const practiceIdentity = String(item.practice_identity ?? "").trim();
+          return routeId === slug || pinsideId === slug || legacySlug === slug || practiceIdentity === slug;
+        }) as Record<string, unknown> | undefined;
+        if (!found) {
+          setResolvedGame(null);
+          setResolveStatus("done");
+          return;
+        }
+        const assets = found.assets && typeof found.assets === "object" ? (found.assets as Record<string, unknown>) : {};
+        setResolvedGame({
+          routeId: String(found.library_entry_id ?? "").trim() || slug,
+          legacySlug: String(found.pinside_slug ?? "").trim() || null,
+          practiceIdentity: String(found.practice_identity ?? "").trim() || null,
+          rulesheetPractice: String(assets.rulesheet_local_practice ?? "").trim() || null,
+          rulesheetLegacy: String(assets.rulesheet_local_legacy ?? "").trim() || null,
         });
+        setResolveStatus("done");
       })
       .catch(() => {
-        setRulesheetState({
-          slug,
-          md: null,
-          status: "missing",
-        });
+        if (cancelled) return;
+        setResolvedGame(null);
+        setResolveStatus("done");
       });
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
+
+  useEffect(() => {
+    if (!slug) return;
+    if (resolveStatus === "loading") return;
+    const key = resolvedGame?.routeId ?? slug;
+    const candidates = [
+      resolvedGame?.rulesheetPractice,
+      resolvedGame?.rulesheetLegacy,
+      resolvedGame?.practiceIdentity ? `/pinball/rulesheets/${resolvedGame.practiceIdentity}-rulesheet.md` : null,
+      resolvedGame?.legacySlug ? `/pinball/rulesheets/${resolvedGame.legacySlug}.md` : null,
+      `/pinball/rulesheets/${slug}-rulesheet.md`,
+      `/pinball/rulesheets/${slug}.md`,
+    ].filter((v, i, a): v is string => Boolean(v) && a.indexOf(v as string) === i);
+
+    let cancelled = false;
+    (async () => {
+      for (const candidate of candidates) {
+        try {
+          const text = await fetchPinballText(candidate);
+          if (cancelled) return;
+          setRulesheetState({
+            slug: key,
+            md: text ? normalizeRulesheet(text) : null,
+            status: "loaded",
+          });
+          return;
+        } catch {
+          // try next candidate
+        }
+      }
+      if (cancelled) return;
+      setRulesheetState({
+        slug: key,
+        md: null,
+        status: "missing",
+      });
+    })().catch(() => {
+      if (cancelled) return;
+      setRulesheetState({
+        slug: key,
+        md: null,
+        status: "missing",
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, resolvedGame, resolveStatus]);
 
   useEffect(() => {
     if (!rulesheetState.md) return;
@@ -162,8 +250,9 @@ export default function RulesheetPage() {
     };
   }, []);
 
-  const loading = slug ? rulesheetState.slug !== slug : false;
-  const md = rulesheetState.slug === slug ? rulesheetState.md : null;
+  const stateKey = resolvedGame?.routeId ?? slug;
+  const loading = stateKey ? rulesheetState.slug !== stateKey : false;
+  const md = rulesheetState.slug === stateKey ? rulesheetState.md : null;
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
@@ -174,7 +263,7 @@ export default function RulesheetPage() {
             ← Library
           </Link>
           {slug && (
-            <Link className="text-neutral-300 underline" to={`/game/${slug}`}>
+            <Link className="text-neutral-300 underline" to={`/game/${encodeURIComponent(resolvedGame?.routeId ?? slug)}`}>
               Back to game
             </Link>
           )}

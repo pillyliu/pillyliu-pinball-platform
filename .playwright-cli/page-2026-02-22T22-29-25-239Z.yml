@@ -1,0 +1,671 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Stranger Things (LE)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Stranger Things (LE)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Stranger Things (LE)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/stern-stranger-things-le/gallery
+            - img "Stranger Things (LE)" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/stern
+              - img [ref=e126]
+            - heading "Stern" [level=2] [ref=e127]
+            - heading "Stranger Things (LE)" [level=1] [ref=e128]
+            - paragraph [ref=e130]: Stranger Things (LE) is a pinball machine from December 2019, manufactured by Stern Pinball, Inc.
+            - generic [ref=e131]:
+              - heading "Tags:" [level=3] [ref=e132]
+              - link "horror" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=horror
+              - link "monsters" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=monsters
+              - link "SCI-FI" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/machine?tags=sci-fi
+              - link "TELEVISION" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/machine?tags=television
+              - link "edit tags" [ref=e138] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=2868
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: "This title is part of group: \"Stranger Things\""
+          - generic [ref=e143]:
+            - link "Stranger Things (Pro)" [ref=e144] [cursor=pointer]:
+              - /url: /pinball/machine/stern-stranger-things-pro/
+              - img [ref=e145]
+              - generic [ref=e147]:
+                - text: Stranger Things
+                - text: (Pro)
+            - link "Stranger Things (Premium)" [ref=e148] [cursor=pointer]:
+              - /url: /pinball/machine/stern-stranger-things-premium/
+              - img [ref=e149]
+              - generic [ref=e151]:
+                - text: Stranger Things
+                - text: (Premium)
+            - link "Stranger Things (LE)" [ref=e152] [cursor=pointer]:
+              - /url: /pinball/machine/stern-stranger-things-le/
+              - img [ref=e153]
+              - generic [ref=e155]:
+                - text: Stranger Things
+                - text: (LE)
+        - generic [ref=e156]:
+          - generic:
+            - generic [ref=e158]:
+              - heading "Design team" [level=3] [ref=e159]
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - text: "Game Design:"
+                  - link "Brian Eddy" [ref=e162] [cursor=pointer]:
+                    - /url: /pinball/machine/brian-eddy
+                - generic [ref=e163]:
+                  - text: "Engineering/mechanics:"
+                  - link "Robert Blakeman" [ref=e164] [cursor=pointer]:
+                    - /url: /pinball/machine/robert-blakeman
+                - generic [ref=e165]:
+                  - text: "Software:"
+                  - link "Brian Eddy" [ref=e166] [cursor=pointer]:
+                    - /url: /pinball/machine/brian-eddy
+                  - link "Lonnie D. Ropp" [ref=e167] [cursor=pointer]:
+                    - /url: /pinball/machine/lonnie-d-ropp
+                  - link "Mike Vinikour" [ref=e168] [cursor=pointer]:
+                    - /url: /pinball/machine/mike-vinikour
+                - generic [ref=e169]:
+                  - text: "Artwork:"
+                  - link "Bob Stevlic" [ref=e170] [cursor=pointer]:
+                    - /url: /pinball/machine/bob-stevlic
+                - generic [ref=e171]:
+                  - text: "Animation:"
+                  - link "Chuck Ernst" [ref=e172] [cursor=pointer]:
+                    - /url: /pinball/machine/chuck-ernst
+                - generic [ref=e173]:
+                  - text: "Sound:"
+                  - link "Ken Hale" [ref=e174] [cursor=pointer]:
+                    - /url: /pinball/machine/ken-hale
+                - generic [ref=e175]:
+                  - text: "Music:"
+                  - link "Ken Hale" [ref=e176] [cursor=pointer]:
+                    - /url: /pinball/machine/ken-hale
+            - generic [ref=e178]:
+              - heading "Game details" [level=3] [ref=e179]
+              - generic [ref=e180]:
+                - generic [ref=e181]: PinsideID
+                - generic [ref=e182]: "2868"
+              - generic [ref=e183]:
+                - generic [ref=e184]: Manufactured by
+                - link "Stern Pinball, Inc." [ref=e186] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=105#results
+              - generic [ref=e187]:
+                - generic [ref=e188]: Date
+                - generic [ref=e189]: December 2019
+              - generic [ref=e190]:
+                - generic [ref=e191]: Type
+                - img [ref=e192]
+                - text: Solid state
+              - generic [ref=e193]:
+                - generic [ref=e194]: Generation
+                - link "Stern SPIKE 2 System" [ref=e196] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=63#results
+              - generic [ref=e197]:
+                - generic [ref=e198]: Release
+                - generic [ref=e199]: 500 produced
+              - generic [ref=e200]:
+                - generic [ref=e201]: Estimated value
+                - generic [ref=e202]: $10640 - $12360
+              - generic [ref=e203]:
+                - generic [ref=e204]: Cabinet
+                - generic [ref=e205]: Normal
+              - generic [ref=e206]:
+                - generic [ref=e207]: Display type
+                - generic [ref=e208]: LCD Display
+              - generic [ref=e209]:
+                - generic [ref=e210]: Players
+                - generic [ref=e211]: "4"
+              - generic [ref=e212]:
+                - generic [ref=e213]: Flippers
+                - generic [ref=e214]: "2"
+              - generic [ref=e215]:
+                - generic [ref=e216]: Ramps
+                - generic [ref=e217]: "4"
+              - generic [ref=e218]:
+                - generic [ref=e219]: Multiball
+                - generic [ref=e220]: "5"
+              - generic [ref=e221]:
+                - generic [ref=e222]: IPDB
+                - link "#6644" [ref=e224] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=6644
+              - generic [ref=e225]:
+                - generic [ref=e226]: Latest software
+                - generic [ref=e227]: V1.12.0 - November 26, 2024
+          - generic [ref=e228]:
+            - list:
+              - listitem [ref=e229]:
+                - link "View all details" [ref=e230] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/details
+              - listitem [ref=e231]:
+                - link "Edit game details" [ref=e232] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=2868
+        - generic [ref=e235]:
+          - heading "Promotional" [level=3] [ref=e236]
+          - generic [ref=e237]:
+            - link [ref=e239] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/Q068a3vvXmHMacY0cDgRTU37xsOxNeGmg5fmKeiA0cU/rs:fit:2048/fn:pinside_archive_2868_7ed21858649b/enc/J7NBoTFybujq5ed6__fmJ9HvYfeGcObADViDu3zr-YFp7bTu-8TWlmhW9pmN-xQs_EunKP5IuJGGspw7Oc0UzEDGqjIs5_LbofM7jRZkPtl7yKxfCGo0b1zCJ-Ln36_W.jpg
+              - img [ref=e240]
+            - link [ref=e242] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/oRQ8oUHrIbgDThdmGlZGcgLYCMvrKPFwilRxXO-CzDw/rs:fit:2048/fn:pinside_archive_2868_76e3923f4d18/enc/b0dfzh83AvkaT9gm6Ogv23KPrHbaqgazmeYgvgXN_U4i3MGPS0MPjgjySRkePQHm05nJQXUUe992-fqYA8ZWJUFA01ZUBpkLlPYLx-QW7QyNKFdwKhQmN5HYdW1EpCvI.jpg
+              - img [ref=e243]
+          - paragraph [ref=e244]: Click on a flyer image for full size.
+        - generic [ref=e245]:
+          - heading "Price history" [level=2] [ref=e248]
+          - generic [ref=e254]:
+            - heading "Price estimate" [level=3] [ref=e255]
+            - paragraph [ref=e256]:
+              - text: This game
+              - link "has been listed" [ref=e257] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2868#results
+              - text: a total number of 124 times on the Pinside Marketplace, most recently on 2026-01-18.
+            - separator [ref=e258]
+            - paragraph [ref=e259]: This past year, we've seen it listed 15 times. The median asking price (trimmed median) was $11,500
+            - separator [ref=e260]
+            - paragraph [ref=e261]:
+              - text: »
+              - link "Find ads for this game" [ref=e262] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/market
+            - paragraph [ref=e263]:
+              - text: »
+              - link "View archived ads" [ref=e264] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2868
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - generic [ref=e267]:
+              - heading "Pinside rating" [level=3] [ref=e268]
+              - paragraph [ref=e269]:
+                - text: This game has received
+                - strong [ref=e270]: 192 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e272]: 8.609 out of 10.
+              - generic [ref=e275]: "8.609"
+            - generic [ref=e287]:
+              - heading "Top 100 ranking" [level=3] [ref=e288]
+              - paragraph [ref=e289]:
+                - text: This game ranks 1st in the game group "Stranger Things". The group itself
+                - strong [ref=e290]:
+                  - text: "ranks #28 in the"
+                  - link "Pinside Pinball Top 100" [ref=e291] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e292]:
+              - heading "Rating comments" [level=3] [ref=e293]
+              - paragraph [ref=e294]:
+                - text: There
+                - link "are 86 rating comments" [ref=e295] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/ratings
+                - text: for this game.
+          - generic [ref=e297]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e298]
+            - generic [ref=e301]:
+              - paragraph [ref=e304]:
+                - strong [ref=e305]: "181"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e308]:
+                - strong [ref=e309]: "244"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e312]:
+                - strong [ref=e313]: "27"
+                - text: public locations to play this machine.
+          - generic [ref=e315]:
+            - list:
+              - listitem [ref=e316]:
+                - link "Add your rating!" [ref=e317] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/ratings/edit?r=/pinball/machine/stern-stranger-things-le
+              - listitem [ref=e318]:
+                - link "Show all rating comments" [ref=e319] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/ratings
+          - generic [ref=e321]:
+            - list:
+              - listitem [ref=e322]:
+                - link "Log in to manage your collection and wishlist." [ref=e323] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e324]:
+                - link "Visit map!" [ref=e325] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/owners
+        - generic [ref=e328]:
+          - heading "Gallery - Featured images" [level=3] [ref=e329]
+          - paragraph
+          - list [ref=e330]:
+            - listitem [ref=e331]:
+              - link [ref=e332] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e333]
+            - listitem [ref=e334]:
+              - link [ref=e335] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e336]
+            - listitem [ref=e337]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e339]
+            - listitem [ref=e340]:
+              - link [ref=e341] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e342]
+            - listitem [ref=e343]:
+              - link [ref=e344] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e345]
+            - listitem [ref=e346]:
+              - link [ref=e347] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e348]
+            - listitem [ref=e349]:
+              - link [ref=e350] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e351]
+            - listitem [ref=e352]:
+              - link [ref=e353] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e354]
+            - listitem [ref=e355]:
+              - link [ref=e356] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e357]
+            - listitem [ref=e358]:
+              - link [ref=e359] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e360]
+            - listitem [ref=e361]:
+              - link [ref=e362] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e363]
+            - listitem [ref=e364]:
+              - link [ref=e365] [cursor=pointer]:
+                - /url: /pinball/machine/stern-stranger-things-le/gallery
+                - img [ref=e366]
+          - paragraph
+          - generic [ref=e367]:
+            - list:
+              - listitem [ref=e368]:
+                - link "Visit the gallery for all images!" [ref=e369] [cursor=pointer]:
+                  - /url: /pinball/machine/stern-stranger-things-le/gallery
+        - generic [ref=e371]:
+          - heading "Game-related shop items!" [level=3] [ref=e372]
+          - paragraph [ref=e373]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e374]: Stranger Things (LE)
+            - text: .
+          - generic [ref=e375]:
+            - generic [ref=e377]:
+              - link [ref=e378] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1463-arcade-cabinetscom/17927-pinbawlers-start-button-upgrade-for-stranger-things-pinball
+              - generic [ref=e379]: $ 50.00
+              - generic [ref=e380]:
+                - generic [ref=e381]: Cabinet - Other
+                - generic [ref=e382]:
+                  - link "Pinbawlers start button upgrade for Stranger Things Pinball" [ref=e383] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1463-arcade-cabinetscom/17927-pinbawlers-start-button-upgrade-for-stranger-things-pinball
+                  - text: New!
+                - generic [ref=e385]:
+                  - generic [ref=e386]: 
+                  - text: arcade-cabinets.com
+            - generic [ref=e389]:
+              - link [ref=e390] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1012-ulekstore/03248-friends-dont-lie-flipper-bat-topper-mod-for-stranger-things
+              - generic [ref=e391]: $ 14.95
+              - generic [ref=e392]:
+                - generic [ref=e393]: Playfield - Toys/Add-ons
+                - link "Friends Don't Lie Flipper Bat Topper MOD for Stranger Things" [ref=e395] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1012-ulekstore/03248-friends-dont-lie-flipper-bat-topper-mod-for-stranger-things
+                - generic [ref=e397]:
+                  - generic [ref=e398]: 
+                  - text: ULEKstore
+            - generic [ref=e401]:
+              - link [ref=e402] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1167-gameroom-mods/07776-stern-stranger-things-plastic-protectors
+              - generic [ref=e403]: "From: $ 40.00"
+              - generic [ref=e404]:
+                - generic [ref=e405]: Playfield - Plastics
+                - link "Stern Stranger Things Plastic Protectors" [ref=e407] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1167-gameroom-mods/07776-stern-stranger-things-plastic-protectors
+                - generic [ref=e409]:
+                  - generic [ref=e410]: 
+                  - text: Gameroom Mods
+            - generic [ref=e413]:
+              - link [ref=e414] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1667-pinballcardscom/12468-stranger-things-rule-card-set-version-3
+              - generic [ref=e415]: $ 18.00
+              - generic [ref=e416]:
+                - generic [ref=e417]: Cabinet - Other
+                - link "Stranger Things Rule Card Set - Version 3" [ref=e419] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1667-pinballcardscom/12468-stranger-things-rule-card-set-version-3
+                - generic [ref=e421]:
+                  - generic [ref=e422]: 
+                  - text: PinballCards.com
+            - generic [ref=e425]:
+              - link [ref=e426] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1426-pinhead-mods/07917-pindefender-in-galaxy-black
+              - generic [ref=e427]: $ 24.00
+              - generic [ref=e428]:
+                - generic [ref=e429]: Playfield - Protection
+                - link "Pindefender in Galaxy Black" [ref=e431] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1426-pinhead-mods/07917-pindefender-in-galaxy-black
+                - generic [ref=e433]:
+                  - generic [ref=e434]: 
+                  - text: Pinhead mods
+            - generic [ref=e437]:
+              - link [ref=e438] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14020-stranger-things-apron-for-pro-only-lighted-pinball-0109
+              - generic [ref=e439]: "From: $ 59.99"
+              - generic [ref=e440]:
+                - generic [ref=e441]: Lighting - Other
+                - link "Stranger things (apron for Pro ONLY) Lighted Pinball 0109" [ref=e443] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14020-stranger-things-apron-for-pro-only-lighted-pinball-0109
+                - generic [ref=e445]:
+                  - generic [ref=e446]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e449]:
+              - link [ref=e450] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14019-stranger-things-apron-for-pro-only-lighted-pinball-0108
+              - generic [ref=e451]: "From: $ 59.99"
+              - generic [ref=e452]:
+                - generic [ref=e453]: Lighting - Other
+                - link "Stranger things (apron for Pro ONLY) Lighted Pinball 0108" [ref=e455] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14019-stranger-things-apron-for-pro-only-lighted-pinball-0108
+                - generic [ref=e457]:
+                  - generic [ref=e458]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e461]:
+              - link [ref=e462] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1414-perfect-plunge/12906-expression-speaker-light-diffusers-stranger-things
+              - generic [ref=e463]: $ 20.00
+              - generic [ref=e464]:
+                - generic [ref=e465]: Lighting - Backbox
+                - link "Expression Speaker Light Diffusers Stranger Things" [ref=e467] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1414-perfect-plunge/12906-expression-speaker-light-diffusers-stranger-things
+                - generic [ref=e469]:
+                  - generic [ref=e470]: 
+                  - text: Perfect Plunge
+            - generic [ref=e473]:
+              - link [ref=e474] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14023-stranger-things-pro-only-lighted-pinball-apronarch-0112
+              - generic [ref=e475]: "From: $ 59.99"
+              - generic [ref=e476]:
+                - generic [ref=e477]: Lighting - Other
+                - link "Stranger things (Pro only) Lighted Pinball Apron/Arch 0112" [ref=e479] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1032-lighted-pinball-mods/14023-stranger-things-pro-only-lighted-pinball-apronarch-0112
+                - generic [ref=e481]:
+                  - generic [ref=e482]: 
+                  - text: Lighted Pinball Mods
+            - generic [ref=e485]:
+              - link [ref=e486] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1516-hit-the-lights/10521-pinsignal-for-stranger-things
+              - generic [ref=e487]: € 99.00
+              - generic [ref=e488]:
+                - generic [ref=e489]: Lighting - Under Cabinet
+                - link "Pinsignal for Stranger Things" [ref=e491] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1516-hit-the-lights/10521-pinsignal-for-stranger-things
+                - generic [ref=e493]:
+                  - generic [ref=e494]: 
+                  - text: Hit the Lights
+          - paragraph [ref=e497]:
+            - text: »
+            - link "View all 105 parts for this game on its Shops page" [ref=e498] [cursor=pointer]:
+              - /url: /pinball/shops/games/stern-stranger-things-le
+        - generic [ref=e500]:
+          - heading "Market value" [level=3] [ref=e501]
+          - paragraph [ref=e502]: There are currently 2 ads for this game on our Market place.
+          - generic [ref=e503]:
+            - generic [ref=e505]:
+              - link [ref=e506] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208052
+              - generic [ref=e507]:
+                - text: CAD
+                - generic [ref=e508]: 
+                - text: 18,500
+              - generic [ref=e509]:
+                - generic [ref=e510]: Machine - For Sale
+                - link "Stranger Things (LE)" [ref=e512] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208052
+                - generic [ref=e513]:
+                  - generic [ref=e514]:
+                    - img [ref=e515]
+                    - text: Vaughan, ON
+                  - generic [ref=e516]:
+                    - generic [ref=e517]: 
+                    - link "ad19col" [ref=e518] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/ad19col/market
+                    - generic [ref=e519]: 
+            - generic [ref=e521]:
+              - link [ref=e522] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/196715
+              - generic [ref=e523]:
+                - generic [ref=e524]: 
+                - text: 11,950 (OBO)
+              - generic [ref=e525]:
+                - generic [ref=e526]: Machine - For Sale
+                - generic [ref=e527]:
+                  - 'link "Stranger Things (LE) #500/500 LOADED" [ref=e528] [cursor=pointer]':
+                    - /url: /pinball/market/classifieds/ad/196715
+                  - text: Featured
+                - generic [ref=e529]:
+                  - generic [ref=e530]:
+                    - img [ref=e531]
+                    - text: Plant City, FL
+                  - generic [ref=e532]:
+                    - generic [ref=e533]: 
+                    - link "Littlemh" [ref=e534] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/littlemh/market
+                    - generic [ref=e535]: 
+      - generic [ref=e537]:
+        - img [ref=e538]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e539]
+        - link " Support Pinside" [ref=e540] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e541]: 
+          - text: Support Pinside
+        - paragraph [ref=e542]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e543] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e546]:
+    - link [ref=e548] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e549]
+    - generic [ref=e550]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e551]:
+        - generic [ref=e552]: 
+        - text: Page rendered in 1.74223s
+      - generic [ref=e553]:
+        - generic [ref=e554]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e555] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e556]:
+        - link " Help" [ref=e557] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e558]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e559] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e560]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e561] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e562]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e563] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e564]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e565] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e566]: 
+          - text: Top

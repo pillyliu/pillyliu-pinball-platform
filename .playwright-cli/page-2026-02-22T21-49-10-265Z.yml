@@ -1,0 +1,476 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Star Wars" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: pinballphotos" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Star Wars" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Star Wars" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/star-wars-segasa/gallery
+            - img "Star Wars" [ref=e121]
+          - generic [ref=e123]:
+            - heading "Segasa-Sonic" [level=2] [ref=e124]
+            - heading "Star Wars" [level=1] [ref=e125]
+            - paragraph [ref=e127]: Star Wars is a pinball machine from 1987, manufactured by Segasa d.b.a. Sonic.
+            - generic [ref=e128]:
+              - heading "Tags:" [level=3] [ref=e129]
+              - link "movie" [ref=e130] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "SCI-FI" [ref=e131] [cursor=pointer]:
+                - /url: /pinball/machine?tags=sci-fi
+              - link "STAR-WARS" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=star-wars
+              - link "edit tags" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=1100
+        - generic [ref=e135]:
+          - generic:
+            - generic [ref=e137]:
+              - heading "Design team" [level=3] [ref=e138]
+              - paragraph [ref=e139]: Sorry, but we don't seem to have any information about the design team of this machine.
+            - generic [ref=e141]:
+              - heading "Game details" [level=3] [ref=e142]
+              - generic [ref=e143]:
+                - generic [ref=e144]: PinsideID
+                - generic [ref=e145]: "1100"
+              - generic [ref=e146]:
+                - generic [ref=e147]: Manufactured by
+                - link "Segasa d.b.a. Sonic" [ref=e149] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=183#results
+              - generic [ref=e150]:
+                - generic [ref=e151]: Year
+                - generic [ref=e152]: "1987"
+              - generic [ref=e153]:
+                - generic [ref=e154]: Type
+                - img [ref=e155]
+                - text: Solid state
+              - generic [ref=e156]:
+                - generic [ref=e157]: Estimated value
+                - generic [ref=e158]: Unknown
+              - generic [ref=e159]:
+                - generic [ref=e160]: Cabinet
+                - generic [ref=e161]: Normal
+              - generic [ref=e162]:
+                - generic [ref=e163]: Display type
+                - generic [ref=e164]: Digital
+              - generic [ref=e165]:
+                - generic [ref=e166]: Players
+                - generic [ref=e167]: "4"
+              - generic [ref=e168]:
+                - generic [ref=e169]: Flippers
+                - generic [ref=e170]: "3"
+              - generic [ref=e171]:
+                - generic [ref=e172]: Ramps
+                - generic [ref=e173]: "2"
+              - generic [ref=e174]:
+                - generic [ref=e175]: Multiball
+                - generic [ref=e176]: "0"
+              - generic [ref=e177]:
+                - generic [ref=e178]: IPDB
+                - link "#4513" [ref=e180] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=4513
+              - generic [ref=e181]:
+                - generic [ref=e182]: Latest software
+                - generic [ref=e183]: Unknown
+          - generic [ref=e184]:
+            - list:
+              - listitem [ref=e185]:
+                - link "View all details" [ref=e186] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/details
+              - listitem [ref=e187]:
+                - link "Edit game details" [ref=e188] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=1100
+        - generic [ref=e191]:
+          - heading "Promotional" [level=3] [ref=e192]
+          - generic [ref=e193]:
+            - link [ref=e195] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/0fsPNe0f8SQxu6P3_yEhHGkQG1ynPFF3J2yabxpTZ9Q/rs:fit:2048/fn:pinside_archive_1100_8387457167dd/enc/31HTBhjbzcBwd453WNX3UWDo1cHEToh7us1HPQXUo8oHuH53UmTPI0fOamIp0HokO1Nse-RgeLic6wFq4CeI45izs0ZHBCccbMWhZeDOd7lmOm2-ihF-mhJS9SLvp-8A.jpg
+              - img [ref=e196]
+            - link [ref=e198] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/wv7Xqe_yzPpWaZS_Z4uK3cVd8go0Ui912OqBDdVuIEk/rs:fit:2048/fn:pinside_archive_1100_8a9c9435921f/enc/m1LISak4eERmRgjo2sFBUB3QfCZV8gz7zeqYzN84yxeJr28GQtI--5RlZfwwY_oZ35Xy3xngXJE6Eh2mOTqnp-pLjvkGp0t10wQ70XDQdwsBZpdYjMtqvYtgMp9jK6Ja.jpg
+              - img [ref=e199]
+          - paragraph [ref=e200]: Click on a flyer image for full size.
+        - generic [ref=e201]:
+          - heading "Price history" [level=2] [ref=e204]
+          - generic [ref=e210]:
+            - heading "Price estimate" [level=3] [ref=e211]
+            - paragraph [ref=e212]:
+              - text: We cannot give an accurate price estimate, as we have seen this game
+              - link "listed" [ref=e213] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=1100#results
+              - text: on the Pinside Market only once.
+            - separator [ref=e214]
+            - paragraph [ref=e215]: We have not seen this game listed on the Pinside Market In the past 4 years. We cannot estimate the current value for this game.
+            - separator [ref=e216]
+            - paragraph [ref=e217]:
+              - text: »
+              - link "Find ads for this game" [ref=e218] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/market
+            - paragraph [ref=e219]:
+              - text: »
+              - link "View archived ads" [ref=e220] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=1100
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - heading "Pinside rating" [level=3] [ref=e224]
+              - paragraph [ref=e225]:
+                - strong [ref=e226]: This game has received 3 approved Pinsider ratings.
+                - text: 47 more approved ratings are needed to get a rating and for it to be eligible for the
+                - link "Pinside Pinball Top 100" [ref=e227] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: ranking.
+            - generic [ref=e228]:
+              - heading "Rating comments" [level=3] [ref=e229]
+              - paragraph [ref=e230]:
+                - text: There
+                - link "are 2 rating comments" [ref=e231] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/ratings
+                - text: for this game.
+          - generic [ref=e233]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e234]
+            - generic [ref=e237]:
+              - paragraph [ref=e240]:
+                - strong [ref=e241]: "6"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e244]:
+                - strong [ref=e245]: "61"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e248]:
+                - strong [ref=e249]: "2"
+                - text: public locations to play this machine.
+          - generic [ref=e251]:
+            - list:
+              - listitem [ref=e252]:
+                - link "Add your rating!" [ref=e253] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/ratings/edit?r=/pinball/machine/star-wars-segasa
+              - listitem [ref=e254]:
+                - link "Show all rating comments" [ref=e255] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/ratings
+          - generic [ref=e257]:
+            - list:
+              - listitem [ref=e258]:
+                - link "Log in to manage your collection and wishlist." [ref=e259] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e260]:
+                - link "Visit map!" [ref=e261] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/owners
+        - generic [ref=e264]:
+          - heading "Gallery - Featured images" [level=3] [ref=e265]
+          - paragraph
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - link [ref=e268] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e269]
+            - listitem [ref=e270]:
+              - link [ref=e271] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e272]
+            - listitem [ref=e273]:
+              - link [ref=e274] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e275]
+            - listitem [ref=e276]:
+              - link [ref=e277] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e278]
+            - listitem [ref=e279]:
+              - link [ref=e280] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e281]
+            - listitem [ref=e282]:
+              - link [ref=e283] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e284]
+            - listitem [ref=e285]:
+              - link [ref=e286] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e287]
+            - listitem [ref=e288]:
+              - link [ref=e289] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e290]
+            - listitem [ref=e291]:
+              - link [ref=e292] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e293]
+            - listitem [ref=e294]:
+              - link [ref=e295] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e296]
+            - listitem [ref=e297]:
+              - link [ref=e298] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e299]
+            - listitem [ref=e300]:
+              - link [ref=e301] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-segasa/gallery
+                - img [ref=e302]
+          - paragraph
+          - generic [ref=e303]:
+            - list:
+              - listitem [ref=e304]:
+                - link "Visit the gallery for all images!" [ref=e305] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-segasa/gallery
+        - generic [ref=e307]:
+          - heading "Game-related shop items!" [level=3] [ref=e308]
+          - paragraph [ref=e309]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e310]: Star Wars
+            - text: .
+          - generic [ref=e311]:
+            - generic [ref=e313]:
+              - link [ref=e314] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/17603-sonic-star-wars-pinball-machine-rubber-ring-kit
+              - generic [ref=e315]: $ 25.99
+              - generic [ref=e316]:
+                - generic [ref=e317]: Rubber/Silicone
+                - link "Sonic Star Wars Pinball Machine Rubber Ring Kit" [ref=e319] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/17603-sonic-star-wars-pinball-machine-rubber-ring-kit
+                - generic [ref=e321]:
+                  - generic [ref=e322]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e325]:
+              - link [ref=e326] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/17604-sonic-star-wars-pinball-machine-maintenance-tune-up-kit
+              - generic [ref=e327]: $ 45.99
+              - generic [ref=e328]:
+                - generic [ref=e329]: Cleaner
+                - link "Sonic Star Wars Pinball Machine Maintenance Tune Up Kit" [ref=e331] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/17604-sonic-star-wars-pinball-machine-maintenance-tune-up-kit
+                - generic [ref=e333]:
+                  - generic [ref=e334]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e337]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15537-sonic-star-wars-pinball-machine-rubber-ring-kit
+              - generic [ref=e339]: $ 25.99
+              - generic [ref=e340]:
+                - generic [ref=e341]: Rubber/Silicone
+                - link "Sonic Star Wars Pinball Machine Rubber Ring Kit" [ref=e343] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15537-sonic-star-wars-pinball-machine-rubber-ring-kit
+                - generic [ref=e345]:
+                  - generic [ref=e346]: 
+                  - text: Patelrock Pinball
+        - generic [ref=e349]:
+          - heading "Market value" [level=3] [ref=e350]
+          - paragraph [ref=e351]:
+            - text: There are currently no ads for this game on the
+            - link "Marketplace" [ref=e352] [cursor=pointer]:
+              - /url: /pinball/market/classifieds
+            - text: .
+      - generic [ref=e354]:
+        - img [ref=e355]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e356]
+        - link " Support Pinside" [ref=e357] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e358]: 
+          - text: Support Pinside
+        - paragraph [ref=e359]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e360] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e363]:
+    - link [ref=e365] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e366]
+    - generic [ref=e367]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e368]:
+        - generic [ref=e369]: 
+        - text: Page rendered in 0.62517s
+      - generic [ref=e370]:
+        - generic [ref=e371]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e372] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e373]:
+        - link " Help" [ref=e374] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e375]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e376] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e377]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e378] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e379]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e380] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e381]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e382] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e383]: 
+          - text: Top

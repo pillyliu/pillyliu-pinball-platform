@@ -1,0 +1,776 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "The Godfather (CE)" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: TractorDoc" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/tractordoc
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "The Godfather (CE)" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "The Godfather (CE)" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/jjp-godfather-ce/gallery
+            - img "The Godfather (CE)" [ref=e121]
+          - generic [ref=e123]:
+            - heading "Jersey Jack" [level=2] [ref=e124]
+            - heading "The Godfather (CE)" [level=1] [ref=e125]
+            - paragraph [ref=e127]: The Godfather (CE) is a pinball machine from March 2023, manufactured by Jersey Jack Pinball.
+            - generic [ref=e128]:
+              - heading "Tags:" [level=3] [ref=e129]
+              - link "CRIME" [ref=e130] [cursor=pointer]:
+                - /url: /pinball/machine?tags=crime
+              - link "guns" [ref=e131] [cursor=pointer]:
+                - /url: /pinball/machine?tags=guns
+              - link "MAFIA" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=mafia
+              - link "movie" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "edit tags" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=3109
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: "This title is part of group: \"The Godfather\""
+          - generic [ref=e140]:
+            - link "The Godfather (LE)" [ref=e141] [cursor=pointer]:
+              - /url: /pinball/machine/jjp-godfather-le/
+              - img [ref=e142]
+              - generic [ref=e144]:
+                - text: The Godfather
+                - text: (LE)
+            - link "The Godfather (CE)" [ref=e145] [cursor=pointer]:
+              - /url: /pinball/machine/jjp-godfather-ce/
+              - img [ref=e146]
+              - generic [ref=e148]:
+                - text: The Godfather
+                - text: (CE)
+        - generic [ref=e149]:
+          - generic:
+            - generic [ref=e151]:
+              - heading "Design team" [level=3] [ref=e152]
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - text: "Game Design:"
+                  - link "Eric Meunier" [ref=e155] [cursor=pointer]:
+                    - /url: /pinball/machine/eric-meunier
+                - generic [ref=e156]:
+                  - text: "Software:"
+                  - link "Keith P. Johnson" [ref=e157] [cursor=pointer]:
+                    - /url: /pinball/machine/keith-p-johnson
+                - generic [ref=e158]:
+                  - text: "Artwork:"
+                  - link "Christopher Franchi" [ref=e159] [cursor=pointer]:
+                    - /url: /pinball/machine/christopher-franchi
+                  - link "Jesper Abels" [ref=e160] [cursor=pointer]:
+                    - /url: /pinball/machine/jesper-abels
+                - generic [ref=e161]:
+                  - text: "Animation:"
+                  - link "Jean-Paul de Win" [ref=e162] [cursor=pointer]:
+                    - /url: /pinball/machine/jean-paul-de-win
+                  - link "Mark Moliter" [ref=e163] [cursor=pointer]:
+                    - /url: /pinball/machine/mark-moliter
+            - generic [ref=e165]:
+              - heading "Game details" [level=3] [ref=e166]
+              - generic [ref=e167]:
+                - generic [ref=e168]: PinsideID
+                - generic [ref=e169]: "3109"
+              - generic [ref=e170]:
+                - generic [ref=e171]: Manufactured by
+                - link "Jersey Jack Pinball" [ref=e173] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=131#results
+              - generic [ref=e174]:
+                - generic [ref=e175]: Date
+                - generic [ref=e176]: March 2023
+              - generic [ref=e177]:
+                - generic [ref=e178]: Type
+                - img [ref=e179]
+                - text: Solid state
+              - generic [ref=e180]:
+                - generic [ref=e181]: Release
+                - generic [ref=e182]: 1,000 produced
+              - generic [ref=e183]:
+                - generic [ref=e184]: MSRP (March 2023)
+                - generic [ref=e185]: $15000
+              - generic [ref=e186]:
+                - generic [ref=e187]: Estimated value
+                - generic [ref=e188]: $8790 - $10210
+              - generic [ref=e189]:
+                - generic [ref=e190]: Cabinet
+                - generic [ref=e191]: Normal
+              - generic [ref=e192]:
+                - generic [ref=e193]: Display type
+                - generic [ref=e194]: LCD Display
+              - generic [ref=e195]:
+                - generic [ref=e196]: Players
+                - generic [ref=e197]: "4"
+              - generic [ref=e198]:
+                - generic [ref=e199]: Flippers
+                - generic [ref=e200]: "3"
+              - generic [ref=e201]:
+                - generic [ref=e202]: Ramps
+                - generic [ref=e203]: "3"
+              - generic [ref=e204]:
+                - generic [ref=e205]: Multiball
+                - generic [ref=e206]: "6"
+              - generic [ref=e207]:
+                - generic [ref=e208]: Latest software
+                - generic [ref=e209]: V2.02 - October 1, 2024
+          - generic [ref=e210]:
+            - list:
+              - listitem [ref=e211]:
+                - link "View all details" [ref=e212] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/details
+              - listitem [ref=e213]:
+                - link "Edit game details" [ref=e214] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=3109
+        - generic [ref=e217]:
+          - heading "Promotional" [level=3] [ref=e218]
+          - generic [ref=e219]:
+            - link [ref=e221] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/TaxMKKr1rK4s6gMKrOaXu8F9cWmmH499LdK5Mfzl510/rs:fit:2048/fn:pinside_archive_3109_627925f0e1ed/enc/2q7N3zCbTl5z-5MDocFqe9HVyj1UsFQHYb67lrT7tCCiDxII1S33U5bTAc0BIC1huJKLSGocvsj4Tvzx5b9WfX6XQDxnSXt_btmeFMKPNHFxh4_1WC9ja5aZ2kSpCZgl.pdf
+              - img [ref=e222]
+            - link [ref=e224] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/hwMAfn6ochI8svm4QXKBFzW-SUye_x9wg_5jwUVqvh4/rs:fit:2048/fn:pinside_archive_3109_657f76f0d209/enc/sINR-_rNG4ofYEG5CsSR9kIgoNBdtEopSY0C49IwM6Z6HMBVuI5Il2UzEBM5KEjmncsZ6o7h3tZENMs7qPVo1RJ96SKkqomU4tYSrEYZ_F_eHnpxSAQIeieqGZTOGPyD.jpeg
+              - img [ref=e225]
+          - paragraph [ref=e226]: Click on a flyer image for full size.
+        - generic [ref=e227]:
+          - heading "Price history" [level=2] [ref=e230]
+          - generic [ref=e236]:
+            - heading "Price estimate" [level=3] [ref=e237]
+            - paragraph [ref=e238]:
+              - text: This game
+              - link "has been listed" [ref=e239] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3109#results
+              - text: a total number of 161 times on the Pinside Marketplace, most recently on 2026-02-20.
+            - separator [ref=e240]
+            - paragraph [ref=e241]: This past year, we've seen it listed 56 times. The median asking price (trimmed median) was $9,500
+            - separator [ref=e242]
+            - paragraph [ref=e243]:
+              - text: »
+              - link "Find ads for this game" [ref=e244] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/market
+            - paragraph [ref=e245]:
+              - text: »
+              - link "View archived ads" [ref=e246] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3109
+        - generic [ref=e247]:
+          - generic [ref=e249]:
+            - heading "Game quote" [level=3] [ref=e250]
+            - table [ref=e252]:
+              - rowgroup [ref=e253]:
+                - row "\"I'm going to make him an offer he can't refuse\"" [ref=e254]:
+                  - cell "\"I'm going to make him an offer he can't refuse\"" [ref=e255]
+          - generic [ref=e256]:
+            - list:
+              - listitem [ref=e257]:
+                - link "Show another!" [ref=e258] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e259]:
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - heading "Pinside rating" [level=3] [ref=e262]
+              - paragraph [ref=e263]:
+                - text: This game has received
+                - strong [ref=e264]: 154 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e266]: 8.221 out of 10.
+              - generic [ref=e269]: "8.221"
+            - generic [ref=e281]:
+              - heading "Top 100 ranking" [level=3] [ref=e282]
+              - paragraph [ref=e283]:
+                - text: This game ranks 1st in the game group "The Godfather". The group itself
+                - strong [ref=e284]:
+                  - text: "ranks #73 in the"
+                  - link "Pinside Pinball Top 100" [ref=e285] [cursor=pointer]:
+                    - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e286]:
+              - heading "Rating comments" [level=3] [ref=e287]
+              - paragraph [ref=e288]:
+                - text: There
+                - link "are 61 rating comments" [ref=e289] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/ratings
+                - text: for this game.
+          - generic [ref=e291]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e292]
+            - generic [ref=e295]:
+              - paragraph [ref=e298]:
+                - strong [ref=e299]: "257"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e302]:
+                - strong [ref=e303]: "89"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e306]:
+                - strong [ref=e307]: "29"
+                - text: public locations to play this machine.
+          - generic [ref=e309]:
+            - list:
+              - listitem [ref=e310]:
+                - link "Add your rating!" [ref=e311] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/ratings/edit?r=/pinball/machine/jjp-godfather-ce
+              - listitem [ref=e312]:
+                - link "Show all rating comments" [ref=e313] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/ratings
+          - generic [ref=e315]:
+            - list:
+              - listitem [ref=e316]:
+                - link "Log in to manage your collection and wishlist." [ref=e317] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e318]:
+                - link "Visit map!" [ref=e319] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/owners
+        - generic [ref=e322]:
+          - heading "Gallery - Featured images" [level=3] [ref=e323]
+          - paragraph
+          - list [ref=e324]:
+            - listitem [ref=e325]:
+              - link [ref=e326] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e327]
+            - listitem [ref=e328]:
+              - link [ref=e329] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e330]
+            - listitem [ref=e331]:
+              - link [ref=e332] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e333]
+            - listitem [ref=e334]:
+              - link [ref=e335] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e336]
+            - listitem [ref=e337]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e339]
+            - listitem [ref=e340]:
+              - link [ref=e341] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e342]
+            - listitem [ref=e343]:
+              - link [ref=e344] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e345]
+            - listitem [ref=e346]:
+              - link [ref=e347] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e348]
+            - listitem [ref=e349]:
+              - link [ref=e350] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e351]
+            - listitem [ref=e352]:
+              - link [ref=e353] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e354]
+            - listitem [ref=e355]:
+              - link [ref=e356] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e357]
+            - listitem [ref=e358]:
+              - link [ref=e359] [cursor=pointer]:
+                - /url: /pinball/machine/jjp-godfather-ce/gallery
+                - img [ref=e360]
+          - paragraph
+          - generic [ref=e361]:
+            - list:
+              - listitem [ref=e362]:
+                - link "Visit the gallery for all images!" [ref=e363] [cursor=pointer]:
+                  - /url: /pinball/machine/jjp-godfather-ce/gallery
+        - generic [ref=e365]:
+          - heading "Game-related shop items!" [level=3] [ref=e366]
+          - paragraph [ref=e367]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e368]: The Godfather (CE)
+            - text: .
+          - generic [ref=e369]:
+            - generic [ref=e371]:
+              - link [ref=e372] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1282-rocket-city-pinball/08018-3d-start-button-the-godfather
+              - generic [ref=e373]: $ 30.00
+              - generic [ref=e374]:
+                - generic [ref=e375]: Cabinet - Other
+                - link "3D Start Button -- The Godfather" [ref=e377] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1282-rocket-city-pinball/08018-3d-start-button-the-godfather
+                - generic [ref=e379]:
+                  - generic [ref=e380]: 
+                  - text: Rocket City Pinball
+            - generic [ref=e383]:
+              - link [ref=e384] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1012-ulekstore/08218-godfather-flipper-bat-topper-mods-for-jjps-the-godfather
+              - generic [ref=e385]: $ 17.95
+              - generic [ref=e386]:
+                - generic [ref=e387]: Playfield - Toys/Add-ons
+                - link "Godfather Flipper Bat Topper MODs for JJP's The Godfather" [ref=e389] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1012-ulekstore/08218-godfather-flipper-bat-topper-mods-for-jjps-the-godfather
+                - generic [ref=e391]:
+                  - generic [ref=e392]: 
+                  - text: ULEKstore
+            - generic [ref=e395]:
+              - link [ref=e396] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1101-pinball-pro/08155-jjp-the-godfather-limited-edition-pinball-machine-
+              - generic [ref=e397]: $ 11,999.99
+              - generic [ref=e398]:
+                - generic [ref=e399]: Pinball Machine
+                - link "JJP The Godfather Limited Edition Pinball Machine" [ref=e401] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1101-pinball-pro/08155-jjp-the-godfather-limited-edition-pinball-machine-
+                - generic [ref=e403]:
+                  - generic [ref=e404]: 
+                  - text: Pinball Pro
+            - generic [ref=e407]:
+              - link [ref=e408] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1160-classic-game-rooms/07989-godfather-limited-edition-pinball-machine-in-stock
+              - generic [ref=e409]: $ 12,000.00
+              - generic [ref=e410]:
+                - generic [ref=e411]: Pinball Machine
+                - link "GodFather Limited Edition Pinball Machine IN STOCK" [ref=e413] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1160-classic-game-rooms/07989-godfather-limited-edition-pinball-machine-in-stock
+                - generic [ref=e415]:
+                  - generic [ref=e416]: 
+                  - text: Classic Game Rooms
+            - generic [ref=e419]:
+              - link [ref=e420] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1728-wizard-mod/16510-the-godfather-limited-edition-complete-set-wizard-mod
+              - generic [ref=e421]: $ 410.00
+              - generic [ref=e422]:
+                - generic [ref=e423]: Playfield - Other
+                - link "The Godfather Limited Edition complete set Wizard Mod" [ref=e425] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1728-wizard-mod/16510-the-godfather-limited-edition-complete-set-wizard-mod
+                - generic [ref=e427]:
+                  - generic [ref=e428]: 
+                  - text: Wizard Mod
+            - generic [ref=e431]:
+              - link [ref=e432] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15263-jersey-jack-the-godfather-50-years-le-ce-pinball-rubber-kit
+              - generic [ref=e433]: $ 27.99
+              - generic [ref=e434]:
+                - generic [ref=e435]: Rubber/Silicone
+                - link "Jersey Jack The Godfather 50 Years LE, CE Pinball Rubber Kit" [ref=e437] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15263-jersey-jack-the-godfather-50-years-le-ce-pinball-rubber-kit
+                - generic [ref=e439]:
+                  - generic [ref=e440]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e443]:
+              - link [ref=e444] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1728-wizard-mod/16511-the-godfather-collectors-edition-complete-set-wizard-mod
+              - generic [ref=e445]: $ 305.00
+              - generic [ref=e446]:
+                - generic [ref=e447]: Playfield - Other
+                - link "The Godfather Collectors Edition complete set Wizard Mod" [ref=e449] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1728-wizard-mod/16511-the-godfather-collectors-edition-complete-set-wizard-mod
+                - generic [ref=e451]:
+                  - generic [ref=e452]: 
+                  - text: Wizard Mod
+            - generic [ref=e455]:
+              - link [ref=e456] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1114-little-shop-of-games/10994-jersey-jack-the-godfather-accessories-bundle
+              - generic [ref=e457]: $ 999.00
+              - generic [ref=e458]:
+                - generic [ref=e459]: Cabinet - Toppers
+                - generic [ref=e460]:
+                  - link "Jersey Jack The GodFather Accessories Bundle" [ref=e461] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1114-little-shop-of-games/10994-jersey-jack-the-godfather-accessories-bundle
+                  - text: Out of stock
+                - generic [ref=e463]:
+                  - generic [ref=e464]: 
+                  - text: Little Shop Of Games
+            - generic [ref=e467]:
+              - link [ref=e468] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1238-pinshades/11240-pinsteps-for-the-godfather
+              - generic [ref=e469]: "From: $ 19.95"
+              - generic [ref=e470]:
+                - generic [ref=e471]: Cabinet - Other
+                - link "PinSteps for The Godfather" [ref=e473] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1238-pinshades/11240-pinsteps-for-the-godfather
+                - generic [ref=e475]:
+                  - generic [ref=e476]: 
+                  - text: PinShades
+            - generic [ref=e479]:
+              - link [ref=e480] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1516-hit-the-lights/12325-pinsignal-for-the-godfather-jjp
+              - generic [ref=e481]: € 99.00
+              - generic [ref=e482]:
+                - generic [ref=e483]: Lighting - Under Cabinet
+                - link "Pinsignal for The Godfather (JJP)" [ref=e485] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1516-hit-the-lights/12325-pinsignal-for-the-godfather-jjp
+                - generic [ref=e487]:
+                  - generic [ref=e488]: 
+                  - text: Hit the Lights
+          - paragraph [ref=e491]:
+            - text: »
+            - link "View all 13 parts for this game on its Shops page" [ref=e492] [cursor=pointer]:
+              - /url: /pinball/shops/games/jjp-godfather-ce
+        - generic [ref=e494]:
+          - heading "Market value" [level=3] [ref=e495]
+          - paragraph [ref=e496]: There are currently 8 ads for this game on our Market place.
+          - generic [ref=e497]:
+            - generic [ref=e499]:
+              - link [ref=e500] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209865
+              - generic [ref=e501]:
+                - text: Trade±
+                - generic [ref=e502]: 
+                - text: 8,900 (OBO)
+              - generic [ref=e503]:
+                - generic [ref=e504]: Machine - For Trade
+                - link "The Godfather (CE)" [ref=e506] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209865
+                - generic [ref=e507]:
+                  - generic [ref=e508]:
+                    - img [ref=e509]
+                    - text: San Rafael, CA
+                  - generic [ref=e510]:
+                    - generic [ref=e511]: 
+                    - link "LunchMoney" [ref=e512] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/lunchmoney/market
+            - generic [ref=e514]:
+              - link [ref=e515] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209127
+              - generic [ref=e516]:
+                - generic [ref=e517]: 
+                - text: 9,450
+              - generic [ref=e518]:
+                - generic [ref=e519]: Machine - For Sale
+                - generic [ref=e520]:
+                  - link "The Godfather (CE)" [ref=e521] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/209127
+                  - text: Featured
+                - generic [ref=e522]:
+                  - generic [ref=e523]:
+                    - img [ref=e524]
+                    - text: Seminole, FL
+                  - generic [ref=e525]:
+                    - generic [ref=e526]: 
+                    - link "Astropunk" [ref=e527] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/astropunk/market
+                    - generic [ref=e528]: 
+            - generic [ref=e530]:
+              - link [ref=e531] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/199485
+              - generic [ref=e533]:
+                - generic [ref=e534]: 
+                - text: 10,900
+              - generic [ref=e535]:
+                - generic [ref=e536]: Machine - For Sale
+                - generic [ref=e537]:
+                  - link "The Godfather (CE) + Topper + More!" [ref=e538] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/199485
+                  - text: Pending
+                - generic [ref=e539]:
+                  - generic [ref=e540]:
+                    - img [ref=e541]
+                    - text: Seaside, OR
+                  - generic [ref=e542]:
+                    - generic [ref=e543]: 
+                    - link "Shiver11" [ref=e544] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/shiver11/market
+                    - generic [ref=e545]: 
+                  - generic [ref=e547]: 
+            - generic [ref=e549]:
+              - link [ref=e550] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208983
+              - generic [ref=e551]:
+                - generic [ref=e552]: 
+                - text: 11,500 (OBO)
+              - generic [ref=e553]:
+                - generic [ref=e554]: Machine - For Sale
+                - link "The Godfather (CE)" [ref=e556] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/208983
+                - generic [ref=e557]:
+                  - generic [ref=e558]:
+                    - img [ref=e559]
+                    - text: Vancouver, BC
+                  - generic [ref=e560]:
+                    - generic [ref=e561]: 
+                    - link "James_Bond" [ref=e562] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/james_bond/market
+            - generic [ref=e564]:
+              - link [ref=e565] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/206778
+              - generic [ref=e566]:
+                - text: Trade±
+                - generic [ref=e567]: 
+                - text: 10,000 (OBO)
+              - generic [ref=e568]:
+                - generic [ref=e569]: Machine - For Trade
+                - link "The Godfather (CE)" [ref=e571] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/206778
+                - generic [ref=e572]:
+                  - generic [ref=e573]:
+                    - img [ref=e574]
+                    - text: Commack, NY
+                  - generic [ref=e575]:
+                    - generic [ref=e576]: 
+                    - link "JOEYDPINBALL" [ref=e577] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/joeydpinball/market
+                    - generic [ref=e578]: 
+            - generic [ref=e580]:
+              - link [ref=e581] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/206239
+              - generic [ref=e583]:
+                - generic [ref=e584]: 
+                - text: 9,400
+              - generic [ref=e585]:
+                - generic [ref=e586]: Machine - For Sale
+                - generic [ref=e587]:
+                  - link "The Godfather (CE) only 149 plays $1400+ in mods" [ref=e588] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/206239
+                  - text: Pending
+                - generic [ref=e589]:
+                  - generic [ref=e590]:
+                    - img [ref=e591]
+                    - text: Bryn Athyn, PA
+                  - generic [ref=e592]:
+                    - generic [ref=e593]: 
+                    - link "Mojosan" [ref=e594] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/mojosan/market
+            - generic [ref=e596]:
+              - link [ref=e597] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/201326
+              - generic [ref=e598]:
+                - generic [ref=e599]: 
+                - text: 10,500 (OBO)
+              - generic [ref=e600]:
+                - generic [ref=e601]: Machine - For Sale
+                - link "The Godfather (CE)" [ref=e603] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/201326
+                - generic [ref=e604]:
+                  - generic [ref=e605]:
+                    - img [ref=e606]
+                    - text: Pittsburgh, PA
+                  - generic [ref=e607]:
+                    - generic [ref=e608]: 
+                    - link "pinwiz55" [ref=e609] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/pinwiz55/market
+                    - generic [ref=e610]: 
+            - generic [ref=e612]:
+              - link [ref=e613] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/205619
+              - generic [ref=e615]:
+                - generic [ref=e616]: 
+                - text: 10,000 (OBO)
+              - generic [ref=e617]:
+                - generic [ref=e618]: Machine - For Sale
+                - generic [ref=e619]:
+                  - link "The Godfather (CE)" [ref=e620] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/205619
+                  - text: Pending
+                - generic [ref=e621]:
+                  - generic [ref=e622]:
+                    - img [ref=e623]
+                    - text: South Hero, VT
+                  - generic [ref=e624]:
+                    - generic [ref=e625]: 
+                    - link "Pinbotballs" [ref=e626] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/pinbotballs/market
+                    - generic [ref=e627]: 
+      - generic [ref=e629]:
+        - img [ref=e630]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e631]
+        - link " Support Pinside" [ref=e632] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e633]: 
+          - text: Support Pinside
+        - paragraph [ref=e634]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e635] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e638]:
+    - link [ref=e640] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e641]
+    - generic [ref=e642]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e643]:
+        - generic [ref=e644]: 
+        - text: Page rendered in 1.85166s
+      - generic [ref=e645]:
+        - generic [ref=e646]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e647] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e648]:
+        - link " Help" [ref=e649] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e650]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e651] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e652]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e653] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e654]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e655] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e656]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e657] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e658]: 
+          - text: Top

@@ -1,0 +1,489 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Sky Jump" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: pinballphotos" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/pinballphotos
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Sky Jump" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Sky Jump" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/sky-jump-gottlieb/gallery
+            - img "Sky Jump" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/gottlieb
+              - img [ref=e126]
+            - heading "Gottlieb" [level=2] [ref=e127]
+            - heading "Sky Jump" [level=1] [ref=e128]
+            - paragraph [ref=e130]: Sky Jump is a pinball machine from May 1974, manufactured by D. Gottlieb & Co.
+        - generic [ref=e131]:
+          - generic:
+            - generic [ref=e133]:
+              - heading "Design team" [level=3] [ref=e134]
+              - generic [ref=e135]:
+                - generic [ref=e136]:
+                  - text: "Game Design:"
+                  - link "Ed Krynski" [ref=e137] [cursor=pointer]:
+                    - /url: /pinball/machine/ed-krynski
+                - generic [ref=e138]:
+                  - text: "Artwork:"
+                  - link "Gordon Morison" [ref=e139] [cursor=pointer]:
+                    - /url: /pinball/machine/gordon-morison
+            - generic [ref=e141]:
+              - heading "Game details" [level=3] [ref=e142]
+              - generic [ref=e143]:
+                - generic [ref=e144]: PinsideID
+                - generic [ref=e145]: "2049"
+              - generic [ref=e146]:
+                - generic [ref=e147]: Manufactured by
+                - link "D. Gottlieb & Co." [ref=e149] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=30#results
+              - generic [ref=e150]:
+                - generic [ref=e151]: Date
+                - generic [ref=e152]: May 1974
+              - generic [ref=e153]:
+                - generic [ref=e154]: Type
+                - img [ref=e155]
+                - text: (Electro) Mechanical
+              - generic [ref=e156]:
+                - generic [ref=e157]: Release
+                - generic [ref=e158]: 4,200 produced
+              - generic [ref=e159]:
+                - generic [ref=e160]: Estimated value
+                - generic [ref=e161]: $1020 - $1180
+              - generic [ref=e162]:
+                - generic [ref=e163]: Cabinet
+                - generic [ref=e164]: Normal
+              - generic [ref=e165]:
+                - generic [ref=e166]: Display type
+                - generic [ref=e167]: Mechanical Reels
+              - generic [ref=e168]:
+                - generic [ref=e169]: Players
+                - generic [ref=e170]: "1"
+              - generic [ref=e171]:
+                - generic [ref=e172]: Flippers
+                - generic [ref=e173]: "2"
+              - generic [ref=e174]:
+                - generic [ref=e175]: Ramps
+                - generic [ref=e176]: "0"
+              - generic [ref=e177]:
+                - generic [ref=e178]: Multiball
+                - generic [ref=e179]: "0"
+              - generic [ref=e180]:
+                - generic [ref=e181]: IPDB
+                - link "#2195" [ref=e183] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=2195
+              - generic [ref=e184]:
+                - generic [ref=e185]: Latest software
+                - generic [ref=e186]: Unknown
+          - generic [ref=e187]:
+            - list:
+              - listitem [ref=e188]:
+                - link "View all details" [ref=e189] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/details
+              - listitem [ref=e190]:
+                - link "Edit game details" [ref=e191] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=2049
+        - generic [ref=e194]:
+          - heading "Promotional" [level=3] [ref=e195]
+          - link [ref=e198] [cursor=pointer]:
+            - /url: https://imgproxy.pinside.com/fsft6aincv34MNnGtqPvQbxD0xgPSIkhOHX48pzcBlc/rs:fit:2048/fn:pinside_archive_2049_739b87ccee6e/enc/6dpUQznS6JTb6JFCzi42pCNZtB27kTaE7SUSMhUIqBDZUu_kF5HrM2tPeVnzX8yoNQCObj40XyxW9smqVJnrnvRBjNIIr4NZiyD-Hxw8gxkLBVX8jrHURNwuAR3V_BSA.jpg
+            - img [ref=e199]
+          - paragraph [ref=e200]: Click on a flyer image for full size.
+        - generic [ref=e201]:
+          - heading "Price history" [level=2] [ref=e204]
+          - generic [ref=e210]:
+            - heading "Price estimate" [level=3] [ref=e211]
+            - paragraph [ref=e212]:
+              - text: This game
+              - link "has been listed" [ref=e213] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2049#results
+              - text: a total number of 58 times on the Pinside Marketplace, most recently on 2026-01-19.
+            - separator [ref=e214]
+            - paragraph [ref=e215]: This past year, we've seen it listed 11 times. The median asking price (trimmed median) was $1,050
+            - separator [ref=e216]
+            - paragraph [ref=e217]:
+              - text: »
+              - link "Find ads for this game" [ref=e218] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/market
+            - paragraph [ref=e219]:
+              - text: »
+              - link "View archived ads" [ref=e220] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=2049
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - heading "Pinside rating" [level=3] [ref=e224]
+              - paragraph [ref=e225]:
+                - text: This game has received
+                - strong [ref=e226]: 47 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e228]: 7.945 out of 10.
+              - generic [ref=e231]: "7.945"
+            - generic [ref=e243]:
+              - heading "Top 100 ranking" [level=3] [ref=e244]
+              - paragraph [ref=e245]:
+                - text: This game ranks
+                - strong [ref=e246]: "#98"
+                - text: in the
+                - link "Pinside EM Top 100" [ref=e247] [cursor=pointer]:
+                  - /url: /pinball/top-100/em
+                - text: .
+            - generic [ref=e248]:
+              - heading "Rating comments" [level=3] [ref=e249]
+              - paragraph [ref=e250]:
+                - text: There
+                - link "are 34 rating comments" [ref=e251] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/ratings
+                - text: for this game.
+          - generic [ref=e253]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e254]
+            - generic [ref=e257]:
+              - paragraph [ref=e260]:
+                - strong [ref=e261]: "175"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e264]:
+                - strong [ref=e265]: "78"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e268]:
+                - strong [ref=e269]: "24"
+                - text: public locations to play this machine.
+          - generic [ref=e271]:
+            - list:
+              - listitem [ref=e272]:
+                - link "Add your rating!" [ref=e273] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/ratings/edit?r=/pinball/machine/sky-jump-gottlieb
+              - listitem [ref=e274]:
+                - link "Show all rating comments" [ref=e275] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/ratings
+          - generic [ref=e277]:
+            - list:
+              - listitem [ref=e278]:
+                - link "Log in to manage your collection and wishlist." [ref=e279] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e280]:
+                - link "Visit map!" [ref=e281] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/owners
+        - generic [ref=e284]:
+          - heading "Gallery - Featured images" [level=3] [ref=e285]
+          - paragraph
+          - list [ref=e286]:
+            - listitem [ref=e287]:
+              - link [ref=e288] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e289]
+            - listitem [ref=e290]:
+              - link [ref=e291] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e292]
+            - listitem [ref=e293]:
+              - link [ref=e294] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e295]
+            - listitem [ref=e296]:
+              - link [ref=e297] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e298]
+            - listitem [ref=e299]:
+              - link [ref=e300] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e301]
+            - listitem [ref=e302]:
+              - link [ref=e303] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e304]
+            - listitem [ref=e305]:
+              - link [ref=e306] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e307]
+            - listitem [ref=e308]:
+              - link [ref=e309] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e310]
+            - listitem [ref=e311]:
+              - link [ref=e312] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e313]
+            - listitem [ref=e314]:
+              - link [ref=e315] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e316]
+            - listitem [ref=e317]:
+              - link [ref=e318] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e319]
+            - listitem [ref=e320]:
+              - link [ref=e321] [cursor=pointer]:
+                - /url: /pinball/machine/sky-jump-gottlieb/gallery
+                - img [ref=e322]
+          - paragraph
+          - generic [ref=e323]:
+            - list:
+              - listitem [ref=e324]:
+                - link "Visit the gallery for all images!" [ref=e325] [cursor=pointer]:
+                  - /url: /pinball/machine/sky-jump-gottlieb/gallery
+        - generic [ref=e327]:
+          - heading "Game-related shop items!" [level=3] [ref=e328]
+          - paragraph [ref=e329]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e330]: Sky Jump
+            - text: .
+          - generic [ref=e331]:
+            - generic [ref=e333]:
+              - link [ref=e334] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15743-gottlieb-sky-jump-pinball-machine-rubber-ring-kit
+              - generic [ref=e335]: $ 22.99
+              - generic [ref=e336]:
+                - generic [ref=e337]: Rubber/Silicone
+                - link "Gottlieb Sky Jump Pinball Machine Rubber Ring Kit" [ref=e339] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15743-gottlieb-sky-jump-pinball-machine-rubber-ring-kit
+                - generic [ref=e341]:
+                  - generic [ref=e342]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e345]:
+              - link [ref=e346] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15744-gottlieb-sky-jump-pinball-machine-maintenance-tune-up-kit
+              - generic [ref=e347]: $ 44.99
+              - generic [ref=e348]:
+                - generic [ref=e349]: Cleaner
+                - link "Gottlieb Sky Jump Pinball Machine Maintenance Tune Up kit" [ref=e351] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15744-gottlieb-sky-jump-pinball-machine-maintenance-tune-up-kit
+                - generic [ref=e353]:
+                  - generic [ref=e354]: 
+                  - text: Patelrock Pinball
+        - generic [ref=e357]:
+          - heading "Market value" [level=3] [ref=e358]
+          - paragraph [ref=e359]: There is currently 1 ad (related to this game) on the Pinside Market place.
+          - generic [ref=e362]:
+            - link [ref=e363] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/ad/205820
+            - generic [ref=e364]:
+              - generic [ref=e365]: 
+              - text: 1,150
+            - generic [ref=e366]:
+              - generic [ref=e367]: Machine - For Sale
+              - link "1974 Sky Jump" [ref=e369] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/205820
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - img [ref=e372]
+                  - text: Bridgewater Township, NJ
+                - generic [ref=e373]:
+                  - generic [ref=e374]: 
+                  - link "mike-k" [ref=e375] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/mike-k/market
+                  - generic [ref=e376]: 
+      - generic [ref=e378]:
+        - img [ref=e379]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e380]
+        - link " Support Pinside" [ref=e381] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e382]: 
+          - text: Support Pinside
+        - paragraph [ref=e383]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e384] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e387]:
+    - link [ref=e389] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e390]
+    - generic [ref=e391]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e392]:
+        - generic [ref=e393]: 
+        - text: Page rendered in 1.42491s
+      - generic [ref=e394]:
+        - generic [ref=e395]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e396] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e397]:
+        - link " Help" [ref=e398] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e399]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e400] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e401]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e402] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e403]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e404] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e405]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e406] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e407]: 
+          - text: Top

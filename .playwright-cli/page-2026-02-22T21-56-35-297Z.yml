@@ -1,0 +1,604 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e42] [cursor=pointer]':
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e84] [cursor=pointer]':
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e120] [cursor=pointer]':
+            - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+            - 'img "Star Wars: Fall of the Empire (Pro)" [ref=e121]'
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/stern
+              - img [ref=e126]
+            - heading "Stern" [level=2] [ref=e127]
+            - 'heading "Star Wars: Fall of the Empire (Pro)" [level=1] [ref=e128]'
+            - paragraph [ref=e130]: "Star Wars: Fall of the Empire (Pro) is a pinball machine from September 2025, manufactured by Stern Pinball, Inc."
+            - generic [ref=e131]:
+              - heading "Tags:" [level=3] [ref=e132]
+              - link "LICENSED" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=licensed
+              - link "movie" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=movie
+              - link "SCI-FI" [ref=e135] [cursor=pointer]:
+                - /url: /pinball/machine?tags=sci-fi
+              - link "space" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/machine?tags=space
+              - link "STAR-WARS" [ref=e137] [cursor=pointer]:
+                - /url: /pinball/machine?tags=star-wars
+              - link "edit tags" [ref=e139] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=3334
+        - generic [ref=e142]:
+          - paragraph [ref=e143]: "This title is part of group: \"Star Wars: Fall of the Empire\""
+          - generic [ref=e144]:
+            - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e145] [cursor=pointer]':
+              - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/
+              - img [ref=e146]
+              - generic [ref=e148]:
+                - text: "Star Wars: Fall of the Empire"
+                - text: (Pro)
+            - 'link "Star Wars: Fall of the Empire (Premium)" [ref=e149] [cursor=pointer]':
+              - /url: /pinball/machine/star-wars-fall-of-the-empire-premium/
+              - img [ref=e150]
+              - generic [ref=e152]:
+                - text: "Star Wars: Fall of the Empire"
+                - text: (Premium)
+            - 'link "Star Wars: Fall of the Empire (LE)" [ref=e153] [cursor=pointer]':
+              - /url: /pinball/machine/star-wars-fall-of-the-empire-le/
+              - img [ref=e154]
+              - generic [ref=e156]:
+                - text: "Star Wars: Fall of the Empire"
+                - text: (LE)
+        - generic [ref=e157]:
+          - generic:
+            - generic [ref=e159]:
+              - heading "Design team" [level=3] [ref=e160]
+              - generic [ref=e161]:
+                - generic [ref=e162]:
+                  - text: "Game Design:"
+                  - link "John Borg" [ref=e163] [cursor=pointer]:
+                    - /url: /pinball/machine/john-borg
+                - generic [ref=e164]:
+                  - text: "Engineering/mechanics:"
+                  - link "John Rotharmel" [ref=e165] [cursor=pointer]:
+                    - /url: /pinball/machine/john-rotharmel
+                - generic [ref=e166]:
+                  - text: "Software:"
+                  - link "Andrew Wilkening" [ref=e167] [cursor=pointer]:
+                    - /url: /pinball/machine/andrew-wilkening
+                  - link "Raymond Davidson" [ref=e168] [cursor=pointer]:
+                    - /url: /pinball/machine/raymond-davidson
+                - generic [ref=e169]:
+                  - text: "Electronics:"
+                  - link "Cheryl Lininger" [ref=e170] [cursor=pointer]:
+                    - /url: /pinball/machine/cheryl-lininger
+                  - link "Jim Shird" [ref=e171] [cursor=pointer]:
+                    - /url: /pinball/machine/jim-shird
+                - generic [ref=e172]:
+                  - text: "Sound:"
+                  - link "Bob Baffy" [ref=e173] [cursor=pointer]:
+                    - /url: /pinball/machine/bob-baffy
+                  - link "Jerry Thompson" [ref=e174] [cursor=pointer]:
+                    - /url: /pinball/machine/jerry-thompson
+                - generic [ref=e175]:
+                  - text: "Callouts:"
+                  - link "Chris Bartlett" [ref=e176] [cursor=pointer]:
+                    - /url: /pinball/machine/chris-bartlett
+                  - link "Eric Leiderman" [ref=e177] [cursor=pointer]:
+                    - /url: /pinball/machine/eric-leiderman
+                - generic [ref=e178]:
+                  - text: "Game Producer:"
+                  - link "John Blakely" [ref=e179] [cursor=pointer]:
+                    - /url: /pinball/machine/john-blakely
+            - generic [ref=e181]:
+              - heading "Game details" [level=3] [ref=e182]
+              - generic [ref=e183]:
+                - generic [ref=e184]: PinsideID
+                - generic [ref=e185]: "3334"
+              - generic [ref=e186]:
+                - generic [ref=e187]: Manufactured by
+                - link "Stern Pinball, Inc." [ref=e189] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=105#results
+              - generic [ref=e190]:
+                - generic [ref=e191]: Date
+                - generic [ref=e192]: September 2025
+              - generic [ref=e193]:
+                - generic [ref=e194]: Type
+                - img [ref=e195]
+                - text: Solid state
+              - generic [ref=e196]:
+                - generic [ref=e197]: Generation
+                - link "Stern SPIKE 3" [ref=e199] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=68#results
+              - generic [ref=e200]:
+                - generic [ref=e201]: Release
+                - generic [ref=e202]: In production
+              - generic [ref=e203]:
+                - generic [ref=e204]: MSRP (September 2025)
+                - generic [ref=e205]: $6999
+              - generic [ref=e206]:
+                - generic [ref=e207]: Estimated value
+                - generic [ref=e208]: $5830 - $6770
+              - generic [ref=e209]:
+                - generic [ref=e210]: Cabinet
+                - generic [ref=e211]: Normal
+              - generic [ref=e212]:
+                - generic [ref=e213]: Display type
+                - generic [ref=e214]: LCD Display
+              - generic [ref=e215]:
+                - generic [ref=e216]: Players
+                - generic [ref=e217]: "4"
+              - generic [ref=e218]:
+                - generic [ref=e219]: Flippers
+                - generic [ref=e220]: "2"
+              - generic [ref=e221]:
+                - generic [ref=e222]: Ramps
+                - generic [ref=e223]: "4"
+              - generic [ref=e224]:
+                - generic [ref=e225]: Multiball
+                - generic [ref=e226]: "0"
+              - generic [ref=e227]:
+                - generic [ref=e228]: Latest software
+                - generic [ref=e229]: V0.90.0 - February 3, 2026
+          - generic [ref=e230]:
+            - list:
+              - listitem [ref=e231]:
+                - link "View all details" [ref=e232] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/details
+              - listitem [ref=e233]:
+                - link "Edit game details" [ref=e234] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=3334
+        - generic [ref=e237]:
+          - heading "Promotional" [level=3] [ref=e238]
+          - link [ref=e241] [cursor=pointer]:
+            - /url: https://imgproxy.pinside.com/u5obuV3yvZC5eKphEoIapi3Nx8W4VPM8NAmm_429CyE/rs:fit:2048/fn:pinside_archive_3334_1cf1d1690c09/enc/7G2nc1gO2NUJSFJhCzpUzqaTKlO6UN8fhu7UZ5HZhkmMgiAt5NcXiY42lhOGLPXBNsZAqExQU2LSXq70K-DoY4nN78lmuYXjqWerDb7cdv2Sy44JBTVJXQ7-gnULZ2nI.jpg
+            - img [ref=e242]
+          - paragraph [ref=e243]: Click on a flyer image for full size.
+        - generic [ref=e244]:
+          - heading "Price history" [level=2] [ref=e247]
+          - generic [ref=e253]:
+            - heading "Price estimate" [level=3] [ref=e254]
+            - paragraph [ref=e255]:
+              - text: This game
+              - link "has been listed" [ref=e256] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3334#results
+              - text: a total number of 12 times on the Pinside Marketplace, most recently on 2026-02-09.
+            - separator [ref=e257]
+            - paragraph [ref=e258]: This past year, we've seen it listed 12 times. The median asking price (trimmed median) was $6,303
+            - separator [ref=e259]
+            - paragraph [ref=e260]:
+              - text: »
+              - link "Find ads for this game" [ref=e261] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/market
+            - paragraph [ref=e262]:
+              - text: »
+              - link "View archived ads" [ref=e263] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=3334
+        - generic [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]:
+              - heading "Top 100 ranking" [level=3] [ref=e267]
+              - paragraph [ref=e268]: This game has received its 50th rating this week. It will be included in next weeks Pinside Pinball Top 100 calculation!
+            - generic [ref=e269]:
+              - heading "Rating comments" [level=3] [ref=e270]
+              - paragraph [ref=e271]:
+                - text: There
+                - link "are 26 rating comments" [ref=e272] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/ratings
+                - text: for this game.
+          - generic [ref=e274]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e275]
+            - generic [ref=e278]:
+              - paragraph [ref=e281]:
+                - strong [ref=e282]: "74"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e285]:
+                - strong [ref=e286]: "63"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e289]:
+                - strong [ref=e290]: "85"
+                - text: public locations to play this machine.
+          - generic [ref=e292]:
+            - list:
+              - listitem [ref=e293]:
+                - link "Add your rating!" [ref=e294] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/ratings/edit?r=/pinball/machine/star-wars-fall-of-the-empire-pro
+              - listitem [ref=e295]:
+                - link "Show all rating comments" [ref=e296] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/ratings
+          - generic [ref=e298]:
+            - list:
+              - listitem [ref=e299]:
+                - link "Log in to manage your collection and wishlist." [ref=e300] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e301]:
+                - link "Visit map!" [ref=e302] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/owners
+        - generic [ref=e305]:
+          - heading "Gallery - Featured images" [level=3] [ref=e306]
+          - paragraph
+          - list [ref=e307]:
+            - listitem [ref=e308]:
+              - link [ref=e309] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+                - img [ref=e310]
+            - listitem [ref=e311]:
+              - link [ref=e312] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+                - img [ref=e313]
+            - listitem [ref=e314]:
+              - link [ref=e315] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+                - img [ref=e316]
+            - listitem [ref=e317]:
+              - link [ref=e318] [cursor=pointer]:
+                - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+                - img [ref=e319]
+          - paragraph
+          - generic [ref=e320]:
+            - list:
+              - listitem [ref=e321]:
+                - link "Visit the gallery for all images!" [ref=e322] [cursor=pointer]:
+                  - /url: /pinball/machine/star-wars-fall-of-the-empire-pro/gallery
+        - generic [ref=e324]:
+          - heading "Game-related shop items!" [level=3] [ref=e325]
+          - paragraph [ref=e326]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e327]: "Star Wars: Fall of the Empire (Pro)"
+            - text: .
+          - generic [ref=e328]:
+            - generic [ref=e330]:
+              - link [ref=e331] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1160-classic-game-rooms/14711-star-wars-fall-of-the-empire-premium-edition
+              - generic [ref=e332]: $ 9,499.00
+              - generic [ref=e333]:
+                - generic [ref=e334]: Pinball Machine
+                - 'link "Star Wars: Fall of the Empire Premium Edition" [ref=e336] [cursor=pointer]':
+                  - /url: /pinball/shops/shop/1160-classic-game-rooms/14711-star-wars-fall-of-the-empire-premium-edition
+                - generic [ref=e338]:
+                  - generic [ref=e339]: 
+                  - text: Classic Game Rooms
+            - generic [ref=e342]:
+              - link [ref=e343] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1688-pin-tweak/15661-star-wars-foe-plastic-protectors-9-piece-easy-install
+              - generic [ref=e344]: "From: $ 10.00"
+              - generic [ref=e345]:
+                - generic [ref=e346]: Playfield - Protection
+                - 'link "Star Wars FOE: Plastic Protectors, 9-Piece EASY INSTALL" [ref=e348] [cursor=pointer]':
+                  - /url: /pinball/shops/shop/1688-pin-tweak/15661-star-wars-foe-plastic-protectors-9-piece-easy-install
+                - generic [ref=e350]:
+                  - generic [ref=e351]: 
+                  - text: Pin-Tweak
+            - generic [ref=e354]:
+              - link [ref=e355] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1516-hit-the-lights/15064-pinsignal-for-star-wars-spike-3
+              - generic [ref=e356]: € 99.00
+              - generic [ref=e357]:
+                - generic [ref=e358]: Lighting - Under Cabinet
+                - link "Pinsignal for Star Wars (SPIKE 3)" [ref=e360] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1516-hit-the-lights/15064-pinsignal-for-star-wars-spike-3
+                - generic [ref=e362]:
+                  - generic [ref=e363]: 
+                  - text: Hit the Lights
+            - generic [ref=e366]:
+              - link [ref=e367] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1101-pinball-pro/15699-stern-star-wars-fall-of-the-empire-limited-edition-pinball
+              - generic [ref=e368]: $ 12,999.99
+              - generic [ref=e369]:
+                - generic [ref=e370]: Pinball Machine
+                - generic [ref=e371]:
+                  - link "Stern Star Wars Fall of the Empire Limited Edition Pinball" [ref=e372] [cursor=pointer]:
+                    - /url: /pinball/shops/shop/1101-pinball-pro/15699-stern-star-wars-fall-of-the-empire-limited-edition-pinball
+                  - text: Out of stock
+                - generic [ref=e374]:
+                  - generic [ref=e375]: 
+                  - text: Pinball Pro
+            - generic [ref=e378]:
+              - link [ref=e379] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1516-hit-the-lights/15827-pinsignal-for-star-wars-fall-of-the-empire-spike-3
+              - generic [ref=e380]: € 99.00
+              - generic [ref=e381]:
+                - generic [ref=e382]: Lighting - Under Cabinet
+                - link "Pinsignal for Star Wars Fall of The Empire (SPIKE 3)" [ref=e384] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1516-hit-the-lights/15827-pinsignal-for-star-wars-fall-of-the-empire-spike-3
+                - generic [ref=e386]:
+                  - generic [ref=e387]: 
+                  - text: Hit the Lights
+            - generic [ref=e390]:
+              - link [ref=e391] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1690-jonny-mods/16784-star-wars-shooter-plate
+              - generic [ref=e392]: $ 25.00
+              - generic [ref=e393]:
+                - generic [ref=e394]: Cabinet - Shooter Rods
+                - link "Star Wars Shooter Plate" [ref=e396] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1690-jonny-mods/16784-star-wars-shooter-plate
+                - generic [ref=e398]:
+                  - generic [ref=e399]: 
+                  - text: Jonny Mods
+            - generic [ref=e402]:
+              - link [ref=e403] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15723-star-wars-fall-of-the-empire-premium-le-pinball-rubber-kit
+              - generic [ref=e404]: $ 22.99
+              - generic [ref=e405]:
+                - generic [ref=e406]: Rubber/Silicone
+                - link "Star Wars Fall of the Empire Premium / LE Pinball Rubber Kit" [ref=e408] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15723-star-wars-fall-of-the-empire-premium-le-pinball-rubber-kit
+                - generic [ref=e410]:
+                  - generic [ref=e411]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e414]:
+              - link [ref=e415] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1170-pin-monk/17223-sw-fote-f-o-r-c-e-insert-brackets
+              - generic [ref=e416]: "From: $ 35.00"
+              - generic [ref=e417]:
+                - generic [ref=e418]: Playfield - Other
+                - link "SW FotE F-O-R-C-E insert brackets" [ref=e420] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1170-pin-monk/17223-sw-fote-f-o-r-c-e-insert-brackets
+                - generic [ref=e422]:
+                  - generic [ref=e423]: 
+                  - text: Pin Monk
+            - generic [ref=e426]:
+              - link [ref=e427] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1170-pin-monk/15689-swfote-protective-mylar
+              - generic [ref=e428]: "From: $ 14.00"
+              - generic [ref=e429]:
+                - generic [ref=e430]: Playfield - Protection
+                - link "SW:FotE Protective Mylar" [ref=e432] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1170-pin-monk/15689-swfote-protective-mylar
+                - generic [ref=e434]:
+                  - generic [ref=e435]: 
+                  - text: Pin Monk
+            - generic [ref=e438]:
+              - link [ref=e439] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1403-pinball-fuzz/15416-star-wars-fall-of-the-empire-speaker-panel-qr-code-decal
+              - generic [ref=e440]: $ 5.00
+              - generic [ref=e441]:
+                - generic [ref=e442]: Cabinet - Decals
+                - link "Star Wars Fall of the Empire Speaker Panel QR Code decal" [ref=e444] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1403-pinball-fuzz/15416-star-wars-fall-of-the-empire-speaker-panel-qr-code-decal
+                - generic [ref=e446]:
+                  - generic [ref=e447]: 
+                  - text: Pinball Fuzz
+          - paragraph [ref=e450]:
+            - text: »
+            - link "View all 30 parts for this game on its Shops page" [ref=e451] [cursor=pointer]:
+              - /url: /pinball/shops/games/star-wars-fall-of-the-empire-pro
+        - generic [ref=e453]:
+          - heading "Market value" [level=3] [ref=e454]
+          - paragraph [ref=e455]: There is currently 1 ad (related to this game) on the Pinside Market place.
+          - generic [ref=e458]:
+            - link [ref=e459] [cursor=pointer]:
+              - /url: /pinball/market/classifieds/ad/208859
+            - generic [ref=e460]:
+              - generic [ref=e461]: 
+              - text: 6,700
+            - generic [ref=e462]:
+              - generic [ref=e463]: Machine - For Sale
+              - 'link "Star Wars: Fall of the Empire (Pro)" [ref=e465] [cursor=pointer]':
+                - /url: /pinball/market/classifieds/ad/208859
+              - generic [ref=e466]:
+                - generic [ref=e467]:
+                  - img [ref=e468]
+                  - text: Philadelphia, PA
+                - generic [ref=e469]:
+                  - generic [ref=e470]: 
+                  - link "Smith1369" [ref=e471] [cursor=pointer]:
+                    - /url: /pinball/community/pinsiders/smith1369/market
+                  - generic [ref=e472]: 
+                - generic [ref=e474]: 
+      - generic [ref=e476]:
+        - img [ref=e477]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e478]
+        - link " Support Pinside" [ref=e479] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e480]: 
+          - text: Support Pinside
+        - paragraph [ref=e481]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e482] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e485]:
+    - link [ref=e487] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e488]
+    - generic [ref=e489]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e490]:
+        - generic [ref=e491]: 
+        - text: Page rendered in 1.62914s
+      - generic [ref=e492]:
+        - generic [ref=e493]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e494] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e495]:
+        - link " Help" [ref=e496] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e497]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e498] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e499]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e500] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e501]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e502] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e503]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e504] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e505]: 
+          - text: Top

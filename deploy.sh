@@ -9,6 +9,9 @@ SSH_PORT="${SSH_PORT:-22}"
 SSH_KEY="${SSH_KEY:-$HOME/.ssh/pillyliu_key}"
 REMOTE_ROOT="${REMOTE_ROOT:-/home/pillyliu/public_html}"
 SSH_AUTH_MODE="${SSH_AUTH_MODE:-key}" # key | password
+PINBALL_LIBRARY_CSV_URL="${PINBALL_LIBRARY_CSV_URL:-https://docs.google.com/spreadsheets/d/e/2PACX-1vTlFuhuOFWj3Wbki2wOaHTUCUojPQ_5DsPJ8ta4P0zlQNLijHFHwbSQ7gJhosdlWVn-todC_t9AWmkq/pub?gid=2051576512&single=true&output=csv}"
+PINBALL_LIBRARY_CSV_LOCAL="${PINBALL_LIBRARY_CSV_LOCAL:-shared/pinball/data/Avenue Pinball - Current.csv}"
+PINBALL_SYNC_INCLUDE_WEB_PUBLIC_PINBALL="${PINBALL_SYNC_INCLUDE_WEB_PUBLIC_PINBALL:-0}"
 
 DRY_RUN=0
 SKIP_BUILD=0
@@ -47,8 +50,19 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
 fi
 
 if [[ "$SKIP_BUILD" -eq 0 ]]; then
-  echo "Running canonical pinball manifest + build + smoke..."
-  npm run sync:pinball
+  if [[ -n "${PINBALL_LIBRARY_CSV_URL}" ]]; then
+    echo "Downloading published pinball CSV..."
+    curl -fsSL "$PINBALL_LIBRARY_CSV_URL" -o "$PINBALL_LIBRARY_CSV_LOCAL"
+  fi
+
+  echo "Regenerating pinball data (v1 + v2 JSON, manifest) and syncing mobile starter packs..."
+  if [[ "$PINBALL_SYNC_INCLUDE_WEB_PUBLIC_PINBALL" == "1" ]]; then
+    node tools/sync-pinball-data.mjs --all-targets --include-web-public-pinball
+  else
+    npm run sync:pinball:all-targets
+  fi
+
+  echo "Running app builds + smoke..."
   npm run build:all
   npm run check:smoke
 fi
@@ -74,6 +88,16 @@ done
 
 echo "Deploying canonical pinball data..."
 rsync "${RSYNC_OPTS[@]}" shared/pinball/ "${REMOTE}/pinball/"
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  echo "Normalizing remote pinball permissions..."
+  if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
+    ssh -p "${SSH_PORT}" "${SSH_USER_HOST}" \
+      "find '${REMOTE_ROOT}/pinball' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinball' -type f -exec chmod 644 {} \\;"
+  else
+    ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
+      "find '${REMOTE_ROOT}/pinball' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinball' -type f -exec chmod 644 {} \\;"
+  fi
+fi
 
 echo "Deploying apps..."
 rsync "${RSYNC_OPTS[@]}" --exclude='pinball/' lpl-library/dist/ "${REMOTE}/lpl-library/"

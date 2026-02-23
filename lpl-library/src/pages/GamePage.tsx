@@ -12,8 +12,13 @@ import {
 } from "../components/ui";
 
 type Video = { kind: string; label: string; url: string };
+const FALLBACK_PLAYFIELD_700 = "/pinball/images/playfields/fallback-whitewood-playfield_700.webp";
+const FALLBACK_PLAYFIELD_1400 = "/pinball/images/playfields/fallback-whitewood-playfield_1400.webp";
 
 type Game = {
+  routeId: string;
+  variant?: string | null;
+  practiceIdentity?: string | null;
   area?: string | null;
   location?: string | null; // legacy field fallback
   group?: number | null;
@@ -28,8 +33,12 @@ type Game = {
   playfieldLocal: string | null;
   playfieldImageUrl: string | null;
 
-  rulesheetLocal: string;
+  rulesheetLocal: string | null;
   rulesheetUrl: string | null;
+  gameinfoLocalPractice?: string | null;
+  gameinfoLocalLegacy?: string | null;
+  rulesheetLocalPractice?: string | null;
+  rulesheetLocalLegacy?: string | null;
 
   videos: Video[];
 };
@@ -53,19 +62,95 @@ function locationText(location?: string | null, group?: number | null, position?
   return `📍 ${group}:${position}`;
 }
 
-function playfieldImageSources(slug: string, playfieldLocal: string | null) {
-  const base = `/pinball/images/playfields/${slug}`;
-  const fallback = playfieldLocal ?? `${base}.jpg`;
+function derivePlayfieldVariant(local: string, width: 700 | 1400): string | null {
+  const trimmed = local.trim();
+  if (!trimmed.startsWith("/pinball/images/playfields/")) return null;
+  const m = trimmed.match(/^(.*?)(?:_(700|1400))?\.(webp|png|jpe?g)$/i);
+  if (!m) return null;
+  return `${m[1]}_${width}.webp`;
+}
+
+function playfieldImageSources(playfieldLocal: string | null) {
+  if (playfieldLocal) {
+    const local700 = derivePlayfieldVariant(playfieldLocal, 700);
+    const local1400 = derivePlayfieldVariant(playfieldLocal, 1400);
+    if (local700 && local1400) {
+      return {
+        src: local700,
+        srcSet: `${local700} 700w, ${local1400} 1400w`,
+        fallback: playfieldLocal,
+      };
+    }
+    return {
+      src: playfieldLocal,
+      srcSet: undefined,
+      fallback: playfieldLocal,
+    };
+  }
   return {
-    src: `${base}_700.webp`,
-    srcSet: `${base}_700.webp 700w, ${base}_1400.webp 1400w, ${fallback} 2400w`,
-    fallback,
+    src: FALLBACK_PLAYFIELD_700,
+    srcSet: `${FALLBACK_PLAYFIELD_700} 700w, ${FALLBACK_PLAYFIELD_1400} 1400w`,
+    fallback: FALLBACK_PLAYFIELD_700,
   };
+}
+
+function mapV2ItemsToGames(raw: unknown): Game[] | null {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw) || (raw as { version?: unknown }).version !== 2) {
+    return null;
+  }
+  const root = raw as { items?: Array<Record<string, unknown>> };
+  const items = Array.isArray(root.items) ? root.items : [];
+  return items.map((item, idx) => {
+    const assets =
+      item.assets && typeof item.assets === "object" ? (item.assets as Record<string, unknown>) : {};
+    const routeId =
+      String(item.library_entry_id ?? "").trim() ||
+      String(item.pinside_id ?? "").trim() ||
+      String(item.practice_identity ?? "").trim() ||
+      `row-${idx + 1}`;
+    const legacySlug = String(item.pinside_slug ?? "").trim() || routeId;
+    const videosRaw = Array.isArray(item.videos) ? item.videos : [];
+    return {
+      routeId,
+      variant: String(item.variant ?? "").trim() || null,
+      practiceIdentity: String(item.practice_identity ?? "").trim() || null,
+      area: String(item.area ?? "").trim() || null,
+      location: String(item.area ?? "").trim() || null,
+      group: typeof item.group === "number" ? item.group : null,
+      position: typeof item.position === "number" ? item.position : null,
+      bank: typeof item.bank === "number" ? item.bank : null,
+      name: String(item.game ?? "").trim() || legacySlug,
+      manufacturer: String(item.manufacturer ?? "").trim() || null,
+      year: typeof item.year === "number" ? item.year : null,
+      slug: legacySlug,
+      playfieldLocal:
+        String(assets.playfield_local_practice ?? "").trim() ||
+        String(assets.playfield_local_legacy ?? "").trim() ||
+        null,
+      playfieldImageUrl: String(item.playfield_image_url ?? "").trim() || null,
+      rulesheetLocal:
+        String(assets.rulesheet_local_practice ?? "").trim() ||
+        String(assets.rulesheet_local_legacy ?? "").trim() ||
+        null,
+      rulesheetUrl: String(item.rulesheet_url ?? "").trim() || null,
+      gameinfoLocalPractice: String(assets.gameinfo_local_practice ?? "").trim() || null,
+      gameinfoLocalLegacy: String(assets.gameinfo_local_legacy ?? "").trim() || null,
+      rulesheetLocalPractice: String(assets.rulesheet_local_practice ?? "").trim() || null,
+      rulesheetLocalLegacy: String(assets.rulesheet_local_legacy ?? "").trim() || null,
+      videos: videosRaw
+        .map((v) => {
+          const o = (v ?? {}) as Record<string, unknown>;
+          return { kind: String(o.kind ?? ""), label: String(o.label ?? ""), url: String(o.url ?? "") };
+        })
+        .filter((v) => v.url),
+    };
+  });
 }
 
 export default function GamePage() {
   const { slug } = useParams();
   const [game, setGame] = useState<Game | null>(null);
+  const [gameLookupStatus, setGameLookupStatus] = useState<"idle" | "loading" | "done">("idle");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
 
   const [infoState, setInfoState] = useState<{
@@ -79,42 +164,92 @@ export default function GamePage() {
   });
 
   useEffect(() => {
-    fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+    let cancelled = false;
+    setGameLookupStatus("loading");
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
       .then((data) => {
+        if (cancelled) return;
+        const v2Games = mapV2ItemsToGames(data);
         const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
-        const games = Array.isArray(root)
+        const games = (v2Games ?? (Array.isArray(root)
           ? root
           : Array.isArray(root?.games)
             ? root.games
             : Array.isArray(root?.items)
               ? root.items
-              : [];
-        const found = games.find((g) => g.slug === slug) ?? null;
+              : [])).map((g, idx) => ({ ...g, routeId: (g as Game).routeId ?? g.slug ?? `row-${idx + 1}` }));
+        const found = games.find((g) => g.routeId === slug || g.slug === slug) ?? null;
         setGame(found ?? null);
+        setGameLookupStatus("done");
       })
-      .catch(() => setGame(null));
+      .catch(() =>
+        fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+          .then((data) => {
+            if (cancelled) return;
+            const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
+            const games = (Array.isArray(root)
+              ? root
+              : Array.isArray(root?.games)
+                ? root.games
+                : Array.isArray(root?.items)
+                ? root.items
+                : []).map((g, idx) => ({ ...g, routeId: (g as Game).routeId ?? g.slug ?? `row-${idx + 1}` }));
+            const found = games.find((g) => g.slug === slug) ?? null;
+            setGame(found ?? null);
+            setGameLookupStatus("done");
+          })
+          .catch(() => {
+            if (cancelled) return;
+            setGame(null);
+            setGameLookupStatus("done");
+          })
+      );
+    return () => {
+      cancelled = true;
+    };
   }, [slug]);
 
   useEffect(() => {
     if (!slug) return;
+    if (gameLookupStatus === "loading") return;
+    const key = game?.routeId ?? slug;
+    const candidates = [
+      game?.gameinfoLocalPractice,
+      game?.gameinfoLocalLegacy,
+      game?.practiceIdentity ? `/pinball/gameinfo/${game.practiceIdentity}-gameinfo.md` : null,
+      game?.slug ? `/pinball/gameinfo/${game.slug}.md` : null,
+      `/pinball/gameinfo/${slug}.md`,
+    ].filter((v, i, a): v is string => Boolean(v) && a.indexOf(v as string) === i);
 
-    fetchPinballText(`/pinball/gameinfo/${slug}.md`)
-      .then((text) => {
-        setInfoState({
-          slug,
-          md: text,
-          status: "loaded",
-        });
-      })
-      .catch((error) => {
-        const message = error instanceof Error ? error.message : String(error ?? "");
-        setInfoState({
-          slug,
-          md: null,
-          status: message.includes("404") ? "missing" : "error",
-        });
+    let cancelled = false;
+    const load = async () => {
+      let lastError: unknown = null;
+      for (const candidate of candidates) {
+        try {
+          const text = await fetchPinballText(candidate);
+          if (cancelled) return;
+          setInfoState({ slug: key, md: text, status: "loaded" });
+          return;
+        } catch (err) {
+          lastError = err;
+        }
+      }
+      if (cancelled) return;
+      const message = lastError instanceof Error ? lastError.message : String(lastError ?? "");
+      setInfoState({
+        slug: key,
+        md: null,
+        status: message.includes("404") ? "missing" : "error",
       });
-  }, [slug]);
+    };
+    load().catch(() => {
+      if (cancelled) return;
+      setInfoState({ slug: key, md: null, status: "error" });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, gameLookupStatus, game?.routeId, game?.gameinfoLocalPractice, game?.gameinfoLocalLegacy, game?.practiceIdentity, game?.slug]);
 
   const videoCards = useMemo(() => {
     if (!game) return [];
@@ -132,12 +267,13 @@ export default function GamePage() {
   }, [videoCards, selectedVideoId]);
 
   const infoStatus = useMemo(() => {
-    if (!slug) return "idle";
-    if (infoState.slug !== slug) return "loading";
+    const key = game?.routeId ?? slug;
+    if (!key) return "idle";
+    if (infoState.slug !== key) return "loading";
     return infoState.status;
-  }, [slug, infoState.slug, infoState.status]);
+  }, [slug, game?.routeId, infoState.slug, infoState.status]);
 
-  const infoMd = infoState.slug === slug ? infoState.md : null;
+  const infoMd = infoState.slug === (game?.routeId ?? slug) ? infoState.md : null;
 
   const metaLine = useMemo(() => {
     if (!game) return "—";
@@ -165,7 +301,7 @@ export default function GamePage() {
     );
   }
 
-  const playfieldImage = playfieldImageSources(game.slug, game.playfieldLocal);
+  const playfieldImage = playfieldImageSources(game.playfieldLocal);
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
@@ -176,7 +312,14 @@ export default function GamePage() {
         </Link>
 
         <div className="mt-4 flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold">{game.name}</h1>
+          <h1 className="text-3xl font-semibold">
+            <span>{game.name}</span>
+            {game.variant && (
+              <span className="ml-2 inline-flex rounded-full border border-neutral-600 px-2 py-0.5 text-xs align-middle text-neutral-200">
+                {game.variant}
+              </span>
+            )}
+          </h1>
           <div className="text-neutral-400">{metaLine}</div>
         </div>
 
@@ -187,7 +330,7 @@ export default function GamePage() {
                 <img
                   src={playfieldImage.src}
                   srcSet={playfieldImage.srcSet}
-                  sizes="(min-width: 1024px) 325px, 100vw"
+                  sizes="(max-width: 767px) 100vw, 350px"
                   alt={`${game.name} playfield`}
                   className="h-full w-full object-cover"
                   onLoad={(e) => cacheAssetUrl((e.currentTarget as HTMLImageElement).currentSrc)}
@@ -208,7 +351,7 @@ export default function GamePage() {
             <div className="p-4 flex flex-wrap gap-3">
               <Link
                 className={SUBTLE_BUTTON_CLASS}
-                to={`/rules/${game.slug}`}
+                to={`/rules/${encodeURIComponent(game.routeId)}`}
               >
                 Rulesheet
               </Link>

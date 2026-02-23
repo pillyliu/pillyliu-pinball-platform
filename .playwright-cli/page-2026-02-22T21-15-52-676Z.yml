@@ -1,0 +1,633 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link " Sign in" [ref=e6] [cursor=pointer]:
+          - /url: /pinball/my-pinside/signin
+          - generic [ref=e7]: 
+          - text: Sign in
+        - link "" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e10]: 
+        - link "" [ref=e12] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e13]: 
+        - link "" [ref=e15] [cursor=pointer]:
+          - /url: /pinball/search
+          - generic [ref=e16]: 
+        - link "" [ref=e18] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e19]: 
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+          - generic [ref=e25]:
+            - link "machines" [ref=e26] [cursor=pointer]:
+              - /url: /pinball/machine
+            - link "top 100" [ref=e27] [cursor=pointer]:
+              - /url: /pinball/top-100
+            - link "community" [ref=e28] [cursor=pointer]:
+              - /url: /pinball/community
+            - link "TV" [ref=e29] [cursor=pointer]:
+              - /url: /pinball/tv
+            - link "pin map" [ref=e30] [cursor=pointer]:
+              - /url: /pinball/map
+            - link "forum" [ref=e31] [cursor=pointer]:
+              - /url: /pinball/forum
+            - link "biz" [ref=e32] [cursor=pointer]:
+              - /url: /pinball/biz
+            - link "shops" [ref=e33] [cursor=pointer]:
+              - /url: /pinball/shops
+            - link "market" [ref=e34] [cursor=pointer]:
+              - /url: /pinball/market
+            - link "events" [ref=e35] [cursor=pointer]:
+              - /url: /pinball/events
+            - link "HQ" [ref=e36] [cursor=pointer]:
+              - /url: /pinball/hq
+        - generic [ref=e38]:
+          - link "" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 
+          - text: »
+          - link "Pinball database" [ref=e41] [cursor=pointer]:
+            - /url: /pinball/machine
+          - text: »
+          - link "Firepower" [ref=e42] [cursor=pointer]:
+            - /url: ""
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Pinside.com logo" [ref=e47] [cursor=pointer]:
+            - /url: /
+            - img "Pinside.com logo" [ref=e48]
+          - list [ref=e50]:
+            - listitem [ref=e51]:
+              - link "machines" [ref=e52] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e53]:
+              - link "top 100" [ref=e54] [cursor=pointer]:
+                - /url: /pinball/top-100
+            - listitem [ref=e55]:
+              - link "community" [ref=e56] [cursor=pointer]:
+                - /url: /pinball/community
+            - listitem [ref=e57]:
+              - link "TV" [ref=e58] [cursor=pointer]:
+                - /url: /pinball/tv
+            - listitem [ref=e59]:
+              - link "pin map" [ref=e60] [cursor=pointer]:
+                - /url: /pinball/map
+            - listitem [ref=e61]:
+              - link "forum" [ref=e62] [cursor=pointer]:
+                - /url: /pinball/forum
+            - listitem [ref=e63]:
+              - link "biz" [ref=e64] [cursor=pointer]:
+                - /url: /pinball/biz
+            - listitem [ref=e65]:
+              - link "shops" [ref=e66] [cursor=pointer]:
+                - /url: /pinball/shops
+            - listitem [ref=e67]:
+              - link "market" [ref=e68] [cursor=pointer]:
+                - /url: /pinball/market
+            - listitem [ref=e69]:
+              - link "events" [ref=e70] [cursor=pointer]:
+                - /url: /pinball/events
+            - listitem [ref=e71]:
+              - link "HQ" [ref=e72] [cursor=pointer]:
+                - /url: /pinball/hq
+        - generic [ref=e73]:
+          - 'link "Photo: robin" [ref=e74] [cursor=pointer]':
+            - /url: /pinball/community/pinsiders/robin
+          - link "" [ref=e75] [cursor=pointer]:
+            - /url: /pinball/community/pinsiders/robin/contact?subject=Pinside+header+photos
+            - generic [ref=e76]: 
+      - generic [ref=e77]:
+        - generic [ref=e79]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - text: »
+              - link "Pinball database" [ref=e82] [cursor=pointer]:
+                - /url: /pinball/machine
+            - listitem [ref=e83]:
+              - text: »
+              - link "Firepower" [ref=e84] [cursor=pointer]:
+                - /url: /pinball/machine/firepower
+          - link "" [ref=e85] [cursor=pointer]:
+            - /url: "#scrollbottom"
+            - generic [ref=e86]: 
+        - generic [ref=e88]:
+          - generic:
+            - list:
+              - listitem [ref=e89]:
+                - link "Splash At a glance" [ref=e90] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower
+                  - text: Splash
+                  - generic [ref=e91]: At a glance
+              - listitem [ref=e92]:
+                - link "Details The numbers" [ref=e93] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/details
+                  - text: Details
+                  - generic [ref=e94]: The numbers
+              - listitem [ref=e95]:
+                - link "Ratings Is it any good?" [ref=e96] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/ratings
+                  - text: Ratings
+                  - generic [ref=e97]: Is it any good?
+              - listitem [ref=e98]:
+                - link "Gallery Machine pics" [ref=e99] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/gallery
+                  - text: Gallery
+                  - generic [ref=e100]: Machine pics
+              - listitem [ref=e101]:
+                - link "Owners And locations" [ref=e102] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/owners
+                  - text: Owners
+                  - generic [ref=e103]: And locations
+              - listitem [ref=e104]:
+                - link "Market Classified ads" [ref=e105] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/market
+                  - text: Market
+                  - generic [ref=e106]: Classified ads
+              - listitem [ref=e107]:
+                - link "Shops New parts & mods" [ref=e108] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/shops
+                  - text: Shops
+                  - generic [ref=e109]: New parts & mods
+              - listitem [ref=e110]:
+                - link "Scores High scores" [ref=e111] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/scores
+                  - text: Scores
+                  - generic [ref=e112]: High scores
+              - listitem [ref=e113]:
+                - link "Forum Discuss the game" [ref=e114] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/forum
+                  - text: Forum
+                  - generic [ref=e115]: Discuss the game
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - link "Firepower" [ref=e120] [cursor=pointer]:
+            - /url: /pinball/machine/firepower/gallery
+            - img "Firepower" [ref=e121]
+          - generic [ref=e123]:
+            - link [ref=e125] [cursor=pointer]:
+              - /url: /pinball/machine/williams
+              - img [ref=e126]
+            - heading "Williams" [level=2] [ref=e127]
+            - heading "Firepower" [level=1] [ref=e128]
+            - generic [ref=e129]:
+              - text: "Firepower was released in February of 1980 and designed by Steve Ritchie. Firepower is the second pinball to feature speech (the first being \"Gorgar\"). The eleven word ability was beyond Gorgar's seven word memory. Firepower has three notable \"firsts\":"
+              - text: 1) the first pinball with the "lane change" feature in which the right flipper button controlled the lit/unlit status of rollover lanes;
+              - text: 2) the first SS pinball to have a multiball feature. Attaining three balls in play at the same time was an uniquely attractive reward;
+              - text: 3) the first playfield animation. This "countdown to multiball" animation was innovative and amazing in 1980. It was also near the limit of the electronic and computational capacity of the hardware.
+              - text: "It ranks at #5 in the list of the most successful Flippergames of all time, with 17,410 units."
+              - text: According to Steve Ritchie the first 10 Machines had 6 Drop-Targets but since the Drop-Target-Bank-Design at the Time was too unreliable and would have caused too much Maintenance-Trouble they went with Stand-Up-Targets instead.
+              - text: In 1982 Williams fabricated an unknown Number of Replacement-Stock-Playboards for FIREPOWER with slightly different Starburst-Inserts and different Color for the huge lower Spaceship.
+            - generic [ref=e130]:
+              - heading "Tags:" [level=3] [ref=e131]
+              - link "SCI-FI" [ref=e132] [cursor=pointer]:
+                - /url: /pinball/machine?tags=sci-fi
+              - link "space" [ref=e133] [cursor=pointer]:
+                - /url: /pinball/machine?tags=space
+              - link "War" [ref=e134] [cursor=pointer]:
+                - /url: /pinball/machine?tags=war
+              - link "edit tags" [ref=e136] [cursor=pointer]:
+                - /url: /pinball/iframes/machine-editor/?machine_key=179
+        - generic [ref=e137]:
+          - generic:
+            - generic [ref=e139]:
+              - heading "Design team" [level=3] [ref=e140]
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - text: "Concept:"
+                  - link "Steve Ritchie" [ref=e143] [cursor=pointer]:
+                    - /url: /pinball/machine/steve-ritchie
+                - generic [ref=e144]:
+                  - text: "Game Design:"
+                  - link "Steve Ritchie" [ref=e145] [cursor=pointer]:
+                    - /url: /pinball/machine/steve-ritchie
+                - generic [ref=e146]:
+                  - text: "Engineering/mechanics:"
+                  - link "John Jung" [ref=e147] [cursor=pointer]:
+                    - /url: /pinball/machine/john-jung
+                - generic [ref=e148]:
+                  - text: "Software:"
+                  - link "Eugene Jarvis" [ref=e149] [cursor=pointer]:
+                    - /url: /pinball/machine/eugene-jarvis
+                - generic [ref=e150]:
+                  - text: "Artwork:"
+                  - link "Constantino Mitchell" [ref=e151] [cursor=pointer]:
+                    - /url: /pinball/machine/constantino-mitchell
+                  - link "Jeanine Mitchell" [ref=e152] [cursor=pointer]:
+                    - /url: /pinball/machine/jeanine-mitchell
+                - generic [ref=e153]:
+                  - text: "Sound:"
+                  - link "Eugene Jarvis" [ref=e154] [cursor=pointer]:
+                    - /url: /pinball/machine/eugene-jarvis
+                - generic [ref=e155]:
+                  - text: "Callouts:"
+                  - link "Steve Ritchie" [ref=e156] [cursor=pointer]:
+                    - /url: /pinball/machine/steve-ritchie
+            - generic [ref=e158]:
+              - heading "Game details" [level=3] [ref=e159]
+              - generic [ref=e160]:
+                - generic [ref=e161]: PinsideID
+                - generic [ref=e162]: "179"
+              - generic [ref=e163]:
+                - generic [ref=e164]: Manufactured by
+                - link "Williams Electronic Games, Inc." [ref=e166] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&manufacturer[]=83#results
+              - generic [ref=e167]:
+                - generic [ref=e168]: Date
+                - generic [ref=e169]: February 1980
+              - generic [ref=e170]:
+                - generic [ref=e171]: Type
+                - img [ref=e172]
+                - text: Solid state
+              - generic [ref=e173]:
+                - generic [ref=e174]: Generation
+                - link "Williams System 6" [ref=e176] [cursor=pointer]:
+                  - /url: /pinball/machine?query=&machine_generation=47#results
+              - generic [ref=e177]:
+                - generic [ref=e178]: Release
+                - generic [ref=e179]: 17,410 produced
+              - generic [ref=e180]:
+                - generic [ref=e181]: Estimated value
+                - generic [ref=e182]: $1850 - $2150
+              - generic [ref=e183]:
+                - generic [ref=e184]: Cabinet
+                - generic [ref=e185]: Normal
+              - generic [ref=e186]:
+                - generic [ref=e187]: Display type
+                - generic [ref=e188]: Digital
+              - generic [ref=e189]:
+                - generic [ref=e190]: Players
+                - generic [ref=e191]: "4"
+              - generic [ref=e192]:
+                - generic [ref=e193]: Flippers
+                - generic [ref=e194]: "2"
+              - generic [ref=e195]:
+                - generic [ref=e196]: Ramps
+                - generic [ref=e197]: "0"
+              - generic [ref=e198]:
+                - generic [ref=e199]: Multiball
+                - generic [ref=e200]: "3"
+              - generic [ref=e201]:
+                - generic [ref=e202]: IPDB
+                - link "#856" [ref=e204] [cursor=pointer]:
+                  - /url: http://www.ipdb.org/machine.cgi?id=856
+              - generic [ref=e205]:
+                - generic [ref=e206]: Latest software
+                - generic [ref=e207]: L6, date unknown
+          - generic [ref=e208]:
+            - list:
+              - listitem [ref=e209]:
+                - link "View all details" [ref=e210] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/details
+              - listitem [ref=e211]:
+                - link "Edit game details" [ref=e212] [cursor=pointer]:
+                  - /url: /pinball/iframes/machine-editor/?machine_key=179
+        - generic [ref=e215]:
+          - heading "Promotional" [level=3] [ref=e216]
+          - generic [ref=e217]:
+            - link [ref=e219] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/jlRG6wR98wA-Dm2VrgQl0vzo8s0n_KfduKbCB83yI18/rs:fit:2048/fn:pinside_archive_179_5d79a9b52aa2/enc/3zJ6ZdYgYniRF04s7k51D_ViOTEbOJDn6T9ggS23y3jLsAC_sV8W9xUysN2Coa-Ssp_RZ-M65EBTdchr8paTWm29rclDRSjBBSotDMgI85gyzUp5klqw_ZlyCGycG1bE.jpg
+              - img [ref=e220]
+            - link [ref=e222] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/KdEz99G7i6LXabgZzqqysU_u0ZwflNGYB2_zuxqrhzc/rs:fit:2048/fn:pinside_archive_179_e7bea1c533c8/enc/WbbS6AUE2LYwxvpvHIlu5GDIENOPhM26sWkw14xaOy2NEg2VG0a6bebhhZThEtugdy2NX8zu91AToOqUYwdz7GNfHTFYKQ7y4FBaOmREQjLcOay6hxLMAnBtgtLoy2qE.jpg
+              - img [ref=e223]
+            - link [ref=e225] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/czfbjlyzssF0d3lfZCkqIiut-qyz7QKFi0808SGJ_ak/rs:fit:2048/fn:pinside_archive_179_062a5dd35549/enc/DcaopdRGEN57LYWZez29YIrAz2xP4IVcNR4fyMhN32uVIGxrTLDErpoo2rp4mAvf0PxrVfh948jGAL5tCN0GYmlRbZRmtVuu9Nm27N34xqpyV3-Yro3YLzduuQb8c9_7.jpg
+              - img [ref=e226]
+            - link [ref=e228] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/hF_sx-V3do35w8n2kPFBiT2oelA7iGUgVg4j0V2bD4g/rs:fit:2048/fn:pinside_archive_179_febebe44fab2/enc/EaxoqvPUsa1uDFajuB7FouayuuM_a0TZAQEIYuAOQSo2yre6USsFNPDCbnGi7YnzULQDjQrtyp0vpH_81iQBmP-HeSDo8HpkGueZX8aGBUUnoI4KlKjk6DxXBJ90tjAl.jpg
+              - img [ref=e229]
+            - link [ref=e231] [cursor=pointer]:
+              - /url: https://imgproxy.pinside.com/-78xiVnTpkHKvY-CT8k22fwtpb39ZEbCF2fjhJhFeYk/rs:fit:2048/fn:pinside_archive_179_c903e821d6cd/enc/PtR7PCkmBeAUBvyonyGNyJ2NnpD-JuRoY14ySHle3H9NeCUqzg2suSrDmJkFRc1MUHZaH4q2l1m1N4098WPj-fpXlqnritQjJoNUv3CYvnK8K98XCQ4MjV0U2Mf0zcST.jpg
+              - img [ref=e232]
+          - paragraph [ref=e233]: Click on a flyer image for full size.
+        - generic [ref=e234]:
+          - heading "Price history" [level=2] [ref=e237]
+          - generic [ref=e243]:
+            - heading "Price estimate" [level=3] [ref=e244]
+            - paragraph [ref=e245]:
+              - text: This game
+              - link "has been listed" [ref=e246] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=179#results
+              - text: a total number of 301 times on the Pinside Marketplace, most recently on 2026-02-20.
+            - separator [ref=e247]
+            - paragraph [ref=e248]: This past year, we've seen it listed 30 times. The median asking price (trimmed median) was $2,000
+            - separator [ref=e249]
+            - paragraph [ref=e250]:
+              - text: »
+              - link "Find ads for this game" [ref=e251] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/market
+            - paragraph [ref=e252]:
+              - text: »
+              - link "View archived ads" [ref=e253] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/archive?s=1&ad_machine_key=179
+        - generic [ref=e254]:
+          - generic [ref=e256]:
+            - heading "Marketing slogan" [level=3] [ref=e257]
+            - table [ref=e259]:
+              - rowgroup [ref=e260]:
+                - row "\"Another pinball history-maker and profit record-breaker from Williams Electronics\"" [ref=e261]:
+                  - cell "\"Another pinball history-maker and profit record-breaker from Williams Electronics\"" [ref=e262]
+          - generic [ref=e263]:
+            - list:
+              - listitem [ref=e264]:
+                - link "Show another!" [ref=e265] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e266]:
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - heading "Pinside rating" [level=3] [ref=e269]
+              - paragraph [ref=e270]:
+                - text: This game has received
+                - strong [ref=e271]: 265 approved Pinsider ratings
+                - text: and currently has a rating of
+                - generic [ref=e273]: 7.785 out of 10.
+              - generic [ref=e276]: "7.785"
+            - generic [ref=e288]:
+              - heading "Top 100 ranking" [level=3] [ref=e289]
+              - paragraph [ref=e290]:
+                - text: This game ranks
+                - strong [ref=e291]: "#140"
+                - text: in the
+                - link "Pinside Pinball Top 100" [ref=e292] [cursor=pointer]:
+                  - /url: /pinball/top-100
+                - text: .
+            - generic [ref=e293]:
+              - heading "Rating comments" [level=3] [ref=e294]
+              - paragraph [ref=e295]:
+                - text: There
+                - link "are 165 rating comments" [ref=e296] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/ratings
+                - text: for this game.
+          - generic [ref=e298]:
+            - heading "Owners / Wishlisters / Places to play" [level=3] [ref=e299]
+            - generic [ref=e302]:
+              - paragraph [ref=e305]:
+                - strong [ref=e306]: "886"
+                - text: Pinsiders have this game in their collections.
+              - paragraph [ref=e309]:
+                - strong [ref=e310]: "492"
+                - text: Pinsiders have this game on their wishlist.
+              - paragraph [ref=e313]:
+                - strong [ref=e314]: "80"
+                - text: public locations to play this machine.
+          - generic [ref=e316]:
+            - list:
+              - listitem [ref=e317]:
+                - link "Add your rating!" [ref=e318] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/ratings/edit?r=/pinball/machine/firepower
+              - listitem [ref=e319]:
+                - link "Show all rating comments" [ref=e320] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/ratings
+          - generic [ref=e322]:
+            - list:
+              - listitem [ref=e323]:
+                - link "Log in to manage your collection and wishlist." [ref=e324] [cursor=pointer]:
+                  - /url: /pinball/my-pinside
+              - listitem [ref=e325]:
+                - link "Visit map!" [ref=e326] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/owners
+        - generic [ref=e329]:
+          - heading "Gallery - Featured images" [level=3] [ref=e330]
+          - paragraph
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link [ref=e333] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e334]
+            - listitem [ref=e335]:
+              - link [ref=e336] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e337]
+            - listitem [ref=e338]:
+              - link [ref=e339] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e340]
+            - listitem [ref=e341]:
+              - link [ref=e342] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e343]
+            - listitem [ref=e344]:
+              - link [ref=e345] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e346]
+            - listitem [ref=e347]:
+              - link [ref=e348] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e349]
+            - listitem [ref=e350]:
+              - link [ref=e351] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e352]
+            - listitem [ref=e353]:
+              - link [ref=e354] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e355]
+            - listitem [ref=e356]:
+              - link [ref=e357] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e358]
+            - listitem [ref=e359]:
+              - link [ref=e360] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e361]
+            - listitem [ref=e362]:
+              - link [ref=e363] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e364]
+            - listitem [ref=e365]:
+              - link [ref=e366] [cursor=pointer]:
+                - /url: /pinball/machine/firepower/gallery
+                - img [ref=e367]
+          - paragraph
+          - generic [ref=e368]:
+            - list:
+              - listitem [ref=e369]:
+                - link "Visit the gallery for all images!" [ref=e370] [cursor=pointer]:
+                  - /url: /pinball/machine/firepower/gallery
+        - generic [ref=e372]:
+          - heading "Game-related shop items!" [level=3] [ref=e373]
+          - paragraph [ref=e374]:
+            - text: Here's a selection of Pinside Shops items, linked specifically to
+            - strong [ref=e375]: Firepower
+            - text: .
+          - generic [ref=e376]:
+            - generic [ref=e378]:
+              - link [ref=e379] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1256-upkick-pinball/05889-firepower-slingshot-and-center-target-plastic-protectors
+              - generic [ref=e380]: $ 15.00
+              - generic [ref=e381]:
+                - generic [ref=e382]: Playfield - Protection
+                - link "Firepower Slingshot and Center Target Plastic Protectors" [ref=e384] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1256-upkick-pinball/05889-firepower-slingshot-and-center-target-plastic-protectors
+                - generic [ref=e386]:
+                  - generic [ref=e387]: 
+                  - text: UpKick Pinball
+            - generic [ref=e390]:
+              - link [ref=e391] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15715-williams-firepower-pinball-machine-rubber-ring-kit
+              - generic [ref=e392]: $ 22.99
+              - generic [ref=e393]:
+                - generic [ref=e394]: Rubber/Silicone
+                - link "Williams Firepower Pinball Machine Rubber Ring Kit" [ref=e396] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15715-williams-firepower-pinball-machine-rubber-ring-kit
+                - generic [ref=e398]:
+                  - generic [ref=e399]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e402]:
+              - link [ref=e403] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06197-rom-firepower-sound
+              - generic [ref=e404]: $ 42.95
+              - generic [ref=e405]:
+                - generic [ref=e406]: Eproms
+                - link "ROM FIREPOWER -SOUND" [ref=e408] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06197-rom-firepower-sound
+                - generic [ref=e410]:
+                  - generic [ref=e411]: 
+                  - text: Pinballrom
+            - generic [ref=e414]:
+              - link [ref=e415] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1090-comet-pinball/12887-firepower-led-kit
+              - generic [ref=e416]: $ 149.99
+              - generic [ref=e417]:
+                - generic [ref=e418]: Lighting - Led
+                - link "Firepower LED Kit" [ref=e420] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1090-comet-pinball/12887-firepower-led-kit
+                - generic [ref=e422]:
+                  - generic [ref=e423]: 
+                  - text: Comet Pinball
+            - generic [ref=e426]:
+              - link [ref=e427] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1256-upkick-pinball/03954-firepower-coin-door-inserts
+              - generic [ref=e428]: "From: $ 8.00"
+              - generic [ref=e429]:
+                - generic [ref=e430]: Cabinet - Other
+                - link "Firepower Coin Door Inserts" [ref=e432] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1256-upkick-pinball/03954-firepower-coin-door-inserts
+                - generic [ref=e434]:
+                  - generic [ref=e435]: 
+                  - text: UpKick Pinball
+            - generic [ref=e438]:
+              - link [ref=e439] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1710-patelrock-pinball/15716-williams-firepower-pinball-machine-maintenance-tune-up-kit
+              - generic [ref=e440]: $ 49.99
+              - generic [ref=e441]:
+                - generic [ref=e442]: Cleaner
+                - link "Williams Firepower Pinball Machine Maintenance Tune Up Kit" [ref=e444] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1710-patelrock-pinball/15716-williams-firepower-pinball-machine-maintenance-tune-up-kit
+                - generic [ref=e446]:
+                  - generic [ref=e447]: 
+                  - text: Patelrock Pinball
+            - generic [ref=e450]:
+              - link [ref=e451] [cursor=pointer]:
+                - /url: /pinball/shops/shop/1089-pinballrom/06196-rom-firepower-cpu-
+              - generic [ref=e452]: $ 27.95
+              - generic [ref=e453]:
+                - generic [ref=e454]: Eproms
+                - link "ROM FIREPOWER -CPU" [ref=e456] [cursor=pointer]:
+                  - /url: /pinball/shops/shop/1089-pinballrom/06196-rom-firepower-cpu-
+                - generic [ref=e458]:
+                  - generic [ref=e459]: 
+                  - text: Pinballrom
+        - generic [ref=e462]:
+          - heading "Market value" [level=3] [ref=e463]
+          - paragraph [ref=e464]: There are currently 2 ads for this game on our Market place.
+          - generic [ref=e465]:
+            - generic [ref=e467]:
+              - link [ref=e468] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/209842
+              - generic [ref=e469]:
+                - generic [ref=e470]: 
+                - text: 3,950
+              - generic [ref=e471]:
+                - generic [ref=e472]: Machine - For Sale
+                - link "Firepower" [ref=e474] [cursor=pointer]:
+                  - /url: /pinball/market/classifieds/ad/209842
+                - generic [ref=e475]:
+                  - generic [ref=e476]:
+                    - img [ref=e477]
+                    - text: Lakewood, CA
+                  - generic [ref=e478]:
+                    - generic [ref=e479]: 
+                    - link "dasha126" [ref=e480] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/dasha126/market
+                    - generic [ref=e481]: 
+            - generic [ref=e483]:
+              - link [ref=e484] [cursor=pointer]:
+                - /url: /pinball/market/classifieds/ad/208659
+              - generic [ref=e486]:
+                - generic [ref=e487]: 
+                - text: 1,600
+              - generic [ref=e488]:
+                - generic [ref=e489]: Machine - For Sale
+                - generic [ref=e490]:
+                  - link "Firepower" [ref=e491] [cursor=pointer]:
+                    - /url: /pinball/market/classifieds/ad/208659
+                  - text: Pending
+                - generic [ref=e492]:
+                  - generic [ref=e493]:
+                    - img [ref=e494]
+                    - text: Springfield, MO
+                  - generic [ref=e495]:
+                    - generic [ref=e496]: 
+                    - link "jdoz2" [ref=e497] [cursor=pointer]:
+                      - /url: /pinball/community/pinsiders/jdoz2/market
+      - generic [ref=e499]:
+        - img [ref=e500]
+        - heading "Hey there! Welcome to Pinside!" [level=2] [ref=e501]
+        - link " Support Pinside" [ref=e502] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e503]: 
+          - text: Support Pinside
+        - paragraph [ref=e504]:
+          - text: Loving Pinside? We've kept it ad-free for years with help from our supporters! Consider
+          - link "joining Pinside+" [ref=e505] [cursor=pointer]:
+            - /url: /pinball/donate
+          - text: to support the site and get exclusive member benefits!
+  - text:    
+  - generic [ref=e508]:
+    - link [ref=e510] [cursor=pointer]:
+      - /url: "#top"
+      - img [ref=e511]
+    - generic [ref=e512]:
+      - text: © 2001-2026 Pinside.com All rights reserved.
+      - generic [ref=e513]:
+        - generic [ref=e514]: 
+        - text: Page rendered in 1.66751s
+      - generic [ref=e515]:
+        - generic [ref=e516]: 
+        - text: Image processing powered by the awesome
+        - link "imgproxy" [ref=e517] [cursor=pointer]:
+          - /url: https://imgproxy.net
+      - generic [ref=e518]:
+        - link " Help" [ref=e519] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e520]: 
+          - text: Help
+        - text: –
+        - link " Contact" [ref=e521] [cursor=pointer]:
+          - /url: /pinball/contact
+          - generic [ref=e522]: 
+          - text: Contact
+        - text: –
+        - link " About Pinside" [ref=e523] [cursor=pointer]:
+          - /url: /pinball/help
+          - generic [ref=e524]: 
+          - text: About Pinside
+        - text: –
+        - link " Support Pinside" [ref=e525] [cursor=pointer]:
+          - /url: /pinball/donate
+          - generic [ref=e526]: 
+          - text: Support Pinside
+        - text: –
+        - link " Top" [ref=e527] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e528]: 
+          - text: Top

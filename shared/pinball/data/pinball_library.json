@@ -1,9 +1,9 @@
 [
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 1,
@@ -31,10 +31,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 1,
@@ -57,10 +57,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 1,
@@ -83,10 +83,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 1,
@@ -114,10 +114,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 2,
@@ -134,10 +134,10 @@
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 2,
@@ -160,10 +160,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 2,
@@ -173,7 +173,7 @@
     "manufacturer": "Stern",
     "year": 2003,
     "slug": "the-simpsons-pinball-party",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/RIAZC0DAD2IUDAAgui_4rM6KDBwp6yPikbNNnlSaXpw/rs:fit:2048/q:85/fn:Pinside_archive_1143_2506249/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzMvNGIvMmEvMzRiMmFjZWNlZTU2MzNkOGViNWY1NGNjZWY0ZTkwZGU0YWEwNThlMy5qcGc",
+    "playfieldImageUrl": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg",
     "playfieldLocal": "/pinball/images/playfields/the-simpsons-pinball-party.jpg",
     "rulesheetUrl": "https://www.pinball.org/rules/simpsonspinballparty.txt",
     "rulesheetLocal": "/pinball/rulesheets/the-simpsons-pinball-party.md",
@@ -191,10 +191,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 2,
@@ -217,10 +217,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -230,7 +230,7 @@
     "manufacturer": "Williams",
     "year": 1992,
     "slug": "the-getaway-high-speed-ii",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/rUzfGvBQRNLLDamKPC_CI12ylcgMe8DiDUVpe79omfM/rs:fit:2048/q:85/fn:Pinside_archive_207_2353782/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzkvNmQvMjQvOTZkMjQ5NDY2YjZjMGY3MTg5YmZjYjBjOWRiNjFjMTgwZDBlZjc1Zi5qcGVn",
+    "playfieldImageUrl": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
     "playfieldLocal": "/pinball/images/playfields/the-getaway-high-speed-ii.jpg",
     "rulesheetUrl": "https://www.pinball.org/rules/getaway.html",
     "rulesheetLocal": "/pinball/rulesheets/the-getaway-high-speed-ii.md",
@@ -243,10 +243,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -256,9 +256,9 @@
     "manufacturer": "Williams",
     "year": 1998,
     "slug": "monster-bash",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/pZuLgEgy0hWsr2i1czlrPnNHHyarew5je1FiDU6zKn4/rs:fit:2048/q:85/fn:Pinside_archive_972_3059532/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzIvMzEvNmUvMjMxNmU4ZjkwMjdkZWE2YzAwNGIzZTAzMTAyZmVmZTZlYTJjMjI5ZC5qcGc",
+    "playfieldImageUrl": "https://o.pinside.com/f/3d/11/f3d112c32278e7dd32ae24673374ba3325906513.jpeg",
     "playfieldLocal": "/pinball/images/playfields/monster-bash.jpg",
-    "rulesheetUrl": "https://pinball.org/rules/monsterbash.txt?utm_source=chatgpt.com",
+    "rulesheetUrl": "https://pinball.org/rules/monsterbash.txt",
     "rulesheetLocal": "/pinball/rulesheets/monster-bash.md",
     "videos": [
       {
@@ -274,10 +274,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -287,7 +287,7 @@
     "manufacturer": "Williams",
     "year": 1993,
     "slug": "indiana-jones-the-pinball-adventure",
-    "playfieldImageUrl": "https://i0.wp.com/arcade83.us/wp-content/uploads/2022/09/e10cd8_098ae4bfb87b4ac5a401df7617fcdc65mv2.webp",
+    "playfieldImageUrl": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg",
     "playfieldLocal": "/pinball/images/playfields/indiana-jones-the-pinball-adventure.jpg",
     "rulesheetUrl": "https://www.ipdb.org/rulesheets/1267/indiana.htm",
     "rulesheetLocal": "/pinball/rulesheets/indiana-jones-the-pinball-adventure.md",
@@ -300,10 +300,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -313,7 +313,7 @@
     "manufacturer": "Bally",
     "year": 1998,
     "slug": "cactus-canyon",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/u2RvRbqVBaQ56LRJ5hfaX0Uq0yDOG4PbY_CvAg-mcd4/rs:fit:2048/q:85/fn:Pinside_archive_2979_2616905/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tL2QvOGMvOTIvZDhjOTJmNDNmYTFjOTFjYmZjMDRiOWU1M2E4ZWM1YzUxYzY3OTk4Ny5qcGc",
+    "playfieldImageUrl": "https://o.pinside.com/2/3d/21/23d219b17c275ab7e997c05b4c9de0ca621a40f9.jpeg",
     "playfieldLocal": "/pinball/images/playfields/cactus-canyon.jpg",
     "rulesheetUrl": "https://gamefaqs.gamespot.com/pinball/915657-cactus-canyon/faqs/40815?raw=1",
     "rulesheetLocal": "/pinball/rulesheets/cactus-canyon.md",
@@ -326,10 +326,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -339,7 +339,7 @@
     "manufacturer": "Williams",
     "year": 1996,
     "slug": "tales-of-the-arabian-nights",
-    "playfieldImageUrl": "https://firebirdpinball.com/wp-content/uploads/2015/01/TOTAN2.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg",
     "playfieldLocal": "/pinball/images/playfields/tales-of-the-arabian-nights.jpg",
     "rulesheetUrl": "https://pinball.org/rules/talesofthearabiannights.html",
     "rulesheetLocal": "/pinball/rulesheets/tales-of-the-arabian-nights.md",
@@ -352,10 +352,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 3,
@@ -365,7 +365,7 @@
     "manufacturer": "Bally",
     "year": 1992,
     "slug": "the-addams-family",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/GVc59F2RRq1K9VlRok_O3nIoAFOX6vnqlt0iSp8AShE/rs:fit:2048/q:85/fn:Pinside_archive_2_1564480/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tLzIvYmEvNjIvMmJhNjJjYzRjNjljMjUxY2Y4ZmY0MWUwZTI3ZjlkMjZjMGRhZTk5YS5qcGVn",
+    "playfieldImageUrl": "https://o.pinside.com/2/b3/34/2b334721aa24cf45100e0874684ca1ac32b6066e.jpeg",
     "playfieldLocal": "/pinball/images/playfields/the-addams-family.jpg",
     "rulesheetUrl": "https://www.pinball.org/rules/addamsfamily.html",
     "rulesheetLocal": "/pinball/rulesheets/the-addams-family.md",
@@ -378,10 +378,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -419,10 +419,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -450,10 +450,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -481,10 +481,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -494,7 +494,7 @@
     "manufacturer": "Stern",
     "year": 2015,
     "slug": "kiss",
-    "playfieldImageUrl": "https://imgproxy.pinside.com/ACTYe6GxLQnvnxoLH1GCkBHFA1GMAQdjYWEEcGBk4fk/rs:fit:2048/q:85/fn:Pinside_archive_2227_107333/format:best/aHR0cHM6Ly9vLnBpbnNpZGUuY29tL2QvYjgvOGYvZGI4OGYwNjI3ZWQwYmI3MTgxOTlhNTMzZmEzMzBmN2MxZDcwNjJjZi5qcGc",
+    "playfieldImageUrl": "https://o.pinside.com/e/8d/1e/e8d1e693e8bf1644b84cf301a83ef8809dc42dc5.jpeg",
     "playfieldLocal": "/pinball/images/playfields/kiss.jpg",
     "rulesheetUrl": "https://tiltforums.com/t/kiss-wiki-rulesheet/732",
     "rulesheetLocal": "/pinball/rulesheets/kiss.md",
@@ -507,10 +507,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -543,10 +543,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -569,10 +569,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -586,13 +586,24 @@
     "playfieldLocal": "/pinball/images/playfields/the-munsters.jpg",
     "rulesheetUrl": "https://tiltforums.com/t/the-munsters-rulesheet/4781",
     "rulesheetLocal": "/pinball/rulesheets/the-munsters.md",
-    "videos": []
+    "videos": [
+      {
+        "kind": "tutorial",
+        "label": "Tutorial 1",
+        "url": "https://www.youtube.com/watch?v=HfjKUJD8hS4"
+      },
+      {
+        "kind": "competition",
+        "label": "Competition 1",
+        "url": "https://www.youtube.com/watch?v=olqLboBqtZI&t=6410s"
+      }
+    ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -602,7 +613,7 @@
     "manufacturer": "CGC",
     "year": 2024,
     "slug": "pulp-fiction",
-    "playfieldImageUrl": "https://www.chicago-gaming.com/images/pfp/playfield_full.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
     "playfieldLocal": "/pinball/images/playfields/pulp-fiction.jpg",
     "rulesheetUrl": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
     "rulesheetLocal": "/pinball/rulesheets/pulp-fiction.md",
@@ -620,10 +631,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -633,9 +644,9 @@
     "manufacturer": "Stern",
     "year": 2011,
     "slug": "tron-legacy",
-    "playfieldImageUrl": "https://www.ipdb.org/images/5682/image-7.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/5/6a/75/56a75c9be016d166a14066947458f2c7570b7526.jpg",
     "playfieldLocal": "/pinball/images/playfields/tron-legacy.jpg",
-    "rulesheetUrl": "https://www.pinballnews.com/games/tron/index6b.html?utm_source=chatgpt.com",
+    "rulesheetUrl": "https://www.pinballnews.com/games/tron/index6b.html",
     "rulesheetLocal": "/pinball/rulesheets/tron-legacy.md",
     "videos": [
       {
@@ -651,10 +662,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "U",
     "areaOrder": 1,
     "group": 4,
@@ -671,10 +682,10 @@
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 5,
@@ -684,9 +695,9 @@
     "manufacturer": "Bally",
     "year": 1996,
     "slug": "scared-stiff",
-    "playfieldImageUrl": "https://www.cometpinball.com/cdn/shop/products/CometPinballScaredStiffLEDKitPlayfield.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg",
     "playfieldLocal": "/pinball/images/playfields/scared-stiff.jpg",
-    "rulesheetUrl": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM?utm_source=chatgpt.com",
+    "rulesheetUrl": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM",
     "rulesheetLocal": "/pinball/rulesheets/scared-stiff.md",
     "videos": [
       {
@@ -697,10 +708,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 5,
@@ -723,10 +734,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 5,
@@ -743,10 +754,10 @@
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 5,
@@ -763,10 +774,10 @@
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 5,
@@ -789,10 +800,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -820,10 +831,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -851,10 +862,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -871,10 +882,10 @@
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -902,10 +913,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -933,10 +944,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 6,
@@ -946,7 +957,7 @@
     "manufacturer": "Stern",
     "year": 2015,
     "slug": "game-of-thrones",
-    "playfieldImageUrl": "https://www.pinballnews.com/games/gameofthrones/8a.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/b/27/84/b27843ac978234bd05ae2a302b0887e3366de366.jpeg",
     "playfieldLocal": "/pinball/images/playfields/game-of-thrones.jpg",
     "rulesheetUrl": "https://tiltforums.com/t/game-of-thrones-pinball-rulesheet/936",
     "rulesheetLocal": "/pinball/rulesheets/game-of-thrones.md",
@@ -959,10 +970,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
@@ -972,7 +983,7 @@
     "manufacturer": "Bally",
     "year": 1995,
     "slug": "attack-from-mars",
-    "playfieldImageUrl": "https://www.pinballbulbs.com/sites/default/files/attack_from_mars_white.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/3/47/76/347761a38183898a7fe902139f96794862a0f25d.jpeg",
     "playfieldLocal": "/pinball/images/playfields/attack-from-mars.jpg",
     "rulesheetUrl": "https://www.pinball.org/rules/attackfrommars.html",
     "rulesheetLocal": "/pinball/rulesheets/attack-from-mars.md",
@@ -990,10 +1001,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
@@ -1021,30 +1032,30 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
     "position": 3,
     "bank": null,
-    "name": "Godzilla LE",
+    "name": "Godzilla",
     "manufacturer": "Stern",
     "year": 2021,
-    "slug": "godzilla-le",
+    "slug": "godzilla-2",
     "playfieldImageUrl": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
-    "playfieldLocal": "/pinball/images/playfields/godzilla-le.jpg",
+    "playfieldLocal": null,
     "rulesheetUrl": null,
-    "rulesheetLocal": "/pinball/rulesheets/godzilla-le.md",
+    "rulesheetLocal": "/pinball/rulesheets/godzilla-2.md",
     "videos": []
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
@@ -1054,7 +1065,7 @@
     "manufacturer": "Williams",
     "year": 1997,
     "slug": "medieval-madness",
-    "playfieldImageUrl": "https://www.cometpinball.com/cdn/shop/products/CometPinballMedievalMadnessLEDKitPlayfield.jpg",
+    "playfieldImageUrl": "https://o.pinside.com/6/3f/ea/63fea245ad8041e4db2684fb1f5f9c5caa5a7890.jpeg",
     "playfieldLocal": "/pinball/images/playfields/medieval-madness.jpg",
     "rulesheetUrl": "https://www.pinball.org/rules/medievalmadness.html",
     "rulesheetLocal": "/pinball/rulesheets/medieval-madness.md",
@@ -1072,10 +1083,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
@@ -1098,10 +1109,10 @@
     ]
   },
   {
-    "libraryId": "avenue",
-    "libraryName": "Avenue",
+    "libraryId": "the-avenue-cafe",
+    "libraryName": "The Avenue Cafe",
     "libraryType": "venue",
-    "venueName": "Avenue",
+    "venueName": "The Avenue Cafe",
     "area": "D",
     "areaOrder": 2,
     "group": 7,
