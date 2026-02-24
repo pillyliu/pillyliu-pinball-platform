@@ -95,6 +95,9 @@ const SHARED_PINBALL_RULESHEETS_DIR = path.join(SHARED_PINBALL_DIR, "rulesheets"
 const SHARED_PINBALL_GAMEINFO_DIR = path.join(SHARED_PINBALL_DIR, "gameinfo");
 const SUPPORTED_PLAYFIELD_EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg"];
 const PINSIDE_GROUP_NONE_MARKER = "~";
+const MANUFACTURER_TITLE_PREFIX_EXPANSIONS: Record<string, string> = {
+  bof: "barrels-of-fun",
+};
 
 function slugify(input: string): string {
   return input
@@ -189,9 +192,69 @@ function isBlankRow(row: RawRow): boolean {
   return Object.values(row).every((v) => String(v ?? "").trim() === "");
 }
 
+const LEGACY_MANUFACTURER_SLUG_ALIASES: Record<string, string[]> = {
+  "jersey-jack-pinball": ["jjp"],
+  "spooky-pinball": ["spooky"],
+  "chicago-gaming-company": ["cgc"],
+};
+
+function inferLegacySlugFromPlayfield(row: RawRow): string | null {
+  const manufacturer = cleanString(getHeaderValue(row, "Manufacturer"));
+  const game = cleanString(getHeaderValue(row, "Game"));
+  const variant = cleanString(getHeaderValue(row, "Variant"));
+  const year = toIntOrNull(getHeaderValue(row, "Year"));
+  if (!manufacturer || !game || !year) return null;
+
+  const manufacturerSlug = slugify(manufacturer);
+  const prefixes = Array.from(
+    new Set([manufacturerSlug, ...(LEGACY_MANUFACTURER_SLUG_ALIASES[manufacturerSlug] ?? [])].filter(Boolean))
+  );
+
+  let entries: string[] = [];
+  try {
+    entries = fs.readdirSync(SHARED_PINBALL_IMAGES_DIR);
+  } catch {
+    return null;
+  }
+
+  const gameSlug = slugify(game);
+  const variantSlug = variant ? slugify(variant) : "";
+  const combinedSlug = variantSlug ? slugify(`${game} ${variant}`) : gameSlug;
+
+  let best: { base: string; score: number } | null = null;
+  for (const name of entries) {
+    if (name.includes("_700.") || name.includes("_1400.")) continue;
+    const m = name.match(/^(.+)-playfield\.(?:webp|png|jpe?g)$/i);
+    if (!m) continue;
+    const base = m[1];
+    for (const prefix of prefixes) {
+      const mm = base.match(new RegExp(`^${prefix}--(.+)--${year}$`));
+      if (!mm) continue;
+      const middle = mm[1];
+      let score = 0;
+      if (middle === combinedSlug) score += 100;
+      if (middle === gameSlug) score += 90;
+      if (combinedSlug.includes(middle) || middle.includes(combinedSlug)) score += 60;
+      if (gameSlug.includes(middle) || middle.includes(gameSlug)) score += 50;
+      const midTokens = new Set(middle.split("-"));
+      const gameTokens = new Set(gameSlug.split("-"));
+      let overlap = 0;
+      for (const t of gameTokens) if (midTokens.has(t)) overlap += 1;
+      score += overlap * 10;
+      if (!best || score > best.score) best = { base, score };
+    }
+  }
+
+  if (!best || best.score < 20) return null;
+  return best.base;
+}
+
 function deriveLegacySlug(row: RawRow): string | null {
   const pinsideSlug = cleanString(getHeaderValue(row, "pinside_slug"));
-  if (pinsideSlug) return pinsideSlug;
+  if (pinsideSlug && pinsideSlug.toLowerCase() !== "none") return pinsideSlug;
+
+  const inferredFromPlayfield = inferLegacySlugFromPlayfield(row);
+  if (inferredFromPlayfield) return inferredFromPlayfield;
 
   const game = cleanString(getHeaderValue(row, "Game"));
   const variant = cleanString(getHeaderValue(row, "Variant"));
@@ -210,9 +273,17 @@ function fileExists(p: string): boolean {
 function findMarkdownLocalPath(dir: string, basename: string | null): string | null {
   if (!basename) return null;
   const filePath = path.join(dir, `${basename}.md`);
-  if (!fileExists(filePath)) return null;
   const webDir = path.basename(dir);
-  return `/pinball/${webDir}/${basename}.md`;
+  if (fileExists(filePath)) return `/pinball/${webDir}/${basename}.md`;
+
+  // Legacy rulesheet aliases may use the old "<legacySlug>-rulesheet.md" form.
+  if (webDir === "rulesheets") {
+    const altBase = `${basename}-rulesheet`;
+    const altPath = path.join(dir, `${altBase}.md`);
+    if (fileExists(altPath)) return `/pinball/${webDir}/${altBase}.md`;
+  }
+
+  return null;
 }
 
 function findPlayfieldLocalPath(baseName: string | null): string | null {
@@ -236,6 +307,103 @@ function findCanonicalPlayfieldLocalPath(practiceIdentity: string | null): strin
   if (!practiceIdentity) return null;
   const base = `${practiceIdentity}-playfield`;
   return findPlayfieldLocalPath(base);
+}
+
+function pushUnique(values: string[], value: string | null) {
+  const trimmed = String(value ?? "").trim();
+  if (!trimmed) return;
+  if (!values.includes(trimmed)) values.push(trimmed);
+}
+
+function stripSuffixInsensitive(input: string, suffix: string | null): string | null {
+  const source = input.trim();
+  const sfx = String(suffix ?? "").trim();
+  if (!source || !sfx) return null;
+  if (!source.toLowerCase().endsWith(sfx.toLowerCase())) return null;
+  return source.slice(0, source.length - sfx.length).trim().replace(/[:\-–\s]+$/g, "").trim() || null;
+}
+
+function stripLeadingArticle(input: string | null): string | null {
+  const source = String(input ?? "").trim();
+  if (!source) return null;
+  const stripped = source.replace(/^(the|an|a)\s+/i, "").trim();
+  return stripped && stripped !== source ? stripped : null;
+}
+
+function buildCanonicalTitleSlugCandidates(row: RawRow, legacySlug: string | null): string[] {
+  const game = cleanString(getHeaderValue(row, "Game"));
+  const variant = cleanString(getHeaderValue(row, "Variant"));
+  const titleCandidates: string[] = [];
+
+  pushUnique(titleCandidates, game);
+  pushUnique(titleCandidates, variant);
+  pushUnique(titleCandidates, stripLeadingArticle(game));
+  pushUnique(titleCandidates, stripLeadingArticle(variant));
+  if (game && variant) {
+    pushUnique(titleCandidates, `${game} ${variant}`);
+    pushUnique(titleCandidates, `${game}: ${variant}`);
+    pushUnique(titleCandidates, stripSuffixInsensitive(game, variant));
+    const colonIdx = game.indexOf(":");
+    if (colonIdx > 0) {
+      pushUnique(titleCandidates, game.slice(0, colonIdx));
+    }
+  }
+
+  const slugCandidates: string[] = [];
+  for (const title of titleCandidates) {
+    pushUnique(slugCandidates, slugify(title));
+  }
+  pushUnique(slugCandidates, legacySlug);
+
+  const genericSuffixes = [
+    "-premium",
+    "-pro",
+    "-le",
+    "-ce",
+    "-arcade-edition",
+    "-collectors-edition",
+    "-collector-edition",
+    "-limited-edition",
+  ];
+  for (const slug of [...slugCandidates]) {
+    for (const suffix of genericSuffixes) {
+      if (slug.endsWith(suffix)) pushUnique(slugCandidates, slug.slice(0, -suffix.length));
+    }
+  }
+
+  return slugCandidates.filter(Boolean);
+}
+
+function findMetadataCanonicalPlayfieldLocalPath(row: RawRow, legacySlug: string | null): string | null {
+  const manufacturer = cleanString(getHeaderValue(row, "Manufacturer"));
+  const year = toIntOrNull(getHeaderValue(row, "Year"));
+  if (!manufacturer || year == null) return null;
+
+  const manufacturerSlug = slugify(manufacturer);
+  const titleSlugCandidates = buildCanonicalTitleSlugCandidates(row, legacySlug);
+  for (const titleSlug of titleSlugCandidates) {
+    const bases = [`${manufacturerSlug}--${titleSlug}--${year}-playfield`];
+    const expandedPrefix = MANUFACTURER_TITLE_PREFIX_EXPANSIONS[manufacturerSlug];
+    if (expandedPrefix && !titleSlug.startsWith(`${expandedPrefix}-`)) {
+      bases.push(`${manufacturerSlug}--${expandedPrefix}-${titleSlug}--${year}-playfield`);
+    }
+    for (const base of bases) {
+      const hit = findPlayfieldLocalPath(base);
+      if (hit) return hit;
+    }
+  }
+  return null;
+}
+
+function resolvePracticePlayfieldLocalPath(
+  row: RawRow,
+  practiceIdentity: string | null,
+  legacySlug: string | null,
+): string | null {
+  return (
+    findCanonicalPlayfieldLocalPath(practiceIdentity) ??
+    findMetadataCanonicalPlayfieldLocalPath(row, legacySlug)
+  );
 }
 
 function buildVideos(row: RawRow): LibraryVideo[] {
@@ -359,7 +527,7 @@ function main() {
           gameinfo_local_legacy: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoLegacyBase),
           gameinfo_local_practice: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoPracticeBase),
           playfield_local_legacy: findPlayfieldLocalPath(legacySlug),
-          playfield_local_practice: findCanonicalPlayfieldLocalPath(practiceIdentity),
+          playfield_local_practice: resolvePracticePlayfieldLocalPath(row, practiceIdentity, legacySlug),
         },
 
         sort_keys: {

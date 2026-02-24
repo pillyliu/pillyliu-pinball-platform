@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-02-23T06:55:00.220Z",
+  "generated_at": "2026-02-24T20:34:50.022Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -8,6 +8,7 @@
   "columns": [
     "library_entry_id",
     "practice_identity",
+    "opdb_id",
     "Venue",
     "PM_location_id",
     "Venue Location",
@@ -20,9 +21,6 @@
     "Variant",
     "Manufacturer",
     "Year",
-    "pinside_id",
-    "pinside_slug",
-    "pinside_group",
     "Playfield Image",
     "Rulesheet",
     "Tutorial 1",
@@ -58,9 +56,9 @@
   ],
   "items": [
     {
-      "library_entry_id": "v--8760--2905",
-      "practice_identity": "stern--avengers-infinity-quest--2020",
-      "pinside_group": "Avengers: Infinity Quest",
+      "library_entry_id": "v--8760--Gj66P",
+      "practice_identity": "Gj66P",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -76,8 +74,8 @@
       "group": 1,
       "position": 1,
       "bank": 4,
-      "pinside_id": "2905",
-      "pinside_slug": "avengers-infinity-quest-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/avengers-infinity-quest-rulesheet/6740",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2020/08/Avengers-LE-Playfield-lknawef.jpg",
       "videos": [
@@ -95,12 +93,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--avengers-infinity-quest--2020-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--avengers-infinity-quest--2020-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gj66P-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--avengers-infinity-quest--2020-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gj66P-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--avengers-infinity-quest--2020-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gj66P-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "avengers-infinity-quest",
@@ -114,8 +112,9 @@
         "bank": 4
       },
       "columns": {
-        "library_entry_id": "v--8760--2905",
-        "practice_identity": "stern--avengers-infinity-quest--2020",
+        "library_entry_id": "v--8760--Gj66P",
+        "practice_identity": "Gj66P",
+        "opdb_id": "Gj66P-MXr0E",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -128,9 +127,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2020",
-        "pinside_id": "2905",
-        "pinside_slug": "avengers-infinity-quest-premium",
-        "pinside_group": "Avengers: Infinity Quest",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2020/08/Avengers-LE-Playfield-lknawef.jpg",
         "Rulesheet": "https://tiltforums.com/t/avengers-infinity-quest-rulesheet/6740",
         "Tutorial 1": "https://www.youtube.com/watch?v=2_xcLBHzaSo",
@@ -152,9 +148,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2186",
-      "practice_identity": "stern--metallica--2013",
-      "pinside_group": "Metallica",
+      "library_entry_id": "v--8760--GRBE4",
+      "practice_identity": "GRBE4",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -170,8 +166,8 @@
       "group": 1,
       "position": 2,
       "bank": 6,
-      "pinside_id": "2186",
-      "pinside_slug": "metallica",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/metallica-rulesheet/228",
       "playfield_image_url": "https://o.pinside.com/0/d6/40/0d640d48344cfa61e36c945d5c273959cf36aed8.jpeg",
       "videos": [
@@ -183,12 +179,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/metallica.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--metallica--2013-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/metallica.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--metallica--2013-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/metallica.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/stern--metallica--2013-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--metallica--2013-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GRBE4-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GRBE4-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/GRBE4-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "metallica",
@@ -202,8 +198,9 @@
         "bank": 6
       },
       "columns": {
-        "library_entry_id": "v--8760--2186",
-        "practice_identity": "stern--metallica--2013",
+        "library_entry_id": "v--8760--GRBE4",
+        "practice_identity": "GRBE4",
+        "opdb_id": "GRBE4-MQK1Z",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -216,9 +213,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2013",
-        "pinside_id": "2186",
-        "pinside_slug": "metallica",
-        "pinside_group": "Metallica",
         "Playfield Image": "https://o.pinside.com/0/d6/40/0d640d48344cfa61e36c945d5c273959cf36aed8.jpeg",
         "Rulesheet": "https://tiltforums.com/t/metallica-rulesheet/228",
         "Tutorial 1": "https://www.youtube.com/watch?v=O26SH3gNVnY",
@@ -240,9 +234,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2685",
-      "practice_identity": "stern--iron-maiden-legacy-of-the-beast--2018",
-      "pinside_group": "Iron Maiden: Legacy of the Beast",
+      "library_entry_id": "v--8760--G4dOQ",
+      "practice_identity": "G4dOQ",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -258,8 +252,8 @@
       "group": 1,
       "position": 3,
       "bank": null,
-      "pinside_id": "2685",
-      "pinside_slug": "iron-maiden-legacy-of-the-beast",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
       "videos": [
@@ -271,12 +265,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--iron-maiden-legacy-of-the-beast--2018-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--iron-maiden-legacy-of-the-beast--2018-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "iron-maiden",
@@ -290,8 +284,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--8760--2685",
-        "practice_identity": "stern--iron-maiden-legacy-of-the-beast--2018",
+        "library_entry_id": "v--8760--G4dOQ",
+        "practice_identity": "G4dOQ",
+        "opdb_id": "G4dOQ-MyNbb",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -304,9 +299,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2018",
-        "pinside_id": "2685",
-        "pinside_slug": "iron-maiden-legacy-of-the-beast",
-        "pinside_group": "Iron Maiden: Legacy of the Beast",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
         "Rulesheet": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
         "Tutorial 1": "https://www.youtube.com/watch?v=zaCEffQkj4o",
@@ -328,9 +320,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3091",
-      "practice_identity": "stern--star-trek--2013",
-      "pinside_group": "Star Trek",
+      "library_entry_id": "v--8760--Gryw4",
+      "practice_identity": "Gryw4",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -346,8 +338,8 @@
       "group": 1,
       "position": 4,
       "bank": 1,
-      "pinside_id": "3091",
-      "pinside_slug": "star-trek-stern-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/star-trek-wiki/456",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/PREM-PF.jpg",
       "videos": [
@@ -365,12 +357,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--star-trek--2013-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-trek--2013-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gryw4-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--star-trek--2013-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gryw4-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--star-trek--2013-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gryw4-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-trek",
@@ -384,8 +376,9 @@
         "bank": 1
       },
       "columns": {
-        "library_entry_id": "v--8760--3091",
-        "practice_identity": "stern--star-trek--2013",
+        "library_entry_id": "v--8760--Gryw4",
+        "practice_identity": "Gryw4",
+        "opdb_id": "Gryw4-MNEKn",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -398,9 +391,6 @@
         "Variant": "Enterprise LE",
         "Manufacturer": "Stern",
         "Year": "2013",
-        "pinside_id": "3091",
-        "pinside_slug": "star-trek-stern-le",
-        "pinside_group": "Star Trek",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/PREM-PF.jpg",
         "Rulesheet": "https://tiltforums.com/t/star-trek-wiki/456",
         "Tutorial 1": "https://www.youtube.com/watch?v=wYZuLK6ShUk",
@@ -422,9 +412,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3248",
-      "practice_identity": "stern--uncanny-x-men--2024",
-      "pinside_group": "Uncanny X-Men",
+      "library_entry_id": "v--8760--G7ZEz",
+      "practice_identity": "G7ZEz",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -440,18 +430,18 @@
       "group": 2,
       "position": 1,
       "bank": 3,
-      "pinside_id": "3248",
-      "pinside_slug": "uncanny-x-men-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--uncanny-x-men--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--uncanny-x-men--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -465,8 +455,9 @@
         "bank": 3
       },
       "columns": {
-        "library_entry_id": "v--8760--3248",
-        "practice_identity": "stern--uncanny-x-men--2024",
+        "library_entry_id": "v--8760--G7ZEz",
+        "practice_identity": "G7ZEz",
+        "opdb_id": "G7ZEz-MyN3K",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -479,9 +470,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3248",
-        "pinside_slug": "uncanny-x-men-le",
-        "pinside_group": "Uncanny X-Men",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
         "Rulesheet": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
         "Tutorial 1": "",
@@ -503,9 +491,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2476",
-      "practice_identity": "stern--star-wars--2017",
-      "pinside_group": "Star Wars",
+      "library_entry_id": "v--8760--G5vLR",
+      "practice_identity": "G5vLR",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -521,8 +509,8 @@
       "group": 2,
       "position": 2,
       "bank": 5,
-      "pinside_id": "2476",
-      "pinside_slug": "star-wars-stern",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/star-wars-stern-rulesheet/2812",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/StarWarsLE-Playfield.png",
       "videos": [
@@ -534,12 +522,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--star-wars--2017-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars--2017-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G5vLR-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--star-wars--2017-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G5vLR-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--star-wars--2017-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G5vLR-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "star-wars",
@@ -553,8 +541,9 @@
         "bank": 5
       },
       "columns": {
-        "library_entry_id": "v--8760--2476",
-        "practice_identity": "stern--star-wars--2017",
+        "library_entry_id": "v--8760--G5vLR",
+        "practice_identity": "G5vLR",
+        "opdb_id": "G5vLR-MwNwy",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -567,9 +556,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2017",
-        "pinside_id": "2476",
-        "pinside_slug": "star-wars-stern",
-        "pinside_group": "Star Wars",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/StarWarsLE-Playfield.png",
         "Rulesheet": "https://tiltforums.com/t/star-wars-stern-rulesheet/2812",
         "Tutorial 1": "https://www.youtube.com/watch?v=2jjRkzCEVto",
@@ -591,8 +577,8 @@
       }
     },
     {
-      "library_entry_id": "v--8760--1143",
-      "practice_identity": "stern--simpsons-pinball-party--2003",
+      "library_entry_id": "v--8760--GRvBL",
+      "practice_identity": "GRvBL",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
@@ -609,8 +595,8 @@
       "group": 2,
       "position": 3,
       "bank": 7,
-      "pinside_id": "1143",
-      "pinside_slug": "simpsons-pinball-party",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.pinball.org/rules/simpsonspinballparty.txt",
       "playfield_image_url": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg",
       "videos": [
@@ -628,12 +614,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--simpsons-pinball-party--2003-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--simpsons-pinball-party--2003-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GRvBL-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--simpsons-pinball-party--2003-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GRvBL-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--simpsons-pinball-party--2003-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRvBL-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-simpsons-pinball-party",
@@ -647,8 +633,9 @@
         "bank": 7
       },
       "columns": {
-        "library_entry_id": "v--8760--1143",
-        "practice_identity": "stern--simpsons-pinball-party--2003",
+        "library_entry_id": "v--8760--GRvBL",
+        "practice_identity": "GRvBL",
+        "opdb_id": "GRvBL-MP3Ev",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -661,9 +648,6 @@
         "Variant": "",
         "Manufacturer": "Stern",
         "Year": "2003",
-        "pinside_id": "1143",
-        "pinside_slug": "simpsons-pinball-party",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg",
         "Rulesheet": "https://www.pinball.org/rules/simpsonspinballparty.txt",
         "Tutorial 1": "https://www.youtube.com/watch?v=4ARXdYALc9o",
@@ -685,9 +669,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2957",
-      "practice_identity": "stern--the-mandalorian--2021",
-      "pinside_group": "The Mandalorian",
+      "library_entry_id": "v--8760--GBLLP",
+      "practice_identity": "GBLLP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -703,8 +687,8 @@
       "group": 2,
       "position": 4,
       "bank": 2,
-      "pinside_id": "2957",
-      "pinside_slug": "stern-the-mandalorian-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/the-mandalorian-rulesheet/7056",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/05/Mandalorian-LE-Playfield-01-afnkjkn3fad.jpg",
       "videos": [
@@ -716,12 +700,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--the-mandalorian--2021-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--the-mandalorian--2021-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GBLLP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--the-mandalorian--2021-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GBLLP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--the-mandalorian--2021-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GBLLP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-mandalorian",
@@ -735,8 +719,9 @@
         "bank": 2
       },
       "columns": {
-        "library_entry_id": "v--8760--2957",
-        "practice_identity": "stern--the-mandalorian--2021",
+        "library_entry_id": "v--8760--GBLLP",
+        "practice_identity": "GBLLP",
+        "opdb_id": "GBLLP-MW900",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -749,9 +734,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2021",
-        "pinside_id": "2957",
-        "pinside_slug": "stern-the-mandalorian-premium",
-        "pinside_group": "The Mandalorian",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2021/05/Mandalorian-LE-Playfield-01-afnkjkn3fad.jpg",
         "Rulesheet": "https://tiltforums.com/t/the-mandalorian-rulesheet/7056",
         "Tutorial 1": "",
@@ -773,8 +755,8 @@
       }
     },
     {
-      "library_entry_id": "v--8760--207",
-      "practice_identity": "williams--getaway-high-speed-ii--1992",
+      "library_entry_id": "v--8760--Grx8Y",
+      "practice_identity": "Grx8Y",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
@@ -791,9 +773,9 @@
       "group": 3,
       "position": 1,
       "bank": 4,
-      "pinside_id": "207",
-      "pinside_slug": "getaway-high-speed-ii",
-      "rulesheet_url": "https://www.pinball.org/rules/getaway.html",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
       "playfield_image_url": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
       "videos": [
         {
@@ -804,12 +786,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--getaway-high-speed-ii--1992-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--the-getaway-high-speed-ii--1992-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--getaway-high-speed-ii--1992-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/williams--getaway-high-speed-ii--1992-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-getaway-high-speed-ii",
@@ -823,8 +805,9 @@
         "bank": 4
       },
       "columns": {
-        "library_entry_id": "v--8760--207",
-        "practice_identity": "williams--getaway-high-speed-ii--1992",
+        "library_entry_id": "v--8760--Grx8Y",
+        "practice_identity": "Grx8Y",
+        "opdb_id": "Grx8Y-MKNe9",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -837,11 +820,8 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1992",
-        "pinside_id": "207",
-        "pinside_slug": "getaway-high-speed-ii",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
-        "Rulesheet": "https://www.pinball.org/rules/getaway.html",
+        "Rulesheet": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
         "Tutorial 1": "",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -861,9 +841,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--972",
-      "practice_identity": "williams--monster-bash--1998",
-      "pinside_group": "Monster Bash",
+      "library_entry_id": "v--8760--Gr3EW",
+      "practice_identity": "Gr3EW",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -879,8 +859,8 @@
       "group": 3,
       "position": 2,
       "bank": 6,
-      "pinside_id": "972",
-      "pinside_slug": "monster-bash",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://pinball.org/rules/monsterbash.txt",
       "playfield_image_url": "https://o.pinside.com/f/3d/11/f3d112c32278e7dd32ae24673374ba3325906513.jpeg",
       "videos": [
@@ -898,12 +878,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/monster-bash.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--monster-bash--1998-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/monster-bash.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--monster-bash--1998-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/monster-bash.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/williams--monster-bash--1998-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--monster-bash--1998-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gr3EW-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/Gr3EW-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/Gr3EW-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "monster-bash",
@@ -917,8 +897,9 @@
         "bank": 6
       },
       "columns": {
-        "library_entry_id": "v--8760--972",
-        "practice_identity": "williams--monster-bash--1998",
+        "library_entry_id": "v--8760--Gr3EW",
+        "practice_identity": "Gr3EW",
+        "opdb_id": "Gr3EW-MD3Nj",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -931,9 +912,6 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1998",
-        "pinside_id": "972",
-        "pinside_slug": "monster-bash",
-        "pinside_group": "Monster Bash",
         "Playfield Image": "https://o.pinside.com/f/3d/11/f3d112c32278e7dd32ae24673374ba3325906513.jpeg",
         "Rulesheet": "https://pinball.org/rules/monsterbash.txt",
         "Tutorial 1": "https://www.youtube.com/watch?v=5mFFmopZ5Y8",
@@ -955,8 +933,8 @@
       }
     },
     {
-      "library_entry_id": "v--8760--252",
-      "practice_identity": "williams--indiana-jones--1993",
+      "library_entry_id": "v--8760--G4xZy",
+      "practice_identity": "G4xZy",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
@@ -973,8 +951,8 @@
       "group": 3,
       "position": 3,
       "bank": 8,
-      "pinside_id": "252",
-      "pinside_slug": "indiana-jones",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.ipdb.org/rulesheets/1267/indiana.htm",
       "playfield_image_url": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg",
       "videos": [
@@ -986,12 +964,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--indiana-jones--1993-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--indiana-jones--1993-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4xZy-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--indiana-jones--1993-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G4xZy-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/williams--indiana-jones--1993-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4xZy-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "indiana-jones-the-pinball-adventure",
@@ -1005,8 +983,9 @@
         "bank": 8
       },
       "columns": {
-        "library_entry_id": "v--8760--252",
-        "practice_identity": "williams--indiana-jones--1993",
+        "library_entry_id": "v--8760--G4xZy",
+        "practice_identity": "G4xZy",
+        "opdb_id": "G4xZy-MLno6",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1019,9 +998,6 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1993",
-        "pinside_id": "252",
-        "pinside_slug": "indiana-jones",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg",
         "Rulesheet": "https://www.ipdb.org/rulesheets/1267/indiana.htm",
         "Tutorial 1": "https://www.youtube.com/watch?v=u2G0A-BIpAY",
@@ -1043,9 +1019,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--976",
-      "practice_identity": "bally--cactus-canyon--1998",
-      "pinside_group": "Cactus Canyon",
+      "library_entry_id": "v--8760--G4835",
+      "practice_identity": "G4835",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1061,8 +1037,8 @@
       "group": 3,
       "position": 4,
       "bank": 1,
-      "pinside_id": "976",
-      "pinside_slug": "cactus-canyon",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://gamefaqs.gamespot.com/pinball/915657-cactus-canyon/faqs/40815?raw=1",
       "playfield_image_url": "https://o.pinside.com/2/3d/21/23d219b17c275ab7e997c05b4c9de0ca621a40f9.jpeg",
       "videos": [
@@ -1074,12 +1050,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/cactus-canyon.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/bally--cactus-canyon--1998-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/cactus-canyon.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--cactus-canyon--1998-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/cactus-canyon.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/bally--cactus-canyon--1998-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--cactus-canyon--1998-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4835-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4835-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/G4835-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "cactus-canyon",
@@ -1093,8 +1069,9 @@
         "bank": 1
       },
       "columns": {
-        "library_entry_id": "v--8760--976",
-        "practice_identity": "bally--cactus-canyon--1998",
+        "library_entry_id": "v--8760--G4835",
+        "practice_identity": "G4835",
+        "opdb_id": "G4835-Mb5eO",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1107,9 +1084,6 @@
         "Variant": "Lyman Upgrade",
         "Manufacturer": "Bally",
         "Year": "1998",
-        "pinside_id": "976",
-        "pinside_slug": "cactus-canyon",
-        "pinside_group": "Cactus Canyon",
         "Playfield Image": "https://o.pinside.com/2/3d/21/23d219b17c275ab7e997c05b4c9de0ca621a40f9.jpeg",
         "Rulesheet": "https://gamefaqs.gamespot.com/pinball/915657-cactus-canyon/faqs/40815?raw=1",
         "Tutorial 1": "",
@@ -1131,8 +1105,8 @@
       }
     },
     {
-      "library_entry_id": "v--8760--816",
-      "practice_identity": "williams--tales-of-the-arabian-nights--1996",
+      "library_entry_id": "v--8760--G4llj",
+      "practice_identity": "G4llj",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
@@ -1149,8 +1123,8 @@
       "group": 3,
       "position": 5,
       "bank": 3,
-      "pinside_id": "816",
-      "pinside_slug": "tales-of-the-arabian-nights",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://pinball.org/rules/talesofthearabiannights.html",
       "playfield_image_url": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg",
       "videos": [
@@ -1162,12 +1136,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/tales-of-the-arabian-nights.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--tales-of-the-arabian-nights--1996-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/tales-of-the-arabian-nights.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--tales-of-the-arabian-nights--1996-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/tales-of-the-arabian-nights.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/williams--tales-of-the-arabian-nights--1996-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--tales-of-the-arabian-nights--1996-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4llj-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4llj-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/G4llj-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "tales-of-the-arabian-nights",
@@ -1181,8 +1155,9 @@
         "bank": 3
       },
       "columns": {
-        "library_entry_id": "v--8760--816",
-        "practice_identity": "williams--tales-of-the-arabian-nights--1996",
+        "library_entry_id": "v--8760--G4llj",
+        "practice_identity": "G4llj",
+        "opdb_id": "G4llj-MQYb2",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1195,9 +1170,6 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1996",
-        "pinside_id": "816",
-        "pinside_slug": "tales-of-the-arabian-nights",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg",
         "Rulesheet": "https://pinball.org/rules/talesofthearabiannights.html",
         "Tutorial 1": "",
@@ -1219,9 +1191,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--213",
-      "practice_identity": "bally--addams-family-the--1992",
-      "pinside_group": "Addams Family, The",
+      "library_entry_id": "v--8760--G4ODR",
+      "practice_identity": "G4ODR",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1237,8 +1209,8 @@
       "group": 3,
       "position": 6,
       "bank": 5,
-      "pinside_id": "213",
-      "pinside_slug": "addams-family",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.pinball.org/rules/addamsfamily.html",
       "playfield_image_url": "https://o.pinside.com/2/b3/34/2b334721aa24cf45100e0874684ca1ac32b6066e.jpeg",
       "videos": [
@@ -1250,12 +1222,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/bally--addams-family-the--1992-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--addams-family-the--1992-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4ODR-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--addams-family-the--1992-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G4ODR-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bally--addams-family-the--1992-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4ODR-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-addams-family",
@@ -1269,8 +1241,9 @@
         "bank": 5
       },
       "columns": {
-        "library_entry_id": "v--8760--213",
-        "practice_identity": "bally--addams-family-the--1992",
+        "library_entry_id": "v--8760--G4ODR",
+        "practice_identity": "G4ODR",
+        "opdb_id": "G4ODR-MDXEy",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1283,9 +1256,6 @@
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1992",
-        "pinside_id": "213",
-        "pinside_slug": "addams-family",
-        "pinside_group": "Addams Family, The",
         "Playfield Image": "https://o.pinside.com/2/b3/34/2b334721aa24cf45100e0874684ca1ac32b6066e.jpeg",
         "Rulesheet": "https://www.pinball.org/rules/addamsfamily.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=XSw7fK6x1mw",
@@ -1307,9 +1277,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3008",
-      "practice_identity": "stern--rush--2022",
-      "pinside_group": "Rush",
+      "library_entry_id": "v--8760--G2Lkd",
+      "practice_identity": "G2Lkd",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1325,8 +1295,8 @@
       "group": 4,
       "position": 1,
       "bank": 7,
-      "pinside_id": "3008",
-      "pinside_slug": "stern-rush-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-rush-rulesheet/7409",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/01/Rush-LE-Playfield-gadf.jpg",
       "videos": [
@@ -1356,12 +1326,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--rush--2022-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--rush--2022-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G2Lkd-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--rush--2022-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G2Lkd-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--rush--2022-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G2Lkd-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "rush",
@@ -1375,8 +1345,9 @@
         "bank": 7
       },
       "columns": {
-        "library_entry_id": "v--8760--3008",
-        "practice_identity": "stern--rush--2022",
+        "library_entry_id": "v--8760--G2Lkd",
+        "practice_identity": "G2Lkd",
+        "opdb_id": "G2Lkd-M0ope",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1389,9 +1360,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2022",
-        "pinside_id": "3008",
-        "pinside_slug": "stern-rush-le",
-        "pinside_group": "Rush",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2022/01/Rush-LE-Playfield-gadf.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-rush-rulesheet/7409",
         "Tutorial 1": "https://www.youtube.com/watch?v=ZphTCC_rN0s",
@@ -1413,9 +1381,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3101",
-      "practice_identity": "stern--foo-fighters--2023",
-      "pinside_group": "Foo Fighters",
+      "library_entry_id": "v--8760--GpeoL",
+      "practice_identity": "GpeoL",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1431,8 +1399,8 @@
       "group": 4,
       "position": 2,
       "bank": 2,
-      "pinside_id": "3101",
-      "pinside_slug": "foo-fighters-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/foo-fighters-rulesheet/8162",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/02/FooFighters-LE-Playfield-akjh3f.jpg",
       "videos": [
@@ -1450,12 +1418,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--foo-fighters--2023-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--foo-fighters--2023-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GpeoL-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--foo-fighters--2023-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GpeoL-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--foo-fighters--2023-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GpeoL-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "foo-fighters",
@@ -1469,8 +1437,9 @@
         "bank": 2
       },
       "columns": {
-        "library_entry_id": "v--8760--3101",
-        "practice_identity": "stern--foo-fighters--2023",
+        "library_entry_id": "v--8760--GpeoL",
+        "practice_identity": "GpeoL",
+        "opdb_id": "GpeoL-MkPz1",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1483,9 +1452,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2023",
-        "pinside_id": "3101",
-        "pinside_slug": "foo-fighters-le",
-        "pinside_group": "Foo Fighters",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2023/02/FooFighters-LE-Playfield-akjh3f.jpg",
         "Rulesheet": "https://tiltforums.com/t/foo-fighters-rulesheet/8162",
         "Tutorial 1": "https://www.youtube.com/watch?v=JfcJZYAnq6M",
@@ -1507,9 +1473,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2144",
-      "practice_identity": "stern--ac-dc--2012",
-      "pinside_group": "AC/DC",
+      "library_entry_id": "v--8760--G43W4",
+      "practice_identity": "G43W4",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1525,8 +1491,8 @@
       "group": 4,
       "position": 3,
       "bank": 4,
-      "pinside_id": "2144",
-      "pinside_slug": "ac-dc-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "http://bit.ly/acdcrulesheet",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/ACDC-Premium-no-Drummer-LUCI-PF-012518.jpg",
       "videos": [
@@ -1544,12 +1510,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--ac-dc--2012-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--ac-dc--2012-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G43W4-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--ac-dc--2012-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G43W4-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--ac-dc--2012-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G43W4-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "ac-dc",
@@ -1563,8 +1529,9 @@
         "bank": 4
       },
       "columns": {
-        "library_entry_id": "v--8760--2144",
-        "practice_identity": "stern--ac-dc--2012",
+        "library_entry_id": "v--8760--G43W4",
+        "practice_identity": "G43W4",
+        "opdb_id": "G43W4-MXrPx",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1577,9 +1544,6 @@
         "Variant": "Premium Vault Edition",
         "Manufacturer": "Stern",
         "Year": "2012",
-        "pinside_id": "2144",
-        "pinside_slug": "ac-dc-premium",
-        "pinside_group": "AC/DC",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/ACDC-Premium-no-Drummer-LUCI-PF-012518.jpg",
         "Rulesheet": "http://bit.ly/acdcrulesheet",
         "Tutorial 1": "https://www.youtube.com/watch?v=ci7gXjSLq9o",
@@ -1601,9 +1565,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3103",
-      "practice_identity": "stern--kiss--2015",
-      "pinside_group": "KISS",
+      "library_entry_id": "v--8760--G4qX5",
+      "practice_identity": "G4qX5",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1619,8 +1583,8 @@
       "group": 4,
       "position": 4,
       "bank": 6,
-      "pinside_id": "3103",
-      "pinside_slug": "kiss-stern-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/kiss-wiki-rulesheet/732",
       "playfield_image_url": "https://o.pinside.com/e/8d/1e/e8d1e693e8bf1644b84cf301a83ef8809dc42dc5.jpeg",
       "videos": [
@@ -1632,12 +1596,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--kiss--2015-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--kiss--2015-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4qX5-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--kiss--2015-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G4qX5-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--kiss--2015-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4qX5-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "kiss",
@@ -1651,8 +1615,9 @@
         "bank": 6
       },
       "columns": {
-        "library_entry_id": "v--8760--3103",
-        "practice_identity": "stern--kiss--2015",
+        "library_entry_id": "v--8760--G4qX5",
+        "practice_identity": "G4qX5",
+        "opdb_id": "G4qX5-Ml9jb",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1665,9 +1630,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2015",
-        "pinside_id": "3103",
-        "pinside_slug": "kiss-stern-le",
-        "pinside_group": "KISS",
         "Playfield Image": "https://o.pinside.com/e/8d/1e/e8d1e693e8bf1644b84cf301a83ef8809dc42dc5.jpeg",
         "Rulesheet": "https://tiltforums.com/t/kiss-wiki-rulesheet/732",
         "Tutorial 1": "https://www.youtube.com/watch?v=W-VZAdtlo80",
@@ -1689,9 +1651,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2987",
-      "practice_identity": "stern--godzilla--2021",
-      "pinside_group": "Godzilla",
+      "library_entry_id": "v--8760--GweeP",
+      "practice_identity": "GweeP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1707,8 +1669,8 @@
       "group": 4,
       "position": 5,
       "bank": 8,
-      "pinside_id": "2987",
-      "pinside_slug": "godzilla-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [
@@ -1732,12 +1694,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--godzilla--2021-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--godzilla--2021-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -1751,8 +1713,9 @@
         "bank": 8
       },
       "columns": {
-        "library_entry_id": "v--8760--2987",
-        "practice_identity": "stern--godzilla--2021",
+        "library_entry_id": "v--8760--GweeP",
+        "practice_identity": "GweeP",
+        "opdb_id": "GweeP-Ml9pZ",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1765,9 +1728,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2021",
-        "pinside_id": "2987",
-        "pinside_slug": "godzilla-premium",
-        "pinside_group": "Godzilla",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
         "Tutorial 1": "https://www.youtube.com/watch?v=roJbHZe4YfQ",
@@ -1789,9 +1749,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2701",
-      "practice_identity": "stern--deadpool--2018",
-      "pinside_group": "Deadpool",
+      "library_entry_id": "v--8760--G6lnq",
+      "practice_identity": "G6lnq",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1807,8 +1767,8 @@
       "group": 4,
       "position": 6,
       "bank": 1,
-      "pinside_id": "2701",
-      "pinside_slug": "deadpool-pro",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/deadpool-rulesheet/4311",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
       "videos": [
@@ -1820,12 +1780,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--deadpool--2018-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--deadpool--2018-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -1839,8 +1799,9 @@
         "bank": 1
       },
       "columns": {
-        "library_entry_id": "v--8760--2701",
-        "practice_identity": "stern--deadpool--2018",
+        "library_entry_id": "v--8760--G6lnq",
+        "practice_identity": "G6lnq",
+        "opdb_id": "G6lnq-Mq1kv",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1853,9 +1814,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2018",
-        "pinside_id": "2701",
-        "pinside_slug": "deadpool-pro",
-        "pinside_group": "Deadpool",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
         "Rulesheet": "https://tiltforums.com/t/deadpool-rulesheet/4311",
         "Tutorial 1": "https://www.youtube.com/watch?v=7ZMPyTqiot4",
@@ -1877,9 +1835,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2744",
-      "practice_identity": "stern--munsters--2019",
-      "pinside_group": "Munsters",
+      "library_entry_id": "v--8760--GbPde",
+      "practice_identity": "GbPde",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1895,8 +1853,8 @@
       "group": 4,
       "position": 7,
       "bank": 3,
-      "pinside_id": "2744",
-      "pinside_slug": "munsters",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/the-munsters-rulesheet/4781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/01/Munsters-Pro-Playfield.jpg",
       "videos": [
@@ -1914,12 +1872,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--munsters--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--munsters--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GbPde-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--munsters--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GbPde-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--munsters--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GbPde-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-munsters",
@@ -1933,8 +1891,9 @@
         "bank": 3
       },
       "columns": {
-        "library_entry_id": "v--8760--2744",
-        "practice_identity": "stern--munsters--2019",
+        "library_entry_id": "v--8760--GbPde",
+        "practice_identity": "GbPde",
+        "opdb_id": "GbPde-M5Rkv",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -1947,9 +1906,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2744",
-        "pinside_slug": "munsters",
-        "pinside_group": "Munsters",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/01/Munsters-Pro-Playfield.jpg",
         "Rulesheet": "https://tiltforums.com/t/the-munsters-rulesheet/4781",
         "Tutorial 1": "https://www.youtube.com/watch?v=HfjKUJD8hS4",
@@ -1971,9 +1927,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3112",
-      "practice_identity": "cgc--pulp-fiction--2024",
-      "pinside_group": "Pulp Fiction",
+      "library_entry_id": "v--8760--GoEkx",
+      "practice_identity": "GoEkx",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -1989,8 +1945,8 @@
       "group": 4,
       "position": 8,
       "bank": 5,
-      "pinside_id": "3112",
-      "pinside_slug": "cgc-pulp-fiction-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
       "playfield_image_url": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
       "videos": [
@@ -2008,12 +1964,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/cgc--pulp-fiction--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/cgc--pulp-fiction--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
@@ -2027,8 +1983,9 @@
         "bank": 5
       },
       "columns": {
-        "library_entry_id": "v--8760--3112",
-        "practice_identity": "cgc--pulp-fiction--2024",
+        "library_entry_id": "v--8760--GoEkx",
+        "practice_identity": "GoEkx",
+        "opdb_id": "GoEkx-MdEzN",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2041,9 +1998,6 @@
         "Variant": "LE",
         "Manufacturer": "CGC",
         "Year": "2024",
-        "pinside_id": "3112",
-        "pinside_slug": "cgc-pulp-fiction-le",
-        "pinside_group": "Pulp Fiction",
         "Playfield Image": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
         "Rulesheet": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
         "Tutorial 1": "",
@@ -2065,9 +2019,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2145",
-      "practice_identity": "stern--tron-legacy--2011",
-      "pinside_group": "TRON: Legacy",
+      "library_entry_id": "v--8760--GrkL5",
+      "practice_identity": "GrkL5",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2083,8 +2037,8 @@
       "group": 4,
       "position": 9,
       "bank": 7,
-      "pinside_id": "2145",
-      "pinside_slug": "tron-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.pinballnews.com/games/tron/index6b.html",
       "playfield_image_url": "https://o.pinside.com/5/6a/75/56a75c9be016d166a14066947458f2c7570b7526.jpg",
       "videos": [
@@ -2102,12 +2056,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--tron-legacy--2011-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--tron-legacy--2011-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GrkL5-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--tron-legacy--2011-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GrkL5-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--tron-legacy--2011-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrkL5-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "tron-legacy",
@@ -2121,8 +2075,9 @@
         "bank": 7
       },
       "columns": {
-        "library_entry_id": "v--8760--2145",
-        "practice_identity": "stern--tron-legacy--2011",
+        "library_entry_id": "v--8760--GrkL5",
+        "practice_identity": "GrkL5",
+        "opdb_id": "GrkL5-MJoNN",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2135,9 +2090,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2011",
-        "pinside_id": "2145",
-        "pinside_slug": "tron-le",
-        "pinside_group": "TRON: Legacy",
         "Playfield Image": "https://o.pinside.com/5/6a/75/56a75c9be016d166a14066947458f2c7570b7526.jpg",
         "Rulesheet": "https://www.pinballnews.com/games/tron/index6b.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=8u1bVbwYy0U",
@@ -2159,9 +2111,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2895",
-      "practice_identity": "stern--teenage-mutant-ninja-turtles--2020",
-      "pinside_group": "Teenage Mutant Ninja Turtles",
+      "library_entry_id": "v--8760--Gd2Xb",
+      "practice_identity": "Gd2Xb",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2177,18 +2129,18 @@
       "group": 4,
       "position": 10,
       "bank": 2,
-      "pinside_id": "2895",
-      "pinside_slug": "teenage-mutant-ninja-turtles-stern-limited",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-tmnt-rulesheet/6599",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--teenage-mutant-ninja-turtles--2020-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--teenage-mutant-ninja-turtles--2020-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gd2Xb-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--teenage-mutant-ninja-turtles--2020-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gd2Xb-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--teenage-mutant-ninja-turtles--2020-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "teenage-mutant-ninja-turtles",
@@ -2202,8 +2154,9 @@
         "bank": 2
       },
       "columns": {
-        "library_entry_id": "v--8760--2895",
-        "practice_identity": "stern--teenage-mutant-ninja-turtles--2020",
+        "library_entry_id": "v--8760--Gd2Xb",
+        "practice_identity": "Gd2Xb",
+        "opdb_id": "Gd2Xb-MRjpZ",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2216,9 +2169,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2020",
-        "pinside_id": "2895",
-        "pinside_slug": "teenage-mutant-ninja-turtles-stern-limited",
-        "pinside_group": "Teenage Mutant Ninja Turtles",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-tmnt-rulesheet/6599",
         "Tutorial 1": "",
@@ -2240,8 +2190,8 @@
       }
     },
     {
-      "library_entry_id": "v--8760--830",
-      "practice_identity": "bally--scared-stiff--1996",
+      "library_entry_id": "v--8760--G4xbP",
+      "practice_identity": "G4xbP",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
@@ -2258,8 +2208,8 @@
       "group": 5,
       "position": 1,
       "bank": 4,
-      "pinside_id": "830",
-      "pinside_slug": "scared-stiff",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM",
       "playfield_image_url": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg",
       "videos": [
@@ -2271,12 +2221,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/scared-stiff.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/bally--scared-stiff--1996-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/scared-stiff.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--scared-stiff--1996-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/scared-stiff.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/bally--scared-stiff--1996-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--scared-stiff--1996-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4xbP-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4xbP-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/G4xbP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "scared-stiff",
@@ -2290,8 +2240,9 @@
         "bank": 4
       },
       "columns": {
-        "library_entry_id": "v--8760--830",
-        "practice_identity": "bally--scared-stiff--1996",
+        "library_entry_id": "v--8760--G4xbP",
+        "practice_identity": "G4xbP",
+        "opdb_id": "G4xbP-Mp45Y",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2304,9 +2255,6 @@
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1996",
-        "pinside_id": "830",
-        "pinside_slug": "scared-stiff",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg",
         "Rulesheet": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM",
         "Tutorial 1": "",
@@ -2328,9 +2276,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3274",
-      "practice_identity": "stern--dungeons-and-dragons--2025",
-      "pinside_group": "Dungeons and Dragons",
+      "library_entry_id": "v--8760--GK1Ej",
+      "practice_identity": "GK1Ej",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2346,8 +2294,8 @@
       "group": 5,
       "position": 2,
       "bank": 6,
-      "pinside_id": "3274",
-      "pinside_slug": "dungeons-and-dragons-the-tyrants-eye-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/9267",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/01/DungeonLETopPlayfield-adfkjehfa3.jpg",
       "videos": [
@@ -2359,12 +2307,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--dungeons-and-dragons--2025-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--dungeons-and-dragons-the-tyrants-eye--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GK1Ej-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--dungeons-and-dragons--2025-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GK1Ej-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--dungeons-and-dragons--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK1Ej-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "dungeons-and-dragons-the-tyrants-eye",
@@ -2378,8 +2326,9 @@
         "bank": 6
       },
       "columns": {
-        "library_entry_id": "v--8760--3274",
-        "practice_identity": "stern--dungeons-and-dragons--2025",
+        "library_entry_id": "v--8760--GK1Ej",
+        "practice_identity": "GK1Ej",
+        "opdb_id": "GK1Ej-MePok",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2392,9 +2341,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2025",
-        "pinside_id": "3274",
-        "pinside_slug": "dungeons-and-dragons-the-tyrants-eye-le",
-        "pinside_group": "Dungeons and Dragons",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2025/01/DungeonLETopPlayfield-adfkjehfa3.jpg",
         "Rulesheet": "https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/9267",
         "Tutorial 1": "",
@@ -2416,9 +2362,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3336",
-      "practice_identity": "stern--star-wars-fall-of-the-empire--2025",
-      "pinside_group": "Star Wars: Fall of the Empire",
+      "library_entry_id": "v--8760--Gxv81",
+      "practice_identity": "Gxv81",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2434,18 +2380,18 @@
       "group": 5,
       "position": 3,
       "bank": 8,
-      "pinside_id": "3336",
-      "pinside_slug": "star-wars-fall-of-the-empire-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--star-wars-fall-of-the-empire--2025-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--star-wars-fall-of-the-empire--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -2459,8 +2405,9 @@
         "bank": 8
       },
       "columns": {
-        "library_entry_id": "v--8760--3336",
-        "practice_identity": "stern--star-wars-fall-of-the-empire--2025",
+        "library_entry_id": "v--8760--Gxv81",
+        "practice_identity": "Gxv81",
+        "opdb_id": "Gxv81-Mo1rp",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2473,9 +2420,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2025",
-        "pinside_id": "3336",
-        "pinside_slug": "star-wars-fall-of-the-empire-le",
-        "pinside_group": "Star Wars: Fall of the Empire",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
         "Rulesheet": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
         "Tutorial 1": "",
@@ -2497,9 +2441,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3224",
-      "practice_identity": "stern--john-wick--2024",
-      "pinside_group": "John Wick",
+      "library_entry_id": "v--8760--GQK1P",
+      "practice_identity": "GQK1P",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2515,18 +2459,18 @@
       "group": 5,
       "position": 4,
       "bank": 1,
-      "pinside_id": "3224",
-      "pinside_slug": "john-wick-limited",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/john-wick-rulesheet/8956",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--john-wick--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--john-wick--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GQK1P-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--john-wick--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GQK1P-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--john-wick--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQK1P-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "john-wick",
@@ -2540,8 +2484,9 @@
         "bank": 1
       },
       "columns": {
-        "library_entry_id": "v--8760--3224",
-        "practice_identity": "stern--john-wick--2024",
+        "library_entry_id": "v--8760--GQK1P",
+        "practice_identity": "GQK1P",
+        "opdb_id": "GQK1P-Ml95Z",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2554,9 +2499,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3224",
-        "pinside_slug": "john-wick-limited",
-        "pinside_group": "John Wick",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg",
         "Rulesheet": "https://tiltforums.com/t/john-wick-rulesheet/8956",
         "Tutorial 1": "",
@@ -2578,9 +2520,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2843",
-      "practice_identity": "stern--elviras-house-of-horrors--2019",
-      "pinside_group": "Elvira's House of Horrors",
+      "library_entry_id": "v--8760--GZVOd",
+      "practice_identity": "GZVOd",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2596,8 +2538,8 @@
       "group": 5,
       "position": 5,
       "bank": 3,
-      "pinside_id": "2843",
-      "pinside_slug": "elviras-house-of-horrors-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/10/ElviraPlayFieldA9145.jpg",
       "videos": [
@@ -2609,12 +2551,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--elviras-house-of-horrors--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--elviras-house-of-horrors--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GZVOd-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--elviras-house-of-horrors--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GZVOd-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--elviras-house-of-horrors--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GZVOd-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "elviras-house-of-horrors",
@@ -2628,8 +2570,9 @@
         "bank": 3
       },
       "columns": {
-        "library_entry_id": "v--8760--2843",
-        "practice_identity": "stern--elviras-house-of-horrors--2019",
+        "library_entry_id": "v--8760--GZVOd",
+        "practice_identity": "GZVOd",
+        "opdb_id": "GZVOd-MwNxZ",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2642,9 +2585,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2843",
-        "pinside_slug": "elviras-house-of-horrors-le",
-        "pinside_group": "Elvira's House of Horrors",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2023/10/ElviraPlayFieldA9145.jpg",
         "Rulesheet": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815",
         "Tutorial 1": "",
@@ -2666,9 +2606,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3059",
-      "practice_identity": "stern--james-bond-007--2022",
-      "pinside_group": "James Bond 007",
+      "library_entry_id": "v--8760--GQKyP",
+      "practice_identity": "GQKyP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2684,8 +2624,8 @@
       "group": 6,
       "position": 1,
       "bank": 5,
-      "pinside_id": "3059",
-      "pinside_slug": "james-bond-007-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
       "videos": [
@@ -2703,12 +2643,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--james-bond-007--2022-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--james-bond-007--2022-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -2722,8 +2662,9 @@
         "bank": 5
       },
       "columns": {
-        "library_entry_id": "v--8760--3059",
-        "practice_identity": "stern--james-bond-007--2022",
+        "library_entry_id": "v--8760--GQKyP",
+        "practice_identity": "GQKyP",
+        "opdb_id": "GQKyP-MP3OK",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2736,9 +2677,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2022",
-        "pinside_id": "3059",
-        "pinside_slug": "james-bond-007-le",
-        "pinside_group": "James Bond 007",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
         "Rulesheet": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
         "Tutorial 1": "https://www.youtube.com/watch?v=GnQr9qIZz_0",
@@ -2760,9 +2698,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3289",
-      "practice_identity": "stern--king-kong-myth-of-terror-island--2025",
-      "pinside_group": "King Kong: Myth of Terror Island",
+      "library_entry_id": "v--8760--GEL0V",
+      "practice_identity": "GEL0V",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2778,8 +2716,8 @@
       "group": 6,
       "position": 2,
       "bank": 7,
-      "pinside_id": "3289",
-      "pinside_slug": "king-kong-myth-of-terror-island-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
       "videos": [
@@ -2797,12 +2735,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--king-kong-myth-of-terror-island--2025-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--king-kong-myth-of-terror-island--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "king-kong",
@@ -2816,8 +2754,9 @@
         "bank": 7
       },
       "columns": {
-        "library_entry_id": "v--8760--3289",
-        "practice_identity": "stern--king-kong-myth-of-terror-island--2025",
+        "library_entry_id": "v--8760--GEL0V",
+        "practice_identity": "GEL0V",
+        "opdb_id": "GEL0V-MyN8E",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2830,9 +2769,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2025",
-        "pinside_id": "3289",
-        "pinside_slug": "king-kong-myth-of-terror-island-le",
-        "pinside_group": "King Kong: Myth of Terror Island",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
         "Rulesheet": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
         "Tutorial 1": "https://www.youtube.com/watch?v=OCp5Ria5IIA",
@@ -2854,9 +2790,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3104",
-      "practice_identity": "stern--ghostbusters--2016",
-      "pinside_group": "Ghostbusters",
+      "library_entry_id": "v--8760--GR9Nr",
+      "practice_identity": "GR9Nr",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2872,18 +2808,18 @@
       "group": 6,
       "position": 3,
       "bank": 2,
-      "pinside_id": "3104",
-      "pinside_slug": "ghostbuster-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--ghostbusters--2016-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--ghostbusters--2016-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GR9Nr-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--ghostbusters--2016-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GR9Nr-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--ghostbusters--2016-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/GR9Nr-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "ghostbusters",
@@ -2897,8 +2833,9 @@
         "bank": 2
       },
       "columns": {
-        "library_entry_id": "v--8760--3104",
-        "practice_identity": "stern--ghostbusters--2016",
+        "library_entry_id": "v--8760--GR9Nr",
+        "practice_identity": "GR9Nr",
+        "opdb_id": "GR9Nr-MVKol",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -2911,9 +2848,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2016",
-        "pinside_id": "3104",
-        "pinside_slug": "ghostbuster-le",
-        "pinside_group": "Ghostbusters",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png",
         "Rulesheet": "https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358",
         "Tutorial 1": "",
@@ -2935,9 +2869,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3195",
-      "practice_identity": "stern--jaws--2024",
-      "pinside_group": "Jaws",
+      "library_entry_id": "v--8760--GLWll",
+      "practice_identity": "GLWll",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -2953,8 +2887,8 @@
       "group": 6,
       "position": 4,
       "bank": 4,
-      "pinside_id": "3195",
-      "pinside_slug": "jaws-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/jaws-rulesheet/8781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
       "videos": [
@@ -2972,12 +2906,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--jaws--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--jaws--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -2991,8 +2925,9 @@
         "bank": 4
       },
       "columns": {
-        "library_entry_id": "v--8760--3195",
-        "practice_identity": "stern--jaws--2024",
+        "library_entry_id": "v--8760--GLWll",
+        "practice_identity": "GLWll",
+        "opdb_id": "GLWll-M1r8O",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3005,9 +2940,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3195",
-        "pinside_slug": "jaws-le",
-        "pinside_group": "Jaws",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
         "Rulesheet": "https://tiltforums.com/t/jaws-rulesheet/8781",
         "Tutorial 1": "https://www.youtube.com/watch?v=zIWTjveC9p4",
@@ -3029,9 +2961,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2790",
-      "practice_identity": "stern--jurassic-park-stern--2019",
-      "pinside_group": "Jurassic Park (Stern)",
+      "library_entry_id": "v--8760--GK17D",
+      "practice_identity": "GK17D",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3047,8 +2979,8 @@
       "group": 6,
       "position": 5,
       "bank": 6,
-      "pinside_id": "2790",
-      "pinside_slug": "jurassic-park-stern",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "videos": [
@@ -3066,12 +2998,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--jurassic-park-stern--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--jurassic-park-stern--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -3085,8 +3017,9 @@
         "bank": 6
       },
       "columns": {
-        "library_entry_id": "v--8760--2790",
-        "practice_identity": "stern--jurassic-park-stern--2019",
+        "library_entry_id": "v--8760--GK17D",
+        "practice_identity": "GK17D",
+        "opdb_id": "GK17D-MdEqz",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3099,9 +3032,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2790",
-        "pinside_slug": "jurassic-park-stern",
-        "pinside_group": "Jurassic Park (Stern)",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
         "Tutorial 1": "https://www.youtube.com/watch?v=vVs_0jqCPGA",
@@ -3123,9 +3053,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3093",
-      "practice_identity": "stern--game-of-thrones--2015",
-      "pinside_group": "Game Of Thrones",
+      "library_entry_id": "v--8760--G41d5",
+      "practice_identity": "G41d5",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3141,8 +3071,8 @@
       "group": 6,
       "position": 6,
       "bank": 2,
-      "pinside_id": "3093",
-      "pinside_slug": "game-of-thrones-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/game-of-thrones-pinball-rulesheet/936",
       "playfield_image_url": "https://o.pinside.com/b/27/84/b27843ac978234bd05ae2a302b0887e3366de366.jpeg",
       "videos": [
@@ -3154,12 +3084,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--game-of-thrones--2015-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--game-of-thrones--2015-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G41d5-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--game-of-thrones--2015-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G41d5-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--game-of-thrones--2015-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G41d5-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "game-of-thrones",
@@ -3173,8 +3103,9 @@
         "bank": 2
       },
       "columns": {
-        "library_entry_id": "v--8760--3093",
-        "practice_identity": "stern--game-of-thrones--2015",
+        "library_entry_id": "v--8760--G41d5",
+        "practice_identity": "G41d5",
+        "opdb_id": "G41d5-M9REd",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3187,9 +3118,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2015",
-        "pinside_id": "3093",
-        "pinside_slug": "game-of-thrones-le",
-        "pinside_group": "Game Of Thrones",
         "Playfield Image": "https://o.pinside.com/b/27/84/b27843ac978234bd05ae2a302b0887e3366de366.jpeg",
         "Rulesheet": "https://tiltforums.com/t/game-of-thrones-pinball-rulesheet/936",
         "Tutorial 1": "https://www.youtube.com/watch?v=XOfVLODSMUA",
@@ -3211,9 +3139,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--792",
-      "practice_identity": "bally--attack-from-mars--1995",
-      "pinside_group": "Attack from Mars",
+      "library_entry_id": "v--8760--G4do5",
+      "practice_identity": "G4do5",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3229,8 +3157,8 @@
       "group": 7,
       "position": 1,
       "bank": 1,
-      "pinside_id": "792",
-      "pinside_slug": "attack-from-mars",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.pinball.org/rules/attackfrommars.html",
       "playfield_image_url": "https://o.pinside.com/3/47/76/347761a38183898a7fe902139f96794862a0f25d.jpeg",
       "videos": [
@@ -3248,12 +3176,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/attack-from-mars.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/bally--attack-from-mars--1995-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/attack-from-mars.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--attack-from-mars--1995-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/attack-from-mars.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/bally--attack-from-mars--1995-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--attack-from-mars--1995-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4do5-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4do5-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/G4do5-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "attack-from-mars",
@@ -3267,8 +3195,9 @@
         "bank": 1
       },
       "columns": {
-        "library_entry_id": "v--8760--792",
-        "practice_identity": "bally--attack-from-mars--1995",
+        "library_entry_id": "v--8760--G4do5",
+        "practice_identity": "G4do5",
+        "opdb_id": "G4do5-MDlN7",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3281,9 +3210,6 @@
         "Variant": "Remake LE",
         "Manufacturer": "Bally",
         "Year": "1995",
-        "pinside_id": "792",
-        "pinside_slug": "attack-from-mars",
-        "pinside_group": "Attack from Mars",
         "Playfield Image": "https://o.pinside.com/3/47/76/347761a38183898a7fe902139f96794862a0f25d.jpeg",
         "Rulesheet": "https://www.pinball.org/rules/attackfrommars.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=xri-ffVoPqo",
@@ -3305,9 +3231,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2764",
-      "practice_identity": "stern--black-knight-sword-of-rage--2019",
-      "pinside_group": "Black Knight: Sword of Rage",
+      "library_entry_id": "v--8760--GD7Ld",
+      "practice_identity": "GD7Ld",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3323,8 +3249,8 @@
       "group": 7,
       "position": 2,
       "bank": 3,
-      "pinside_id": "2764",
-      "pinside_slug": "black-knight-sword-of-rage-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
       "videos": [
@@ -3342,12 +3268,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--black-knight-sword-of-rage--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--black-knight-sword-of-rage--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -3361,8 +3287,9 @@
         "bank": 3
       },
       "columns": {
-        "library_entry_id": "v--8760--2764",
-        "practice_identity": "stern--black-knight-sword-of-rage--2019",
+        "library_entry_id": "v--8760--GD7Ld",
+        "practice_identity": "GD7Ld",
+        "opdb_id": "GD7Ld-MBRP4",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3375,9 +3302,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2764",
-        "pinside_slug": "black-knight-sword-of-rage-le",
-        "pinside_group": "Black Knight: Sword of Rage",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
         "Rulesheet": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
         "Tutorial 1": "https://www.youtube.com/watch?v=i8CZsGEcmBA",
@@ -3399,9 +3323,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2988",
-      "practice_identity": "stern--godzilla--2021",
-      "pinside_group": "Godzilla",
+      "library_entry_id": "v--8760--GweeP",
+      "practice_identity": "GweeP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3417,18 +3341,18 @@
       "group": 7,
       "position": 3,
       "bank": null,
-      "pinside_id": "2988",
-      "pinside_slug": "godzilla-limited-edition",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": null,
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--godzilla--2021-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--godzilla--2021-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -3442,8 +3366,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--8760--2988",
-        "practice_identity": "stern--godzilla--2021",
+        "library_entry_id": "v--8760--GweeP",
+        "practice_identity": "GweeP",
+        "opdb_id": "GweeP-Ml9pZ",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3456,9 +3381,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2021",
-        "pinside_id": "2988",
-        "pinside_slug": "godzilla-limited-edition",
-        "pinside_group": "Godzilla",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
         "Rulesheet": "",
         "Tutorial 1": "",
@@ -3480,9 +3402,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--869",
-      "practice_identity": "williams--medieval-madness--1997",
-      "pinside_group": "Medieval Madness",
+      "library_entry_id": "v--8760--G5pe4",
+      "practice_identity": "G5pe4",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3498,8 +3420,8 @@
       "group": 7,
       "position": 4,
       "bank": 5,
-      "pinside_id": "869",
-      "pinside_slug": "medieval-madness",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://www.pinball.org/rules/medievalmadness.html",
       "playfield_image_url": "https://o.pinside.com/6/3f/ea/63fea245ad8041e4db2684fb1f5f9c5caa5a7890.jpeg",
       "videos": [
@@ -3517,12 +3439,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/medieval-madness.md",
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--medieval-madness--1997-rulesheet.md",
-        "gameinfo_local_legacy": "/pinball/gameinfo/medieval-madness.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--medieval-madness--1997-gameinfo.md",
-        "playfield_local_legacy": "/pinball/images/playfields/medieval-madness.jpg",
-        "playfield_local_practice": "/pinball/images/playfields/williams--medieval-madness--1997-playfield.jpg"
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--medieval-madness--1997-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G5pe4-rulesheet.md",
+        "gameinfo_local_legacy": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G5pe4-gameinfo.md",
+        "playfield_local_legacy": null,
+        "playfield_local_practice": "/pinball/images/playfields/G5pe4-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "medieval-madness",
@@ -3536,8 +3458,9 @@
         "bank": 5
       },
       "columns": {
-        "library_entry_id": "v--8760--869",
-        "practice_identity": "williams--medieval-madness--1997",
+        "library_entry_id": "v--8760--G5pe4",
+        "practice_identity": "G5pe4",
+        "opdb_id": "G5pe4-MePZv",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3550,9 +3473,6 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1997",
-        "pinside_id": "869",
-        "pinside_slug": "medieval-madness",
-        "pinside_group": "Medieval Madness",
         "Playfield Image": "https://o.pinside.com/6/3f/ea/63fea245ad8041e4db2684fb1f5f9c5caa5a7890.jpeg",
         "Rulesheet": "https://www.pinball.org/rules/medievalmadness.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=6wb_x3q3z14",
@@ -3574,9 +3494,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--3148",
-      "practice_identity": "stern--venom--2023",
-      "pinside_group": "Venom",
+      "library_entry_id": "v--8760--G3EBl",
+      "practice_identity": "G3EBl",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3592,8 +3512,8 @@
       "group": 7,
       "position": 5,
       "bank": 7,
-      "pinside_id": "3148",
-      "pinside_slug": "venom-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/venom-rulesheet/8503",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/07/Venom-LE-Playfield-akjnef.jpg",
       "videos": [
@@ -3605,12 +3525,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--venom--2023-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--venom--2023-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G3EBl-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--venom--2023-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G3EBl-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--venom--2023-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G3EBl-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "venom",
@@ -3624,8 +3544,9 @@
         "bank": 7
       },
       "columns": {
-        "library_entry_id": "v--8760--3148",
-        "practice_identity": "stern--venom--2023",
+        "library_entry_id": "v--8760--G3EBl",
+        "practice_identity": "G3EBl",
+        "opdb_id": "G3EBl-MRj6e",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3638,9 +3559,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2023",
-        "pinside_id": "3148",
-        "pinside_slug": "venom-le",
-        "pinside_group": "Venom",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2023/07/Venom-LE-Playfield-akjnef.jpg",
         "Rulesheet": "https://tiltforums.com/t/venom-rulesheet/8503",
         "Tutorial 1": "",
@@ -3662,9 +3580,9 @@
       }
     },
     {
-      "library_entry_id": "v--8760--2868",
-      "practice_identity": "stern--stranger-things--2019",
-      "pinside_group": "Stranger Things",
+      "library_entry_id": "v--8760--Gzy89",
+      "practice_identity": "Gzy89",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--the-avenue-cafe",
       "library_name": "The Avenue Cafe",
@@ -3680,8 +3598,8 @@
       "group": 7,
       "position": 6,
       "bank": 8,
-      "pinside_id": "2868",
-      "pinside_slug": "stern-stranger-things-le",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stranger-things-rulesheet/6093",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/12/StrangerThings-LE-Playfield-09j4gnjrf.jpg",
       "videos": [
@@ -3699,12 +3617,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--stranger-things--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--stranger-things--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gzy89-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--stranger-things--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gzy89-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--stranger-things--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gzy89-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "stranger-things",
@@ -3718,8 +3636,9 @@
         "bank": 8
       },
       "columns": {
-        "library_entry_id": "v--8760--2868",
-        "practice_identity": "stern--stranger-things--2019",
+        "library_entry_id": "v--8760--Gzy89",
+        "practice_identity": "Gzy89",
+        "opdb_id": "Gzy89-M0oPy",
         "Venue": "The Avenue Cafe",
         "PM_location_id": "8760",
         "Venue Location": "Lansing, MI",
@@ -3732,9 +3651,6 @@
         "Variant": "LE",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2868",
-        "pinside_slug": "stern-stranger-things-le",
-        "pinside_group": "Stranger Things",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/12/StrangerThings-LE-Playfield-09j4gnjrf.jpg",
         "Rulesheet": "https://tiltforums.com/t/stranger-things-rulesheet/6093",
         "Tutorial 1": "https://www.youtube.com/watch?v=3PpBgoYxgk4",
@@ -3756,9 +3672,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3303",
-      "practice_identity": "jjp--harry-potter--2025",
-      "pinside_group": "Harry Potter",
+      "library_entry_id": "v--16470--GWyBj",
+      "practice_identity": "GWyBj",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -3774,8 +3690,8 @@
       "group": 1,
       "position": 1,
       "bank": null,
-      "pinside_id": "3303",
-      "pinside_slug": "harry-potter",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/harry-potter-rulesheet/9639",
       "playfield_image_url": "https://jerseyjackpinball.com/cdn/shop/files/Harry_CE_playfield_100.webp",
       "videos": [
@@ -3793,12 +3709,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/jjp--harry-potter--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GWyBj-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/jjp--harry-potter--2025-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/jjp--harry-potter--2025-playfield.webp"
+        "playfield_local_practice": "/pinball/images/playfields/GWyBj-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "harry-potter-arcade-edition",
@@ -3812,8 +3728,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3303",
-        "practice_identity": "jjp--harry-potter--2025",
+        "library_entry_id": "v--16470--GWyBj",
+        "practice_identity": "GWyBj",
+        "opdb_id": "GWyBj-MdEbK",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -3826,9 +3743,6 @@
         "Variant": "Arcade Edition",
         "Manufacturer": "JJP",
         "Year": "2025",
-        "pinside_id": "3303",
-        "pinside_slug": "harry-potter",
-        "pinside_group": "Harry Potter",
         "Playfield Image": "https://jerseyjackpinball.com/cdn/shop/files/Harry_CE_playfield_100.webp",
         "Rulesheet": "https://tiltforums.com/t/harry-potter-rulesheet/9639",
         "Tutorial 1": "https://www.youtube.com/watch?v=3i_7L48Vx8k",
@@ -3850,9 +3764,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3288",
-      "practice_identity": "stern--king-kong-myth-of-terror-island--2025",
-      "pinside_group": "King Kong: Myth of Terror Island",
+      "library_entry_id": "v--16470--GEL0V",
+      "practice_identity": "GEL0V",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -3868,8 +3782,8 @@
       "group": 1,
       "position": 2,
       "bank": null,
-      "pinside_id": "3288",
-      "pinside_slug": "king-kong-myth-of-terror-island-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
       "videos": [
@@ -3887,12 +3801,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--king-kong-myth-of-terror-island--2025-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--king-kong-myth-of-terror-island--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "king-kong",
@@ -3906,8 +3820,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3288",
-        "practice_identity": "stern--king-kong-myth-of-terror-island--2025",
+        "library_entry_id": "v--16470--GEL0V",
+        "practice_identity": "GEL0V",
+        "opdb_id": "GEL0V-MyN8E",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -3920,9 +3835,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2025",
-        "pinside_id": "3288",
-        "pinside_slug": "king-kong-myth-of-terror-island-premium",
-        "pinside_group": "King Kong: Myth of Terror Island",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
         "Rulesheet": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
         "Tutorial 1": "https://www.youtube.com/watch?v=OCp5Ria5IIA",
@@ -3944,9 +3856,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3334",
-      "practice_identity": "stern--star-wars-fall-of-the-empire--2025",
-      "pinside_group": "Star Wars: Fall of the Empire",
+      "library_entry_id": "v--16470--Gxv81",
+      "practice_identity": "Gxv81",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -3962,18 +3874,18 @@
       "group": 1,
       "position": 3,
       "bank": null,
-      "pinside_id": "3334",
-      "pinside_slug": "star-wars-fall-of-the-empire-pro",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--star-wars-fall-of-the-empire--2025-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--star-wars-fall-of-the-empire--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -3987,8 +3899,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3334",
-        "practice_identity": "stern--star-wars-fall-of-the-empire--2025",
+        "library_entry_id": "v--16470--Gxv81",
+        "practice_identity": "Gxv81",
+        "opdb_id": "Gxv81-M610r",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4001,9 +3914,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2025",
-        "pinside_id": "3334",
-        "pinside_slug": "star-wars-fall-of-the-empire-pro",
-        "pinside_group": "Star Wars: Fall of the Empire",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
         "Rulesheet": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
         "Tutorial 1": "",
@@ -4025,8 +3935,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3290",
-      "practice_identity": "bof--dune--2025",
+      "library_entry_id": "v--16470--Gd266",
+      "practice_identity": "Gd266",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4043,8 +3953,8 @@
       "group": 1,
       "position": 4,
       "bank": null,
-      "pinside_id": "3290",
-      "pinside_slug": "dune",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/dune-rulesheet/9850",
       "playfield_image_url": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
       "videos": [
@@ -4062,12 +3972,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bof--dune--2025-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gd266-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bof--dune--2025-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bof--dune--2025-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gd266-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "dune",
@@ -4081,8 +3991,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3290",
-        "practice_identity": "bof--dune--2025",
+        "library_entry_id": "v--16470--Gd266",
+        "practice_identity": "Gd266",
+        "opdb_id": "Gd266-ME0l7",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4095,9 +4006,6 @@
         "Variant": "",
         "Manufacturer": "BoF",
         "Year": "2025",
-        "pinside_id": "3290",
-        "pinside_slug": "dune",
-        "pinside_group": "~",
         "Playfield Image": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
         "Rulesheet": "https://tiltforums.com/t/dune-rulesheet/9850",
         "Tutorial 1": "https://www.youtube.com/watch?v=A6NcxN7D-JI",
@@ -4119,9 +4027,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3194",
-      "practice_identity": "stern--jaws--2024",
-      "pinside_group": "Jaws",
+      "library_entry_id": "v--16470--GLWll",
+      "practice_identity": "GLWll",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -4137,8 +4045,8 @@
       "group": 1,
       "position": 5,
       "bank": null,
-      "pinside_id": "3194",
-      "pinside_slug": "jaws-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/jaws-rulesheet/8781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
       "videos": [
@@ -4156,12 +4064,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--jaws--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--jaws--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -4175,8 +4083,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3194",
-        "practice_identity": "stern--jaws--2024",
+        "library_entry_id": "v--16470--GLWll",
+        "practice_identity": "GLWll",
+        "opdb_id": "GLWll-M1r8O",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4189,9 +4098,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3194",
-        "pinside_slug": "jaws-premium",
-        "pinside_group": "Jaws",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
         "Rulesheet": "https://tiltforums.com/t/jaws-rulesheet/8781",
         "Tutorial 1": "https://www.youtube.com/watch?v=zIWTjveC9p4",
@@ -4213,9 +4119,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2702",
-      "practice_identity": "stern--deadpool--2018",
-      "pinside_group": "Deadpool",
+      "library_entry_id": "v--16470--G6lnq",
+      "practice_identity": "G6lnq",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -4231,8 +4137,8 @@
       "group": 2,
       "position": 1,
       "bank": null,
-      "pinside_id": "2702",
-      "pinside_slug": "deadpool-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/deadpool-rulesheet/4311",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
       "videos": [
@@ -4244,12 +4150,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--deadpool--2018-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--deadpool--2018-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -4263,8 +4169,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2702",
-        "practice_identity": "stern--deadpool--2018",
+        "library_entry_id": "v--16470--G6lnq",
+        "practice_identity": "G6lnq",
+        "opdb_id": "G6lnq-MRj7Z",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4277,9 +4184,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2018",
-        "pinside_id": "2702",
-        "pinside_slug": "deadpool-premium",
-        "pinside_group": "Deadpool",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
         "Rulesheet": "https://tiltforums.com/t/deadpool-rulesheet/4311",
         "Tutorial 1": "https://www.youtube.com/watch?v=7ZMPyTqiot4",
@@ -4301,8 +4205,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--1912",
-      "practice_identity": "gottlieb--fast-draw--1975",
+      "library_entry_id": "v--16470--GRVoX",
+      "practice_identity": "GRVoX",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4319,18 +4223,18 @@
       "group": 2,
       "position": 2,
       "bank": null,
-      "pinside_id": "1912",
-      "pinside_slug": "fast-draw",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/GRVoX-MLE7l",
       "playfield_image_url": "https://o.pinside.com/c/84/78/c847882714e37e7150e43a6f2e29027030fcafd9.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--fast-draw--1975-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GRVoX-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--fast-draw--1975-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--fast-draw--1975-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRVoX-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "fast-draw",
@@ -4344,8 +4248,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--1912",
-        "practice_identity": "gottlieb--fast-draw--1975",
+        "library_entry_id": "v--16470--GRVoX",
+        "practice_identity": "GRVoX",
+        "opdb_id": "GRVoX-MLE7l",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4358,9 +4263,6 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1975",
-        "pinside_id": "1912",
-        "pinside_slug": "fast-draw",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/c/84/78/c847882714e37e7150e43a6f2e29027030fcafd9.jpg",
         "Rulesheet": "https://rules.silverballmania.com/rules/GRVoX-MLE7l",
         "Tutorial 1": "",
@@ -4382,8 +4284,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3267",
-      "practice_identity": "spooky--evil-dead--2024",
+      "library_entry_id": "v--16470--GYWvw",
+      "practice_identity": "GYWvw",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4400,18 +4302,18 @@
       "group": 2,
       "position": 3,
       "bank": null,
-      "pinside_id": "3267",
-      "pinside_slug": "evil-dead",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/evil-dead-by-spooky-pinball-rulesheet/9720",
       "playfield_image_url": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/spooky--evil-dead--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GYWvw-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/spooky--evil-dead--2024-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/spooky--evil-dead--2024-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/GYWvw-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "evil-dead",
@@ -4425,8 +4327,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3267",
-        "practice_identity": "spooky--evil-dead--2024",
+        "library_entry_id": "v--16470--GYWvw",
+        "practice_identity": "GYWvw",
+        "opdb_id": "GYWvw-MKNP4",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4439,9 +4342,6 @@
         "Variant": "CE",
         "Manufacturer": "Spooky",
         "Year": "2024",
-        "pinside_id": "3267",
-        "pinside_slug": "evil-dead",
-        "pinside_group": "~",
         "Playfield Image": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png",
         "Rulesheet": "https://tiltforums.com/t/evil-dead-by-spooky-pinball-rulesheet/9720",
         "Tutorial 1": "",
@@ -4463,9 +4363,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3175",
-      "practice_identity": "pb--alien--2022",
-      "pinside_group": "Alien",
+      "library_entry_id": "v--16470--G4PBO",
+      "practice_identity": "G4PBO",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -4481,18 +4381,18 @@
       "group": 2,
       "position": 4,
       "bank": null,
-      "pinside_id": "3175",
-      "pinside_slug": "pinball-brothers-alien-ellen-ripley-version",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/pinball-brothers-alien-rulesheet/7966",
       "playfield_image_url": "https://o.pinside.com/1/13/91/11391f5e555c44d51d57e53b80cdb54ef6747435.jpeg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/pb--alien--2022-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4PBO-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/pb--alien--2022-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/pb--alien--2022-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4PBO-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "alien-ellen-ripley-edition",
@@ -4506,8 +4406,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3175",
-        "practice_identity": "pb--alien--2022",
+        "library_entry_id": "v--16470--G4PBO",
+        "practice_identity": "G4PBO",
+        "opdb_id": "G4PBO-MyNeb",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4520,9 +4421,6 @@
         "Variant": "Ellen Ripley",
         "Manufacturer": "PB",
         "Year": "2022",
-        "pinside_id": "3175",
-        "pinside_slug": "pinball-brothers-alien-ellen-ripley-version",
-        "pinside_group": "Alien",
         "Playfield Image": "https://o.pinside.com/1/13/91/11391f5e555c44d51d57e53b80cdb54ef6747435.jpeg",
         "Rulesheet": "https://tiltforums.com/t/pinball-brothers-alien-rulesheet/7966",
         "Tutorial 1": "",
@@ -4544,8 +4442,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--477",
-      "practice_identity": "de--tales-from-the-crypt--1993",
+      "library_entry_id": "v--16470--GR6wO",
+      "practice_identity": "GR6wO",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4562,9 +4460,9 @@
       "group": 2,
       "position": 5,
       "bank": null,
-      "pinside_id": "477",
-      "pinside_slug": "tales-from-the-crypt",
-      "rulesheet_url": "https://pinball.org/rules/talesfromthecrypt.html",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://www.ipdb.org/rulesheets/2493/crypt.htm",
       "playfield_image_url": "https://o.pinside.com/0/7e/de/07ede2316a85b78651102912d42f91c0863a6043.jpeg",
       "videos": [
         {
@@ -4575,12 +4473,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/de--tales-from-the-crypt--1993-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GR6wO-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/de--tales-from-the-crypt--1993-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/de--tales-from-the-crypt--1993-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GR6wO-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "tales-from-the-crypt",
@@ -4594,8 +4492,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--477",
-        "practice_identity": "de--tales-from-the-crypt--1993",
+        "library_entry_id": "v--16470--GR6wO",
+        "practice_identity": "GR6wO",
+        "opdb_id": "GR6wO-MDvzk",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4608,11 +4507,8 @@
         "Variant": "",
         "Manufacturer": "DE",
         "Year": "1993",
-        "pinside_id": "477",
-        "pinside_slug": "tales-from-the-crypt",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/0/7e/de/07ede2316a85b78651102912d42f91c0863a6043.jpeg",
-        "Rulesheet": "https://pinball.org/rules/talesfromthecrypt.html",
+        "Rulesheet": "https://www.ipdb.org/rulesheets/2493/crypt.htm",
         "Tutorial 1": "",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -4632,8 +4528,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--29",
-      "practice_identity": "midway--baby-pac-man--1982",
+      "library_entry_id": "v--16470--G5Kvx",
+      "practice_identity": "G5Kvx",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4650,8 +4546,8 @@
       "group": 3,
       "position": 1,
       "bank": null,
-      "pinside_id": "29",
-      "pinside_slug": "baby-pac-man",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://strategywiki.org/wiki/Baby_Pac-Man/Walkthrough",
       "playfield_image_url": "https://o.pinside.com/a/e2/d5/ae2d55c13d08c63a9e13b4431d5f747740ba4536.jpeg",
       "videos": [
@@ -4663,12 +4559,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/midway--baby-pac-man--1982-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G5Kvx-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/midway--baby-pac-man--1982-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/midway--baby-pac-man--1982-playfield.jpeg"
+        "playfield_local_practice": "/pinball/images/playfields/G5Kvx-playfield.jpeg"
       },
       "sort_keys": {
         "alphabetical": "baby-pac-man",
@@ -4682,8 +4578,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--29",
-        "practice_identity": "midway--baby-pac-man--1982",
+        "library_entry_id": "v--16470--G5Kvx",
+        "practice_identity": "G5Kvx",
+        "opdb_id": "G5Kvx-MQdpl",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4696,9 +4593,6 @@
         "Variant": "",
         "Manufacturer": "Midway",
         "Year": "1982",
-        "pinside_id": "29",
-        "pinside_slug": "baby-pac-man",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/a/e2/d5/ae2d55c13d08c63a9e13b4431d5f747740ba4536.jpeg",
         "Rulesheet": "https://strategywiki.org/wiki/Baby_Pac-Man/Walkthrough",
         "Tutorial 1": "https://www.youtube.com/watch?v=U216cklf0jk",
@@ -4720,8 +4614,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--331",
-      "practice_identity": "bally--nitro-ground-shaker--1980",
+      "library_entry_id": "v--16470--GrP6q",
+      "practice_identity": "GrP6q",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -4738,8 +4632,8 @@
       "group": 3,
       "position": 2,
       "bank": null,
-      "pinside_id": "331",
-      "pinside_slug": "nitro-ground-shaker",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/GrP6q-M5Rp1",
       "playfield_image_url": "https://o.pinside.com/7/82/28/782286aa112e543b8416be1bf1a94b7b73fbbaf0.jpg",
       "videos": [
@@ -4751,12 +4645,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--nitro-ground-shaker--1980-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GrP6q-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--nitro-ground-shaker--1980-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bally--nitro-ground-shaker--1980-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrP6q-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "nitro-ground-shaker",
@@ -4770,8 +4664,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--331",
-        "practice_identity": "bally--nitro-ground-shaker--1980",
+        "library_entry_id": "v--16470--GrP6q",
+        "practice_identity": "GrP6q",
+        "opdb_id": "GrP6q-M5Rp1",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4784,9 +4679,6 @@
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1980",
-        "pinside_id": "331",
-        "pinside_slug": "nitro-ground-shaker",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/7/82/28/782286aa112e543b8416be1bf1a94b7b73fbbaf0.jpg",
         "Rulesheet": "https://rules.silverballmania.com/rules/GrP6q-M5Rp1",
         "Tutorial 1": "",
@@ -4808,9 +4700,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3252",
-      "practice_identity": "stern--metallica-remastered--2024",
-      "pinside_group": "Metallica Remastered",
+      "library_entry_id": "v--16470--GO0q3",
+      "practice_identity": "GO0q3",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -4826,18 +4718,18 @@
       "group": 3,
       "position": 3,
       "bank": null,
-      "pinside_id": "3252",
-      "pinside_slug": "metallica-remastered",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/metallica-remastered-rulesheet/9298",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/10/MetalliPlayfLEFinal-kjahefae.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--metallica-remastered--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GO0q3-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--metallica-remastered--2024-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--metallica-remastered--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GO0q3-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "metallica-remastered",
@@ -4851,8 +4743,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3252",
-        "practice_identity": "stern--metallica-remastered--2024",
+        "library_entry_id": "v--16470--GO0q3",
+        "practice_identity": "GO0q3",
+        "opdb_id": "GO0q3-MOEy8",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4865,9 +4758,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3252",
-        "pinside_slug": "metallica-remastered",
-        "pinside_group": "Metallica Remastered",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/10/MetalliPlayfLEFinal-kjahefae.jpg",
         "Rulesheet": "https://tiltforums.com/t/metallica-remastered-rulesheet/9298",
         "Tutorial 1": "",
@@ -4889,13 +4779,13 @@
       }
     },
     {
-      "library_entry_id": "v--16470--552",
-      "practice_identity": "bally--indianapolis-500--1995",
+      "library_entry_id": "v--16470--Gr8l3",
+      "practice_identity": "Gr8l3",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
-      "game": "Indianpolis 500",
+      "game": "Indianapolis 500",
       "variant": null,
       "manufacturer": "Bally",
       "year": 1995,
@@ -4907,9 +4797,9 @@
       "group": 3,
       "position": 4,
       "bank": null,
-      "pinside_id": "552",
-      "pinside_slug": "indianapolis-500",
-      "rulesheet_url": "https://pinball.org/rules/indianapolis500.html",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://www.ipdb.org/rulesheets/2853/indy500.htm",
       "playfield_image_url": "https://o.pinside.com/e/fb/e4/efbe43af5567c672de54c72192a19430497ce7c5.jpeg",
       "videos": [
         {
@@ -4920,15 +4810,15 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--indianapolis-500--1995-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gr8l3-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--indianapolis-500--1995-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bally--indianapolis-500--1995-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gr8l3-playfield.jpg"
       },
       "sort_keys": {
-        "alphabetical": "indianpolis-500",
+        "alphabetical": "indianapolis-500",
         "year": 1995,
         "location": {
           "areaOrder": null,
@@ -4939,8 +4829,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--552",
-        "practice_identity": "bally--indianapolis-500--1995",
+        "library_entry_id": "v--16470--Gr8l3",
+        "practice_identity": "Gr8l3",
+        "opdb_id": "Gr8l3-MDWr0",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -4949,15 +4840,12 @@
         "Group": "3",
         "Position": "4",
         "Bank": "",
-        "Game": "Indianpolis 500",
+        "Game": "Indianapolis 500",
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1995",
-        "pinside_id": "552",
-        "pinside_slug": "indianapolis-500",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/e/fb/e4/efbe43af5567c672de54c72192a19430497ce7c5.jpeg",
-        "Rulesheet": "https://pinball.org/rules/indianapolis500.html",
+        "Rulesheet": "https://www.ipdb.org/rulesheets/2853/indy500.htm",
         "Tutorial 1": "https://www.youtube.com/watch?v=0JJ58ZBaBxo",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -4977,9 +4865,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3111",
-      "practice_identity": "cgc--pulp-fiction--2024",
-      "pinside_group": "Pulp Fiction",
+      "library_entry_id": "v--16470--GoEkx",
+      "practice_identity": "GoEkx",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -4995,8 +4883,8 @@
       "group": 3,
       "position": 5,
       "bank": null,
-      "pinside_id": "3111",
-      "pinside_slug": "cgc-pulp-fiction-se",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
       "playfield_image_url": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
       "videos": [
@@ -5014,12 +4902,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/cgc--pulp-fiction--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/cgc--pulp-fiction--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
@@ -5033,8 +4921,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3111",
-        "practice_identity": "cgc--pulp-fiction--2024",
+        "library_entry_id": "v--16470--GoEkx",
+        "practice_identity": "GoEkx",
+        "opdb_id": "GoEkx-MdEzN",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5047,9 +4936,6 @@
         "Variant": "SE",
         "Manufacturer": "CGC",
         "Year": "2024",
-        "pinside_id": "3111",
-        "pinside_slug": "cgc-pulp-fiction-se",
-        "pinside_group": "Pulp Fiction",
         "Playfield Image": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
         "Rulesheet": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
         "Tutorial 1": "",
@@ -5071,8 +4957,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--13",
-      "practice_identity": "williams--alien-poker--1980",
+      "library_entry_id": "v--16470--G4yen",
+      "practice_identity": "G4yen",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5089,8 +4975,8 @@
       "group": 3,
       "position": 6,
       "bank": null,
-      "pinside_id": "13",
-      "pinside_slug": "alien-poker",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/G4yen-MD12Y",
       "playfield_image_url": "https://o.pinside.com/a/03/e4/a03e4d88ad5527ec10bd96e43a7484727e2c8b92.jpg",
       "videos": [
@@ -5102,12 +4988,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--alien-poker--1980-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4yen-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--alien-poker--1980-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/williams--alien-poker--1980-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4yen-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "alien-poker",
@@ -5121,8 +5007,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--13",
-        "practice_identity": "williams--alien-poker--1980",
+        "library_entry_id": "v--16470--G4yen",
+        "practice_identity": "G4yen",
+        "opdb_id": "G4yen-MD12Y",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5135,9 +5022,6 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1980",
-        "pinside_id": "13",
-        "pinside_slug": "alien-poker",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/a/03/e4/a03e4d88ad5527ec10bd96e43a7484727e2c8b92.jpg",
         "Rulesheet": "https://rules.silverballmania.com/rules/G4yen-MD12Y",
         "Tutorial 1": "https://www.youtube.com/watch?v=yGWOfPq_0u4",
@@ -5159,9 +5043,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2483",
-      "practice_identity": "spooky--total-nuclear-annihilation--2017",
-      "pinside_group": "Total Nuclear Annihilation",
+      "library_entry_id": "v--16470--GRD79",
+      "practice_identity": "GRD79",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -5177,8 +5061,8 @@
       "group": 3,
       "position": 7,
       "bank": null,
-      "pinside_id": "2483",
-      "pinside_slug": "total-nuclear-annihilation",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/total-nuclear-annihilation-rulesheet/3209",
       "playfield_image_url": "https://o.pinside.com/0/61/43/06143560c26dad7e3540ffe50af56c90259829b5.jpg",
       "videos": [
@@ -5190,12 +5074,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/spooky--total-nuclear-annihilation--2017-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GRD79-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/spooky--total-nuclear-annihilation--2017-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/spooky--total-nuclear-annihilation--2017-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRD79-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "total-nuclear-annihilation",
@@ -5209,8 +5093,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2483",
-        "practice_identity": "spooky--total-nuclear-annihilation--2017",
+        "library_entry_id": "v--16470--GRD79",
+        "practice_identity": "GRD79",
+        "opdb_id": "GRD79-M0odk",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5223,9 +5108,6 @@
         "Variant": "",
         "Manufacturer": "Spooky",
         "Year": "2017",
-        "pinside_id": "2483",
-        "pinside_slug": "total-nuclear-annihilation",
-        "pinside_group": "Total Nuclear Annihilation",
         "Playfield Image": "https://o.pinside.com/0/61/43/06143560c26dad7e3540ffe50af56c90259829b5.jpg",
         "Rulesheet": "https://tiltforums.com/t/total-nuclear-annihilation-rulesheet/3209",
         "Tutorial 1": "https://www.youtube.com/watch?v=TzhluZ-6e_c",
@@ -5247,8 +5129,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--207",
-      "practice_identity": "williams--getaway-high-speed-ii--1992",
+      "library_entry_id": "v--16470--Grx8Y",
+      "practice_identity": "Grx8Y",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5265,9 +5147,9 @@
       "group": 3,
       "position": 8,
       "bank": null,
-      "pinside_id": "207",
-      "pinside_slug": "getaway-high-speed-ii",
-      "rulesheet_url": "https://www.pinball.org/rules/getaway.html",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
       "playfield_image_url": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
       "videos": [
         {
@@ -5278,12 +5160,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/williams--getaway-high-speed-ii--1992-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/williams--the-getaway-high-speed-ii--1992-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/williams--getaway-high-speed-ii--1992-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/williams--getaway-high-speed-ii--1992-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-getaway-high-speed-ii",
@@ -5297,8 +5179,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--207",
-        "practice_identity": "williams--getaway-high-speed-ii--1992",
+        "library_entry_id": "v--16470--Grx8Y",
+        "practice_identity": "Grx8Y",
+        "opdb_id": "Grx8Y-MKNe9",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5311,11 +5194,8 @@
         "Variant": "",
         "Manufacturer": "Williams",
         "Year": "1992",
-        "pinside_id": "207",
-        "pinside_slug": "getaway-high-speed-ii",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
-        "Rulesheet": "https://www.pinball.org/rules/getaway.html",
+        "Rulesheet": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
         "Tutorial 1": "",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -5335,9 +5215,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3057",
-      "practice_identity": "stern--james-bond-007--2022",
-      "pinside_group": "James Bond 007",
+      "library_entry_id": "v--16470--GQKyP",
+      "practice_identity": "GQKyP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -5353,8 +5233,8 @@
       "group": 3,
       "position": 9,
       "bank": null,
-      "pinside_id": "3057",
-      "pinside_slug": "james-bond-007-pro",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
       "videos": [
@@ -5372,12 +5252,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--james-bond-007--2022-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--james-bond-007--2022-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -5391,8 +5271,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3057",
-        "practice_identity": "stern--james-bond-007--2022",
+        "library_entry_id": "v--16470--GQKyP",
+        "practice_identity": "GQKyP",
+        "opdb_id": "GQKyP-Mx0O4",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5405,9 +5286,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2022",
-        "pinside_id": "3057",
-        "pinside_slug": "james-bond-007-pro",
-        "pinside_group": "James Bond 007",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
         "Rulesheet": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
         "Tutorial 1": "https://www.youtube.com/watch?v=GnQr9qIZz_0",
@@ -5429,9 +5307,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3246",
-      "practice_identity": "stern--uncanny-x-men--2024",
-      "pinside_group": "Uncanny X-Men",
+      "library_entry_id": "v--16470--G7ZEz",
+      "practice_identity": "G7ZEz",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -5447,18 +5325,18 @@
       "group": 3,
       "position": 10,
       "bank": null,
-      "pinside_id": "3246",
-      "pinside_slug": "uncanny-x-men-pro",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--uncanny-x-men--2024-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--uncanny-x-men--2024-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -5472,8 +5350,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3246",
-        "practice_identity": "stern--uncanny-x-men--2024",
+        "library_entry_id": "v--16470--G7ZEz",
+        "practice_identity": "G7ZEz",
+        "opdb_id": "G7ZEz-MBRYn",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5486,9 +5365,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2024",
-        "pinside_id": "3246",
-        "pinside_slug": "uncanny-x-men-pro",
-        "pinside_group": "Uncanny X-Men",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
         "Rulesheet": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
         "Tutorial 1": "",
@@ -5510,8 +5386,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--338",
-      "practice_identity": "bally--paragon--1979",
+      "library_entry_id": "v--16470--GrXy3",
+      "practice_identity": "GrXy3",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5528,9 +5404,9 @@
       "group": 3,
       "position": 11,
       "bank": null,
-      "pinside_id": "338",
-      "pinside_slug": "paragon",
-      "rulesheet_url": "https://www.kineticist.com/post/paragon-pinball-tutorial",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://pinballprimer.github.io/paragon_GrXy3.html",
       "playfield_image_url": "https://o.pinside.com/8/d3/0e/8d30e91fa2664ac28ef48f87feeed51d71c91e5b.jpg",
       "videos": [
         {
@@ -5541,12 +5417,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--paragon--1979-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GrXy3-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--paragon--1979-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bally--paragon--1979-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrXy3-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "paragon",
@@ -5560,8 +5436,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--338",
-        "practice_identity": "bally--paragon--1979",
+        "library_entry_id": "v--16470--GrXy3",
+        "practice_identity": "GrXy3",
+        "opdb_id": "GrXy3-ML0Ey",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5574,11 +5451,8 @@
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1979",
-        "pinside_id": "338",
-        "pinside_slug": "paragon",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/8/d3/0e/8d30e91fa2664ac28ef48f87feeed51d71c91e5b.jpg",
-        "Rulesheet": "https://www.kineticist.com/post/paragon-pinball-tutorial",
+        "Rulesheet": "https://pinballprimer.github.io/paragon_GrXy3.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=S75vg7Wtf7w",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -5598,8 +5472,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--69",
-      "practice_identity": "gottlieb--buck-rogers--1980",
+      "library_entry_id": "v--16470--GRKx7",
+      "practice_identity": "GRKx7",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5616,8 +5490,8 @@
       "group": 4,
       "position": 1,
       "bank": null,
-      "pinside_id": "69",
-      "pinside_slug": "buck-rogers",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/GRKx7-MJ49e",
       "playfield_image_url": "https://o.pinside.com/7/cf/11/7cf116170b0e4015323c3c653d51f7ce7c02f1a8.jpg",
       "videos": [
@@ -5629,12 +5503,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--buck-rogers--1980-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GRKx7-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--buck-rogers--1980-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--buck-rogers--1980-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRKx7-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "buck-rogers",
@@ -5648,8 +5522,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--69",
-        "practice_identity": "gottlieb--buck-rogers--1980",
+        "library_entry_id": "v--16470--GRKx7",
+        "practice_identity": "GRKx7",
+        "opdb_id": "GRKx7-MJ49e",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5662,9 +5537,6 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1980",
-        "pinside_id": "69",
-        "pinside_slug": "buck-rogers",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/7/cf/11/7cf116170b0e4015323c3c653d51f7ce7c02f1a8.jpg",
         "Rulesheet": "https://rules.silverballmania.com/rules/GRKx7-MJ49e",
         "Tutorial 1": "",
@@ -5686,8 +5558,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--508",
-      "practice_identity": "gottlieb--totem--1979",
+      "library_entry_id": "v--16470--G5YDN",
+      "practice_identity": "G5YDN",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5704,18 +5576,18 @@
       "group": 4,
       "position": 2,
       "bank": null,
-      "pinside_id": "508",
-      "pinside_slug": "totem",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/G5YDN-MJKYo",
       "playfield_image_url": "https://o.pinside.com/c/82/b2/c82b233dfdc3733dfccbf79248680629b04fa1af.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--totem--1979-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G5YDN-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--totem--1979-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--totem--1979-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5YDN-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "totem",
@@ -5729,8 +5601,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--508",
-        "practice_identity": "gottlieb--totem--1979",
+        "library_entry_id": "v--16470--G5YDN",
+        "practice_identity": "G5YDN",
+        "opdb_id": "G5YDN-MJKYo",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5743,9 +5616,6 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1979",
-        "pinside_id": "508",
-        "pinside_slug": "totem",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/c/82/b2/c82b233dfdc3733dfccbf79248680629b04fa1af.jpg",
         "Rulesheet": "https://rules.silverballmania.com/rules/G5YDN-MJKYo",
         "Tutorial 1": "",
@@ -5767,8 +5637,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--486",
-      "practice_identity": "midway--shadow--1994",
+      "library_entry_id": "v--16470--G4jPX",
+      "practice_identity": "G4jPX",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5785,9 +5655,9 @@
       "group": 4,
       "position": 3,
       "bank": null,
-      "pinside_id": "486",
-      "pinside_slug": "shadow",
-      "rulesheet_url": "https://pinball.org/rules/shadow.html",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://www.ipdb.org/rulesheets/2528/SHADOW.HTM",
       "playfield_image_url": "https://i.imgur.com/YmBikcx.jpeg",
       "videos": [
         {
@@ -5798,12 +5668,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/midway--shadow--1994-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4jPX-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/midway--shadow--1994-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/midway--shadow--1994-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4jPX-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-shadow",
@@ -5817,8 +5687,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--486",
-        "practice_identity": "midway--shadow--1994",
+        "library_entry_id": "v--16470--G4jPX",
+        "practice_identity": "G4jPX",
+        "opdb_id": "G4jPX-M85YZ",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5831,11 +5702,8 @@
         "Variant": "",
         "Manufacturer": "Midway",
         "Year": "1994",
-        "pinside_id": "486",
-        "pinside_slug": "shadow",
-        "pinside_group": "~",
         "Playfield Image": "https://i.imgur.com/YmBikcx.jpeg",
-        "Rulesheet": "https://pinball.org/rules/shadow.html",
+        "Rulesheet": "https://www.ipdb.org/rulesheets/2528/SHADOW.HTM",
         "Tutorial 1": "https://www.youtube.com/watch?v=Kz-ouetS558",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -5855,8 +5723,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--161",
-      "practice_identity": "gottlieb--excalibur--1988",
+      "library_entry_id": "v--16470--GrPbb",
+      "practice_identity": "GrPbb",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -5873,18 +5741,18 @@
       "group": 5,
       "position": 1,
       "bank": null,
-      "pinside_id": "161",
-      "pinside_slug": "excalibur",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/GrPbb-MJZX6",
       "playfield_image_url": "https://o.pinside.com/8/94/d7/894d7e9f11718560a3ff8dc1ff1175ce868fcdfb.jpeg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--excalibur--1988-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GrPbb-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--excalibur--1988-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--excalibur--1988-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrPbb-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "excalibur",
@@ -5898,8 +5766,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--161",
-        "practice_identity": "gottlieb--excalibur--1988",
+        "library_entry_id": "v--16470--GrPbb",
+        "practice_identity": "GrPbb",
+        "opdb_id": "GrPbb-MJZX6",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -5912,9 +5781,6 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1988",
-        "pinside_id": "161",
-        "pinside_slug": "excalibur",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/8/94/d7/894d7e9f11718560a3ff8dc1ff1175ce868fcdfb.jpeg",
         "Rulesheet": "https://rules.silverballmania.com/rules/GrPbb-MJZX6",
         "Tutorial 1": "",
@@ -5936,9 +5802,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2987",
-      "practice_identity": "stern--godzilla--2021",
-      "pinside_group": "Godzilla",
+      "library_entry_id": "v--16470--GweeP",
+      "practice_identity": "GweeP",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -5954,8 +5820,8 @@
       "group": 5,
       "position": 2,
       "bank": null,
-      "pinside_id": "2987",
-      "pinside_slug": "godzilla-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [
@@ -5979,12 +5845,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--godzilla--2021-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--godzilla--2021-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -5998,8 +5864,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2987",
-        "practice_identity": "stern--godzilla--2021",
+        "library_entry_id": "v--16470--GweeP",
+        "practice_identity": "GweeP",
+        "opdb_id": "GweeP-Ml9pZ",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6012,9 +5879,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2021",
-        "pinside_id": "2987",
-        "pinside_slug": "godzilla-premium",
-        "pinside_group": "Godzilla",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
         "Tutorial 1": "https://www.youtube.com/watch?v=roJbHZe4YfQ",
@@ -6036,8 +5900,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--185",
-      "practice_identity": "bally--flash-gordon--1980",
+      "library_entry_id": "v--16470--G5728",
+      "practice_identity": "G5728",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -6054,8 +5918,8 @@
       "group": 5,
       "position": 3,
       "bank": null,
-      "pinside_id": "185",
-      "pinside_slug": "flash-gordon",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://rules.silverballmania.com/rules/G5728-MDbjD",
       "playfield_image_url": "https://o.pinside.com/4/05/70/40570b35e1413f4a6785ea7a8c95250491894cd9.jpeg",
       "videos": [
@@ -6067,12 +5931,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bally--flash-gordon--1980-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G5728-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bally--flash-gordon--1980-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bally--flash-gordon--1980-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5728-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "flash-gordon",
@@ -6086,8 +5950,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--185",
-        "practice_identity": "bally--flash-gordon--1980",
+        "library_entry_id": "v--16470--G5728",
+        "practice_identity": "G5728",
+        "opdb_id": "G5728-MDbjD",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6100,9 +5965,6 @@
         "Variant": "",
         "Manufacturer": "Bally",
         "Year": "1980",
-        "pinside_id": "185",
-        "pinside_slug": "flash-gordon",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/4/05/70/40570b35e1413f4a6785ea7a8c95250491894cd9.jpeg",
         "Rulesheet": "https://rules.silverballmania.com/rules/G5728-MDbjD",
         "Tutorial 1": "https://www.youtube.com/watch?v=znjcb3Qu8mA",
@@ -6124,8 +5986,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--204",
-      "practice_identity": "gottlieb--genesis--1986",
+      "library_entry_id": "v--16470--Gr2wz",
+      "practice_identity": "Gr2wz",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -6142,9 +6004,9 @@
       "group": 5,
       "position": 4,
       "bank": null,
-      "pinside_id": "204",
-      "pinside_slug": "genesis",
-      "rulesheet_url": "https://www.kineticist.com/post/genesis-pinball-tutorial",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://pinballprimer.github.io/genesis_Gr2wz.html",
       "playfield_image_url": "https://o.pinside.com/3/8f/66/38f663cba178595c6aa1c815df14ca14e1ffd698.jpeg",
       "videos": [
         {
@@ -6161,12 +6023,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--genesis--1986-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/Gr2wz-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--genesis--1986-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--genesis--1986-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gr2wz-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "genesis",
@@ -6180,8 +6042,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--204",
-        "practice_identity": "gottlieb--genesis--1986",
+        "library_entry_id": "v--16470--Gr2wz",
+        "practice_identity": "Gr2wz",
+        "opdb_id": "Gr2wz-MLBob",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6194,11 +6057,8 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1986",
-        "pinside_id": "204",
-        "pinside_slug": "genesis",
-        "pinside_group": "~",
         "Playfield Image": "https://o.pinside.com/3/8f/66/38f663cba178595c6aa1c815df14ca14e1ffd698.jpeg",
-        "Rulesheet": "https://www.kineticist.com/post/genesis-pinball-tutorial",
+        "Rulesheet": "https://pinballprimer.github.io/genesis_Gr2wz.html",
         "Tutorial 1": "https://www.youtube.com/watch?v=Tfhq5LF_QiY",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -6218,9 +6078,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2762",
-      "practice_identity": "stern--black-knight-sword-of-rage--2019",
-      "pinside_group": "Black Knight: Sword of Rage",
+      "library_entry_id": "v--16470--GD7Ld",
+      "practice_identity": "GD7Ld",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -6236,8 +6096,8 @@
       "group": 5,
       "position": 5,
       "bank": null,
-      "pinside_id": "2762",
-      "pinside_slug": "black-knight-sword-of-rage-pro",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
       "videos": [
@@ -6255,12 +6115,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--black-knight-sword-of-rage--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--black-knight-sword-of-rage--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -6274,8 +6134,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2762",
-        "practice_identity": "stern--black-knight-sword-of-rage--2019",
+        "library_entry_id": "v--16470--GD7Ld",
+        "practice_identity": "GD7Ld",
+        "opdb_id": "GD7Ld-ME0BP",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6288,9 +6149,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2762",
-        "pinside_slug": "black-knight-sword-of-rage-pro",
-        "pinside_group": "Black Knight: Sword of Rage",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
         "Rulesheet": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
         "Tutorial 1": "https://www.youtube.com/watch?v=i8CZsGEcmBA",
@@ -6312,9 +6170,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2791",
-      "practice_identity": "stern--jurassic-park-stern--2019",
-      "pinside_group": "Jurassic Park (Stern)",
+      "library_entry_id": "v--16470--GK17D",
+      "practice_identity": "GK17D",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -6330,8 +6188,8 @@
       "group": 5,
       "position": 6,
       "bank": null,
-      "pinside_id": "2791",
-      "pinside_slug": "jurassic-park-premium",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "videos": [
@@ -6349,12 +6207,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--jurassic-park-stern--2019-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--jurassic-park-stern--2019-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -6368,8 +6226,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2791",
-        "practice_identity": "stern--jurassic-park-stern--2019",
+        "library_entry_id": "v--16470--GK17D",
+        "practice_identity": "GK17D",
+        "opdb_id": "GK17D-MKNKd",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6382,9 +6241,6 @@
         "Variant": "Premium",
         "Manufacturer": "Stern",
         "Year": "2019",
-        "pinside_id": "2791",
-        "pinside_slug": "jurassic-park-premium",
-        "pinside_group": "Jurassic Park (Stern)",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
         "Rulesheet": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
         "Tutorial 1": "https://www.youtube.com/watch?v=vVs_0jqCPGA",
@@ -6406,8 +6262,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--1002",
-      "practice_identity": "gottlieb--robo-war--1988",
+      "library_entry_id": "v--16470--GryK3",
+      "practice_identity": "GryK3",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -6424,9 +6280,9 @@
       "group": 5,
       "position": 7,
       "bank": null,
-      "pinside_id": "1002",
-      "pinside_slug": "robo-war",
-      "rulesheet_url": "https://pinball.miraheze.org/wiki/Robo-War",
+      "pinside_id": null,
+      "pinside_slug": null,
+      "rulesheet_url": "https://pinballprimer.github.io/robowar_GryK3.html",
       "playfield_image_url": "https://cdn.prod.website-files.com/630f7e3a17d08a21ae05d20a/683ce9ed6e7c64e06127da82_RPWy96zmATcYkDm-6nYntR0TP72VW4NPkhHSov4XHo0.webp",
       "videos": [
         {
@@ -6437,12 +6293,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--robo-war--1988-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GryK3-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/gottlieb--robo-war--1988-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/gottlieb--robo-war--1988-playfield.webp"
+        "playfield_local_practice": "/pinball/images/playfields/GryK3-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "robo-war",
@@ -6456,8 +6312,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--1002",
-        "practice_identity": "gottlieb--robo-war--1988",
+        "library_entry_id": "v--16470--GryK3",
+        "practice_identity": "GryK3",
+        "opdb_id": "GryK3-MQrWk",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6470,11 +6327,8 @@
         "Variant": "",
         "Manufacturer": "Gottlieb",
         "Year": "1988",
-        "pinside_id": "1002",
-        "pinside_slug": "robo-war",
-        "pinside_group": "~",
         "Playfield Image": "https://cdn.prod.website-files.com/630f7e3a17d08a21ae05d20a/683ce9ed6e7c64e06127da82_RPWy96zmATcYkDm-6nYntR0TP72VW4NPkhHSov4XHo0.webp",
-        "Rulesheet": "https://pinball.miraheze.org/wiki/Robo-War",
+        "Rulesheet": "https://pinballprimer.github.io/robowar_GryK3.html",
         "Tutorial 1": "",
         "Tutorial 2": "",
         "Tutorial 3": "",
@@ -6494,8 +6348,8 @@
       }
     },
     {
-      "library_entry_id": "v--16470--3170",
-      "practice_identity": "bof--barrels-of-fun-labyrinth--2023",
+      "library_entry_id": "v--16470--GvBn8",
+      "practice_identity": "GvBn8",
       "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
@@ -6512,10 +6366,10 @@
       "group": 5,
       "position": 8,
       "bank": null,
-      "pinside_id": "3170",
-      "pinside_slug": "barrels-of-fun-labyrinth",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/labyrinth-rulesheet/8773",
-      "playfield_image_url": "https://www.barrelsoffun.com/wp-content/uploads/2026/01/2025-58-LAB.png",
+      "playfield_image_url": "https://o.pinside.com/2/91/f2/291f2be351242ef4f1bd9247a1de9f6f72599e89.jpeg",
       "videos": [
         {
           "kind": "gameplay",
@@ -6525,12 +6379,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": null,
+        "rulesheet_local_legacy": "/pinball/rulesheets/bof--barrels-of-fun-labyrinth--2023-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/GvBn8-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/bof--barrels-of-fun-labyrinth--2023-gameinfo.md",
+        "gameinfo_local_practice": null,
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/bof--barrels-of-fun-labyrinth--2023-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GvBn8-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "labyrinth",
@@ -6544,8 +6398,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--3170",
-        "practice_identity": "bof--barrels-of-fun-labyrinth--2023",
+        "library_entry_id": "v--16470--GvBn8",
+        "practice_identity": "GvBn8",
+        "opdb_id": "GvBn8-Mz291",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6558,10 +6413,7 @@
         "Variant": "",
         "Manufacturer": "BoF",
         "Year": "2023",
-        "pinside_id": "3170",
-        "pinside_slug": "barrels-of-fun-labyrinth",
-        "pinside_group": "~",
-        "Playfield Image": "https://www.barrelsoffun.com/wp-content/uploads/2026/01/2025-58-LAB.png",
+        "Playfield Image": "https://o.pinside.com/2/91/f2/291f2be351242ef4f1bd9247a1de9f6f72599e89.jpeg",
         "Rulesheet": "https://tiltforums.com/t/labyrinth-rulesheet/8773",
         "Tutorial 1": "",
         "Tutorial 2": "",
@@ -6582,9 +6434,9 @@
       }
     },
     {
-      "library_entry_id": "v--16470--2685",
-      "practice_identity": "stern--iron-maiden-legacy-of-the-beast--2018",
-      "pinside_group": "Iron Maiden: Legacy of the Beast",
+      "library_entry_id": "v--16470--G4dOQ",
+      "practice_identity": "G4dOQ",
+      "pinside_group": null,
       "library_type": "venue",
       "library_id": "venue--rlm-amusements",
       "library_name": "RLM Amusements",
@@ -6600,8 +6452,8 @@
       "group": 5,
       "position": 9,
       "bank": null,
-      "pinside_id": "2685",
-      "pinside_slug": "iron-maiden-legacy-of-the-beast",
+      "pinside_id": null,
+      "pinside_slug": null,
       "rulesheet_url": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
       "videos": [
@@ -6613,12 +6465,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": null,
-        "rulesheet_local_practice": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
+        "rulesheet_local_legacy": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
+        "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
         "gameinfo_local_legacy": null,
-        "gameinfo_local_practice": "/pinball/gameinfo/stern--iron-maiden-legacy-of-the-beast--2018-gameinfo.md",
+        "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
         "playfield_local_legacy": null,
-        "playfield_local_practice": "/pinball/images/playfields/stern--iron-maiden-legacy-of-the-beast--2018-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "iron-maiden",
@@ -6632,8 +6484,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--2685",
-        "practice_identity": "stern--iron-maiden-legacy-of-the-beast--2018",
+        "library_entry_id": "v--16470--G4dOQ",
+        "practice_identity": "G4dOQ",
+        "opdb_id": "G4dOQ-MyNbb",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -6646,9 +6499,6 @@
         "Variant": "Pro",
         "Manufacturer": "Stern",
         "Year": "2018",
-        "pinside_id": "2685",
-        "pinside_slug": "iron-maiden-legacy-of-the-beast",
-        "pinside_group": "Iron Maiden: Legacy of the Beast",
         "Playfield Image": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
         "Rulesheet": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
         "Tutorial 1": "https://www.youtube.com/watch?v=zaCEffQkj4o",

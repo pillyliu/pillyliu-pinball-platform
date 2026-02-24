@@ -1,6 +1,6 @@
 **Manufacturer:** Williams  
 **Release Year:** 1992  
-**Rulesheet:** https://www.pinball.org/rules/getaway.html  
+**Rulesheet:** https://www.ipdb.org/rulesheets/1000/getaway.htm  
 
 ---
 

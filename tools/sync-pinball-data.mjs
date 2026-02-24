@@ -150,15 +150,17 @@ function pickPreferredAssetPath(assets, practiceKey, legacyKey) {
 }
 
 async function pruneStarterPackLegacyMarkdown(target) {
+  const v3Path = path.join(target, "data", "pinball_library_v3.json");
   const v2Path = path.join(target, "data", "pinball_library_v2.json");
-  const hasV2 = await pathExists(v2Path);
-  if (!hasV2) {
-    console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v2Path)}`);
+  const libraryPath = (await pathExists(v3Path)) ? v3Path : v2Path;
+  const hasLibrary = await pathExists(libraryPath);
+  if (!hasLibrary) {
+    console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v3Path)} or ${path.relative(ROOT, v2Path)}`);
     return;
   }
 
-  const v2 = await readJson(v2Path);
-  const items = Array.isArray(v2?.items) ? v2.items : [];
+  const root = await readJson(libraryPath);
+  const items = Array.isArray(root?.items) ? root.items : [];
   const keepMarkdownPaths = new Set();
 
   for (const item of items) {
@@ -220,6 +222,26 @@ async function pruneStarterPackJunkFiles(target) {
   }
 }
 
+async function pruneStarterPackLegacyLibraryJsons(target) {
+  const dataDir = path.join(target, "data");
+  const candidates = [
+    path.join(dataDir, "pinball_library.json"),
+    path.join(dataDir, "pinball_library_v2.json"),
+  ];
+  let removed = 0;
+  for (const file of candidates) {
+    if (await pathExists(file)) {
+      await fs.rm(file, { force: true });
+      removed += 1;
+    }
+  }
+  if (removed > 0) {
+    console.log(
+      `Pruned starter-pack legacy library JSONs in ${path.relative(ROOT, target)} (removed ${removed})`
+    );
+  }
+}
+
 async function syncWebApp(appName) {
   const target = WEB_APP_TARGETS[appName];
   if (!target) {
@@ -242,6 +264,7 @@ async function syncStarterPacks() {
     await syncPath(name, target);
     await pruneStarterPackPlayfieldImages(target);
     await pruneStarterPackLegacyMarkdown(target);
+    await pruneStarterPackLegacyLibraryJsons(target);
     await pruneStarterPackJunkFiles(target);
   }
 }
@@ -263,10 +286,23 @@ async function rebuildLibraryJsonV2() {
   await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v2.ts"], path.join(ROOT, "lpl-library"));
 }
 
+async function rebuildLibraryJsonV3() {
+  await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v3.ts"], path.join(ROOT, "lpl-library"));
+}
+
+async function generatePracticeIdentityAssetAliases() {
+  await run("node", ["tools/create-practice-identity-asset-aliases.mjs"], ROOT);
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   await rebuildLibraryJsonFromAvenue();
   await rebuildLibraryJsonV2();
+  await rebuildLibraryJsonV3();
+  await generatePracticeIdentityAssetAliases();
+  // Rebuild again so v2/v3 practice asset paths prefer the newly-created OPDB aliases.
+  await rebuildLibraryJsonV2();
+  await rebuildLibraryJsonV3();
   await buildPinballManifest();
 
   if (args.allTargets) {

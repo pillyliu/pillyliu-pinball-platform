@@ -95,7 +95,7 @@ function playfieldImageSources(playfieldLocal: string | null) {
 }
 
 function mapV2ItemsToGames(raw: unknown): Game[] | null {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw) || (raw as { version?: unknown }).version !== 2) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 2) {
     return null;
   }
   const root = raw as { items?: Array<Record<string, unknown>> };
@@ -105,10 +105,10 @@ function mapV2ItemsToGames(raw: unknown): Game[] | null {
       item.assets && typeof item.assets === "object" ? (item.assets as Record<string, unknown>) : {};
     const routeId =
       String(item.library_entry_id ?? "").trim() ||
-      String(item.pinside_id ?? "").trim() ||
+      String(item.opdb_id ?? "").trim() ||
       String(item.practice_identity ?? "").trim() ||
       `row-${idx + 1}`;
-    const legacySlug = String(item.pinside_slug ?? "").trim() || routeId;
+    const legacySlug = String(item.slug ?? "").trim() || routeId;
     const videosRaw = Array.isArray(item.videos) ? item.videos : [];
     return {
       routeId,
@@ -166,7 +166,7 @@ export default function GamePage() {
   useEffect(() => {
     let cancelled = false;
     setGameLookupStatus("loading");
-    fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v3.json")
       .then((data) => {
         if (cancelled) return;
         const v2Games = mapV2ItemsToGames(data);
@@ -183,7 +183,7 @@ export default function GamePage() {
         setGameLookupStatus("done");
       })
       .catch(() =>
-        fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+        fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
           .then((data) => {
             if (cancelled) return;
             const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
@@ -198,11 +198,28 @@ export default function GamePage() {
             setGame(found ?? null);
             setGameLookupStatus("done");
           })
-          .catch(() => {
-            if (cancelled) return;
-            setGame(null);
-            setGameLookupStatus("done");
-          })
+          .catch(() =>
+            fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+              .then((data) => {
+                if (cancelled) return;
+                const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
+                const games = (Array.isArray(root)
+                  ? root
+                  : Array.isArray(root?.games)
+                    ? root.games
+                    : Array.isArray(root?.items)
+                    ? root.items
+                    : []).map((g, idx) => ({ ...g, routeId: (g as Game).routeId ?? g.slug ?? `row-${idx + 1}` }));
+                const found = games.find((g) => g.slug === slug) ?? null;
+                setGame(found ?? null);
+                setGameLookupStatus("done");
+              })
+              .catch(() => {
+                if (cancelled) return;
+                setGame(null);
+                setGameLookupStatus("done");
+              })
+          )
       );
     return () => {
       cancelled = true;

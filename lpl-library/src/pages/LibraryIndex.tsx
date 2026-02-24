@@ -216,7 +216,7 @@ function preferredLibrarySourceId(sources: LibrarySource[], requestedId?: string
 
 function deriveLibraryPayload(raw: unknown): { games: Game[]; sources: LibrarySource[] } {
   const fallbackSource: LibrarySource = { id: "the-avenue", name: "The Avenue", type: "venue" };
-  if (raw && typeof raw === "object" && !Array.isArray(raw) && (raw as { version?: unknown }).version === 2) {
+  if (raw && typeof raw === "object" && !Array.isArray(raw) && typeof (raw as { version?: unknown }).version === "number" && Number((raw as { version?: unknown }).version) >= 2) {
     const root = raw as {
       items?: Array<Record<string, unknown>>;
       libraries?: Array<Record<string, unknown>>;
@@ -225,10 +225,10 @@ function deriveLibraryPayload(raw: unknown): { games: Game[]; sources: LibrarySo
     const games: Game[] = items.map((item, idx) => {
       const routeId =
         String(item.library_entry_id ?? "").trim() ||
-        String(item.pinside_id ?? "").trim() ||
+        String(item.opdb_id ?? "").trim() ||
         String(item.practice_identity ?? "").trim() ||
         `row-${idx + 1}`;
-      const legacySlug = String(item.pinside_slug ?? "").trim() || routeId;
+      const legacySlug = String(item.slug ?? "").trim() || routeId;
       const assets =
         item.assets && typeof item.assets === "object"
           ? (item.assets as Record<string, unknown>)
@@ -340,7 +340,7 @@ export default function LibraryIndex() {
   const [sortMode, setSortMode] = useState<SortMode>("area");
 
   useEffect(() => {
-    fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v3.json")
       .then((data) => {
         const payload = deriveLibraryPayload(data);
         setGames(payload.games);
@@ -349,7 +349,7 @@ export default function LibraryIndex() {
         if (nextId) setSelectedSourceId(nextId);
       })
       .catch(() =>
-        fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+        fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
           .then((data) => {
             const payload = deriveLibraryPayload(data);
             setGames(payload.games);
@@ -357,11 +357,21 @@ export default function LibraryIndex() {
             const nextId = preferredLibrarySourceId(payload.sources, preferredSourceId ?? selectedSourceId);
             if (nextId) setSelectedSourceId(nextId);
           })
-          .catch(() => {
-            setGames([]);
-            setSources([{ id: "the-avenue", name: "The Avenue", type: "venue" }]);
-            setSelectedSourceId("the-avenue");
-          })
+          .catch(() =>
+            fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
+              .then((data) => {
+                const payload = deriveLibraryPayload(data);
+                setGames(payload.games);
+                setSources(payload.sources);
+                const nextId = preferredLibrarySourceId(payload.sources, preferredSourceId ?? selectedSourceId);
+                if (nextId) setSelectedSourceId(nextId);
+              })
+              .catch(() => {
+                setGames([]);
+                setSources([{ id: "the-avenue", name: "The Avenue", type: "venue" }]);
+                setSelectedSourceId("the-avenue");
+              })
+          )
       );
   }, []);
 
@@ -788,9 +798,9 @@ export default function LibraryIndex() {
           <div className="mt-8 text-neutral-400">
             No data loaded. Confirm canonical file{" "}
             <code className="rounded bg-neutral-900 px-2 py-1">
-              shared/pinball/data/pinball_library_v2.json
+              shared/pinball/data/pinball_library_v3.json
             </code>{" "}
-            exists and has been deployed to <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/pinball_library_v2.json</code>.
+            exists and has been deployed to <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/pinball_library_v3.json</code>.
           </div>
         )}
       </PageContainer>

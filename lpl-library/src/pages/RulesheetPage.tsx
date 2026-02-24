@@ -76,10 +76,10 @@ export default function RulesheetPage() {
     }
     let cancelled = false;
     setResolveStatus("loading");
-    fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v3.json")
       .then((raw) => {
         if (cancelled) return;
-        if (!raw || typeof raw !== "object" || Array.isArray(raw) || (raw as { version?: unknown }).version !== 2) {
+        if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 2) {
           setResolvedGame(null);
           setResolveStatus("done");
           return;
@@ -88,10 +88,10 @@ export default function RulesheetPage() {
         const found = items.find((it) => {
           const item = (it ?? {}) as Record<string, unknown>;
           const routeId = String(item.library_entry_id ?? "").trim();
-          const pinsideId = String(item.pinside_id ?? "").trim();
-          const legacySlug = String(item.pinside_slug ?? "").trim();
+          const opdbId = String(item.opdb_id ?? "").trim();
+          const legacySlug = String(item.slug ?? "").trim();
           const practiceIdentity = String(item.practice_identity ?? "").trim();
-          return routeId === slug || pinsideId === slug || legacySlug === slug || practiceIdentity === slug;
+          return routeId === slug || opdbId === slug || legacySlug === slug || practiceIdentity === slug;
         }) as Record<string, unknown> | undefined;
         if (!found) {
           setResolvedGame(null);
@@ -101,7 +101,7 @@ export default function RulesheetPage() {
         const assets = found.assets && typeof found.assets === "object" ? (found.assets as Record<string, unknown>) : {};
         setResolvedGame({
           routeId: String(found.library_entry_id ?? "").trim() || slug,
-          legacySlug: String(found.pinside_slug ?? "").trim() || null,
+          legacySlug: String(found.slug ?? "").trim() || null,
           practiceIdentity: String(found.practice_identity ?? "").trim() || null,
           rulesheetPractice: String(assets.rulesheet_local_practice ?? "").trim() || null,
           rulesheetLegacy: String(assets.rulesheet_local_legacy ?? "").trim() || null,
@@ -110,8 +110,43 @@ export default function RulesheetPage() {
       })
       .catch(() => {
         if (cancelled) return;
-        setResolvedGame(null);
-        setResolveStatus("done");
+        fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
+          .then((raw) => {
+            if (cancelled) return;
+            if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 2) {
+              setResolvedGame(null);
+              setResolveStatus("done");
+              return;
+            }
+            const items = Array.isArray((raw as { items?: unknown[] }).items) ? (raw as { items: unknown[] }).items : [];
+            const found = items.find((it) => {
+              const item = (it ?? {}) as Record<string, unknown>;
+              const routeId = String(item.library_entry_id ?? "").trim();
+              const opdbId = String(item.opdb_id ?? "").trim();
+              const legacySlug = String(item.slug ?? "").trim();
+              const practiceIdentity = String(item.practice_identity ?? "").trim();
+              return routeId === slug || opdbId === slug || legacySlug === slug || practiceIdentity === slug;
+            }) as Record<string, unknown> | undefined;
+            if (!found) {
+              setResolvedGame(null);
+              setResolveStatus("done");
+              return;
+            }
+            const assets = found.assets && typeof found.assets === "object" ? (found.assets as Record<string, unknown>) : {};
+            setResolvedGame({
+              routeId: String(found.library_entry_id ?? "").trim() || slug,
+              legacySlug: String(found.slug ?? "").trim() || null,
+              practiceIdentity: String(found.practice_identity ?? "").trim() || null,
+              rulesheetPractice: String(assets.rulesheet_local_practice ?? "").trim() || null,
+              rulesheetLegacy: String(assets.rulesheet_local_legacy ?? "").trim() || null,
+            });
+            setResolveStatus("done");
+          })
+          .catch(() => {
+            if (cancelled) return;
+            setResolvedGame(null);
+            setResolveStatus("done");
+          });
       });
     return () => {
       cancelled = true;

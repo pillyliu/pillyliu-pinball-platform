@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHARED = path.join(ROOT, "shared", "pinball");
-const DATA_JSON = path.join(SHARED, "data", "pinball_library_v2.json");
+const DATA_JSON = path.join(SHARED, "data", "pinball_library_v3.json");
 const RULESHEETS_DIR = path.join(SHARED, "rulesheets");
 const GAMEINFO_DIR = path.join(SHARED, "gameinfo");
 const PLAYFIELDS_DIR = path.join(SHARED, "images", "playfields");
@@ -119,13 +119,20 @@ function slugifyText(value) {
   return raw || null;
 }
 
+function stripLeadingArticle(value) {
+  const raw = String(value ?? "").trim();
+  if (!raw) return null;
+  const stripped = raw.replace(/^(the|an|a)\s+/i, "").trim();
+  return stripped && stripped !== raw ? stripped : null;
+}
+
 function legacySlugCandidatesForGroup(practiceIdentity, groupItems) {
   const candidates = new Set();
   const familySlug = familySlugFromPracticeIdentity(practiceIdentity);
   if (familySlug) candidates.add(familySlug);
 
   for (const item of groupItems) {
-    const slug = String(item.pinside_slug ?? "").trim();
+    const slug = String(item.slug ?? item.pinside_slug ?? "").trim();
     if (!slug) continue;
     candidates.add(slug);
     const devariantized = devariantizeSlug(slug);
@@ -135,6 +142,8 @@ function legacySlugCandidatesForGroup(practiceIdentity, groupItems) {
   for (const item of groupItems) {
     const gameSlug = slugifyText(item.game);
     if (gameSlug) candidates.add(gameSlug);
+    const gameNoArticle = slugifyText(stripLeadingArticle(item.game));
+    if (gameNoArticle) candidates.add(gameNoArticle);
   }
 
   return [...candidates].filter(Boolean);
@@ -148,6 +157,42 @@ function targetPlayfieldName(practiceIdentity, srcFilename) {
   return `${practiceIdentity}-playfield${suffix}${ext}`;
 }
 
+function pathToLocalPlayfieldFilename(assetPath) {
+  const raw = String(assetPath ?? "").trim();
+  if (!raw.startsWith("/pinball/images/playfields/")) return null;
+  return path.basename(raw);
+}
+
+function playfieldBaseSlugFromFilename(filename) {
+  const ext = path.extname(filename);
+  const stem = filename.slice(0, -ext.length);
+  const match = stem.match(/^(.*?)(?:_(700|1400))?$/);
+  return match?.[1] ?? stem;
+}
+
+function sourcePlayfieldFilenamesForGroup(practiceIdentity, groupItems) {
+  const filenames = new Set();
+
+  for (const item of groupItems) {
+    const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
+      ? item.assets
+      : {};
+    const candidates = [
+      assets.playfield_local_practice,
+      assets.playfield_local_legacy,
+    ];
+    for (const candidate of candidates) {
+      const filename = pathToLocalPlayfieldFilename(candidate);
+      if (!filename) continue;
+      // Skip already-renamed OPDB aliases; we only need source candidates.
+      if (filename.startsWith(`${practiceIdentity}-playfield`)) continue;
+      filenames.add(filename);
+    }
+  }
+
+  return [...filenames];
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const raw = await fs.readFile(args.jsonPath, "utf8");
@@ -157,7 +202,7 @@ async function main() {
   const byPractice = new Map();
   for (const item of items) {
     const pid = String(item.practice_identity ?? "").trim();
-    const slug = String(item.pinside_slug ?? "").trim();
+    const slug = String(item.slug ?? item.pinside_slug ?? "").trim();
     if (!pid || !slug) continue;
     const arr = byPractice.get(pid) ?? [];
     arr.push(item);
@@ -173,6 +218,7 @@ async function main() {
 
   for (const [practiceIdentity, groupItems] of byPractice.entries()) {
     const legacySlugs = legacySlugCandidatesForGroup(practiceIdentity, groupItems);
+    const explicitSourcePlayfields = sourcePlayfieldFilenamesForGroup(practiceIdentity, groupItems);
 
     for (const legacySlug of legacySlugs) {
       const src = path.join(RULESHEETS_DIR, `${legacySlug}.md`);
@@ -209,6 +255,30 @@ async function main() {
             type: "playfield",
             practiceIdentity,
             legacySlug,
+            src: path.basename(src),
+            dest: path.basename(dest),
+          });
+        }
+      }
+    }
+
+    for (const srcFilename of explicitSourcePlayfields) {
+      const baseSlug = playfieldBaseSlugFromFilename(srcFilename);
+      const explicitVariants = await findExistingPlayfieldVariants(baseSlug);
+      const srcFiles = explicitVariants.length
+        ? explicitVariants
+        : [path.join(PLAYFIELDS_DIR, srcFilename)];
+      for (const src of srcFiles) {
+        const dest = path.join(
+          PLAYFIELDS_DIR,
+          targetPlayfieldName(practiceIdentity, path.basename(src))
+        );
+        const result = await copyIfMissing(src, dest, counters.playfields, args.dryRun);
+        if (result.status === "conflict" && conflictSamples.length < 10) {
+          conflictSamples.push({
+            type: "playfield",
+            practiceIdentity,
+            legacySlug: "(explicit-source)",
             src: path.basename(src),
             dest: path.basename(dest),
           });
