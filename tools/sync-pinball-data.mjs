@@ -124,18 +124,176 @@ async function syncPath(label, target) {
   console.log(`Synced shared/pinball -> ${path.relative(ROOT, target)} (${label})`);
 }
 
-async function pruneStarterPackPlayfieldImages(target) {
+function normalizePracticePlayfield700Path(rawPath) {
+  if (typeof rawPath !== "string") return null;
+  const trimmed = rawPath.trim();
+  if (!trimmed.startsWith("/pinball/images/playfields/")) return null;
+
+  const baseName = path.posix.basename(trimmed);
+  const dot = baseName.lastIndexOf(".");
+  const stem = dot >= 0 ? baseName.slice(0, dot) : baseName;
+  const normalizedStem = stem
+    .replace(/_1400$/i, "")
+    .replace(/_700$/i, "");
+  return `/pinball/images/playfields/${normalizedStem}_700.webp`;
+}
+
+async function readStarterPackV3PracticeAssetRefs(target) {
+  const v3Path = path.join(target, "data", "pinball_library_v3.json");
+  if (!(await pathExists(v3Path))) {
+    console.warn(`Skipping v3 starter-pack asset prune; missing ${path.relative(ROOT, v3Path)}`);
+    return null;
+  }
+
+  const root = await readJson(v3Path);
+  const items = Array.isArray(root?.items) ? root.items : [];
+  const markdownPaths = new Set();
+  const playfield700Paths = new Set([
+    "/pinball/images/playfields/fallback-whitewood-playfield_700.webp",
+  ]);
+
+  for (const item of items) {
+    const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
+      ? item.assets
+      : {};
+
+    const gameinfoPractice = typeof assets.gameinfo_local_practice === "string" ? assets.gameinfo_local_practice.trim() : "";
+    const rulesheetPractice = typeof assets.rulesheet_local_practice === "string" ? assets.rulesheet_local_practice.trim() : "";
+    const playfieldPractice = typeof assets.playfield_local_practice === "string" ? assets.playfield_local_practice.trim() : "";
+
+    if (gameinfoPractice.startsWith("/pinball/")) markdownPaths.add(gameinfoPractice);
+    if (rulesheetPractice.startsWith("/pinball/")) markdownPaths.add(rulesheetPractice);
+
+    const normalizedPlayfield700 = normalizePracticePlayfield700Path(playfieldPractice);
+    if (normalizedPlayfield700) {
+      playfield700Paths.add(normalizedPlayfield700);
+    }
+  }
+
+  return { markdownPaths, playfield700Paths };
+}
+
+async function pruneStarterPackPlayfieldImages(target, keepPlayfield700Paths = null) {
   const playfieldDir = path.join(target, "images", "playfields");
   const entries = await fs.readdir(playfieldDir, { withFileTypes: true }).catch(() => []);
   let removed = 0;
+  let keptByV3 = 0;
   for (const entry of entries) {
     if (!entry.isFile()) continue;
     const name = entry.name;
-    if (name.endsWith("_700.webp")) continue;
-    await fs.rm(path.join(playfieldDir, name), { force: true });
-    removed += 1;
+    const webPath = `/pinball/images/playfields/${name}`;
+    if (!name.endsWith("_700.webp")) {
+      await fs.rm(path.join(playfieldDir, name), { force: true });
+      removed += 1;
+      continue;
+    }
+    if (keepPlayfield700Paths && !keepPlayfield700Paths.has(webPath)) {
+      await fs.rm(path.join(playfieldDir, name), { force: true });
+      removed += 1;
+      continue;
+    }
+    if (keepPlayfield700Paths) keptByV3 += 1;
+  }
+  if (keepPlayfield700Paths) {
+    console.log(
+      `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed}, kept ${keptByV3} v3 practice _700.webp files)`
+    );
+    return;
   }
   console.log(`Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed} non-_700.webp files)`);
+}
+
+async function pruneStarterPackMarkdownToV3PracticeAssets(target, keepMarkdownPaths = null) {
+  if (!keepMarkdownPaths) {
+    console.warn(`Skipping strict starter-pack markdown prune; no v3 practice asset refs for ${path.relative(ROOT, target)}`);
+    return;
+  }
+
+  let removed = 0;
+  let kept = 0;
+  for (const subdir of ["gameinfo", "rulesheets"]) {
+    const dir = path.join(target, subdir);
+    const entries = await fs.readdir(dir, { withFileTypes: true }).catch(() => []);
+    for (const entry of entries) {
+      if (!entry.isFile()) continue;
+      const name = entry.name;
+      if (!name.endsWith(".md")) continue;
+
+      const webPath = `/pinball/${subdir}/${name}`;
+      if (keepMarkdownPaths.has(webPath)) {
+        kept += 1;
+        continue;
+      }
+
+      await fs.rm(path.join(dir, name), { force: true });
+      removed += 1;
+    }
+  }
+
+  console.log(
+    `Pruned starter-pack markdown to v3 practice assets in ${path.relative(ROOT, target)} (removed ${removed}, kept ${kept})`
+  );
+}
+
+async function pruneStarterPackLegacyMarkdown(target) {
+  const refs = await readStarterPackV3PracticeAssetRefs(target);
+  if (!refs) {
+    // Conservative fallback to previous behavior if v3 JSON is unexpectedly missing.
+    const v3Path = path.join(target, "data", "pinball_library_v3.json");
+    const v2Path = path.join(target, "data", "pinball_library_v2.json");
+    const libraryPath = (await pathExists(v3Path)) ? v3Path : v2Path;
+    const hasLibrary = await pathExists(libraryPath);
+    if (!hasLibrary) {
+      console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v3Path)} or ${path.relative(ROOT, v2Path)}`);
+      return;
+    }
+
+    const root = await readJson(libraryPath);
+    const items = Array.isArray(root?.items) ? root.items : [];
+    const keepMarkdownPaths = new Set();
+
+    for (const item of items) {
+      const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
+        ? item.assets
+        : {};
+      const gameinfoPath = pickPreferredAssetPath(assets, "gameinfo_local_practice", "gameinfo_local_legacy");
+      const rulesheetPath = pickPreferredAssetPath(assets, "rulesheet_local_practice", "rulesheet_local_legacy");
+      if (gameinfoPath?.startsWith("/pinball/")) keepMarkdownPaths.add(gameinfoPath);
+      if (rulesheetPath?.startsWith("/pinball/")) keepMarkdownPaths.add(rulesheetPath);
+    }
+
+    let removed = 0;
+    let skipped = 0;
+    for (const subdir of ["gameinfo", "rulesheets"]) {
+      const dir = path.join(target, subdir);
+      const entries = await fs.readdir(dir, { withFileTypes: true }).catch(() => []);
+      for (const entry of entries) {
+        if (!entry.isFile()) continue;
+        const name = entry.name;
+        if (!name.endsWith(".md")) continue;
+
+        const isNewStyle =
+          (subdir === "gameinfo" && name.endsWith("-gameinfo.md")) ||
+          (subdir === "rulesheets" && name.endsWith("-rulesheet.md"));
+        if (isNewStyle) continue;
+
+        const webPath = `/pinball/${subdir}/${name}`;
+        if (keepMarkdownPaths.has(webPath)) {
+          skipped += 1;
+          continue;
+        }
+
+        await fs.rm(path.join(dir, name), { force: true });
+        removed += 1;
+      }
+    }
+
+    console.log(
+      `Pruned starter-pack legacy markdown in ${path.relative(ROOT, target)} (removed ${removed}, kept ${skipped} referenced old-style files)`
+    );
+    return;
+  }
+  await pruneStarterPackMarkdownToV3PracticeAssets(target, refs.markdownPaths);
 }
 
 async function readJson(filePath) {
@@ -147,61 +305,6 @@ function pickPreferredAssetPath(assets, practiceKey, legacyKey) {
   if (practice) return practice;
   const legacy = typeof assets?.[legacyKey] === "string" ? assets[legacyKey].trim() : "";
   return legacy || null;
-}
-
-async function pruneStarterPackLegacyMarkdown(target) {
-  const v3Path = path.join(target, "data", "pinball_library_v3.json");
-  const v2Path = path.join(target, "data", "pinball_library_v2.json");
-  const libraryPath = (await pathExists(v3Path)) ? v3Path : v2Path;
-  const hasLibrary = await pathExists(libraryPath);
-  if (!hasLibrary) {
-    console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v3Path)} or ${path.relative(ROOT, v2Path)}`);
-    return;
-  }
-
-  const root = await readJson(libraryPath);
-  const items = Array.isArray(root?.items) ? root.items : [];
-  const keepMarkdownPaths = new Set();
-
-  for (const item of items) {
-    const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
-      ? item.assets
-      : {};
-    const gameinfoPath = pickPreferredAssetPath(assets, "gameinfo_local_practice", "gameinfo_local_legacy");
-    const rulesheetPath = pickPreferredAssetPath(assets, "rulesheet_local_practice", "rulesheet_local_legacy");
-    if (gameinfoPath?.startsWith("/pinball/")) keepMarkdownPaths.add(gameinfoPath);
-    if (rulesheetPath?.startsWith("/pinball/")) keepMarkdownPaths.add(rulesheetPath);
-  }
-
-  let removed = 0;
-  let skipped = 0;
-  for (const subdir of ["gameinfo", "rulesheets"]) {
-    const dir = path.join(target, subdir);
-    const entries = await fs.readdir(dir, { withFileTypes: true }).catch(() => []);
-    for (const entry of entries) {
-      if (!entry.isFile()) continue;
-      const name = entry.name;
-      if (!name.endsWith(".md")) continue;
-
-      const isNewStyle =
-        (subdir === "gameinfo" && name.endsWith("-gameinfo.md")) ||
-        (subdir === "rulesheets" && name.endsWith("-rulesheet.md"));
-      if (isNewStyle) continue;
-
-      const webPath = `/pinball/${subdir}/${name}`;
-      if (keepMarkdownPaths.has(webPath)) {
-        skipped += 1;
-        continue;
-      }
-
-      await fs.rm(path.join(dir, name), { force: true });
-      removed += 1;
-    }
-  }
-
-  console.log(
-    `Pruned starter-pack legacy markdown in ${path.relative(ROOT, target)} (removed ${removed}, kept ${skipped} referenced old-style files)`
-  );
 }
 
 async function pruneStarterPackJunkFiles(target) {
@@ -262,7 +365,8 @@ async function syncStarterPacks() {
       continue;
     }
     await syncPath(name, target);
-    await pruneStarterPackPlayfieldImages(target);
+    const v3Refs = await readStarterPackV3PracticeAssetRefs(target);
+    await pruneStarterPackPlayfieldImages(target, v3Refs?.playfield700Paths ?? null);
     await pruneStarterPackLegacyMarkdown(target);
     await pruneStarterPackLegacyLibraryJsons(target);
     await pruneStarterPackJunkFiles(target);

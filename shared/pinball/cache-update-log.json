@@ -2,6 +2,34 @@
   "schemaVersion": 1,
   "events": [
     {
+      "generatedAt": "2026-02-26T13:08:04.380Z",
+      "addedCount": 0,
+      "changedCount": 2,
+      "removedCount": 0,
+      "totalFiles": 845,
+      "added": [],
+      "changed": [
+        "/pinball/data/pinball_library_v2.json",
+        "/pinball/data/pinball_library_v3.json"
+      ],
+      "removed": []
+    },
+    {
+      "generatedAt": "2026-02-26T12:53:35.765Z",
+      "addedCount": 0,
+      "changedCount": 4,
+      "removedCount": 0,
+      "totalFiles": 845,
+      "added": [],
+      "changed": [
+        "/pinball/data/LPL_Standings.csv",
+        "/pinball/data/LPL_Stats.csv",
+        "/pinball/data/pinball_library_v2.json",
+        "/pinball/data/pinball_library_v3.json"
+      ],
+      "removed": []
+    },
+    {
       "generatedAt": "2026-02-24T20:34:51.355Z",
       "addedCount": 0,
       "changedCount": 26,
@@ -2044,32 +2072,12 @@
       "added": [],
       "changed": [],
       "removed": []
-    },
-    {
-      "generatedAt": "2026-02-09T13:32:16.690Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 212,
-      "added": [],
-      "changed": [],
-      "removed": []
-    },
-    {
-      "generatedAt": "2026-02-09T04:13:45.457Z",
-      "addedCount": 0,
-      "changedCount": 0,
-      "removedCount": 0,
-      "totalFiles": 212,
-      "added": [],
-      "changed": [],
-      "removed": []
     }
   ],
   "latest": {
-    "generatedAt": "2026-02-24T20:34:51.355Z",
+    "generatedAt": "2026-02-26T13:08:04.380Z",
     "addedCount": 0,
-    "changedCount": 26,
+    "changedCount": 2,
     "removedCount": 0,
     "totalFiles": 845
   }
