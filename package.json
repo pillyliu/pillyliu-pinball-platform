@@ -13,7 +13,6 @@
     "league:update-check": "node tools/league-update-check.mjs",
     "check:smoke": "node tools/smoke-check.mjs",
     "sync:pinball": "npm run manifest:pinball",
-    "pinball:assets:alias-practice-identity": "node tools/create-practice-identity-asset-aliases.mjs",
     "sync:pinball:apps": "node tools/sync-pinball-data.mjs --all",
     "sync:pinball:all-targets": "node tools/sync-pinball-data.mjs --all-targets",
     "sheet:migrate:avenue": "node tools/rulesheets/migrate_pinball_sheet_layout.mjs",

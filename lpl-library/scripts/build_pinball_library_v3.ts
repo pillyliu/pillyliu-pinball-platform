@@ -44,11 +44,8 @@ type LibraryV3Item = {
   videos: LibraryVideo[];
 
   assets: {
-    rulesheet_local_legacy: string | null;
     rulesheet_local_practice: string | null;
-    gameinfo_local_legacy: string | null;
     gameinfo_local_practice: string | null;
-    playfield_local_legacy: string | null;
     playfield_local_practice: string | null;
   };
 
@@ -93,9 +90,6 @@ const SHARED_PINBALL_IMAGES_DIR = path.join(SHARED_PINBALL_DIR, "images", "playf
 const SHARED_PINBALL_RULESHEETS_DIR = path.join(SHARED_PINBALL_DIR, "rulesheets");
 const SHARED_PINBALL_GAMEINFO_DIR = path.join(SHARED_PINBALL_DIR, "gameinfo");
 const SUPPORTED_PLAYFIELD_EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg"];
-const MANUFACTURER_TITLE_PREFIX_EXPANSIONS: Record<string, string> = {
-  bof: "barrels-of-fun",
-};
 function slugify(input: string): string {
   return input
     .trim()
@@ -275,14 +269,6 @@ function findMarkdownLocalPath(dir: string, basename: string | null): string | n
   const filePath = path.join(dir, `${basename}.md`);
   const webDir = path.basename(dir);
   if (fileExists(filePath)) return `/pinball/${webDir}/${basename}.md`;
-
-  // Legacy rulesheet aliases may use the old "<legacySlug>-rulesheet.md" form.
-  if (webDir === "rulesheets") {
-    const altBase = `${basename}-rulesheet`;
-    const altPath = path.join(dir, `${altBase}.md`);
-    if (fileExists(altPath)) return `/pinball/${webDir}/${altBase}.md`;
-  }
-
   return null;
 }
 
@@ -314,103 +300,13 @@ function findMachineAliasPlayfieldLocalPath(opdbID: string | null): string | nul
   return findPlayfieldLocalPath(`${opdbID}-playfield`);
 }
 
-function pushUnique(values: string[], value: string | null) {
-  const trimmed = String(value ?? "").trim();
-  if (!trimmed) return;
-  if (!values.includes(trimmed)) values.push(trimmed);
-}
-
-function stripSuffixInsensitive(input: string, suffix: string | null): string | null {
-  const source = input.trim();
-  const sfx = String(suffix ?? "").trim();
-  if (!source || !sfx) return null;
-  if (!source.toLowerCase().endsWith(sfx.toLowerCase())) return null;
-  return source.slice(0, source.length - sfx.length).trim().replace(/[:\-–\s]+$/g, "").trim() || null;
-}
-
-function stripLeadingArticle(input: string | null): string | null {
-  const source = String(input ?? "").trim();
-  if (!source) return null;
-  const stripped = source.replace(/^(the|an|a)\s+/i, "").trim();
-  return stripped && stripped !== source ? stripped : null;
-}
-
-function buildCanonicalTitleSlugCandidates(row: RawRow, legacySlug: string | null): string[] {
-  const game = cleanString(getHeaderValue(row, "Game"));
-  const variant = cleanString(getHeaderValue(row, "Variant"));
-  const titleCandidates: string[] = [];
-
-  pushUnique(titleCandidates, game);
-  pushUnique(titleCandidates, variant);
-  pushUnique(titleCandidates, stripLeadingArticle(game));
-  pushUnique(titleCandidates, stripLeadingArticle(variant));
-  if (game && variant) {
-    pushUnique(titleCandidates, `${game} ${variant}`);
-    pushUnique(titleCandidates, `${game}: ${variant}`);
-    pushUnique(titleCandidates, stripSuffixInsensitive(game, variant));
-    const colonIdx = game.indexOf(":");
-    if (colonIdx > 0) {
-      pushUnique(titleCandidates, game.slice(0, colonIdx));
-    }
-  }
-
-  const slugCandidates: string[] = [];
-  for (const title of titleCandidates) {
-    pushUnique(slugCandidates, slugify(title));
-  }
-  pushUnique(slugCandidates, legacySlug);
-
-  // Common edition suffixes sometimes appear in sheet titles but not curated art filenames.
-  const genericSuffixes = [
-    "-premium",
-    "-pro",
-    "-le",
-    "-ce",
-    "-arcade-edition",
-    "-collectors-edition",
-    "-collector-edition",
-    "-limited-edition",
-  ];
-  for (const slug of [...slugCandidates]) {
-    for (const suffix of genericSuffixes) {
-      if (slug.endsWith(suffix)) pushUnique(slugCandidates, slug.slice(0, -suffix.length));
-    }
-  }
-
-  return slugCandidates.filter(Boolean);
-}
-
-function findMetadataCanonicalPlayfieldLocalPath(row: RawRow, legacySlug: string | null): string | null {
-  const manufacturer = cleanString(getHeaderValue(row, "Manufacturer"));
-  const year = toIntOrNull(getHeaderValue(row, "Year"));
-  if (!manufacturer || year == null) return null;
-
-  const manufacturerSlug = slugify(manufacturer);
-  const titleSlugCandidates = buildCanonicalTitleSlugCandidates(row, legacySlug);
-  for (const titleSlug of titleSlugCandidates) {
-    const bases = [`${manufacturerSlug}--${titleSlug}--${year}-playfield`];
-    const expandedPrefix = MANUFACTURER_TITLE_PREFIX_EXPANSIONS[manufacturerSlug];
-    if (expandedPrefix && !titleSlug.startsWith(`${expandedPrefix}-`)) {
-      bases.push(`${manufacturerSlug}--${expandedPrefix}-${titleSlug}--${year}-playfield`);
-    }
-    for (const base of bases) {
-      const hit = findPlayfieldLocalPath(base);
-      if (hit) return hit;
-    }
-  }
-  return null;
-}
-
 function resolvePracticePlayfieldLocalPath(
-  row: RawRow,
   opdbID: string | null,
   practiceIdentity: string | null,
-  legacySlug: string | null,
 ): string | null {
   return (
     findMachineAliasPlayfieldLocalPath(opdbID) ??
-    findCanonicalPlayfieldLocalPath(practiceIdentity) ??
-    findMetadataCanonicalPlayfieldLocalPath(row, legacySlug)
+    findCanonicalPlayfieldLocalPath(practiceIdentity)
   );
 }
 
@@ -488,7 +384,7 @@ function writeJsonIfChanged(outPath: string, next: LibraryV3) {
 function main() {
   const inputCsvPaths = resolveInputCsvPaths();
   if (!inputCsvPaths.length) {
-    throw new Error("No input CSV files found for v2 builder.");
+    throw new Error("No input CSV files found for v3 builder.");
   }
 
   const outPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
@@ -514,8 +410,6 @@ function main() {
       const opdbID = cleanString(getHeaderValue(row, "opdb_id"));
       const practiceIdentity = cleanString(getHeaderValue(row, "practice_identity")) ?? opdbGroupIdFromOPDBID(opdbID);
       const legacySlug = deriveLegacySlug(row);
-      const rulesheetLegacyBase = legacySlug;
-      const gameinfoLegacyBase = legacySlug;
       const rulesheetPracticeBase = practiceIdentity ? `${practiceIdentity}-rulesheet` : null;
       const gameinfoPracticeBase = practiceIdentity ? `${practiceIdentity}-gameinfo` : null;
 
@@ -551,12 +445,9 @@ function main() {
         videos: buildVideos(row),
 
         assets: {
-          rulesheet_local_legacy: findMarkdownLocalPath(SHARED_PINBALL_RULESHEETS_DIR, rulesheetLegacyBase),
           rulesheet_local_practice: findMarkdownLocalPath(SHARED_PINBALL_RULESHEETS_DIR, rulesheetPracticeBase),
-          gameinfo_local_legacy: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoLegacyBase),
           gameinfo_local_practice: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoPracticeBase),
-          playfield_local_legacy: findPlayfieldLocalPath(legacySlug),
-          playfield_local_practice: resolvePracticePlayfieldLocalPath(row, opdbID, practiceIdentity, legacySlug),
+          playfield_local_practice: resolvePracticePlayfieldLocalPath(opdbID, practiceIdentity),
         },
 
         sort_keys: {

@@ -13,11 +13,11 @@ const APPS = [
 
 const REQUIRED_DATA_FILES = [
   "Avenue Pinball - Current.csv",
+  "RLM Amusements - Current.csv",
   "LPL_Standings.csv",
   "LPL_Stats.csv",
   "LPL_Targets.csv",
-  "pinball_library.csv",
-  "pinball_library.json",
+  "pinball_library_v3.json",
 ];
 
 function rel(p) {

@@ -196,6 +196,18 @@ function sourceIdOf(game: Game): string {
   );
 }
 
+function deriveRouteId(item: Record<string, unknown>, slug: string, fallback: string): string {
+  const libraryId = String(item.library_id ?? "").trim();
+  if (libraryId && slug) return `${libraryId}::${slug}`;
+  return (
+    slug ||
+    String(item.library_entry_id ?? "").trim() ||
+    String(item.opdb_id ?? "").trim() ||
+    String(item.practice_identity ?? "").trim() ||
+    fallback
+  );
+}
+
 function normalizeSourceType(raw?: string | null): LibrarySourceType {
   const value = String(raw ?? "").trim().toLowerCase();
   return value === "category" || value === "manufacturer" ? "category" : "venue";
@@ -223,12 +235,8 @@ function deriveLibraryPayload(raw: unknown): { games: Game[]; sources: LibrarySo
     };
     const items = Array.isArray(root.items) ? root.items : [];
     const games: Game[] = items.map((item, idx) => {
-      const routeId =
-        String(item.library_entry_id ?? "").trim() ||
-        String(item.opdb_id ?? "").trim() ||
-        String(item.practice_identity ?? "").trim() ||
-        `row-${idx + 1}`;
-      const legacySlug = String(item.slug ?? "").trim() || routeId;
+      const legacySlug = String(item.slug ?? "").trim();
+      const routeId = deriveRouteId(item, legacySlug, `row-${idx + 1}`);
       const assets =
         item.assets && typeof item.assets === "object"
           ? (item.assets as Record<string, unknown>)
@@ -251,19 +259,13 @@ function deriveLibraryPayload(raw: unknown): { games: Game[]; sources: LibrarySo
         group: typeof item.group === "number" ? item.group : null,
         position: typeof item.position === "number" ? item.position : null,
         bank: typeof item.bank === "number" ? item.bank : null,
-        name: String(item.game ?? "").trim() || legacySlug,
+        name: String(item.game ?? "").trim() || legacySlug || routeId,
         manufacturer: String(item.manufacturer ?? "").trim() || null,
         year: typeof item.year === "number" ? item.year : null,
-        slug: legacySlug,
+        slug: legacySlug || routeId,
         playfieldImageUrl: String(item.playfield_image_url ?? "").trim() || null,
-        playfieldLocal:
-          String(assets.playfield_local_practice ?? "").trim() ||
-          String(assets.playfield_local_legacy ?? "").trim() ||
-          null,
-        rulesheetLocal:
-          String(assets.rulesheet_local_practice ?? "").trim() ||
-          String(assets.rulesheet_local_legacy ?? "").trim() ||
-          null,
+        playfieldLocal: String(assets.playfield_local_practice ?? "").trim() || null,
+        rulesheetLocal: String(assets.rulesheet_local_practice ?? "").trim() || null,
         videos: videos
           .map((v) => {
             const o = (v ?? {}) as Record<string, unknown>;
@@ -348,31 +350,11 @@ export default function LibraryIndex() {
         const nextId = preferredLibrarySourceId(payload.sources, preferredSourceId ?? selectedSourceId);
         if (nextId) setSelectedSourceId(nextId);
       })
-      .catch(() =>
-        fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
-          .then((data) => {
-            const payload = deriveLibraryPayload(data);
-            setGames(payload.games);
-            setSources(payload.sources);
-            const nextId = preferredLibrarySourceId(payload.sources, preferredSourceId ?? selectedSourceId);
-            if (nextId) setSelectedSourceId(nextId);
-          })
-          .catch(() =>
-            fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
-              .then((data) => {
-                const payload = deriveLibraryPayload(data);
-                setGames(payload.games);
-                setSources(payload.sources);
-                const nextId = preferredLibrarySourceId(payload.sources, preferredSourceId ?? selectedSourceId);
-                if (nextId) setSelectedSourceId(nextId);
-              })
-              .catch(() => {
-                setGames([]);
-                setSources([{ id: "the-avenue", name: "The Avenue", type: "venue" }]);
-                setSelectedSourceId("the-avenue");
-              })
-          )
-      );
+      .catch(() => {
+        setGames([]);
+        setSources([{ id: "the-avenue", name: "The Avenue", type: "venue" }]);
+        setSelectedSourceId("the-avenue");
+      });
   }, []);
 
   useEffect(() => {

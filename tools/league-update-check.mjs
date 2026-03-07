@@ -11,7 +11,7 @@ const GAMEINFO_DIR = path.join(SHARED_PINBALL, "gameinfo");
 
 const STANDINGS_CSV = path.join(DATA_DIR, "LPL_Standings.csv");
 const STATS_CSV = path.join(DATA_DIR, "LPL_Stats.csv");
-const LIBRARY_JSON = path.join(DATA_DIR, "pinball_library.json");
+const LIBRARY_JSON = path.join(DATA_DIR, "pinball_library_v3.json");
 
 const REQUIRED_STANDINGS_HEADERS = [
   "season",
@@ -222,62 +222,80 @@ async function validateStatsCsv() {
 
 async function validateLibraryJson() {
   const raw = await fs.readFile(LIBRARY_JSON, "utf8");
-  let items;
+  let root;
   try {
-    items = JSON.parse(raw);
+    root = JSON.parse(raw);
   } catch (e) {
-    error(`pinball_library.json is invalid JSON: ${e instanceof Error ? e.message : String(e)}`);
+    error(`pinball_library_v3.json is invalid JSON: ${e instanceof Error ? e.message : String(e)}`);
     return;
   }
 
-  if (!Array.isArray(items)) {
-    error("pinball_library.json should be an array.");
+  if (!root || typeof root !== "object" || Array.isArray(root) || Number(root.version ?? 0) < 3) {
+    error("pinball_library_v3.json should be a versioned v3 object.");
     return;
   }
 
-  const slugSet = new Set();
+  const items = Array.isArray(root.items) ? root.items : [];
+  const routeKeySet = new Set();
 
   for (const [index, item] of items.entries()) {
     const row = index + 1;
     const slug = String(item?.slug ?? "").trim();
     if (!slug) {
-      error(`pinball_library.json item ${row} missing slug.`);
+      error(`pinball_library_v3.json item ${row} missing slug.`);
       continue;
     }
-    if (slugSet.has(slug)) {
-      error(`pinball_library.json duplicate slug: ${slug}`);
+    const libraryId = String(item?.library_id ?? "").trim();
+    const routeKey = libraryId ? `${libraryId}::${slug}` : slug;
+    if (routeKeySet.has(routeKey)) {
+      error(`pinball_library_v3.json duplicate route key: ${routeKey}`);
       continue;
     }
-    slugSet.add(slug);
+    routeKeySet.add(routeKey);
 
-    const rulesheetLocal = String(item?.rulesheetLocal ?? "").trim();
+    const routeId =
+      routeKey ||
+      String(item?.library_entry_id ?? "").trim() ||
+      String(item?.opdb_id ?? "").trim() ||
+      String(item?.practice_identity ?? "").trim();
+
+    const assets = item?.assets && typeof item.assets === "object" ? item.assets : {};
+
+    const rulesheetLocal = String(assets.rulesheet_local_practice ?? "").trim();
     if (!rulesheetLocal) {
-      error(`pinball_library.json item ${row} (${slug}) missing rulesheetLocal.`);
+      error(`pinball_library_v3.json item ${row} (${routeId}) missing rulesheet_local_practice.`);
     } else {
       const p = toFsPathFromWebPath(rulesheetLocal);
       if (!p || !(await pathExists(p))) {
-        error(`Missing rulesheet for slug "${slug}": ${rulesheetLocal}`);
+        error(`Missing rulesheet for route "${routeId}": ${rulesheetLocal}`);
       }
     }
 
-    const playfieldLocal = String(item?.playfieldLocal ?? "").trim();
+    const playfieldLocal = String(assets.playfield_local_practice ?? "").trim();
     if (!playfieldLocal) {
-      warn(`pinball_library.json item ${row} (${slug}) missing playfieldLocal.`);
+      warn(`pinball_library_v3.json item ${row} (${routeId}) missing playfield_local_practice.`);
     } else {
       const p = toFsPathFromWebPath(playfieldLocal);
       if (!p || !(await pathExists(p))) {
-        error(`Missing playfield for slug "${slug}": ${playfieldLocal}`);
+        error(`Missing playfield for route "${routeId}": ${playfieldLocal}`);
       }
+
+      const filename = path.basename(playfieldLocal).replace(/\.(webp|png|jpe?g)$/i, "");
+      const base = filename.replace(/_(700|1400)$/i, "");
+      const webp700 = path.join(PLAYFIELDS_DIR, `${base}_700.webp`);
+      const webp1400 = path.join(PLAYFIELDS_DIR, `${base}_1400.webp`);
+      if (!(await pathExists(webp700))) warn(`Missing 700 webp for route "${routeId}"`);
+      if (!(await pathExists(webp1400))) warn(`Missing 1400 webp for route "${routeId}"`);
     }
 
-    const webp700 = path.join(PLAYFIELDS_DIR, `${slug}_700.webp`);
-    const webp1400 = path.join(PLAYFIELDS_DIR, `${slug}_1400.webp`);
-    if (!(await pathExists(webp700))) warn(`Missing 700 webp for slug "${slug}"`);
-    if (!(await pathExists(webp1400))) warn(`Missing 1400 webp for slug "${slug}"`);
-
-    const gameinfoPath = path.join(GAMEINFO_DIR, `${slug}.md`);
-    if (!(await pathExists(gameinfoPath))) {
-      warn(`Missing gameinfo markdown for slug "${slug}": /pinball/gameinfo/${slug}.md`);
+    const gameinfoLocal = String(assets.gameinfo_local_practice ?? "").trim();
+    if (!gameinfoLocal) {
+      warn(`pinball_library_v3.json item ${row} (${routeId}) missing gameinfo_local_practice.`);
+    } else {
+      const p = toFsPathFromWebPath(gameinfoLocal);
+      if (!p || !(await pathExists(p))) {
+        error(`Missing gameinfo for route "${routeId}": ${gameinfoLocal}`);
+      }
     }
   }
 }

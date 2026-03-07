@@ -26,6 +26,14 @@ type GameMeta = {
   bank?: number | null;
 };
 
+type LibraryV3Item = {
+  game?: string | null;
+  area?: string | null;
+  group?: number | null;
+  position?: number | null;
+  bank?: number | null;
+};
+
 type SortMode = "location" | "bank" | "alphabetical";
 
 type EnrichedTargetRow = TargetRow & {
@@ -59,8 +67,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    fetchPinballJson<GameMeta[]>("/pinball/data/pinball_library.json")
-      .then((data) => setMetaRows(Array.isArray(data) ? data : []))
+    fetchPinballJson<unknown>("/pinball/data/pinball_library_v3.json")
+      .then((data) => setMetaRows(deriveGameMetaRows(data)))
       .catch(() => setMetaRows([]));
   }, []);
 
@@ -305,6 +313,28 @@ function buildMetaByName(rows: GameMeta[]): Map<string, GameMeta> {
   }
 
   return map;
+}
+
+function deriveGameMetaRows(raw: unknown): GameMeta[] {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 3) {
+    return [];
+  }
+
+  const items = Array.isArray((raw as { items?: unknown[] }).items) ? (raw as { items: unknown[] }).items : [];
+  const rows: GameMeta[] = [];
+  for (const item of items) {
+    const row = (item ?? {}) as LibraryV3Item;
+    const name = String(row.game ?? "").trim();
+    if (!name) continue;
+    rows.push({
+      name,
+      location: String(row.area ?? "").trim() || null,
+      group: typeof row.group === "number" ? row.group : null,
+      position: typeof row.position === "number" ? row.position : null,
+      bank: typeof row.bank === "number" ? row.bank : null,
+    });
+  }
+  return rows;
 }
 
 const NAME_ALIASES: Record<string, string> = {

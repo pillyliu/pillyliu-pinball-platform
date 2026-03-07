@@ -336,18 +336,9 @@ function pinprof_curated_assets(?array $item): array
 {
     $assets = is_array($item['assets'] ?? null) ? $item['assets'] : [];
     return [
-        'playfieldLocalPath' => pinprof_pick_first_non_empty([
-            $assets['playfield_local_practice'] ?? null,
-            $assets['playfield_local_legacy'] ?? null,
-        ]),
-        'rulesheetLocalPath' => pinprof_pick_first_non_empty([
-            $assets['rulesheet_local_practice'] ?? null,
-            $assets['rulesheet_local_legacy'] ?? null,
-        ]),
-        'gameinfoLocalPath' => pinprof_pick_first_non_empty([
-            $assets['gameinfo_local_practice'] ?? null,
-            $assets['gameinfo_local_legacy'] ?? null,
-        ]),
+        'playfieldLocalPath' => pinprof_clean_string($assets['playfield_local_practice'] ?? null),
+        'rulesheetLocalPath' => pinprof_clean_string($assets['rulesheet_local_practice'] ?? null),
+        'gameinfoLocalPath' => pinprof_clean_string($assets['gameinfo_local_practice'] ?? null),
         'playfieldImageUrl' => pinprof_clean_string($item['playfield_image_url'] ?? null),
         'rulesheetUrl' => pinprof_clean_string($item['rulesheet_url'] ?? null),
         'sourceName' => pinprof_clean_string($item['library_name'] ?? null),

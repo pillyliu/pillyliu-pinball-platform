@@ -100,14 +100,6 @@ function buildStarterPackTargets() {
 
 const STARTER_PACK_TARGETS = buildStarterPackTargets();
 
-const AVENUE_CSV_PATH = path.join(
-  ROOT,
-  "shared",
-  "pinball",
-  "data",
-  "Avenue Pinball - Current.csv"
-);
-
 function run(cmd, args, cwd = ROOT) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, { cwd, stdio: "inherit" });
@@ -280,76 +272,14 @@ async function pruneStarterPackMarkdownToV3PracticeAssets(target, keepMarkdownPa
   );
 }
 
-async function pruneStarterPackLegacyMarkdown(target) {
+async function pruneStarterPackMarkdown(target) {
   const refs = await readStarterPackV3PracticeAssetRefs(target);
-  if (!refs) {
-    // Conservative fallback to previous behavior if v3 JSON is unexpectedly missing.
-    const v3Path = path.join(target, "data", "pinball_library_v3.json");
-    const v2Path = path.join(target, "data", "pinball_library_v2.json");
-    const libraryPath = (await pathExists(v3Path)) ? v3Path : v2Path;
-    const hasLibrary = await pathExists(libraryPath);
-    if (!hasLibrary) {
-      console.warn(`Skipping legacy markdown prune; missing ${path.relative(ROOT, v3Path)} or ${path.relative(ROOT, v2Path)}`);
-      return;
-    }
-
-    const root = await readJson(libraryPath);
-    const items = Array.isArray(root?.items) ? root.items : [];
-    const keepMarkdownPaths = new Set();
-
-    for (const item of items) {
-      const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
-        ? item.assets
-        : {};
-      const gameinfoPath = pickPreferredAssetPath(assets, "gameinfo_local_practice", "gameinfo_local_legacy");
-      const rulesheetPath = pickPreferredAssetPath(assets, "rulesheet_local_practice", "rulesheet_local_legacy");
-      if (gameinfoPath?.startsWith("/pinball/")) keepMarkdownPaths.add(gameinfoPath);
-      if (rulesheetPath?.startsWith("/pinball/")) keepMarkdownPaths.add(rulesheetPath);
-    }
-
-    let removed = 0;
-    let skipped = 0;
-    for (const subdir of ["gameinfo", "rulesheets"]) {
-      const dir = path.join(target, subdir);
-      const entries = await fs.readdir(dir, { withFileTypes: true }).catch(() => []);
-      for (const entry of entries) {
-        if (!entry.isFile()) continue;
-        const name = entry.name;
-        if (!name.endsWith(".md")) continue;
-
-        const isNewStyle =
-          (subdir === "gameinfo" && name.endsWith("-gameinfo.md")) ||
-          (subdir === "rulesheets" && name.endsWith("-rulesheet.md"));
-        if (isNewStyle) continue;
-
-        const webPath = `/pinball/${subdir}/${name}`;
-        if (keepMarkdownPaths.has(webPath)) {
-          skipped += 1;
-          continue;
-        }
-
-        await fs.rm(path.join(dir, name), { force: true });
-        removed += 1;
-      }
-    }
-
-    console.log(
-      `Pruned starter-pack legacy markdown in ${path.relative(ROOT, target)} (removed ${removed}, kept ${skipped} referenced old-style files)`
-    );
-    return;
-  }
+  if (!refs) return;
   await pruneStarterPackMarkdownToV3PracticeAssets(target, refs.markdownPaths);
 }
 
 async function readJson(filePath) {
   return JSON.parse(await fs.readFile(filePath, "utf8"));
-}
-
-function pickPreferredAssetPath(assets, practiceKey, legacyKey) {
-  const practice = typeof assets?.[practiceKey] === "string" ? assets[practiceKey].trim() : "";
-  if (practice) return practice;
-  const legacy = typeof assets?.[legacyKey] === "string" ? assets[legacyKey].trim() : "";
-  return legacy || null;
 }
 
 async function pruneStarterPackJunkFiles(target) {
@@ -370,7 +300,7 @@ async function pruneStarterPackJunkFiles(target) {
   }
 }
 
-async function pruneStarterPackLegacyLibraryJsons(target) {
+async function pruneStarterPackNonV3LibraryJsons(target) {
   const dataDir = path.join(target, "data");
   const candidates = [
     path.join(dataDir, "pinball_library.json"),
@@ -412,27 +342,10 @@ async function syncStarterPacks() {
     await syncPath(name, target);
     const v3Refs = await readStarterPackV3PracticeAssetRefs(target);
     await pruneStarterPackPlayfieldImages(target, v3Refs?.playfield700Paths ?? null);
-    await pruneStarterPackLegacyMarkdown(target);
-    await pruneStarterPackLegacyLibraryJsons(target);
+    await pruneStarterPackMarkdown(target);
+    await pruneStarterPackNonV3LibraryJsons(target);
     await pruneStarterPackJunkFiles(target);
   }
-}
-
-async function rebuildLibraryJsonFromAvenue() {
-  const hasAvenueCsv = await pathExists(AVENUE_CSV_PATH);
-  if (!hasAvenueCsv) {
-    throw new Error(`Missing Avenue CSV source: ${AVENUE_CSV_PATH}`);
-  }
-
-  await run(
-    "npm",
-    ["exec", "tsx", "scripts/build_pinball_library.ts", AVENUE_CSV_PATH],
-    path.join(ROOT, "lpl-library")
-  );
-}
-
-async function rebuildLibraryJsonV2() {
-  await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v2.ts"], path.join(ROOT, "lpl-library"));
 }
 
 async function rebuildLibraryJsonV3() {
@@ -507,18 +420,8 @@ async function generateSharedAppSupportArtifacts() {
   await generateSharedRulesheetAudit();
 }
 
-async function generatePracticeIdentityAssetAliases() {
-  await run("node", ["tools/create-practice-identity-asset-aliases.mjs"], ROOT);
-}
-
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  await rebuildLibraryJsonFromAvenue();
-  await rebuildLibraryJsonV2();
-  await rebuildLibraryJsonV3();
-  await generatePracticeIdentityAssetAliases();
-  // Rebuild again so v2/v3 practice asset paths prefer the newly-created OPDB aliases.
-  await rebuildLibraryJsonV2();
   await rebuildLibraryJsonV3();
   await generateSharedAppSupportArtifacts();
   await buildPinballManifest();

@@ -36,12 +36,21 @@ type Game = {
   rulesheetLocal: string | null;
   rulesheetUrl: string | null;
   gameinfoLocalPractice?: string | null;
-  gameinfoLocalLegacy?: string | null;
-  rulesheetLocalPractice?: string | null;
-  rulesheetLocalLegacy?: string | null;
 
   videos: Video[];
 };
+
+function deriveRouteId(item: Record<string, unknown>, slug: string, fallback: string): string {
+  const libraryId = String(item.library_id ?? "").trim();
+  if (libraryId && slug) return `${libraryId}::${slug}`;
+  return (
+    slug ||
+    String(item.library_entry_id ?? "").trim() ||
+    String(item.opdb_id ?? "").trim() ||
+    String(item.practice_identity ?? "").trim() ||
+    fallback
+  );
+}
 
 function youtubeId(url: string): string | null {
   try {
@@ -103,12 +112,8 @@ function mapV2ItemsToGames(raw: unknown): Game[] | null {
   return items.map((item, idx) => {
     const assets =
       item.assets && typeof item.assets === "object" ? (item.assets as Record<string, unknown>) : {};
-    const routeId =
-      String(item.library_entry_id ?? "").trim() ||
-      String(item.opdb_id ?? "").trim() ||
-      String(item.practice_identity ?? "").trim() ||
-      `row-${idx + 1}`;
-    const legacySlug = String(item.slug ?? "").trim() || routeId;
+    const legacySlug = String(item.slug ?? "").trim();
+    const routeId = deriveRouteId(item, legacySlug, `row-${idx + 1}`);
     const videosRaw = Array.isArray(item.videos) ? item.videos : [];
     return {
       routeId,
@@ -119,24 +124,15 @@ function mapV2ItemsToGames(raw: unknown): Game[] | null {
       group: typeof item.group === "number" ? item.group : null,
       position: typeof item.position === "number" ? item.position : null,
       bank: typeof item.bank === "number" ? item.bank : null,
-      name: String(item.game ?? "").trim() || legacySlug,
+      name: String(item.game ?? "").trim() || legacySlug || routeId,
       manufacturer: String(item.manufacturer ?? "").trim() || null,
       year: typeof item.year === "number" ? item.year : null,
-      slug: legacySlug,
-      playfieldLocal:
-        String(assets.playfield_local_practice ?? "").trim() ||
-        String(assets.playfield_local_legacy ?? "").trim() ||
-        null,
+      slug: legacySlug || routeId,
+      playfieldLocal: String(assets.playfield_local_practice ?? "").trim() || null,
       playfieldImageUrl: String(item.playfield_image_url ?? "").trim() || null,
-      rulesheetLocal:
-        String(assets.rulesheet_local_practice ?? "").trim() ||
-        String(assets.rulesheet_local_legacy ?? "").trim() ||
-        null,
+      rulesheetLocal: String(assets.rulesheet_local_practice ?? "").trim() || null,
       rulesheetUrl: String(item.rulesheet_url ?? "").trim() || null,
       gameinfoLocalPractice: String(assets.gameinfo_local_practice ?? "").trim() || null,
-      gameinfoLocalLegacy: String(assets.gameinfo_local_legacy ?? "").trim() || null,
-      rulesheetLocalPractice: String(assets.rulesheet_local_practice ?? "").trim() || null,
-      rulesheetLocalLegacy: String(assets.rulesheet_local_legacy ?? "").trim() || null,
       videos: videosRaw
         .map((v) => {
           const o = (v ?? {}) as Record<string, unknown>;
@@ -182,45 +178,11 @@ export default function GamePage() {
         setGame(found ?? null);
         setGameLookupStatus("done");
       })
-      .catch(() =>
-        fetchPinballJson<unknown>("/pinball/data/pinball_library_v2.json")
-          .then((data) => {
-            if (cancelled) return;
-            const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
-            const games = (Array.isArray(root)
-              ? root
-              : Array.isArray(root?.games)
-                ? root.games
-                : Array.isArray(root?.items)
-                ? root.items
-                : []).map((g, idx) => ({ ...g, routeId: (g as Game).routeId ?? g.slug ?? `row-${idx + 1}` }));
-            const found = games.find((g) => g.slug === slug) ?? null;
-            setGame(found ?? null);
-            setGameLookupStatus("done");
-          })
-          .catch(() =>
-            fetchPinballJson<unknown>("/pinball/data/pinball_library.json")
-              .then((data) => {
-                if (cancelled) return;
-                const root = data as Game[] | { games?: Game[]; items?: Game[] } | null;
-                const games = (Array.isArray(root)
-                  ? root
-                  : Array.isArray(root?.games)
-                    ? root.games
-                    : Array.isArray(root?.items)
-                    ? root.items
-                    : []).map((g, idx) => ({ ...g, routeId: (g as Game).routeId ?? g.slug ?? `row-${idx + 1}` }));
-                const found = games.find((g) => g.slug === slug) ?? null;
-                setGame(found ?? null);
-                setGameLookupStatus("done");
-              })
-              .catch(() => {
-                if (cancelled) return;
-                setGame(null);
-                setGameLookupStatus("done");
-              })
-          )
-      );
+      .catch(() => {
+        if (cancelled) return;
+        setGame(null);
+        setGameLookupStatus("done");
+      });
     return () => {
       cancelled = true;
     };
@@ -232,10 +194,7 @@ export default function GamePage() {
     const key = game?.routeId ?? slug;
     const candidates = [
       game?.gameinfoLocalPractice,
-      game?.gameinfoLocalLegacy,
       game?.practiceIdentity ? `/pinball/gameinfo/${game.practiceIdentity}-gameinfo.md` : null,
-      game?.slug ? `/pinball/gameinfo/${game.slug}.md` : null,
-      `/pinball/gameinfo/${slug}.md`,
     ].filter((v, i, a): v is string => Boolean(v) && a.indexOf(v as string) === i);
 
     let cancelled = false;
@@ -266,7 +225,7 @@ export default function GamePage() {
     return () => {
       cancelled = true;
     };
-  }, [slug, gameLookupStatus, game?.routeId, game?.gameinfoLocalPractice, game?.gameinfoLocalLegacy, game?.practiceIdentity, game?.slug]);
+  }, [slug, gameLookupStatus, game?.routeId, game?.gameinfoLocalPractice, game?.practiceIdentity]);
 
   const videoCards = useMemo(() => {
     if (!game) return [];

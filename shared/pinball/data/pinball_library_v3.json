@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-02-26T13:08:03.546Z",
+  "generated_at": "2026-03-07T22:25:21.869Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -74,7 +74,7 @@
       "group": 1,
       "position": 1,
       "bank": 4,
-      "slug": "stern--avengers-infinity-quest--2020",
+      "slug": "avengers-infinity-quest-premium",
       "rulesheet_url": "https://tiltforums.com/t/avengers-infinity-quest-rulesheet/6740",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2020/08/Avengers-LE-Playfield-lknawef.jpg",
       "videos": [
@@ -92,11 +92,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--avengers-infinity-quest--2020-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gj66P-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gj66P-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gj66P-playfield.jpg"
       },
       "sort_keys": {
@@ -165,7 +162,7 @@
       "group": 1,
       "position": 2,
       "bank": 6,
-      "slug": "stern--metallica--2013",
+      "slug": "metallica-pro",
       "rulesheet_url": "https://tiltforums.com/t/metallica-rulesheet/228",
       "playfield_image_url": "https://o.pinside.com/0/d6/40/0d640d48344cfa61e36c945d5c273959cf36aed8.jpeg",
       "videos": [
@@ -177,11 +174,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--metallica--2013-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GRBE4-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GRBE4-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GRBE4-playfield.jpg"
       },
       "sort_keys": {
@@ -250,7 +244,7 @@
       "group": 1,
       "position": 3,
       "bank": null,
-      "slug": "stern--iron-maiden-legacy-of-the-beast--2018",
+      "slug": "iron-maiden-pro",
       "rulesheet_url": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
       "videos": [
@@ -262,11 +256,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
       },
       "sort_keys": {
@@ -335,7 +326,7 @@
       "group": 1,
       "position": 4,
       "bank": 1,
-      "slug": "stern--star-trek--2013",
+      "slug": "star-trek-enterprise-le",
       "rulesheet_url": "https://tiltforums.com/t/star-trek-wiki/456",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/PREM-PF.jpg",
       "videos": [
@@ -353,11 +344,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-trek--2013-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gryw4-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gryw4-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gryw4-playfield.jpg"
       },
       "sort_keys": {
@@ -426,16 +414,13 @@
       "group": 2,
       "position": 1,
       "bank": 3,
-      "slug": "stern--uncanny-x-men--2024",
+      "slug": "the-uncanny-x-men-le",
       "rulesheet_url": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
       },
       "sort_keys": {
@@ -504,7 +489,7 @@
       "group": 2,
       "position": 2,
       "bank": 5,
-      "slug": "stern--star-wars--2017",
+      "slug": "star-wars-pro",
       "rulesheet_url": "https://tiltforums.com/t/star-wars-stern-rulesheet/2812",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/StarWarsLE-Playfield.png",
       "videos": [
@@ -516,11 +501,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars--2017-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G5vLR-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G5vLR-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G5vLR-playfield.png"
       },
       "sort_keys": {
@@ -589,7 +571,7 @@
       "group": 2,
       "position": 3,
       "bank": 7,
-      "slug": "stern--simpsons-pinball-party--2003",
+      "slug": "the-simpsons-pinball-party",
       "rulesheet_url": "https://www.pinball.org/rules/simpsonspinballparty.txt",
       "playfield_image_url": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg",
       "videos": [
@@ -607,11 +589,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--simpsons-pinball-party--2003-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GRvBL-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GRvBL-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GRvBL-playfield.jpg"
       },
       "sort_keys": {
@@ -680,7 +659,7 @@
       "group": 2,
       "position": 4,
       "bank": 2,
-      "slug": "stern--the-mandalorian--2021",
+      "slug": "the-mandalorian-premium",
       "rulesheet_url": "https://tiltforums.com/t/the-mandalorian-rulesheet/7056",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/05/Mandalorian-LE-Playfield-01-afnkjkn3fad.jpg",
       "videos": [
@@ -692,11 +671,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--the-mandalorian--2021-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GBLLP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GBLLP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GBLLP-playfield.jpg"
       },
       "sort_keys": {
@@ -765,7 +741,7 @@
       "group": 3,
       "position": 1,
       "bank": 4,
-      "slug": "williams--the-getaway-high-speed-ii--1992",
+      "slug": "the-getaway-high-speed-ii",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
       "playfield_image_url": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
       "videos": [
@@ -777,11 +753,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--the-getaway-high-speed-ii--1992-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
       },
       "sort_keys": {
@@ -850,7 +823,7 @@
       "group": 3,
       "position": 2,
       "bank": 6,
-      "slug": "williams--monster-bash--1998",
+      "slug": "monster-bash",
       "rulesheet_url": "https://pinball.org/rules/monsterbash.txt",
       "playfield_image_url": "https://o.pinside.com/f/3d/11/f3d112c32278e7dd32ae24673374ba3325906513.jpeg",
       "videos": [
@@ -868,11 +841,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--monster-bash--1998-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gr3EW-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gr3EW-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gr3EW-playfield.jpg"
       },
       "sort_keys": {
@@ -941,7 +911,7 @@
       "group": 3,
       "position": 3,
       "bank": 8,
-      "slug": "williams--indiana-jones--1993",
+      "slug": "indiana-jones-the-pinball-adventure",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/1267/indiana.htm",
       "playfield_image_url": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg",
       "videos": [
@@ -953,11 +923,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--indiana-jones--1993-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4xZy-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4xZy-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4xZy-playfield.jpg"
       },
       "sort_keys": {
@@ -1026,7 +993,7 @@
       "group": 3,
       "position": 4,
       "bank": 1,
-      "slug": "bally--cactus-canyon--1998",
+      "slug": "cactus-canyon-lyman-upgrade",
       "rulesheet_url": "https://gamefaqs.gamespot.com/pinball/915657-cactus-canyon/faqs/40815?raw=1",
       "playfield_image_url": "https://o.pinside.com/2/3d/21/23d219b17c275ab7e997c05b4c9de0ca621a40f9.jpeg",
       "videos": [
@@ -1038,11 +1005,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--cactus-canyon--1998-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4835-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4835-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4835-playfield.jpg"
       },
       "sort_keys": {
@@ -1111,7 +1075,7 @@
       "group": 3,
       "position": 5,
       "bank": 3,
-      "slug": "williams--tales-of-the-arabian-nights--1996",
+      "slug": "tales-of-the-arabian-nights",
       "rulesheet_url": "https://pinball.org/rules/talesofthearabiannights.html",
       "playfield_image_url": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg",
       "videos": [
@@ -1123,11 +1087,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--tales-of-the-arabian-nights--1996-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4llj-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4llj-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4llj-playfield.jpg"
       },
       "sort_keys": {
@@ -1196,7 +1157,7 @@
       "group": 3,
       "position": 6,
       "bank": 5,
-      "slug": "bally--addams-family-the--1992",
+      "slug": "the-addams-family",
       "rulesheet_url": "https://www.pinball.org/rules/addamsfamily.html",
       "playfield_image_url": "https://o.pinside.com/2/b3/34/2b334721aa24cf45100e0874684ca1ac32b6066e.jpeg",
       "videos": [
@@ -1208,11 +1169,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--addams-family-the--1992-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4ODR-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4ODR-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4ODR-playfield.jpg"
       },
       "sort_keys": {
@@ -1281,7 +1239,7 @@
       "group": 4,
       "position": 1,
       "bank": 7,
-      "slug": "stern--rush--2022",
+      "slug": "rush-le",
       "rulesheet_url": "https://tiltforums.com/t/stern-rush-rulesheet/7409",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/01/Rush-LE-Playfield-gadf.jpg",
       "videos": [
@@ -1311,11 +1269,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--rush--2022-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G2Lkd-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G2Lkd-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G2Lkd-playfield.jpg"
       },
       "sort_keys": {
@@ -1384,7 +1339,7 @@
       "group": 4,
       "position": 2,
       "bank": 2,
-      "slug": "stern--foo-fighters--2023",
+      "slug": "foo-fighters-le",
       "rulesheet_url": "https://tiltforums.com/t/foo-fighters-rulesheet/8162",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/02/FooFighters-LE-Playfield-akjh3f.jpg",
       "videos": [
@@ -1402,11 +1357,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--foo-fighters--2023-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GpeoL-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GpeoL-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GpeoL-playfield.jpg"
       },
       "sort_keys": {
@@ -1475,7 +1427,7 @@
       "group": 4,
       "position": 3,
       "bank": 4,
-      "slug": "stern--ac-dc--2012",
+      "slug": "ac-dc-premium-vault-edition",
       "rulesheet_url": "http://bit.ly/acdcrulesheet",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/ACDC-Premium-no-Drummer-LUCI-PF-012518.jpg",
       "videos": [
@@ -1493,11 +1445,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--ac-dc--2012-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G43W4-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G43W4-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G43W4-playfield.jpg"
       },
       "sort_keys": {
@@ -1566,7 +1515,7 @@
       "group": 4,
       "position": 4,
       "bank": 6,
-      "slug": "stern--kiss--2015",
+      "slug": "kiss-le",
       "rulesheet_url": "https://tiltforums.com/t/kiss-wiki-rulesheet/732",
       "playfield_image_url": "https://o.pinside.com/e/8d/1e/e8d1e693e8bf1644b84cf301a83ef8809dc42dc5.jpeg",
       "videos": [
@@ -1578,11 +1527,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--kiss--2015-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4qX5-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4qX5-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4qX5-playfield.jpg"
       },
       "sort_keys": {
@@ -1651,7 +1597,7 @@
       "group": 4,
       "position": 5,
       "bank": 8,
-      "slug": "stern--godzilla--2021",
+      "slug": "godzilla-premium",
       "rulesheet_url": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [
@@ -1675,11 +1621,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
@@ -1748,7 +1691,7 @@
       "group": 4,
       "position": 6,
       "bank": 1,
-      "slug": "stern--deadpool--2018",
+      "slug": "deadpool-pro",
       "rulesheet_url": "https://tiltforums.com/t/deadpool-rulesheet/4311",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
       "videos": [
@@ -1760,11 +1703,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
       },
       "sort_keys": {
@@ -1833,7 +1773,7 @@
       "group": 4,
       "position": 7,
       "bank": 3,
-      "slug": "stern--munsters--2019",
+      "slug": "the-munsters-pro",
       "rulesheet_url": "https://tiltforums.com/t/the-munsters-rulesheet/4781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/01/Munsters-Pro-Playfield.jpg",
       "videos": [
@@ -1851,11 +1791,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--munsters--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GbPde-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GbPde-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GbPde-playfield.jpg"
       },
       "sort_keys": {
@@ -1924,7 +1861,7 @@
       "group": 4,
       "position": 8,
       "bank": 5,
-      "slug": "cgc--pulp-fiction--2024",
+      "slug": "pulp-fiction-le",
       "rulesheet_url": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
       "playfield_image_url": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
       "videos": [
@@ -1942,11 +1879,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
       },
       "sort_keys": {
@@ -2015,7 +1949,7 @@
       "group": 4,
       "position": 9,
       "bank": 7,
-      "slug": "stern--tron-legacy--2011",
+      "slug": "tron-legacy-le",
       "rulesheet_url": "https://www.pinballnews.com/games/tron/index6b.html",
       "playfield_image_url": "https://o.pinside.com/5/6a/75/56a75c9be016d166a14066947458f2c7570b7526.jpg",
       "videos": [
@@ -2033,11 +1967,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--tron-legacy--2011-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GrkL5-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GrkL5-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GrkL5-playfield.jpg"
       },
       "sort_keys": {
@@ -2106,16 +2037,13 @@
       "group": 4,
       "position": 10,
       "bank": 2,
-      "slug": "stern--teenage-mutant-ninja-turtles--2020",
+      "slug": "teenage-mutant-ninja-turtles-le",
       "rulesheet_url": "https://tiltforums.com/t/stern-tmnt-rulesheet/6599",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--teenage-mutant-ninja-turtles--2020-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gd2Xb-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gd2Xb-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-playfield.jpg"
       },
       "sort_keys": {
@@ -2184,7 +2112,7 @@
       "group": 5,
       "position": 1,
       "bank": 4,
-      "slug": "bally--scared-stiff--1996",
+      "slug": "scared-stiff",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/3915/SCARED.HTM",
       "playfield_image_url": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg",
       "videos": [
@@ -2196,11 +2124,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--scared-stiff--1996-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4xbP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4xbP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4xbP-playfield.jpg"
       },
       "sort_keys": {
@@ -2269,7 +2194,7 @@
       "group": 5,
       "position": 2,
       "bank": 6,
-      "slug": "stern--dungeons-and-dragons-the-tyrants-eye--2025",
+      "slug": "dungeons-and-dragons-the-tyrants-eye-le",
       "rulesheet_url": "https://tiltforums.com/t/dungeons-dragons-the-tyrants-eye-rulesheet/9267",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/01/DungeonLETopPlayfield-adfkjehfa3.jpg",
       "videos": [
@@ -2281,11 +2206,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--dungeons-and-dragons-the-tyrants-eye--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GK1Ej-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK1Ej-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GK1Ej-playfield.jpg"
       },
       "sort_keys": {
@@ -2354,16 +2276,13 @@
       "group": 5,
       "position": 3,
       "bank": 8,
-      "slug": "stern--star-wars-fall-of-the-empire--2025",
+      "slug": "star-wars-fall-of-the-empire-le",
       "rulesheet_url": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
       },
       "sort_keys": {
@@ -2432,16 +2351,13 @@
       "group": 5,
       "position": 4,
       "bank": 1,
-      "slug": "stern--john-wick--2024",
+      "slug": "john-wick-le",
       "rulesheet_url": "https://tiltforums.com/t/john-wick-rulesheet/8956",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--john-wick--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GQK1P-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQK1P-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GQK1P-playfield.jpg"
       },
       "sort_keys": {
@@ -2510,7 +2426,7 @@
       "group": 5,
       "position": 5,
       "bank": 3,
-      "slug": "stern--elviras-house-of-horrors--2019",
+      "slug": "elviras-house-of-horrors-le",
       "rulesheet_url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/10/ElviraPlayFieldA9145.jpg",
       "videos": [
@@ -2522,11 +2438,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--elviras-house-of-horrors--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GZVOd-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GZVOd-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GZVOd-playfield.jpg"
       },
       "sort_keys": {
@@ -2595,7 +2508,7 @@
       "group": 6,
       "position": 1,
       "bank": 5,
-      "slug": "stern--james-bond-007--2022",
+      "slug": "james-bond-007-le",
       "rulesheet_url": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
       "videos": [
@@ -2613,11 +2526,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
       },
       "sort_keys": {
@@ -2686,7 +2596,7 @@
       "group": 6,
       "position": 2,
       "bank": 7,
-      "slug": "stern--king-kong-myth-of-terror-island--2025",
+      "slug": "king-kong-le",
       "rulesheet_url": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
       "videos": [
@@ -2704,11 +2614,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
       },
       "sort_keys": {
@@ -2777,16 +2684,13 @@
       "group": 6,
       "position": 3,
       "bank": 2,
-      "slug": "stern--ghostbusters--2016",
+      "slug": "ghostbusters-le",
       "rulesheet_url": "https://tiltforums.com/t/ghostbusters-pinball-rulesheet/1358",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--ghostbusters--2016-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GR9Nr-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GR9Nr-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GR9Nr-playfield.png"
       },
       "sort_keys": {
@@ -2855,7 +2759,7 @@
       "group": 6,
       "position": 4,
       "bank": 4,
-      "slug": "stern--jaws--2024",
+      "slug": "jaws-le",
       "rulesheet_url": "https://tiltforums.com/t/jaws-rulesheet/8781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
       "videos": [
@@ -2873,11 +2777,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
       },
       "sort_keys": {
@@ -2946,7 +2847,7 @@
       "group": 6,
       "position": 5,
       "bank": 6,
-      "slug": "stern--jurassic-park-stern--2019",
+      "slug": "jurassic-park-pro",
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "videos": [
@@ -2964,11 +2865,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
       },
       "sort_keys": {
@@ -3037,7 +2935,7 @@
       "group": 6,
       "position": 6,
       "bank": 2,
-      "slug": "stern--game-of-thrones--2015",
+      "slug": "game-of-thrones-le",
       "rulesheet_url": "https://tiltforums.com/t/game-of-thrones-pinball-rulesheet/936",
       "playfield_image_url": "https://o.pinside.com/b/27/84/b27843ac978234bd05ae2a302b0887e3366de366.jpeg",
       "videos": [
@@ -3049,11 +2947,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--game-of-thrones--2015-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G41d5-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G41d5-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G41d5-playfield.jpg"
       },
       "sort_keys": {
@@ -3122,7 +3017,7 @@
       "group": 7,
       "position": 1,
       "bank": 1,
-      "slug": "bally--attack-from-mars--1995",
+      "slug": "attack-from-mars-remake-le",
       "rulesheet_url": "https://www.pinball.org/rules/attackfrommars.html",
       "playfield_image_url": "https://o.pinside.com/3/47/76/347761a38183898a7fe902139f96794862a0f25d.jpeg",
       "videos": [
@@ -3140,11 +3035,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--attack-from-mars--1995-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4do5-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4do5-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4do5-playfield.jpg"
       },
       "sort_keys": {
@@ -3213,7 +3105,7 @@
       "group": 7,
       "position": 2,
       "bank": 3,
-      "slug": "stern--black-knight-sword-of-rage--2019",
+      "slug": "black-knight-sword-of-rage-le",
       "rulesheet_url": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
       "videos": [
@@ -3231,11 +3123,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
       },
       "sort_keys": {
@@ -3304,16 +3193,13 @@
       "group": 7,
       "position": 3,
       "bank": null,
-      "slug": "stern--godzilla--2021",
+      "slug": "godzilla-le",
       "rulesheet_url": null,
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
@@ -3382,7 +3268,7 @@
       "group": 7,
       "position": 4,
       "bank": 5,
-      "slug": "williams--medieval-madness--1997",
+      "slug": "medieval-madness",
       "rulesheet_url": "https://www.pinball.org/rules/medievalmadness.html",
       "playfield_image_url": "https://o.pinside.com/6/3f/ea/63fea245ad8041e4db2684fb1f5f9c5caa5a7890.jpeg",
       "videos": [
@@ -3400,11 +3286,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--medieval-madness--1997-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G5pe4-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G5pe4-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G5pe4-playfield.jpg"
       },
       "sort_keys": {
@@ -3473,7 +3356,7 @@
       "group": 7,
       "position": 5,
       "bank": 7,
-      "slug": "stern--venom--2023",
+      "slug": "venom-le",
       "rulesheet_url": "https://tiltforums.com/t/venom-rulesheet/8503",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2023/07/Venom-LE-Playfield-akjnef.jpg",
       "videos": [
@@ -3485,11 +3368,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--venom--2023-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G3EBl-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G3EBl-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G3EBl-playfield.jpg"
       },
       "sort_keys": {
@@ -3558,7 +3438,7 @@
       "group": 7,
       "position": 6,
       "bank": 8,
-      "slug": "stern--stranger-things--2019",
+      "slug": "stranger-things-le",
       "rulesheet_url": "https://tiltforums.com/t/stranger-things-rulesheet/6093",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/12/StrangerThings-LE-Playfield-09j4gnjrf.jpg",
       "videos": [
@@ -3576,11 +3456,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--stranger-things--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gzy89-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gzy89-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gzy89-playfield.jpg"
       },
       "sort_keys": {
@@ -3649,7 +3526,7 @@
       "group": 1,
       "position": 1,
       "bank": null,
-      "slug": "jjp--harry-potter--2025",
+      "slug": "harry-potter-arcade-edition-arcade-edition",
       "rulesheet_url": "https://tiltforums.com/t/harry-potter-rulesheet/9639",
       "playfield_image_url": "https://jerseyjackpinball.com/cdn/shop/files/Harry_CE_playfield_100.webp",
       "videos": [
@@ -3667,11 +3544,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/jjp--harry-potter--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GWyBj-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GWyBj-playfield.webp"
       },
       "sort_keys": {
@@ -3740,7 +3614,7 @@
       "group": 1,
       "position": 2,
       "bank": null,
-      "slug": "stern--king-kong-myth-of-terror-island--2025",
+      "slug": "king-kong-premium",
       "rulesheet_url": "https://tiltforums.com/t/king-kong-myth-of-terror-island-rulesheet/9514",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg",
       "videos": [
@@ -3758,11 +3632,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--king-kong-myth-of-terror-island--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
       },
       "sort_keys": {
@@ -3831,16 +3702,13 @@
       "group": 1,
       "position": 3,
       "bank": null,
-      "slug": "stern--star-wars-fall-of-the-empire--2025",
+      "slug": "star-wars-fall-of-the-empire-pro",
       "rulesheet_url": "https://tiltforums.com/t/star-wars-fall-of-the-empire-rulesheet/9872",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--star-wars-fall-of-the-empire--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
       },
       "sort_keys": {
@@ -3909,7 +3777,7 @@
       "group": 1,
       "position": 4,
       "bank": null,
-      "slug": "bof--dune--2025",
+      "slug": "dune",
       "rulesheet_url": "https://tiltforums.com/t/dune-rulesheet/9850",
       "playfield_image_url": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
       "videos": [
@@ -3927,11 +3795,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bof--dune--2025-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gd266-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gd266-playfield.jpg"
       },
       "sort_keys": {
@@ -4000,7 +3865,7 @@
       "group": 1,
       "position": 5,
       "bank": null,
-      "slug": "stern--jaws--2024",
+      "slug": "jaws-premium",
       "rulesheet_url": "https://tiltforums.com/t/jaws-rulesheet/8781",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg",
       "videos": [
@@ -4018,11 +3883,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jaws--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
       },
       "sort_keys": {
@@ -4091,7 +3953,7 @@
       "group": 2,
       "position": 1,
       "bank": null,
-      "slug": "stern--deadpool--2018",
+      "slug": "deadpool-premium",
       "rulesheet_url": "https://tiltforums.com/t/deadpool-rulesheet/4311",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png",
       "videos": [
@@ -4103,11 +3965,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--deadpool--2018-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
       },
       "sort_keys": {
@@ -4176,16 +4035,13 @@
       "group": 2,
       "position": 2,
       "bank": null,
-      "slug": "gottlieb--fast-draw--1975",
+      "slug": "fast-draw",
       "rulesheet_url": "https://rules.silverballmania.com/rules/GRVoX-MLE7l",
       "playfield_image_url": "https://o.pinside.com/c/84/78/c847882714e37e7150e43a6f2e29027030fcafd9.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--fast-draw--1975-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GRVoX-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GRVoX-playfield.jpg"
       },
       "sort_keys": {
@@ -4254,16 +4110,13 @@
       "group": 2,
       "position": 3,
       "bank": null,
-      "slug": "spooky--evil-dead--2024",
+      "slug": "evil-dead-ce",
       "rulesheet_url": "https://tiltforums.com/t/evil-dead-by-spooky-pinball-rulesheet/9720",
       "playfield_image_url": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/spooky--evil-dead--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GYWvw-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GYWvw-playfield.png"
       },
       "sort_keys": {
@@ -4332,16 +4185,13 @@
       "group": 2,
       "position": 4,
       "bank": null,
-      "slug": "pb--alien--2022",
+      "slug": "alien-ellen-ripley-edition-ellen-ripley",
       "rulesheet_url": "https://tiltforums.com/t/pinball-brothers-alien-rulesheet/7966",
       "playfield_image_url": "https://o.pinside.com/1/13/91/11391f5e555c44d51d57e53b80cdb54ef6747435.jpeg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/pb--alien--2022-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4PBO-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4PBO-playfield.jpg"
       },
       "sort_keys": {
@@ -4410,7 +4260,7 @@
       "group": 2,
       "position": 5,
       "bank": null,
-      "slug": "de--tales-from-the-crypt--1993",
+      "slug": "tales-from-the-crypt",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/2493/crypt.htm",
       "playfield_image_url": "https://o.pinside.com/0/7e/de/07ede2316a85b78651102912d42f91c0863a6043.jpeg",
       "videos": [
@@ -4422,11 +4272,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/de--tales-from-the-crypt--1993-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GR6wO-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GR6wO-playfield.jpg"
       },
       "sort_keys": {
@@ -4495,7 +4342,7 @@
       "group": 3,
       "position": 1,
       "bank": null,
-      "slug": "midway--baby-pac-man--1982",
+      "slug": "baby-pac-man",
       "rulesheet_url": "https://strategywiki.org/wiki/Baby_Pac-Man/Walkthrough",
       "playfield_image_url": "https://o.pinside.com/a/e2/d5/ae2d55c13d08c63a9e13b4431d5f747740ba4536.jpeg",
       "videos": [
@@ -4507,11 +4354,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/midway--baby-pac-man--1982-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G5Kvx-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G5Kvx-playfield.jpeg"
       },
       "sort_keys": {
@@ -4580,7 +4424,7 @@
       "group": 3,
       "position": 2,
       "bank": null,
-      "slug": "bally--nitro-ground-shaker--1980",
+      "slug": "nitro-ground-shaker",
       "rulesheet_url": "https://rules.silverballmania.com/rules/GrP6q-M5Rp1",
       "playfield_image_url": "https://o.pinside.com/7/82/28/782286aa112e543b8416be1bf1a94b7b73fbbaf0.jpg",
       "videos": [
@@ -4592,11 +4436,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--nitro-ground-shaker--1980-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GrP6q-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GrP6q-playfield.jpg"
       },
       "sort_keys": {
@@ -4665,16 +4506,13 @@
       "group": 3,
       "position": 3,
       "bank": null,
-      "slug": "stern--metallica-remastered--2024",
+      "slug": "metallica-remastered-premium",
       "rulesheet_url": "https://tiltforums.com/t/metallica-remastered-rulesheet/9298",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/10/MetalliPlayfLEFinal-kjahefae.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--metallica-remastered--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GO0q3-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GO0q3-playfield.jpg"
       },
       "sort_keys": {
@@ -4743,7 +4581,7 @@
       "group": 3,
       "position": 4,
       "bank": null,
-      "slug": "bally--indianapolis-500--1995",
+      "slug": "indianapolis-500",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/2853/indy500.htm",
       "playfield_image_url": "https://o.pinside.com/e/fb/e4/efbe43af5567c672de54c72192a19430497ce7c5.jpeg",
       "videos": [
@@ -4755,11 +4593,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--indianapolis-500--1995-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gr8l3-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gr8l3-playfield.jpg"
       },
       "sort_keys": {
@@ -4828,7 +4663,7 @@
       "group": 3,
       "position": 5,
       "bank": null,
-      "slug": "cgc--pulp-fiction--2024",
+      "slug": "pulp-fiction-se",
       "rulesheet_url": "https://tiltforums.com/t/pulp-fiction-rulesheet/8471",
       "playfield_image_url": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg",
       "videos": [
@@ -4846,11 +4681,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/cgc--pulp-fiction--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
       },
       "sort_keys": {
@@ -4919,7 +4751,7 @@
       "group": 3,
       "position": 6,
       "bank": null,
-      "slug": "williams--alien-poker--1980",
+      "slug": "alien-poker",
       "rulesheet_url": "https://rules.silverballmania.com/rules/G4yen-MD12Y",
       "playfield_image_url": "https://o.pinside.com/a/03/e4/a03e4d88ad5527ec10bd96e43a7484727e2c8b92.jpg",
       "videos": [
@@ -4931,11 +4763,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--alien-poker--1980-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4yen-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4yen-playfield.jpg"
       },
       "sort_keys": {
@@ -5004,7 +4833,7 @@
       "group": 3,
       "position": 7,
       "bank": null,
-      "slug": "spooky--total-nuclear-annihilation--2017",
+      "slug": "total-nuclear-annihilation",
       "rulesheet_url": "https://tiltforums.com/t/total-nuclear-annihilation-rulesheet/3209",
       "playfield_image_url": "https://o.pinside.com/0/61/43/06143560c26dad7e3540ffe50af56c90259829b5.jpg",
       "videos": [
@@ -5016,11 +4845,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/spooky--total-nuclear-annihilation--2017-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GRD79-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GRD79-playfield.jpg"
       },
       "sort_keys": {
@@ -5089,7 +4915,7 @@
       "group": 3,
       "position": 8,
       "bank": null,
-      "slug": "williams--the-getaway-high-speed-ii--1992",
+      "slug": "the-getaway-high-speed-ii",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/1000/getaway.htm",
       "playfield_image_url": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
       "videos": [
@@ -5101,11 +4927,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/williams--the-getaway-high-speed-ii--1992-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
       },
       "sort_keys": {
@@ -5174,7 +4997,7 @@
       "group": 3,
       "position": 9,
       "bank": null,
-      "slug": "stern--james-bond-007--2022",
+      "slug": "james-bond-007-pro",
       "rulesheet_url": "https://tiltforums.com/t/james-bond-007-rulesheet/7893",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg",
       "videos": [
@@ -5192,11 +5015,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--james-bond-007--2022-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
       },
       "sort_keys": {
@@ -5265,16 +5085,13 @@
       "group": 3,
       "position": 10,
       "bank": null,
-      "slug": "stern--uncanny-x-men--2024",
+      "slug": "the-uncanny-x-men-pro",
       "rulesheet_url": "https://tiltforums.com/t/the-uncanny-x-men-rulesheet/9100",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--uncanny-x-men--2024-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
       },
       "sort_keys": {
@@ -5343,7 +5160,7 @@
       "group": 3,
       "position": 11,
       "bank": null,
-      "slug": "bally--paragon--1979",
+      "slug": "paragon",
       "rulesheet_url": "https://pinballprimer.github.io/paragon_GrXy3.html",
       "playfield_image_url": "https://o.pinside.com/8/d3/0e/8d30e91fa2664ac28ef48f87feeed51d71c91e5b.jpg",
       "videos": [
@@ -5355,11 +5172,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--paragon--1979-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GrXy3-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GrXy3-playfield.jpg"
       },
       "sort_keys": {
@@ -5428,7 +5242,7 @@
       "group": 4,
       "position": 1,
       "bank": null,
-      "slug": "gottlieb--buck-rogers--1980",
+      "slug": "buck-rogers",
       "rulesheet_url": "https://rules.silverballmania.com/rules/GRKx7-MJ49e",
       "playfield_image_url": "https://o.pinside.com/7/cf/11/7cf116170b0e4015323c3c653d51f7ce7c02f1a8.jpg",
       "videos": [
@@ -5440,11 +5254,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--buck-rogers--1980-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GRKx7-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GRKx7-playfield.jpg"
       },
       "sort_keys": {
@@ -5513,16 +5324,13 @@
       "group": 4,
       "position": 2,
       "bank": null,
-      "slug": "gottlieb--totem--1979",
+      "slug": "totem",
       "rulesheet_url": "https://rules.silverballmania.com/rules/G5YDN-MJKYo",
       "playfield_image_url": "https://o.pinside.com/c/82/b2/c82b233dfdc3733dfccbf79248680629b04fa1af.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--totem--1979-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G5YDN-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G5YDN-playfield.jpg"
       },
       "sort_keys": {
@@ -5591,7 +5399,7 @@
       "group": 4,
       "position": 3,
       "bank": null,
-      "slug": "midway--shadow--1994",
+      "slug": "the-shadow",
       "rulesheet_url": "https://www.ipdb.org/rulesheets/2528/SHADOW.HTM",
       "playfield_image_url": "https://i.imgur.com/YmBikcx.jpeg",
       "videos": [
@@ -5603,11 +5411,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/midway--shadow--1994-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4jPX-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4jPX-playfield.jpg"
       },
       "sort_keys": {
@@ -5676,16 +5481,13 @@
       "group": 5,
       "position": 1,
       "bank": null,
-      "slug": "gottlieb--excalibur--1988",
+      "slug": "excalibur",
       "rulesheet_url": "https://rules.silverballmania.com/rules/GrPbb-MJZX6",
       "playfield_image_url": "https://o.pinside.com/8/94/d7/894d7e9f11718560a3ff8dc1ff1175ce868fcdfb.jpeg",
       "videos": [],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--excalibur--1988-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GrPbb-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GrPbb-playfield.jpg"
       },
       "sort_keys": {
@@ -5754,7 +5556,7 @@
       "group": 5,
       "position": 2,
       "bank": null,
-      "slug": "stern--godzilla--2021",
+      "slug": "godzilla-premium",
       "rulesheet_url": "https://tiltforums.com/t/stern-godzilla-rulesheet/7210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [
@@ -5778,11 +5580,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--godzilla--2021-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
       },
       "sort_keys": {
@@ -5851,7 +5650,7 @@
       "group": 5,
       "position": 3,
       "bank": null,
-      "slug": "bally--flash-gordon--1980",
+      "slug": "flash-gordon",
       "rulesheet_url": "https://rules.silverballmania.com/rules/G5728-MDbjD",
       "playfield_image_url": "https://o.pinside.com/4/05/70/40570b35e1413f4a6785ea7a8c95250491894cd9.jpeg",
       "videos": [
@@ -5863,11 +5662,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bally--flash-gordon--1980-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G5728-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G5728-playfield.jpg"
       },
       "sort_keys": {
@@ -5936,7 +5732,7 @@
       "group": 5,
       "position": 4,
       "bank": null,
-      "slug": "gottlieb--genesis--1986",
+      "slug": "genesis",
       "rulesheet_url": "https://pinballprimer.github.io/genesis_Gr2wz.html",
       "playfield_image_url": "https://o.pinside.com/3/8f/66/38f663cba178595c6aa1c815df14ca14e1ffd698.jpeg",
       "videos": [
@@ -5954,11 +5750,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--genesis--1986-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/Gr2wz-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/Gr2wz-playfield.jpg"
       },
       "sort_keys": {
@@ -6027,7 +5820,7 @@
       "group": 5,
       "position": 5,
       "bank": null,
-      "slug": "stern--black-knight-sword-of-rage--2019",
+      "slug": "black-knight-sword-of-rage-pro",
       "rulesheet_url": "https://tiltforums.com/t/black-knight-sword-of-rage-rulesheet/5210",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg",
       "videos": [
@@ -6045,11 +5838,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--black-knight-sword-of-rage--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
       },
       "sort_keys": {
@@ -6118,7 +5908,7 @@
       "group": 5,
       "position": 6,
       "bank": null,
-      "slug": "stern--jurassic-park-stern--2019",
+      "slug": "jurassic-park-premium",
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "videos": [
@@ -6136,11 +5926,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--jurassic-park-stern--2019-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
       },
       "sort_keys": {
@@ -6209,7 +5996,7 @@
       "group": 5,
       "position": 7,
       "bank": null,
-      "slug": "gottlieb--robo-war--1988",
+      "slug": "robo-war",
       "rulesheet_url": "https://pinballprimer.github.io/robowar_GryK3.html",
       "playfield_image_url": "https://cdn.prod.website-files.com/630f7e3a17d08a21ae05d20a/683ce9ed6e7c64e06127da82_RPWy96zmATcYkDm-6nYntR0TP72VW4NPkhHSov4XHo0.webp",
       "videos": [
@@ -6221,11 +6008,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/gottlieb--robo-war--1988-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GryK3-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GryK3-playfield.webp"
       },
       "sort_keys": {
@@ -6294,7 +6078,7 @@
       "group": 5,
       "position": 8,
       "bank": null,
-      "slug": "bof--barrels-of-fun-labyrinth--2023",
+      "slug": "labyrinth",
       "rulesheet_url": "https://tiltforums.com/t/labyrinth-rulesheet/8773",
       "playfield_image_url": "https://o.pinside.com/2/91/f2/291f2be351242ef4f1bd9247a1de9f6f72599e89.jpeg",
       "videos": [
@@ -6306,11 +6090,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/bof--barrels-of-fun-labyrinth--2023-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/GvBn8-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": null,
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/GvBn8-playfield.jpg"
       },
       "sort_keys": {
@@ -6379,7 +6160,7 @@
       "group": 5,
       "position": 9,
       "bank": null,
-      "slug": "stern--iron-maiden-legacy-of-the-beast--2018",
+      "slug": "iron-maiden-pro",
       "rulesheet_url": "https://tiltforums.com/t/iron-maiden-pinball-rulesheet/3787",
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png",
       "videos": [
@@ -6391,11 +6172,8 @@
         }
       ],
       "assets": {
-        "rulesheet_local_legacy": "/pinball/rulesheets/stern--iron-maiden-legacy-of-the-beast--2018-rulesheet.md",
         "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
-        "gameinfo_local_legacy": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_legacy": null,
         "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
       },
       "sort_keys": {

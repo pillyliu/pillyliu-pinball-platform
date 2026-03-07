@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const DEFAULT_INPUT_JSON = path.join(ROOT, "shared", "pinball", "data", "pinball_library_v2.json");
+const DEFAULT_INPUT_JSON = path.join(ROOT, "shared", "pinball", "data", "pinball_library_v3.json");
 const DEFAULT_OUTPUT_JSON = path.join(ROOT, "shared", "pinball", "data", "pinside_group_map.json");
 const SESSION_SEARCH = "pinside-search";
 const SESSION_MACHINE = "pinside-machine";
