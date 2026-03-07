@@ -39,6 +39,7 @@ type MachineOverride = {
   backglassSourceUrl: string;
   backglassSourceNote: string;
   playfieldAliasId: string;
+  playfieldCoveredAliasIds: string[];
   playfieldLocalPath: string | null;
   playfieldSourceUrl: string;
   playfieldSourceNote: string;
@@ -78,6 +79,18 @@ type MachineDetail = {
       primaryImageUrl: string | null;
       playfieldImageUrl: string | null;
       updatedAt: string | null;
+    }>;
+    playfieldAssets: Array<{
+      playfieldAssetId: number;
+      sourceAliasId: string;
+      sourceAliasLabel: string;
+      coveredAliasIds: string[];
+      coveredAliasLabels: string[];
+      localPath: string | null;
+      sourceUrl: string | null;
+      sourceNote: string | null;
+      updatedAt: string | null;
+      isUnused: boolean;
     }>;
     assets: {
       backglass: {
@@ -142,6 +155,7 @@ type SaveOverridePayload = {
   backglassSourceUrl: string;
   backglassSourceNote: string;
   playfieldAliasId: string;
+  playfieldCoveredAliasIds: string[];
   playfieldSourceUrl: string;
   playfieldSourceNote: string;
   rulesheetSourceUrl: string;
@@ -164,6 +178,7 @@ const emptyOverridePayload = (): SaveOverridePayload => ({
   backglassSourceUrl: "",
   backglassSourceNote: "",
   playfieldAliasId: "",
+  playfieldCoveredAliasIds: [],
   playfieldSourceUrl: "",
   playfieldSourceNote: "",
   rulesheetSourceUrl: "",
@@ -201,6 +216,15 @@ function displayTitle(item: MachineListItem | MachineDetail["machine"]) {
 
 function aliasTitle(alias: MachineDetail["sources"]["aliases"][number], fallbackName: string) {
   return [alias.variant || fallbackName, alias.opdbMachineId].filter(Boolean).join(" · ");
+}
+
+function coveredAliasDefaults(detail: MachineDetail | null, aliasId: string) {
+  if (!detail) return aliasId ? [aliasId] : [];
+  const existing = detail.sources.playfieldAssets.find((asset) => asset.sourceAliasId === aliasId);
+  if (existing) return existing.coveredAliasIds;
+  return detail.sources.playfieldAssets.length === 0
+    ? detail.sources.aliases.map((alias) => alias.opdbMachineId)
+    : (aliasId ? [aliasId] : []);
 }
 
 function displayImage(detail: MachineDetail | null): string | null {
@@ -242,6 +266,10 @@ export default function App() {
   const selectedMachine = useMemo(() => machines.find((item) => item.practiceIdentity === selectedIdentity) ?? null, [machines, selectedIdentity]);
   const selectedPlayfieldAlias = useMemo(
     () => detail?.sources.aliases.find((alias) => alias.opdbMachineId === overrideForm.playfieldAliasId) ?? detail?.sources.aliases[0] ?? null,
+    [detail, overrideForm.playfieldAliasId],
+  );
+  const selectedPlayfieldAsset = useMemo(
+    () => detail?.sources.playfieldAssets.find((asset) => asset.sourceAliasId === overrideForm.playfieldAliasId) ?? null,
     [detail, overrideForm.playfieldAliasId],
   );
   const pageCount = Math.max(1, Math.ceil(totalMachines / PAGE_SIZE));
@@ -298,6 +326,7 @@ export default function App() {
           backglassSourceUrl: payload.override.backglassSourceUrl,
           backglassSourceNote: payload.override.backglassSourceNote,
           playfieldAliasId: payload.override.playfieldAliasId,
+          playfieldCoveredAliasIds: payload.override.playfieldCoveredAliasIds,
           playfieldSourceUrl: payload.override.playfieldSourceUrl,
           playfieldSourceNote: payload.override.playfieldSourceNote,
           rulesheetSourceUrl: payload.override.rulesheetSourceUrl,
@@ -339,6 +368,7 @@ export default function App() {
         backglassSourceUrl: payload.override.backglassSourceUrl,
         backglassSourceNote: payload.override.backglassSourceNote,
         playfieldAliasId: payload.override.playfieldAliasId,
+        playfieldCoveredAliasIds: payload.override.playfieldCoveredAliasIds,
         playfieldSourceUrl: payload.override.playfieldSourceUrl,
         playfieldSourceNote: payload.override.playfieldSourceNote,
         rulesheetSourceUrl: payload.override.rulesheetSourceUrl,
@@ -408,6 +438,37 @@ export default function App() {
           body: JSON.stringify(overrideForm),
         }),
       "Override metadata saved.",
+    );
+  }
+
+  function loadPlayfieldForm(aliasId: string) {
+    setOverrideForm((current) => {
+      const asset = detail?.sources.playfieldAssets.find((item) => item.sourceAliasId === aliasId) ?? null;
+      return {
+        ...current,
+        playfieldAliasId: aliasId,
+        playfieldCoveredAliasIds: coveredAliasDefaults(detail, aliasId),
+        playfieldSourceUrl: asset?.sourceUrl ?? "",
+        playfieldSourceNote: asset?.sourceNote ?? "",
+      };
+    });
+  }
+
+  async function handleSavePlayfieldCoverage() {
+    if (!selectedIdentity || !overrideForm.playfieldAliasId) return;
+    await runAction(
+      "save-playfield-coverage",
+      () =>
+        apiFetch(`api/machines/${selectedIdentity}/playfield/coverage`, {
+          method: "PUT",
+          body: JSON.stringify({
+            machineAliasId: overrideForm.playfieldAliasId,
+            coveredAliasIds: overrideForm.playfieldCoveredAliasIds,
+            sourceUrl: overrideForm.playfieldSourceUrl,
+            sourceNote: overrideForm.playfieldSourceNote,
+          }),
+        }),
+      "Playfield alias coverage saved.",
     );
   }
 
@@ -497,6 +558,7 @@ export default function App() {
           method: "POST",
           body: JSON.stringify({
             machineAliasId: overrideForm.playfieldAliasId,
+            coveredAliasIds: overrideForm.playfieldCoveredAliasIds,
             sourceUrl: overrideForm.playfieldSourceUrl.trim(),
             sourceNote: overrideForm.playfieldSourceNote,
           }),
@@ -513,6 +575,9 @@ export default function App() {
         const body = new FormData();
         body.append("image", file);
         body.append("machineAliasId", overrideForm.playfieldAliasId);
+        for (const aliasId of overrideForm.playfieldCoveredAliasIds) {
+          body.append("coveredAliasIds", aliasId);
+        }
         body.append("sourceUrl", overrideForm.playfieldSourceUrl);
         body.append("sourceNote", overrideForm.playfieldSourceNote || file.name);
         const response = await fetch(`api/machines/${selectedIdentity}/playfield/upload`, {
@@ -935,20 +1000,68 @@ export default function App() {
                   <div className="panel-header">
                     <div>
                       <h2>Replace playfield image</h2>
-                      <p className="muted">Choose the exact OPDB alias this art belongs to, then import or upload the better image.</p>
+                      <p className="muted">Tie each local playfield file to a source alias, then choose which aliases should inherit it.</p>
                     </div>
-                    <button onClick={handleImportPlayfieldUrl} disabled={busyAction === "import-playfield-url"}>
-                      {busyAction === "import-playfield-url" ? "Importing…" : "Import from URL"}
-                    </button>
+                    <div className="topbar-actions">
+                      <button onClick={handleSavePlayfieldCoverage} disabled={busyAction === "save-playfield-coverage"}>
+                        {busyAction === "save-playfield-coverage" ? "Saving…" : "Save alias coverage"}
+                      </button>
+                      <button onClick={handleImportPlayfieldUrl} disabled={busyAction === "import-playfield-url"}>
+                        {busyAction === "import-playfield-url" ? "Importing…" : "Import from URL"}
+                      </button>
+                    </div>
                   </div>
+                  {detail.sources.playfieldAssets.length > 0 && (
+                    <div className="asset-grid">
+                      {detail.sources.playfieldAssets.map((asset) => (
+                        <article key={asset.playfieldAssetId} className="asset-card">
+                          <div className="asset-card-head">
+                            <h3>{asset.sourceAliasLabel}</h3>
+                            <span className={asset.isUnused ? "tag muted-tag" : "tag accent"}>
+                              {asset.isUnused ? "unused" : `${asset.coveredAliasIds.length} alias${asset.coveredAliasIds.length === 1 ? "" : "es"}`}
+                            </span>
+                          </div>
+                          <p className="muted">
+                            Covers {asset.coveredAliasLabels.length ? asset.coveredAliasLabels.join(", ") : "nothing yet"}.
+                          </p>
+                          <div className="path-list">
+                            <div>
+                              <small>Local file</small>
+                              <code>{asset.localPath ?? "None"}</code>
+                            </div>
+                            {asset.sourceUrl && (
+                              <div>
+                                <small>Source URL</small>
+                                <a href={asset.sourceUrl} target="_blank" rel="noreferrer">
+                                  {asset.sourceUrl}
+                                </a>
+                              </div>
+                            )}
+                          </div>
+                          <button
+                            className="secondary-button"
+                            onClick={() => {
+                              setOverrideForm((current) => ({
+                                ...current,
+                                playfieldAliasId: asset.sourceAliasId,
+                                playfieldCoveredAliasIds: asset.coveredAliasIds,
+                                playfieldSourceUrl: asset.sourceUrl ?? "",
+                                playfieldSourceNote: asset.sourceNote ?? "",
+                              }));
+                            }}
+                          >
+                            Edit this asset
+                          </button>
+                        </article>
+                      ))}
+                    </div>
+                  )}
                   <div className="form-grid">
                     <label className="field">
-                      Target OPDB alias
+                      Source OPDB alias
                       <select
                         value={overrideForm.playfieldAliasId}
-                        onChange={(event) =>
-                          setOverrideForm((current) => ({ ...current, playfieldAliasId: event.target.value }))
-                        }
+                        onChange={(event) => loadPlayfieldForm(event.target.value)}
                       >
                         {detail.sources.aliases.map((alias) => (
                           <option key={alias.opdbMachineId} value={alias.opdbMachineId}>
@@ -980,6 +1093,31 @@ export default function App() {
                       />
                     </label>
                   </div>
+                  <div className="field">
+                    <span>Aliases covered by this file</span>
+                    <div className="checkbox-grid">
+                      {detail.sources.aliases.map((alias) => {
+                        const checked = overrideForm.playfieldCoveredAliasIds.includes(alias.opdbMachineId);
+                        return (
+                          <label key={alias.opdbMachineId} className="check-chip">
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={(event) =>
+                                setOverrideForm((current) => ({
+                                  ...current,
+                                  playfieldCoveredAliasIds: event.target.checked
+                                    ? Array.from(new Set([...current.playfieldCoveredAliasIds, alias.opdbMachineId]))
+                                    : current.playfieldCoveredAliasIds.filter((value) => value !== alias.opdbMachineId),
+                                }))
+                              }
+                            />
+                            <span>{aliasTitle(alias, detail.machine.name)}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
                   <label className="field upload-field">
                     Upload image from browser
                     <input
@@ -994,25 +1132,29 @@ export default function App() {
                   </label>
                   <div className="path-list">
                     <div>
-                      <small>Target alias</small>
+                      <small>Source alias</small>
                       <code>{selectedPlayfieldAlias ? aliasTitle(selectedPlayfieldAlias, detail.machine.name) : detail.sources.assets.playfield.targetAliasLabel}</code>
                     </div>
                     <div>
-                      <small>Override image path</small>
-                      <code>{detail.override.playfieldLocalPath ?? detail.machine.playfieldLocalPath ?? "None"}</code>
+                      <small>Saved file path</small>
+                      <code>{selectedPlayfieldAsset?.localPath ?? detail.override.playfieldLocalPath ?? detail.machine.playfieldLocalPath ?? "None"}</code>
                     </div>
-                    {detail.override.playfieldSourceUrl && (
+                    <div>
+                      <small>Coverage</small>
+                      <code>{overrideForm.playfieldCoveredAliasIds.length ? overrideForm.playfieldCoveredAliasIds.join(", ") : "None selected"}</code>
+                    </div>
+                    {(selectedPlayfieldAsset?.sourceUrl ?? detail.override.playfieldSourceUrl) && (
                       <div>
                         <small>Source URL</small>
-                        <a href={detail.override.playfieldSourceUrl} target="_blank" rel="noreferrer">
-                          {detail.override.playfieldSourceUrl}
+                        <a href={selectedPlayfieldAsset?.sourceUrl ?? detail.override.playfieldSourceUrl} target="_blank" rel="noreferrer">
+                          {selectedPlayfieldAsset?.sourceUrl ?? detail.override.playfieldSourceUrl}
                         </a>
                       </div>
                     )}
-                    {detail.override.playfieldSourceNote && (
+                    {(selectedPlayfieldAsset?.sourceNote ?? detail.override.playfieldSourceNote) && (
                       <div>
                         <small>Source note</small>
-                        <code>{detail.override.playfieldSourceNote}</code>
+                        <code>{selectedPlayfieldAsset?.sourceNote ?? detail.override.playfieldSourceNote}</code>
                       </div>
                     )}
                   </div>

@@ -103,16 +103,10 @@ try {
             'year_override' => pinprof_clean_int($body['yearOverride'] ?? null),
             'backglass_source_url' => pinprof_clean_string($body['backglassSourceUrl'] ?? null),
             'backglass_source_note' => pinprof_clean_string($body['backglassSourceNote'] ?? null),
-            'playfield_source_url' => pinprof_clean_string($body['playfieldSourceUrl'] ?? null),
-            'playfield_source_note' => pinprof_clean_string($body['playfieldSourceNote'] ?? null),
             'rulesheet_source_url' => pinprof_clean_string($body['rulesheetSourceUrl'] ?? null),
             'rulesheet_source_note' => pinprof_clean_string($body['rulesheetSourceNote'] ?? null),
             'notes' => pinprof_clean_string($body['notes'] ?? null),
         ];
-        $playfieldAliasId = pinprof_clean_string($body['playfieldAliasId'] ?? null);
-        if ($playfieldAliasId !== null) {
-            $patch['opdb_machine_id'] = pinprof_alias_id(pinprof_resolve_playfield_alias($practiceIdentity, $playfieldAliasId));
-        }
         pinprof_upsert_override($practiceIdentity, $patch);
         api_json(['ok' => true]);
     }
@@ -153,6 +147,10 @@ try {
         if ($sourceUrl === null) {
             api_text_error('Remote image URL is required.');
         }
+        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
+            $practiceIdentity,
+            is_array($body['coveredAliasIds'] ?? null) ? $body['coveredAliasIds'] : []
+        );
         $download = pinprof_download_url($sourceUrl);
         pinprof_store_binary_asset(
             $practiceIdentity,
@@ -163,6 +161,7 @@ try {
             $sourceUrl,
             pinprof_clean_string($body['sourceNote'] ?? null) ?? $sourceUrl,
             $kind === 'playfield' ? pinprof_clean_string($body['machineAliasId'] ?? $body['playfieldAliasId'] ?? null) : null,
+            $kind === 'playfield' ? $coveredAliasIds : [],
         );
         api_json(['ok' => true]);
     }
@@ -174,6 +173,10 @@ try {
         if (!is_array($file) || !isset($file['tmp_name']) || !is_uploaded_file((string) $file['tmp_name'])) {
             api_text_error('No image uploaded.');
         }
+        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
+            $practiceIdentity,
+            is_array($_POST['coveredAliasIds'] ?? null) ? $_POST['coveredAliasIds'] : array_filter(explode(',', (string) ($_POST['coveredAliasIds'] ?? '')))
+        );
         $contents = (string) file_get_contents((string) $file['tmp_name']);
         pinprof_store_binary_asset(
             $practiceIdentity,
@@ -184,6 +187,31 @@ try {
             pinprof_clean_string($_POST['sourceUrl'] ?? null),
             pinprof_clean_string($_POST['sourceNote'] ?? null) ?? pinprof_clean_string($file['name'] ?? null),
             $kind === 'playfield' ? pinprof_clean_string($_POST['machineAliasId'] ?? $_POST['playfieldAliasId'] ?? null) : null,
+            $kind === 'playfield' ? $coveredAliasIds : [],
+        );
+        api_json(['ok' => true]);
+    }
+
+    if (preg_match('#^machines/([^/]+)/playfield/coverage$#', $route, $matches) && in_array($method, ['PUT', 'POST'], true)) {
+        $practiceIdentity = urldecode($matches[1]);
+        $body = api_json_body();
+        $sourceAliasId = pinprof_clean_string($body['machineAliasId'] ?? $body['playfieldAliasId'] ?? null);
+        if ($sourceAliasId === null) {
+            api_text_error('A source alias is required.');
+        }
+        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
+            $practiceIdentity,
+            is_array($body['coveredAliasIds'] ?? null) ? $body['coveredAliasIds'] : []
+        );
+        if ($coveredAliasIds === []) {
+            api_text_error('Select at least one alias this playfield should cover.');
+        }
+        pinprof_save_playfield_coverage(
+            $practiceIdentity,
+            $sourceAliasId,
+            $coveredAliasIds,
+            pinprof_clean_string($body['sourceUrl'] ?? null),
+            pinprof_clean_string($body['sourceNote'] ?? null),
         );
         api_json(['ok' => true]);
     }

@@ -79,6 +79,18 @@ type OverrideRecord = {
   updated_at: string;
 };
 
+type PlayfieldAssetRecord = {
+  playfield_asset_id: number;
+  practice_identity: string;
+  source_opdb_machine_id: string;
+  covered_alias_ids_json: string;
+  playfield_local_path: string | null;
+  playfield_source_url: string | null;
+  playfield_source_note: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const APP_ROOT = path.resolve(ROOT, "pinprof-admin");
@@ -96,6 +108,7 @@ const SESSION_SECRET = process.env.PINPROF_SESSION_SECRET ?? "pinprof-dev-secret
 const ADMIN_PASSWORD = process.env.PINPROF_ADMIN_PASSWORD ?? "change-me";
 const PASSWORD_CONFIGURED = Boolean(process.env.PINPROF_ADMIN_PASSWORD);
 const PORT = Number.parseInt(process.env.PINPROF_ADMIN_PORT ?? "8787", 10);
+const SUPPORTED_PLAYFIELD_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"] as const;
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 25 * 1024 * 1024 },
@@ -175,6 +188,10 @@ function playfieldBaseName(aliasId: string) {
   return `${aliasId}-playfield`;
 }
 
+function practicePlayfieldBaseName(practiceIdentity: string) {
+  return `${practiceIdentity}-playfield`;
+}
+
 function playfieldBaseNameFromWebPath(webPath: string | null): string | null {
   const normalized = cleanString(webPath);
   if (!normalized?.startsWith("/pinball/images/playfields/")) return null;
@@ -182,6 +199,44 @@ function playfieldBaseNameFromWebPath(webPath: string | null): string | null {
   const ext = path.extname(filename);
   const stem = ext ? filename.slice(0, -ext.length) : filename;
   return stem.replace(/_(700|1400)$/i, "") || null;
+}
+
+function normalizeAliasIds(values: Array<string | null | undefined>): string[] {
+  return Array.from(
+    new Set(
+      values
+        .map((value) => cleanString(value))
+        .filter((value): value is string => Boolean(value)),
+    ),
+  );
+}
+
+function parseCoveredAliasIds(raw: string | null | undefined): string[] {
+  const trimmed = cleanString(raw);
+  if (!trimmed) return [];
+  try {
+    const parsed = JSON.parse(trimmed);
+    if (Array.isArray(parsed)) {
+      return normalizeAliasIds(parsed.map((value) => String(value ?? "")));
+    }
+  } catch {
+    return normalizeAliasIds(trimmed.split(","));
+  }
+  return [];
+}
+
+function stringifyCoveredAliasIds(aliasIds: string[]): string {
+  return JSON.stringify(normalizeAliasIds(aliasIds));
+}
+
+function findExistingPlayfieldWebPath(baseName: string): string | null {
+  for (const ext of SUPPORTED_PLAYFIELD_EXTENSIONS) {
+    const fsPath = path.join(SHARED_PLAYFIELDS_DIR, `${baseName}${ext}`);
+    if (fs.existsSync(fsPath)) {
+      return `/pinball/images/playfields/${baseName}${ext}`;
+    }
+  }
+  return null;
 }
 
 async function removeExistingPlayfieldFiles(baseName: string) {
@@ -228,6 +283,19 @@ adminDb.exec(`
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS playfield_assets (
+    playfield_asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    practice_identity TEXT NOT NULL,
+    source_opdb_machine_id TEXT NOT NULL,
+    covered_alias_ids_json TEXT NOT NULL,
+    playfield_local_path TEXT,
+    playfield_source_url TEXT,
+    playfield_source_note TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE(practice_identity, source_opdb_machine_id)
+  );
+  CREATE INDEX IF NOT EXISTS idx_playfield_assets_practice ON playfield_assets(practice_identity);
 `);
 
 const adminCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides").get() as { total: number }).total;
@@ -423,6 +491,241 @@ function getMachineAliases(practiceIdentity: string): MachineAliasRow[] {
   `).all(practiceIdentity) as MachineAliasRow[];
 }
 
+bootstrapLegacyPlayfieldAssets();
+
+function getPlayfieldAssetRecords(practiceIdentity: string): PlayfieldAssetRecord[] {
+  return adminDb
+    .prepare(`
+      SELECT
+        playfield_asset_id,
+        practice_identity,
+        source_opdb_machine_id,
+        covered_alias_ids_json,
+        playfield_local_path,
+        playfield_source_url,
+        playfield_source_note,
+        created_at,
+        updated_at
+      FROM playfield_assets
+      WHERE practice_identity = ?
+      ORDER BY datetime(updated_at) DESC, lower(source_opdb_machine_id)
+    `)
+    .all(practiceIdentity) as PlayfieldAssetRecord[];
+}
+
+function normalizeCoveredAliasIdsForPractice(practiceIdentity: string, aliasIds: Array<string | null | undefined>): string[] {
+  const aliases = getMachineAliases(practiceIdentity);
+  const allowed = new Set(aliases.map((alias) => alias.opdbMachineId));
+  return normalizeAliasIds(aliasIds).filter((aliasId) => allowed.has(aliasId));
+}
+
+function resolvePlayfieldAssetForAlias(practiceIdentity: string, aliasId: string | null, assets?: PlayfieldAssetRecord[]) {
+  const requestedAliasId = cleanString(aliasId);
+  if (!requestedAliasId) return null;
+  const rows = assets ?? getPlayfieldAssetRecords(practiceIdentity);
+  const exact = rows.find((row) => {
+    const covered = parseCoveredAliasIds(row.covered_alias_ids_json);
+    return row.source_opdb_machine_id === requestedAliasId && covered.includes(requestedAliasId);
+  });
+  if (exact) return exact;
+  return (
+    rows.find((row) => parseCoveredAliasIds(row.covered_alias_ids_json).includes(requestedAliasId)) ??
+    null
+  );
+}
+
+function pickPrimaryPlayfieldAsset(practiceIdentity: string, assets?: PlayfieldAssetRecord[]) {
+  const rows = assets ?? getPlayfieldAssetRecords(practiceIdentity);
+  if (!rows.length) return null;
+  const preferredAlias = resolvePlayfieldAlias(practiceIdentity, null, undefined, getOverrideRecord(practiceIdentity));
+  return (
+    resolvePlayfieldAssetForAlias(practiceIdentity, preferredAlias.opdbMachineId, rows) ??
+    rows.find((row) => parseCoveredAliasIds(row.covered_alias_ids_json).length > 0) ??
+    rows[0]
+  );
+}
+
+function syncLegacyPlayfieldOverride(practiceIdentity: string, assetRows?: PlayfieldAssetRecord[]) {
+  const primary = pickPrimaryPlayfieldAsset(practiceIdentity, assetRows);
+  if (!primary) return;
+  upsertOverride(practiceIdentity, {
+    opdb_machine_id: primary.source_opdb_machine_id,
+    playfield_local_path: primary.playfield_local_path,
+    playfield_source_url: primary.playfield_source_url,
+    playfield_source_note: primary.playfield_source_note,
+  });
+}
+
+function bootstrapLegacyPlayfieldAssets() {
+  const legacyRows = adminDb
+    .prepare(`
+      SELECT *
+      FROM machine_overrides
+      WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''
+    `)
+    .all() as OverrideRecord[];
+
+  if (!legacyRows.length) return;
+
+  const hasRows = (
+    adminDb.prepare("SELECT COUNT(*) AS total FROM playfield_assets").get() as { total: number }
+  ).total;
+  if (hasRows > 0) return;
+
+  const insert = adminDb.prepare(`
+    INSERT INTO playfield_assets (
+      practice_identity,
+      source_opdb_machine_id,
+      covered_alias_ids_json,
+      playfield_local_path,
+      playfield_source_url,
+      playfield_source_note,
+      created_at,
+      updated_at
+    ) VALUES (
+      @practice_identity,
+      @source_opdb_machine_id,
+      @covered_alias_ids_json,
+      @playfield_local_path,
+      @playfield_source_url,
+      @playfield_source_note,
+      @created_at,
+      @updated_at
+    )
+    ON CONFLICT(practice_identity, source_opdb_machine_id) DO UPDATE SET
+      covered_alias_ids_json=excluded.covered_alias_ids_json,
+      playfield_local_path=excluded.playfield_local_path,
+      playfield_source_url=excluded.playfield_source_url,
+      playfield_source_note=excluded.playfield_source_note,
+      updated_at=excluded.updated_at
+  `);
+
+  const transaction = adminDb.transaction((rows: OverrideRecord[]) => {
+    for (const row of rows) {
+      const aliases = getMachineAliases(row.practice_identity);
+      if (!aliases.length) continue;
+      const sourceAlias = resolvePlayfieldAlias(row.practice_identity, row.opdb_machine_id, aliases, row);
+      insert.run({
+        practice_identity: row.practice_identity,
+        source_opdb_machine_id: sourceAlias.opdbMachineId,
+        covered_alias_ids_json: stringifyCoveredAliasIds(aliases.map((alias) => alias.opdbMachineId)),
+        playfield_local_path: row.playfield_local_path,
+        playfield_source_url: row.playfield_source_url,
+        playfield_source_note: row.playfield_source_note,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      });
+    }
+  });
+
+  transaction(legacyRows);
+}
+
+async function renameExistingPlayfieldFiles(currentBase: string, nextBase: string) {
+  if (currentBase === nextBase) return;
+  const entries = await fsp.readdir(SHARED_PLAYFIELDS_DIR, { withFileTypes: true }).catch(() => []);
+  const family = entries.filter((entry) => entry.isFile() && entry.name.startsWith(currentBase));
+  if (!family.length) return;
+
+  const conflicts = family.filter((entry) => fs.existsSync(path.join(SHARED_PLAYFIELDS_DIR, entry.name.replace(currentBase, nextBase))));
+  if (conflicts.length) {
+    throw new Error(`Cannot rename ${currentBase} to ${nextBase}; destination files already exist.`);
+  }
+
+  for (const entry of family) {
+    const nextName = entry.name.replace(currentBase, nextBase);
+    await fsp.rename(path.join(SHARED_PLAYFIELDS_DIR, entry.name), path.join(SHARED_PLAYFIELDS_DIR, nextName));
+  }
+}
+
+async function ensureExistingPlayfieldPath(practiceIdentity: string, sourceAliasId: string, existingPath: string | null) {
+  const aliasBase = playfieldBaseName(sourceAliasId);
+  const directAliasPath = findExistingPlayfieldWebPath(aliasBase);
+  if (directAliasPath) return directAliasPath;
+
+  const currentBase = playfieldBaseNameFromWebPath(existingPath) ?? practicePlayfieldBaseName(practiceIdentity);
+  const currentPath = findExistingPlayfieldWebPath(currentBase);
+  if (!currentPath) {
+    throw new Error(`No local playfield file found for ${sourceAliasId}. Upload or import one first.`);
+  }
+  await renameExistingPlayfieldFiles(currentBase, aliasBase);
+  return findExistingPlayfieldWebPath(aliasBase);
+}
+
+function upsertPlayfieldAssetRecord(
+  practiceIdentity: string,
+  sourceAliasId: string,
+  coveredAliasIds: string[],
+  patch: Pick<PlayfieldAssetRecord, "playfield_local_path" | "playfield_source_url" | "playfield_source_note">,
+) {
+  const existing = adminDb
+    .prepare(`
+      SELECT *
+      FROM playfield_assets
+      WHERE practice_identity = ? AND source_opdb_machine_id = ?
+    `)
+    .get(practiceIdentity, sourceAliasId) as PlayfieldAssetRecord | undefined;
+  const nextCoveredAliasIds = normalizeCoveredAliasIdsForPractice(practiceIdentity, coveredAliasIds);
+  const now = nowIso();
+
+  adminDb
+    .prepare(`
+      INSERT INTO playfield_assets (
+        practice_identity,
+        source_opdb_machine_id,
+        covered_alias_ids_json,
+        playfield_local_path,
+        playfield_source_url,
+        playfield_source_note,
+        created_at,
+        updated_at
+      ) VALUES (
+        @practice_identity,
+        @source_opdb_machine_id,
+        @covered_alias_ids_json,
+        @playfield_local_path,
+        @playfield_source_url,
+        @playfield_source_note,
+        @created_at,
+        @updated_at
+      )
+      ON CONFLICT(practice_identity, source_opdb_machine_id) DO UPDATE SET
+        covered_alias_ids_json=excluded.covered_alias_ids_json,
+        playfield_local_path=excluded.playfield_local_path,
+        playfield_source_url=excluded.playfield_source_url,
+        playfield_source_note=excluded.playfield_source_note,
+        updated_at=excluded.updated_at
+    `)
+    .run({
+      practice_identity: practiceIdentity,
+      source_opdb_machine_id: sourceAliasId,
+      covered_alias_ids_json: stringifyCoveredAliasIds(nextCoveredAliasIds),
+      playfield_local_path: patch.playfield_local_path,
+      playfield_source_url: patch.playfield_source_url,
+      playfield_source_note: patch.playfield_source_note,
+      created_at: existing?.created_at ?? now,
+      updated_at: now,
+    });
+
+  if (nextCoveredAliasIds.length > 0) {
+    const taken = new Set(nextCoveredAliasIds);
+    const others = getPlayfieldAssetRecords(practiceIdentity).filter((row) => row.source_opdb_machine_id !== sourceAliasId);
+    const updateCoverage = adminDb.prepare(`
+      UPDATE playfield_assets
+      SET covered_alias_ids_json = ?, updated_at = ?
+      WHERE playfield_asset_id = ?
+    `);
+    for (const row of others) {
+      const nextIds = parseCoveredAliasIds(row.covered_alias_ids_json).filter((aliasId) => !taken.has(aliasId));
+      if (nextIds.length !== parseCoveredAliasIds(row.covered_alias_ids_json).length) {
+        updateCoverage.run(stringifyCoveredAliasIds(nextIds), nowIso(), row.playfield_asset_id);
+      }
+    }
+  }
+
+  syncLegacyPlayfieldOverride(practiceIdentity, getPlayfieldAssetRecords(practiceIdentity));
+}
+
 function formatAliasLabel(alias: MachineAliasRow) {
   return [alias.variant, alias.opdbMachineId].filter(Boolean).join(" · ") || alias.opdbMachineId;
 }
@@ -608,6 +911,7 @@ async function importRulesheetFromPath(practiceIdentity: string, sourcePath: str
 async function savePlayfield(
   practiceIdentity: string,
   machineAliasId: string | null,
+  coveredAliasIds: string[],
   buffer: Buffer,
   sourceName: string | null,
   contentType: string | null,
@@ -616,13 +920,8 @@ async function savePlayfield(
 ) {
   await ensureDir(SHARED_PLAYFIELDS_DIR);
   const aliases = getMachineAliases(practiceIdentity);
-  const existing = getOverrideRecord(practiceIdentity);
-  const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, existing);
+  const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, getOverrideRecord(practiceIdentity));
   const baseName = playfieldBaseName(alias.opdbMachineId);
-  const previousBaseName = playfieldBaseNameFromWebPath(existing?.playfield_local_path ?? null);
-  if (previousBaseName && previousBaseName !== baseName) {
-    await removeExistingPlayfieldFiles(previousBaseName);
-  }
   await removeExistingPlayfieldFiles(baseName);
 
   const ext = inferImageExtension(sourceName, contentType);
@@ -633,8 +932,7 @@ async function savePlayfield(
   await image.clone().resize({ width: 700, withoutEnlargement: true }).webp({ quality: 84 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_700.webp`));
   await image.clone().resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 84 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_1400.webp`));
 
-  upsertOverride(practiceIdentity, {
-    opdb_machine_id: alias.opdbMachineId,
+  upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, coveredAliasIds, {
     playfield_local_path: `/pinball/images/playfields/${baseName}${ext}`,
     playfield_source_url: sourceUrl,
     playfield_source_note: sourceNote,
@@ -644,6 +942,7 @@ async function savePlayfield(
 async function importPlayfieldFromUrl(
   practiceIdentity: string,
   machineAliasId: string | null,
+  coveredAliasIds: string[],
   sourceUrl: string,
   sourceNote: string | null,
 ) {
@@ -656,12 +955,13 @@ async function importPlayfieldFromUrl(
     throw new Error(`Remote content is not an image: ${contentType}`);
   }
   const buffer = Buffer.from(await response.arrayBuffer());
-  await savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourceNote ?? sourceUrl);
+  await savePlayfield(practiceIdentity, machineAliasId, coveredAliasIds, buffer, sourceUrl, contentType, sourceUrl, sourceNote ?? sourceUrl);
 }
 
 async function importPlayfieldFromPath(
   practiceIdentity: string,
   machineAliasId: string | null,
+  coveredAliasIds: string[],
   sourcePath: string,
   sourceUrl: string | null,
   sourceNote: string | null,
@@ -672,7 +972,48 @@ async function importPlayfieldFromPath(
     throw new Error(`Image file not found: ${resolved}`);
   }
   const buffer = await fsp.readFile(resolved);
-  await savePlayfield(practiceIdentity, machineAliasId, buffer, resolved, null, sourceUrl, sourceNote ?? resolved);
+  await savePlayfield(practiceIdentity, machineAliasId, coveredAliasIds, buffer, resolved, null, sourceUrl, sourceNote ?? resolved);
+}
+
+async function savePlayfieldCoverage(
+  practiceIdentity: string,
+  machineAliasId: string | null,
+  coveredAliasIds: string[],
+  sourceUrl: string | null,
+  sourceNote: string | null,
+) {
+  const aliases = getMachineAliases(practiceIdentity);
+  const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, getOverrideRecord(practiceIdentity));
+  const existingAsset = getPlayfieldAssetRecords(practiceIdentity).find((row) => row.source_opdb_machine_id === alias.opdbMachineId) ?? null;
+  const localPath = await ensureExistingPlayfieldPath(practiceIdentity, alias.opdbMachineId, existingAsset?.playfield_local_path ?? null);
+  upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, coveredAliasIds, {
+    playfield_local_path: localPath,
+    playfield_source_url: sourceUrl ?? existingAsset?.playfield_source_url ?? null,
+    playfield_source_note: sourceNote ?? existingAsset?.playfield_source_note ?? null,
+  });
+}
+
+function buildPlayfieldAssetPayloads(practiceIdentity: string, aliases: MachineAliasRow[]) {
+  const aliasMap = new Map(aliases.map((alias) => [alias.opdbMachineId, alias]));
+  return getPlayfieldAssetRecords(practiceIdentity).map((row) => {
+    const coveredAliasIds = parseCoveredAliasIds(row.covered_alias_ids_json);
+    const sourceAlias = aliasMap.get(row.source_opdb_machine_id);
+    return {
+      playfieldAssetId: row.playfield_asset_id,
+      sourceAliasId: row.source_opdb_machine_id,
+      sourceAliasLabel: sourceAlias ? formatAliasLabel(sourceAlias) : row.source_opdb_machine_id,
+      coveredAliasIds,
+      coveredAliasLabels: coveredAliasIds.map((aliasId) => {
+        const alias = aliasMap.get(aliasId);
+        return alias ? formatAliasLabel(alias) : aliasId;
+      }),
+      localPath: row.playfield_local_path,
+      sourceUrl: row.playfield_source_url,
+      sourceNote: row.playfield_source_note,
+      updatedAt: row.updated_at,
+      isUnused: coveredAliasIds.length === 0,
+    };
+  });
 }
 
 function authRequired(req: Request, res: Response, next: NextFunction) {
@@ -720,9 +1061,20 @@ app.get("/api/summary", authRequired, (_req, res) => {
     seedDb.prepare("SELECT COUNT(DISTINCT practice_identity) AS total FROM machines").get() as { total: number }
   ).total;
   const totalOpdbRows = (seedDb.prepare("SELECT COUNT(*) AS total FROM machines").get() as { total: number }).total;
-  const overriddenMachines = (adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides").get() as { total: number }).total;
+  const overriddenMachines = (
+    adminDb
+      .prepare(`
+        SELECT COUNT(DISTINCT practice_identity) AS total
+        FROM (
+          SELECT practice_identity FROM machine_overrides
+          UNION ALL
+          SELECT practice_identity FROM playfield_assets
+        )
+      `)
+      .get() as { total: number }
+  ).total;
   const playfieldOverrides = (
-    adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''").get() as {
+    adminDb.prepare("SELECT COUNT(*) AS total FROM playfield_assets WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''").get() as {
       total: number;
     }
   ).total;
@@ -767,7 +1119,15 @@ app.get("/api/machines", authRequired, (req, res) => {
           m.primary_image_large_url AS primaryImageUrl,
           o.playfield_local_path AS playfieldLocalPath,
           o.rulesheet_local_path AS rulesheetLocalPath,
-          CASE WHEN a.practice_identity IS NULL THEN 0 ELSE 1 END AS hasAdminOverride,
+          CASE
+            WHEN a.practice_identity IS NULL
+             AND NOT EXISTS (
+               SELECT 1 FROM admin.playfield_assets pa
+               WHERE pa.practice_identity = m.practice_identity
+             )
+            THEN 0
+            ELSE 1
+          END AS hasAdminOverride,
           ROW_NUMBER() OVER (
             PARTITION BY m.practice_identity
             ORDER BY
@@ -839,7 +1199,11 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
   const aliases = getMachineAliases(practiceIdentity);
   const overrideRecord = getOverrideRecord(practiceIdentity);
   const playfieldAlias = resolvePlayfieldAlias(practiceIdentity, null, aliases, overrideRecord);
-  const effectivePlayfieldLocalPath = row.overridePlayfieldLocalPath ?? row.playfieldLocalPath ?? builtIn?.playfieldLocalPath ?? null;
+  const playfieldAssets = buildPlayfieldAssetPayloads(practiceIdentity, aliases);
+  const resolvedPlayfieldAsset =
+    playfieldAssets.find((asset) => asset.coveredAliasIds.includes(playfieldAlias.opdbMachineId)) ?? null;
+  const effectivePlayfieldLocalPath =
+    resolvedPlayfieldAsset?.localPath ?? row.overridePlayfieldLocalPath ?? row.playfieldLocalPath ?? builtIn?.playfieldLocalPath ?? null;
   const effectivePlayfieldRemoteUrl = row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null;
   const effectiveRulesheetPath = row.overrideRulesheetLocalPath ?? row.rulesheetLocalPath ?? builtIn?.rulesheetLocalPath ?? null;
   const effectiveRulesheetUrl = row.rulesheetSourceUrl ?? builtIn?.rulesheetUrl ?? null;
@@ -851,14 +1215,21 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
     effectivePlayfieldLocalPath
       ? {
           effectiveKind: "pillyliu",
-          effectiveLabel: assetOriginLabel("pillyliu", row.overridePlayfieldLocalPath ? "override" : "existing library"),
+          effectiveLabel: assetOriginLabel(
+            "pillyliu",
+            resolvedPlayfieldAsset
+              ? `alias coverage via ${resolvedPlayfieldAsset.sourceAliasLabel}`
+              : row.overridePlayfieldLocalPath
+                ? "override"
+                : "existing library",
+          ),
           effectiveUrl: effectivePlayfieldLocalPath,
           targetAliasId: playfieldAlias.opdbMachineId,
           targetAliasLabel: formatAliasLabel(playfieldAlias),
           targetFilename: playfieldBaseName(playfieldAlias.opdbMachineId),
           localPath: effectivePlayfieldLocalPath,
-          localSourceUrl: row.playfieldSourceUrl ?? row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null,
-          localSourceNote: row.playfieldSourceNote ?? null,
+          localSourceUrl: resolvedPlayfieldAsset?.sourceUrl ?? row.playfieldSourceUrl ?? row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null,
+          localSourceNote: resolvedPlayfieldAsset?.sourceNote ?? row.playfieldSourceNote ?? null,
           fallbackOpdbUrl: row.playfieldImageUrl ?? null,
         }
       : effectivePlayfieldRemoteUrl
@@ -965,10 +1336,11 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
       variantOverride: row.variantOverride ?? "",
       manufacturerOverride: row.manufacturerOverride ?? "",
       yearOverride: row.yearOverride == null ? "" : String(row.yearOverride),
-      playfieldAliasId: playfieldAlias.opdbMachineId,
-      playfieldLocalPath: row.overridePlayfieldLocalPath,
-      playfieldSourceUrl: row.playfieldSourceUrl ?? "",
-      playfieldSourceNote: row.playfieldSourceNote ?? "",
+      playfieldAliasId: resolvedPlayfieldAsset?.sourceAliasId ?? playfieldAlias.opdbMachineId,
+      playfieldCoveredAliasIds: resolvedPlayfieldAsset?.coveredAliasIds ?? aliases.map((alias) => alias.opdbMachineId),
+      playfieldLocalPath: resolvedPlayfieldAsset?.localPath ?? row.overridePlayfieldLocalPath,
+      playfieldSourceUrl: resolvedPlayfieldAsset?.sourceUrl ?? row.playfieldSourceUrl ?? "",
+      playfieldSourceNote: resolvedPlayfieldAsset?.sourceNote ?? row.playfieldSourceNote ?? "",
       rulesheetLocalPath: row.overrideRulesheetLocalPath,
       rulesheetSourceUrl: row.rulesheetSourceUrl ?? "",
       rulesheetSourceNote: row.rulesheetSourceNote ?? "",
@@ -983,6 +1355,7 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
         sourceType: builtIn?.sourceType ?? null,
       },
       aliases,
+      playfieldAssets,
       assets: {
         backglass: backglassAsset,
         playfield: playfieldAsset,
@@ -997,21 +1370,11 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
 
 app.put("/api/machines/:practiceIdentity/override", authRequired, (req, res) => {
   try {
-    const practiceIdentity = String(req.params.practiceIdentity);
-    const playfieldAlias = resolvePlayfieldAlias(
-      practiceIdentity,
-      cleanString(req.body?.playfieldAliasId),
-      undefined,
-      getOverrideRecord(practiceIdentity),
-    );
     upsertOverride(String(req.params.practiceIdentity), {
-      opdb_machine_id: playfieldAlias.opdbMachineId,
       name_override: cleanString(req.body?.nameOverride),
       variant_override: cleanString(req.body?.variantOverride),
       manufacturer_override: cleanString(req.body?.manufacturerOverride),
       year_override: cleanInteger(req.body?.yearOverride),
-      playfield_source_url: cleanString(req.body?.playfieldSourceUrl),
-      playfield_source_note: cleanString(req.body?.playfieldSourceNote),
       rulesheet_source_url: cleanString(req.body?.rulesheetSourceUrl),
       rulesheet_source_note: cleanString(req.body?.rulesheetSourceNote),
       notes: cleanString(req.body?.notes),
@@ -1057,6 +1420,10 @@ app.post("/api/machines/:practiceIdentity/rulesheet/import-path", authRequired, 
 app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, async (req, res) => {
   try {
     const practiceIdentity = String(req.params.practiceIdentity);
+    const coveredAliasIds = normalizeCoveredAliasIdsForPractice(
+      practiceIdentity,
+      Array.isArray(req.body?.coveredAliasIds) ? req.body.coveredAliasIds : [],
+    );
     const sourceUrl = cleanString(req.body?.sourceUrl);
     if (!sourceUrl) {
       throw new Error("Remote image URL is required.");
@@ -1064,6 +1431,7 @@ app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, a
     await importPlayfieldFromUrl(
       practiceIdentity,
       cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId),
+      coveredAliasIds,
       sourceUrl,
       cleanString(req.body?.sourceNote),
     );
@@ -1076,6 +1444,10 @@ app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, a
 app.post("/api/machines/:practiceIdentity/playfield/import-path", authRequired, async (req, res) => {
   try {
     const practiceIdentity = String(req.params.practiceIdentity);
+    const coveredAliasIds = normalizeCoveredAliasIdsForPractice(
+      practiceIdentity,
+      Array.isArray(req.body?.coveredAliasIds) ? req.body.coveredAliasIds : [],
+    );
     const sourcePath = cleanString(req.body?.sourcePath);
     if (!sourcePath) {
       throw new Error("Local image path is required.");
@@ -1083,6 +1455,7 @@ app.post("/api/machines/:practiceIdentity/playfield/import-path", authRequired, 
     await importPlayfieldFromPath(
       practiceIdentity,
       cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId),
+      coveredAliasIds,
       sourcePath,
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote),
@@ -1096,12 +1469,21 @@ app.post("/api/machines/:practiceIdentity/playfield/import-path", authRequired, 
 app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, upload.single("image"), async (req, res) => {
   try {
     const practiceIdentity = String(req.params.practiceIdentity);
+    const coveredAliasIds = normalizeCoveredAliasIdsForPractice(
+      practiceIdentity,
+      Array.isArray(req.body?.coveredAliasIds)
+        ? req.body.coveredAliasIds
+        : String(req.body?.coveredAliasIds ?? "")
+            .split(",")
+            .filter(Boolean),
+    );
     if (!req.file?.buffer) {
       throw new Error("No image uploaded.");
     }
     await savePlayfield(
       practiceIdentity,
       cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId),
+      coveredAliasIds,
       req.file.buffer,
       req.file.originalname,
       req.file.mimetype,
@@ -1111,6 +1493,33 @@ app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, uploa
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to upload playfield.");
+  }
+});
+
+app.put("/api/machines/:practiceIdentity/playfield/coverage", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
+    if (!sourceAliasId) {
+      throw new Error("A source alias is required.");
+    }
+    const coveredAliasIds = normalizeCoveredAliasIdsForPractice(
+      practiceIdentity,
+      Array.isArray(req.body?.coveredAliasIds) ? req.body.coveredAliasIds : [],
+    );
+    if (!coveredAliasIds.length) {
+      throw new Error("Select at least one alias this playfield should cover.");
+    }
+    await savePlayfieldCoverage(
+      practiceIdentity,
+      sourceAliasId,
+      coveredAliasIds,
+      cleanString(req.body?.sourceUrl),
+      cleanString(req.body?.sourceNote),
+    );
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save playfield coverage.");
   }
 });
 

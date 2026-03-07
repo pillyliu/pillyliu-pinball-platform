@@ -22,3 +22,18 @@ CREATE TABLE IF NOT EXISTS pinprof_machine_overrides (
   KEY idx_pinprof_machine_overrides_slug (slug),
   KEY idx_pinprof_machine_overrides_opdb_machine_id (opdb_machine_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS pinprof_playfield_assets (
+  playfield_asset_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  practice_identity VARCHAR(64) NOT NULL,
+  source_opdb_machine_id VARCHAR(128) NOT NULL,
+  covered_alias_ids_json JSON NOT NULL,
+  playfield_local_path VARCHAR(255) NULL,
+  playfield_source_url TEXT NULL,
+  playfield_source_note TEXT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uniq_pinprof_playfield_assets_practice_alias (practice_identity, source_opdb_machine_id),
+  KEY idx_pinprof_playfield_assets_practice (practice_identity),
+  KEY idx_pinprof_playfield_assets_source_alias (source_opdb_machine_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

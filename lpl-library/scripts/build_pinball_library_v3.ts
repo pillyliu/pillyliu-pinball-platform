@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Papa from "papaparse";
+import Database from "better-sqlite3";
 
 type RawRow = Record<string, unknown>;
 
@@ -14,6 +15,13 @@ type LibraryVideo = {
 };
 
 type LibraryType = "venue" | "manufacturer";
+
+type PlayfieldAssetRow = {
+  practiceIdentity: string;
+  sourceAliasId: string;
+  coveredAliasIdsJson: string;
+  playfieldLocalPath: string | null;
+};
 
 type LibraryV3Item = {
   library_entry_id: string | null;
@@ -89,6 +97,7 @@ const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
 const SHARED_PINBALL_IMAGES_DIR = path.join(SHARED_PINBALL_DIR, "images", "playfields");
 const SHARED_PINBALL_RULESHEETS_DIR = path.join(SHARED_PINBALL_DIR, "rulesheets");
 const SHARED_PINBALL_GAMEINFO_DIR = path.join(SHARED_PINBALL_DIR, "gameinfo");
+const PINPROF_ADMIN_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinprof_admin_v1.sqlite");
 const SUPPORTED_PLAYFIELD_EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg"];
 function slugify(input: string): string {
   return input
@@ -264,6 +273,59 @@ function fileExists(p: string): boolean {
   }
 }
 
+function parseCoveredAliasIds(raw: string | null | undefined): string[] {
+  const trimmed = String(raw ?? "").trim();
+  if (!trimmed) return [];
+  try {
+    const parsed = JSON.parse(trimmed);
+    if (Array.isArray(parsed)) {
+      return Array.from(new Set(parsed.map((value) => String(value ?? "").trim()).filter(Boolean)));
+    }
+  } catch {
+    return trimmed.split(",").map((value) => value.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function loadAdminPlayfieldAssetMap(): Map<string, PlayfieldAssetRow[]> {
+  if (!fileExists(PINPROF_ADMIN_DB_PATH)) {
+    return new Map();
+  }
+
+  const db = new Database(PINPROF_ADMIN_DB_PATH, { readonly: true });
+  try {
+    const table = db.prepare(`
+      SELECT name
+      FROM sqlite_master
+      WHERE type = 'table' AND name = 'playfield_assets'
+    `).get() as { name?: string } | undefined;
+    if (!table?.name) {
+      return new Map();
+    }
+
+    const rows = db.prepare(`
+      SELECT
+        practice_identity AS practiceIdentity,
+        source_opdb_machine_id AS sourceAliasId,
+        covered_alias_ids_json AS coveredAliasIdsJson,
+        playfield_local_path AS playfieldLocalPath
+      FROM playfield_assets
+      WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''
+      ORDER BY datetime(updated_at) DESC, lower(source_opdb_machine_id)
+    `).all() as PlayfieldAssetRow[];
+
+    const out = new Map<string, PlayfieldAssetRow[]>();
+    for (const row of rows) {
+      const existing = out.get(row.practiceIdentity) ?? [];
+      existing.push(row);
+      out.set(row.practiceIdentity, existing);
+    }
+    return out;
+  } finally {
+    db.close();
+  }
+}
+
 function findMarkdownLocalPath(dir: string, basename: string | null): string | null {
   if (!basename) return null;
   const filePath = path.join(dir, `${basename}.md`);
@@ -289,6 +351,20 @@ function findPlayfieldLocalPath(baseName: string | null): string | null {
   return null;
 }
 
+function resolveAdminPlayfieldLocalPath(
+  practiceIdentity: string | null,
+  opdbID: string | null,
+  adminAssets: Map<string, PlayfieldAssetRow[]>,
+): string | null {
+  if (!practiceIdentity || !opdbID) return null;
+  const rows = adminAssets.get(practiceIdentity) ?? [];
+  if (!rows.length) return null;
+  const exact = rows.find((row) => row.sourceAliasId === opdbID && parseCoveredAliasIds(row.coveredAliasIdsJson).includes(opdbID));
+  if (exact?.playfieldLocalPath) return exact.playfieldLocalPath;
+  const covered = rows.find((row) => parseCoveredAliasIds(row.coveredAliasIdsJson).includes(opdbID));
+  return covered?.playfieldLocalPath ?? null;
+}
+
 function findCanonicalPlayfieldLocalPath(practiceIdentity: string | null): string | null {
   if (!practiceIdentity) return null;
   const base = `${practiceIdentity}-playfield`;
@@ -303,8 +379,10 @@ function findMachineAliasPlayfieldLocalPath(opdbID: string | null): string | nul
 function resolvePracticePlayfieldLocalPath(
   opdbID: string | null,
   practiceIdentity: string | null,
+  adminAssets: Map<string, PlayfieldAssetRow[]>,
 ): string | null {
   return (
+    resolveAdminPlayfieldLocalPath(practiceIdentity, opdbID, adminAssets) ??
     findMachineAliasPlayfieldLocalPath(opdbID) ??
     findCanonicalPlayfieldLocalPath(practiceIdentity)
   );
@@ -388,6 +466,7 @@ function main() {
   }
 
   const outPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
+  const adminPlayfieldAssets = loadAdminPlayfieldAssetMap();
   const items: LibraryV3Item[] = [];
   const allColumns = new Set<string>();
 
@@ -447,7 +526,7 @@ function main() {
         assets: {
           rulesheet_local_practice: findMarkdownLocalPath(SHARED_PINBALL_RULESHEETS_DIR, rulesheetPracticeBase),
           gameinfo_local_practice: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoPracticeBase),
-          playfield_local_practice: resolvePracticePlayfieldLocalPath(opdbID, practiceIdentity),
+          playfield_local_practice: resolvePracticePlayfieldLocalPath(opdbID, practiceIdentity, adminPlayfieldAssets),
         },
 
         sort_keys: {
