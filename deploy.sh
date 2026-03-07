@@ -45,6 +45,20 @@ cleanup() {
 }
 trap cleanup EXIT
 
+prune_local_pinball_artifacts() {
+  local target_dir="$1"
+  rm -f \
+    "${target_dir}/.DS_Store" \
+    "${target_dir}/cache-manifest.json" \
+    "${target_dir}/cache-update-log.json" \
+    "${target_dir}/data/local_asset_intake_report.json" \
+    "${target_dir}/data/pinprof_admin_v1.sqlite" \
+    "${target_dir}/data/pinprof_admin_v1.sqlite-shm" \
+    "${target_dir}/data/pinprof_admin_v1.sqlite-wal" \
+    "${target_dir}/data/pinball_library_seed_v1.sqlite-shm" \
+    "${target_dir}/data/pinball_library_seed_v1.sqlite-wal"
+}
+
 ensure_npm_dependencies() {
   local package_dir="$1"
   local label="$2"
@@ -93,6 +107,7 @@ stage_pinball_payload() {
   fi
 
   find "${PINBALL_STAGE_DIR}/pinball" -name '.DS_Store' -delete
+  prune_local_pinball_artifacts "${PINBALL_STAGE_DIR}/pinball"
 
   local required_files=(
     "cache-manifest.json"

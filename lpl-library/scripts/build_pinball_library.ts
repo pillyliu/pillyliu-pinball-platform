@@ -189,6 +189,23 @@ function resolveCsvPath(): string {
   return path.join(SHARED_PINBALL_DATA_DIR, "pinball_library.csv");
 }
 
+function writeJsonIfChanged(outPath: string, next: LibraryItem[]) {
+  if (fs.existsSync(outPath)) {
+    try {
+      const previous = JSON.parse(fs.readFileSync(outPath, "utf8"));
+      if (JSON.stringify(previous) === JSON.stringify(next)) {
+        return false;
+      }
+    } catch {
+      // Rewrite malformed outputs.
+    }
+  }
+
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${JSON.stringify(next, null, 2)}\n`, "utf8");
+  return true;
+}
+
 function main() {
   const csvPath = resolveCsvPath();
   const outPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library.json");
@@ -284,11 +301,9 @@ function main() {
     return a.name.localeCompare(b.name);
   });
 
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, JSON.stringify(items, null, 2), "utf8");
-
   console.log(`Read CSV -> ${csvPath}`);
-  console.log(`Wrote ${items.length} items -> ${outPath}`);
+  const changed = writeJsonIfChanged(outPath, items);
+  console.log(`${changed ? "Wrote" : "Unchanged"} ${items.length} items -> ${outPath}`);
 }
 
 main();

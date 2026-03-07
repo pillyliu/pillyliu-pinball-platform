@@ -463,6 +463,30 @@ function resolveInputCsvPaths(): string[] {
   return [avenue, rlm].filter((p) => fs.existsSync(p));
 }
 
+function writeJsonIfChanged(outPath: string, next: LibraryV2) {
+  let previousGeneratedAt: string | null = null;
+  let previousComparable = "";
+  if (fs.existsSync(outPath)) {
+    try {
+      const previous = JSON.parse(fs.readFileSync(outPath, "utf8")) as Partial<LibraryV2>;
+      previousGeneratedAt = typeof previous.generated_at === "string" ? previous.generated_at : null;
+      previousComparable = JSON.stringify({ ...previous, generated_at: "__IGNORED__" });
+    } catch {
+      previousGeneratedAt = null;
+      previousComparable = "";
+    }
+  }
+
+  const nextComparable = JSON.stringify({ ...next, generated_at: "__IGNORED__" });
+  if (previousComparable !== "" && previousComparable === nextComparable) {
+    return false;
+  }
+
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${JSON.stringify(next, null, 2)}\n`, "utf8");
+  return true;
+}
+
 function main() {
   const inputCsvPaths = resolveInputCsvPaths();
   if (!inputCsvPaths.length) {
@@ -489,6 +513,7 @@ function main() {
       if (!game) return;
 
       const { libraryType, libraryId, libraryName } = buildLibraryIdentity(row);
+      const opdbID = cleanString(getHeaderValue(row, "opdb_id"));
       const practiceIdentity = cleanString(getHeaderValue(row, "practice_identity"));
       const legacySlug = deriveLegacySlug(row);
       const rulesheetLegacyBase = legacySlug;
@@ -604,10 +629,8 @@ function main() {
     items,
   };
 
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, JSON.stringify(out, null, 2), "utf8");
-
-  console.log(`Wrote ${items.length} items -> ${outPath}`);
+  const changed = writeJsonIfChanged(outPath, out);
+  console.log(`${changed ? "Wrote" : "Unchanged"} ${items.length} items -> ${outPath}`);
   console.log(`Source CSVs: ${inputCsvPaths.join(", ")}`);
   console.log(`Libraries: ${out.libraries.length}`);
 }

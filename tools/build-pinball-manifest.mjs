@@ -4,11 +4,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
-const MANIFEST_PATH = path.join(SHARED_PINBALL_DIR, "cache-manifest.json");
-const UPDATE_LOG_PATH = path.join(SHARED_PINBALL_DIR, "cache-update-log.json");
-
 const EXCLUDED_FILES = new Set(["cache-manifest.json", "cache-update-log.json"]);
+const EXCLUDED_BASENAMES = new Set([
+  ".DS_Store",
+  "local_asset_intake_report.json",
+  "pinprof_admin_v1.sqlite",
+  "pinprof_admin_v1.sqlite-shm",
+  "pinprof_admin_v1.sqlite-wal",
+  "pinball_library_seed_v1.sqlite-shm",
+  "pinball_library_seed_v1.sqlite-wal",
+]);
 
 const CONTENT_TYPES = {
   ".json": "application/json",
@@ -84,15 +89,28 @@ function diffManifest(prevFiles, nextFiles) {
   return { added, changed, removed };
 }
 
-export async function buildPinballManifest() {
-  await fs.mkdir(SHARED_PINBALL_DIR, { recursive: true });
+function resolvePinballDir(options = {}) {
+  return path.resolve(
+    options.sourceDir ??
+      process.env.PINBALL_MANIFEST_SOURCE_DIR ??
+      path.join(ROOT, "shared", "pinball")
+  );
+}
 
-  const allFiles = await walkFiles(SHARED_PINBALL_DIR);
+export async function buildPinballManifest(options = {}) {
+  const pinballDir = resolvePinballDir(options);
+  const manifestPath = path.join(pinballDir, "cache-manifest.json");
+  const updateLogPath = path.join(pinballDir, "cache-update-log.json");
+
+  await fs.mkdir(pinballDir, { recursive: true });
+
+  const allFiles = await walkFiles(pinballDir);
   const files = {};
 
   for (const filePath of allFiles) {
-    const rel = toPosix(path.relative(SHARED_PINBALL_DIR, filePath));
+    const rel = toPosix(path.relative(pinballDir, filePath));
     if (!rel || EXCLUDED_FILES.has(rel)) continue;
+    if (EXCLUDED_BASENAMES.has(path.basename(filePath))) continue;
 
     const stat = await fs.stat(filePath);
     const { hash, size } = await hashFile(filePath);
@@ -106,7 +124,7 @@ export async function buildPinballManifest() {
     };
   }
 
-  const previousManifest = await readJsonOrNull(MANIFEST_PATH);
+  const previousManifest = await readJsonOrNull(manifestPath);
   const previousFiles = previousManifest?.files ?? {};
   const { added, changed, removed } = diffManifest(previousFiles, files);
 
@@ -114,14 +132,14 @@ export async function buildPinballManifest() {
   const manifest = {
     schemaVersion: 1,
     generatedAt,
-    source: "shared/pinball",
+    source: toPosix(path.relative(ROOT, pinballDir) || "shared/pinball"),
     totalFiles: Object.keys(files).length,
     files,
   };
 
-  await fs.writeFile(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+  await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 
-  const previousLog = (await readJsonOrNull(UPDATE_LOG_PATH)) ?? {
+  const previousLog = (await readJsonOrNull(updateLogPath)) ?? {
     schemaVersion: 1,
     events: [],
   };
@@ -143,7 +161,7 @@ export async function buildPinballManifest() {
     latest: summary,
   };
 
-  await fs.writeFile(UPDATE_LOG_PATH, `${JSON.stringify(logPayload, null, 2)}\n`, "utf8");
+  await fs.writeFile(updateLogPath, `${JSON.stringify(logPayload, null, 2)}\n`, "utf8");
 
   return summary;
 }
