@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-03-07T22:25:21.869Z",
+  "generated_at": "2026-03-07T22:39:40.253Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -3545,7 +3545,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GWyBj-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GWyBj-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GWyBj-playfield.webp"
       },
       "sort_keys": {
@@ -3796,7 +3796,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gd266-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/Gd266-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/Gd266-playfield.jpg"
       },
       "sort_keys": {
@@ -4041,7 +4041,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRVoX-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GRVoX-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GRVoX-playfield.jpg"
       },
       "sort_keys": {
@@ -4116,7 +4116,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GYWvw-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GYWvw-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GYWvw-playfield.png"
       },
       "sort_keys": {
@@ -4191,7 +4191,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4PBO-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4PBO-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G4PBO-playfield.jpg"
       },
       "sort_keys": {
@@ -4273,7 +4273,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GR6wO-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GR6wO-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GR6wO-playfield.jpg"
       },
       "sort_keys": {
@@ -4355,7 +4355,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5Kvx-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G5Kvx-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G5Kvx-playfield.jpeg"
       },
       "sort_keys": {
@@ -4437,7 +4437,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrP6q-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GrP6q-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GrP6q-playfield.jpg"
       },
       "sort_keys": {
@@ -4512,7 +4512,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GO0q3-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GO0q3-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GO0q3-playfield.jpg"
       },
       "sort_keys": {
@@ -4594,7 +4594,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr8l3-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/Gr8l3-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/Gr8l3-playfield.jpg"
       },
       "sort_keys": {
@@ -4764,7 +4764,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4yen-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4yen-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G4yen-playfield.jpg"
       },
       "sort_keys": {
@@ -4846,7 +4846,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRD79-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GRD79-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GRD79-playfield.jpg"
       },
       "sort_keys": {
@@ -5173,7 +5173,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrXy3-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GrXy3-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GrXy3-playfield.jpg"
       },
       "sort_keys": {
@@ -5255,7 +5255,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRKx7-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GRKx7-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GRKx7-playfield.jpg"
       },
       "sort_keys": {
@@ -5330,7 +5330,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5YDN-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G5YDN-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G5YDN-playfield.jpg"
       },
       "sort_keys": {
@@ -5412,7 +5412,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4jPX-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G4jPX-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G4jPX-playfield.jpg"
       },
       "sort_keys": {
@@ -5487,7 +5487,7 @@
       "videos": [],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrPbb-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GrPbb-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GrPbb-playfield.jpg"
       },
       "sort_keys": {
@@ -5663,7 +5663,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5728-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/G5728-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/G5728-playfield.jpg"
       },
       "sort_keys": {
@@ -5751,7 +5751,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr2wz-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/Gr2wz-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/Gr2wz-playfield.jpg"
       },
       "sort_keys": {
@@ -6009,7 +6009,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GryK3-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GryK3-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GryK3-playfield.webp"
       },
       "sort_keys": {
@@ -6091,7 +6091,7 @@
       ],
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GvBn8-rulesheet.md",
-        "gameinfo_local_practice": null,
+        "gameinfo_local_practice": "/pinball/gameinfo/GvBn8-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GvBn8-playfield.jpg"
       },
       "sort_keys": {
