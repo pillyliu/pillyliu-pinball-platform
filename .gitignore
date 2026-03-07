@@ -5,6 +5,8 @@ dist/
 .env
 .env.*
 *.log
+*.sqlite-shm
+*.sqlite-wal
 
 # Local/generated pinball tooling artifacts
 .pinball-public-backup/

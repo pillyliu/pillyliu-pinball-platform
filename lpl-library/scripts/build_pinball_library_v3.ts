@@ -309,6 +309,11 @@ function findCanonicalPlayfieldLocalPath(practiceIdentity: string | null): strin
   return findPlayfieldLocalPath(base);
 }
 
+function findMachineAliasPlayfieldLocalPath(opdbID: string | null): string | null {
+  if (!opdbID) return null;
+  return findPlayfieldLocalPath(`${opdbID}-playfield`);
+}
+
 function pushUnique(values: string[], value: string | null) {
   const trimmed = String(value ?? "").trim();
   if (!trimmed) return;
@@ -398,10 +403,12 @@ function findMetadataCanonicalPlayfieldLocalPath(row: RawRow, legacySlug: string
 
 function resolvePracticePlayfieldLocalPath(
   row: RawRow,
+  opdbID: string | null,
   practiceIdentity: string | null,
   legacySlug: string | null,
 ): string | null {
   return (
+    findMachineAliasPlayfieldLocalPath(opdbID) ??
     findCanonicalPlayfieldLocalPath(practiceIdentity) ??
     findMetadataCanonicalPlayfieldLocalPath(row, legacySlug)
   );
@@ -528,7 +535,7 @@ function main() {
           gameinfo_local_legacy: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoLegacyBase),
           gameinfo_local_practice: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoPracticeBase),
           playfield_local_legacy: findPlayfieldLocalPath(legacySlug),
-          playfield_local_practice: resolvePracticePlayfieldLocalPath(row, practiceIdentity, legacySlug),
+          playfield_local_practice: resolvePracticePlayfieldLocalPath(row, opdbID, practiceIdentity, legacySlug),
         },
 
         sort_keys: {

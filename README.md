@@ -9,6 +9,8 @@ Monorepo for `pillyliu.com` and related pinball apps.
 - `lpl-standings` -> `/lpl-standings/`
 - `lpl-stats` -> `/lpl-stats/`
 - `lpl-targets` -> `/lpl-targets/`
+- `pinprof-admin` -> static frontend for hosted/private admin UI
+- `pinprof-admin-site` -> PHP/MariaDB backend runtime for shared hosting deployment
 
 ## Canonical Data Model
 
@@ -22,6 +24,7 @@ Monorepo for `pillyliu.com` and related pinball apps.
 npm run sync:pinball        # regenerate shared/pinball manifest + update log
 npm run league:update-check # validate core CSV/JSON integrity
 npm run build:all           # build all apps
+npm run build:pinprof-admin # build the hosted admin frontend
 npm run check:smoke         # smoke check builds + shared/pinball contract
 ./deploy.sh                 # build + smoke + deploy
 ```

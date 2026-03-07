@@ -1,0 +1,7 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+
+RewriteEngine On
+RewriteRule ^(?:config\.php|config\.example\.php|schema\.sql)$ - [F,L]
+RewriteRule ^lib/ - [F,L]
+RewriteRule ^api/(.*)$ api.php?route=$1 [QSA,L]

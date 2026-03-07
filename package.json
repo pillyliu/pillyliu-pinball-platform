@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "manifest:pinball": "node tools/build-pinball-manifest.mjs",
+    "pinprof-admin:apply-overrides": "node tools/pinprof/apply-admin-overrides.mjs",
+    "dev:pinprof-admin": "npm --prefix pinprof-admin run dev",
+    "build:pinprof-admin": "npm --prefix pinprof-admin run build",
+    "start:pinprof-admin": "npm --prefix pinprof-admin run start",
     "league:update-check": "node tools/league-update-check.mjs",
     "check:smoke": "node tools/smoke-check.mjs",
     "sync:pinball": "npm run manifest:pinball",
@@ -27,6 +31,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.13",
+    "better-sqlite3": "^12.6.2",
     "react": "^19.2.4"
   }
 }

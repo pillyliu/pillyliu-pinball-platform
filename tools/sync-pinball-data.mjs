@@ -7,6 +7,42 @@ import { buildPinballManifest } from "./build-pinball-manifest.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
+const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
+const PINBALL_APP_ROOT = path.resolve(ROOT, "../Pinball App");
+const PINBALL_APP_SCRIPTS_DIR = path.join(PINBALL_APP_ROOT, "scripts");
+const FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "fetch_opdb_snapshot.py");
+const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_library_seed_db.py");
+const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "audit_rulesheet_links.py");
+const APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
+const IOS_STARTER_PACK_DATA_DIR = path.join(
+  PINBALL_APP_ROOT,
+  "Pinball App 2",
+  "Pinball App 2",
+  "PinballStarter.bundle",
+  "pinball",
+  "data"
+);
+const ANDROID_STARTER_PACK_DATA_DIR = path.join(
+  PINBALL_APP_ROOT,
+  "Pinball App Android",
+  "app",
+  "src",
+  "main",
+  "assets",
+  "starter-pack",
+  "pinball",
+  "data"
+);
+const SHARED_OPDB_CATALOG_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_catalog_v1.json");
+const SHARED_LIBRARY_V3_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
+const SHARED_LIBRARY_SEED_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_seed_v1.sqlite");
+const SHARED_RULESHEET_AUDIT_PATH = path.join(SHARED_PINBALL_DATA_DIR, "rulesheet_link_audit.json");
+const IOS_OPDB_CATALOG_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "opdb_catalog_v1.json");
+const IOS_LIBRARY_V3_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "pinball_library_v3.json");
+const IOS_LIBRARY_SEED_DB_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "pinball_library_seed_v1.sqlite");
+const ANDROID_OPDB_CATALOG_PATH = path.join(ANDROID_STARTER_PACK_DATA_DIR, "opdb_catalog_v1.json");
+const ANDROID_LIBRARY_V3_PATH = path.join(ANDROID_STARTER_PACK_DATA_DIR, "pinball_library_v3.json");
+const ANDROID_LIBRARY_SEED_DB_PATH = path.join(ANDROID_STARTER_PACK_DATA_DIR, "pinball_library_seed_v1.sqlite");
 
 const WEB_APP_TARGETS = {
   "lpl-library": path.join(ROOT, "lpl-library", "public", "pinball"),
@@ -109,6 +145,15 @@ async function pathExists(p) {
   } catch {
     return false;
   }
+}
+
+async function ensureParentDir(filePath) {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+}
+
+async function copyFileEnsuringParent(sourcePath, targetPath) {
+  await ensureParentDir(targetPath);
+  await fs.copyFile(sourcePath, targetPath);
 }
 
 async function syncPath(label, target) {
@@ -394,6 +439,74 @@ async function rebuildLibraryJsonV3() {
   await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v3.ts"], path.join(ROOT, "lpl-library"));
 }
 
+async function generateSharedOpdbCatalog() {
+  await ensureParentDir(SHARED_OPDB_CATALOG_PATH);
+  await run("python3", [
+    FETCH_OPDB_SNAPSHOT_SCRIPT,
+    "--ios-output",
+    SHARED_OPDB_CATALOG_PATH,
+    "--skip-android",
+  ], ROOT);
+}
+
+async function mirrorSharedDataForSeedGeneration() {
+  const requiredSharedFiles = [
+    [SHARED_OPDB_CATALOG_PATH, IOS_OPDB_CATALOG_PATH],
+    [SHARED_OPDB_CATALOG_PATH, ANDROID_OPDB_CATALOG_PATH],
+    [SHARED_LIBRARY_V3_PATH, IOS_LIBRARY_V3_PATH],
+    [SHARED_LIBRARY_V3_PATH, ANDROID_LIBRARY_V3_PATH],
+  ];
+
+  for (const [sourcePath, targetPath] of requiredSharedFiles) {
+    if (!(await pathExists(sourcePath))) {
+      throw new Error(`Missing shared generation input: ${sourcePath}`);
+    }
+    await copyFileEnsuringParent(sourcePath, targetPath);
+  }
+}
+
+async function generateSharedLibrarySeedDb() {
+  await run("python3", [BUILD_LIBRARY_SEED_DB_SCRIPT], ROOT);
+
+  if (await pathExists(IOS_LIBRARY_SEED_DB_PATH)) {
+    await copyFileEnsuringParent(IOS_LIBRARY_SEED_DB_PATH, SHARED_LIBRARY_SEED_DB_PATH);
+    return;
+  }
+  if (await pathExists(ANDROID_LIBRARY_SEED_DB_PATH)) {
+    await copyFileEnsuringParent(ANDROID_LIBRARY_SEED_DB_PATH, SHARED_LIBRARY_SEED_DB_PATH);
+    return;
+  }
+  throw new Error("Library seed DB generation did not produce an output file.");
+}
+
+async function generateSharedRulesheetAudit() {
+  await ensureParentDir(SHARED_RULESHEET_AUDIT_PATH);
+  await run("python3", [
+    AUDIT_RULESHEET_LINKS_SCRIPT,
+    "--catalog",
+    SHARED_OPDB_CATALOG_PATH,
+    "--output",
+    SHARED_RULESHEET_AUDIT_PATH,
+    "--skip-android",
+  ], ROOT);
+}
+
+async function applyPinprofAdminOverrides() {
+  if (!(await pathExists(APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT))) {
+    console.warn(`Skipping PinProf admin override apply; missing ${path.relative(ROOT, APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT)}`);
+    return;
+  }
+  await run("node", [APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT], ROOT);
+}
+
+async function generateSharedAppSupportArtifacts() {
+  await generateSharedOpdbCatalog();
+  await mirrorSharedDataForSeedGeneration();
+  await generateSharedLibrarySeedDb();
+  await applyPinprofAdminOverrides();
+  await generateSharedRulesheetAudit();
+}
+
 async function generatePracticeIdentityAssetAliases() {
   await run("node", ["tools/create-practice-identity-asset-aliases.mjs"], ROOT);
 }
@@ -407,6 +520,7 @@ async function main() {
   // Rebuild again so v2/v3 practice asset paths prefer the newly-created OPDB aliases.
   await rebuildLibraryJsonV2();
   await rebuildLibraryJsonV3();
+  await generateSharedAppSupportArtifacts();
   await buildPinballManifest();
 
   if (args.allTargets) {
