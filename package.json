@@ -6,6 +6,7 @@
   "scripts": {
     "manifest:pinball": "node tools/build-pinball-manifest.mjs",
     "pinprof-admin:apply-overrides": "node tools/pinprof/apply-admin-overrides.mjs",
+    "pinprof-admin:rename-playfields-to-machine-alias": "node tools/pinprof/rename-playfields-to-machine-alias.mjs",
     "dev:pinprof-admin": "npm --prefix pinprof-admin run dev",
     "build:pinprof-admin": "npm --prefix pinprof-admin run build",
     "start:pinprof-admin": "npm --prefix pinprof-admin run start",

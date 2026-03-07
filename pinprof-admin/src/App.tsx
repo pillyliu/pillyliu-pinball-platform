@@ -38,6 +38,7 @@ type MachineOverride = {
   backglassLocalPath: string | null;
   backglassSourceUrl: string;
   backglassSourceNote: string;
+  playfieldAliasId: string;
   playfieldLocalPath: string | null;
   playfieldSourceUrl: string;
   playfieldSourceNote: string;
@@ -92,6 +93,9 @@ type MachineDetail = {
         effectiveKind: "opdb" | "pillyliu" | "external" | "missing";
         effectiveLabel: string;
         effectiveUrl: string | null;
+        targetAliasId: string;
+        targetAliasLabel: string;
+        targetFilename: string;
         localPath: string | null;
         localSourceUrl: string | null;
         localSourceNote: string | null;
@@ -113,6 +117,11 @@ type MachineDetail = {
       };
     };
   };
+  playfieldTarget?: {
+    aliasId: string;
+    aliasLabel: string;
+    filenameBase: string;
+  };
   override: MachineOverride;
   rulesheetContent: string;
   gameinfoContent: string;
@@ -132,6 +141,7 @@ type SaveOverridePayload = {
   yearOverride: string;
   backglassSourceUrl: string;
   backglassSourceNote: string;
+  playfieldAliasId: string;
   playfieldSourceUrl: string;
   playfieldSourceNote: string;
   rulesheetSourceUrl: string;
@@ -153,6 +163,7 @@ const emptyOverridePayload = (): SaveOverridePayload => ({
   yearOverride: "",
   backglassSourceUrl: "",
   backglassSourceNote: "",
+  playfieldAliasId: "",
   playfieldSourceUrl: "",
   playfieldSourceNote: "",
   rulesheetSourceUrl: "",
@@ -186,6 +197,10 @@ function extractMessage(error: unknown): string {
 
 function displayTitle(item: MachineListItem | MachineDetail["machine"]) {
   return [item.name, item.variant].filter(Boolean).join(" • ");
+}
+
+function aliasTitle(alias: MachineDetail["sources"]["aliases"][number], fallbackName: string) {
+  return [alias.variant || fallbackName, alias.opdbMachineId].filter(Boolean).join(" · ");
 }
 
 function displayImage(detail: MachineDetail | null): string | null {
@@ -225,6 +240,10 @@ export default function App() {
   const [toast, setToast] = useState<Toast | null>(null);
 
   const selectedMachine = useMemo(() => machines.find((item) => item.practiceIdentity === selectedIdentity) ?? null, [machines, selectedIdentity]);
+  const selectedPlayfieldAlias = useMemo(
+    () => detail?.sources.aliases.find((alias) => alias.opdbMachineId === overrideForm.playfieldAliasId) ?? detail?.sources.aliases[0] ?? null,
+    [detail, overrideForm.playfieldAliasId],
+  );
   const pageCount = Math.max(1, Math.ceil(totalMachines / PAGE_SIZE));
 
   useEffect(() => {
@@ -278,6 +297,7 @@ export default function App() {
           yearOverride: payload.override.yearOverride,
           backglassSourceUrl: payload.override.backglassSourceUrl,
           backglassSourceNote: payload.override.backglassSourceNote,
+          playfieldAliasId: payload.override.playfieldAliasId,
           playfieldSourceUrl: payload.override.playfieldSourceUrl,
           playfieldSourceNote: payload.override.playfieldSourceNote,
           rulesheetSourceUrl: payload.override.rulesheetSourceUrl,
@@ -318,6 +338,7 @@ export default function App() {
         yearOverride: payload.override.yearOverride,
         backglassSourceUrl: payload.override.backglassSourceUrl,
         backglassSourceNote: payload.override.backglassSourceNote,
+        playfieldAliasId: payload.override.playfieldAliasId,
         playfieldSourceUrl: payload.override.playfieldSourceUrl,
         playfieldSourceNote: payload.override.playfieldSourceNote,
         rulesheetSourceUrl: payload.override.rulesheetSourceUrl,
@@ -475,6 +496,7 @@ export default function App() {
         apiFetch(`api/machines/${selectedIdentity}/playfield/import-url`, {
           method: "POST",
           body: JSON.stringify({
+            machineAliasId: overrideForm.playfieldAliasId,
             sourceUrl: overrideForm.playfieldSourceUrl.trim(),
             sourceNote: overrideForm.playfieldSourceNote,
           }),
@@ -490,6 +512,7 @@ export default function App() {
       async () => {
         const body = new FormData();
         body.append("image", file);
+        body.append("machineAliasId", overrideForm.playfieldAliasId);
         body.append("sourceUrl", overrideForm.playfieldSourceUrl);
         body.append("sourceNote", overrideForm.playfieldSourceNote || file.name);
         const response = await fetch(`api/machines/${selectedIdentity}/playfield/upload`, {
@@ -912,13 +935,32 @@ export default function App() {
                   <div className="panel-header">
                     <div>
                       <h2>Replace playfield image</h2>
-                      <p className="muted">If you find a better Pinside image or have a local file, replace the current effective playfield here.</p>
+                      <p className="muted">Choose the exact OPDB alias this art belongs to, then import or upload the better image.</p>
                     </div>
                     <button onClick={handleImportPlayfieldUrl} disabled={busyAction === "import-playfield-url"}>
                       {busyAction === "import-playfield-url" ? "Importing…" : "Import from URL"}
                     </button>
                   </div>
                   <div className="form-grid">
+                    <label className="field">
+                      Target OPDB alias
+                      <select
+                        value={overrideForm.playfieldAliasId}
+                        onChange={(event) =>
+                          setOverrideForm((current) => ({ ...current, playfieldAliasId: event.target.value }))
+                        }
+                      >
+                        {detail.sources.aliases.map((alias) => (
+                          <option key={alias.opdbMachineId} value={alias.opdbMachineId}>
+                            {aliasTitle(alias, detail.machine.name)}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="field">
+                      Saved filename
+                      <code>{selectedPlayfieldAlias ? `${selectedPlayfieldAlias.opdbMachineId}-playfield` : detail.sources.assets.playfield.targetFilename}</code>
+                    </label>
                     <label className="field wide">
                       Remote source URL
                       <input
@@ -951,6 +993,10 @@ export default function App() {
                     />
                   </label>
                   <div className="path-list">
+                    <div>
+                      <small>Target alias</small>
+                      <code>{selectedPlayfieldAlias ? aliasTitle(selectedPlayfieldAlias, detail.machine.name) : detail.sources.assets.playfield.targetAliasLabel}</code>
+                    </div>
                     <div>
                       <small>Override image path</small>
                       <code>{detail.override.playfieldLocalPath ?? detail.machine.playfieldLocalPath ?? "None"}</code>

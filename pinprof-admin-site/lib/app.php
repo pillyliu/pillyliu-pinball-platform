@@ -265,6 +265,68 @@ function pinprof_preferred_alias(array $aliases): ?array
     return $aliases[0] ?? null;
 }
 
+function pinprof_alias_id(array $alias): ?string
+{
+    return pinprof_clean_string($alias['opdb_machine_id'] ?? null);
+}
+
+function pinprof_alias_label(array $alias): string
+{
+    $parts = array_values(array_filter([
+        pinprof_clean_string($alias['variant'] ?? null),
+        pinprof_alias_id($alias),
+    ], static fn (?string $value): bool => $value !== null));
+    return $parts ? implode(' · ', $parts) : ((string) ($alias['opdb_machine_id'] ?? ''));
+}
+
+function pinprof_resolve_playfield_alias(string $practiceIdentity, ?string $requestedAliasId = null, ?array $aliases = null, ?array $override = null): array
+{
+    $aliasRows = $aliases ?? (pinprof_opdb_groups()[$practiceIdentity] ?? []);
+    if ($aliasRows === []) {
+        throw new RuntimeException("No OPDB aliases found for {$practiceIdentity}");
+    }
+
+    $requested = pinprof_clean_string($requestedAliasId);
+    if ($requested !== null) {
+        foreach ($aliasRows as $alias) {
+            if (pinprof_alias_id($alias) === $requested) {
+                return $alias;
+            }
+        }
+        throw new RuntimeException("Alias {$requested} does not belong to {$practiceIdentity}");
+    }
+
+    $overrideAliasId = pinprof_clean_string($override['opdb_machine_id'] ?? null);
+    if ($overrideAliasId !== null) {
+        foreach ($aliasRows as $alias) {
+            if (pinprof_alias_id($alias) === $overrideAliasId) {
+                return $alias;
+            }
+        }
+    }
+
+    return pinprof_preferred_alias($aliasRows) ?? $aliasRows[0];
+}
+
+function pinprof_playfield_filename_base(string $aliasId): string
+{
+    return $aliasId . '-playfield';
+}
+
+function pinprof_playfield_prefix_from_web_path(?string $webPath): ?string
+{
+    $clean = pinprof_clean_string($webPath);
+    if ($clean === null || !str_starts_with($clean, pinprof_web_root('images/playfields/'))) {
+        return null;
+    }
+    $filename = basename($clean);
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    $stem = $ext !== '' ? substr($filename, 0, -strlen($ext) - 1) : $filename;
+    $stem = preg_replace('/_(700|1400)$/i', '', $stem);
+    $stem = is_string($stem) ? trim($stem) : '';
+    return $stem !== '' ? $stem : null;
+}
+
 function pinprof_preferred_library_item(array $items): ?array
 {
     return $items[0] ?? null;
@@ -312,6 +374,8 @@ function pinprof_machine_detail(string $practiceIdentity): array
     $preferredLibrary = pinprof_preferred_library_item($libraryItems);
     $curated = pinprof_curated_assets($preferredLibrary ?? []);
     $override = pinprof_override_row($practiceIdentity) ?? [];
+    $playfieldAlias = pinprof_resolve_playfield_alias($practiceIdentity, null, $aliases, $override);
+    $playfieldAliasId = pinprof_alias_id($playfieldAlias) ?? '';
 
     $primaryImageUrl = pinprof_pick_first_non_empty([
         $preferredAlias['primary_image']['large_url'] ?? null,
@@ -403,6 +467,7 @@ function pinprof_machine_detail(string $practiceIdentity): array
             'backglassLocalPath' => pinprof_clean_string($override['backglass_local_path'] ?? null),
             'backglassSourceUrl' => (string) ($override['backglass_source_url'] ?? ''),
             'backglassSourceNote' => (string) ($override['backglass_source_note'] ?? ''),
+            'playfieldAliasId' => $playfieldAliasId,
             'playfieldLocalPath' => pinprof_clean_string($override['playfield_local_path'] ?? null),
             'playfieldSourceUrl' => (string) ($override['playfield_source_url'] ?? ''),
             'playfieldSourceNote' => (string) ($override['playfield_source_note'] ?? ''),
@@ -449,6 +514,9 @@ function pinprof_machine_detail(string $practiceIdentity): array
                     'effectiveKind' => $playfieldKind,
                     'effectiveLabel' => pinprof_asset_label($playfieldKind, $playfieldKind === 'pillyliu' ? 'override/library image' : 'playfield image'),
                     'effectiveUrl' => $effectivePlayfieldUrl,
+                    'targetAliasId' => $playfieldAliasId,
+                    'targetAliasLabel' => pinprof_alias_label($playfieldAlias),
+                    'targetFilename' => pinprof_playfield_filename_base($playfieldAliasId),
                     'localPath' => pinprof_pick_first_non_empty([
                         $override['playfield_local_path'] ?? null,
                         $curated['playfieldLocalPath'],
@@ -598,11 +666,11 @@ function pinprof_upsert_override(string $practiceIdentity, array $patch): void
     $detail = pinprof_machine_detail($practiceIdentity);
     $machine = $detail['machine'];
     $existing = pinprof_override_row($practiceIdentity) ?? [];
-    $next = array_merge($existing, [
+    $next = array_merge([
         'practice_identity' => $practiceIdentity,
-        'opdb_machine_id' => $machine['opdbMachineId'] ?? null,
-        'slug' => $machine['slug'] ?? null,
-    ], $patch);
+        'opdb_machine_id' => $existing['opdb_machine_id'] ?? ($machine['opdbMachineId'] ?? null),
+        'slug' => $existing['slug'] ?? ($machine['slug'] ?? null),
+    ], $existing, $patch);
 
     $columns = [
         'practice_identity',
@@ -753,19 +821,43 @@ function pinprof_download_url(string $url): array
     ];
 }
 
-function pinprof_store_binary_asset(string $practiceIdentity, string $kind, string $contents, ?string $sourceName, ?string $contentType, ?string $sourceUrl, ?string $sourceNote): void
+function pinprof_store_binary_asset(
+    string $practiceIdentity,
+    string $kind,
+    string $contents,
+    ?string $sourceName,
+    ?string $contentType,
+    ?string $sourceUrl,
+    ?string $sourceNote,
+    ?string $machineAliasId = null
+): void
 {
     $folder = $kind === 'backglass' ? 'images/backglasses' : 'images/playfields';
     $dir = pinprof_fs_root($folder);
     pinprof_ensure_dir($dir);
     $prefix = "{$practiceIdentity}-{$kind}";
+    $patch = [];
+    if ($kind === 'playfield') {
+        $override = pinprof_override_row($practiceIdentity) ?? [];
+        $alias = pinprof_resolve_playfield_alias($practiceIdentity, $machineAliasId, null, $override);
+        $aliasId = pinprof_alias_id($alias);
+        if ($aliasId === null) {
+            throw new RuntimeException("Unable to resolve playfield alias for {$practiceIdentity}");
+        }
+        $prefix = pinprof_playfield_filename_base($aliasId);
+        $existingPrefix = pinprof_playfield_prefix_from_web_path($override['playfield_local_path'] ?? null);
+        if ($existingPrefix !== null && $existingPrefix !== $prefix) {
+            pinprof_remove_prefixed_files($dir, $existingPrefix);
+        }
+        $patch['opdb_machine_id'] = $aliasId;
+    }
     pinprof_remove_prefixed_files($dir, $prefix);
     $ext = pinprof_guess_extension($sourceName, $contentType);
     $filename = $prefix . $ext;
     $path = $dir . '/' . $filename;
     file_put_contents($path, $contents);
 
-    $patch = $kind === 'backglass'
+    $patch = array_merge($patch, $kind === 'backglass'
         ? [
             'backglass_local_path' => pinprof_web_root($folder . '/' . $filename),
             'backglass_source_url' => $sourceUrl,
@@ -775,7 +867,7 @@ function pinprof_store_binary_asset(string $practiceIdentity, string $kind, stri
             'playfield_local_path' => pinprof_web_root($folder . '/' . $filename),
             'playfield_source_url' => $sourceUrl,
             'playfield_source_note' => $sourceNote,
-        ];
+        ]);
     pinprof_upsert_override($practiceIdentity, $patch);
 }
 

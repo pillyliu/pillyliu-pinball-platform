@@ -96,7 +96,7 @@ try {
     if (preg_match('#^machines/([^/]+)/override$#', $route, $matches) && in_array($method, ['PUT', 'POST'], true)) {
         $practiceIdentity = urldecode($matches[1]);
         $body = api_json_body();
-        pinprof_upsert_override($practiceIdentity, [
+        $patch = [
             'name_override' => pinprof_clean_string($body['nameOverride'] ?? null),
             'variant_override' => pinprof_clean_string($body['variantOverride'] ?? null),
             'manufacturer_override' => pinprof_clean_string($body['manufacturerOverride'] ?? null),
@@ -108,7 +108,12 @@ try {
             'rulesheet_source_url' => pinprof_clean_string($body['rulesheetSourceUrl'] ?? null),
             'rulesheet_source_note' => pinprof_clean_string($body['rulesheetSourceNote'] ?? null),
             'notes' => pinprof_clean_string($body['notes'] ?? null),
-        ]);
+        ];
+        $playfieldAliasId = pinprof_clean_string($body['playfieldAliasId'] ?? null);
+        if ($playfieldAliasId !== null) {
+            $patch['opdb_machine_id'] = pinprof_alias_id(pinprof_resolve_playfield_alias($practiceIdentity, $playfieldAliasId));
+        }
+        pinprof_upsert_override($practiceIdentity, $patch);
         api_json(['ok' => true]);
     }
 
@@ -157,6 +162,7 @@ try {
             (string) ($download['contentType'] ?? ''),
             $sourceUrl,
             pinprof_clean_string($body['sourceNote'] ?? null) ?? $sourceUrl,
+            $kind === 'playfield' ? pinprof_clean_string($body['machineAliasId'] ?? $body['playfieldAliasId'] ?? null) : null,
         );
         api_json(['ok' => true]);
     }
@@ -177,6 +183,7 @@ try {
             pinprof_clean_string($file['type'] ?? null),
             pinprof_clean_string($_POST['sourceUrl'] ?? null),
             pinprof_clean_string($_POST['sourceNote'] ?? null) ?? pinprof_clean_string($file['name'] ?? null),
+            $kind === 'playfield' ? pinprof_clean_string($_POST['machineAliasId'] ?? $_POST['playfieldAliasId'] ?? null) : null,
         );
         api_json(['ok' => true]);
     }
