@@ -19,7 +19,6 @@ type LibraryType = "venue" | "manufacturer";
 type PlayfieldAssetRow = {
   practiceIdentity: string;
   sourceAliasId: string;
-  coveredAliasIdsJson: string;
   playfieldLocalPath: string | null;
 };
 
@@ -273,18 +272,38 @@ function fileExists(p: string): boolean {
   }
 }
 
-function parseCoveredAliasIds(raw: string | null | undefined): string[] {
-  const trimmed = String(raw ?? "").trim();
-  if (!trimmed) return [];
-  try {
-    const parsed = JSON.parse(trimmed);
-    if (Array.isArray(parsed)) {
-      return Array.from(new Set(parsed.map((value) => String(value ?? "").trim()).filter(Boolean)));
-    }
-  } catch {
-    return trimmed.split(",").map((value) => value.trim()).filter(Boolean);
+function parseOpdbIdParts(opdbId: string | null | undefined) {
+  const clean = cleanString(opdbId);
+  if (!clean) {
+    return { fullId: null, groupId: null, machineId: null, aliasId: null };
   }
-  return [];
+  const parts = clean.split("-");
+  const groupId = parts[0] ?? null;
+  const machinePart = parts.find((part) => part.startsWith("M")) ?? null;
+  const aliasPart = parts.find((part) => part.startsWith("A")) ?? null;
+  const machineId = groupId && machinePart ? `${groupId}-${machinePart}` : groupId;
+  return {
+    fullId: clean,
+    groupId,
+    machineId,
+    aliasId: aliasPart ? clean : null,
+  };
+}
+
+function scorePlayfieldSourceMatch(requestedOpdbId: string | null, sourceOpdbId: string | null): number {
+  const requested = parseOpdbIdParts(requestedOpdbId);
+  const source = parseOpdbIdParts(sourceOpdbId);
+  if (!requested.fullId || !source.fullId || requested.groupId !== source.groupId) {
+    return -1;
+  }
+  if (requested.fullId === source.fullId) return 500;
+  if (requested.machineId && source.fullId === requested.machineId) return 460;
+  if (requested.machineId && source.machineId === requested.machineId) {
+    return source.aliasId ? 440 : 450;
+  }
+  if (source.machineId === source.groupId && !source.aliasId) return 300;
+  if (source.aliasId) return 240;
+  return 250;
 }
 
 function loadAdminPlayfieldAssetMap(): Map<string, PlayfieldAssetRow[]> {
@@ -307,7 +326,6 @@ function loadAdminPlayfieldAssetMap(): Map<string, PlayfieldAssetRow[]> {
       SELECT
         practice_identity AS practiceIdentity,
         source_opdb_machine_id AS sourceAliasId,
-        covered_alias_ids_json AS coveredAliasIdsJson,
         playfield_local_path AS playfieldLocalPath
       FROM playfield_assets
       WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''
@@ -358,11 +376,18 @@ function resolveAdminPlayfieldLocalPath(
 ): string | null {
   if (!practiceIdentity || !opdbID) return null;
   const rows = adminAssets.get(practiceIdentity) ?? [];
-  if (!rows.length) return null;
-  const exact = rows.find((row) => row.sourceAliasId === opdbID && parseCoveredAliasIds(row.coveredAliasIdsJson).includes(opdbID));
-  if (exact?.playfieldLocalPath) return exact.playfieldLocalPath;
-  const covered = rows.find((row) => parseCoveredAliasIds(row.coveredAliasIdsJson).includes(opdbID));
-  return covered?.playfieldLocalPath ?? null;
+  let best: { score: number; path: string } | null = null;
+  for (const row of rows) {
+    if (!row.playfieldLocalPath || !fileExists(path.join(SHARED_PINBALL_DIR, row.playfieldLocalPath.replace(/^\/pinball\/?/, "")))) {
+      continue;
+    }
+    const score = scorePlayfieldSourceMatch(opdbID, row.sourceAliasId);
+    if (score < 0 || !row.playfieldLocalPath) continue;
+    if (!best || score > best.score) {
+      best = { score, path: row.playfieldLocalPath };
+    }
+  }
+  return best?.path ?? null;
 }
 
 function findCanonicalPlayfieldLocalPath(practiceIdentity: string | null): string | null {

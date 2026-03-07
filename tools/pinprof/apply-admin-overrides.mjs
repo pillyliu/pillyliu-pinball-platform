@@ -8,22 +8,37 @@ const SHARED_DATA_DIR = path.join(ROOT, "shared", "pinball", "data");
 const ADMIN_DB_PATH = path.join(SHARED_DATA_DIR, "pinprof_admin_v1.sqlite");
 const SEED_DB_PATH = path.join(SHARED_DATA_DIR, "pinball_library_seed_v1.sqlite");
 
-function parseCoveredAliasIds(raw) {
-  const trimmed = String(raw ?? "").trim();
-  if (!trimmed) return [];
-  try {
-    const parsed = JSON.parse(trimmed);
-    if (Array.isArray(parsed)) {
-      return Array.from(new Set(parsed.map((value) => String(value ?? "").trim()).filter(Boolean)));
-    }
-  } catch {
-    return trimmed.split(",").map((value) => value.trim()).filter(Boolean);
-  }
-  return [];
-}
-
 function stringifyCoveredAliasIds(aliasIds) {
   return JSON.stringify(Array.from(new Set(aliasIds.map((value) => String(value ?? "").trim()).filter(Boolean))));
+}
+
+function parseOpdbIdParts(opdbId) {
+  const clean = String(opdbId ?? "").trim();
+  if (!clean) {
+    return { fullId: null, groupId: null, machineId: null, aliasId: null };
+  }
+  const parts = clean.split("-");
+  const groupId = parts[0] ?? null;
+  const machinePart = parts.find((part) => part.startsWith("M")) ?? null;
+  const aliasPart = parts.find((part) => part.startsWith("A")) ?? null;
+  const machineId = groupId && machinePart ? `${groupId}-${machinePart}` : groupId;
+  return { fullId: clean, groupId, machineId, aliasId: aliasPart ? clean : null };
+}
+
+function scorePlayfieldSourceMatch(requestedOpdbId, sourceOpdbId) {
+  const requested = parseOpdbIdParts(requestedOpdbId);
+  const source = parseOpdbIdParts(sourceOpdbId);
+  if (!requested.fullId || !source.fullId || requested.groupId !== source.groupId) {
+    return -1;
+  }
+  if (requested.fullId === source.fullId) return 500;
+  if (requested.machineId && source.fullId === requested.machineId) return 460;
+  if (requested.machineId && source.machineId === requested.machineId) {
+    return source.aliasId ? 440 : 450;
+  }
+  if (source.machineId === source.groupId && !source.aliasId) return 300;
+  if (source.aliasId) return 240;
+  return 250;
 }
 
 function loadPreferredAliasMap(seedDb) {
@@ -186,10 +201,21 @@ export function applyAdminOverrides() {
       for (const row of items) {
         const assetRows = playfieldAssetsByPractice.get(row.practice_identity) ?? [];
         const primaryAliasId = preferredAliasMap.get(row.practice_identity) ?? null;
-        const primaryAsset =
-          assetRows.find((asset) => parseCoveredAliasIds(asset.covered_alias_ids_json).includes(primaryAliasId)) ??
-          assetRows.find((asset) => parseCoveredAliasIds(asset.covered_alias_ids_json).length > 0) ??
-          null;
+        let primaryAsset = null;
+        let primaryScore = -1;
+        for (const asset of assetRows) {
+          const fsPath = typeof asset.playfield_local_path === "string" && asset.playfield_local_path.startsWith("/pinball/")
+            ? path.join(ROOT, "shared", "pinball", asset.playfield_local_path.replace(/^\/pinball\/?/, ""))
+            : null;
+          if (!fsPath || !fs.existsSync(fsPath)) {
+            continue;
+          }
+          const score = scorePlayfieldSourceMatch(primaryAliasId, asset.source_opdb_machine_id);
+          if (score > primaryScore) {
+            primaryAsset = asset;
+            primaryScore = score;
+          }
+        }
 
         upsert.run(row);
         if (primaryAsset) {
@@ -200,10 +226,16 @@ export function applyAdminOverrides() {
           });
         }
         for (const asset of assetRows) {
+          const fsPath = typeof asset.playfield_local_path === "string" && asset.playfield_local_path.startsWith("/pinball/")
+            ? path.join(ROOT, "shared", "pinball", asset.playfield_local_path.replace(/^\/pinball\/?/, ""))
+            : null;
+          if (!fsPath || !fs.existsSync(fsPath)) {
+            continue;
+          }
           replacePlayfieldAsset.run({
             practice_identity: asset.practice_identity,
             source_opdb_machine_id: asset.source_opdb_machine_id,
-            covered_alias_ids_json: stringifyCoveredAliasIds(parseCoveredAliasIds(asset.covered_alias_ids_json)),
+            covered_alias_ids_json: stringifyCoveredAliasIds([asset.source_opdb_machine_id]),
             playfield_local_path: asset.playfield_local_path,
             playfield_source_url: asset.playfield_source_url,
             playfield_source_note: asset.playfield_source_note,

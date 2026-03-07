@@ -147,10 +147,6 @@ try {
         if ($sourceUrl === null) {
             api_text_error('Remote image URL is required.');
         }
-        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
-            $practiceIdentity,
-            is_array($body['coveredAliasIds'] ?? null) ? $body['coveredAliasIds'] : []
-        );
         $download = pinprof_download_url($sourceUrl);
         pinprof_store_binary_asset(
             $practiceIdentity,
@@ -161,7 +157,6 @@ try {
             $sourceUrl,
             pinprof_clean_string($body['sourceNote'] ?? null) ?? $sourceUrl,
             $kind === 'playfield' ? pinprof_clean_string($body['machineAliasId'] ?? $body['playfieldAliasId'] ?? null) : null,
-            $kind === 'playfield' ? $coveredAliasIds : [],
         );
         api_json(['ok' => true]);
     }
@@ -173,10 +168,6 @@ try {
         if (!is_array($file) || !isset($file['tmp_name']) || !is_uploaded_file((string) $file['tmp_name'])) {
             api_text_error('No image uploaded.');
         }
-        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
-            $practiceIdentity,
-            is_array($_POST['coveredAliasIds'] ?? null) ? $_POST['coveredAliasIds'] : array_filter(explode(',', (string) ($_POST['coveredAliasIds'] ?? '')))
-        );
         $contents = (string) file_get_contents((string) $file['tmp_name']);
         pinprof_store_binary_asset(
             $practiceIdentity,
@@ -187,7 +178,6 @@ try {
             pinprof_clean_string($_POST['sourceUrl'] ?? null),
             pinprof_clean_string($_POST['sourceNote'] ?? null) ?? pinprof_clean_string($file['name'] ?? null),
             $kind === 'playfield' ? pinprof_clean_string($_POST['machineAliasId'] ?? $_POST['playfieldAliasId'] ?? null) : null,
-            $kind === 'playfield' ? $coveredAliasIds : [],
         );
         api_json(['ok' => true]);
     }
@@ -199,17 +189,9 @@ try {
         if ($sourceAliasId === null) {
             api_text_error('A source alias is required.');
         }
-        $coveredAliasIds = pinprof_normalize_covered_alias_ids_for_practice(
-            $practiceIdentity,
-            is_array($body['coveredAliasIds'] ?? null) ? $body['coveredAliasIds'] : []
-        );
-        if ($coveredAliasIds === []) {
-            api_text_error('Select at least one alias this playfield should cover.');
-        }
         pinprof_save_playfield_coverage(
             $practiceIdentity,
             $sourceAliasId,
-            $coveredAliasIds,
             pinprof_clean_string($body['sourceUrl'] ?? null),
             pinprof_clean_string($body['sourceNote'] ?? null),
         );

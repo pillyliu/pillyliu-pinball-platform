@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-03-07T22:39:40.253Z",
+  "generated_at": "2026-03-07T23:26:17.640Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -1623,7 +1623,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -3200,7 +3200,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -5582,7 +5582,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
