@@ -195,8 +195,10 @@ type Toast = {
 };
 
 type MachineSortOption = "name" | "year_asc" | "year_desc";
+type ThemePreference = "system" | "dark" | "light";
 
 const PAGE_SIZE = 20;
+const THEME_PREFERENCE_KEY = "pinprof-admin-theme-preference";
 
 const emptyOverridePayload = (): SaveOverridePayload => ({
   nameOverride: "",
@@ -260,6 +262,18 @@ function fileName(path: string | null): string | null {
   return parts[parts.length - 1] || trimmed;
 }
 
+function getStoredThemePreference(): ThemePreference {
+  if (typeof window === "undefined") return "system";
+  const stored = window.localStorage.getItem(THEME_PREFERENCE_KEY);
+  return stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+}
+
+function resolveThemePreference(preference: ThemePreference): "light" | "dark" {
+  if (preference === "light" || preference === "dark") return preference;
+  if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+  return "light";
+}
+
 function assetKindClass(kind: "opdb" | "pillyliu" | "external" | "missing") {
   if (kind === "pillyliu") return "tag accent";
   if (kind === "opdb") return "tag";
@@ -268,6 +282,7 @@ function assetKindClass(kind: "opdb" | "pillyliu" | "external" | "missing") {
 }
 
 export default function App() {
+  const [themePreference, setThemePreference] = useState<ThemePreference>(() => getStoredThemePreference());
   const [session, setSession] = useState<SessionPayload | null>(null);
   const [summary, setSummary] = useState<SummaryPayload | null>(null);
   const [filters, setFilters] = useState<FilterPayload>({ manufacturers: [] });
@@ -312,6 +327,28 @@ export default function App() {
   const manufacturerGroups = filters.manufacturerGroups?.length
     ? filters.manufacturerGroups
     : [{ label: "Manufacturers", manufacturers: filters.manufacturers }];
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const applyTheme = () => {
+      const nextTheme = resolveThemePreference(themePreference);
+      document.documentElement.dataset.theme = nextTheme;
+      document.documentElement.dataset.themePreference = themePreference;
+      document.documentElement.style.colorScheme = nextTheme;
+    };
+
+    if (themePreference === "system") {
+      window.localStorage.removeItem(THEME_PREFERENCE_KEY);
+    } else {
+      window.localStorage.setItem(THEME_PREFERENCE_KEY, themePreference);
+    }
+
+    applyTheme();
+    mediaQuery.addEventListener("change", applyTheme);
+    return () => mediaQuery.removeEventListener("change", applyTheme);
+  }, [themePreference]);
 
   useEffect(() => {
     apiFetch<SessionPayload>("api/session")
@@ -369,7 +406,7 @@ export default function App() {
         if (!selectedIdentity && payload.items[0]) {
           startTransition(() => setSelectedIdentity(payload.items[0].practiceIdentity));
         }
-        if (selectedIdentity && !payload.items.some((item) => item.practiceIdentity === selectedIdentity) && payload.items[0]) {
+        if (pendingPageSelection && selectedIdentity && !payload.items.some((item) => item.practiceIdentity === selectedIdentity) && payload.items[0]) {
           const nextItem =
             pendingPageSelection === "last" ? payload.items[payload.items.length - 1] ?? payload.items[0] : payload.items[0];
           startTransition(() => setSelectedIdentity(nextItem.practiceIdentity));
@@ -753,6 +790,32 @@ export default function App() {
           <h1>OPDB catalog + override workspace</h1>
         </div>
         <div className="topbar-actions">
+          <div className="theme-toggle" role="group" aria-label="Theme">
+            <button
+              type="button"
+              className={`secondary-button theme-option ${themePreference === "system" ? "active" : ""}`}
+              onClick={() => setThemePreference("system")}
+              aria-pressed={themePreference === "system"}
+            >
+              Auto
+            </button>
+            <button
+              type="button"
+              className={`secondary-button theme-option ${themePreference === "dark" ? "active" : ""}`}
+              onClick={() => setThemePreference("dark")}
+              aria-pressed={themePreference === "dark"}
+            >
+              Dark
+            </button>
+            <button
+              type="button"
+              className={`secondary-button theme-option ${themePreference === "light" ? "active" : ""}`}
+              onClick={() => setThemePreference("light")}
+              aria-pressed={themePreference === "light"}
+            >
+              Light
+            </button>
+          </div>
           {summary && (
             <div className="summary-grid">
               <div>
