@@ -42,6 +42,8 @@ export type LibraryGame = {
   playfieldImageUrl: string | null;
   playfieldLocalOriginal: string | null;
   playfieldLocal: string | null;
+  groupPlayfieldLocalOriginal: string | null;
+  groupPlayfieldLocal: string | null;
   playfieldSourceLabel: string | null;
   gameinfoLocal: string | null;
   rulesheetLocal: string | null;
@@ -175,8 +177,25 @@ type ResolvedRulesheetLinks = {
   links: ReferenceLink[];
 };
 
+type GroupPlayfieldOverride = {
+  playfieldLocalPath: string | null;
+  playfieldSourceUrl?: string | null;
+};
+
+type PublicLibraryPlayfieldOverrideRecord = {
+  practiceIdentity: string;
+  opdbGroupId: string | null;
+  playfieldLocalPath: string | null;
+  playfieldSourceUrl: string | null;
+};
+
+type PublicLibraryOverridesRoot = {
+  playfieldOverrides: PublicLibraryPlayfieldOverrideRecord[];
+};
+
 const OPDB_CATALOG_PATH = "/pinball/data/opdb_catalog_v1.json";
 const LIBRARY_PATH = "/pinball/data/pinball_library_v3.json";
+const PUBLIC_LIBRARY_OVERRIDES_PATH = "/pinball/data/pinball_library_seed_overrides_v1.json";
 const FALLBACK_PLAYFIELD_700 = "/pinball/images/playfields/fallback-whitewood-playfield_700.webp";
 const FALLBACK_PLAYFIELD_1400 = "/pinball/images/playfields/fallback-whitewood-playfield_1400.webp";
 const DEFAULT_AVENUE_SOURCE_IDS = ["venue--the-avenue-cafe", "the-avenue"] as const;
@@ -189,7 +208,11 @@ const LIBRARY_SOURCE_STATE_COOKIE = "lpl_library_source_state_v1";
 const IMPORTED_SOURCES_STORAGE_KEY = "lpl-library:imported-sources:v1";
 export const MAX_PINNED_SOURCES = 10;
 
-let baseCatalogPromise: Promise<{ payload: ParsedLibraryData; catalogRoot: CatalogRoot }> | null = null;
+let baseCatalogPromise: Promise<{
+  payload: ParsedLibraryData;
+  catalogRoot: CatalogRoot;
+  publicOverrides: PublicLibraryOverridesRoot;
+}> | null = null;
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof document !== "undefined";
@@ -623,12 +646,25 @@ async function repairImportedSources(records: ImportedSourceRecord[]): Promise<I
   return repaired;
 }
 
-async function loadBaseCatalog(): Promise<{ payload: ParsedLibraryData; catalogRoot: CatalogRoot }> {
+async function fetchPublicLibraryOverrides(): Promise<PublicLibraryOverridesRoot> {
+  try {
+    return parsePublicLibraryOverrides(await fetchPinballJson<unknown>(PUBLIC_LIBRARY_OVERRIDES_PATH));
+  } catch {
+    return { playfieldOverrides: [] };
+  }
+}
+
+async function loadBaseCatalog(): Promise<{
+  payload: ParsedLibraryData;
+  catalogRoot: CatalogRoot;
+  publicOverrides: PublicLibraryOverridesRoot;
+}> {
   if (!baseCatalogPromise) {
     baseCatalogPromise = (async () => {
-      const [libraryResult, catalogResult] = await Promise.allSettled([
+      const [libraryResult, catalogResult, publicOverridesResult] = await Promise.allSettled([
         fetchPinballJson<unknown>(LIBRARY_PATH),
         fetchPinballJson<unknown>(OPDB_CATALOG_PATH),
+        fetchPublicLibraryOverrides(),
       ]);
       if (libraryResult.status !== "fulfilled") {
         throw libraryResult.reason;
@@ -636,6 +672,9 @@ async function loadBaseCatalog(): Promise<{ payload: ParsedLibraryData; catalogR
       return {
         payload: parseLibraryPayload(libraryResult.value),
         catalogRoot: catalogResult.status === "fulfilled" ? parseCatalogRoot(catalogResult.value) : emptyCatalogRoot(),
+        publicOverrides: publicOverridesResult.status === "fulfilled"
+          ? publicOverridesResult.value
+          : { playfieldOverrides: [] },
       };
     })();
   }
@@ -648,6 +687,34 @@ function emptyCatalogRoot(): CatalogRoot {
     machines: [],
     rulesheetLinks: [],
     videoLinks: [],
+  };
+}
+
+function parsePublicLibraryOverrides(raw: unknown): PublicLibraryOverridesRoot {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return { playfieldOverrides: [] };
+  }
+  const root = raw as { playfieldOverrides?: unknown[] };
+  const playfieldOverrides = Array.isArray(root.playfieldOverrides)
+    ? root.playfieldOverrides.map((value) => parsePublicLibraryPlayfieldOverride(value)).filter((value): value is PublicLibraryPlayfieldOverrideRecord => Boolean(value))
+    : [];
+  return { playfieldOverrides };
+}
+
+function parsePublicLibraryPlayfieldOverride(value: unknown): PublicLibraryPlayfieldOverrideRecord | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const row = value as Record<string, unknown>;
+  const practiceIdentity = normalizedOptionalString(row.practiceIdentity);
+  const playfieldLocalPath = normalizedOptionalString(row.playfieldLocalPath);
+  const playfieldSourceUrl = normalizedOptionalString(row.playfieldSourceUrl);
+  if (!practiceIdentity || (!playfieldLocalPath && !playfieldSourceUrl)) {
+    return null;
+  }
+  return {
+    practiceIdentity,
+    opdbGroupId: normalizedOptionalString(row.opdbGroupId),
+    playfieldLocalPath,
+    playfieldSourceUrl,
   };
 }
 
@@ -728,6 +795,8 @@ function parseBaseGame(value: unknown, index: number): LibraryGame | null {
     playfieldImageUrl: normalizedOptionalString(item.playfield_image_url) ?? normalizedOptionalString(item.playfieldImageUrl),
     playfieldLocalOriginal: normalizeLibraryCachePath(normalizedOptionalString(assets.playfield_local_practice)),
     playfieldLocal: normalizeLibraryPlayfieldLocalPath(normalizedOptionalString(assets.playfield_local_practice)),
+    groupPlayfieldLocalOriginal: null,
+    groupPlayfieldLocal: null,
     playfieldSourceLabel: normalizedOptionalString(item.playfield_source_label),
     gameinfoLocal: normalizedOptionalString(assets.gameinfo_local_practice),
     rulesheetLocal: normalizedOptionalString(assets.rulesheet_local_practice),
@@ -1084,11 +1153,50 @@ function buildLegacyCuratedOverrides(games: LibraryGame[]): Map<string, LegacyCu
   return overrides;
 }
 
+function buildGroupPlayfieldOverrides(games: LibraryGame[]): Map<string, GroupPlayfieldOverride> {
+  const overrides = new Map<string, GroupPlayfieldOverride>();
+  for (const game of games) {
+    const key = normalizedOptionalString(game.opdbGroupId ?? game.practiceIdentity);
+    if (!key) continue;
+    const playfieldLocalPath = normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
+    if (!playfieldLocalPath) continue;
+    const current = overrides.get(key) ?? { playfieldLocalPath: null };
+    current.playfieldLocalPath ??= playfieldLocalPath;
+    overrides.set(key, current);
+  }
+  return overrides;
+}
+
+function applyPublicPlayfieldOverrides(
+  curatedOverrides: Map<string, LegacyCuratedOverride>,
+  groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
+  publicOverrides: PublicLibraryOverridesRoot,
+) {
+  for (const override of publicOverrides.playfieldOverrides) {
+    const practiceCurrent = curatedOverrides.get(override.practiceIdentity) ?? { practiceIdentity: override.practiceIdentity };
+    practiceCurrent.playfieldLocalPath = override.playfieldLocalPath;
+    if (override.playfieldSourceUrl) {
+      practiceCurrent.playfieldSourceUrl = override.playfieldSourceUrl;
+    }
+    curatedOverrides.set(override.practiceIdentity, practiceCurrent);
+
+    const groupKey = normalizedOptionalString(override.opdbGroupId ?? override.practiceIdentity);
+    if (!groupKey) continue;
+    const groupCurrent = groupPlayfieldOverrides.get(groupKey) ?? { playfieldLocalPath: null, playfieldSourceUrl: null };
+    groupCurrent.playfieldLocalPath = override.playfieldLocalPath;
+    if (override.playfieldSourceUrl) {
+      groupCurrent.playfieldSourceUrl = override.playfieldSourceUrl;
+    }
+    groupPlayfieldOverrides.set(groupKey, groupCurrent);
+  }
+}
+
 function resolveLegacyGame(
   legacyGame: LibraryGame,
   machineByPracticeIdentity: Map<string, CatalogMachineRecord[]>,
   machineByOpdbId: Map<string, CatalogMachineRecord>,
   manufacturerById: Map<string, CatalogManufacturerRecord>,
+  groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
   rulesheetLinksByPracticeIdentity: Map<string, CatalogRulesheetLinkRecord[]>,
   videoLinksByPracticeIdentity: Map<string, CatalogVideoLinkRecord[]>,
 ): LibraryGame {
@@ -1132,6 +1240,9 @@ function resolveLegacyGame(
   const playfieldImageUrl = hasCuratedPlayfield
     ? normalizedOptionalString(legacyGame.playfieldImageUrl)
     : normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
+  const groupPlayfieldLocalPath = normalizedOptionalString(
+    groupPlayfieldOverrides.get(normalizedOptionalString(legacyGame.opdbGroupId) ?? machine.opdbGroupId ?? practiceIdentity)?.playfieldLocalPath,
+  );
 
   return {
     ...legacyGame,
@@ -1144,6 +1255,8 @@ function resolveLegacyGame(
     primaryImageUrl: normalizedOptionalString(machine.primaryImageMediumUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
     playfieldImageUrl,
+    groupPlayfieldLocalOriginal: normalizeLibraryCachePath(groupPlayfieldLocalPath),
+    groupPlayfieldLocal: normalizeLibraryPlayfieldLocalPath(groupPlayfieldLocalPath),
     playfieldSourceLabel:
       hasCuratedPlayfield
         ? null
@@ -1178,6 +1291,7 @@ function resolveImportedGame(
   source: ImportedSourceRecord,
   manufacturerById: Map<string, CatalogManufacturerRecord>,
   curatedOverride: LegacyCuratedOverride | undefined,
+  groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
   rulesheetLinks: CatalogRulesheetLinkRecord[],
   videoLinks: CatalogVideoLinkRecord[],
 ): LibraryGame {
@@ -1195,6 +1309,9 @@ function resolveImportedGame(
     ? curatedOverride.videos
     : resolveVideoLinks(videoLinks);
   const playfieldLocalPath = normalizedOptionalString(curatedOverride?.playfieldLocalPath);
+  const groupPlayfieldLocalPath = normalizedOptionalString(
+    groupPlayfieldOverrides.get(machine.opdbGroupId ?? machine.practiceIdentity)?.playfieldLocalPath,
+  );
   const playfieldSourceUrl =
     normalizedOptionalString(curatedOverride?.playfieldSourceUrl) ??
     normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
@@ -1226,6 +1343,8 @@ function resolveImportedGame(
     playfieldImageUrl: playfieldSourceUrl,
     playfieldLocalOriginal: normalizeLibraryCachePath(playfieldLocalPath),
     playfieldLocal: normalizeLibraryPlayfieldLocalPath(playfieldLocalPath),
+    groupPlayfieldLocalOriginal: normalizeLibraryCachePath(groupPlayfieldLocalPath),
+    groupPlayfieldLocal: normalizeLibraryPlayfieldLocalPath(groupPlayfieldLocalPath),
     playfieldSourceLabel:
       !playfieldLocalPath && (machine.playfieldImageLargeUrl || machine.playfieldImageMediumUrl)
         ? "Playfield (OPDB)"
@@ -1250,6 +1369,7 @@ function dedupeSources(sources: LibrarySource[]): LibrarySource[] {
 function mergeCatalogs(
   basePayload: ParsedLibraryData,
   catalogRoot: CatalogRoot,
+  publicOverrides: PublicLibraryOverridesRoot,
   importedSources: ImportedSourceRecord[],
 ): ParsedLibraryData {
   if (!catalogRoot.machines.length) {
@@ -1272,6 +1392,8 @@ function mergeCatalogs(
   }
   const manufacturerById = new Map(catalogRoot.manufacturers.map((manufacturer) => [manufacturer.id, manufacturer] as const));
   const curatedOverrides = buildLegacyCuratedOverrides(basePayload.games);
+  const groupPlayfieldOverrides = buildGroupPlayfieldOverrides(basePayload.games);
+  applyPublicPlayfieldOverrides(curatedOverrides, groupPlayfieldOverrides, publicOverrides);
   const rulesheetLinksByPracticeIdentity = new Map<string, CatalogRulesheetLinkRecord[]>();
   const videoLinksByPracticeIdentity = new Map<string, CatalogVideoLinkRecord[]>();
   for (const link of catalogRoot.rulesheetLinks) {
@@ -1287,6 +1409,7 @@ function mergeCatalogs(
       machineByPracticeIdentity,
       machineByOpdbId,
       manufacturerById,
+      groupPlayfieldOverrides,
       rulesheetLinksByPracticeIdentity,
       videoLinksByPracticeIdentity,
     ),
@@ -1311,6 +1434,7 @@ function mergeCatalogs(
             source,
             manufacturerById,
             curatedOverrides.get(machine.practiceIdentity),
+            groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
           ),
@@ -1329,6 +1453,7 @@ function mergeCatalogs(
             source,
             manufacturerById,
             curatedOverrides.get(machine.practiceIdentity),
+            groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
           ),
@@ -1370,9 +1495,9 @@ function resolveVisibleSources(sources: LibrarySource[], state: LibrarySourceSta
 }
 
 export async function loadResolvedLibraryData(): Promise<ResolvedLibraryData> {
-  const [{ payload, catalogRoot }, importedSourcesRaw] = await Promise.all([loadBaseCatalog(), Promise.resolve(loadImportedSources())]);
+  const [{ payload, catalogRoot, publicOverrides }, importedSourcesRaw] = await Promise.all([loadBaseCatalog(), Promise.resolve(loadImportedSources())]);
   const importedSources = await repairImportedSources(importedSourcesRaw);
-  const mergedPayload = mergeCatalogs(payload, catalogRoot, importedSources);
+  const mergedPayload = mergeCatalogs(payload, catalogRoot, publicOverrides, importedSources);
   const sourceGameCounts = mergedPayload.games.reduce<Record<string, number>>((counts, game) => {
     const sourceId = game.sourceId;
     const existing = counts[sourceId];
@@ -1575,7 +1700,25 @@ export function gamePlayfieldCandidates(game: LibraryGame): string[] {
 }
 
 export function directPlayfieldUrl(game: LibraryGame): string | null {
-  return gamePlayfieldCandidates(game).find((candidate) =>
+  const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
+  const local1400 = localOriginal ? derivePlayfieldVariant(localOriginal, 1400) : null;
+  const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
+  const groupLocalOriginal = normalizedOptionalString(game.groupPlayfieldLocalOriginal ?? game.groupPlayfieldLocal);
+  const groupLocal1400 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 1400) : null;
+  const groupLocal700 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 700) : null;
+  const preferredCandidates = [
+    resolveLibraryUrl(game.playfieldLocalOriginal),
+    resolveLibraryUrl(local1400),
+    resolveLibraryUrl(game.playfieldLocal),
+    resolveLibraryUrl(local700),
+    resolveLibraryUrl(game.groupPlayfieldLocalOriginal),
+    resolveLibraryUrl(groupLocal1400),
+    resolveLibraryUrl(game.groupPlayfieldLocal),
+    resolveLibraryUrl(groupLocal700),
+    resolveLibraryUrl(game.playfieldImageUrl),
+  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+
+  return preferredCandidates.find((candidate) =>
     candidate !== FALLBACK_PLAYFIELD_700 && candidate !== FALLBACK_PLAYFIELD_1400,
   ) ?? null;
 }

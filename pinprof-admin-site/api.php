@@ -82,11 +82,17 @@ try {
         api_json(pinprof_summary());
     }
 
+    if ($route === 'filters' && $method === 'GET') {
+        api_json(pinprof_manufacturer_filters());
+    }
+
     if ($route === 'machines' && $method === 'GET') {
         $query = pinprof_clean_string($_GET['query'] ?? null);
+        $manufacturer = pinprof_clean_string($_GET['manufacturer'] ?? null);
+        $sort = pinprof_clean_string($_GET['sort'] ?? null) ?? 'name';
         $page = max(1, pinprof_clean_int($_GET['page'] ?? null) ?? 1);
-        $pageSize = min(100, max(1, pinprof_clean_int($_GET['pageSize'] ?? null) ?? 40));
-        api_json(pinprof_list_machines($query, $page, $pageSize));
+        $pageSize = min(100, max(1, pinprof_clean_int($_GET['pageSize'] ?? null) ?? 20));
+        api_json(pinprof_list_machines($query, $manufacturer, $sort, $page, $pageSize));
     }
 
     if (preg_match('#^machines/([^/]+)$#', $route, $matches) && $method === 'GET') {

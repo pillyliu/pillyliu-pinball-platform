@@ -339,8 +339,8 @@ function pinprof_alias_id(array $alias): ?string
 function pinprof_alias_label(array $alias): string
 {
     $parts = array_values(array_filter([
-        pinprof_clean_string($alias['variant'] ?? null),
         pinprof_alias_id($alias),
+        pinprof_clean_string($alias['variant'] ?? null) ?? pinprof_clean_string($alias['name'] ?? null),
     ], static fn (?string $value): bool => $value !== null));
     return $parts ? implode(' · ', $parts) : ((string) ($alias['opdb_machine_id'] ?? ''));
 }
@@ -713,7 +713,9 @@ function pinprof_machine_detail(string $practiceIdentity): array
             'aliases' => array_map(static function (array $alias): array {
                 return [
                     'opdbMachineId' => (string) ($alias['opdb_machine_id'] ?? ''),
+                    'label' => pinprof_alias_label($alias),
                     'slug' => (string) ($alias['slug'] ?? ''),
+                    'name' => (string) ($alias['name'] ?? ''),
                     'variant' => pinprof_clean_string($alias['variant'] ?? null),
                     'primaryImageUrl' => pinprof_pick_first_non_empty([
                         $alias['primary_image']['large_url'] ?? null,
@@ -783,7 +785,88 @@ function pinprof_machine_detail(string $practiceIdentity): array
     ];
 }
 
-function pinprof_list_machines(?string $query, int $page, int $pageSize): array
+
+function pinprof_manufacturer_filters(): array
+{
+    $pdo = pinprof_pdo();
+    $stmt = $pdo->query("
+        SELECT
+            TRIM(name) AS manufacturer,
+            is_modern,
+            game_count
+        FROM manufacturers
+        WHERE name IS NOT NULL AND TRIM(name) != ''
+        ORDER BY sort_bucket ASC, COALESCE(featured_rank, 9999) ASC, sort_name ASC
+    ");
+    $rows = [];
+    foreach ($stmt->fetchAll() as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $manufacturer = pinprof_clean_string($row['manufacturer'] ?? null);
+        if ($manufacturer === null) {
+            continue;
+        }
+        $rows[] = [
+            'manufacturer' => $manufacturer,
+            'isModern' => ((int) ($row['is_modern'] ?? 0)) > 0,
+            'gameCount' => (int) ($row['game_count'] ?? 0),
+        ];
+    }
+
+    $counts = [];
+    foreach ($rows as $row) {
+        $counts[$row['manufacturer']] = $row['gameCount'];
+    }
+
+    $classics = array_values(array_filter($rows, static fn (array $row): bool => !$row['isModern']));
+    usort($classics, static function (array $left, array $right): int {
+        $leftCount = $left['gameCount'] ?? 0;
+        $rightCount = $right['gameCount'] ?? 0;
+        if ($leftCount !== $rightCount) {
+            return $rightCount <=> $leftCount;
+        }
+        return strcasecmp((string) $left['manufacturer'], (string) $right['manufacturer']);
+    });
+    $classics = array_values(array_map(
+        static fn (array $row): string => $row['manufacturer'],
+        array_slice($classics, 0, 20)
+    ));
+    $classicSet = array_fill_keys($classics, true);
+
+    $groups = [];
+    $modern = array_values(array_map(
+        static fn (array $row): string => $row['manufacturer'],
+        array_values(array_filter($rows, static fn (array $row): bool => $row['isModern']))
+    ));
+    if ($modern !== []) {
+        $groups[] = ['label' => 'Modern', 'manufacturers' => $modern];
+    }
+    if ($classics !== []) {
+        $groups[] = ['label' => 'Classics', 'manufacturers' => $classics];
+    }
+    $other = array_values(array_map(
+        static fn (array $row): string => $row['manufacturer'],
+        array_values(array_filter($rows, static fn (array $row): bool => !$row['isModern'] && !isset($classicSet[$row['manufacturer']])))
+    ));
+    if ($other !== []) {
+        $groups[] = ['label' => 'Other', 'manufacturers' => $other];
+    }
+
+    $allManufacturers = [];
+    foreach ($groups as $group) {
+        foreach ($group['manufacturers'] as $manufacturer) {
+            $allManufacturers[] = $manufacturer;
+        }
+    }
+
+    return [
+        'manufacturers' => $allManufacturers,
+        'manufacturerGroups' => $groups,
+    ];
+}
+
+function pinprof_list_machines(?string $query, ?string $manufacturerFilter, string $sortOrder, int $page, int $pageSize): array
 {
     $groups = pinprof_opdb_groups();
     $libraryByPractice = pinprof_library_items_by_practice();
@@ -829,10 +912,14 @@ function pinprof_list_machines(?string $query, int $page, int $pageSize): array
         if ($needle !== null && !str_contains($searchHaystack, $needle)) {
             continue;
         }
+        if ($manufacturerFilter !== null && strcasecmp((string) $manufacturer, $manufacturerFilter) !== 0) {
+            continue;
+        }
 
         $rows[] = [
             'practiceIdentity' => $practiceIdentity,
             'opdbMachineId' => pinprof_clean_string($preferredAlias['opdb_machine_id'] ?? null),
+            'opdbGroupId' => pinprof_clean_string($preferredAlias['opdb_group_id'] ?? null),
             'slug' => (string) ($preferredAlias['slug'] ?? ''),
             'name' => $name,
             'variant' => $variant,
@@ -859,7 +946,31 @@ function pinprof_list_machines(?string $query, int $page, int $pageSize): array
         ];
     }
 
-    usort($rows, static function (array $left, array $right): int {
+    usort($rows, static function (array $left, array $right) use ($sortOrder): int {
+        $leftYear = is_numeric($left['year'] ?? null) ? (int) $left['year'] : null;
+        $rightYear = is_numeric($right['year'] ?? null) ? (int) $right['year'] : null;
+        if ($sortOrder === 'year_asc') {
+            if ($leftYear === null && $rightYear !== null) {
+                return 1;
+            }
+            if ($leftYear !== null && $rightYear === null) {
+                return -1;
+            }
+            if ($leftYear !== null && $rightYear !== null && $leftYear !== $rightYear) {
+                return $leftYear <=> $rightYear;
+            }
+        } elseif ($sortOrder === 'year_desc') {
+            if ($leftYear === null && $rightYear !== null) {
+                return 1;
+            }
+            if ($leftYear !== null && $rightYear === null) {
+                return -1;
+            }
+            if ($leftYear !== null && $rightYear !== null && $leftYear !== $rightYear) {
+                return $rightYear <=> $leftYear;
+            }
+        }
+
         $nameCompare = strcmp(strtolower((string) $left['name']), strtolower((string) $right['name']));
         if ($nameCompare !== 0) {
             return $nameCompare;

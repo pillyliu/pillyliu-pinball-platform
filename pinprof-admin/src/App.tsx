@@ -1,4 +1,4 @@
-import { FormEvent, startTransition, useDeferredValue, useEffect, useMemo, useState } from "react";
+import { FormEvent, Fragment, startTransition, useDeferredValue, useEffect, useMemo, useState } from "react";
 
 type SessionPayload = {
   authenticated: boolean;
@@ -17,6 +17,10 @@ type SummaryPayload = {
 
 type FilterPayload = {
   manufacturers: string[];
+  manufacturerGroups?: Array<{
+    label: string;
+    manufacturers: string[];
+  }>;
 };
 
 type WorkspaceNotePayload = {
@@ -41,6 +45,7 @@ type ActivityResponse = {
 type MachineListItem = {
   practiceIdentity: string;
   opdbMachineId: string | null;
+  opdbGroupId: string | null;
   slug: string;
   name: string;
   variant: string | null;
@@ -97,7 +102,9 @@ type MachineDetail = {
     };
     aliases: Array<{
       opdbMachineId: string;
+      label: string;
       slug: string;
+      name: string;
       variant: string | null;
       primaryImageUrl: string | null;
       playfieldImageUrl: string | null;
@@ -187,7 +194,9 @@ type Toast = {
   message: string;
 };
 
-const PAGE_SIZE = 40;
+type MachineSortOption = "name" | "year_asc" | "year_desc";
+
+const PAGE_SIZE = 20;
 
 const emptyOverridePayload = (): SaveOverridePayload => ({
   nameOverride: "",
@@ -232,19 +241,23 @@ function displayTitle(item: MachineListItem | MachineDetail["machine"]) {
   return [item.name, item.variant].filter(Boolean).join(" • ");
 }
 
-function aliasTitle(alias: MachineDetail["sources"]["aliases"][number], fallbackName: string) {
-  return [alias.variant || fallbackName, alias.opdbMachineId].filter(Boolean).join(" · ");
-}
-
 function displayImage(detail: MachineDetail | null): string | null {
   if (!detail) return null;
-  return detail.sources.assets.playfield.effectiveUrl ?? detail.machine.playfieldImageUrl ?? detail.machine.primaryImageUrl;
+  return detail.sources.assets.playfield.effectiveUrl ?? detail.machine.playfieldImageUrl;
 }
 
 function buildWebUrl(path: string | null): string | null {
   if (!path) return null;
   if (/^https?:\/\//i.test(path)) return path;
   return path;
+}
+
+function fileName(path: string | null): string | null {
+  if (!path) return null;
+  const trimmed = path.trim();
+  if (!trimmed) return null;
+  const parts = trimmed.split("/");
+  return parts[parts.length - 1] || trimmed;
 }
 
 function assetKindClass(kind: "opdb" | "pillyliu" | "external" | "missing") {
@@ -263,9 +276,14 @@ export default function App() {
   const [activity, setActivity] = useState<GlobalActivityEntry[]>([]);
   const [machines, setMachines] = useState<MachineListItem[]>([]);
   const [totalMachines, setTotalMachines] = useState(0);
+  const [notebookCollapsed, setNotebookCollapsed] = useState(true);
+  const [searchCollapsed, setSearchCollapsed] = useState(false);
+  const [activityCollapsed, setActivityCollapsed] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [manufacturerFilter, setManufacturerFilter] = useState("");
+  const [sortOrder, setSortOrder] = useState<MachineSortOption>("name");
+  const [pendingPageSelection, setPendingPageSelection] = useState<"first" | "last" | null>(null);
   const deferredSearch = useDeferredValue(search.trim());
   const [selectedIdentity, setSelectedIdentity] = useState<string | null>(null);
   const [detail, setDetail] = useState<MachineDetail | null>(null);
@@ -278,6 +296,10 @@ export default function App() {
   const [toast, setToast] = useState<Toast | null>(null);
 
   const selectedMachine = useMemo(() => machines.find((item) => item.practiceIdentity === selectedIdentity) ?? null, [machines, selectedIdentity]);
+  const selectedMachineIndex = useMemo(
+    () => machines.findIndex((item) => item.practiceIdentity === selectedIdentity),
+    [machines, selectedIdentity],
+  );
   const selectedPlayfieldAlias = useMemo(
     () => detail?.sources.aliases.find((alias) => alias.opdbMachineId === overrideForm.playfieldAliasId) ?? detail?.sources.aliases[0] ?? null,
     [detail, overrideForm.playfieldAliasId],
@@ -287,6 +309,9 @@ export default function App() {
     [detail, overrideForm.playfieldAliasId],
   );
   const pageCount = Math.max(1, Math.ceil(totalMachines / PAGE_SIZE));
+  const manufacturerGroups = filters.manufacturerGroups?.length
+    ? filters.manufacturerGroups
+    : [{ label: "Manufacturers", manufacturers: filters.manufacturers }];
 
   useEffect(() => {
     apiFetch<SessionPayload>("api/session")
@@ -332,6 +357,7 @@ export default function App() {
     const params = new URLSearchParams({
       query: deferredSearch,
       manufacturer: manufacturerFilter,
+      sort: sortOrder,
       page: String(page),
       pageSize: String(PAGE_SIZE),
     });
@@ -344,12 +370,15 @@ export default function App() {
           startTransition(() => setSelectedIdentity(payload.items[0].practiceIdentity));
         }
         if (selectedIdentity && !payload.items.some((item) => item.practiceIdentity === selectedIdentity) && payload.items[0]) {
-          startTransition(() => setSelectedIdentity(payload.items[0].practiceIdentity));
+          const nextItem =
+            pendingPageSelection === "last" ? payload.items[payload.items.length - 1] ?? payload.items[0] : payload.items[0];
+          startTransition(() => setSelectedIdentity(nextItem.practiceIdentity));
         }
+        setPendingPageSelection(null);
       })
       .catch((error) => setToast({ tone: "error", message: extractMessage(error) }))
       .finally(() => setLoadingMachines(false));
-  }, [deferredSearch, manufacturerFilter, page, selectedIdentity, session?.authenticated]);
+  }, [deferredSearch, manufacturerFilter, page, pendingPageSelection, selectedIdentity, session?.authenticated, sortOrder]);
 
   useEffect(() => {
     if (!session?.authenticated || !selectedIdentity) return;
@@ -389,6 +418,7 @@ export default function App() {
     const params = new URLSearchParams({
       query: deferredSearch,
       manufacturer: manufacturerFilter,
+      sort: sortOrder,
       page: String(page),
       pageSize: String(PAGE_SIZE),
     });
@@ -396,6 +426,34 @@ export default function App() {
       setMachines(payload.items);
       setTotalMachines(payload.total);
     });
+  }
+
+  function selectRelativeMachine(direction: "previous" | "next") {
+    if (!machines.length) return;
+    if (selectedMachineIndex < 0) {
+      const fallback = direction === "next" ? machines[0] : machines[machines.length - 1];
+      if (fallback) startTransition(() => setSelectedIdentity(fallback.practiceIdentity));
+      return;
+    }
+    if (direction === "previous") {
+      if (selectedMachineIndex > 0) {
+        startTransition(() => setSelectedIdentity(machines[selectedMachineIndex - 1]?.practiceIdentity ?? null));
+        return;
+      }
+      if (page > 1) {
+        setPendingPageSelection("last");
+        setPage((value) => Math.max(1, value - 1));
+      }
+      return;
+    }
+    if (selectedMachineIndex < machines.length - 1) {
+      startTransition(() => setSelectedIdentity(machines[selectedMachineIndex + 1]?.practiceIdentity ?? null));
+      return;
+    }
+    if (page < pageCount) {
+      setPendingPageSelection("first");
+      setPage((value) => Math.min(pageCount, value + 1));
+    }
   }
 
   function machineAssetIndicators(item: MachineListItem) {
@@ -723,162 +781,181 @@ export default function App() {
 
       {toast && <div className={`toast inline-toast ${toast.tone}`}>{toast.message}</div>}
 
-      <main className="workspace">
-        <aside className="sidebar">
-          <div className="panel-header">
-            <div>
-              <h2>Catalog</h2>
-              <p className="muted">
-                Source: OPDB snapshot + generated seed DB
-                {summary?.totalOpdbRows ? ` • ${summary.totalOpdbRows} raw OPDB rows` : ""}
-              </p>
-            </div>
-            <span className="pill">{totalMachines} found</span>
-          </div>
-          <section className="sidebar-block">
-            <div className="panel-header slim">
+      <main className="workspace-shell">
+        <button
+          className={`sidebar-toggle sidebar-toggle-left ${searchCollapsed ? "collapsed" : ""}`}
+          onClick={() => setSearchCollapsed((current) => !current)}
+          type="button"
+          aria-label={searchCollapsed ? "Expand search sidebar" : "Collapse search sidebar"}
+        >
+          <span>{searchCollapsed ? ">" : "<"}</span>
+          <small>Search</small>
+        </button>
+        {!searchCollapsed && (
+          <aside className="sidebar sidebar-left">
+            <div className="panel-header">
               <div>
-                <h2>Import notebook</h2>
-                <p className="muted">Global scratchpad for the whole import pass.</p>
+                <h2>Catalog</h2>
+                <p className="muted">
+                  Source: OPDB snapshot + generated seed DB
+                  {summary?.totalOpdbRows ? ` • ${summary.totalOpdbRows} raw OPDB rows` : ""}
+                </p>
               </div>
-              <button
-                className="secondary-button"
-                onClick={handleSaveWorkspaceNotes}
-                disabled={busyAction === "save-workspace-notes"}
-              >
-                {busyAction === "save-workspace-notes" ? "Saving…" : "Save notes"}
-              </button>
+              <span className="pill">{totalMachines} found</span>
             </div>
+            <section className="sidebar-block notebook-block">
+              <div className="panel-header slim notebook-header">
+                <h2>Notebook</h2>
+                <div className="sidebar-block-actions">
+                  {!notebookCollapsed && (
+                    <button
+                      className="secondary-button"
+                      onClick={handleSaveWorkspaceNotes}
+                      disabled={busyAction === "save-workspace-notes"}
+                    >
+                      {busyAction === "save-workspace-notes" ? "Saving…" : "Save"}
+                    </button>
+                  )}
+                  <button
+                    className="secondary-button"
+                    onClick={() => setNotebookCollapsed((current) => !current)}
+                    type="button"
+                  >
+                    {notebookCollapsed ? "Expand" : "Collapse"}
+                  </button>
+                </div>
+              </div>
+              {!notebookCollapsed && (
+                <>
+                  <label className="field">
+                    Notes / to-do
+                    <textarea
+                      rows={7}
+                      value={workspaceNotes}
+                      onChange={(event) => setWorkspaceNotes(event.target.value)}
+                      placeholder={"- find better Godzilla Pro playfield\n- import modern Stern Premium/LE images\n- double-check JP 30th rulesheet"}
+                    />
+                  </label>
+                  <p className="timestamp">
+                    Last notebook save: {workspaceNotesUpdatedAt ? new Date(workspaceNotesUpdatedAt).toLocaleString() : "None yet"}
+                  </p>
+                </>
+              )}
+            </section>
             <label className="field">
-              Notes / to-do
-              <textarea
-                rows={7}
-                value={workspaceNotes}
-                onChange={(event) => setWorkspaceNotes(event.target.value)}
-                placeholder={"- find better Godzilla Pro playfield\n- import modern Stern Premium/LE images\n- double-check JP 30th rulesheet"}
+              Search machines
+              <input
+                value={search}
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                  setPage(1);
+                }}
+                placeholder="name, manufacturer, practice identity…"
               />
             </label>
-            <p className="timestamp">
-              Last notebook save: {workspaceNotesUpdatedAt ? new Date(workspaceNotesUpdatedAt).toLocaleString() : "None yet"}
-            </p>
-          </section>
-          <label className="field">
-            Search machines
-            <input
-              value={search}
-              onChange={(event) => {
-                setSearch(event.target.value);
-                setPage(1);
-              }}
-              placeholder="name, manufacturer, practice identity…"
-            />
-          </label>
-          <label className="field">
-            Manufacturer
-            <select
-              value={manufacturerFilter}
-              onChange={(event) => {
-                setManufacturerFilter(event.target.value);
-                setPage(1);
+            <label className="field">
+              Manufacturer
+              <select
+                value={manufacturerFilter}
+                onChange={(event) => {
+                  setManufacturerFilter(event.target.value);
+                  setPage(1);
               }}
             >
               <option value="">All manufacturers</option>
-              {filters.manufacturers.map((manufacturer) => (
-                <option key={manufacturer} value={manufacturer}>
-                  {manufacturer}
-                </option>
+              {manufacturerGroups.map((group, groupIndex) => (
+                <Fragment key={group.label}>
+                  {groupIndex > 0 && (
+                    <option disabled value={`__divider-${group.label}`}>
+                      ──────────
+                    </option>
+                  )}
+                  <option disabled value={`__label-${group.label}`}>
+                    {group.label}
+                  </option>
+                  {group.manufacturers.map((manufacturer) => (
+                    <option key={`${group.label}-${manufacturer}`} value={manufacturer}>
+                      {manufacturer}
+                    </option>
+                  ))}
+                </Fragment>
               ))}
             </select>
           </label>
-          <div className="machine-list">
-            {loadingMachines ? (
-              <p className="muted">Loading machines…</p>
-            ) : (
-              machines.map((item) => {
-                const selected = item.practiceIdentity === selectedIdentity;
-                return (
-                  <button
-                    key={item.practiceIdentity}
-                    className={`machine-row ${selected ? "selected" : ""}`}
-                    onClick={() => startTransition(() => setSelectedIdentity(item.practiceIdentity))}
-                  >
-                    <div className="machine-row-head">
-                      <strong>{displayTitle(item)}</strong>
-                      <span className="machine-row-year">{item.year ?? "—"}</span>
-                    </div>
-                    <span>{item.manufacturer || "Unknown manufacturer"}</span>
-                    <code>{item.practiceIdentity}</code>
-                    <div className="row-tags compact-tags">
-                      {item.hasAdminOverride && <span className="tag accent">OVR</span>}
-                      {machineAssetIndicators(item).length ? (
-                        machineAssetIndicators(item).map((indicator) => (
-                          <span
-                            key={indicator.label}
-                            className={indicator.tone === "accent" ? "tag accent" : indicator.tone === "info" ? "tag info" : "tag"}
-                          >
-                            {indicator.label}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="tag muted-tag">OPDB</span>
-                      )}
-                    </div>
-                  </button>
-                );
-              })
-            )}
-          </div>
-          <div className="pager">
-            <button disabled={page <= 1} onClick={() => setPage((value) => Math.max(1, value - 1))}>
-              Previous
-            </button>
-            <span>
-              Page {page} / {pageCount}
-            </span>
-            <button disabled={page >= pageCount} onClick={() => setPage((value) => Math.min(pageCount, value + 1))}>
-              Next
-            </button>
-          </div>
-          <section className="sidebar-block activity-block">
-            <div className="panel-header slim">
-              <div>
-                <h2>Recent activity</h2>
-                <p className="muted">Latest imports and saves across the whole workspace.</p>
-              </div>
-            </div>
-            <div className="activity-list">
-              {activity.length ? (
-                activity.map((entry) => (
-                  <article key={entry.activityId} className="activity-item">
-                    <div className="activity-item-head">
-                      <strong>{entry.summary}</strong>
-                      <span className="tag">{new Date(entry.createdAt).toLocaleDateString()}</span>
-                    </div>
-                    <button
-                      className="activity-link"
-                      onClick={() => startTransition(() => setSelectedIdentity(entry.practiceIdentity))}
-                    >
-                      {entry.machineTitle}
-                    </button>
-                    <code>{entry.practiceIdentity}</code>
-                    {entry.details.length > 0 && (
-                      <div className="activity-detail-list">
-                        {entry.details.slice(0, 3).map((detail) => (
-                          <div key={`${entry.activityId}-${detail.label}`}>
-                            <small>{detail.label}</small>
-                            <code>{detail.value}</code>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </article>
-                ))
+            <label className="field">
+              Sort
+              <select
+                value={sortOrder}
+                onChange={(event) => {
+                  setSortOrder(event.target.value as MachineSortOption);
+                  setPage(1);
+                  setPendingPageSelection(null);
+                }}
+              >
+                <option value="name">A-Z</option>
+                <option value="year_asc">Old to New</option>
+                <option value="year_desc">New to Old</option>
+              </select>
+            </label>
+            <div className="machine-list">
+              {loadingMachines ? (
+                <p className="muted">Loading machines…</p>
               ) : (
-                <p className="muted">No activity yet.</p>
+                machines.map((item) => {
+                  const selected = item.practiceIdentity === selectedIdentity;
+                  return (
+                    <button
+                      key={item.practiceIdentity}
+                      className={`machine-row ${selected ? "selected" : ""}`}
+                      onClick={() => startTransition(() => setSelectedIdentity(item.practiceIdentity))}
+                    >
+                      <div className="machine-row-layout">
+                        <div className="machine-row-main">
+                          <div className="machine-row-head">
+                            <div className="machine-row-title-block">
+                              <strong>{displayTitle(item)}</strong>
+                              <code>{item.opdbGroupId || item.practiceIdentity}</code>
+                            </div>
+                            <div className="machine-row-side">
+                              <span className="machine-row-maker">{item.manufacturer || "Unknown manufacturer"}</span>
+                              <span className="machine-row-year">{item.year ?? "—"}</span>
+                            </div>
+                          </div>
+                          <div className="row-tags compact-tags">
+                            {item.hasAdminOverride && <span className="tag accent">OVR</span>}
+                            {machineAssetIndicators(item).length ? (
+                              machineAssetIndicators(item).map((indicator) => (
+                                <span
+                                  key={indicator.label}
+                                  className={indicator.tone === "accent" ? "tag accent" : indicator.tone === "info" ? "tag info" : "tag"}
+                                >
+                                  {indicator.label}
+                                </span>
+                              ))
+                            ) : (
+                              <span className="tag muted-tag">OPDB</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })
               )}
             </div>
-          </section>
-        </aside>
+            <div className="pager">
+              <button disabled={page <= 1} onClick={() => setPage((value) => Math.max(1, value - 1))}>
+                Previous
+              </button>
+              <span>
+                Page {page} / {pageCount}
+              </span>
+              <button disabled={page >= pageCount} onClick={() => setPage((value) => Math.min(pageCount, value + 1))}>
+                Next
+              </button>
+            </div>
+          </aside>
+        )}
 
         <section className="editor">
           {!selectedIdentity && <div className="empty-state">Pick a machine to edit overrides.</div>}
@@ -889,16 +966,39 @@ export default function App() {
                 <section className="panel hero-panel panel-span-full">
                   <div className="hero-copy">
                     <p className="eyebrow">Machine</p>
-                    <h2>{displayTitle(detail.machine)}</h2>
-                    <p className="muted">
-                      {[detail.machine.manufacturer, detail.machine.year].filter(Boolean).join(" • ") || "Unknown maker"}
-                    </p>
+                    <div className="machine-title-row">
+                      <h2>{displayTitle(detail.machine)}</h2>
+                      <div className="machine-nav">
+                        <button
+                          className="secondary-button nav-button"
+                          onClick={() => selectRelativeMachine("previous")}
+                          disabled={selectedMachineIndex <= 0 && page <= 1}
+                          type="button"
+                          aria-label="Previous game"
+                        >
+                          {"<"}
+                        </button>
+                        <button
+                          className="secondary-button nav-button"
+                          onClick={() => selectRelativeMachine("next")}
+                          disabled={selectedMachineIndex === machines.length - 1 && page >= pageCount}
+                          type="button"
+                          aria-label="Next game"
+                        >
+                          {">"}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="machine-detail-meta">
+                      <span>{detail.machine.manufacturer || "Unknown maker"}</span>
+                      <span>{detail.machine.year ?? "—"}</span>
+                    </div>
                     <div className="row-tags">
-                      <span className={assetKindClass(detail.sources.assets.backglass.effectiveKind)}>
-                        {detail.sources.assets.backglass.effectiveLabel}
-                      </span>
                       <span className={assetKindClass(detail.sources.assets.playfield.effectiveKind)}>
                         {detail.sources.assets.playfield.effectiveLabel}
+                      </span>
+                      <span className={assetKindClass(detail.sources.assets.backglass.effectiveKind)}>
+                        {detail.sources.assets.backglass.effectiveLabel}
                       </span>
                       <span className={assetKindClass(detail.sources.assets.rulesheet.effectiveKind)}>
                         {detail.sources.assets.rulesheet.effectiveLabel}
@@ -937,7 +1037,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="hero-media-grid">
-                    <div className="hero-image-frame">
+                    <div className="hero-image-frame hero-image-frame-backglass">
                       {detail.sources.assets.backglass.effectiveUrl ? (
                         <img src={buildWebUrl(detail.sources.assets.backglass.effectiveUrl) ?? ""} alt={`${displayTitle(detail.machine)} backglass`} />
                       ) : (
@@ -948,7 +1048,7 @@ export default function App() {
                         <span>{detail.sources.assets.backglass.effectiveLabel}</span>
                       </div>
                     </div>
-                    <div className="hero-image-frame">
+                    <div className="hero-image-frame hero-image-frame-playfield">
                       {displayImage(detail) ? (
                         <img src={buildWebUrl(displayImage(detail)) ?? ""} alt={`${displayTitle(detail.machine)} playfield`} />
                       ) : (
@@ -962,203 +1062,10 @@ export default function App() {
                   </div>
                 </section>
 
-                <section className="panel">
-                  <div className="panel-header">
-                    <div>
-                      <h2>Current asset stack</h2>
-                      <p className="muted">See exactly what the web/app would use right now, and where it came from.</p>
-                    </div>
-                    <span className="pill">{detail.sources.aliases.length} OPDB aliases</span>
-                  </div>
-                  <div className="asset-grid">
-                    <article className="asset-card">
-                      <div className="asset-card-head">
-                        <h3>Backglass</h3>
-                        <span className={assetKindClass(detail.sources.assets.backglass.effectiveKind)}>
-                          {detail.sources.assets.backglass.effectiveKind}
-                        </span>
-                      </div>
-                      <p className="muted">{detail.sources.assets.backglass.effectiveLabel}</p>
-                      <code>{detail.sources.assets.backglass.effectiveUrl ?? "No image"}</code>
-                      {detail.sources.assets.backglass.localSourceUrl && (
-                        <a href={detail.sources.assets.backglass.localSourceUrl} target="_blank" rel="noreferrer">
-                          Source link
-                        </a>
-                      )}
-                      {detail.sources.assets.backglass.localSourceNote && <code>{detail.sources.assets.backglass.localSourceNote}</code>}
-                    </article>
-                    <article className="asset-card">
-                      <div className="asset-card-head">
-                        <h3>Playfield</h3>
-                        <span className={assetKindClass(detail.sources.assets.playfield.effectiveKind)}>
-                          {detail.sources.assets.playfield.effectiveKind}
-                        </span>
-                      </div>
-                      <p className="muted">{detail.sources.assets.playfield.effectiveLabel}</p>
-                      <code>{detail.sources.assets.playfield.effectiveUrl ?? "No image"}</code>
-                      {detail.sources.assets.playfield.localSourceUrl && (
-                        <a href={detail.sources.assets.playfield.localSourceUrl} target="_blank" rel="noreferrer">
-                          Source link
-                        </a>
-                      )}
-                      {detail.sources.assets.playfield.localSourceNote && <code>{detail.sources.assets.playfield.localSourceNote}</code>}
-                    </article>
-                    <article className="asset-card">
-                      <div className="asset-card-head">
-                        <h3>Rulesheet</h3>
-                        <span className={assetKindClass(detail.sources.assets.rulesheet.effectiveKind)}>
-                          {detail.sources.assets.rulesheet.effectiveKind}
-                        </span>
-                      </div>
-                      <p className="muted">{detail.sources.assets.rulesheet.effectiveLabel}</p>
-                      <code>{detail.sources.assets.rulesheet.effectiveUrl ?? "No rulesheet"}</code>
-                      {detail.sources.assets.rulesheet.sourceUrl && (
-                        <a href={detail.sources.assets.rulesheet.sourceUrl} target="_blank" rel="noreferrer">
-                          Source link
-                        </a>
-                      )}
-                      {detail.sources.assets.rulesheet.sourceNote && <code>{detail.sources.assets.rulesheet.sourceNote}</code>}
-                    </article>
-                    <article className="asset-card">
-                      <div className="asset-card-head">
-                        <h3>Game Info</h3>
-                        <span className={assetKindClass(detail.sources.assets.gameinfo.effectiveKind)}>
-                          {detail.sources.assets.gameinfo.effectiveKind}
-                        </span>
-                      </div>
-                      <p className="muted">{detail.sources.assets.gameinfo.effectiveLabel}</p>
-                      <code>{detail.sources.assets.gameinfo.effectiveUrl ?? "No game info"}</code>
-                    </article>
-                  </div>
-                </section>
-
                 <section className="panel compact-panel">
                   <div className="panel-header">
-                    <div>
-                      <h2>Replace backglass image</h2>
-                      <p className="muted">Shows whether you are still on OPDB art or have your own better file layered on top.</p>
-                    </div>
-                    <button onClick={handleImportBackglassUrl} disabled={busyAction === "import-backglass-url"}>
-                      {busyAction === "import-backglass-url" ? "Importing…" : "Import from URL"}
-                    </button>
-                  </div>
-                  <div className="form-grid">
-                    <label className="field wide">
-                      Remote backglass URL
-                      <input
-                        value={overrideForm.backglassSourceUrl}
-                        onChange={(event) => setOverrideForm((current) => ({ ...current, backglassSourceUrl: event.target.value }))}
-                        placeholder="https://img.opdb.org/... or better source"
-                      />
-                    </label>
-                    <label className="field">
-                      Source note
-                      <input
-                        value={overrideForm.backglassSourceNote}
-                        onChange={(event) =>
-                          setOverrideForm((current) => ({ ...current, backglassSourceNote: event.target.value }))
-                        }
-                        placeholder="OPDB alt / flyer scan / your source"
-                      />
-                    </label>
-                  </div>
-                  <label className="field upload-field">
-                    Upload backglass from browser
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0] ?? null;
-                        void handleUploadBackglass(file);
-                        event.currentTarget.value = "";
-                      }}
-                    />
-                  </label>
-                  <div className="path-list">
-                    <div>
-                      <small>Override image path</small>
-                      <code>{detail.override.backglassLocalPath ?? detail.sources.assets.backglass.localPath ?? "None"}</code>
-                    </div>
-                    {detail.override.backglassSourceUrl && (
-                      <div>
-                        <small>Source URL</small>
-                        <a href={detail.override.backglassSourceUrl} target="_blank" rel="noreferrer">
-                          {detail.override.backglassSourceUrl}
-                        </a>
-                      </div>
-                    )}
-                    {detail.override.backglassSourceNote && (
-                      <div>
-                        <small>Source note</small>
-                        <code>{detail.override.backglassSourceNote}</code>
-                      </div>
-                    )}
-                  </div>
-                </section>
-
-                <section className="panel compact-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h2>Metadata overrides</h2>
-                      <p className="muted">These fields reapply into the generated seed DB after every sync.</p>
-                    </div>
-                    <button onClick={handleSaveMetadata} disabled={busyAction === "save-metadata"}>
-                      {busyAction === "save-metadata" ? "Saving…" : "Save metadata"}
-                    </button>
-                  </div>
-                  <div className="form-grid">
-                    <label className="field">
-                      Name override
-                      <input
-                        value={overrideForm.nameOverride}
-                        onChange={(event) => setOverrideForm((current) => ({ ...current, nameOverride: event.target.value }))}
-                      />
-                    </label>
-                    <label className="field">
-                      Variant override
-                      <input
-                        value={overrideForm.variantOverride}
-                        onChange={(event) => setOverrideForm((current) => ({ ...current, variantOverride: event.target.value }))}
-                      />
-                    </label>
-                    <label className="field">
-                      Manufacturer override
-                      <input
-                        value={overrideForm.manufacturerOverride}
-                        onChange={(event) =>
-                          setOverrideForm((current) => ({ ...current, manufacturerOverride: event.target.value }))
-                        }
-                      />
-                    </label>
-                    <label className="field">
-                      Year override
-                      <input
-                        value={overrideForm.yearOverride}
-                        onChange={(event) => setOverrideForm((current) => ({ ...current, yearOverride: event.target.value }))}
-                        inputMode="numeric"
-                      />
-                    </label>
-                  </div>
-                  <label className="field">
-                    Machine notes
-                    <textarea
-                      rows={3}
-                      value={overrideForm.notes}
-                      onChange={(event) => setOverrideForm((current) => ({ ...current, notes: event.target.value }))}
-                    />
-                  </label>
-                  <p className="timestamp">
-                    Last override update: {detail.override.updatedAt ? new Date(detail.override.updatedAt).toLocaleString() : "None yet"}
-                  </p>
-                </section>
-
-                <section className="panel compact-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h2>Replace playfield image</h2>
-                      <p className="muted">Pick the OPDB alias this file came from. The app resolves automatically by alias, then machine, then group, so one better local file can replace OPDB across the family until a more specific one exists.</p>
-                    </div>
-                    <div className="topbar-actions">
+                    <h2>Replace playfield image</h2>
+                    <div className="panel-header-actions">
                       <button onClick={handleBindPlayfieldSource} disabled={busyAction === "bind-playfield-source"}>
                         {busyAction === "bind-playfield-source" ? "Saving…" : "Bind existing local file"}
                       </button>
@@ -1168,14 +1075,13 @@ export default function App() {
                     </div>
                   </div>
                   {detail.sources.playfieldAssets.length > 0 && (
-                    <div className="asset-grid">
+                    <div className="playfield-source-list">
                       {detail.sources.playfieldAssets.map((asset) => (
                         <article key={asset.playfieldAssetId} className="asset-card">
                           <div className="asset-card-head">
                             <h3>{asset.sourceAliasLabel}</h3>
                             <span className="tag accent">local source</span>
                           </div>
-                          <p className="muted">Used automatically for exact alias matches first, then sibling machine/group fallbacks.</p>
                           <div className="path-list">
                             <div>
                               <small>Local file</small>
@@ -1208,39 +1114,30 @@ export default function App() {
                     </div>
                   )}
                   <div className="form-grid">
-                    <label className="field">
-                      Source OPDB alias
+                    <div className="field">
                       <select
                         value={overrideForm.playfieldAliasId}
                         onChange={(event) => loadPlayfieldForm(event.target.value)}
                       >
                         {detail.sources.aliases.map((alias) => (
                           <option key={alias.opdbMachineId} value={alias.opdbMachineId}>
-                            {aliasTitle(alias, detail.machine.name)}
+                            {alias.label}
                           </option>
                         ))}
                       </select>
-                    </label>
-                    <label className="field">
-                      Saved filename
-                      <code>{selectedPlayfieldAlias ? `${selectedPlayfieldAlias.opdbMachineId}-playfield` : detail.sources.assets.playfield.targetFilename}</code>
-                    </label>
+                    </div>
+                    <div className="field static-field">
+                      <code>
+                        {fileName(selectedPlayfieldAsset?.localPath ?? detail.override.playfieldLocalPath ?? detail.machine.playfieldLocalPath) ??
+                          "No saved file yet"}
+                      </code>
+                    </div>
                     <label className="field wide">
                       Remote source URL
                       <input
                         value={overrideForm.playfieldSourceUrl}
                         onChange={(event) => setOverrideForm((current) => ({ ...current, playfieldSourceUrl: event.target.value }))}
                         placeholder="https://o.pinside.com/...jpeg"
-                      />
-                    </label>
-                    <label className="field wide">
-                      Source note
-                      <input
-                        value={overrideForm.playfieldSourceNote}
-                        onChange={(event) =>
-                          setOverrideForm((current) => ({ ...current, playfieldSourceNote: event.target.value }))
-                        }
-                        placeholder="Pinside / local filename / comment"
                       />
                     </label>
                   </div>
@@ -1259,15 +1156,11 @@ export default function App() {
                   <div className="path-list">
                     <div>
                       <small>Source alias</small>
-                      <code>{selectedPlayfieldAlias ? aliasTitle(selectedPlayfieldAlias, detail.machine.name) : detail.sources.assets.playfield.targetAliasLabel}</code>
+                      <code>{selectedPlayfieldAlias?.label ?? detail.sources.assets.playfield.targetAliasLabel}</code>
                     </div>
                     <div>
                       <small>Saved file path</small>
                       <code>{selectedPlayfieldAsset?.localPath ?? detail.override.playfieldLocalPath ?? detail.machine.playfieldLocalPath ?? "None"}</code>
-                    </div>
-                    <div>
-                      <small>Resolution</small>
-                      <code>exact alias -&gt; same machine -&gt; same group -&gt; OPDB</code>
                     </div>
                     {(selectedPlayfieldAsset?.sourceUrl ?? detail.override.playfieldSourceUrl) && (
                       <div>
@@ -1281,6 +1174,57 @@ export default function App() {
                       <div>
                         <small>Source note</small>
                         <code>{selectedPlayfieldAsset?.sourceNote ?? detail.override.playfieldSourceNote}</code>
+                      </div>
+                    )}
+                  </div>
+                </section>
+
+                <section className="panel compact-panel">
+                  <div className="panel-header">
+                    <h2>Replace backglass image</h2>
+                    <button onClick={handleImportBackglassUrl} disabled={busyAction === "import-backglass-url"}>
+                      {busyAction === "import-backglass-url" ? "Importing…" : "Import from URL"}
+                    </button>
+                  </div>
+                  <div className="form-grid">
+                    <label className="field wide">
+                      Remote backglass URL
+                      <input
+                        value={overrideForm.backglassSourceUrl}
+                        onChange={(event) => setOverrideForm((current) => ({ ...current, backglassSourceUrl: event.target.value }))}
+                        placeholder="https://img.opdb.org/... or better source"
+                      />
+                    </label>
+                  </div>
+                  <label className="field upload-field">
+                    Upload backglass from browser
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) => {
+                        const file = event.target.files?.[0] ?? null;
+                        void handleUploadBackglass(file);
+                        event.currentTarget.value = "";
+                      }}
+                    />
+                  </label>
+                  <div className="path-list">
+                    <div>
+                      <small>Override image path</small>
+                      <code>{detail.override.backglassLocalPath ?? detail.sources.assets.backglass.localPath ?? "None"}</code>
+                    </div>
+                    {detail.override.backglassSourceUrl && (
+                      <div>
+                        <small>Source URL</small>
+                        <a href={detail.override.backglassSourceUrl} target="_blank" rel="noreferrer">
+                          {detail.override.backglassSourceUrl}
+                        </a>
+                      </div>
+                    )}
+                    {detail.override.backglassSourceNote && (
+                      <div>
+                        <small>Source note</small>
+                        <code>{detail.override.backglassSourceNote}</code>
                       </div>
                     )}
                   </div>
@@ -1390,6 +1334,132 @@ export default function App() {
                     </div>
                   </div>
                 </section>
+
+                <section className="panel">
+                  <div className="panel-header">
+                    <div>
+                      <h2>Current asset stack</h2>
+                      <p className="muted">See exactly what the web/app would use right now, and where it came from.</p>
+                    </div>
+                    <span className="pill">{detail.sources.aliases.length} OPDB aliases</span>
+                  </div>
+                  <div className="asset-grid">
+                    <article className="asset-card">
+                      <div className="asset-card-head">
+                        <h3>Playfield</h3>
+                        <span className={assetKindClass(detail.sources.assets.playfield.effectiveKind)}>
+                          {detail.sources.assets.playfield.effectiveKind}
+                        </span>
+                      </div>
+                      <p className="muted">{detail.sources.assets.playfield.effectiveLabel}</p>
+                      <code>{detail.sources.assets.playfield.effectiveUrl ?? "No image"}</code>
+                      {detail.sources.assets.playfield.localSourceUrl && (
+                        <a href={detail.sources.assets.playfield.localSourceUrl} target="_blank" rel="noreferrer">
+                          Source link
+                        </a>
+                      )}
+                      {detail.sources.assets.playfield.localSourceNote && <code>{detail.sources.assets.playfield.localSourceNote}</code>}
+                    </article>
+                    <article className="asset-card">
+                      <div className="asset-card-head">
+                        <h3>Backglass</h3>
+                        <span className={assetKindClass(detail.sources.assets.backglass.effectiveKind)}>
+                          {detail.sources.assets.backglass.effectiveKind}
+                        </span>
+                      </div>
+                      <p className="muted">{detail.sources.assets.backglass.effectiveLabel}</p>
+                      <code>{detail.sources.assets.backglass.effectiveUrl ?? "No image"}</code>
+                      {detail.sources.assets.backglass.localSourceUrl && (
+                        <a href={detail.sources.assets.backglass.localSourceUrl} target="_blank" rel="noreferrer">
+                          Source link
+                        </a>
+                      )}
+                      {detail.sources.assets.backglass.localSourceNote && <code>{detail.sources.assets.backglass.localSourceNote}</code>}
+                    </article>
+                    <article className="asset-card">
+                      <div className="asset-card-head">
+                        <h3>Rulesheet</h3>
+                        <span className={assetKindClass(detail.sources.assets.rulesheet.effectiveKind)}>
+                          {detail.sources.assets.rulesheet.effectiveKind}
+                        </span>
+                      </div>
+                      <p className="muted">{detail.sources.assets.rulesheet.effectiveLabel}</p>
+                      <code>{detail.sources.assets.rulesheet.effectiveUrl ?? "No rulesheet"}</code>
+                      {detail.sources.assets.rulesheet.sourceUrl && (
+                        <a href={detail.sources.assets.rulesheet.sourceUrl} target="_blank" rel="noreferrer">
+                          Source link
+                        </a>
+                      )}
+                      {detail.sources.assets.rulesheet.sourceNote && <code>{detail.sources.assets.rulesheet.sourceNote}</code>}
+                    </article>
+                    <article className="asset-card">
+                      <div className="asset-card-head">
+                        <h3>Game Info</h3>
+                        <span className={assetKindClass(detail.sources.assets.gameinfo.effectiveKind)}>
+                          {detail.sources.assets.gameinfo.effectiveKind}
+                        </span>
+                      </div>
+                      <p className="muted">{detail.sources.assets.gameinfo.effectiveLabel}</p>
+                      <code>{detail.sources.assets.gameinfo.effectiveUrl ?? "No game info"}</code>
+                    </article>
+                  </div>
+                </section>
+
+                <section className="panel compact-panel">
+                  <div className="panel-header">
+                    <div>
+                      <h2>Metadata overrides</h2>
+                      <p className="muted">These fields reapply into the generated seed DB after every sync.</p>
+                    </div>
+                    <button onClick={handleSaveMetadata} disabled={busyAction === "save-metadata"}>
+                      {busyAction === "save-metadata" ? "Saving…" : "Save metadata"}
+                    </button>
+                  </div>
+                  <div className="form-grid">
+                    <label className="field">
+                      Name override
+                      <input
+                        value={overrideForm.nameOverride}
+                        onChange={(event) => setOverrideForm((current) => ({ ...current, nameOverride: event.target.value }))}
+                      />
+                    </label>
+                    <label className="field">
+                      Variant override
+                      <input
+                        value={overrideForm.variantOverride}
+                        onChange={(event) => setOverrideForm((current) => ({ ...current, variantOverride: event.target.value }))}
+                      />
+                    </label>
+                    <label className="field">
+                      Manufacturer override
+                      <input
+                        value={overrideForm.manufacturerOverride}
+                        onChange={(event) =>
+                          setOverrideForm((current) => ({ ...current, manufacturerOverride: event.target.value }))
+                        }
+                      />
+                    </label>
+                    <label className="field">
+                      Year override
+                      <input
+                        value={overrideForm.yearOverride}
+                        onChange={(event) => setOverrideForm((current) => ({ ...current, yearOverride: event.target.value }))}
+                        inputMode="numeric"
+                      />
+                    </label>
+                  </div>
+                  <label className="field">
+                    Machine notes
+                    <textarea
+                      rows={3}
+                      value={overrideForm.notes}
+                      onChange={(event) => setOverrideForm((current) => ({ ...current, notes: event.target.value }))}
+                    />
+                  </label>
+                  <p className="timestamp">
+                    Last override update: {detail.override.updatedAt ? new Date(detail.override.updatedAt).toLocaleString() : "None yet"}
+                  </p>
+                </section>
               </div>
             </>
           )}
@@ -1397,6 +1467,55 @@ export default function App() {
             <div className="empty-state">Unable to load {displayTitle(selectedMachine)}.</div>
           )}
         </section>
+        {!activityCollapsed && (
+          <aside className="sidebar sidebar-right">
+            <section className="sidebar-block activity-block">
+              <div className="panel-header slim">
+                <h2>Recent activity</h2>
+              </div>
+              <div className="activity-list">
+                {activity.length ? (
+                  activity.map((entry) => (
+                    <article key={entry.activityId} className="activity-item">
+                      <div className="activity-item-head">
+                        <strong>{entry.summary}</strong>
+                        <span className="tag">{new Date(entry.createdAt).toLocaleDateString()}</span>
+                      </div>
+                      <button
+                        className="activity-link"
+                        onClick={() => startTransition(() => setSelectedIdentity(entry.practiceIdentity))}
+                      >
+                        {entry.machineTitle}
+                      </button>
+                      <code>{entry.practiceIdentity}</code>
+                      {entry.details.length > 0 && (
+                        <div className="activity-detail-list">
+                          {entry.details.slice(0, 3).map((detail) => (
+                            <div key={`${entry.activityId}-${detail.label}`}>
+                              <small>{detail.label}</small>
+                              <code>{detail.value}</code>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  ))
+                ) : (
+                  <p className="muted">No activity yet.</p>
+                )}
+              </div>
+            </section>
+          </aside>
+        )}
+        <button
+          className={`sidebar-toggle sidebar-toggle-right ${activityCollapsed ? "collapsed" : ""}`}
+          onClick={() => setActivityCollapsed((current) => !current)}
+          type="button"
+          aria-label={activityCollapsed ? "Expand recent activity sidebar" : "Collapse recent activity sidebar"}
+        >
+          <span>{activityCollapsed ? "<" : ">"}</span>
+          <small>Activity</small>
+        </button>
       </main>
     </div>
   );

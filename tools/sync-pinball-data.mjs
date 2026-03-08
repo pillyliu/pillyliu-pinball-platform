@@ -16,6 +16,7 @@ const FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "fetch_opd
 const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_library_seed_db.py");
 const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "audit_rulesheet_links.py");
 const APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
+const EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "export_library_seed_overrides.py");
 const EXPORT_REMOTE_OPDB_RULESHEETS_SCRIPT = path.join(ROOT, "tools", "rulesheets", "export_remote_opdb_rulesheets.mjs");
 const IOS_STARTER_PACK_DATA_DIR = path.join(
   PINBALL_APP_ROOT,
@@ -318,6 +319,7 @@ async function pruneStarterPackNonV3LibraryJsons(target) {
   const candidates = [
     path.join(dataDir, "pinball_library.json"),
     path.join(dataDir, "pinball_library_v2.json"),
+    path.join(dataDir, "pinball_library_seed_overrides_v1.json"),
   ];
   let removed = 0;
   for (const file of candidates) {
@@ -448,12 +450,21 @@ async function applyPinprofAdminOverrides() {
   await run("node", [APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT], ROOT);
 }
 
+async function exportLibrarySeedOverrides() {
+  if (!(await pathExists(EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT))) {
+    console.warn(`Skipping library seed override export; missing ${path.relative(ROOT, EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT)}`);
+    return;
+  }
+  await run("python3", [EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT], ROOT);
+}
+
 async function generateSharedAppSupportArtifacts() {
   await generateSharedOpdbCatalog();
   await exportRemoteOpdbRulesheets();
   await mirrorSharedDataForSeedGeneration();
   await generateSharedLibrarySeedDb();
   await applyPinprofAdminOverrides();
+  await exportLibrarySeedOverrides();
   await generateSharedRulesheetAudit();
 }
 

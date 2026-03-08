@@ -42,6 +42,10 @@ type MachineRow = {
 
 type FilterPayload = {
   manufacturers: string[];
+  manufacturerGroups: Array<{
+    label: string;
+    manufacturers: string[];
+  }>;
 };
 
 type BuiltInGameRow = {
@@ -59,6 +63,7 @@ type BuiltInGameRow = {
 type MachineAliasRow = {
   opdbMachineId: string;
   slug: string;
+  name: string;
   variant: string | null;
   primaryImageUrl: string | null;
   playfieldImageUrl: string | null;
@@ -300,6 +305,50 @@ function jsonError(res: Response, status: number, message: string) {
   res.status(status).type("text/plain").send(message);
 }
 
+function loadManufacturerFilterPayload(): FilterPayload {
+  const rows = seedDb
+    .prepare(`
+      SELECT
+        trim(name) AS manufacturer,
+        is_modern AS isModern,
+        game_count AS gameCount
+      FROM manufacturers
+      WHERE name IS NOT NULL AND trim(name) != ''
+      ORDER BY sort_bucket ASC, COALESCE(featured_rank, 9999) ASC, sort_name ASC
+    `)
+    .all() as Array<{ manufacturer: string; isModern: 0 | 1; gameCount: number }>;
+
+  const classics = rows
+    .filter((row) => !row.isModern)
+    .sort((left, right) => {
+      if (left.gameCount !== right.gameCount) return right.gameCount - left.gameCount;
+      return left.manufacturer.localeCompare(right.manufacturer, undefined, { sensitivity: "base" });
+    })
+    .slice(0, 20)
+    .map((row) => row.manufacturer);
+  const classicSet = new Set(classics);
+
+  const manufacturerGroups = [
+    {
+      label: "Modern",
+      manufacturers: rows.filter((row) => Boolean(row.isModern)).map((row) => row.manufacturer),
+    },
+    {
+      label: "Classics",
+      manufacturers: classics,
+    },
+    {
+      label: "Other",
+      manufacturers: rows.filter((row) => !row.isModern && !classicSet.has(row.manufacturer)).map((row) => row.manufacturer),
+    },
+  ].filter((group) => group.manufacturers.length > 0);
+
+  return {
+    manufacturers: manufacturerGroups.flatMap((group) => group.manufacturers),
+    manufacturerGroups,
+  };
+}
+
 await ensureDir(SHARED_DATA_DIR);
 
 const adminDb = new Database(ADMIN_DB_PATH);
@@ -533,6 +582,7 @@ function getMachineAliases(practiceIdentity: string): MachineAliasRow[] {
     SELECT
       opdb_machine_id AS opdbMachineId,
       slug,
+      name,
       variant,
       primary_image_large_url AS primaryImageUrl,
       playfield_image_large_url AS playfieldImageUrl,
@@ -787,7 +837,7 @@ function reassignPlayfieldAssetRecord(
 }
 
 function formatAliasLabel(alias: MachineAliasRow) {
-  return [alias.variant, alias.opdbMachineId].filter(Boolean).join(" · ") || alias.opdbMachineId;
+  return [alias.opdbMachineId, cleanString(alias.variant) ?? cleanString(alias.name)].filter(Boolean).join(" · ") || alias.opdbMachineId;
 }
 
 function recordActivity(
@@ -1326,18 +1376,7 @@ app.get("/api/summary", authRequired, (_req, res) => {
 });
 
 app.get("/api/filters", authRequired, (_req, res) => {
-  const manufacturers = seedDb
-    .prepare(`
-      SELECT DISTINCT trim(manufacturer_name) AS manufacturer
-      FROM machines
-      WHERE manufacturer_name IS NOT NULL AND trim(manufacturer_name) != ''
-      ORDER BY lower(trim(manufacturer_name))
-    `)
-    .all() as Array<{ manufacturer: string }>;
-
-  res.json({
-    manufacturers: manufacturers.map((row) => row.manufacturer),
-  } satisfies FilterPayload);
+  res.json(loadManufacturerFilterPayload());
 });
 
 app.get("/api/workspace/import-notes", authRequired, (_req, res) => {
@@ -1368,18 +1407,27 @@ app.get("/api/activity", authRequired, (req, res) => {
 app.get("/api/machines", authRequired, (req, res) => {
   const query = cleanString(req.query.query);
   const manufacturer = cleanString(req.query.manufacturer);
+  const sort = cleanString(req.query.sort);
   const page = Math.max(1, cleanInteger(req.query.page) ?? 1);
-  const pageSize = Math.min(100, Math.max(1, cleanInteger(req.query.pageSize) ?? 40));
+  const pageSize = Math.min(100, Math.max(1, cleanInteger(req.query.pageSize) ?? 20));
   const offset = (page - 1) * pageSize;
   const like = query ? `%${query}%` : null;
   const whereClauses: string[] = [];
   if (like) {
-    whereClauses.push(`(m.name LIKE @like OR m.slug LIKE @like OR m.manufacturer_name LIKE @like OR m.practice_identity LIKE @like)`);
+    whereClauses.push(
+      `(m.name LIKE @like OR m.slug LIKE @like OR m.manufacturer_name LIKE @like OR m.practice_identity LIKE @like OR m.opdb_group_id LIKE @like)`,
+    );
   }
   if (manufacturer) {
     whereClauses.push(`m.manufacturer_name = @manufacturer`);
   }
   const whereSql = whereClauses.length ? `WHERE ${whereClauses.join(" AND ")}` : "";
+  const orderSql =
+    sort === "year_asc"
+      ? "ORDER BY year IS NULL, year ASC, lower(name), lower(coalesce(variant, ''))"
+      : sort === "year_desc"
+        ? "ORDER BY year IS NULL, year DESC, lower(name), lower(coalesce(variant, ''))"
+        : "ORDER BY lower(name), lower(coalesce(variant, ''))";
 
   const rows = seedDb
     .prepare(`
@@ -1387,6 +1435,7 @@ app.get("/api/machines", authRequired, (req, res) => {
         SELECT
           m.practice_identity AS practiceIdentity,
           m.opdb_machine_id AS opdbMachineId,
+          m.opdb_group_id AS opdbGroupId,
           m.slug AS slug,
           m.name AS name,
           m.variant AS variant,
@@ -1434,6 +1483,7 @@ app.get("/api/machines", authRequired, (req, res) => {
       SELECT
         practiceIdentity,
         opdbMachineId,
+        opdbGroupId,
         slug,
         name,
         variant,
@@ -1449,7 +1499,7 @@ app.get("/api/machines", authRequired, (req, res) => {
         hasAdminOverride
       FROM ranked
       WHERE rank_index = 1
-      ORDER BY lower(name), lower(coalesce(variant, ''))
+      ${orderSql}
       LIMIT @limit OFFSET @offset
     `)
     .all({ like, manufacturer, limit: pageSize, offset }) as Array<MachineRow & { hasAdminOverride: 0 | 1 }>;
@@ -1651,7 +1701,16 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
         sourceName: builtIn?.sourceName ?? null,
         sourceType: builtIn?.sourceType ?? null,
       },
-      aliases,
+      aliases: aliases.map((alias) => ({
+        opdbMachineId: alias.opdbMachineId,
+        label: formatAliasLabel(alias),
+        slug: alias.slug,
+        name: alias.name,
+        variant: alias.variant,
+        primaryImageUrl: alias.primaryImageUrl,
+        playfieldImageUrl: alias.playfieldImageUrl,
+        updatedAt: alias.updatedAt,
+      })),
       playfieldAssets,
       assets: {
         backglass: backglassAsset,
