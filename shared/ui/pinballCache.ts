@@ -54,16 +54,40 @@ async function fetchResponseNetwork(path: string): Promise<{ response: Response;
 
   let lastError: Error | null = null;
   for (const url of urls) {
-    try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-      return { response: res, resolvedPath: url };
-    } catch (e) {
-      lastError = e instanceof Error ? e : new Error(String(e ?? "unknown"));
+    for (const cacheMode of ["no-store", "default"] as const) {
+      try {
+        const res = await fetch(url, { cache: cacheMode });
+        if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+        return { response: res, resolvedPath: url };
+      } catch (e) {
+        lastError = e instanceof Error ? e : new Error(String(e ?? "unknown"));
+      }
     }
   }
 
   throw lastError ?? new Error(`Failed to fetch ${primary}`);
+}
+
+async function readTextAssetCache(path: string): Promise<string | null> {
+  if (!("caches" in window)) return null;
+
+  const primary = normalizePath(path);
+  const urls = [primary];
+  const alt = fallbackPath(primary);
+  if (alt !== primary) urls.push(alt);
+
+  try {
+    const cache = await caches.open(ASSET_CACHE);
+    for (const url of urls) {
+      const cached = await cache.match(url);
+      if (!cached) continue;
+      return await cached.text();
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
 }
 
 async function fetchTextNetwork(path: string): Promise<string> {
@@ -106,6 +130,8 @@ export async function fetchPinballText(path: string): Promise<string> {
     localStorage.setItem(cacheKey, JSON.stringify(payload));
     return text;
   } catch (error) {
+    const cachedAssetText = await readTextAssetCache(normalized);
+    if (cachedAssetText) return cachedAssetText;
     if (cached?.text) return cached.text;
     throw error;
   }

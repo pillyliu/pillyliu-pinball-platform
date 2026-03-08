@@ -1,0 +1,42 @@
+---
+title: "Hokus Pokus"
+source: "https://pinballprimer.github.io/hokuspokus_GRwBN.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/hokuspokus_GRwBN.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Hokus Pokus (Bally, 1976)</h1>
+
+
+
+<h2>Quick strategy synopsis</h2>
+
+<p>The left spinner is your friend, taking you back to the top of the table for star rollovers and A-B-C-D lanes. Each of A-B-C-D can be lit in three places around the table. Spelling it once lights the spinners and double bonus; spelling it twice awards extra ball, and lights an alternating special on the out lanes; any completion after that scores a special. Only shoot through the center spinner up the middle of the table if the yellow Opens Gate target is lit. Once you have 2x 15,000 bonus and an open gate, it's 100-point spinners till the cows come home.</p>
+
+<br>
+
+<h2>Shots and table features</h2>
+
+<h3>Top of the table</h3>
+
+<p>There are 4 top lanes, which each give a letter in A-B-C-D. Roll through a lit lane to unlight it. All top lanes score 500 points and a bonus advance. There are three star rollovers above the top lanes; the two outer ones score 500 points and a bonus advance alongside spotting the B (left) or C (right), and the center one scores 500 points, but only gives a bonus advance when lit, and toggles when lit with 10-point switch hits.</p>
+
+<h3>A-B-C-D letters</h3>
+
+<p>Each letter can be collected in 3 places: a top lane, a star rollover (B and C at the top, A and D behind the left and right spinners), and the lower third of the table (A and D on standup targets, B and C on in lanes). Anything that spots a letter gives 500 points and a bonus advance. Bonus is by far the most important scoring, so maxing out base bonus and getting one A-B-C-D is the top priority at the beginning of every ball. The first A-B-C-D on a ball gives double bonus and lights spinners; the second awards an instant extra ball and lights the out lanes alternately for a special; the third and any more after that award an instant special. It's possible to shatz/alley pass the in lanes for the B and C if you really need them. Don't ever shoot the A and D standup targets; the spinners nearby are much safer and most efficient shots. Simply using the left spinner to get all the way back to the top of the table for a guaranteed top lane is preferred whenever possible.</p>
+
+<h3>Spinners</h3>
+
+<p>Spinners score 10 points per spin, or 100 when lit. They are all lit by completing A-B-C-D once. The left and right spinners are what you should almost always be shooting at; don't bother with the center spinner unless the yellow standup target directly behind it is lit to open the gate in the right out lane (which alternated with 10-point switch hits).</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Hokus Pokus has a conventional in/out lane setup. Out lanes score 1,000 points, or are lit alternately for special (on 10-point switch hits) after completing A-B-C-D twice in one ball. In lanes score 500 points and a bonus advance, and spot B (left) and C (right).</p>
+
+<p>The gate in the right out lane redirects a ball back to the shooter lane. It is closed at the start of each ball, opened by the 1,000-point yellow standup target behind the center spinner when lit, and closes once used.</p>
+
+<h3>Bonus and bonus multiplier</h3>
+
+<p>Bonus is advanced by top lanes, star rollovers, in lanes, and the A and D standup targets. Bonus is doubled only by completing A-B-C-D once. Double bonus is not given for free on the final ball. Max bonus is 2x 15,000 = 30,000 points. There is no bonus holdover or mid-ball bonus collect of any kind.</p>
+</div>

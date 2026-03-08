@@ -1,0 +1,38 @@
+---
+title: "8 Ball"
+source: "https://pinballprimer.github.io/8ball_G592K.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/8ball_G592K.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>8 Ball (Williams, 1966)</h1>
+
+<p>Not to be confused with Bally's Eight Ball (1977) or that game's sequels, Eight Ball Deluxe (1981) and Eight Ball Champ (1985), or Nine Ball (Stern Electronics, 1980).</p>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>Plunge the top lane for 200 points and a pool ball. With the flippers, shoot the 500 point horseshoe lane or whichever target is lit for Spot Lighted Ball. Keep the flippers down as much as possible whenever the ball has a chance to hit the bottom yellow bumper to ensure that at the very least if a drain occurs it'll be through one of the bottom lanes worth points and/or a pool ball.</p>
+
+<img src="8ball.jpg" alt="8 Ball playfield. Taken from VPX by Loserman76" class="center" width="400" height="auto">
+
+<h2>Shots and table features</h2>
+
+<h3>Center top lane</h3>
+
+<p>Should always be the target of a plunge. Scores 200 points, and also spots the next pool ball unless the 8 ball is next. </p>
+
+<h3>Center horseshoe</h3>
+
+<p>Gives the most points of anything in the game at 500, but is also probably the game's hardest shot. If the current player has lit all of 1-7 or 9-15, the center shot awards the 8 ball, which is worth an extra ball. </p>
+
+<h3>Side saucers and center standup</h3>
+
+<p>The saucers always score 50 points and kick the ball toward the yellow bumper. The center standup always scores 100 points.<br>1-point switches such as the slings and the rubber switches on either side of the bumpers change which of these three are lit for spot pool ball; out of the 10 positions of the 1 point score reel, there are three that correspond to just the left saucer, three that correspond to just the center target, three that correspond to just the right saucer, and one that corresponds to the center target and right saucer together.</p>
+
+<h3>Bottom of the playfield</h3>
+
+<p>The slingshots are very vertical, so it's easy to end up in sling town where the ball "climbs" the slings to end up in the out lane. Use side nudges to try to prevent this. <br>Out lanes are worth 200 points each, which isn't the worst, but they don't spot a pool ball.</p>
+
+<p>The flippers are very far apart and there's an entire pop bumper between them. Below the flippers and lower bumper are three lanes. The outer two score 100 points, and the middle scores 200 points and lights a pool ball (unless 8 ball is lit). The ball can also drain under the flippers and score no points. If it looks like the ball is going to end up below the bumper, try to use a nudge to boost the ball's momentum off the bounce so that it does hit the bumper again.</p>
+</div>

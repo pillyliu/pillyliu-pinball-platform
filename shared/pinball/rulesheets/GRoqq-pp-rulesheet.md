@@ -1,0 +1,60 @@
+---
+title: "Bow and Arrow"
+source: "https://pinballprimer.github.io/bowandarrow_GRoqq.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/bowandarrow_GRoqq.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Bow and Arrow (Bally, 1975)</h1>
+
+<p>Bow and Arrow includes depictions of Indigenous people that may be considered prejudiced or offensive. The Pinball Primer does not endorse or condone such imagery. The below screenshot, taken from a historically accurate VPX recreation by Loserman76, is provided for educational and reference purposes only.</p>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>Advance the bonus by backhanding spinners or shatzing/alley passing the in lanes. When the bonus is at least 5,000, get the ball to the right flipper and whack it into the bonus collect saucer at the end of the left lane. Collecting the bonus does not drain it, so scoring on Bow and Arrow is determined entirely by how many times you can collect the bonus, get the return feed under control, and repeat. Double bonus, awarded by lighting A-B-C-D, only affects the end of ball bonus, not the bonus collect saucer.</p>
+
+<img src="https://pinballprimer.github.io/bowandarrow.jpg" alt="Bow and Arrow playfield" class="center" width="400" height="auto">
+
+<h2>Shots and table features</h2>
+
+<h3>Scanning features and right gate</h3>
+
+<p>The top saucer and center standup target constantly rotate between 5 values: 1,000, 2,000, 3,000 and Open Gate, 4,000, and 5,000. Entering the top saucer or hitting the center standup target awards the currently lit value. The Gate is an opening in the middle-right of the game that connects back to the shooter lane; using the gate scores 3,000 points and closes it.</p>
+
+<h3>Bumpers</h3>
+
+<p>Score 10 points, or 100 when lit.</p>
+
+<h3>Spinners</h3>
+
+<p>Always score 10 points per spin. Every 10th spin to either spinner (progress is shared between the two) advances the bonus. These are the easiest way to build bonus, and it's recommended that when the ball is under control, backhand the spinner on the same side of the cradled ball. This is a wider shot than the cross-table spinner and makes it easier to avoid flipping straight into a post and risking a center drain since the spinners are so close to the flippers.</p>
+
+<h3>Left collect bonus lane</h3>
+
+<p>The saucer at the end of this lane scores the current bonus value, up to 10,000 points. Collecting the bonus does not reset it. Lighting double bonus does not affect the value taken from this saucer. This saucer is far more valuable and less dangerous than any other feature in the game once the bonus reaches about 4,000. Shoot this saucer, figure out how to get the return feed under control, get the ball to the right flipper, and repeat; this is the best, and many would say only, way to play this game for score.</p>
+
+<h3>Center standup target</h3>
+
+<p>In addition to having a scanning award as described above, this target is lit half of the time for an extra ball once the bonus is maxed out at 10,000 points. Switch hits that are not bumpers or spinners toggle whether the extra ball is lit or not.</p>
+
+<h3>Side standup targets</h3>
+
+<p>All four targets (two on each side) start lit. Hitting a lit target scores 3,000 points, unlights that target, and lights one bumper. The far left target lights A, the top bumper; the near left target lights B, the bottom bumper; the far right target lights C, the left bumper; the near right target lights D, the right bumper. These standup targets score 500 points when not lit. Hitting all 4 targets to light A-B-C-D awards double bonus, which only applies to the bonus collected at the end of the ball.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Bow and Arrow has a conventional in/out lane setup. Out lanes score 1,000 points and are lit alternately for a special when the bonus is maxed out at 10,000 points. In lanes score 500 points and advance the bonus.</p>
+
+<h3>Bonus and bonus multiplier</h3>
+
+<p>Bonus is advanced by the no-man's-land standup target above and right of the bumpers, the in lanes, or every 10th spin of either of the two spinners. Double bonus is awarded by lighting all four A-B-C-D bumpers. Max bonus is 2x 10,000 = 20,000 points. Bonus can be collected mid ball at the left lane saucer, but this only collects the base bonus. Base bonus and multiplier can never be carried from ball to ball.</p>
+
+<h3>Settings note</h3>
+
+<p>Specials can be set to award extra balls instead of free games, but neither extra balls nor specials can be set to award points instead.</p>
+
+<h3>Addendum</h3>
+
+<p>A solid state prototype of Bow and Arrow was produced in extremely limited quantities circa 1974. This solid state version can be played in Visual Pinball X. As far as I have encountered, there are no rules or scoring differences in the solid state version.</p>
+</div>

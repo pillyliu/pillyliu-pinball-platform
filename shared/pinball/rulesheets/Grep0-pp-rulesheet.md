@@ -1,0 +1,53 @@
+---
+title: "Hot Tip"
+source: "https://pinballprimer.github.io/hottip_Grep0.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/hottip_Grep0.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Hot Tip (Williams, 1977)</h1>
+
+<p>This game has both solid state and electromechanical versions. This guide was written with the solid state version in mind. Scoring and rules may be slightly different on the electromechanical version. </p>
+
+<br>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>Complete HOT and TIP once to light double bonus and the spinner. From there, advance the bonus as high as possible at the spinner, captive ball, or additional HOT TIP targets. If bonus is maxed and doubled, pick any of the following three strategies: 1) go for lit spinner and top saucer awards, 2) complete HOT TIP more for increasing points, or 3) hammer the captive ball if lit for 3,000 points per full hit. </p>
+
+<br>
+
+<h2>Shots and table features</h2>
+
+<h3>Top saucer</h3>
+
+<p>Advances bonus and gives the lit award. Awards in order are 500 - 500 and Lite Double Bonus - 500 - 500 and Lite Captive Ball - 1,000. The mini slings on either side of this hole rotated the lit award from left to right. Try nudge the ball into the saucer when lit for Double Bonus or Lite Captive Ball.</p>
+
+<h3>HOT and TIP targets</h3>
+
+<p>Each drop target is worth 10 points at the start of the ball. Completing both HOT and TIP scores 5,000 points, resets both banks, and also does the following:</p>
+<ul>
+	<li>The first completion lights Double Bonus, lights the spinner, and increases the drop target award to 100 points each.</li>
+	<li>The second completion lights the left saucer for Extra Ball and increases the drop target award to 1,000 points. </li>
+	<li>The third completion lights one out lane for special.</li>
+</ul>
+
+<p>Always be sure to complete HOT TIP once to light the spinner and ensure bonus gets doubled.</p>
+
+<h3>Spinner</h3>
+
+<p>Scores 10 points per spin, or 100 points per spin when lit. The only way to light the spinner is by completing HOT and TIP once. Also, despite not being shown on the playfield, every fifth spin scores 1 bonus advance. Lit spinner all day can be a reasonable, sustainable strategy, especially if the spinner spins well.</p>
+
+<h3>Left saucer</h3>
+
+<p>Always scores 500 points and one bonus advance. If HOT TIP is completed twice, this saucer is also lit for Extra Ball. I am not aware of any particular point value that extra ball can be set to for competition play.</p>
+
+<h3>Captive ball</h3>
+
+<p>The switch in the captive ball lane scores 100 points and 1 bonus advance. The target at the end of the lane scores 1,000 points, or 3,000 when lit. The only way to light the captive ball is by the Lite Captive Ball award from the top saucer. The captive ball is fairly easy to hit, so if it happens to be lit, this shot is worth good but not great points, and is a decent choice for a ball on the left flipper if bonus has been doubled.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Hot Tip has a conventional in lane/out lane setup. All lanes score 1,000 points and one bonus advance. One out lane is also lit for special after three completions of HOT TIP. I am not aware of any setting that makes the special worth points for competition play; it can only be worth a free game or be disabled outright.</p>
+</div>

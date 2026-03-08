@@ -1,0 +1,48 @@
+---
+title: "Honey"
+source: "https://pinballprimer.github.io/honey_G5vO1.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/honey_G5vO1.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Honey (Williams, 1971)</h1>
+
+
+
+<h2>Quick strategy synopsis</h2>
+
+<p>Hit the A and B targets in the upper corners of the game to open the right out lane gate, then whack the ball into the center saucer as much as possible.</p>
+
+<br>
+
+<h2>Shots and table features</h2>
+
+<h3>Top of the table</h3>
+
+<p>At the very top of the table is a button labelled Advances 1 to 5. More on this later- it scores 100 points.</p>
+
+<p>There are 3 top lanes. The center lane is always 1,000 points and rotates the value of the center saucer. The left and right lanes score 500, or 1,000 when lit; one of the two is always lit, alternating with each 10-point switch registered. The left top lane lights the upper left and lower right red bumpers, while the right top lane lights the upper right and lower left green bumpers.</p>
+
+<h3>Bumpers</h3>
+
+<p>Red and green bumpers score 10 points, or 100 when lit. The center blue bumper always scores 100.</p>
+
+<h3>A-B drop targets</h3>
+
+<p>Score 100 points each. Hitting both opens the gate in the right out lane for the rest of the ball or until used.</p>
+
+<h3>Side saucers and 1-2-3-4-5</h3>
+
+<p>Two lines of rollover buttons point from the center of the table to the upper corners. Roll over a lit button to score 100 points and light the next button in the 1-2-3-4-5 sequence. (The rollover button above the top lanes also advances the 1-2-3-4-5 buttons by one step.) Rolling over the 5 button to complete the 1-2-3-4-5 sequence increases the value of the saucers on both sides of the game in the sequence 500 - 1,000 - 3,000 - extra ball. It's not very reasonable to expect to complete 1-2-3-4-5 on a ball, so extra balls typically aren't worth going for.</p>
+
+<h3>Center saucer</h3>
+
+<p>The center saucer is initially blocked by a drop target; knocking it down scores 1,000 points. Making the center saucer scores and advances the lit value: 1,000, 3,000, 5,000, or 10,000 points. The center top lane also rotates the center saucer value one step. After the ball is spit out of the center saucer, the drop target in front of it will re-raise. Shots to this area are incredibly dangerous, but also worth much more than everything else in the game by a significant margin, so they're the only thing it really makes sense to go for in a high score setting.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>There are no in lanes. The flippers back up directly to the slingshots. Out lanes score 1,000 points. The right out lane gate is opened by hitting the A-B drop targets and closes when used; it diverts the ball to the shooter lane. </p>
+
+<p>There is a center post that completely blocks off the center drain. It is raised by bouncing off one of the side walls just below the side saucers, and lowered by the white rollover button very close to the flippers. Since the Down Post button is so close to the post itself, it's not advisable to rely on the post being there when you need it in many cases.</p>
+</div>

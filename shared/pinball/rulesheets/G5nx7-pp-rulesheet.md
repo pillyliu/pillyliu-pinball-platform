@@ -1,0 +1,32 @@
+---
+title: "Cabaret"
+source: "https://pinballprimer.github.io/cabaret_G5nx7.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/cabaret_G5nx7.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Cabaret (Williams, 1968)</h1>
+
+
+
+<h2>Game rules</h2>
+
+<p>The left wall that forms part of the top lanes funnel, the side wall above and slightly left of the left green pop bumper, the upper side wall above-right of the pop bumpers, and the two side walls about 1/3 of the way up the table rotate the colour wheel in the top left of the game. The wheel can point at green, white, yellow, or red; there are 3 spaces each of green, white, and yellow, and only 1 red.</p>
+<ul>
+	<li><i>When green is lit:</i> the rightmost top lane is lit for 100 points instead of 10, the green pop bumpers are lit for 10 points instead of 1, and the near right out lane is lit for 300 points instead of 100.</li>
+	<li><i>When white is lit:</i> the third top lane from left is lit for 300 points instead of 100 and the red pop bumper is lit for 100 points instead of 10.</li>
+	<li><i>When yellow is lit:</i> the second top lane from left is lit for 100 points instead of 10, the yellow pop bumpers are lit for 10 points instead of 1, and the near left out lane is lit for 300 points instead of 100.</li>
+	<li><i>When red is lit:</i> the leftmost top lane scores 300 points instead of 100, the upper side lane on the left scores Extra Ball in addition to 100 points, both far out lanes are lit for 300 points instead of 100, and all green, yellow, and white features are also lit.</li>
+</ul>
+
+<p>The center saucer scores 300 points and advances the "Super Bonus" reel on the backglass, which resets for each player. Depending on operator settings, a free game can be awarded if the Super Bonus reaches 4, 5, 6, 7, or 8.</p>
+
+<p>Every 2nd 1-point switch hit anywhere in the game toggles whether or not the center post is raised.</p>
+
+<p>Special can be set to award an extra ball instead of a free game. It cannot be set to be worth points. There is no end of ball bonus. Tilt ends the ball in play only.</p>
+
+<p>The below image of Cabaret's playfield was taken from the VPX recreation by Loserman76 and Kees.</p>
+
+<img src="cabaret.jpg" alt="Cabaret playfield" class="center" width="400" height="auto">
+</div>

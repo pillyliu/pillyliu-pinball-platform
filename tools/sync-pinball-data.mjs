@@ -10,10 +10,13 @@ const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
 const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
 const PINBALL_APP_ROOT = path.resolve(ROOT, "../Pinball App");
 const PINBALL_APP_SCRIPTS_DIR = path.join(PINBALL_APP_ROOT, "scripts");
+const BUILD_MATCHPLAY_TUTORIAL_ENRICHMENT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_matchplay_tutorial_enrichment.py");
+const BUILD_EXTERNAL_RULESHEET_RESOURCES_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_external_rulesheet_resources.py");
 const FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "fetch_opdb_snapshot.py");
 const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_library_seed_db.py");
 const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "audit_rulesheet_links.py");
 const APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
+const EXPORT_REMOTE_OPDB_RULESHEETS_SCRIPT = path.join(ROOT, "tools", "rulesheets", "export_remote_opdb_rulesheets.mjs");
 const IOS_STARTER_PACK_DATA_DIR = path.join(
   PINBALL_APP_ROOT,
   "Pinball App 2",
@@ -362,14 +365,33 @@ async function rebuildLibraryJsonV3() {
   await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v3.ts"], path.join(ROOT, "lpl-library"));
 }
 
+async function refreshEnrichmentInputs() {
+  await run("python3", [BUILD_MATCHPLAY_TUTORIAL_ENRICHMENT_SCRIPT], ROOT);
+  await run("python3", [BUILD_EXTERNAL_RULESHEET_RESOURCES_SCRIPT], ROOT);
+}
+
 async function generateSharedOpdbCatalog() {
   await ensureParentDir(SHARED_OPDB_CATALOG_PATH);
-  await run("python3", [
-    FETCH_OPDB_SNAPSHOT_SCRIPT,
-    "--ios-output",
-    SHARED_OPDB_CATALOG_PATH,
-    "--skip-android",
-  ], ROOT);
+  try {
+    await refreshEnrichmentInputs();
+    await run("python3", [
+      FETCH_OPDB_SNAPSHOT_SCRIPT,
+      "--ios-output",
+      SHARED_OPDB_CATALOG_PATH,
+      "--skip-android",
+      "--min-export-age-minutes",
+      "1440",
+    ], ROOT);
+  } catch (error) {
+    if (await pathExists(SHARED_OPDB_CATALOG_PATH)) {
+      console.warn(
+        `Warning: OPDB snapshot refresh failed; using existing shared catalog at ${path.relative(ROOT, SHARED_OPDB_CATALOG_PATH)}`
+      );
+      console.warn(error instanceof Error ? error.message : String(error));
+      return;
+    }
+    throw error;
+  }
 }
 
 async function mirrorSharedDataForSeedGeneration() {
@@ -414,6 +436,10 @@ async function generateSharedRulesheetAudit() {
   ], ROOT);
 }
 
+async function exportRemoteOpdbRulesheets() {
+  await run("node", [EXPORT_REMOTE_OPDB_RULESHEETS_SCRIPT], ROOT);
+}
+
 async function applyPinprofAdminOverrides() {
   if (!(await pathExists(APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT))) {
     console.warn(`Skipping PinProf admin override apply; missing ${path.relative(ROOT, APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT)}`);
@@ -424,6 +450,7 @@ async function applyPinprofAdminOverrides() {
 
 async function generateSharedAppSupportArtifacts() {
   await generateSharedOpdbCatalog();
+  await exportRemoteOpdbRulesheets();
   await mirrorSharedDataForSeedGeneration();
   await generateSharedLibrarySeedDb();
   await applyPinprofAdminOverrides();

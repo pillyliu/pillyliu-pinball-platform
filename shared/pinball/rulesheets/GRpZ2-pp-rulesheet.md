@@ -1,0 +1,60 @@
+---
+title: "Abra Ca Dabra"
+source: "https://pinballprimer.github.io/abracadabra_GRpZ2.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/abracadabra_GRpZ2.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Abra Ca Dabra / Team One / Kicker (Gottlieb, 1975/1977)</h1>
+
+<p>This guide focuses on Abra Ca Dabra, the replay version. Team One and Kicker are add-a-ball versions with the same playfield, but quite different rules. Differences observed in the add-a-ball versions are discussed at the end of the guide.</p>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>To advance the "bonus" value, knock down all 10 drop targets then shoot the center bullseye target, or complete a set of 1-2-3-4. The "bonus" value is not an end of ball bonus, it is the value of hitting a lit target. Max this out at 5,000 points then hit lit drop targets. 10-point switches rotate which drops are lit and whether the 1,000 bumpers are on.</p>
+
+<p>The below screenshot is of the VPX recreation of Abra Ca Dabra, by BorgDog et al.</p>
+
+<img src="abracadabra.jpg" alt="Abra Ca Dabra playfield" class="center" width="400" height="auto">
+
+<h2>Shots and table features</h2>
+
+<h3>1-2-3-4 numbers</h3>
+
+<p>Any lane scores 500 points. Going through a lit lane unlights that number. Unlighting all of 1-2-3-4 scores and advance the current bonus value. If the bonus value is maxed at 5,000, completing 1-2-3-4 scores a special. Numbers can be collected from the top lanes and the in lanes.</p>
+
+<h3>Drop targets</h3>
+
+<p>Each target down scores 500 points, or the "bonus" value if that target is lit. The lights for each target are on the playfield plastic above the targets, not on the playfield itself. 10-point switch hits rotate which of the 5 targets is lit. The rubber switch behind the drop targets scores 10 points. Drop targets do not reset on their own once completed. Clearing both banks of drop targets lights the center bullseye target.</p>
+
+<h3>Center bullseye target</h3>
+
+<p>Scores 500 points when not lit. When lit, this target scores and advances the "bonus" value, resets both banks of drop targets, and scores a special if the bonus value was already maxed at 5,000. This target is only lit when all drop targets in both banks are down.</p>
+
+<h3>Bumpers</h3>
+
+<p>Score 100 points, or 1,000 when lit. 10-point switches alternate whether or not the bumpers are lit. They are always lit together rather than alternating. Hitting a lit bumper to collect the 1,000 points always unlights the bumpers.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Abra Ca Dabra has a conventional in/out lane setup, but with a second set of in lanes in place of the slingshots. The out lanes score the current bonus value. The four in lanes correspond to the 1-2-3-4 numbers and always score 500 points.</p>
+
+<h3>Bonus?</h3>
+
+<p>There is no end of ball bonus. The value labelled "bonus" is only awarded when hitting an out lane or lit target. The bonus value, drop target status, and progress on 1-2-3-4 lanes are all carried over from ball to ball since this is a single player game.</p>
+
+<h3>Differences seen in Team One and Kicker, the add-a-ball versions</h3>
+
+<p>The 1-2-3-4 lanes have grown into 1-2-3-4-5-6. 1-2-3-4 are still top lanes; 5 and 6 can be collected at the near in lanes, or at standup targets located behind the uppermost drop targets.</p>
+
+<p>There is no "bonus" value. Lit drop targets score 5,000 points, or Wow if 1-2-3-4-5-6 is completed. On easy settings, completing 1-2-3-4-5-6 lights the drop target Wow for the rest of the game, but on hard settings, drop target Wow unlights and the 1-2-3-4-5-6 sequence resets when the ball in play drains. Since there is no bonus value, out lanes always score 5,000 points.</p>
+
+<p>The center standup target resets completed drop target banks, and scores Wow when lit. Game settings seem to determine whether the center target is lit by completing one or both banks, as well as whether the target always gives 1 Wow or if 2 Wows are available for hitting the target after clearing both banks.</p>
+
+<p>The far in lanes score 500 points, or 5,000 when lit; they are lit when the bank of drop targets on the same side of the table is completed, and making the lane when lit resets the bank on the same side of the table.</p>
+
+<p>Pop bumpers always score 1,000 points. They only unlight to indicate that the score motor is currently in use counting other score.</p>
+
+<p>Wows can be set to score either an extra ball or 50,000 points. Additional numbers on the backglass are lit to display score values between 100,000 and 1,900,000 points.</p>
+</div>

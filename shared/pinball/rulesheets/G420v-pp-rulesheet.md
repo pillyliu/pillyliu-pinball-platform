@@ -1,0 +1,42 @@
+---
+title: "Air Aces"
+source: "https://pinballprimer.github.io/airaces_G420v.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/airaces_G420v.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Air Aces (Bally, 1975)</h1>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>The drop targets are the most direct way to increase bonus, but they're also very dangerous, so shoot up the sides of the table to get bonus advances from the lit bumper as well. Reaching certain bonus levels lights the top saucers for extra ball and double bonus, and completing the drop targets lights the in lanes for a special.</p>
+
+<p>The below picture of Air Aces' playfield was taken from the VPX recreation by Scottacus.</p>
+
+<img src="https://pinballprimer.github.io/airaces.jpg" alt="Air Aces playfield" class="center" width="400" height="auto">
+
+<h2>Shots and table features</h2>
+
+<h3>Top saucers</h3>
+
+<p>Both saucers score 500 points. If the bonus has reached a predetermined level, the left saucer will be lit for an extra ball, and the right saucer will be lit for 2x bonus. By default, the extra ball saucer is lit at 5,000 bonus and the double bonus saucer is lit at 8,000 bonus, but either of these values can be adjusted to anywhere from 4,000 to 13,000.</p>
+
+<h3>Bumpers</h3>
+
+<p>One of the two bumpers will always be lit. Any 10-point switch will alternate which of the two bumpers is lit. Unlit bumpers score 10 points (therefore turning themselves on), and lit bumpers score 100 points plus a bonus advance.</p>
+
+<h3>Drop target 9-bank</h3>
+
+<p>Each target down scores 500 points and a bonus advance. Completing the entire 9-bank scores 5,000 points and 5 bonus advances, resets the bank, and lights both in lanes for a special. Collecting the Special unlights it, but it can be relit by clearing the entire 9-bank again. Be mindful of how shooting these drop targets with the upper flippers can lead to drains down the opposite out lane.</p>
+
+<p>When the ball is rolling along the top of the drop target structure, consider nudging the ball off the side wall to ensure it does not flop directly into the center drain from the top of the table.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Air Aces has a conventional in/out lane setup. Out lanes score 1,000 points. In lanes score 500 points. The in lanes are both lit for a special by completing the drop targets.</p>
+
+<h3>Bonus and bonus multiplier</h3>
+
+<p>Bonus is advanced by the lit bumper, by individual drop targets, and 5 times by completing the drop target bank. Reaching a predetermined bonus level lights the top saucers for extra ball and 2x bonus as described above. Max bonus is 2x 20,000 = 40,000 points. There is no bonus holdover or mid-ball bonus collect.</p>
+</div>

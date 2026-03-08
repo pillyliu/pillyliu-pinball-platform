@@ -1,0 +1,52 @@
+---
+title: "Amigo"
+source: "https://pinballprimer.github.io/amigo_G4ONX.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/amigo_G4ONX.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Amigo (Bally, 1974)</h1>
+
+<h2>Quick strategy synopsis</h2>
+
+<p>Shoot the right u-turn lane to light the left spinner, then shoot nothing but the left spinner all day once it's lit for 1,000 points a spin. For a bit of added safety, shoot the center standup target to raise the center post, but the feed out of the bumpers after a spinner shot is liable to hit one of the rollover buttons that lowers the post.</p>
+
+<p>The below image of Amigo's playfield was taken from the VPX recreation by Loserman76.</p>
+
+<img src="https://pinballprimer.github.io/amigo.jpg" alt="Amigo playfield" class="center" width="400" height="500">
+
+<h2>Shots and table features</h2>
+
+<h3>Top lanes area</h3>
+
+<p>The two rollover buttons in the top funnel area of the game score 1,000 points and a bonus advance. The left top lane scores 1,000 points and lights the left blue bumper for 100 points per pop. The right top lane scores 1,000 points and lights the right blue bumper. The center saucer scores 3,000 points, 3 bonus advances, and lights both blue bumpers, but note that it is possible for the ball to rim past the saucer.</p>
+
+<h3>Upper left standup targets</h3>
+
+<p>Score 1,000 points and a bonus advance.</p>
+
+<h3>Upper right lane</h3>
+
+<p>Scores 2,000 points and lights the spinner. If the base bonus is maxed out at 19,000 points, this lane also scores a special.</p>
+
+<h3>Left spinner lane</h3>
+
+<p>The spinner scores 100 points per spin, or 1,000 per spin when lit after making the upper right turnaround lane. At the end of the left lane behind the spinner is a switch that opens a gate in the right out lane.</p>
+
+<h3>Lower left standup target</h3>
+
+<p>Scores 100 points. If the current base bonus is exactly 10,000, 12,000, or 15,000 points, this target is also lit for extra ball.</p>
+
+<h3>Center standup target</h3>
+
+<p>Scores 1,000 points and a bonus advance, and also raises the center post between the flippers.</p>
+
+<h3>Bottom of the table</h3>
+
+<p>Amigo has a conventional in/out lane setup. Out lanes score 500 points. In lanes score 1,000 points and a bonus advance. Slingshots score 10 points and are a fair bit larger than most slingshots of the era.<br>A gate in the right out lane redirects the ball back to the shooter lane for a replunge. It is opened by activating the switch in the left lane behind the left spinner and closes once used or once the current ball drains.<br>The center standup target raises a center post, which comptely blocks off the center drain. The post is lowered when the ball drains or when either of the two rollover buttons near the tops of the slingshots are pressed.</p>
+
+<h3>Bonus and bonus multiplier</h3>
+
+<p>Bonus is advanced by top rollover buttons, upper left standup targets, the center standup target, and the in lanes. The top saucer gives 3 bonus advances. Max base bonus is 19,000 points. At 10,000, 12,000, and 15,000, the lower left standup target is lit for extra ball; at 19,000, the upper right turnaround lane is lit for special. Double bonus is given for free on balls 3 and 5; there is no skill based method for earning double bonus at any other time, and there is no bonus multiplier beyond 2x. There is also no bonus holdover of any kind and no mid-ball bonus collect.</p>
+</div>

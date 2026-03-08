@@ -1,0 +1,20 @@
+---
+title: "Alpine Club"
+source: "https://pinballprimer.github.io/alpineclub_G5K3O.html"
+provider: "pp"
+---
+<small class="rulesheet-attribution">Source: Pinball Primer | Original page: <a href="https://pinballprimer.github.io/alpineclub_G5K3O.html">link</a> | Preserve source attribution and any author/site rights notes from the original page. | Reformatted for readability and mobile use.</small>
+
+<div class="pinball-rulesheet remote-rulesheet primer-rulesheet">
+<h1>Alpine Club / Ski Club (Williams, 1965)</h1>
+
+
+
+<h3>Game rules</h3>
+
+<p>Make the ten rollover buttons in the center of the table from bottom to top to light the top center target. The top center target scores 100 points when not lit; when lit, it scores 300 points, opens the right out lane gate, and advances the value of the left and right saucers in the sequence 50 (unlit) - 300 - 500 - Special (on Alpine Club) or Extra Ball (on Ski Club).</p>
+
+<p>Hit the passive bumper or side lane lit for an A-B-C-D-E letter to score 100 points and advance to the next letter in the sequence. Collecting the E moves the sequence back to A and advances the light in the shape of a climber on the backglass. Notice that D and E are most easily earned if the upper flippers are raised. After 10 backglass light advances, the climber reaches the summit, which awards a Special (Alpine Club) or 2 extra balls (Ski Club). This is a carryover award whose progress is preserved across balls and games.</p>
+
+<p>The rollover buttons near the bumpers turn on the red and green pop bumpers as indicated. Bumpers score 1 point, or 10 when lit. Lighting the red bumpers lights the left slingshot for 10 points instead of 1, and lighting the green bumpers does the same with the right slingshot. Making either side saucer unlights any lit bumpers or slingshots.</p>
+</div>
