@@ -19,6 +19,25 @@ type FilterPayload = {
   manufacturers: string[];
 };
 
+type WorkspaceNotePayload = {
+  notes: string;
+  updatedAt: string | null;
+};
+
+type GlobalActivityEntry = {
+  activityId: number;
+  practiceIdentity: string;
+  machineTitle: string;
+  actionType: string;
+  summary: string;
+  details: Array<{ label: string; value: string }>;
+  createdAt: string;
+};
+
+type ActivityResponse = {
+  items: GlobalActivityEntry[];
+};
+
 type MachineListItem = {
   practiceIdentity: string;
   opdbMachineId: string | null;
@@ -239,6 +258,9 @@ export default function App() {
   const [session, setSession] = useState<SessionPayload | null>(null);
   const [summary, setSummary] = useState<SummaryPayload | null>(null);
   const [filters, setFilters] = useState<FilterPayload>({ manufacturers: [] });
+  const [workspaceNotes, setWorkspaceNotes] = useState("");
+  const [workspaceNotesUpdatedAt, setWorkspaceNotesUpdatedAt] = useState<string | null>(null);
+  const [activity, setActivity] = useState<GlobalActivityEntry[]>([]);
   const [machines, setMachines] = useState<MachineListItem[]>([]);
   const [totalMachines, setTotalMachines] = useState(0);
   const [page, setPage] = useState(1);
@@ -283,6 +305,23 @@ export default function App() {
     if (!session?.authenticated) return;
     apiFetch<FilterPayload>("api/filters")
       .then(setFilters)
+      .catch((error) => setToast({ tone: "error", message: extractMessage(error) }));
+  }, [session?.authenticated]);
+
+  useEffect(() => {
+    if (!session?.authenticated) return;
+    apiFetch<WorkspaceNotePayload>("api/workspace/import-notes")
+      .then((payload) => {
+        setWorkspaceNotes(payload.notes);
+        setWorkspaceNotesUpdatedAt(payload.updatedAt);
+      })
+      .catch((error) => setToast({ tone: "error", message: extractMessage(error) }));
+  }, [session?.authenticated]);
+
+  useEffect(() => {
+    if (!session?.authenticated) return;
+    apiFetch<ActivityResponse>("api/activity?limit=40")
+      .then((payload) => setActivity(payload.items))
       .catch((error) => setToast({ tone: "error", message: extractMessage(error) }));
   }, [session?.authenticated]);
 
@@ -342,6 +381,10 @@ export default function App() {
     return apiFetch<SummaryPayload>("api/summary").then(setSummary);
   }
 
+  function refreshActivity() {
+    return apiFetch<ActivityResponse>("api/activity?limit=40").then((payload) => setActivity(payload.items));
+  }
+
   function refreshMachines() {
     const params = new URLSearchParams({
       query: deferredSearch,
@@ -390,7 +433,7 @@ export default function App() {
     setToast(null);
     try {
       const result = await action();
-      await Promise.all([refreshSummary(), refreshMachines(), refreshDetail()]);
+      await Promise.all([refreshSummary(), refreshMachines(), refreshDetail(), refreshActivity()]);
       setToast({ tone: "ok", message: successMessage });
       return result;
     } catch (error) {
@@ -445,6 +488,22 @@ export default function App() {
           body: JSON.stringify(overrideForm),
         }),
       "Override metadata saved.",
+    );
+  }
+
+  async function handleSaveWorkspaceNotes() {
+    await runAction(
+      "save-workspace-notes",
+      async () => {
+        await apiFetch("api/workspace/import-notes", {
+          method: "PUT",
+          body: JSON.stringify({ notes: workspaceNotes }),
+        });
+        const payload = await apiFetch<WorkspaceNotePayload>("api/workspace/import-notes");
+        setWorkspaceNotes(payload.notes);
+        setWorkspaceNotesUpdatedAt(payload.updatedAt);
+      },
+      "Import notebook saved.",
     );
   }
 
@@ -676,6 +735,33 @@ export default function App() {
             </div>
             <span className="pill">{totalMachines} found</span>
           </div>
+          <section className="sidebar-block">
+            <div className="panel-header slim">
+              <div>
+                <h2>Import notebook</h2>
+                <p className="muted">Global scratchpad for the whole import pass.</p>
+              </div>
+              <button
+                className="secondary-button"
+                onClick={handleSaveWorkspaceNotes}
+                disabled={busyAction === "save-workspace-notes"}
+              >
+                {busyAction === "save-workspace-notes" ? "Saving…" : "Save notes"}
+              </button>
+            </div>
+            <label className="field">
+              Notes / to-do
+              <textarea
+                rows={7}
+                value={workspaceNotes}
+                onChange={(event) => setWorkspaceNotes(event.target.value)}
+                placeholder={"- find better Godzilla Pro playfield\n- import modern Stern Premium/LE images\n- double-check JP 30th rulesheet"}
+              />
+            </label>
+            <p className="timestamp">
+              Last notebook save: {workspaceNotesUpdatedAt ? new Date(workspaceNotesUpdatedAt).toLocaleString() : "None yet"}
+            </p>
+          </section>
           <label className="field">
             Search machines
             <input
@@ -753,6 +839,45 @@ export default function App() {
               Next
             </button>
           </div>
+          <section className="sidebar-block activity-block">
+            <div className="panel-header slim">
+              <div>
+                <h2>Recent activity</h2>
+                <p className="muted">Latest imports and saves across the whole workspace.</p>
+              </div>
+            </div>
+            <div className="activity-list">
+              {activity.length ? (
+                activity.map((entry) => (
+                  <article key={entry.activityId} className="activity-item">
+                    <div className="activity-item-head">
+                      <strong>{entry.summary}</strong>
+                      <span className="tag">{new Date(entry.createdAt).toLocaleDateString()}</span>
+                    </div>
+                    <button
+                      className="activity-link"
+                      onClick={() => startTransition(() => setSelectedIdentity(entry.practiceIdentity))}
+                    >
+                      {entry.machineTitle}
+                    </button>
+                    <code>{entry.practiceIdentity}</code>
+                    {entry.details.length > 0 && (
+                      <div className="activity-detail-list">
+                        {entry.details.slice(0, 3).map((detail) => (
+                          <div key={`${entry.activityId}-${detail.label}`}>
+                            <small>{detail.label}</small>
+                            <code>{detail.value}</code>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                ))
+              ) : (
+                <p className="muted">No activity yet.</p>
+              )}
+            </div>
+          </section>
         </aside>
 
         <section className="editor">
@@ -1015,7 +1140,7 @@ export default function App() {
                     </label>
                   </div>
                   <label className="field">
-                    Notes
+                    Machine notes
                     <textarea
                       rows={3}
                       value={overrideForm.notes}

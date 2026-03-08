@@ -97,6 +97,21 @@ type PlayfieldAssetRecord = {
   updated_at: string;
 };
 
+type ActivityRecord = {
+  activity_id: number;
+  practice_identity: string;
+  action_type: string;
+  summary: string;
+  details_json: string | null;
+  created_at: string;
+};
+
+type WorkspaceStateRecord = {
+  workspace_key: string;
+  note_text: string | null;
+  updated_at: string;
+};
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const APP_ROOT = path.resolve(ROOT, "pinprof-admin");
@@ -322,6 +337,20 @@ adminDb.exec(`
     UNIQUE(practice_identity, source_opdb_machine_id)
   );
   CREATE INDEX IF NOT EXISTS idx_playfield_assets_practice ON playfield_assets(practice_identity);
+  CREATE TABLE IF NOT EXISTS activity_log (
+    activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    practice_identity TEXT NOT NULL,
+    action_type TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    details_json TEXT,
+    created_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_activity_log_practice_created ON activity_log(practice_identity, created_at DESC);
+  CREATE TABLE IF NOT EXISTS workspace_state (
+    workspace_key TEXT PRIMARY KEY,
+    note_text TEXT,
+    updated_at TEXT NOT NULL
+  );
 `);
 
 const adminCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides").get() as { total: number }).total;
@@ -761,6 +790,149 @@ function formatAliasLabel(alias: MachineAliasRow) {
   return [alias.variant, alias.opdbMachineId].filter(Boolean).join(" · ") || alias.opdbMachineId;
 }
 
+function recordActivity(
+  practiceIdentity: string,
+  actionType: string,
+  summary: string,
+  details?: Record<string, string | null | undefined>,
+) {
+  const normalizedDetails = Object.fromEntries(
+    Object.entries(details ?? {}).flatMap(([label, value]) => {
+      const normalized = cleanString(value);
+      return normalized ? [[label, normalized]] : [];
+    }),
+  );
+
+  adminDb
+    .prepare(`
+      INSERT INTO activity_log (
+        practice_identity,
+        action_type,
+        summary,
+        details_json,
+        created_at
+      ) VALUES (?, ?, ?, ?, ?)
+    `)
+    .run(
+      practiceIdentity,
+      actionType,
+      summary,
+      Object.keys(normalizedDetails).length ? JSON.stringify(normalizedDetails) : null,
+      nowIso(),
+    );
+}
+
+function getActivityRecords(practiceIdentity: string, limit = 30): ActivityRecord[] {
+  return adminDb
+    .prepare(`
+      SELECT
+        activity_id,
+        practice_identity,
+        action_type,
+        summary,
+        details_json,
+        created_at
+      FROM activity_log
+      WHERE practice_identity = ?
+      ORDER BY datetime(created_at) DESC, activity_id DESC
+      LIMIT ?
+    `)
+    .all(practiceIdentity, limit) as ActivityRecord[];
+}
+
+function buildActivityPayload(practiceIdentity: string) {
+  return getActivityRecords(practiceIdentity).map((row) => {
+    let details: Array<{ label: string; value: string }> = [];
+    if (row.details_json) {
+      try {
+        const parsed = JSON.parse(row.details_json) as Record<string, unknown>;
+        details = Object.entries(parsed)
+          .map(([label, value]) => [label, cleanString(value)] as const)
+          .filter((entry): entry is [string, string] => Boolean(entry[1]))
+          .map(([label, value]) => ({ label, value }));
+      } catch {
+        details = [];
+      }
+    }
+    return {
+      activityId: row.activity_id,
+      actionType: row.action_type,
+      summary: row.summary,
+      details,
+      createdAt: row.created_at,
+    };
+  });
+}
+
+function getWorkspaceNote(workspaceKey: string): WorkspaceStateRecord | null {
+  const row = adminDb
+    .prepare(`
+      SELECT workspace_key, note_text, updated_at
+      FROM workspace_state
+      WHERE workspace_key = ?
+    `)
+    .get(workspaceKey) as WorkspaceStateRecord | undefined;
+  return row ?? null;
+}
+
+function saveWorkspaceNote(workspaceKey: string, noteText: string | null) {
+  adminDb
+    .prepare(`
+      INSERT INTO workspace_state (
+        workspace_key,
+        note_text,
+        updated_at
+      ) VALUES (?, ?, ?)
+      ON CONFLICT(workspace_key) DO UPDATE SET
+        note_text = excluded.note_text,
+        updated_at = excluded.updated_at
+    `)
+    .run(workspaceKey, noteText, nowIso());
+}
+
+function buildGlobalActivityPayload(limit = 40) {
+  const rows = adminDb
+    .prepare(`
+      SELECT
+        activity_id,
+        practice_identity,
+        action_type,
+        summary,
+        details_json,
+        created_at
+      FROM activity_log
+      ORDER BY datetime(created_at) DESC, activity_id DESC
+      LIMIT ?
+    `)
+    .all(limit) as ActivityRecord[];
+
+  return rows.map((row) => {
+    const machine = getMachineRow(row.practice_identity);
+    let details: Array<{ label: string; value: string }> = [];
+    if (row.details_json) {
+      try {
+        const parsed = JSON.parse(row.details_json) as Record<string, unknown>;
+        details = Object.entries(parsed)
+          .map(([label, value]) => [label, cleanString(value)] as const)
+          .filter((entry): entry is [string, string] => Boolean(entry[1]))
+          .map(([label, value]) => ({ label, value }));
+      } catch {
+        details = [];
+      }
+    }
+
+    return {
+      activityId: row.activity_id,
+      practiceIdentity: row.practice_identity,
+      machineTitle: machine ? [machine.name, machine.variant].filter(Boolean).join(" • ") : row.practice_identity,
+      actionType: row.action_type,
+      summary: row.summary,
+      details,
+      createdAt: row.created_at,
+    };
+  });
+}
+
 function resolvePlayfieldAlias(practiceIdentity: string, requestedAliasId?: string | null, aliases?: MachineAliasRow[], existing?: OverrideRecord | null) {
   const candidates = aliases ?? getMachineAliases(practiceIdentity);
   if (!candidates.length) {
@@ -927,6 +1099,9 @@ async function saveRulesheetMarkdown(practiceIdentity: string, markdown: string,
     rulesheet_source_url: sourceUrl,
     rulesheet_source_note: sourceNote,
   });
+  return {
+    localPath: `/pinball/rulesheets/${filename}`,
+  };
 }
 
 async function importRulesheetFromPath(practiceIdentity: string, sourcePath: string, sourceUrl: string | null, sourceNote: string | null) {
@@ -936,7 +1111,11 @@ async function importRulesheetFromPath(practiceIdentity: string, sourcePath: str
     throw new Error(`Rulesheet file not found: ${resolved}`);
   }
   const markdown = await fsp.readFile(resolved, "utf8");
-  await saveRulesheetMarkdown(practiceIdentity, markdown, sourceUrl, sourceNote ?? resolved);
+  const result = await saveRulesheetMarkdown(practiceIdentity, markdown, sourceUrl, sourceNote ?? resolved);
+  return {
+    ...result,
+    sourcePath: resolved,
+  };
 }
 
 async function savePlayfield(
@@ -967,6 +1146,11 @@ async function savePlayfield(
     playfield_source_url: sourceUrl,
     playfield_source_note: sourceNote,
   });
+  return {
+    sourceAliasId: alias.opdbMachineId,
+    sourceAliasLabel: formatAliasLabel(alias),
+    localPath: `/pinball/images/playfields/${baseName}${ext}`,
+  };
 }
 
 async function importPlayfieldFromUrl(
@@ -984,7 +1168,7 @@ async function importPlayfieldFromUrl(
     throw new Error(`Remote content is not an image: ${contentType}`);
   }
   const buffer = Buffer.from(await response.arrayBuffer());
-  await savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourceNote ?? sourceUrl);
+  return savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourceNote ?? sourceUrl);
 }
 
 async function importPlayfieldFromPath(
@@ -1000,7 +1184,11 @@ async function importPlayfieldFromPath(
     throw new Error(`Image file not found: ${resolved}`);
   }
   const buffer = await fsp.readFile(resolved);
-  await savePlayfield(practiceIdentity, machineAliasId, buffer, resolved, null, sourceUrl, sourceNote ?? resolved);
+  const result = await savePlayfield(practiceIdentity, machineAliasId, buffer, resolved, null, sourceUrl, sourceNote ?? resolved);
+  return {
+    ...result,
+    sourcePath: resolved,
+  };
 }
 
 async function savePlayfieldCoverage(
@@ -1025,13 +1213,22 @@ async function savePlayfieldCoverage(
       playfield_source_note: sourceNote ?? fallbackAsset.playfield_source_note ?? null,
     });
     syncLegacyPlayfieldOverride(practiceIdentity, getPlayfieldAssetRecords(practiceIdentity));
-    return;
+    return {
+      sourceAliasId: alias.opdbMachineId,
+      sourceAliasLabel: formatAliasLabel(alias),
+      localPath,
+    };
   }
   upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, {
     playfield_local_path: localPath,
     playfield_source_url: sourceUrl ?? existingAsset?.playfield_source_url ?? null,
     playfield_source_note: sourceNote ?? existingAsset?.playfield_source_note ?? null,
   });
+  return {
+    sourceAliasId: alias.opdbMachineId,
+    sourceAliasLabel: formatAliasLabel(alias),
+    localPath,
+  };
 }
 
 function buildPlayfieldAssetPayloads(practiceIdentity: string, aliases: MachineAliasRow[]) {
@@ -1141,6 +1338,31 @@ app.get("/api/filters", authRequired, (_req, res) => {
   res.json({
     manufacturers: manufacturers.map((row) => row.manufacturer),
   } satisfies FilterPayload);
+});
+
+app.get("/api/workspace/import-notes", authRequired, (_req, res) => {
+  const row = getWorkspaceNote("import_notes");
+  res.json({
+    notes: row?.note_text ?? "",
+    updatedAt: row?.updated_at ?? null,
+  });
+});
+
+app.put("/api/workspace/import-notes", authRequired, (req, res) => {
+  try {
+    const notes = cleanString(req.body?.notes);
+    saveWorkspaceNote("import_notes", notes);
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save import notes.");
+  }
+});
+
+app.get("/api/activity", authRequired, (req, res) => {
+  const limit = Math.min(100, Math.max(1, cleanInteger(req.query.limit) ?? 40));
+  res.json({
+    items: buildGlobalActivityPayload(limit),
+  });
 });
 
 app.get("/api/machines", authRequired, (req, res) => {
@@ -1440,12 +1662,14 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
     },
     rulesheetContent,
     gameinfoContent,
+    activity: buildActivityPayload(practiceIdentity),
   });
 });
 
 app.put("/api/machines/:practiceIdentity/override", authRequired, (req, res) => {
   try {
-    upsertOverride(String(req.params.practiceIdentity), {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    upsertOverride(practiceIdentity, {
       name_override: cleanString(req.body?.nameOverride),
       variant_override: cleanString(req.body?.variantOverride),
       manufacturer_override: cleanString(req.body?.manufacturerOverride),
@@ -1454,20 +1678,46 @@ app.put("/api/machines/:practiceIdentity/override", authRequired, (req, res) => 
       rulesheet_source_note: cleanString(req.body?.rulesheetSourceNote),
       notes: cleanString(req.body?.notes),
     });
+    recordActivity(practiceIdentity, "metadata_saved", "Saved machine metadata overrides.", {
+      name: cleanString(req.body?.nameOverride),
+      variant: cleanString(req.body?.variantOverride),
+      manufacturer: cleanString(req.body?.manufacturerOverride),
+      year: cleanString(req.body?.yearOverride),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to save override.");
   }
 });
 
+app.put("/api/machines/:practiceIdentity/notes", authRequired, (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const notes = cleanString(req.body?.notes);
+    upsertOverride(practiceIdentity, { notes });
+    recordActivity(practiceIdentity, "notes_saved", "Saved work notes / to-do list.", {
+      preview: notes?.slice(0, 140) ?? null,
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save notes.");
+  }
+});
+
 app.post("/api/machines/:practiceIdentity/rulesheet/save", authRequired, async (req, res) => {
   try {
-    await saveRulesheetMarkdown(
-      String(req.params.practiceIdentity),
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const result = await saveRulesheetMarkdown(
+      practiceIdentity,
       String(req.body?.markdown ?? ""),
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote),
     );
+    recordActivity(practiceIdentity, "rulesheet_saved", "Saved rulesheet markdown.", {
+      path: result.localPath,
+      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to save rulesheet.");
@@ -1480,12 +1730,19 @@ app.post("/api/machines/:practiceIdentity/rulesheet/import-path", authRequired, 
     if (!sourcePath) {
       throw new Error("Local rulesheet path is required.");
     }
-    await importRulesheetFromPath(
-      String(req.params.practiceIdentity),
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const result = await importRulesheetFromPath(
+      practiceIdentity,
       sourcePath,
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote),
     );
+    recordActivity(practiceIdentity, "rulesheet_imported", "Imported rulesheet from local file.", {
+      sourcePath: result.sourcePath,
+      savedPath: result.localPath,
+      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to import rulesheet.");
@@ -1500,12 +1757,18 @@ app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, a
       throw new Error("Remote image URL is required.");
     }
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
-    await importPlayfieldFromUrl(
+    const result = await importPlayfieldFromUrl(
       practiceIdentity,
       sourceAliasId,
       sourceUrl,
       cleanString(req.body?.sourceNote),
     );
+    recordActivity(practiceIdentity, "playfield_imported", "Imported playfield from remote URL.", {
+      alias: result.sourceAliasLabel,
+      savedPath: result.localPath,
+      sourceUrl,
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to import playfield from URL.");
@@ -1520,13 +1783,20 @@ app.post("/api/machines/:practiceIdentity/playfield/import-path", authRequired, 
       throw new Error("Local image path is required.");
     }
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
-    await importPlayfieldFromPath(
+    const result = await importPlayfieldFromPath(
       practiceIdentity,
       sourceAliasId,
       sourcePath,
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote),
     );
+    recordActivity(practiceIdentity, "playfield_imported", "Imported playfield from local file.", {
+      alias: result.sourceAliasLabel,
+      sourcePath: result.sourcePath,
+      savedPath: result.localPath,
+      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to import playfield from local file.");
@@ -1540,7 +1810,7 @@ app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, uploa
       throw new Error("No image uploaded.");
     }
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
-    await savePlayfield(
+    const result = await savePlayfield(
       practiceIdentity,
       sourceAliasId,
       req.file.buffer,
@@ -1549,6 +1819,13 @@ app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, uploa
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote) ?? req.file.originalname,
     );
+    recordActivity(practiceIdentity, "playfield_uploaded", "Uploaded playfield from browser.", {
+      alias: result.sourceAliasLabel,
+      uploadedFile: req.file.originalname,
+      savedPath: result.localPath,
+      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceNote: cleanString(req.body?.sourceNote) ?? req.file.originalname,
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to upload playfield.");
@@ -1562,12 +1839,18 @@ app.put("/api/machines/:practiceIdentity/playfield/coverage", authRequired, asyn
     if (!sourceAliasId) {
       throw new Error("A source alias is required.");
     }
-    await savePlayfieldCoverage(
+    const result = await savePlayfieldCoverage(
       practiceIdentity,
       sourceAliasId,
       cleanString(req.body?.sourceUrl),
       cleanString(req.body?.sourceNote),
     );
+    recordActivity(practiceIdentity, "playfield_rebound", "Rebound existing playfield to a source alias.", {
+      alias: result.sourceAliasLabel,
+      savedPath: result.localPath,
+      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to bind playfield source alias.");

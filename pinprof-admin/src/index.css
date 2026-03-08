@@ -286,6 +286,14 @@ a {
   color: rgba(255, 248, 238, 0.85);
 }
 
+.sidebar-block {
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .machine-list {
   display: grid;
   gap: 0.45rem;
@@ -374,6 +382,61 @@ a {
 .pager button {
   padding: 0.6rem 1rem;
   font-size: 0.92rem;
+}
+
+.activity-block {
+  margin-top: 1rem;
+  min-height: 0;
+}
+
+.activity-list {
+  display: grid;
+  gap: 0.6rem;
+  max-height: 22rem;
+  overflow: auto;
+}
+
+.activity-item {
+  padding: 0.85rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: grid;
+  gap: 0.38rem;
+  min-width: 0;
+}
+
+.activity-item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.activity-item strong {
+  font-size: 0.84rem;
+  line-height: 1.25;
+}
+
+.activity-link {
+  padding: 0;
+  background: transparent;
+  color: #ffd37a;
+  font-weight: 600;
+  text-align: left;
+}
+
+.activity-detail-list {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.activity-detail-list div {
+  padding: 0.55rem 0.65rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .editor-grid {
