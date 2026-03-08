@@ -45,6 +45,23 @@ cleanup() {
 }
 trap cleanup EXIT
 
+cleanup_local_dist_outputs() {
+  local dist_dirs=(
+    "${ROOT_DIR}/pillyliu-landing/dist"
+    "${ROOT_DIR}/lpl-library/dist"
+    "${ROOT_DIR}/lpl-standings/dist"
+    "${ROOT_DIR}/lpl-stats/dist"
+    "${ROOT_DIR}/lpl-targets/dist"
+    "${ROOT_DIR}/pinprof-admin/dist"
+  )
+
+  for dist_dir in "${dist_dirs[@]}"; do
+    if [[ -d "${dist_dir}" ]]; then
+      rm -rf "${dist_dir}"
+    fi
+  done
+}
+
 prune_local_pinball_artifacts() {
   local target_dir="$1"
   rm -f \
@@ -267,6 +284,11 @@ if [[ "$DRY_RUN" -eq 0 ]]; then
     ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
       "find '${REMOTE_ROOT}/pinprof-admin' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinprof-admin' -type f -exec chmod 644 {} \\;"
   fi
+fi
+
+if [[ "$DRY_RUN" -eq 0 && "$SKIP_BUILD" -eq 0 ]]; then
+  echo "Removing local dist outputs..."
+  cleanup_local_dist_outputs
 fi
 
 echo "Deploy complete."
