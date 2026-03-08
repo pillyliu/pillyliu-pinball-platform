@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import Database from "better-sqlite3";
 import { buildPinballManifest } from "./build-pinball-manifest.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -17,7 +18,6 @@ const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_l
 const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "audit_rulesheet_links.py");
 const APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
 const EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "export_library_seed_overrides.py");
-const EXPORT_REMOTE_OPDB_RULESHEETS_SCRIPT = path.join(ROOT, "tools", "rulesheets", "export_remote_opdb_rulesheets.mjs");
 const IOS_STARTER_PACK_DATA_DIR = path.join(
   PINBALL_APP_ROOT,
   "Pinball App 2",
@@ -314,6 +314,13 @@ async function pruneStarterPackJunkFiles(target) {
   }
 }
 
+async function pruneStarterPackServerRuntime(target) {
+  const apiDir = path.join(target, "api");
+  if (await pathExists(apiDir)) {
+    await fs.rm(apiDir, { recursive: true, force: true });
+  }
+}
+
 async function pruneStarterPackNonV3LibraryJsons(target) {
   const dataDir = path.join(target, "data");
   const candidates = [
@@ -360,6 +367,7 @@ async function syncStarterPacks() {
     await pruneStarterPackMarkdown(target);
     await pruneStarterPackNonV3LibraryJsons(target);
     await pruneStarterPackJunkFiles(target);
+    await pruneStarterPackServerRuntime(target);
   }
 }
 
@@ -438,10 +446,6 @@ async function generateSharedRulesheetAudit() {
   ], ROOT);
 }
 
-async function exportRemoteOpdbRulesheets() {
-  await run("node", [EXPORT_REMOTE_OPDB_RULESHEETS_SCRIPT], ROOT);
-}
-
 async function applyPinprofAdminOverrides() {
   if (!(await pathExists(APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT))) {
     console.warn(`Skipping PinProf admin override apply; missing ${path.relative(ROOT, APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT)}`);
@@ -458,13 +462,67 @@ async function exportLibrarySeedOverrides() {
   await run("python3", [EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT], ROOT);
 }
 
+async function collectSharedLocalRulesheetPaths() {
+  const keepPaths = new Set();
+
+  const libraryV3 = await readJson(SHARED_LIBRARY_V3_PATH);
+  const items = Array.isArray(libraryV3?.items) ? libraryV3.items : [];
+  for (const item of items) {
+    const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
+      ? item.assets
+      : {};
+    const rulesheetPath = typeof assets.rulesheet_local_practice === "string" ? assets.rulesheet_local_practice.trim() : "";
+    if (rulesheetPath.startsWith("/pinball/rulesheets/")) {
+      keepPaths.add(rulesheetPath);
+    }
+  }
+
+  const db = new Database(SHARED_LIBRARY_SEED_DB_PATH, { readonly: true });
+  try {
+    const rows = db.prepare(`
+      SELECT rulesheet_local_path AS rulesheetLocalPath
+      FROM overrides
+      WHERE rulesheet_local_path IS NOT NULL AND trim(rulesheet_local_path) <> ''
+    `).all();
+    for (const row of rows) {
+      const rulesheetPath = typeof row.rulesheetLocalPath === "string" ? row.rulesheetLocalPath.trim() : "";
+      if (rulesheetPath.startsWith("/pinball/rulesheets/")) {
+        keepPaths.add(rulesheetPath);
+      }
+    }
+  } finally {
+    db.close();
+  }
+
+  return keepPaths;
+}
+
+async function pruneSharedRemoteRulesheetSnapshots() {
+  const keepPaths = await collectSharedLocalRulesheetPaths();
+  const rulesheetDir = path.join(SHARED_PINBALL_DIR, "rulesheets");
+  const entries = await fs.readdir(rulesheetDir, { withFileTypes: true }).catch(() => []);
+  let removed = 0;
+  let kept = 0;
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith(".md")) continue;
+    const webPath = `/pinball/rulesheets/${entry.name}`;
+    if (keepPaths.has(webPath)) {
+      kept += 1;
+      continue;
+    }
+    await fs.rm(path.join(rulesheetDir, entry.name), { force: true });
+    removed += 1;
+  }
+  console.log(`Pruned shared remote rulesheet snapshots (removed ${removed}, kept ${kept} local rulesheets)`);
+}
+
 async function generateSharedAppSupportArtifacts() {
   await generateSharedOpdbCatalog();
-  await exportRemoteOpdbRulesheets();
   await mirrorSharedDataForSeedGeneration();
   await generateSharedLibrarySeedDb();
   await applyPinprofAdminOverrides();
   await exportLibrarySeedOverrides();
+  await pruneSharedRemoteRulesheetSnapshots();
   await generateSharedRulesheetAudit();
 }
 

@@ -18,6 +18,19 @@ import {
   rulesheetMarkdownCandidatesForLink,
 } from "../lib/libraryData";
 
+async function fetchLiveRulesheet(provider: string, url: string): Promise<string> {
+  const endpoint = `/pinball/api/rulesheet.php?provider=${encodeURIComponent(provider)}&url=${encodeURIComponent(url)}`;
+  const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
+  if (!response.ok) {
+    throw new Error(`Live rulesheet request failed (${response.status})`);
+  }
+  const payload = await response.json() as { body?: unknown };
+  if (typeof payload.body !== "string" || !payload.body.trim()) {
+    throw new Error("Live rulesheet response was empty");
+  }
+  return payload.body;
+}
+
 function rebaseRelativeUrl(value: string, baseUrl: string): string {
   const trimmed = value.trim();
   if (!trimmed || trimmed.startsWith("#")) return trimmed;
@@ -139,6 +152,7 @@ export default function RulesheetPage() {
         ? rulesheetMarkdownCandidatesForLink(game, selectedRulesheet)
         : rulesheetMarkdownCandidates(game)
       : [];
+    const selectedProvider = selectedRulesheet ? referenceLinkProvider(selectedRulesheet) : null;
 
     let cancelled = false;
     const load = async () => {
@@ -154,6 +168,20 @@ export default function RulesheetPage() {
           return;
         } catch {
           // try next candidate
+        }
+      }
+      if (selectedRulesheet?.url && selectedProvider && selectedProvider !== "local") {
+        try {
+          const text = await fetchLiveRulesheet(selectedProvider, selectedRulesheet.url);
+          if (cancelled) return;
+          setRulesheetState({
+            key,
+            md: normalizeRulesheet(text),
+            status: "loaded",
+          });
+          return;
+        } catch {
+          // fall through to missing state
         }
       }
       if (cancelled) return;

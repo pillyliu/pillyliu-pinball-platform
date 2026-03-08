@@ -1071,10 +1071,6 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
   return null;
 }
 
-function rulesheetMarkdownPath(id: string, provider: string | null): string {
-  return provider ? `/pinball/rulesheets/${id}-${provider}-rulesheet.md` : `/pinball/rulesheets/${id}-rulesheet.md`;
-}
-
 function resolveRulesheetLinks(links: CatalogRulesheetLinkRecord[]): ResolvedRulesheetLinks {
   const sortedLinks = [...links].sort((left, right) => {
     const priorityCompare = compareMaybeNumber(left.priority, right.priority);
@@ -1729,25 +1725,10 @@ export function rulesheetMarkdownCandidates(game: LibraryGame): string[] {
 
 export function rulesheetMarkdownCandidatesForLink(game: LibraryGame, link: ReferenceLink | null): string[] {
   const provider = referenceLinkProvider(link);
-  const preferredLink = preferredRulesheetLink(game);
-  const isPreferredLink = Boolean(link?.url && preferredLink?.url && link.url === preferredLink.url);
   const localFallback = !link || provider === "local" ? resolveLibraryUrl(game.rulesheetLocal) : null;
-  const providerCandidates = provider && provider !== "local"
-    ? [
-        game.opdbGroupId ? rulesheetMarkdownPath(game.opdbGroupId, provider) : null,
-        game.practiceIdentity ? rulesheetMarkdownPath(game.practiceIdentity, provider) : null,
-      ]
-    : [];
-  const genericCandidates = isPreferredLink || !link
-    ? [
-        game.opdbGroupId ? rulesheetMarkdownPath(game.opdbGroupId, null) : null,
-        game.practiceIdentity ? rulesheetMarkdownPath(game.practiceIdentity, null) : null,
-      ]
-    : [];
+  const explicitLocalPath = provider === "local" ? resolveLibraryUrl(link?.localPath ?? null) : null;
   return [
-    resolveLibraryUrl(link?.localPath ?? null),
-    ...providerCandidates,
-    ...genericCandidates,
+    explicitLocalPath,
     localFallback,
   ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
 }
