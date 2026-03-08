@@ -20,7 +20,8 @@ body {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -46,7 +47,8 @@ button.secondary-button {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   margin-top: 0.45rem;
   border-radius: 16px;
@@ -64,6 +66,9 @@ code {
   font-family: "SFMono-Regular", "Consolas", monospace;
   font-size: 0.88rem;
   color: #ffd37a;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 a {
@@ -167,6 +172,7 @@ a {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .summary-grid {
@@ -223,6 +229,7 @@ a {
 
 .panel {
   padding: 1.15rem;
+  min-width: 0;
 }
 
 .panel-header {
@@ -231,6 +238,7 @@ a {
   gap: 1rem;
   align-items: flex-start;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .panel-header h2 {
@@ -245,6 +253,12 @@ a {
   border-radius: 999px;
   padding: 0.3rem 0.7rem;
   font-size: 0.78rem;
+  line-height: 1.2;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .pill,
@@ -274,16 +288,16 @@ a {
 
 .machine-list {
   display: grid;
-  gap: 0.65rem;
-  margin-top: 1rem;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
   overflow: auto;
 }
 
 .machine-row {
   width: 100%;
   text-align: left;
-  padding: 0.95rem;
-  border-radius: 22px;
+  padding: 0.72rem 0.8rem;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: #fff6ec;
@@ -298,11 +312,35 @@ a {
 .machine-row span,
 .machine-row code {
   display: block;
+  min-width: 0;
 }
 
 .machine-row span,
 .machine-row code {
-  margin-top: 0.25rem;
+  margin-top: 0.18rem;
+}
+
+.machine-row strong {
+  font-size: 0.96rem;
+  line-height: 1.2;
+}
+
+.machine-row span,
+.machine-row code {
+  font-size: 0.8rem;
+}
+
+.machine-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.machine-row-year {
+  flex: 0 0 auto;
+  color: rgba(255, 248, 238, 0.55);
+  font-size: 0.78rem;
 }
 
 .row-tags {
@@ -310,6 +348,17 @@ a {
   gap: 0.4rem;
   flex-wrap: wrap;
   margin-top: 0.6rem;
+}
+
+.compact-tags {
+  gap: 0.28rem;
+  margin-top: 0.45rem;
+}
+
+.compact-tags .tag {
+  padding: 0.18rem 0.5rem;
+  font-size: 0.68rem;
+  min-height: 1.35rem;
 }
 
 .pager {
@@ -329,19 +378,29 @@ a {
 
 .editor-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .hero-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(22rem, 34rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 24rem);
   gap: 1rem;
   overflow: hidden;
 }
 
+.panel-span-full {
+  grid-column: 1 / -1;
+}
+
+.compact-panel {
+  align-self: start;
+}
+
 .hero-copy {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .hero-meta,
@@ -379,16 +438,19 @@ a {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.07);
+  min-width: 0;
 }
 
 .hero-media-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-content: start;
 }
 
 .hero-image-frame {
-  min-height: 20rem;
+  min-height: 11rem;
+  max-height: 13rem;
   border-radius: 24px;
   overflow: hidden;
   background:
@@ -411,13 +473,17 @@ a {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 0.85rem;
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.76));
+  flex-wrap: wrap;
 }
 
 .media-caption strong,
 .media-caption span {
   display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .hero-image-frame {
@@ -427,8 +493,10 @@ a {
 .image-fallback {
   display: grid;
   place-items: center;
-  min-height: 20rem;
+  min-height: 11rem;
   color: rgba(255, 248, 238, 0.6);
+  padding: 1rem;
+  text-align: center;
 }
 
 .asset-grid {
@@ -445,6 +513,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: 0.45rem;
+  min-width: 0;
 }
 
 .asset-card-head {
@@ -452,6 +521,7 @@ a {
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .asset-card h3 {
@@ -463,6 +533,10 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.rulesheet-panel textarea {
+  min-height: 14rem;
 }
 
 .panel-header.slim {
@@ -488,27 +562,6 @@ a {
   gap: 0.7rem;
 }
 
-.checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-top: 0.6rem;
-}
-
-.check-chip {
-  display: flex;
-  gap: 0.65rem;
-  align-items: flex-start;
-  padding: 0.75rem 0.85rem;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.check-chip input {
-  margin-top: 0.2rem;
-}
-
 .timestamp {
   margin: 1rem 0 0;
   color: rgba(255, 248, 238, 0.55);
@@ -518,6 +571,28 @@ a {
   padding: 0.65rem;
 }
 
+.path-list code,
+.asset-card code,
+.alias-card code,
+.hero-meta code,
+.machine-row code,
+.media-caption span,
+.summary-grid small,
+.summary-grid span,
+.pill,
+.tag,
+.muted,
+h1,
+h2,
+h3,
+p,
+small,
+strong,
+span,
+a {
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 1100px) {
   .workspace,
   .hero-panel,
@@ -525,7 +600,8 @@ a {
   .hero-meta,
   .two-up-panel,
   .asset-grid,
-  .checkbox-grid {
+  .editor-grid,
+  .hero-media-grid {
     grid-template-columns: 1fr;
   }
 

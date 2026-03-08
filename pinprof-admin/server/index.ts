@@ -23,6 +23,8 @@ type MachineRow = {
   primaryImageUrl: string | null;
   playfieldLocalPath: string | null;
   rulesheetLocalPath: string | null;
+  builtInRulesheetLocalPath?: string | null;
+  builtInGameinfoLocalPath?: string | null;
   nameOverride: string | null;
   variantOverride: string | null;
   manufacturerOverride: string | null;
@@ -36,6 +38,10 @@ type MachineRow = {
   gameinfoLocalPath: string | null;
   notes: string | null;
   updatedAt: string | null;
+};
+
+type FilterPayload = {
+  manufacturers: string[];
 };
 
 type BuiltInGameRow = {
@@ -953,8 +959,8 @@ async function savePlayfield(
   await fsp.writeFile(originalFsPath, buffer);
 
   const image = sharp(buffer, { failOn: "warning" }).rotate();
-  await image.clone().resize({ width: 700, withoutEnlargement: true }).webp({ quality: 84 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_700.webp`));
-  await image.clone().resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 84 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_1400.webp`));
+  await image.clone().resize({ width: 700, withoutEnlargement: true }).webp({ quality: 75 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_700.webp`));
+  await image.clone().resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 85 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_1400.webp`));
 
   upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, {
     playfield_local_path: `/pinball/images/playfields/${baseName}${ext}`,
@@ -1122,15 +1128,36 @@ app.get("/api/summary", authRequired, (_req, res) => {
   });
 });
 
+app.get("/api/filters", authRequired, (_req, res) => {
+  const manufacturers = seedDb
+    .prepare(`
+      SELECT DISTINCT trim(manufacturer_name) AS manufacturer
+      FROM machines
+      WHERE manufacturer_name IS NOT NULL AND trim(manufacturer_name) != ''
+      ORDER BY lower(trim(manufacturer_name))
+    `)
+    .all() as Array<{ manufacturer: string }>;
+
+  res.json({
+    manufacturers: manufacturers.map((row) => row.manufacturer),
+  } satisfies FilterPayload);
+});
+
 app.get("/api/machines", authRequired, (req, res) => {
   const query = cleanString(req.query.query);
+  const manufacturer = cleanString(req.query.manufacturer);
   const page = Math.max(1, cleanInteger(req.query.page) ?? 1);
   const pageSize = Math.min(100, Math.max(1, cleanInteger(req.query.pageSize) ?? 40));
   const offset = (page - 1) * pageSize;
   const like = query ? `%${query}%` : null;
-  const whereSql = like
-    ? `WHERE m.name LIKE @like OR m.slug LIKE @like OR m.manufacturer_name LIKE @like OR m.practice_identity LIKE @like`
-    : "";
+  const whereClauses: string[] = [];
+  if (like) {
+    whereClauses.push(`(m.name LIKE @like OR m.slug LIKE @like OR m.manufacturer_name LIKE @like OR m.practice_identity LIKE @like)`);
+  }
+  if (manufacturer) {
+    whereClauses.push(`m.manufacturer_name = @manufacturer`);
+  }
+  const whereSql = whereClauses.length ? `WHERE ${whereClauses.join(" AND ")}` : "";
 
   const rows = seedDb
     .prepare(`
@@ -1147,6 +1174,9 @@ app.get("/api/machines", authRequired, (req, res) => {
           m.primary_image_large_url AS primaryImageUrl,
           o.playfield_local_path AS playfieldLocalPath,
           o.rulesheet_local_path AS rulesheetLocalPath,
+          o.gameinfo_local_path AS gameinfoLocalPath,
+          b.rulesheet_local_path AS builtInRulesheetLocalPath,
+          b.gameinfo_local_path AS builtInGameinfoLocalPath,
           CASE
             WHEN a.practice_identity IS NULL
              AND NOT EXISTS (
@@ -1166,6 +1196,17 @@ app.get("/api/machines", authRequired, (req, res) => {
         FROM machines m
         LEFT JOIN overrides o ON o.practice_identity = m.practice_identity
         LEFT JOIN admin.machine_overrides a ON a.practice_identity = m.practice_identity
+        LEFT JOIN (
+          SELECT
+            practice_identity,
+            rulesheet_local_path,
+            gameinfo_local_path,
+            ROW_NUMBER() OVER (
+              PARTITION BY practice_identity
+              ORDER BY lower(coalesce(variant, '')), lower(library_entry_id)
+            ) AS built_in_rank_index
+          FROM built_in_games
+        ) b ON b.practice_identity = m.practice_identity AND b.built_in_rank_index = 1
         ${whereSql}
       )
       SELECT
@@ -1180,18 +1221,21 @@ app.get("/api/machines", authRequired, (req, res) => {
         primaryImageUrl,
         playfieldLocalPath,
         rulesheetLocalPath,
+        gameinfoLocalPath,
+        builtInRulesheetLocalPath,
+        builtInGameinfoLocalPath,
         hasAdminOverride
       FROM ranked
       WHERE rank_index = 1
       ORDER BY lower(name), lower(coalesce(variant, ''))
       LIMIT @limit OFFSET @offset
     `)
-    .all({ like, limit: pageSize, offset }) as Array<MachineRow & { hasAdminOverride: 0 | 1 }>;
+    .all({ like, manufacturer, limit: pageSize, offset }) as Array<MachineRow & { hasAdminOverride: 0 | 1 }>;
 
   const total = (
     seedDb
       .prepare(`SELECT COUNT(DISTINCT m.practice_identity) AS total FROM machines m ${whereSql}`)
-      .get({ like }) as { total: number }
+      .get({ like, manufacturer }) as { total: number }
   ).total;
 
   res.json({
@@ -1206,7 +1250,8 @@ app.get("/api/machines", authRequired, (req, res) => {
       playfieldImageUrl: row.playfieldImageUrl,
       primaryImageUrl: row.primaryImageUrl,
       playfieldLocalPath: row.playfieldLocalPath,
-      rulesheetLocalPath: row.rulesheetLocalPath,
+      rulesheetLocalPath: row.rulesheetLocalPath ?? row.builtInRulesheetLocalPath ?? null,
+      gameinfoLocalPath: row.gameinfoLocalPath ?? row.builtInGameinfoLocalPath ?? null,
       hasAdminOverride: row.hasAdminOverride === 1,
     })),
     total,

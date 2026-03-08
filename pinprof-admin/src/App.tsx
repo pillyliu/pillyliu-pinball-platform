@@ -15,6 +15,10 @@ type SummaryPayload = {
   seedDbPath: string;
 };
 
+type FilterPayload = {
+  manufacturers: string[];
+};
+
 type MachineListItem = {
   practiceIdentity: string;
   opdbMachineId: string | null;
@@ -27,6 +31,7 @@ type MachineListItem = {
   primaryImageUrl: string | null;
   playfieldLocalPath: string | null;
   rulesheetLocalPath: string | null;
+  gameinfoLocalPath: string | null;
   hasAdminOverride: boolean;
 };
 
@@ -233,10 +238,12 @@ function assetKindClass(kind: "opdb" | "pillyliu" | "external" | "missing") {
 export default function App() {
   const [session, setSession] = useState<SessionPayload | null>(null);
   const [summary, setSummary] = useState<SummaryPayload | null>(null);
+  const [filters, setFilters] = useState<FilterPayload>({ manufacturers: [] });
   const [machines, setMachines] = useState<MachineListItem[]>([]);
   const [totalMachines, setTotalMachines] = useState(0);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [manufacturerFilter, setManufacturerFilter] = useState("");
   const deferredSearch = useDeferredValue(search.trim());
   const [selectedIdentity, setSelectedIdentity] = useState<string | null>(null);
   const [detail, setDetail] = useState<MachineDetail | null>(null);
@@ -274,10 +281,18 @@ export default function App() {
 
   useEffect(() => {
     if (!session?.authenticated) return;
+    apiFetch<FilterPayload>("api/filters")
+      .then(setFilters)
+      .catch((error) => setToast({ tone: "error", message: extractMessage(error) }));
+  }, [session?.authenticated]);
+
+  useEffect(() => {
+    if (!session?.authenticated) return;
 
     setLoadingMachines(true);
     const params = new URLSearchParams({
       query: deferredSearch,
+      manufacturer: manufacturerFilter,
       page: String(page),
       pageSize: String(PAGE_SIZE),
     });
@@ -295,7 +310,7 @@ export default function App() {
       })
       .catch((error) => setToast({ tone: "error", message: extractMessage(error) }))
       .finally(() => setLoadingMachines(false));
-  }, [deferredSearch, page, selectedIdentity, session?.authenticated]);
+  }, [deferredSearch, manufacturerFilter, page, selectedIdentity, session?.authenticated]);
 
   useEffect(() => {
     if (!session?.authenticated || !selectedIdentity) return;
@@ -330,6 +345,7 @@ export default function App() {
   function refreshMachines() {
     const params = new URLSearchParams({
       query: deferredSearch,
+      manufacturer: manufacturerFilter,
       page: String(page),
       pageSize: String(PAGE_SIZE),
     });
@@ -337,6 +353,14 @@ export default function App() {
       setMachines(payload.items);
       setTotalMachines(payload.total);
     });
+  }
+
+  function machineAssetIndicators(item: MachineListItem) {
+    return [
+      item.playfieldLocalPath ? { label: "PF", tone: "accent" as const } : null,
+      item.rulesheetLocalPath ? { label: "RS", tone: "info" as const } : null,
+      item.gameinfoLocalPath ? { label: "GI", tone: "tag" as const } : null,
+    ].filter((value): value is { label: string; tone: "accent" | "info" | "tag" } => Boolean(value));
   }
 
   function refreshDetail() {
@@ -663,6 +687,23 @@ export default function App() {
               placeholder="name, manufacturer, practice identity…"
             />
           </label>
+          <label className="field">
+            Manufacturer
+            <select
+              value={manufacturerFilter}
+              onChange={(event) => {
+                setManufacturerFilter(event.target.value);
+                setPage(1);
+              }}
+            >
+              <option value="">All manufacturers</option>
+              {filters.manufacturers.map((manufacturer) => (
+                <option key={manufacturer} value={manufacturer}>
+                  {manufacturer}
+                </option>
+              ))}
+            </select>
+          </label>
           <div className="machine-list">
             {loadingMachines ? (
               <p className="muted">Loading machines…</p>
@@ -675,13 +716,26 @@ export default function App() {
                     className={`machine-row ${selected ? "selected" : ""}`}
                     onClick={() => startTransition(() => setSelectedIdentity(item.practiceIdentity))}
                   >
-                    <strong>{displayTitle(item)}</strong>
-                    <span>{[item.manufacturer, item.year].filter(Boolean).join(" • ") || "Unknown"}</span>
+                    <div className="machine-row-head">
+                      <strong>{displayTitle(item)}</strong>
+                      <span className="machine-row-year">{item.year ?? "—"}</span>
+                    </div>
+                    <span>{item.manufacturer || "Unknown manufacturer"}</span>
                     <code>{item.practiceIdentity}</code>
-                    <div className="row-tags">
-                      {item.hasAdminOverride && <span className="tag accent">override</span>}
-                      {item.playfieldLocalPath && <span className="tag">playfield</span>}
-                      {item.rulesheetLocalPath && <span className="tag">rulesheet</span>}
+                    <div className="row-tags compact-tags">
+                      {item.hasAdminOverride && <span className="tag accent">OVR</span>}
+                      {machineAssetIndicators(item).length ? (
+                        machineAssetIndicators(item).map((indicator) => (
+                          <span
+                            key={indicator.label}
+                            className={indicator.tone === "accent" ? "tag accent" : indicator.tone === "info" ? "tag info" : "tag"}
+                          >
+                            {indicator.label}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="tag muted-tag">OPDB</span>
+                      )}
                     </div>
                   </button>
                 );
@@ -707,7 +761,7 @@ export default function App() {
           {detail && !loadingDetail && (
             <>
               <div className="editor-grid">
-                <section className="panel hero-panel">
+                <section className="panel hero-panel panel-span-full">
                   <div className="hero-copy">
                     <p className="eyebrow">Machine</p>
                     <h2>{displayTitle(detail.machine)}</h2>
@@ -853,7 +907,7 @@ export default function App() {
                   </div>
                 </section>
 
-                <section className="panel">
+                <section className="panel compact-panel">
                   <div className="panel-header">
                     <div>
                       <h2>Replace backglass image</h2>
@@ -917,7 +971,7 @@ export default function App() {
                   </div>
                 </section>
 
-                <section className="panel">
+                <section className="panel compact-panel">
                   <div className="panel-header">
                     <div>
                       <h2>Metadata overrides</h2>
@@ -973,7 +1027,7 @@ export default function App() {
                   </p>
                 </section>
 
-                <section className="panel">
+                <section className="panel compact-panel">
                   <div className="panel-header">
                     <div>
                       <h2>Replace playfield image</h2>
@@ -1107,7 +1161,7 @@ export default function App() {
                   </div>
                 </section>
 
-                <section className="panel">
+                <section className="panel panel-span-full rulesheet-panel">
                   <div className="panel-header">
                     <div>
                       <h2>Replace rulesheet</h2>
@@ -1180,7 +1234,7 @@ export default function App() {
                   </div>
                 </section>
 
-                <section className="panel two-up-panel">
+                <section className="panel two-up-panel panel-span-full">
                   <div>
                     <div className="panel-header slim">
                       <div>

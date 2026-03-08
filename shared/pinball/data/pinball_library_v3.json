@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-03-07T23:26:17.640Z",
+  "generated_at": "2026-03-07T23:53:46.382Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -94,7 +94,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gj66P-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gj66P-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gj66P-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gj66P-MXr0E-ARkqN-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "avengers-infinity-quest",
@@ -176,7 +176,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRBE4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GRBE4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRBE4-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRBE4-MQK1Z-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "metallica",
@@ -258,7 +258,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-MW970-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "iron-maiden",
@@ -346,7 +346,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gryw4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gryw4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gryw4-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gryw4-MwNwZ-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-trek",
@@ -421,7 +421,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -503,7 +503,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5vLR-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5vLR-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5vLR-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G5vLR-ME049-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "star-wars",
@@ -673,7 +673,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GBLLP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GBLLP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GBLLP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GBLLP-MW900-A1KoQ-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-mandalorian",
@@ -843,7 +843,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr3EW-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gr3EW-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gr3EW-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gr3EW-M1r9Y-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "monster-bash",
@@ -1007,7 +1007,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4835-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4835-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4835-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4835-M2YPK-A9ylv-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "cactus-canyon",
@@ -1171,7 +1171,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4ODR-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4ODR-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4ODR-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4ODR-MDXEy-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-addams-family",
@@ -1271,7 +1271,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G2Lkd-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G2Lkd-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G2Lkd-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G2Lkd-M0ope-A97xV-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "rush",
@@ -1359,7 +1359,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GpeoL-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GpeoL-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GpeoL-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GpeoL-MkPz1-A944p-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "foo-fighters",
@@ -1447,7 +1447,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G43W4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G43W4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G43W4-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G43W4-MdEjy-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "ac-dc",
@@ -1529,7 +1529,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4qX5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4qX5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4qX5-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4qX5-Ml9jb-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "kiss",
@@ -1705,7 +1705,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G6lnq-M6153-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -1793,7 +1793,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GbPde-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GbPde-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GbPde-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GbPde-M5Rkv-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-munsters",
@@ -1881,7 +1881,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
@@ -1969,7 +1969,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrkL5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GrkL5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GrkL5-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrkL5-MJoNN-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "tron-legacy",
@@ -2044,7 +2044,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gd2Xb-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gd2Xb-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-MRjpZ-A92v0-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "teenage-mutant-ninja-turtles",
@@ -2208,7 +2208,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GK1Ej-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GK1Ej-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK1Ej-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK1Ej-MePok-A1zKx-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "dungeons-and-dragons-the-tyrants-eye",
@@ -2283,7 +2283,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -2358,7 +2358,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GQK1P-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GQK1P-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQK1P-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQK1P-Ml95Z-A9bjw-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "john-wick",
@@ -2440,7 +2440,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GZVOd-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GZVOd-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GZVOd-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GZVOd-MwNxZ-AO25N-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "elviras-house-of-horrors",
@@ -2528,7 +2528,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -2616,7 +2616,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "king-kong",
@@ -2691,7 +2691,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GR9Nr-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GR9Nr-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GR9Nr-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/GR9Nr-MVKol-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "ghostbusters",
@@ -2779,7 +2779,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -2867,7 +2867,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -2949,7 +2949,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G41d5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G41d5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G41d5-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G41d5-M9REd-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "game-of-thrones",
@@ -3037,7 +3037,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4do5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4do5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4do5-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4do5-MDlN7-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "attack-from-mars",
@@ -3125,7 +3125,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -3288,7 +3288,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5pe4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5pe4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5pe4-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5pe4-MePZv-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "medieval-madness",
@@ -3370,7 +3370,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G3EBl-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G3EBl-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G3EBl-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G3EBl-MRj6e-ARzbx-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "venom",
@@ -3458,7 +3458,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gzy89-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gzy89-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gzy89-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gzy89-M0oPy-A9xXV-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "stranger-things",
@@ -3546,7 +3546,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GWyBj-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GWyBj-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GWyBj-playfield.webp"
+        "playfield_local_practice": "/pinball/images/playfields/GWyBj-MdEbK-AOPdq-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "harry-potter-arcade-edition",
@@ -3634,7 +3634,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GEL0V-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "king-kong",
@@ -3709,7 +3709,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gxv81-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -3885,7 +3885,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GLWll-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -3967,7 +3967,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G6lnq-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G6lnq-M6153-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -4192,7 +4192,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4PBO-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4PBO-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4PBO-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4PBO-MyNeb-A9E6x-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "alien-ellen-ripley-edition",
@@ -4513,7 +4513,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GO0q3-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GO0q3-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GO0q3-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GO0q3-MOEy8-ARrPz-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "metallica-remastered",
@@ -4683,7 +4683,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GoEkx-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
@@ -4847,7 +4847,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRD79-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GRD79-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRD79-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRD79-M0odk-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "total-nuclear-annihilation",
@@ -5017,7 +5017,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQKyP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -5092,7 +5092,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -5840,7 +5840,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -5928,7 +5928,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK17D-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg"
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -6174,7 +6174,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-MW970-playfield.png"
       },
       "sort_keys": {
         "alphabetical": "iron-maiden",

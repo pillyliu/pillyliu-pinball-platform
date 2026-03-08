@@ -50,6 +50,10 @@ const WEB_APP_TARGETS = {
   "lpl-stats": path.join(ROOT, "lpl-stats", "public", "pinball"),
   "lpl-targets": path.join(ROOT, "lpl-targets", "public", "pinball"),
 };
+const STARTER_PACK_VENUE_LIBRARY_NAMES = new Set([
+  "The Avenue Cafe",
+  "RLM Amusements",
+]);
 
 function parseExtraTargetsFromEnv(envKey) {
   const raw = process.env[envKey];
@@ -190,6 +194,12 @@ async function readStarterPackV3PracticeAssetRefs(target) {
   ]);
 
   for (const item of items) {
+    const libraryType = typeof item?.library_type === "string" ? item.library_type.trim() : "";
+    const libraryName = typeof item?.library_name === "string" ? item.library_name.trim() : "";
+    if (libraryType !== "venue" || !STARTER_PACK_VENUE_LIBRARY_NAMES.has(libraryName)) {
+      continue;
+    }
+
     const assets = item && typeof item === "object" && item.assets && typeof item.assets === "object"
       ? item.assets
       : {};
