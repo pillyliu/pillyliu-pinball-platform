@@ -207,8 +207,9 @@ type PublicLibraryOverridesRoot = {
 const OPDB_CATALOG_PATH = "/pinball/data/opdb_catalog_v1.json";
 const LIBRARY_PATH = "/pinball/data/pinball_library_v3.json";
 const PUBLIC_LIBRARY_OVERRIDES_PATH = "/pinball/data/pinball_library_seed_overrides_v1.json";
-const FALLBACK_PLAYFIELD_700 = "/pinball/images/playfields/fallback-whitewood-playfield_700.webp";
-const FALLBACK_PLAYFIELD_1400 = "/pinball/images/playfields/fallback-whitewood-playfield_1400.webp";
+const MISSING_ARTWORK_PATH = "/pinball/images/playfields/fallback-image-not-available_2048.webp";
+const FALLBACK_PLAYFIELD_700 = MISSING_ARTWORK_PATH;
+const FALLBACK_PLAYFIELD_1400 = MISSING_ARTWORK_PATH;
 const DEFAULT_AVENUE_SOURCE_IDS = ["venue--the-avenue-cafe", "the-avenue"] as const;
 const BUILTIN_SOURCE_IDS = ["venue--rlm-amusements", "venue--the-avenue-cafe"] as const;
 const LEGACY_SOURCE_ID_ALIASES: Record<string, string> = {
@@ -1759,6 +1760,7 @@ export function cardArtworkCandidates(game: LibraryGame): string[] {
   return dedupeResolvedUrls([
     resolveLibraryUrl(game.primaryImageLargeUrl),
     resolveLibraryUrl(game.primaryImageUrl),
+    resolveLibraryUrl(MISSING_ARTWORK_PATH),
   ]);
 }
 
@@ -1766,6 +1768,7 @@ export function detailArtworkCandidates(game: LibraryGame): string[] {
   return dedupeResolvedUrls([
     resolveLibraryUrl(game.primaryImageLargeUrl),
     resolveLibraryUrl(game.primaryImageUrl),
+    resolveLibraryUrl(MISSING_ARTWORK_PATH),
   ]);
 }
 
