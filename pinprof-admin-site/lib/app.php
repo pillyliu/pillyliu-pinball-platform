@@ -785,6 +785,24 @@ function pinprof_machine_detail(string $practiceIdentity): array
     ];
 }
 
+function pinprof_public_playfield_status(string $practiceIdentity): array
+{
+    $detail = pinprof_machine_detail($practiceIdentity);
+    $playfield = is_array($detail['sources']['assets']['playfield'] ?? null)
+        ? $detail['sources']['assets']['playfield']
+        : [];
+
+    return [
+        'practiceIdentity' => pinprof_clean_string($detail['machine']['practiceIdentity'] ?? null) ?? $practiceIdentity,
+        'opdbGroupId' => pinprof_clean_string($detail['machine']['opdbGroupId'] ?? null) ?? $practiceIdentity,
+        'effectiveKind' => pinprof_clean_string($playfield['effectiveKind'] ?? null) ?? 'missing',
+        'effectiveLabel' => pinprof_clean_string($playfield['effectiveLabel'] ?? null),
+        'effectiveUrl' => pinprof_clean_string($playfield['effectiveUrl'] ?? null),
+        'localPath' => pinprof_clean_string($playfield['localPath'] ?? null),
+        'fallbackOpdbUrl' => pinprof_clean_string($playfield['fallbackOpdbUrl'] ?? null),
+    ];
+}
+
 
 function pinprof_manufacturer_filters(): array
 {

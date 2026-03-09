@@ -62,6 +62,20 @@ cleanup_local_dist_outputs() {
   done
 }
 
+stage_copy_tree() {
+  local source_dir="$1"
+  local target_dir="$2"
+  mkdir -p "${target_dir}"
+  rsync -a "${source_dir}/" "${target_dir}/"
+}
+
+stage_copy_file() {
+  local source_path="$1"
+  local target_path="$2"
+  mkdir -p "$(dirname "${target_path}")"
+  rsync -a "${source_path}" "${target_path}"
+}
+
 prune_local_pinball_artifacts() {
   local target_dir="$1"
   rm -f \
@@ -111,16 +125,16 @@ stage_pinball_payload() {
 
   PINBALL_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinball-deploy.XXXXXX")"
   mkdir -p "${PINBALL_STAGE_DIR}/pinball"
-  cp -R "${shared_pinball_dir}/." "${PINBALL_STAGE_DIR}/pinball/"
+  stage_copy_tree "${shared_pinball_dir}" "${PINBALL_STAGE_DIR}/pinball"
 
   if [[ -d "${PINBALL_IOS_STARTER_PACK_SOURCE}" ]]; then
-    cp -R "${PINBALL_IOS_STARTER_PACK_SOURCE}/." "${PINBALL_STAGE_DIR}/pinball/"
+    stage_copy_tree "${PINBALL_IOS_STARTER_PACK_SOURCE}" "${PINBALL_STAGE_DIR}/pinball"
   else
     echo "Warning: iOS starter-pack source not found: ${PINBALL_IOS_STARTER_PACK_SOURCE}" >&2
   fi
 
   if [[ -d "${PINBALL_ANDROID_STARTER_PACK_SOURCE}" ]]; then
-    cp -R "${PINBALL_ANDROID_STARTER_PACK_SOURCE}/." "${PINBALL_STAGE_DIR}/pinball/"
+    stage_copy_tree "${PINBALL_ANDROID_STARTER_PACK_SOURCE}" "${PINBALL_STAGE_DIR}/pinball"
   fi
 
   find "${PINBALL_STAGE_DIR}/pinball" -name '.DS_Store' -delete
@@ -151,8 +165,7 @@ stage_pinball_payload() {
     fi
     for source_dir in "${fallback_sources[@]}"; do
       if [[ -f "${source_dir}/${rel_path}" ]]; then
-        mkdir -p "$(dirname "${PINBALL_STAGE_DIR}/pinball/${rel_path}")"
-        cp "${source_dir}/${rel_path}" "${PINBALL_STAGE_DIR}/pinball/${rel_path}"
+        stage_copy_file "${source_dir}/${rel_path}" "${PINBALL_STAGE_DIR}/pinball/${rel_path}"
         break
       fi
     done
@@ -184,11 +197,11 @@ stage_pinprof_admin_payload() {
   fi
 
   PINPROF_ADMIN_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinprof-admin-deploy.XXXXXX")"
-  cp -R "${frontend_dist}/." "${PINPROF_ADMIN_STAGE_DIR}/"
-  cp "${site_runtime}/api.php" "${PINPROF_ADMIN_STAGE_DIR}/api.php"
-  cp "${site_runtime}/.htaccess" "${PINPROF_ADMIN_STAGE_DIR}/.htaccess"
+  stage_copy_tree "${frontend_dist}" "${PINPROF_ADMIN_STAGE_DIR}"
+  stage_copy_file "${site_runtime}/api.php" "${PINPROF_ADMIN_STAGE_DIR}/api.php"
+  stage_copy_file "${site_runtime}/.htaccess" "${PINPROF_ADMIN_STAGE_DIR}/.htaccess"
   mkdir -p "${PINPROF_ADMIN_STAGE_DIR}/lib"
-  cp -R "${site_runtime}/lib/." "${PINPROF_ADMIN_STAGE_DIR}/lib/"
+  stage_copy_tree "${site_runtime}/lib" "${PINPROF_ADMIN_STAGE_DIR}/lib"
 }
 
 if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
@@ -200,6 +213,8 @@ RSYNC_OPTS=(-avz --delete -e "$RSYNC_SSH")
 if [[ "$DRY_RUN" -eq 1 ]]; then
   RSYNC_OPTS+=(--dry-run)
 fi
+# Pinball is staged into a fresh temp dir, so use content checks to avoid reuploading unchanged files.
+PINBALL_RSYNC_OPTS=("${RSYNC_OPTS[@]}" --checksum)
 
 REMOTE="${SSH_USER_HOST}:${REMOTE_ROOT}"
 
@@ -256,7 +271,7 @@ do
 done
 
 echo "Deploying canonical pinball data..."
-rsync "${RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${REMOTE}/pinball/"
+rsync "${PINBALL_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${REMOTE}/pinball/"
 if [[ "$DRY_RUN" -eq 0 ]]; then
   echo "Normalizing remote pinball permissions..."
   if [[ "${SSH_AUTH_MODE}" == "password" ]]; then

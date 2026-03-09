@@ -76,6 +76,11 @@ try {
         api_json(['ok' => true], 204);
     }
 
+    if (preg_match('#^public/playfield-status/([^/]+)$#', $route, $matches) && $method === 'GET') {
+        header('Cache-Control: no-store, max-age=0');
+        api_json(pinprof_public_playfield_status(urldecode($matches[1])));
+    }
+
     api_require_auth();
 
     if ($route === 'summary' && $method === 'GET') {
