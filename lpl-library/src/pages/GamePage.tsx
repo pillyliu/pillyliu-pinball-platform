@@ -11,9 +11,9 @@ import {
 } from "../components/ui";
 import {
   detailArtworkCandidates,
-  type ReferenceLink,
   type LibraryGame,
-  directPlayfieldUrl,
+  type LivePlayfieldStatus,
+  type ReferenceLink,
   findLibraryGame,
   gameInfoMarkdownCandidates,
   loadResolvedLibraryData,
@@ -21,8 +21,40 @@ import {
   manufacturerYearText,
   preferredRulesheetLink,
   referenceLinkProvider,
+  resolvedPlayfieldOptions,
   rulesheetMarkdownCandidates,
 } from "../lib/libraryData";
+
+const livePlayfieldStatusRequests = new Map<string, Promise<LivePlayfieldStatus | null>>();
+const LIVE_PLAYFIELD_KINDS = new Set<LivePlayfieldStatus["effectiveKind"]>(["pillyliu", "opdb", "external", "missing"]);
+
+function fetchLivePlayfieldStatus(practiceIdentity: string): Promise<LivePlayfieldStatus | null> {
+  const existing = livePlayfieldStatusRequests.get(practiceIdentity);
+  if (existing) return existing;
+
+  const request = fetch(`/pinprof-admin/api.php?route=public/playfield-status/${encodeURIComponent(practiceIdentity)}`, {
+    cache: "no-store",
+  })
+    .then(async (response) => {
+      if (!response.ok) return null;
+      const payload = await response.json() as { effectiveKind?: unknown; effectiveUrl?: unknown };
+      const kind = typeof payload.effectiveKind === "string" ? payload.effectiveKind : "";
+      const effectiveUrl = typeof payload.effectiveUrl === "string" && payload.effectiveUrl.trim()
+        ? payload.effectiveUrl.trim()
+        : null;
+      if (!LIVE_PLAYFIELD_KINDS.has(kind as LivePlayfieldStatus["effectiveKind"])) {
+        return null;
+      }
+      return {
+        effectiveKind: kind as LivePlayfieldStatus["effectiveKind"],
+        effectiveUrl,
+      };
+    })
+    .catch(() => null);
+
+  livePlayfieldStatusRequests.set(practiceIdentity, request);
+  return request;
+}
 
 function youtubeId(url: string): string | null {
   try {
@@ -50,14 +82,6 @@ function shortRulesheetTitle(link: ReferenceLink): string {
   }
 }
 
-function playfieldChipTitle(game: LibraryGame, playfieldActionUrl: string | null): string {
-  if (game.playfieldSourceLabel) {
-    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "Local";
-  }
-  if (game.playfieldLocalOriginal || game.playfieldLocal) return "Local";
-  return playfieldActionUrl ? "OPDB" : "View";
-}
-
 function ResourceRow({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="flex items-center gap-2 text-sm">
@@ -81,6 +105,15 @@ export default function GamePage() {
   }>({
     key: null,
     md: null,
+    status: "idle",
+  });
+  const [livePlayfieldState, setLivePlayfieldState] = useState<{
+    key: string | null;
+    data: LivePlayfieldStatus | null;
+    status: "idle" | "loading" | "loaded";
+  }>({
+    key: null,
+    data: null,
     status: "idle",
   });
 
@@ -141,6 +174,30 @@ export default function GamePage() {
     };
   }, [game, gameLookupStatus, slug]);
 
+  useEffect(() => {
+    const practiceIdentity = game?.practiceIdentity ?? null;
+    if (!practiceIdentity) {
+      setLivePlayfieldState({ key: null, data: null, status: "idle" });
+      return;
+    }
+
+    let cancelled = false;
+    setLivePlayfieldState({ key: practiceIdentity, data: null, status: "loading" });
+    fetchLivePlayfieldStatus(practiceIdentity)
+      .then((data) => {
+        if (cancelled) return;
+        setLivePlayfieldState({ key: practiceIdentity, data, status: "loaded" });
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setLivePlayfieldState({ key: practiceIdentity, data: null, status: "loaded" });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [game?.practiceIdentity]);
+
   const videoCards = useMemo(() => {
     if (!game) return [];
     return game.videos
@@ -173,7 +230,18 @@ export default function GamePage() {
   }, [game]);
 
   const artworkCandidates = useMemo(() => (game ? detailArtworkCandidates(game) : []), [game]);
-  const playfieldActionUrl = useMemo(() => (game ? directPlayfieldUrl(game) : null), [game]);
+  const livePlayfieldStatus = useMemo(() => {
+    if (!game?.practiceIdentity) return null;
+    if (livePlayfieldState.key !== game.practiceIdentity) return null;
+    return livePlayfieldState.data;
+  }, [game?.practiceIdentity, livePlayfieldState.data, livePlayfieldState.key]);
+  const playfieldOptions = useMemo(
+    () => (game ? resolvedPlayfieldOptions(game, livePlayfieldStatus) : []),
+    [game, livePlayfieldStatus],
+  );
+  const isCheckingLivePlayfield = Boolean(game?.practiceIdentity) &&
+    livePlayfieldState.key === game?.practiceIdentity &&
+    livePlayfieldState.status === "loading";
   const hasLocalRulesheet = useMemo(() => (game ? rulesheetMarkdownCandidates(game).length > 0 : false), [game]);
   const rulesheetLinks = useMemo(() => {
     if (!game) return [];
@@ -221,22 +289,26 @@ export default function GamePage() {
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           <Panel className="overflow-hidden">
             <div className="aspect-[4/3] bg-neutral-900">
-              <img
-                src={artworkCandidates[0] ?? "/pinball/images/playfields/fallback-whitewood-playfield_700.webp"}
-                data-fallback-idx={0}
-                alt={`${game.name} backglass`}
-                className="h-full w-full object-contain"
-                onLoad={(event) => cacheAssetUrl((event.currentTarget as HTMLImageElement).currentSrc)}
-                onError={(event) => {
-                  const element = event.currentTarget as HTMLImageElement;
-                  const currentIndex = Number(element.dataset.fallbackIdx ?? "0");
-                  const nextIndex = currentIndex + 1;
-                  if (nextIndex < artworkCandidates.length) {
-                    element.dataset.fallbackIdx = String(nextIndex);
-                    element.src = artworkCandidates[nextIndex];
-                  }
-                }}
-              />
+              {artworkCandidates.length ? (
+                <img
+                  src={artworkCandidates[0]}
+                  data-fallback-idx={0}
+                  alt={`${game.name} backglass`}
+                  className="h-full w-full object-contain"
+                  onLoad={(event) => cacheAssetUrl((event.currentTarget as HTMLImageElement).currentSrc)}
+                  onError={(event) => {
+                    const element = event.currentTarget as HTMLImageElement;
+                    const currentIndex = Number(element.dataset.fallbackIdx ?? "0");
+                    const nextIndex = currentIndex + 1;
+                    if (nextIndex < artworkCandidates.length) {
+                      element.dataset.fallbackIdx = String(nextIndex);
+                      element.src = artworkCandidates[nextIndex];
+                    }
+                  }}
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-sm text-neutral-500">No image</div>
+              )}
             </div>
 
             <div className="space-y-3 p-4">
@@ -282,10 +354,20 @@ export default function GamePage() {
               </ResourceRow>
 
               <ResourceRow title="Playfield">
-                {playfieldActionUrl ? (
-                  <a className={SUBTLE_BUTTON_CLASS} href={playfieldActionUrl} target="_blank" rel="noreferrer">
-                    {playfieldChipTitle(game, playfieldActionUrl)}
-                  </a>
+                {isCheckingLivePlayfield ? (
+                  <span className="rounded-xl bg-neutral-800 px-4 py-2 text-sm text-neutral-400">Checking…</span>
+                ) : playfieldOptions.length ? (
+                  playfieldOptions.map((option) => (
+                    <a
+                      key={`${option.title}-${option.candidates[0] ?? "missing"}`}
+                      className={SUBTLE_BUTTON_CLASS}
+                      href={option.candidates[0] ?? "#"}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {option.title}
+                    </a>
+                  ))
                 ) : (
                   <span className="rounded-xl bg-neutral-800 px-4 py-2 text-sm text-neutral-400">Unavailable</span>
                 )}

@@ -57,13 +57,12 @@ function fallbackSourceState(): LibrarySourceState {
 }
 
 function fallbackImageCandidates(game: LibraryGame): string[] {
-  const candidates = cardArtworkCandidates(game);
-  return candidates.length ? candidates : ["/pinball/images/playfields/fallback-whitewood-playfield_700.webp"];
+  return cardArtworkCandidates(game);
 }
 
 function imagePropsForCandidates(candidates: string[]) {
   return {
-    src: candidates[0] ?? "/pinball/images/playfields/fallback-whitewood-playfield_700.webp",
+    src: candidates[0] ?? "",
     srcSet: undefined as string | undefined,
     sizes: undefined as string | undefined,
     candidates,
@@ -151,26 +150,30 @@ function GameCard({ game }: { game: LibraryGame }) {
       className="group overflow-hidden rounded-2xl bg-neutral-900 ring-1 ring-neutral-800 transition hover:ring-neutral-600"
     >
       <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-neutral-950">
-        <img
-          src={image.src}
-          srcSet={image.srcSet}
-          sizes={image.sizes}
-          data-fallback-idx={0}
-          loading="lazy"
-          decoding="async"
-          alt={game.name}
-          className="block w-full h-auto"
-          onLoad={(event) => cacheAssetUrl((event.currentTarget as HTMLImageElement).currentSrc)}
-          onError={(event) => {
-            const element = event.currentTarget as HTMLImageElement;
-            const currentIndex = Number(element.dataset.fallbackIdx ?? "0");
-            const nextIndex = currentIndex + 1;
-            if (nextIndex < image.candidates.length) {
-              element.dataset.fallbackIdx = String(nextIndex);
-              element.src = image.candidates[nextIndex];
-            }
-          }}
-        />
+        {image.candidates.length ? (
+          <img
+            src={image.src}
+            srcSet={image.srcSet}
+            sizes={image.sizes}
+            data-fallback-idx={0}
+            loading="lazy"
+            decoding="async"
+            alt={game.name}
+            className="block w-full h-auto"
+            onLoad={(event) => cacheAssetUrl((event.currentTarget as HTMLImageElement).currentSrc)}
+            onError={(event) => {
+              const element = event.currentTarget as HTMLImageElement;
+              const currentIndex = Number(element.dataset.fallbackIdx ?? "0");
+              const nextIndex = currentIndex + 1;
+              if (nextIndex < image.candidates.length) {
+                element.dataset.fallbackIdx = String(nextIndex);
+                element.src = image.candidates[nextIndex];
+              }
+            }}
+          />
+        ) : (
+          <div className="text-sm text-neutral-500">No image</div>
+        )}
       </div>
 
       <div className="bg-gradient-to-b from-neutral-900/50 to-neutral-950 px-3 pb-3 pt-2.5">

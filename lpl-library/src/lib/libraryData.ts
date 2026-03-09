@@ -40,6 +40,7 @@ export type LibraryGame = {
   primaryImageUrl: string | null;
   primaryImageLargeUrl: string | null;
   playfieldImageUrl: string | null;
+  alternatePlayfieldImageUrl: string | null;
   playfieldLocalOriginal: string | null;
   playfieldLocal: string | null;
   groupPlayfieldLocalOriginal: string | null;
@@ -101,6 +102,16 @@ export type ResolvedLibraryData = {
   importedSources: ImportedSourceRecord[];
   manufacturerOptions: CatalogManufacturerOption[];
   sourceGameCounts: Record<string, number>;
+};
+
+export type LivePlayfieldStatus = {
+  effectiveKind: "pillyliu" | "opdb" | "external" | "missing";
+  effectiveUrl: string | null;
+};
+
+export type PlayfieldOption = {
+  title: string;
+  candidates: string[];
 };
 
 type ParsedLibraryData = {
@@ -313,6 +324,10 @@ function resolveLibraryUrl(pathOrUrl: string | null | undefined): string | null 
   if (!raw) return null;
   if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
   return raw.startsWith("/") ? raw : `/${raw}`;
+}
+
+function dedupeResolvedUrls(values: Array<string | null | undefined>): string[] {
+  return values.filter((value, index, items): value is string => Boolean(value) && items.indexOf(value) === index);
 }
 
 function loadCookie(name: string): string | null {
@@ -793,6 +808,8 @@ function parseBaseGame(value: unknown, index: number): LibraryGame | null {
     primaryImageUrl: normalizedOptionalString(item.primary_image_url),
     primaryImageLargeUrl: normalizedOptionalString(item.primary_image_large_url),
     playfieldImageUrl: normalizedOptionalString(item.playfield_image_url) ?? normalizedOptionalString(item.playfieldImageUrl),
+    alternatePlayfieldImageUrl:
+      normalizedOptionalString(item.alternate_playfield_image_url) ?? normalizedOptionalString(item.alternatePlayfieldImageUrl),
     playfieldLocalOriginal: normalizeLibraryCachePath(normalizedOptionalString(assets.playfield_local_practice)),
     playfieldLocal: normalizeLibraryPlayfieldLocalPath(normalizedOptionalString(assets.playfield_local_practice)),
     groupPlayfieldLocalOriginal: null,
@@ -1163,6 +1180,24 @@ function buildGroupPlayfieldOverrides(games: LibraryGame[]): Map<string, GroupPl
   return overrides;
 }
 
+function curatedOverrideForKeys(
+  practiceIdentity: string | null | undefined,
+  opdbGroupId: string | null | undefined,
+  curatedOverrides: Map<string, LegacyCuratedOverride>,
+): LegacyCuratedOverride | undefined {
+  const candidateKeys = [
+    normalizedOptionalString(practiceIdentity),
+    normalizedOptionalString(opdbGroupId),
+  ].filter((value): value is string => Boolean(value));
+
+  for (const key of candidateKeys) {
+    const override = curatedOverrides.get(key);
+    if (override) return override;
+  }
+
+  return undefined;
+}
+
 function applyPublicPlayfieldOverrides(
   curatedOverrides: Map<string, LegacyCuratedOverride>,
   groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
@@ -1177,6 +1212,12 @@ function applyPublicPlayfieldOverrides(
     curatedOverrides.set(override.practiceIdentity, practiceCurrent);
 
     const groupKey = normalizedOptionalString(override.opdbGroupId ?? override.practiceIdentity);
+    if (groupKey) {
+      curatedOverrides.set(groupKey, {
+        ...practiceCurrent,
+        practiceIdentity: groupKey,
+      });
+    }
     if (!groupKey) continue;
     const groupCurrent = groupPlayfieldOverrides.get(groupKey) ?? { playfieldLocalPath: null, playfieldSourceUrl: null };
     groupCurrent.playfieldLocalPath = override.playfieldLocalPath;
@@ -1192,6 +1233,7 @@ function resolveLegacyGame(
   machineByPracticeIdentity: Map<string, CatalogMachineRecord[]>,
   machineByOpdbId: Map<string, CatalogMachineRecord>,
   manufacturerById: Map<string, CatalogManufacturerRecord>,
+  curatedOverrides: Map<string, LegacyCuratedOverride>,
   groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
   rulesheetLinksByPracticeIdentity: Map<string, CatalogRulesheetLinkRecord[]>,
   videoLinksByPracticeIdentity: Map<string, CatalogVideoLinkRecord[]>,
@@ -1205,6 +1247,11 @@ function resolveLegacyGame(
   if (!machine) return legacyGame;
 
   const practiceIdentity = legacyGame.practiceIdentity ?? machine.practiceIdentity;
+  const curatedOverride = curatedOverrideForKeys(
+    practiceIdentity,
+    normalizedOptionalString(legacyGame.opdbGroupId) ?? machine.opdbGroupId,
+    curatedOverrides,
+  );
   const manufacturerName =
     normalizedOptionalString(legacyGame.manufacturer) ??
     machine.manufacturerName ??
@@ -1215,11 +1262,14 @@ function resolveLegacyGame(
     legacyGame.rulesheetUrl,
   );
   const hasCuratedVideos = legacyGame.videos.length > 0;
-  const hasCuratedPlayfield = Boolean(
-    legacyGame.playfieldLocalOriginal ||
-    legacyGame.playfieldLocal ||
-    legacyGame.playfieldImageUrl,
-  );
+  const playfieldLocalPath =
+    normalizedOptionalString(curatedOverride?.playfieldLocalPath) ??
+    normalizedOptionalString(legacyGame.playfieldLocalOriginal ?? legacyGame.playfieldLocal);
+  const curatedPlayfieldSourceUrl =
+    normalizedOptionalString(curatedOverride?.playfieldSourceUrl) ??
+    normalizedOptionalString(legacyGame.playfieldImageUrl);
+  const opdbPlayfieldSourceUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
+  const hasCuratedPlayfield = Boolean(playfieldLocalPath || curatedPlayfieldSourceUrl);
   const resolvedRulesheets = hasCuratedRulesheet
     ? {
         localPath: normalizedOptionalString(legacyGame.rulesheetLocal),
@@ -1234,8 +1284,8 @@ function resolveLegacyGame(
     ? legacyGame.videos
     : resolveVideoLinks(videoLinksByPracticeIdentity.get(practiceIdentity) ?? []);
   const playfieldImageUrl = hasCuratedPlayfield
-    ? normalizedOptionalString(legacyGame.playfieldImageUrl)
-    : normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
+    ? curatedPlayfieldSourceUrl
+    : opdbPlayfieldSourceUrl;
   const groupPlayfieldLocalPath = normalizedOptionalString(
     groupPlayfieldOverrides.get(normalizedOptionalString(legacyGame.opdbGroupId) ?? machine.opdbGroupId ?? practiceIdentity)?.playfieldLocalPath,
   );
@@ -1251,14 +1301,12 @@ function resolveLegacyGame(
     primaryImageUrl: normalizedOptionalString(machine.primaryImageMediumUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
     playfieldImageUrl,
+    alternatePlayfieldImageUrl: hasCuratedPlayfield ? opdbPlayfieldSourceUrl : null,
+    playfieldLocalOriginal: normalizeLibraryCachePath(playfieldLocalPath),
+    playfieldLocal: normalizeLibraryPlayfieldLocalPath(playfieldLocalPath),
     groupPlayfieldLocalOriginal: normalizeLibraryCachePath(groupPlayfieldLocalPath),
     groupPlayfieldLocal: normalizeLibraryPlayfieldLocalPath(groupPlayfieldLocalPath),
-    playfieldSourceLabel:
-      hasCuratedPlayfield
-        ? null
-        : machine.playfieldImageLargeUrl || machine.playfieldImageMediumUrl
-          ? "Playfield (OPDB)"
-          : null,
+    playfieldSourceLabel: hasCuratedPlayfield ? null : opdbPlayfieldSourceUrl ? "Playfield (OPDB)" : null,
     rulesheetLocal: resolvedRulesheets.localPath,
     rulesheetUrl: resolvedRulesheets.links[0]?.url ?? null,
     rulesheetLinks: resolvedRulesheets.links,
@@ -1286,11 +1334,12 @@ function resolveImportedGame(
   machine: CatalogMachineRecord,
   source: ImportedSourceRecord,
   manufacturerById: Map<string, CatalogManufacturerRecord>,
-  curatedOverride: LegacyCuratedOverride | undefined,
+  curatedOverrides: Map<string, LegacyCuratedOverride>,
   groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
   rulesheetLinks: CatalogRulesheetLinkRecord[],
   videoLinks: CatalogVideoLinkRecord[],
 ): LibraryGame {
+  const curatedOverride = curatedOverrideForKeys(machine.practiceIdentity, machine.opdbGroupId, curatedOverrides);
   const manufacturerName =
     curatedOverride?.manufacturerOverride ??
     machine.manufacturerName ??
@@ -1308,9 +1357,10 @@ function resolveImportedGame(
   const groupPlayfieldLocalPath = normalizedOptionalString(
     groupPlayfieldOverrides.get(machine.opdbGroupId ?? machine.practiceIdentity)?.playfieldLocalPath,
   );
-  const playfieldSourceUrl =
-    normalizedOptionalString(curatedOverride?.playfieldSourceUrl) ??
-    normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
+  const curatedPlayfieldSourceUrl = normalizedOptionalString(curatedOverride?.playfieldSourceUrl);
+  const opdbPlayfieldSourceUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
+  const hasCuratedPlayfield = Boolean(playfieldLocalPath || curatedPlayfieldSourceUrl);
+  const playfieldSourceUrl = hasCuratedPlayfield ? curatedPlayfieldSourceUrl : opdbPlayfieldSourceUrl;
   const slug = normalizedOptionalString(machine.slug) ?? machine.practiceIdentity;
   const routeId = `${source.id}::${slug}`;
   return {
@@ -1337,12 +1387,13 @@ function resolveImportedGame(
     primaryImageUrl: normalizedOptionalString(machine.primaryImageMediumUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
     playfieldImageUrl: playfieldSourceUrl,
+    alternatePlayfieldImageUrl: hasCuratedPlayfield ? opdbPlayfieldSourceUrl : null,
     playfieldLocalOriginal: normalizeLibraryCachePath(playfieldLocalPath),
     playfieldLocal: normalizeLibraryPlayfieldLocalPath(playfieldLocalPath),
     groupPlayfieldLocalOriginal: normalizeLibraryCachePath(groupPlayfieldLocalPath),
     groupPlayfieldLocal: normalizeLibraryPlayfieldLocalPath(groupPlayfieldLocalPath),
     playfieldSourceLabel:
-      !playfieldLocalPath && (machine.playfieldImageLargeUrl || machine.playfieldImageMediumUrl)
+      !hasCuratedPlayfield && (machine.playfieldImageLargeUrl || machine.playfieldImageMediumUrl)
         ? "Playfield (OPDB)"
         : null,
     gameinfoLocal: normalizedOptionalString(curatedOverride?.gameinfoLocalPath),
@@ -1405,6 +1456,7 @@ function mergeCatalogs(
       machineByPracticeIdentity,
       machineByOpdbId,
       manufacturerById,
+      curatedOverrides,
       groupPlayfieldOverrides,
       rulesheetLinksByPracticeIdentity,
       videoLinksByPracticeIdentity,
@@ -1429,7 +1481,7 @@ function mergeCatalogs(
             machine,
             source,
             manufacturerById,
-            curatedOverrides.get(machine.practiceIdentity),
+            curatedOverrides,
             groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
@@ -1448,7 +1500,7 @@ function mergeCatalogs(
             machine,
             source,
             manufacturerById,
-            curatedOverrides.get(machine.practiceIdentity),
+            curatedOverrides,
             groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
@@ -1660,49 +1712,14 @@ function derivePlayfieldVariant(local: string, width: 700 | 1400): string | null
   return `${match[1]}_${width}.webp`;
 }
 
-function playfieldImageCandidates(game: LibraryGame): string[] {
+function explicitPlayfieldCandidates(game: LibraryGame): string[] {
   const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
   const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
   const local1400 = localOriginal ? derivePlayfieldVariant(localOriginal, 1400) : null;
-  return [
-    resolveLibraryUrl(local700),
-    resolveLibraryUrl(local1400),
-    resolveLibraryUrl(game.playfieldLocal),
-    resolveLibraryUrl(game.playfieldLocalOriginal),
-    resolveLibraryUrl(game.playfieldImageUrl),
-    FALLBACK_PLAYFIELD_700,
-    FALLBACK_PLAYFIELD_1400,
-  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
-}
-
-export function cardArtworkCandidates(game: LibraryGame): string[] {
-  return [
-    resolveLibraryUrl(game.primaryImageLargeUrl),
-    resolveLibraryUrl(game.primaryImageUrl),
-    ...playfieldImageCandidates(game),
-  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
-}
-
-export function detailArtworkCandidates(game: LibraryGame): string[] {
-  return [
-    resolveLibraryUrl(game.primaryImageLargeUrl),
-    resolveLibraryUrl(game.primaryImageUrl),
-    ...gamePlayfieldCandidates(game),
-  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
-}
-
-export function gamePlayfieldCandidates(game: LibraryGame): string[] {
-  return playfieldImageCandidates(game);
-}
-
-export function directPlayfieldUrl(game: LibraryGame): string | null {
-  const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
-  const local1400 = localOriginal ? derivePlayfieldVariant(localOriginal, 1400) : null;
-  const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
   const groupLocalOriginal = normalizedOptionalString(game.groupPlayfieldLocalOriginal ?? game.groupPlayfieldLocal);
-  const groupLocal1400 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 1400) : null;
   const groupLocal700 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 700) : null;
-  const preferredCandidates = [
+  const groupLocal1400 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 1400) : null;
+  return dedupeResolvedUrls([
     resolveLibraryUrl(game.playfieldLocalOriginal),
     resolveLibraryUrl(local1400),
     resolveLibraryUrl(game.playfieldLocal),
@@ -1712,11 +1729,110 @@ export function directPlayfieldUrl(game: LibraryGame): string | null {
     resolveLibraryUrl(game.groupPlayfieldLocal),
     resolveLibraryUrl(groupLocal700),
     resolveLibraryUrl(game.playfieldImageUrl),
-  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+  ]);
+}
 
+function playfieldSourceLabelForGame(game: LibraryGame): string {
+  if (game.playfieldSourceLabel) {
+    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "Local";
+  }
+  if (game.playfieldLocalOriginal || game.playfieldLocal || game.groupPlayfieldLocalOriginal || game.groupPlayfieldLocal) {
+    return "Local";
+  }
+  const playfieldUrl = resolveLibraryUrl(game.playfieldImageUrl);
+  if (!playfieldUrl) return "View";
+  try {
+    const parsed = new URL(playfieldUrl, "https://pillyliu.com");
+    if (parsed.host.toLowerCase() === "pillyliu.com" && parsed.pathname.startsWith("/pinball/images/playfields/")) {
+      return "Local";
+    }
+    if (parsed.host.toLowerCase().includes("opdb.org")) {
+      return "OPDB";
+    }
+  } catch {
+    // Fall through to remote.
+  }
+  return "Remote";
+}
+
+export function cardArtworkCandidates(game: LibraryGame): string[] {
+  return dedupeResolvedUrls([
+    resolveLibraryUrl(game.primaryImageLargeUrl),
+    resolveLibraryUrl(game.primaryImageUrl),
+  ]);
+}
+
+export function detailArtworkCandidates(game: LibraryGame): string[] {
+  return dedupeResolvedUrls([
+    resolveLibraryUrl(game.primaryImageLargeUrl),
+    resolveLibraryUrl(game.primaryImageUrl),
+  ]);
+}
+
+export function gamePlayfieldCandidates(game: LibraryGame): string[] {
+  return [
+    ...explicitPlayfieldCandidates(game),
+    FALLBACK_PLAYFIELD_700,
+  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+}
+
+export function directPlayfieldUrl(game: LibraryGame): string | null {
+  const preferredCandidates = explicitPlayfieldCandidates(game);
   return preferredCandidates.find((candidate) =>
     candidate !== FALLBACK_PLAYFIELD_700 && candidate !== FALLBACK_PLAYFIELD_1400,
   ) ?? null;
+}
+
+export function resolvedPlayfieldOptions(
+  game: LibraryGame,
+  liveStatus: LivePlayfieldStatus | null,
+): PlayfieldOption[] {
+  const explicitCandidates = explicitPlayfieldCandidates(game);
+  if (liveStatus?.effectiveKind === "missing" && explicitCandidates.length === 0) {
+    return [];
+  }
+
+  const options: PlayfieldOption[] = [];
+  const usedCandidates = new Set<string>();
+  const liveKind = liveStatus?.effectiveKind ?? null;
+
+  if (explicitCandidates.length) {
+    options.push({ title: playfieldSourceLabelForGame(game), candidates: explicitCandidates });
+    explicitCandidates.forEach((candidate) => usedCandidates.add(candidate));
+  } else {
+    const primaryCandidates = dedupeResolvedUrls([
+      resolveLibraryUrl(liveStatus?.effectiveUrl),
+    ]);
+    if (primaryCandidates.length) {
+      let title = playfieldSourceLabelForGame(game);
+      if (liveKind === "pillyliu") title = "Local";
+      if (liveKind === "opdb") title = "OPDB";
+      if (liveKind === "external") title = "Remote";
+      if (liveKind === "missing" && explicitCandidates.length === 0) {
+        title = "Unavailable";
+      }
+      options.push({ title, candidates: primaryCandidates });
+      primaryCandidates.forEach((candidate) => usedCandidates.add(candidate));
+    }
+  }
+
+  const liveUrl = resolveLibraryUrl(liveStatus?.effectiveUrl);
+  if (liveUrl && liveKind !== "missing" && !usedCandidates.has(liveUrl)) {
+    let title = playfieldSourceLabelForGame(game);
+    if (liveKind === "pillyliu") title = "Local";
+    if (liveKind === "opdb") title = "OPDB";
+    if (liveKind === "external") title = "Remote";
+    options.push({ title, candidates: [liveUrl] });
+    usedCandidates.add(liveUrl);
+  }
+
+  const alternateUrl = resolveLibraryUrl(game.alternatePlayfieldImageUrl);
+  if (alternateUrl && !usedCandidates.has(alternateUrl)) {
+    options.push({ title: "OPDB", candidates: [alternateUrl] });
+    usedCandidates.add(alternateUrl);
+  }
+
+  return options;
 }
 
 export function rulesheetMarkdownCandidates(game: LibraryGame): string[] {
