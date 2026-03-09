@@ -24,6 +24,8 @@ type GameMeta = {
   group?: number | null;
   position?: number | null;
   bank?: number | null;
+  sourceId?: string | null;
+  sourceName?: string | null;
 };
 
 type LibraryV3Item = {
@@ -32,6 +34,11 @@ type LibraryV3Item = {
   group?: number | null;
   position?: number | null;
   bank?: number | null;
+  library_id?: string | null;
+  sourceId?: string | null;
+  library_name?: string | null;
+  sourceName?: string | null;
+  venue?: string | null;
 };
 
 type SortMode = "location" | "bank" | "alphabetical";
@@ -302,7 +309,10 @@ function buildMetaByName(rows: GameMeta[]): Map<string, GameMeta> {
   for (const row of rows) {
     const canonical = normalizeGameName(row.name ?? "");
     if (!canonical) continue;
-    map.set(canonical, row);
+    const existing = map.get(canonical);
+    if (!existing || isPreferredMeta(row, existing)) {
+      map.set(canonical, row);
+    }
   }
 
   for (const [source, target] of Object.entries(NAME_ALIASES)) {
@@ -326,15 +336,45 @@ function deriveGameMetaRows(raw: unknown): GameMeta[] {
     const row = (item ?? {}) as LibraryV3Item;
     const name = String(row.game ?? "").trim();
     if (!name) continue;
+    const sourceId = String(row.library_id ?? row.sourceId ?? "").trim() || null;
+    const sourceName = String(row.library_name ?? row.sourceName ?? row.venue ?? "").trim() || null;
+    if (!isAvenueSource(sourceId, sourceName)) continue;
     rows.push({
       name,
       location: String(row.area ?? "").trim() || null,
       group: typeof row.group === "number" ? row.group : null,
       position: typeof row.position === "number" ? row.position : null,
       bank: typeof row.bank === "number" ? row.bank : null,
+      sourceId,
+      sourceName,
     });
   }
   return rows;
+}
+
+function isPreferredMeta(candidate: GameMeta, current: GameMeta): boolean {
+  return metaScore(candidate) > metaScore(current);
+}
+
+function metaScore(meta: GameMeta): number {
+  let score = 0;
+  if (isAvenueSource(meta.sourceId, meta.sourceName)) score += 1000;
+  if (typeof meta.bank === "number" && Number.isFinite(meta.bank) && meta.bank > 0) score += 100;
+  if (typeof meta.location === "string" && meta.location.trim()) score += 10;
+  if (typeof meta.group === "number" && Number.isFinite(meta.group)) score += 5;
+  if (typeof meta.position === "number" && Number.isFinite(meta.position)) score += 5;
+  return score;
+}
+
+function isAvenueSource(sourceId?: string | null, sourceName?: string | null): boolean {
+  const normalizedId = String(sourceId ?? "").trim().toLowerCase();
+  if (normalizedId === "venue--the-avenue-cafe") return true;
+
+  const normalizedName = String(sourceName ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ");
+  return normalizedName === "the avenue cafe" || normalizedName === "the avenue";
 }
 
 const NAME_ALIASES: Record<string, string> = {
