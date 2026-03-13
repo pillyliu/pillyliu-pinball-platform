@@ -58,6 +58,12 @@ const STARTER_PACK_VENUE_LIBRARY_NAMES = new Set([
   "The Avenue Cafe",
   "RLM Amusements",
 ]);
+// Starter packs normally keep only practice-ready _700.webp playfields.
+// Shared fallback playfields are the intentional exceptions.
+const STARTER_PACK_STATIC_PLAYFIELD_PATHS = new Set([
+  "/pinball/images/playfields/fallback-whitewood-playfield_700.webp",
+  "/pinball/images/playfields/fallback-image-not-available_2048.webp",
+]);
 
 function parseExtraTargetsFromEnv(envKey) {
   const raw = process.env[envKey];
@@ -193,9 +199,7 @@ async function readStarterPackV3PracticeAssetRefs(target) {
   const root = await readJson(v3Path);
   const items = Array.isArray(root?.items) ? root.items : [];
   const markdownPaths = new Set();
-  const playfield700Paths = new Set([
-    "/pinball/images/playfields/fallback-whitewood-playfield_700.webp",
-  ]);
+  const playfieldPaths = new Set(STARTER_PACK_STATIC_PLAYFIELD_PATHS);
 
   for (const item of items) {
     const libraryType = typeof item?.library_type === "string" ? item.library_type.trim() : "";
@@ -217,41 +221,51 @@ async function readStarterPackV3PracticeAssetRefs(target) {
 
     const normalizedPlayfield700 = normalizePracticePlayfield700Path(playfieldPractice);
     if (normalizedPlayfield700) {
-      playfield700Paths.add(normalizedPlayfield700);
+      playfieldPaths.add(normalizedPlayfield700);
     }
   }
 
-  return { markdownPaths, playfield700Paths };
+  return { markdownPaths, playfieldPaths };
 }
 
-async function pruneStarterPackPlayfieldImages(target, keepPlayfield700Paths = null) {
+async function pruneStarterPackPlayfieldImages(target, keepPlayfieldPaths = null) {
   const playfieldDir = path.join(target, "images", "playfields");
   const entries = await fs.readdir(playfieldDir, { withFileTypes: true }).catch(() => []);
   let removed = 0;
-  let keptByV3 = 0;
+  let keptPractice = 0;
+  let keptStatic = 0;
   for (const entry of entries) {
     if (!entry.isFile()) continue;
     const name = entry.name;
     const webPath = `/pinball/images/playfields/${name}`;
-    if (!name.endsWith("_700.webp")) {
+    if (keepPlayfieldPaths) {
+      if (!keepPlayfieldPaths.has(webPath)) {
+        await fs.rm(path.join(playfieldDir, name), { force: true });
+        removed += 1;
+        continue;
+      }
+      if (STARTER_PACK_STATIC_PLAYFIELD_PATHS.has(webPath)) {
+        keptStatic += 1;
+      } else {
+        keptPractice += 1;
+      }
+      continue;
+    }
+    if (!name.endsWith("_700.webp") && !STARTER_PACK_STATIC_PLAYFIELD_PATHS.has(webPath)) {
       await fs.rm(path.join(playfieldDir, name), { force: true });
       removed += 1;
       continue;
     }
-    if (keepPlayfield700Paths && !keepPlayfield700Paths.has(webPath)) {
-      await fs.rm(path.join(playfieldDir, name), { force: true });
-      removed += 1;
-      continue;
-    }
-    if (keepPlayfield700Paths) keptByV3 += 1;
   }
-  if (keepPlayfield700Paths) {
+  if (keepPlayfieldPaths) {
     console.log(
-      `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed}, kept ${keptByV3} v3 practice _700.webp files)`
+      `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed}, kept ${keptPractice} v3 practice playfields and ${keptStatic} shared static playfields)`
     );
     return;
   }
-  console.log(`Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed} non-_700.webp files)`);
+  console.log(
+    `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed} non-practice, non-fallback playfields)`
+  );
 }
 
 async function pruneStarterPackMarkdownToV3PracticeAssets(target, keepMarkdownPaths = null) {
@@ -363,7 +377,7 @@ async function syncStarterPacks() {
     }
     await syncPath(name, target);
     const v3Refs = await readStarterPackV3PracticeAssetRefs(target);
-    await pruneStarterPackPlayfieldImages(target, v3Refs?.playfield700Paths ?? null);
+    await pruneStarterPackPlayfieldImages(target, v3Refs?.playfieldPaths ?? null);
     await pruneStarterPackMarkdown(target);
     await pruneStarterPackNonV3LibraryJsons(target);
     await pruneStarterPackJunkFiles(target);

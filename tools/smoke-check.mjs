@@ -19,6 +19,12 @@ const REQUIRED_DATA_FILES = [
   "LPL_Targets.csv",
   "pinball_library_v3.json",
 ];
+const REQUIRED_IMAGE_FILES = [
+  "playfields/fallback-image-not-available_2048.webp",
+  "ui/shake-warnings/professor-danger_1024.webp",
+  "ui/shake-warnings/professor-danger-danger_1024.webp",
+  "ui/shake-warnings/professor-tilt_1024.webp",
+];
 
 function rel(p) {
   return path.relative(ROOT, p);
@@ -67,6 +73,7 @@ async function validateSharedPinball() {
   const manifestPath = path.join(sharedPinballDir, "cache-manifest.json");
   const updateLogPath = path.join(sharedPinballDir, "cache-update-log.json");
   const dataDir = path.join(sharedPinballDir, "data");
+  const imagesDir = path.join(sharedPinballDir, "images");
 
   if (!(await exists(manifestPath))) {
     errors.push(`Missing canonical pinball manifest: ${rel(manifestPath)}`);
@@ -92,6 +99,21 @@ async function validateSharedPinball() {
 
     if (manifest?.files) {
       const key = `/pinball/data/${filename}`;
+      if (!manifest.files[key]) {
+        errors.push(`Manifest missing file key: ${key} (shared/pinball)`);
+      }
+    }
+  }
+
+  for (const relImagePath of REQUIRED_IMAGE_FILES) {
+    const fullPath = path.join(imagesDir, relImagePath);
+    if (!(await exists(fullPath))) {
+      errors.push(`Missing required image file: ${rel(fullPath)}`);
+      continue;
+    }
+
+    if (manifest?.files) {
+      const key = `/pinball/images/${relImagePath}`;
       if (!manifest.files[key]) {
         errors.push(`Manifest missing file key: ${key} (shared/pinball)`);
       }

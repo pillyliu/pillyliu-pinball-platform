@@ -151,6 +151,10 @@ stage_pinball_payload() {
     "data/LPL_Stats.csv"
     "data/LPL_Standings.csv"
     "data/redacted_players.csv"
+    "images/playfields/fallback-image-not-available_2048.webp"
+    "images/ui/shake-warnings/professor-danger_1024.webp"
+    "images/ui/shake-warnings/professor-danger-danger_1024.webp"
+    "images/ui/shake-warnings/professor-tilt_1024.webp"
   )
   local fallback_sources=(
     "${PINBALL_IOS_STARTER_PACK_SOURCE}"
