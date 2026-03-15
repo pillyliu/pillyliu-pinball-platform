@@ -17,6 +17,7 @@ SSH_KEY="${SSH_KEY:-$HOME/.ssh/pillyliu_key}"
 REMOTE_ROOT="${REMOTE_ROOT:-/home/pillyliu/public_html}"
 SSH_AUTH_MODE="${SSH_AUTH_MODE:-key}" # key | password
 PINPROF_PRODUCT_ROOT="${PINPROF_PRODUCT_ROOT:-$ROOT_DIR/../Pinball App}"
+PINPROF_ADMIN_SOURCE_ROOT="${PINPROF_ADMIN_SOURCE_ROOT:-$ROOT_DIR/../PinProf Admin}"
 SHARED_PINBALL_SOURCE_DIR="${SHARED_PINBALL_SOURCE_DIR:-$ROOT_DIR/shared/pinball}"
 PINPROF_ADMIN_FRONTEND_DIR="${PINPROF_ADMIN_FRONTEND_DIR:-$ROOT_DIR/pinprof-admin}"
 PINPROF_ADMIN_FRONTEND_DIST="${PINPROF_ADMIN_FRONTEND_DIST:-$PINPROF_ADMIN_FRONTEND_DIR/dist}"
@@ -30,6 +31,10 @@ PINBALL_IOS_STARTER_PACK_SOURCE="${PINBALL_IOS_STARTER_PACK_SOURCE:-$PINPROF_PRO
 PINBALL_ANDROID_STARTER_PACK_SOURCE="${PINBALL_ANDROID_STARTER_PACK_SOURCE:-$PINPROF_PRODUCT_ROOT/Pinball App Android/app/src/main/assets/starter-pack/pinball}"
 PINBALL_ANDROID_BUILD_DEBUG_SOURCE="${PINBALL_ANDROID_BUILD_DEBUG_SOURCE:-$PINPROF_PRODUCT_ROOT/Pinball App Android/app/build/intermediates/assets/debug/mergeDebugAssets/starter-pack/pinball}"
 PINBALL_ANDROID_BUILD_RELEASE_SOURCE="${PINBALL_ANDROID_BUILD_RELEASE_SOURCE:-$PINPROF_PRODUCT_ROOT/Pinball App Android/app/build/intermediates/assets/release/mergeReleaseAssets/starter-pack/pinball}"
+PINPROF_ADMIN_SYNC_SCRIPT="${PINPROF_ADMIN_SYNC_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/sync-legacy-website-layout.sh}"
+PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT="${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/rebuild-shared-pinball-payload.sh}"
+PINPROF_ADMIN_APPLY_OVERRIDES_SCRIPT="${PINPROF_ADMIN_APPLY_OVERRIDES_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/apply-admin-overrides.mjs}"
+PINPROF_ADMIN_EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT="${PINPROF_ADMIN_EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/export_library_seed_overrides.py}"
 
 PINBALL_STAGE_DIR=""
 PINPROF_ADMIN_STAGE_DIR=""
@@ -132,6 +137,30 @@ prepare_build_environment() {
   ensure_npm_dependencies "${ROOT_DIR}/lpl-stats" "lpl-stats"
   ensure_npm_dependencies "${ROOT_DIR}/lpl-targets" "lpl-targets"
   ensure_npm_dependencies "${PINPROF_ADMIN_FRONTEND_DIR}" "pinprof-admin"
+}
+
+refresh_pinprof_admin_shared_payload() {
+  if [[ ! -d "${PINPROF_ADMIN_SOURCE_ROOT}" ]]; then
+    echo "Warning: PinProf Admin source root not found; skipping workspace refresh: ${PINPROF_ADMIN_SOURCE_ROOT}" >&2
+    return
+  fi
+  if [[ ! -x "${PINPROF_ADMIN_SYNC_SCRIPT}" ]]; then
+    echo "Warning: PinProf Admin sync bridge not found; skipping workspace refresh: ${PINPROF_ADMIN_SYNC_SCRIPT}" >&2
+    return
+  fi
+
+  echo "Refreshing shared pinball payload from PinProf Admin workspace..."
+  if [[ -f "${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}" ]]; then
+    bash "${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}"
+  else
+    if [[ -f "${PINPROF_ADMIN_APPLY_OVERRIDES_SCRIPT}" ]]; then
+      node "${PINPROF_ADMIN_APPLY_OVERRIDES_SCRIPT}"
+    fi
+    if [[ -f "${PINPROF_ADMIN_EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT}" ]]; then
+      python3 "${PINPROF_ADMIN_EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT}"
+    fi
+  fi
+  "${PINPROF_ADMIN_SYNC_SCRIPT}" --skip-admin-ui --skip-admin-site
 }
 
 stage_pinball_payload() {
@@ -272,6 +301,8 @@ elif [[ -n "${PINPROF_SITE_SOURCE_DIR}" || -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; 
   echo "PinProf.com deploy disabled: set both PINPROF_SITE_SOURCE_DIR and PINPROF_SITE_REMOTE_ROOT."
 fi
 
+refresh_pinprof_admin_shared_payload
+
 if [[ "$SKIP_BUILD" -eq 0 ]]; then
   prepare_build_environment
 
@@ -282,9 +313,9 @@ if [[ "$SKIP_BUILD" -eq 0 ]]; then
 
   echo "Regenerating pinball data (v3 JSON, seed DB, manifest) and syncing mobile starter packs..."
   if [[ "$PINBALL_SYNC_INCLUDE_WEB_PUBLIC_PINBALL" == "1" ]]; then
-    node tools/sync-pinball-data.mjs --all-targets --include-web-public-pinball
+    node tools/sync-pinball-data.mjs --all-targets --use-existing-shared-support-artifacts --include-web-public-pinball
   else
-    npm run sync:pinball:all-targets
+    node tools/sync-pinball-data.mjs --all-targets --use-existing-shared-support-artifacts
   fi
 
   echo "Running app builds + smoke..."

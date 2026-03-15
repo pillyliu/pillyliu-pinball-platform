@@ -9,9 +9,18 @@ import { buildPinballManifest } from "./build-pinball-manifest.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
 const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
+const PINPROF_ADMIN_SOURCE_ROOT = path.resolve(
+  process.env.PINPROF_ADMIN_SOURCE_ROOT ?? path.join(ROOT, "../PinProf Admin")
+);
 const PINPROF_PRODUCT_ROOT = path.resolve(process.env.PINPROF_PRODUCT_ROOT ?? path.join(ROOT, "../Pinball App"));
 const PINPROF_PRODUCT_SCRIPTS_DIR = path.resolve(
   process.env.PINPROF_PRODUCT_SCRIPTS_DIR ?? path.join(PINPROF_PRODUCT_ROOT, "scripts")
+);
+const PINPROF_ADMIN_BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(
+  PINPROF_ADMIN_SOURCE_ROOT,
+  "scripts",
+  "importers",
+  "build_library_seed_db.py"
 );
 const PINPROF_IOS_STARTER_PACK_PINBALL_DIR = path.resolve(
   process.env.PINPROF_IOS_STARTER_PACK_PINBALL_DIR ??
@@ -122,6 +131,7 @@ function parseArgs(argv) {
     starterPack: false,
     allTargets: false,
     includeWebPublicPinball: false,
+    useExistingSharedSupportArtifacts: false,
   };
   for (let i = 0; i < argv.length; i += 1) {
     const token = argv[i];
@@ -130,6 +140,7 @@ function parseArgs(argv) {
     if (token === "--starter-pack") out.starterPack = true;
     if (token === "--all-targets") out.allTargets = true;
     if (token === "--include-web-public-pinball") out.includeWebPublicPinball = true;
+    if (token === "--use-existing-shared-support-artifacts") out.useExistingSharedSupportArtifacts = true;
   }
   return out;
 }
@@ -438,6 +449,26 @@ async function generateSharedLibrarySeedDb() {
   throw new Error("Library seed DB generation did not produce an output file.");
 }
 
+async function generateSharedLibrarySeedDbFromCurrentSharedData() {
+  if (await pathExists(PINPROF_ADMIN_BUILD_LIBRARY_SEED_DB_SCRIPT)) {
+    await run("python3", [
+      PINPROF_ADMIN_BUILD_LIBRARY_SEED_DB_SCRIPT,
+      "--library-json",
+      SHARED_LIBRARY_V3_PATH,
+      "--catalog-json",
+      SHARED_OPDB_CATALOG_PATH,
+      "--output-db",
+      SHARED_LIBRARY_SEED_DB_PATH,
+    ], ROOT);
+    return;
+  }
+
+  console.warn(
+    `Falling back to legacy seed DB builder; missing ${path.relative(ROOT, PINPROF_ADMIN_BUILD_LIBRARY_SEED_DB_SCRIPT)}`
+  );
+  await generateSharedLibrarySeedDb();
+}
+
 async function generateSharedRulesheetAudit() {
   await ensureParentDir(SHARED_RULESHEET_AUDIT_PATH);
   await run("python3", [
@@ -520,6 +551,22 @@ async function pruneSharedRemoteRulesheetSnapshots() {
   console.log(`Pruned shared remote rulesheet snapshots (removed ${removed}, kept ${kept} local rulesheets)`);
 }
 
+async function ensureExistingSharedSupportArtifacts() {
+  const required = [
+    SHARED_OPDB_CATALOG_PATH,
+    SHARED_LIBRARY_SEED_DB_PATH,
+    SHARED_RULESHEET_AUDIT_PATH,
+  ];
+
+  for (const filePath of required) {
+    if (!(await pathExists(filePath))) {
+      throw new Error(
+        `Missing shared support artifact: ${path.relative(ROOT, filePath)}. Run the PinProf Admin rebuild first.`
+      );
+    }
+  }
+}
+
 async function generateSharedAppSupportArtifacts() {
   await generateSharedOpdbCatalog();
   await mirrorSharedDataForSeedGeneration();
@@ -533,7 +580,16 @@ async function generateSharedAppSupportArtifacts() {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   await rebuildLibraryJsonV3();
-  await generateSharedAppSupportArtifacts();
+  if (args.useExistingSharedSupportArtifacts) {
+    await ensureExistingSharedSupportArtifacts();
+    console.log("Reusing existing shared support artifacts (catalog, seed DB, audit).");
+    await generateSharedLibrarySeedDbFromCurrentSharedData();
+    await applyPinprofAdminOverrides();
+    await exportLibrarySeedOverrides();
+    await pruneSharedRemoteRulesheetSnapshots();
+  } else {
+    await generateSharedAppSupportArtifacts();
+  }
   await buildPinballManifest();
 
   if (args.allTargets) {
