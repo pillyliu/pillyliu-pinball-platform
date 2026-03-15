@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T03:26:45Z",
+  "generatedAt": "2026-03-15T04:04:57Z",
   "playfieldOverrides": [
     {
       "practiceIdentity": "G2Lkd",
@@ -34,7 +34,7 @@
     {
       "practiceIdentity": "G48w3",
       "opdbGroupId": "G48w3",
-      "playfieldLocalPath": "/pinball/images/playfields/G48w3-Mq1Zk-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/d/fa/85/dfa851db7fffeb93188025d8f412f1d45ade5ee2.jpeg"
     },
     {
@@ -100,7 +100,7 @@
     {
       "practiceIdentity": "G56lO",
       "opdbGroupId": "G56lO",
-      "playfieldLocalPath": "/pinball/images/playfields/G56lO-MDXpW-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/e/bc/cf/ebccfcad51bb3bbf0dbf7a48da98714995508ebe.jpeg"
     },
     {
@@ -304,13 +304,13 @@
     {
       "practiceIdentity": "GrPKO",
       "opdbGroupId": "GrPKO",
-      "playfieldLocalPath": "/pinball/images/playfields/GrPKO-MLO5X-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/7/ea/3c/7ea3cfc1ec340c88cdafd604dc3bf6f25568805a.jpeg"
     },
     {
       "practiceIdentity": "GrqZX",
       "opdbGroupId": "GrqZX",
-      "playfieldLocalPath": "/pinball/images/playfields/GrqZX-MDEPd-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/e/a9/58/ea9582f5d1c070eccc05f54d5b1f670a44820909.jpg"
     },
     {
@@ -322,7 +322,7 @@
     {
       "practiceIdentity": "GRVjq",
       "opdbGroupId": "GRVjq",
-      "playfieldLocalPath": "/pinball/images/playfields/GRVjq-MD0z2-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/5/cc/38/5cc380a1e8549688af83112fb70da50c12d4a009.jpg"
     },
     {
@@ -334,7 +334,7 @@
     {
       "practiceIdentity": "GRwv0",
       "opdbGroupId": "GRwv0",
-      "playfieldLocalPath": "/pinball/images/playfields/GRwv0-MJ99E-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/a/70/4c/a704cc8d3723846382490fb40e51435449f78b28.jpg"
     },
     {
@@ -352,7 +352,7 @@
     {
       "practiceIdentity": "Grybw",
       "opdbGroupId": "Grybw",
-      "playfieldLocalPath": "/pinball/images/playfields/Grybw-M5R0n-playfield.jpg",
+      "playfieldLocalPath": null,
       "playfieldSourceUrl": "https://o.pinside.com/1/89/cb/189cb7c762c0046757052f87e2680cd5e8c7445e.jpeg"
     },
     {

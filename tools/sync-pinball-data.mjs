@@ -9,34 +9,36 @@ import { buildPinballManifest } from "./build-pinball-manifest.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
 const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
-const PINBALL_APP_ROOT = path.resolve(ROOT, "../Pinball App");
-const PINBALL_APP_SCRIPTS_DIR = path.join(PINBALL_APP_ROOT, "scripts");
-const BUILD_MATCHPLAY_TUTORIAL_ENRICHMENT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_matchplay_tutorial_enrichment.py");
-const BUILD_EXTERNAL_RULESHEET_RESOURCES_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_external_rulesheet_resources.py");
-const FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "fetch_opdb_snapshot.py");
-const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "build_library_seed_db.py");
-const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINBALL_APP_SCRIPTS_DIR, "audit_rulesheet_links.py");
+const PINPROF_PRODUCT_ROOT = path.resolve(process.env.PINPROF_PRODUCT_ROOT ?? path.join(ROOT, "../Pinball App"));
+const PINPROF_PRODUCT_SCRIPTS_DIR = path.resolve(
+  process.env.PINPROF_PRODUCT_SCRIPTS_DIR ?? path.join(PINPROF_PRODUCT_ROOT, "scripts")
+);
+const PINPROF_IOS_STARTER_PACK_PINBALL_DIR = path.resolve(
+  process.env.PINPROF_IOS_STARTER_PACK_PINBALL_DIR ??
+    path.join(PINPROF_PRODUCT_ROOT, "Pinball App 2", "Pinball App 2", "PinballStarter.bundle", "pinball")
+);
+const PINPROF_ANDROID_STARTER_PACK_PINBALL_DIR = path.resolve(
+  process.env.PINPROF_ANDROID_STARTER_PACK_PINBALL_DIR ??
+    path.join(
+      PINPROF_PRODUCT_ROOT,
+      "Pinball App Android",
+      "app",
+      "src",
+      "main",
+      "assets",
+      "starter-pack",
+      "pinball"
+    )
+);
+const BUILD_MATCHPLAY_TUTORIAL_ENRICHMENT_SCRIPT = path.join(PINPROF_PRODUCT_SCRIPTS_DIR, "build_matchplay_tutorial_enrichment.py");
+const BUILD_EXTERNAL_RULESHEET_RESOURCES_SCRIPT = path.join(PINPROF_PRODUCT_SCRIPTS_DIR, "build_external_rulesheet_resources.py");
+const FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(PINPROF_PRODUCT_SCRIPTS_DIR, "fetch_opdb_snapshot.py");
+const BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(PINPROF_PRODUCT_SCRIPTS_DIR, "build_library_seed_db.py");
+const AUDIT_RULESHEET_LINKS_SCRIPT = path.join(PINPROF_PRODUCT_SCRIPTS_DIR, "audit_rulesheet_links.py");
 const APPLY_PINPROF_ADMIN_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
 const EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "export_library_seed_overrides.py");
-const IOS_STARTER_PACK_DATA_DIR = path.join(
-  PINBALL_APP_ROOT,
-  "Pinball App 2",
-  "Pinball App 2",
-  "PinballStarter.bundle",
-  "pinball",
-  "data"
-);
-const ANDROID_STARTER_PACK_DATA_DIR = path.join(
-  PINBALL_APP_ROOT,
-  "Pinball App Android",
-  "app",
-  "src",
-  "main",
-  "assets",
-  "starter-pack",
-  "pinball",
-  "data"
-);
+const IOS_STARTER_PACK_DATA_DIR = path.join(PINPROF_IOS_STARTER_PACK_PINBALL_DIR, "data");
+const ANDROID_STARTER_PACK_DATA_DIR = path.join(PINPROF_ANDROID_STARTER_PACK_PINBALL_DIR, "data");
 const SHARED_OPDB_CATALOG_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_catalog_v1.json");
 const SHARED_LIBRARY_V3_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
 const SHARED_LIBRARY_SEED_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_seed_v1.sqlite");
@@ -77,20 +79,8 @@ function parseExtraTargetsFromEnv(envKey) {
 
 function buildStarterPackTargets() {
   const defaults = [
-    [
-      "ios-starter-pack",
-      path.resolve(
-        ROOT,
-        "../Pinball App/Pinball App 2/Pinball App 2/PinballStarter.bundle/pinball"
-      ),
-    ],
-    [
-      "android-starter-pack",
-      path.resolve(
-        ROOT,
-        "../Pinball App/Pinball App Android/app/src/main/assets/starter-pack/pinball"
-      ),
-    ],
+    ["ios-starter-pack", PINPROF_IOS_STARTER_PACK_PINBALL_DIR],
+    ["android-starter-pack", PINPROF_ANDROID_STARTER_PACK_PINBALL_DIR],
   ];
 
   const extraIos = parseExtraTargetsFromEnv("PINBALL_IOS_STARTER_PACK_TARGETS");
