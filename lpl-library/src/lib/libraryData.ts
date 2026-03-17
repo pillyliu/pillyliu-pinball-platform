@@ -1611,10 +1611,15 @@ function buildLegacyCuratedOverrides(games: LibraryGame[]): Map<string, LegacyCu
     const key = normalizedOptionalString(game.practiceIdentity ?? game.opdbGroupId);
     if (!key) continue;
     const current = overrides.get(key) ?? { practiceIdentity: key };
-    current.nameOverride ??= normalizedOptionalString(game.name);
-    current.variantOverride ??= normalizedOptionalString(game.variant);
-    current.manufacturerOverride ??= normalizedOptionalString(game.manufacturer);
-    current.yearOverride ??= game.year;
+    // PM venue rows now flow through OPDB as the authoritative machine metadata source.
+    // Keep only non-display enrichments from those legacy rows so one family member
+    // cannot leak a sheet-era name/variant/manufacturer/year onto another variant.
+    if (!isPmVenueSourceId(game.sourceId)) {
+      current.nameOverride ??= normalizedOptionalString(game.name);
+      current.variantOverride ??= normalizedOptionalString(game.variant);
+      current.manufacturerOverride ??= normalizedOptionalString(game.manufacturer);
+      current.yearOverride ??= game.year;
+    }
     current.playfieldLocalPath ??= normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
     current.gameinfoLocalPath ??= normalizedOptionalString(game.gameinfoLocal);
     current.rulesheetLocalPath ??= normalizedOptionalString(game.rulesheetLocal);
