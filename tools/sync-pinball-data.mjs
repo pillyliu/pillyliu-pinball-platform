@@ -22,6 +22,31 @@ const PINPROF_ADMIN_BUILD_LIBRARY_SEED_DB_SCRIPT = path.join(
   "importers",
   "build_library_seed_db.py"
 );
+const PINPROF_ADMIN_BUILD_VENUE_METADATA_OVERLAYS_SCRIPT = path.join(
+  PINPROF_ADMIN_SOURCE_ROOT,
+  "scripts",
+  "importers",
+  "build_venue_metadata_overlays.py"
+);
+const PINPROF_ADMIN_BUILD_CURATED_VIDEO_RESOURCES_SCRIPT = path.join(
+  PINPROF_ADMIN_SOURCE_ROOT,
+  "scripts",
+  "importers",
+  "build_curated_video_resources.py"
+);
+const BUILD_LPL_TARGETS_RESOLVED_SCRIPT = path.join(ROOT, "tools", "build_lpl_targets_resolved.py");
+const PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT = path.join(
+  PINPROF_ADMIN_SOURCE_ROOT,
+  "scripts",
+  "importers",
+  "fetch_opdb_snapshot.py"
+);
+const PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT = path.join(
+  PINPROF_ADMIN_SOURCE_ROOT,
+  "scripts",
+  "importers",
+  "refresh_catalog_rulesheet_links.py"
+);
 const PINPROF_IOS_STARTER_PACK_PINBALL_DIR = path.resolve(
   process.env.PINPROF_IOS_STARTER_PACK_PINBALL_DIR ??
     path.join(PINPROF_PRODUCT_ROOT, "Pinball App 2", "Pinball App 2", "PinballStarter.bundle", "pinball")
@@ -52,6 +77,13 @@ const SHARED_OPDB_CATALOG_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_catalo
 const SHARED_LIBRARY_V3_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
 const SHARED_LIBRARY_SEED_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_seed_v1.sqlite");
 const SHARED_RULESHEET_AUDIT_PATH = path.join(SHARED_PINBALL_DATA_DIR, "rulesheet_link_audit.json");
+const SHARED_MATCHPLAY_ENRICHMENT_PATH = path.join(SHARED_PINBALL_DATA_DIR, "matchplay_opdb_tutorial_enrichment.json");
+const SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_external_rulesheet_resources.json");
+const SHARED_CURATED_VIDEO_RESOURCES_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_curated_video_resources_v1.json");
+const SHARED_VENUE_METADATA_OVERLAYS_PATH = path.join(SHARED_PINBALL_DATA_DIR, "venue_metadata_overlays_v1.json");
+const SHARED_LPL_TARGETS_RESOLVED_PATH = path.join(SHARED_PINBALL_DATA_DIR, "lpl_targets_resolved_v1.json");
+const SHARED_AVENUE_CSV_PATH = path.join(SHARED_PINBALL_DATA_DIR, "Avenue Pinball - Current.csv");
+const SHARED_RLM_CSV_PATH = path.join(SHARED_PINBALL_DATA_DIR, "RLM Amusements - Current.csv");
 const IOS_OPDB_CATALOG_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "opdb_catalog_v1.json");
 const IOS_LIBRARY_V3_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "pinball_library_v3.json");
 const IOS_LIBRARY_SEED_DB_PATH = path.join(IOS_STARTER_PACK_DATA_DIR, "pinball_library_seed_v1.sqlite");
@@ -199,6 +231,10 @@ async function readStarterPackV3PracticeAssetRefs(target) {
 
   const root = await readJson(v3Path);
   const items = Array.isArray(root?.items) ? root.items : [];
+  if (!items.length) {
+    console.warn(`Skipping strict starter-pack asset prune; no built-in practice rows in ${path.relative(ROOT, v3Path)}`);
+    return null;
+  }
   const markdownPaths = new Set();
   const playfieldPaths = new Set(STARTER_PACK_STATIC_PLAYFIELD_PATHS);
 
@@ -230,6 +266,10 @@ async function readStarterPackV3PracticeAssetRefs(target) {
 }
 
 async function pruneStarterPackPlayfieldImages(target, keepPlayfieldPaths = null) {
+  if (!keepPlayfieldPaths) {
+    console.warn(`Skipping strict starter-pack playfield prune; no v3 practice asset refs for ${path.relative(ROOT, target)}`);
+    return;
+  }
   const playfieldDir = path.join(target, "images", "playfields");
   const entries = await fs.readdir(playfieldDir, { withFileTypes: true }).catch(() => []);
   let removed = 0;
@@ -258,14 +298,8 @@ async function pruneStarterPackPlayfieldImages(target, keepPlayfieldPaths = null
       continue;
     }
   }
-  if (keepPlayfieldPaths) {
-    console.log(
-      `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed}, kept ${keptPractice} v3 practice playfields and ${keptStatic} shared static playfields)`
-    );
-    return;
-  }
   console.log(
-    `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed} non-practice, non-fallback playfields)`
+    `Pruned starter-pack playfields in ${path.relative(ROOT, target)} (removed ${removed}, kept ${keptPractice} v3 practice playfields and ${keptStatic} shared static playfields)`
   );
 }
 
@@ -357,6 +391,16 @@ async function pruneStarterPackNonV3LibraryJsons(target) {
   }
 }
 
+async function pruneSharedLegacyLibraryJson() {
+  const legacyLibraryJsonPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library.json");
+  if (!(await pathExists(legacyLibraryJsonPath))) {
+    return;
+  }
+
+  await fs.rm(legacyLibraryJsonPath, { force: true });
+  console.log(`Pruned shared legacy library JSON (${path.relative(ROOT, legacyLibraryJsonPath)})`);
+}
+
 async function syncWebApp(appName) {
   const target = WEB_APP_TARGETS[appName];
   if (!target) {
@@ -388,6 +432,123 @@ async function syncStarterPacks() {
 
 async function rebuildLibraryJsonV3() {
   await run("npm", ["exec", "tsx", "scripts/build_pinball_library_v3.ts"], path.join(ROOT, "lpl-library"));
+}
+
+async function rebuildLplTargetsResolved() {
+  if (!(await pathExists(BUILD_LPL_TARGETS_RESOLVED_SCRIPT))) {
+    console.warn(
+      `Skipping resolved LPL targets rebuild; missing ${path.relative(ROOT, BUILD_LPL_TARGETS_RESOLVED_SCRIPT)}`
+    );
+    return;
+  }
+  if (!(await pathExists(SHARED_LIBRARY_V3_PATH)) || !(await pathExists(path.join(SHARED_PINBALL_DATA_DIR, "LPL_Targets.csv")))) {
+    console.warn("Skipping resolved LPL targets rebuild; missing pinball_library_v3.json or LPL_Targets.csv.");
+    return;
+  }
+
+  await run("python3", [
+    BUILD_LPL_TARGETS_RESOLVED_SCRIPT,
+    "--targets-csv",
+    path.join(SHARED_PINBALL_DATA_DIR, "LPL_Targets.csv"),
+    "--library-json",
+    SHARED_LIBRARY_V3_PATH,
+    "--output",
+    SHARED_LPL_TARGETS_RESOLVED_PATH,
+  ], ROOT);
+}
+
+async function rebuildVenueMetadataOverlays() {
+  if (!(await pathExists(PINPROF_ADMIN_BUILD_VENUE_METADATA_OVERLAYS_SCRIPT))) {
+    console.warn(
+      `Skipping venue metadata overlay rebuild; missing ${path.relative(ROOT, PINPROF_ADMIN_BUILD_VENUE_METADATA_OVERLAYS_SCRIPT)}`
+    );
+    return;
+  }
+
+  const args = [
+    PINPROF_ADMIN_BUILD_VENUE_METADATA_OVERLAYS_SCRIPT,
+    "--output",
+    SHARED_VENUE_METADATA_OVERLAYS_PATH,
+    "--catalog",
+    SHARED_OPDB_CATALOG_PATH,
+  ];
+  if (await pathExists(SHARED_AVENUE_CSV_PATH)) {
+    args.push("--input-csv", SHARED_AVENUE_CSV_PATH);
+  }
+  if (await pathExists(SHARED_RLM_CSV_PATH)) {
+    args.push("--input-csv", SHARED_RLM_CSV_PATH);
+  }
+  await run("python3", args, ROOT);
+}
+
+async function rebuildCuratedVideoResources() {
+  if (!(await pathExists(PINPROF_ADMIN_BUILD_CURATED_VIDEO_RESOURCES_SCRIPT))) {
+    console.warn(
+      `Skipping curated video resource rebuild; missing ${path.relative(ROOT, PINPROF_ADMIN_BUILD_CURATED_VIDEO_RESOURCES_SCRIPT)}`
+    );
+    return;
+  }
+
+  const args = [
+    PINPROF_ADMIN_BUILD_CURATED_VIDEO_RESOURCES_SCRIPT,
+    "--output",
+    SHARED_CURATED_VIDEO_RESOURCES_PATH,
+  ];
+  if (await pathExists(SHARED_AVENUE_CSV_PATH)) {
+    args.push("--input-csv", SHARED_AVENUE_CSV_PATH);
+  }
+  if (await pathExists(SHARED_RLM_CSV_PATH)) {
+    args.push("--input-csv", SHARED_RLM_CSV_PATH);
+  }
+  await run("python3", args, ROOT);
+}
+
+async function refreshSharedCatalogLinksFromCurrentEnrichment() {
+  if (!(await pathExists(PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT))) {
+    console.warn(
+      `Skipping shared catalog link refresh; missing ${path.relative(ROOT, PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT)}`
+    );
+    return;
+  }
+
+  await run(
+    "python3",
+    [
+      PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT,
+      "--matchplay-merged",
+      SHARED_MATCHPLAY_ENRICHMENT_PATH,
+      "--external-resources",
+      SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH,
+      "--curated-video-resources",
+      SHARED_CURATED_VIDEO_RESOURCES_PATH,
+      "--output",
+      SHARED_OPDB_CATALOG_PATH,
+      "--min-export-age-minutes",
+      "1440",
+    ],
+    ROOT
+  );
+
+  if (!(await pathExists(PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT))) {
+    console.warn(
+      `Skipping shared catalog rulesheet link refresh; missing ${path.relative(ROOT, PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT)}`
+    );
+    return;
+  }
+
+  await run(
+    "python3",
+    [
+      PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT,
+      "--catalog",
+      SHARED_OPDB_CATALOG_PATH,
+      "--external",
+      SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH,
+      "--output",
+      SHARED_OPDB_CATALOG_PATH,
+    ],
+    ROOT
+  );
 }
 
 async function refreshEnrichmentInputs() {
@@ -556,6 +717,8 @@ async function ensureExistingSharedSupportArtifacts() {
     SHARED_OPDB_CATALOG_PATH,
     SHARED_LIBRARY_SEED_DB_PATH,
     SHARED_RULESHEET_AUDIT_PATH,
+    SHARED_MATCHPLAY_ENRICHMENT_PATH,
+    SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH,
   ];
 
   for (const filePath of required) {
@@ -579,10 +742,15 @@ async function generateSharedAppSupportArtifacts() {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  await rebuildVenueMetadataOverlays();
+  await rebuildCuratedVideoResources();
   await rebuildLibraryJsonV3();
+  await rebuildLplTargetsResolved();
+  await pruneSharedLegacyLibraryJson();
   if (args.useExistingSharedSupportArtifacts) {
     await ensureExistingSharedSupportArtifacts();
     console.log("Reusing existing shared support artifacts (catalog, seed DB, audit).");
+    await refreshSharedCatalogLinksFromCurrentEnrichment();
     await generateSharedLibrarySeedDbFromCurrentSharedData();
     await applyPinprofAdminOverrides();
     await exportLibrarySeedOverrides();

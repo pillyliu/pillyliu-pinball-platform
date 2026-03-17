@@ -388,8 +388,8 @@ async function main() {
       properties: {
         sheetId: targetSheet.gid,
         gridProperties: {
-          frozenRowCount: 1,
-          frozenColumnCount: 11,
+          frozenRowCount: sourceSheet.frozenRowCount,
+          frozenColumnCount: sourceSheet.frozenColumnCount,
         },
       },
       fields: "gridProperties.frozenRowCount,gridProperties.frozenColumnCount",

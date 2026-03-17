@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-03-07T23:53:46.382Z",
+  "generated_at": "2026-03-17T07:44:24.568Z",
   "source_files": [
     "Avenue Pinball - Current.csv",
     "RLM Amusements - Current.csv"
@@ -38,7 +38,7 @@
   ],
   "libraries": [
     {
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "library_type": "venue",
       "item_count": 33,
@@ -46,7 +46,7 @@
       "has_location": true
     },
     {
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "library_type": "venue",
       "item_count": 41,
@@ -58,9 +58,9 @@
     {
       "library_entry_id": "v--8760--Gj66P",
       "practice_identity": "Gj66P",
-      "opdb_id": "Gj66P-MXr0E",
+      "opdb_id": "Gj66P-MXr0E-A1nx0",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Avengers: Infinity Quest",
       "variant": "Premium",
@@ -92,9 +92,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gj66P-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gj66P-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gj66P-MXr0E-ARkqN-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "avengers-infinity-quest",
@@ -148,7 +148,7 @@
       "practice_identity": "GRBE4",
       "opdb_id": "GRBE4-MQK1Z",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Metallica",
       "variant": "Pro",
@@ -174,9 +174,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GRBE4-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GRBE4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRBE4-MQK1Z-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRBE4-MQK1Z-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "metallica",
@@ -230,9 +230,9 @@
       "practice_identity": "G4dOQ",
       "opdb_id": "G4dOQ-MyNbb",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Iron Maiden",
+      "game": "Iron Maiden: Legacy of the Beast",
       "variant": "Pro",
       "manufacturer": "Stern",
       "year": 2018,
@@ -256,12 +256,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-MW970-playfield.png"
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "iron-maiden",
+        "alphabetical": "iron-maiden-legacy-of-the-beast",
         "year": 2018,
         "location": {
           "areaOrder": 1,
@@ -312,10 +312,10 @@
       "practice_identity": "Gryw4",
       "opdb_id": "Gryw4-MNEKn",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Star Trek",
-      "variant": "Enterprise LE",
+      "variant": "LE",
       "manufacturer": "Stern",
       "year": 2013,
       "venue": "The Avenue Cafe",
@@ -344,9 +344,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gryw4-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gryw4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gryw4-MwNwZ-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "star-trek",
@@ -398,9 +398,9 @@
     {
       "library_entry_id": "v--8760--G7ZEz",
       "practice_identity": "G7ZEz",
-      "opdb_id": "G7ZEz-MyN3K",
+      "opdb_id": "G7ZEz-MyN3K-ARl3o",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Uncanny X-Men",
       "variant": "LE",
@@ -419,9 +419,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -475,7 +475,7 @@
       "practice_identity": "G5vLR",
       "opdb_id": "G5vLR-MwNwy",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Star Wars",
       "variant": "Pro",
@@ -501,9 +501,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G5vLR-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G5vLR-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5vLR-ME049-playfield.png"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "star-wars",
@@ -557,7 +557,7 @@
       "practice_identity": "GRvBL",
       "opdb_id": "GRvBL-MP3Ev",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Simpsons Pinball Party",
       "variant": null,
@@ -591,7 +591,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRvBL-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GRvBL-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRvBL-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRvBL-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-simpsons-pinball-party",
@@ -643,9 +643,9 @@
     {
       "library_entry_id": "v--8760--GBLLP",
       "practice_identity": "GBLLP",
-      "opdb_id": "GBLLP-MW900",
+      "opdb_id": "GBLLP-MW900-AOEEN",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Mandalorian",
       "variant": "Premium",
@@ -671,9 +671,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GBLLP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GBLLP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GBLLP-MW900-A1KoQ-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "the-mandalorian",
@@ -727,7 +727,7 @@
       "practice_identity": "Grx8Y",
       "opdb_id": "Grx8Y-MKNe9",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Getaway: High Speed II",
       "variant": null,
@@ -755,7 +755,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-getaway-high-speed-ii",
@@ -809,7 +809,7 @@
       "practice_identity": "Gr3EW",
       "opdb_id": "Gr3EW-MD3Nj",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Monster Bash",
       "variant": null,
@@ -843,7 +843,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr3EW-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gr3EW-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gr3EW-M1r9Y-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "monster-bash",
@@ -897,7 +897,7 @@
       "practice_identity": "G4xZy",
       "opdb_id": "G4xZy-MLno6",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Indiana Jones: The Pinball Adventure",
       "variant": null,
@@ -925,7 +925,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4xZy-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4xZy-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4xZy-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4xZy-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "indiana-jones-the-pinball-adventure",
@@ -977,14 +977,14 @@
     {
       "library_entry_id": "v--8760--G4835",
       "practice_identity": "G4835",
-      "opdb_id": "G4835-Mb5eO",
+      "opdb_id": "G4835-M2YPK-ARkb7",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Cactus Canyon",
+      "game": "Cactus Canyon (Lyman Upgrade)",
       "variant": "Lyman Upgrade",
-      "manufacturer": "Bally",
-      "year": 1998,
+      "manufacturer": "Chicago Gaming",
+      "year": 2025,
       "venue": "The Avenue Cafe",
       "pm_location_id": "8760",
       "venue_location": "Lansing, MI",
@@ -1007,11 +1007,11 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4835-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4835-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4835-M2YPK-A9ylv-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "cactus-canyon",
-        "year": 1998,
+        "alphabetical": "cactus-canyon-lyman-upgrade",
+        "year": 2025,
         "location": {
           "areaOrder": 1,
           "area": "U",
@@ -1061,7 +1061,7 @@
       "practice_identity": "G4llj",
       "opdb_id": "G4llj-MQYb2",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Tales of the Arabian Nights",
       "variant": null,
@@ -1089,7 +1089,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4llj-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4llj-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4llj-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4llj-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "tales-of-the-arabian-nights",
@@ -1143,7 +1143,7 @@
       "practice_identity": "G4ODR",
       "opdb_id": "G4ODR-MDXEy",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Addams Family",
       "variant": null,
@@ -1171,7 +1171,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4ODR-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4ODR-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4ODR-MDXEy-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4ODR-MDXEy-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-addams-family",
@@ -1223,9 +1223,9 @@
     {
       "library_entry_id": "v--8760--G2Lkd",
       "practice_identity": "G2Lkd",
-      "opdb_id": "G2Lkd-M0ope",
+      "opdb_id": "G2Lkd-M0ope-A97xV",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Rush",
       "variant": "LE",
@@ -1269,9 +1269,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G2Lkd-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G2Lkd-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G2Lkd-M0ope-A97xV-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G2Lkd-M0ope-A97xV-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "rush",
@@ -1323,9 +1323,9 @@
     {
       "library_entry_id": "v--8760--GpeoL",
       "practice_identity": "GpeoL",
-      "opdb_id": "GpeoL-MkPz1",
+      "opdb_id": "GpeoL-MkPz1-A944p",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Foo Fighters",
       "variant": "LE",
@@ -1357,9 +1357,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GpeoL-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GpeoL-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GpeoL-MkPz1-A944p-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GpeoL-MkPz1-A944p-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "foo-fighters",
@@ -1411,14 +1411,14 @@
     {
       "library_entry_id": "v--8760--G43W4",
       "practice_identity": "G43W4",
-      "opdb_id": "G43W4-MXrPx",
+      "opdb_id": "G43W4-MdEjy",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "AC/DC",
+      "game": "AC/DC (Premium Vault Edition)",
       "variant": "Premium Vault Edition",
       "manufacturer": "Stern",
-      "year": 2012,
+      "year": 2017,
       "venue": "The Avenue Cafe",
       "pm_location_id": "8760",
       "venue_location": "Lansing, MI",
@@ -1447,11 +1447,11 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G43W4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G43W4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G43W4-MdEjy-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G43W4-MdEjy-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "ac-dc",
-        "year": 2012,
+        "alphabetical": "ac-dc-premium-vault-edition",
+        "year": 2017,
         "location": {
           "areaOrder": 1,
           "area": "U",
@@ -1501,9 +1501,9 @@
       "practice_identity": "G4qX5",
       "opdb_id": "G4qX5-Ml9jb",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Kiss",
+      "game": "KISS",
       "variant": "LE",
       "manufacturer": "Stern",
       "year": 2015,
@@ -1527,9 +1527,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G4qX5-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4qX5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4qX5-Ml9jb-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4qX5-Ml9jb-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "kiss",
@@ -1581,9 +1581,9 @@
     {
       "library_entry_id": "v--8760--GweeP",
       "practice_identity": "GweeP",
-      "opdb_id": "GweeP-Ml9pZ",
+      "opdb_id": "GweeP-Ml9pZ-ARZoY",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Godzilla",
       "variant": "Premium",
@@ -1621,9 +1621,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -1677,7 +1677,7 @@
       "practice_identity": "G6lnq",
       "opdb_id": "G6lnq-Mq1kv",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Deadpool",
       "variant": "Pro",
@@ -1703,9 +1703,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G6lnq-M6153-playfield.png"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -1759,7 +1759,7 @@
       "practice_identity": "GbPde",
       "opdb_id": "GbPde-M5Rkv",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "The Munsters",
       "variant": "Pro",
@@ -1791,9 +1791,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GbPde-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GbPde-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GbPde-M5Rkv-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GbPde-M5Rkv-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-munsters",
@@ -1845,14 +1845,14 @@
     {
       "library_entry_id": "v--8760--GoEkx",
       "practice_identity": "GoEkx",
-      "opdb_id": "GoEkx-MdEzN",
+      "opdb_id": "GoEkx-MdEzN-AR50E",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Pulp Fiction",
       "variant": "LE",
-      "manufacturer": "CGC",
-      "year": 2024,
+      "manufacturer": "Chicago Gaming",
+      "year": 2023,
       "venue": "The Avenue Cafe",
       "pm_location_id": "8760",
       "venue_location": "Lansing, MI",
@@ -1879,13 +1879,13 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
-        "year": 2024,
+        "year": 2023,
         "location": {
           "areaOrder": 1,
           "area": "U",
@@ -1935,9 +1935,9 @@
       "practice_identity": "GrkL5",
       "opdb_id": "GrkL5-MJoNN",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Tron: Legacy",
+      "game": "Disney TRON: Legacy",
       "variant": "LE",
       "manufacturer": "Stern",
       "year": 2011,
@@ -1969,10 +1969,10 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrkL5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GrkL5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GrkL5-MJoNN-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrkL5-MJoNN-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "tron-legacy",
+        "alphabetical": "disney-tron-legacy",
         "year": 2011,
         "location": {
           "areaOrder": 1,
@@ -2021,9 +2021,9 @@
     {
       "library_entry_id": "v--8760--Gd2Xb",
       "practice_identity": "Gd2Xb",
-      "opdb_id": "Gd2Xb-MRjpZ",
+      "opdb_id": "Gd2Xb-MRjpZ-A92v0",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Teenage Mutant Ninja Turtles",
       "variant": "LE",
@@ -2042,9 +2042,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gd2Xb-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gd2Xb-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-MRjpZ-A92v0-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gd2Xb-MRjpZ-A92v0-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "teenage-mutant-ninja-turtles",
@@ -2098,7 +2098,7 @@
       "practice_identity": "G4xbP",
       "opdb_id": "G4xbP-Mp45Y",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Scared Stiff",
       "variant": null,
@@ -2126,7 +2126,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4xbP-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4xbP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4xbP-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4xbP-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "scared-stiff",
@@ -2178,9 +2178,9 @@
     {
       "library_entry_id": "v--8760--GK1Ej",
       "practice_identity": "GK1Ej",
-      "opdb_id": "GK1Ej-MePok",
+      "opdb_id": "GK1Ej-MePok-A1zKx",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Dungeons & Dragons: The Tyrant's Eye",
       "variant": "LE",
@@ -2206,9 +2206,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GK1Ej-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK1Ej-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK1Ej-MePok-A1zKx-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GK1Ej-MePok-A1zKx-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "dungeons-and-dragons-the-tyrants-eye",
@@ -2260,9 +2260,9 @@
     {
       "library_entry_id": "v--8760--Gxv81",
       "practice_identity": "Gxv81",
-      "opdb_id": "Gxv81-Mo1rp",
+      "opdb_id": "Gxv81-Mo1rp-A9Qew",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Star Wars: Fall of the Empire",
       "variant": "LE",
@@ -2281,9 +2281,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -2335,9 +2335,9 @@
     {
       "library_entry_id": "v--8760--GQK1P",
       "practice_identity": "GQK1P",
-      "opdb_id": "GQK1P-Ml95Z",
+      "opdb_id": "GQK1P-Ml95Z-A9bjw",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "John Wick",
       "variant": "LE",
@@ -2356,9 +2356,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GQK1P-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQK1P-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQK1P-Ml95Z-A9bjw-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQK1P-Ml95Z-A9bjw-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "john-wick",
@@ -2410,9 +2410,9 @@
     {
       "library_entry_id": "v--8760--GZVOd",
       "practice_identity": "GZVOd",
-      "opdb_id": "GZVOd-MwNxZ",
+      "opdb_id": "GZVOd-MwNxZ-AR8vV",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Elvira's House of Horrors",
       "variant": "LE",
@@ -2438,9 +2438,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GZVOd-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GZVOd-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GZVOd-MwNxZ-AO25N-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "elviras-house-of-horrors",
@@ -2492,9 +2492,9 @@
     {
       "library_entry_id": "v--8760--GQKyP",
       "practice_identity": "GQKyP",
-      "opdb_id": "GQKyP-MP3OK",
+      "opdb_id": "GQKyP-MP3OK-A1KoX",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "James Bond 007",
       "variant": "LE",
@@ -2526,9 +2526,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -2580,11 +2580,11 @@
     {
       "library_entry_id": "v--8760--GEL0V",
       "practice_identity": "GEL0V",
-      "opdb_id": "GEL0V-MyN8E",
+      "opdb_id": "GEL0V-MyN8E-ARq7n",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "King Kong",
+      "game": "King Kong: Myth of Terror Island",
       "variant": "LE",
       "manufacturer": "Stern",
       "year": 2025,
@@ -2614,12 +2614,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "king-kong",
+        "alphabetical": "king-kong-myth-of-terror-island",
         "year": 2025,
         "location": {
           "areaOrder": 2,
@@ -2670,7 +2670,7 @@
       "practice_identity": "GR9Nr",
       "opdb_id": "GR9Nr-MVKol",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Ghostbusters",
       "variant": "LE",
@@ -2689,9 +2689,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GR9Nr-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GR9Nr-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GR9Nr-MVKol-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/GR9Nr-MVKol-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "ghostbusters",
@@ -2743,11 +2743,11 @@
     {
       "library_entry_id": "v--8760--GLWll",
       "practice_identity": "GLWll",
-      "opdb_id": "GLWll-M1r8O",
+      "opdb_id": "GLWll-M1r8O-A1kx7",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Jaws",
+      "game": "JAWS",
       "variant": "LE",
       "manufacturer": "Stern",
       "year": 2024,
@@ -2777,9 +2777,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -2833,7 +2833,7 @@
       "practice_identity": "GK17D",
       "opdb_id": "GK17D-MdEqz",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Jurassic Park",
       "variant": "Pro",
@@ -2865,9 +2865,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -2921,7 +2921,7 @@
       "practice_identity": "G41d5",
       "opdb_id": "G41d5-M9REd",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Game of Thrones",
       "variant": "LE",
@@ -2947,9 +2947,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G41d5-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G41d5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G41d5-M9REd-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G41d5-M9REd-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "game-of-thrones",
@@ -3001,14 +3001,14 @@
     {
       "library_entry_id": "v--8760--G4do5",
       "practice_identity": "G4do5",
-      "opdb_id": "G4do5-MDlN7",
+      "opdb_id": "G4do5-MW9z8",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
-      "game": "Attack from Mars",
+      "game": "Attack From Mars (Remake LE)",
       "variant": "Remake LE",
-      "manufacturer": "Bally",
-      "year": 1995,
+      "manufacturer": "Chicago Gaming",
+      "year": 2017,
       "venue": "The Avenue Cafe",
       "pm_location_id": "8760",
       "venue_location": "Lansing, MI",
@@ -3037,11 +3037,11 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4do5-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4do5-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4do5-MDlN7-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "attack-from-mars",
-        "year": 1995,
+        "alphabetical": "attack-from-mars-remake-le",
+        "year": 2017,
         "location": {
           "areaOrder": 2,
           "area": "D",
@@ -3089,9 +3089,9 @@
     {
       "library_entry_id": "v--8760--GD7Ld",
       "practice_identity": "GD7Ld",
-      "opdb_id": "GD7Ld-MBRP4",
+      "opdb_id": "GD7Ld-MBRP4-A1e4P",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Black Knight: Sword of Rage",
       "variant": "LE",
@@ -3123,9 +3123,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -3177,9 +3177,9 @@
     {
       "library_entry_id": "v--8760--GweeP",
       "practice_identity": "GweeP",
-      "opdb_id": "GweeP-Ml9pZ",
+      "opdb_id": "GweeP-Ml9pZ-A9vXB",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Godzilla",
       "variant": "LE",
@@ -3198,9 +3198,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -3254,7 +3254,7 @@
       "practice_identity": "G5pe4",
       "opdb_id": "G5pe4-MePZv",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Medieval Madness",
       "variant": null,
@@ -3288,7 +3288,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5pe4-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5pe4-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5pe4-MePZv-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5pe4-MePZv-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "medieval-madness",
@@ -3340,9 +3340,9 @@
     {
       "library_entry_id": "v--8760--G3EBl",
       "practice_identity": "G3EBl",
-      "opdb_id": "G3EBl-MRj6e",
+      "opdb_id": "G3EBl-MRj6e-ARzbx",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Venom",
       "variant": "LE",
@@ -3368,9 +3368,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G3EBl-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G3EBl-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G3EBl-MRj6e-ARzbx-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G3EBl-MRj6e-ARzbx-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "venom",
@@ -3422,9 +3422,9 @@
     {
       "library_entry_id": "v--8760--Gzy89",
       "practice_identity": "Gzy89",
-      "opdb_id": "Gzy89-M0oPy",
+      "opdb_id": "Gzy89-M0oPy-A9xXV",
       "library_type": "venue",
-      "library_id": "venue--the-avenue-cafe",
+      "library_id": "venue--pm-8760",
       "library_name": "The Avenue Cafe",
       "game": "Stranger Things",
       "variant": "LE",
@@ -3456,9 +3456,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gzy89-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gzy89-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gzy89-M0oPy-A9xXV-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gzy89-M0oPy-A9xXV-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "stranger-things",
@@ -3512,11 +3512,11 @@
       "practice_identity": "GWyBj",
       "opdb_id": "GWyBj-MdEbK",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Harry Potter: Arcade Edition",
+      "game": "Harry Potter",
       "variant": "Arcade Edition",
-      "manufacturer": "JJP",
+      "manufacturer": "Jersey Jack Pinball",
       "year": 2025,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -3544,12 +3544,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GWyBj-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GWyBj-gameinfo.md",
         "playfield_local_practice": "/pinball/images/playfields/GWyBj-MdEbK-AOPdq-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "harry-potter-arcade-edition",
+        "alphabetical": "harry-potter",
         "year": 2025,
         "location": {
           "areaOrder": null,
@@ -3598,11 +3598,11 @@
     {
       "library_entry_id": "v--16470--GEL0V",
       "practice_identity": "GEL0V",
-      "opdb_id": "GEL0V-MyN8E",
+      "opdb_id": "GEL0V-MyN8E-A1Dkr",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "King Kong",
+      "game": "King Kong: Myth of Terror Island",
       "variant": "Premium",
       "manufacturer": "Stern",
       "year": 2025,
@@ -3632,12 +3632,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GEL0V-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GEL0V-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "king-kong",
+        "alphabetical": "king-kong-myth-of-terror-island",
         "year": 2025,
         "location": {
           "areaOrder": null,
@@ -3688,7 +3688,7 @@
       "practice_identity": "Gxv81",
       "opdb_id": "Gxv81-M610r",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Star Wars: Fall of the Empire",
       "variant": "Pro",
@@ -3707,9 +3707,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gxv81-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/Gxv81-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "star-wars-fall-of-the-empire",
@@ -3759,16 +3759,16 @@
       }
     },
     {
-      "library_entry_id": "v--16470--Gd266",
-      "practice_identity": "Gd266",
-      "opdb_id": "Gd266-ME0l7",
+      "library_entry_id": "v--16470--GV8wB",
+      "practice_identity": "GV8wB",
+      "opdb_id": "GV8wB-Mq12N",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Dune",
-      "variant": null,
-      "manufacturer": "BoF",
-      "year": 2025,
+      "game": "Pokémon",
+      "variant": "Pro",
+      "manufacturer": "Stern",
+      "year": 2026,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
       "venue_location": "Grand Rapids, MI",
@@ -3777,31 +3777,18 @@
       "group": 1,
       "position": 4,
       "bank": null,
-      "slug": "dune",
-      "rulesheet_url": "https://tiltforums.com/t/dune-rulesheet/9850",
-      "playfield_image_url": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
-      "videos": [
-        {
-          "kind": "gameplay",
-          "order": 1,
-          "label": "Gameplay 1",
-          "url": "https://www.youtube.com/watch?v=CjG_VywpCKU"
-        },
-        {
-          "kind": "tutorial",
-          "order": 1,
-          "label": "Tutorial 1",
-          "url": "https://www.youtube.com/watch?v=A6NcxN7D-JI"
-        }
-      ],
+      "slug": "pok-mon-pro",
+      "rulesheet_url": null,
+      "playfield_image_url": null,
+      "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/Gd266-rulesheet.md",
-        "gameinfo_local_practice": "/pinball/gameinfo/Gd266-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gd266-playfield.jpg"
+        "rulesheet_local_practice": null,
+        "gameinfo_local_practice": null,
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "dune",
-        "year": 2025,
+        "alphabetical": "pok-mon",
+        "year": 2026,
         "location": {
           "areaOrder": null,
           "area": null,
@@ -3811,9 +3798,9 @@
         "bank": null
       },
       "columns": {
-        "library_entry_id": "v--16470--Gd266",
-        "practice_identity": "Gd266",
-        "opdb_id": "Gd266-ME0l7",
+        "library_entry_id": "v--16470--GV8wB",
+        "practice_identity": "GV8wB",
+        "opdb_id": "GV8wB-Mq12N",
         "Venue": "RLM Amusements",
         "PM_location_id": "16470",
         "Venue Location": "Grand Rapids, MI",
@@ -3822,17 +3809,17 @@
         "Group": "1",
         "Position": "4",
         "Bank": "",
-        "Game": "Dune",
-        "Variant": "",
-        "Manufacturer": "BoF",
-        "Year": "2025",
-        "Playfield Image": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
-        "Rulesheet": "https://tiltforums.com/t/dune-rulesheet/9850",
-        "Tutorial 1": "https://www.youtube.com/watch?v=A6NcxN7D-JI",
+        "Game": "Pokémon",
+        "Variant": "Pro",
+        "Manufacturer": "Stern",
+        "Year": "2026",
+        "Playfield Image": "",
+        "Rulesheet": "",
+        "Tutorial 1": "",
         "Tutorial 2": "",
         "Tutorial 3": "",
         "Tutorial 4": "",
-        "Gameplay 1": "https://www.youtube.com/watch?v=CjG_VywpCKU",
+        "Gameplay 1": "",
         "Gameplay 2": "",
         "Gameplay 3": "",
         "Gameplay 4": "",
@@ -3849,11 +3836,11 @@
     {
       "library_entry_id": "v--16470--GLWll",
       "practice_identity": "GLWll",
-      "opdb_id": "GLWll-M1r8O",
+      "opdb_id": "GLWll-M1r8O-ARnV7",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Jaws",
+      "game": "JAWS",
       "variant": "Premium",
       "manufacturer": "Stern",
       "year": 2024,
@@ -3883,9 +3870,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GLWll-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GLWll-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "jaws",
@@ -3939,7 +3926,7 @@
       "practice_identity": "G6lnq",
       "opdb_id": "G6lnq-MRj7Z",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Deadpool",
       "variant": "Premium",
@@ -3965,9 +3952,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G6lnq-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G6lnq-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G6lnq-M6153-playfield.png"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "deadpool",
@@ -4021,7 +4008,7 @@
       "practice_identity": "GRVoX",
       "opdb_id": "GRVoX-MLE7l",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Fast Draw",
       "variant": null,
@@ -4042,7 +4029,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRVoX-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GRVoX-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRVoX-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRVoX-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "fast-draw",
@@ -4096,11 +4083,11 @@
       "practice_identity": "GYWvw",
       "opdb_id": "GYWvw-MKNP4",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Evil Dead",
       "variant": "CE",
-      "manufacturer": "Spooky",
+      "manufacturer": "Spooky Pinball",
       "year": 2024,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -4115,9 +4102,9 @@
       "playfield_image_url": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GYWvw-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GYWvw-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GYWvw-playfield.png"
+        "playfield_local_practice": "/pinball/images/playfields/GYWvw-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "evil-dead",
@@ -4169,14 +4156,14 @@
     {
       "library_entry_id": "v--16470--G4PBO",
       "practice_identity": "G4PBO",
-      "opdb_id": "G4PBO-MyNeb",
+      "opdb_id": "G4PBO-MyNeb-A9E6x",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Alien: Ellen Ripley Edition",
+      "game": "Alien (Ellen Ripley)",
       "variant": "Ellen Ripley",
-      "manufacturer": "PB",
-      "year": 2022,
+      "manufacturer": "Pinball Brothers",
+      "year": 2023,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
       "venue_location": "Grand Rapids, MI",
@@ -4190,13 +4177,13 @@
       "playfield_image_url": "https://o.pinside.com/1/13/91/11391f5e555c44d51d57e53b80cdb54ef6747435.jpeg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G4PBO-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4PBO-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4PBO-MyNeb-A9E6x-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4PBO-MyNeb-A9E6x-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "alien-ellen-ripley-edition",
-        "year": 2022,
+        "alphabetical": "alien-ellen-ripley",
+        "year": 2023,
         "location": {
           "areaOrder": null,
           "area": null,
@@ -4246,11 +4233,11 @@
       "practice_identity": "GR6wO",
       "opdb_id": "GR6wO-MDvzk",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Tales from the Crypt",
       "variant": null,
-      "manufacturer": "DE",
+      "manufacturer": "Data East",
       "year": 1993,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -4274,7 +4261,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GR6wO-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GR6wO-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GR6wO-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GR6wO-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "tales-from-the-crypt",
@@ -4328,11 +4315,11 @@
       "practice_identity": "G5Kvx",
       "opdb_id": "G5Kvx-MQdpl",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Baby Pac-Man",
       "variant": null,
-      "manufacturer": "Midway",
+      "manufacturer": "Bally",
       "year": 1982,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -4356,7 +4343,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5Kvx-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5Kvx-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5Kvx-playfield.jpeg"
+        "playfield_local_practice": "/pinball/images/playfields/G5Kvx-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "baby-pac-man",
@@ -4410,7 +4397,7 @@
       "practice_identity": "GrP6q",
       "opdb_id": "GrP6q-M5Rp1",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Nitro Ground Shaker",
       "variant": null,
@@ -4438,7 +4425,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrP6q-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GrP6q-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GrP6q-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrP6q-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "nitro-ground-shaker",
@@ -4490,9 +4477,9 @@
     {
       "library_entry_id": "v--16470--GO0q3",
       "practice_identity": "GO0q3",
-      "opdb_id": "GO0q3-MOEy8",
+      "opdb_id": "GO0q3-MOEy8-ARol7",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Metallica Remastered",
       "variant": "Premium",
@@ -4511,9 +4498,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/10/MetalliPlayfLEFinal-kjahefae.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GO0q3-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GO0q3-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GO0q3-MOEy8-ARrPz-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "metallica-remastered",
@@ -4567,7 +4554,7 @@
       "practice_identity": "Gr8l3",
       "opdb_id": "Gr8l3-MDWr0",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Indianapolis 500",
       "variant": null,
@@ -4595,7 +4582,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr8l3-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gr8l3-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gr8l3-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gr8l3-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "indianapolis-500",
@@ -4647,14 +4634,14 @@
     {
       "library_entry_id": "v--16470--GoEkx",
       "practice_identity": "GoEkx",
-      "opdb_id": "GoEkx-MdEzN",
+      "opdb_id": "GoEkx-MdEzN-ARJQz",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Pulp Fiction",
       "variant": "SE",
-      "manufacturer": "CGC",
-      "year": 2024,
+      "manufacturer": "Chicago Gaming",
+      "year": 2023,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
       "venue_location": "Grand Rapids, MI",
@@ -4681,13 +4668,13 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GoEkx-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GoEkx-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "pulp-fiction",
-        "year": 2024,
+        "year": 2023,
         "location": {
           "areaOrder": null,
           "area": null,
@@ -4737,7 +4724,7 @@
       "practice_identity": "G4yen",
       "opdb_id": "G4yen-MD12Y",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Alien Poker",
       "variant": null,
@@ -4765,7 +4752,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4yen-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4yen-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4yen-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4yen-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "alien-poker",
@@ -4819,11 +4806,11 @@
       "practice_identity": "GRD79",
       "opdb_id": "GRD79-M0odk",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Total Nuclear Annihilation",
       "variant": null,
-      "manufacturer": "Spooky",
+      "manufacturer": "Spooky Pinball",
       "year": 2017,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -4845,9 +4832,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GRD79-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GRD79-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRD79-M0odk-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRD79-M0odk-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "total-nuclear-annihilation",
@@ -4901,7 +4888,7 @@
       "practice_identity": "Grx8Y",
       "opdb_id": "Grx8Y-MKNe9",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "The Getaway: High Speed II",
       "variant": null,
@@ -4929,7 +4916,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Grx8Y-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Grx8Y-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Grx8Y-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-getaway-high-speed-ii",
@@ -4983,7 +4970,7 @@
       "practice_identity": "GQKyP",
       "opdb_id": "GQKyP-Mx0O4",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "James Bond 007",
       "variant": "Pro",
@@ -5015,9 +5002,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GQKyP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GQKyP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "james-bond-007",
@@ -5071,7 +5058,7 @@
       "practice_identity": "G7ZEz",
       "opdb_id": "G7ZEz-MBRYn",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "The Uncanny X-Men",
       "variant": "Pro",
@@ -5090,9 +5077,9 @@
       "playfield_image_url": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg",
       "videos": [],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G7ZEz-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G7ZEz-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "the-uncanny-x-men",
@@ -5146,7 +5133,7 @@
       "practice_identity": "GrXy3",
       "opdb_id": "GrXy3-ML0Ey",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Paragon",
       "variant": null,
@@ -5174,7 +5161,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrXy3-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GrXy3-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GrXy3-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrXy3-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "paragon",
@@ -5228,7 +5215,7 @@
       "practice_identity": "GRKx7",
       "opdb_id": "GRKx7-MJ49e",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Buck Rogers",
       "variant": null,
@@ -5256,7 +5243,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GRKx7-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GRKx7-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GRKx7-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GRKx7-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "buck-rogers",
@@ -5310,7 +5297,7 @@
       "practice_identity": "G5YDN",
       "opdb_id": "G5YDN-MJKYo",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Totem",
       "variant": null,
@@ -5331,7 +5318,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5YDN-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5YDN-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5YDN-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5YDN-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "totem",
@@ -5385,11 +5372,11 @@
       "practice_identity": "G4jPX",
       "opdb_id": "G4jPX-M85YZ",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "The Shadow",
       "variant": null,
-      "manufacturer": "Midway",
+      "manufacturer": "Bally",
       "year": 1994,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -5413,7 +5400,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G4jPX-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G4jPX-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4jPX-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G4jPX-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "the-shadow",
@@ -5467,7 +5454,7 @@
       "practice_identity": "GrPbb",
       "opdb_id": "GrPbb-MJZX6",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Excalibur",
       "variant": null,
@@ -5488,7 +5475,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/GrPbb-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/GrPbb-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GrPbb-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GrPbb-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "excalibur",
@@ -5540,9 +5527,9 @@
     {
       "library_entry_id": "v--16470--GweeP",
       "practice_identity": "GweeP",
-      "opdb_id": "GweeP-Ml9pZ",
+      "opdb_id": "GweeP-Ml9pZ-ARZoY",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Godzilla",
       "variant": "Premium",
@@ -5580,9 +5567,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GweeP-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GweeP-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "godzilla",
@@ -5636,7 +5623,7 @@
       "practice_identity": "G5728",
       "opdb_id": "G5728-MDbjD",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Flash Gordon",
       "variant": null,
@@ -5664,7 +5651,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/G5728-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/G5728-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G5728-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/G5728-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "flash-gordon",
@@ -5718,7 +5705,7 @@
       "practice_identity": "Gr2wz",
       "opdb_id": "Gr2wz-MLBob",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Genesis",
       "variant": null,
@@ -5752,7 +5739,7 @@
       "assets": {
         "rulesheet_local_practice": "/pinball/rulesheets/Gr2wz-rulesheet.md",
         "gameinfo_local_practice": "/pinball/gameinfo/Gr2wz-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/Gr2wz-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/Gr2wz-playfield.webp"
       },
       "sort_keys": {
         "alphabetical": "genesis",
@@ -5806,7 +5793,7 @@
       "practice_identity": "GD7Ld",
       "opdb_id": "GD7Ld-ME0BP",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Black Knight: Sword of Rage",
       "variant": "Pro",
@@ -5838,9 +5825,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GD7Ld-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GD7Ld-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "black-knight-sword-of-rage",
@@ -5892,9 +5879,9 @@
     {
       "library_entry_id": "v--16470--GK17D",
       "practice_identity": "GK17D",
-      "opdb_id": "GK17D-MKNKd",
+      "opdb_id": "GK17D-MKNKd-A15Yn",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Jurassic Park",
       "variant": "Premium",
@@ -5926,9 +5913,9 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg"
+        "playfield_local_practice": null
       },
       "sort_keys": {
         "alphabetical": "jurassic-park",
@@ -5982,7 +5969,7 @@
       "practice_identity": "GryK3",
       "opdb_id": "GryK3-MQrWk",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
       "game": "Robo-War",
       "variant": null,
@@ -6064,11 +6051,11 @@
       "practice_identity": "GvBn8",
       "opdb_id": "GvBn8-Mz291",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Labyrinth",
+      "game": "Jim Henson's Labyrinth",
       "variant": null,
-      "manufacturer": "BoF",
+      "manufacturer": "Barrels of Fun",
       "year": 2023,
       "venue": "RLM Amusements",
       "pm_location_id": "16470",
@@ -6090,12 +6077,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/GvBn8-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GvBn8-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/GvBn8-playfield.jpg"
+        "playfield_local_practice": "/pinball/images/playfields/GvBn8-playfield.webp"
       },
       "sort_keys": {
-        "alphabetical": "labyrinth",
+        "alphabetical": "jim-hensons-labyrinth",
         "year": 2023,
         "location": {
           "areaOrder": null,
@@ -6146,9 +6133,9 @@
       "practice_identity": "G4dOQ",
       "opdb_id": "G4dOQ-MyNbb",
       "library_type": "venue",
-      "library_id": "venue--rlm-amusements",
+      "library_id": "venue--pm-16470",
       "library_name": "RLM Amusements",
-      "game": "Iron Maiden",
+      "game": "Iron Maiden: Legacy of the Beast",
       "variant": "Pro",
       "manufacturer": "Stern",
       "year": 2018,
@@ -6172,12 +6159,12 @@
         }
       ],
       "assets": {
-        "rulesheet_local_practice": "/pinball/rulesheets/G4dOQ-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/G4dOQ-gameinfo.md",
-        "playfield_local_practice": "/pinball/images/playfields/G4dOQ-MW970-playfield.png"
+        "playfield_local_practice": null
       },
       "sort_keys": {
-        "alphabetical": "iron-maiden",
+        "alphabetical": "iron-maiden-legacy-of-the-beast",
         "year": 2018,
         "location": {
           "areaOrder": null,

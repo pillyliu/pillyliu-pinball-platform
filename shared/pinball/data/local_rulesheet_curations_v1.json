@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "practice_identity": "G43W4",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G43W4-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4835",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4835-rulesheet.md",
+      "notes": "Mixed-source custom local rulesheet; keep even though it references Tilt Forums."
+    },
+    {
+      "practice_identity": "G4ODR",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4ODR-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4do5",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4do5-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4jPX",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4jPX-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4llj",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4llj-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4xZy",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4xZy-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4xbP",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4xbP-rulesheet.md"
+    },
+    {
+      "practice_identity": "G4yen",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G4yen-rulesheet.md"
+    },
+    {
+      "practice_identity": "G5728",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G5728-rulesheet.md"
+    },
+    {
+      "practice_identity": "G5Kvx",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G5Kvx-rulesheet.md"
+    },
+    {
+      "practice_identity": "G5YDN",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G5YDN-rulesheet.md"
+    },
+    {
+      "practice_identity": "G5pe4",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/G5pe4-rulesheet.md"
+    },
+    {
+      "practice_identity": "GR6wO",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GR6wO-rulesheet.md"
+    },
+    {
+      "practice_identity": "GRKx7",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GRKx7-rulesheet.md"
+    },
+    {
+      "practice_identity": "GRVoX",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GRVoX-rulesheet.md"
+    },
+    {
+      "practice_identity": "GRvBL",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GRvBL-rulesheet.md"
+    },
+    {
+      "practice_identity": "Gr2wz",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/Gr2wz-rulesheet.md"
+    },
+    {
+      "practice_identity": "Gr3EW",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/Gr3EW-rulesheet.md"
+    },
+    {
+      "practice_identity": "Gr8l3",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/Gr8l3-rulesheet.md"
+    },
+    {
+      "practice_identity": "GrP6q",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GrP6q-rulesheet.md"
+    },
+    {
+      "practice_identity": "GrPbb",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GrPbb-rulesheet.md"
+    },
+    {
+      "practice_identity": "GrXy3",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GrXy3-rulesheet.md"
+    },
+    {
+      "practice_identity": "GrkL5",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GrkL5-rulesheet.md"
+    },
+    {
+      "practice_identity": "Grx8Y",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/Grx8Y-rulesheet.md"
+    },
+    {
+      "practice_identity": "GryK3",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GryK3-rulesheet.md"
+    }
+  ]
+}

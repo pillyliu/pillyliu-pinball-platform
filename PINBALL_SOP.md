@@ -136,7 +136,7 @@ What it checks:
 - Required CSV/JSON files exist in `shared/pinball/data`.
 - `LPL_Standings.csv` has required standings headers.
 - `LPL_Stats.csv` has required stats headers.
-- `pinball_library.json` is valid and has unique slugs.
+- `pinball_library_v3.json` is valid, versioned, and has unique route keys.
 - Referenced local rulesheets/playfields exist.
 - Missing `_700.webp`/`_1400.webp` and missing `gameinfo/*.md` are flagged as warnings.
 - Possible naming variants in player/machine values are flagged as warnings.
@@ -179,16 +179,16 @@ Update local canonical CSV:
 - `shared/pinball/data/Avenue Pinball - Current.csv`
 - Optionally keep `shared/pinball/data/pinball_library.csv` aligned if you still use it as backup.
 
-### 3) Regenerate `pinball_library.json`
+### 3) Regenerate `pinball_library_v3.json`
 
 From `lpl-library`:
 
 ```bash
 cd lpl-library
-npx tsx scripts/build_pinball_library.ts ../shared/pinball/data/Avenue\ Pinball\ -\ Current.csv
+npm exec tsx scripts/build_pinball_library_v3.ts
 ```
 This now writes directly to canonical:
-- `shared/pinball/data/pinball_library.json`
+- `shared/pinball/data/pinball_library_v3.json`
 
 ### 4) Ensure playfield images exist
 
@@ -277,7 +277,7 @@ npm run build:lpl-library
 
 ## Pre-Deploy Checklist (10 minutes)
 
-- `shared/pinball/data/pinball_library.json` is valid JSON.
+- `shared/pinball/data/pinball_library_v3.json` is valid JSON.
 - `LPL_Standings.csv` and `LPL_Stats.csv` updated for latest bank cycle.
 - New/changed games have:
   - playfield original + 1400/700 webp
@@ -318,7 +318,7 @@ npm --prefix <app-folder> run build
 ```
 
 3. Check for missing file paths referenced by:
-- `shared/pinball/data/pinball_library.json`
+- `shared/pinball/data/pinball_library_v3.json`
 - `playfieldLocal`
 - `rulesheetLocal`
 - `gameinfo/<slug>.md`

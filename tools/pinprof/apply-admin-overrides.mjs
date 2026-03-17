@@ -7,6 +7,49 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 const SHARED_DATA_DIR = path.join(ROOT, "shared", "pinball", "data");
 const ADMIN_DB_PATH = path.join(SHARED_DATA_DIR, "pinprof_admin_v1.sqlite");
 const SEED_DB_PATH = path.join(SHARED_DATA_DIR, "pinball_library_seed_v1.sqlite");
+const CURATED_LOCAL_RULESHEETS_PATH = path.join(SHARED_DATA_DIR, "local_rulesheet_curations_v1.json");
+
+function cleanString(value) {
+  const trimmed = String(value ?? "").trim();
+  return trimmed || null;
+}
+
+function webPathToFs(webPath) {
+  const clean = cleanString(webPath);
+  if (!clean || !clean.startsWith("/pinball/")) {
+    return null;
+  }
+  const resolved = path.resolve(ROOT, "shared", "pinball", clean.replace(/^\/pinball\/?/, ""));
+  return resolved.startsWith(path.resolve(ROOT, "shared", "pinball")) ? resolved : null;
+}
+
+function normalizePublishedPlayfieldWebPath(webPath) {
+  const clean = cleanString(webPath);
+  if (!clean || !clean.startsWith("/pinball/images/playfields/")) {
+    return clean;
+  }
+  const exactFsPath = webPathToFs(clean);
+  if (exactFsPath && fs.existsSync(exactFsPath)) {
+    return clean;
+  }
+  const normalized = clean.replace(/\.[A-Za-z0-9]+$/i, ".webp");
+  const normalizedFsPath = webPathToFs(normalized);
+  if (normalizedFsPath && fs.existsSync(normalizedFsPath)) {
+    return normalized;
+  }
+  return clean;
+}
+
+function loadCuratedLocalRulesheetPractices() {
+  if (!fs.existsSync(CURATED_LOCAL_RULESHEETS_PATH)) return new Set();
+  const payload = JSON.parse(fs.readFileSync(CURATED_LOCAL_RULESHEETS_PATH, "utf8"));
+  const records = Array.isArray(payload?.records) ? payload.records : [];
+  return new Set(
+    records
+      .map((row) => (row && typeof row === "object" ? cleanString(row.practice_identity) : null))
+      .filter(Boolean)
+  );
+}
 
 function stringifyCoveredAliasIds(aliasIds) {
   return JSON.stringify(Array.from(new Set(aliasIds.map((value) => String(value ?? "").trim()).filter(Boolean))));
@@ -74,6 +117,7 @@ export function applyAdminOverrides() {
 
   const adminDb = new Database(ADMIN_DB_PATH, { readonly: true });
   const seedDb = new Database(SEED_DB_PATH);
+  const curatedLocalRulesheets = loadCuratedLocalRulesheetPractices();
   try {
     seedDb.exec(`
       CREATE TABLE IF NOT EXISTS playfield_assets (
@@ -199,36 +243,43 @@ export function applyAdminOverrides() {
     const run = seedDb.transaction((items) => {
       seedDb.prepare("DELETE FROM playfield_assets").run();
       for (const row of items) {
+        const normalizedRowPlayfieldPath = normalizePublishedPlayfieldWebPath(row.playfield_local_path);
         const assetRows = playfieldAssetsByPractice.get(row.practice_identity) ?? [];
         const primaryAliasId = preferredAliasMap.get(row.practice_identity) ?? null;
         let primaryAsset = null;
         let primaryScore = -1;
         for (const asset of assetRows) {
-          const fsPath = typeof asset.playfield_local_path === "string" && asset.playfield_local_path.startsWith("/pinball/")
-            ? path.join(ROOT, "shared", "pinball", asset.playfield_local_path.replace(/^\/pinball\/?/, ""))
-            : null;
+          const normalizedAssetPlayfieldPath = normalizePublishedPlayfieldWebPath(asset.playfield_local_path);
+          const fsPath = webPathToFs(normalizedAssetPlayfieldPath);
           if (!fsPath || !fs.existsSync(fsPath)) {
             continue;
           }
           const score = scorePlayfieldSourceMatch(primaryAliasId, asset.source_opdb_machine_id);
           if (score > primaryScore) {
-            primaryAsset = asset;
+            primaryAsset = {
+              ...asset,
+              playfield_local_path: normalizedAssetPlayfieldPath,
+            };
             primaryScore = score;
           }
         }
 
-        upsert.run(row);
+        upsert.run({
+          ...row,
+          playfield_local_path: normalizedRowPlayfieldPath,
+          rulesheet_local_path: curatedLocalRulesheets.has(row.practice_identity) ? row.rulesheet_local_path : null,
+        });
         if (primaryAsset) {
           upsert.run({
             ...row,
             playfield_local_path: primaryAsset.playfield_local_path,
             playfield_source_url: primaryAsset.playfield_source_url,
+            rulesheet_local_path: curatedLocalRulesheets.has(row.practice_identity) ? row.rulesheet_local_path : null,
           });
         }
         for (const asset of assetRows) {
-          const fsPath = typeof asset.playfield_local_path === "string" && asset.playfield_local_path.startsWith("/pinball/")
-            ? path.join(ROOT, "shared", "pinball", asset.playfield_local_path.replace(/^\/pinball\/?/, ""))
-            : null;
+          const normalizedAssetPlayfieldPath = normalizePublishedPlayfieldWebPath(asset.playfield_local_path);
+          const fsPath = webPathToFs(normalizedAssetPlayfieldPath);
           if (!fsPath || !fs.existsSync(fsPath)) {
             continue;
           }
@@ -236,7 +287,7 @@ export function applyAdminOverrides() {
             practice_identity: asset.practice_identity,
             source_opdb_machine_id: asset.source_opdb_machine_id,
             covered_alias_ids_json: stringifyCoveredAliasIds([asset.source_opdb_machine_id]),
-            playfield_local_path: asset.playfield_local_path,
+            playfield_local_path: normalizedAssetPlayfieldPath,
             playfield_source_url: asset.playfield_source_url,
             playfield_source_note: asset.playfield_source_note,
             updated_at: asset.updated_at,

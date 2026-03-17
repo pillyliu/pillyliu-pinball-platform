@@ -1,0 +1,936 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-17T07:44:24Z",
+  "source_files": [
+    "/Users/pillyliu/Documents/Codex/Pillyliu Pinball Website/shared/pinball/data/Avenue Pinball - Current.csv",
+    "/Users/pillyliu/Documents/Codex/Pillyliu Pinball Website/shared/pinball/data/RLM Amusements - Current.csv",
+    "/Users/pillyliu/Documents/Codex/PinProf Admin/configs/curated_video_overrides_v1.json"
+  ],
+  "rows": [
+    {
+      "practice_identity": "G2Lkd",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=ZphTCC_rN0s",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 19
+        },
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 2",
+          "url": "https://www.youtube.com/watch?v=CVSaXrbxtHM",
+          "priority": 1,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 19
+        },
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 3",
+          "url": "https://www.youtube.com/watch?v=h139DUjCeU0",
+          "priority": 2,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 19
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=l68I6GMrIN4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 19
+        }
+      ]
+    },
+    {
+      "practice_identity": "G3EBl",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=4rlIHLyfyVA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 47
+        }
+      ]
+    },
+    {
+      "practice_identity": "G41d5",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=XOfVLODSMUA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 41
+        }
+      ]
+    },
+    {
+      "practice_identity": "G43W4",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=ci7gXjSLq9o",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 21
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=bavgiSj5DJU",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 21
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4835",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=j-x03RBvTs4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 15
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4ODR",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=XSw7fK6x1mw",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 17
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4dOQ",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=zaCEffQkj4o",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 4
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4do5",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=xri-ffVoPqo",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 43
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=GHujEZBkuis",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 43
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4jPX",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=Kz-ouetS558",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 28
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4llj",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=tY2pFjj1Phg",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 16
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4qX5",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=W-VZAdtlo80",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 22
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4xZy",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=u2G0A-BIpAY",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 14
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4xbP",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=0CTIo1mvTJs",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 30
+        }
+      ]
+    },
+    {
+      "practice_identity": "G4yen",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=yGWOfPq_0u4",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 19
+        }
+      ]
+    },
+    {
+      "practice_identity": "G5728",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=znjcb3Qu8mA",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 32
+        }
+      ]
+    },
+    {
+      "practice_identity": "G5Kvx",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=U216cklf0jk",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 14
+        }
+      ]
+    },
+    {
+      "practice_identity": "G5pe4",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=6wb_x3q3z14",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 46
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=21qTR0o5Lmc",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 46
+        }
+      ]
+    },
+    {
+      "practice_identity": "G5vLR",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=2jjRkzCEVto",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 8
+        }
+      ]
+    },
+    {
+      "practice_identity": "G6lnq",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=7ZMPyTqiot4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 24
+        }
+      ]
+    },
+    {
+      "practice_identity": "GBLLP",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=Ew_P40Fq4EA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 10
+        }
+      ]
+    },
+    {
+      "practice_identity": "GD7Ld",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=i8CZsGEcmBA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 44
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=musEx6lbttQ",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 44
+        }
+      ]
+    },
+    {
+      "practice_identity": "GEL0V",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=OCp5Ria5IIA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 37
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=Esw-G7rUTw8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 37
+        }
+      ]
+    },
+    {
+      "practice_identity": "GK17D",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=vVs_0jqCPGA",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 40
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=ZU6byRKtsZk",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 40
+        }
+      ]
+    },
+    {
+      "practice_identity": "GK1Ej",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=eLmtVP2-xyc",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 31
+        }
+      ]
+    },
+    {
+      "practice_identity": "GLWll",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=zIWTjveC9p4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 39
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=7fVazJdhf_8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 39
+        }
+      ]
+    },
+    {
+      "practice_identity": "GQKyP",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=GnQr9qIZz_0",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 36
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=FbSbZDtegVk",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 36
+        }
+      ]
+    },
+    {
+      "practice_identity": "GR6wO",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://youtu.be/brK2WDNlYpk?si=aVbG5j6Mdi40d9ds",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 12
+        }
+      ]
+    },
+    {
+      "practice_identity": "GRBE4",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=O26SH3gNVnY",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 3
+        }
+      ]
+    },
+    {
+      "practice_identity": "GRD79",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=TzhluZ-6e_c",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 20
+        }
+      ]
+    },
+    {
+      "practice_identity": "GRKx7",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=lePevjDCOVE",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 26
+        }
+      ]
+    },
+    {
+      "practice_identity": "GRvBL",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=4ARXdYALc9o",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 9
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=JU4lpB-VGEQ",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 9
+        }
+      ]
+    },
+    {
+      "practice_identity": "GWyBj",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=3i_7L48Vx8k",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 2
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=qpG3J9IzzWs",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 2
+        }
+      ]
+    },
+    {
+      "practice_identity": "GZVOd",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=o8vUqabRAp8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 34
+        }
+      ]
+    },
+    {
+      "practice_identity": "GbPde",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=HfjKUJD8hS4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 25
+        },
+        {
+          "provider": "local",
+          "kind": "competition",
+          "label": "Competition 1",
+          "url": "https://www.youtube.com/watch?v=olqLboBqtZI&t=6410s",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 25
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gd266",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=A6NcxN7D-JI",
+          "priority": 0,
+          "source_file": "curated_video_overrides_v1.json",
+          "source_row": 1
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=CjG_VywpCKU",
+          "priority": 0,
+          "source_file": "curated_video_overrides_v1.json",
+          "source_row": 1
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gj66P",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=2_xcLBHzaSo",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 2
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=mHw2DOdeHx8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 2
+        }
+      ]
+    },
+    {
+      "practice_identity": "GoEkx",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=iY--DPVTWWM",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 26
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 2",
+          "url": "https://www.youtube.com/watch?v=XQSm-MeiSMg",
+          "priority": 1,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 26
+        }
+      ]
+    },
+    {
+      "practice_identity": "GpeoL",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=JfcJZYAnq6M",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 20
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=ZqIcJG8PA-c",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 20
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gr2wz",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=Tfhq5LF_QiY",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 33
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=is0L6-_a5YQ",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 33
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gr3EW",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=5mFFmopZ5Y8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 13
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=gVE919IMPNc",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 13
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gr8l3",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=0JJ58ZBaBxo",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 17
+        }
+      ]
+    },
+    {
+      "practice_identity": "GrP6q",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=LwWGCXC48-g",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 15
+        }
+      ]
+    },
+    {
+      "practice_identity": "GrXy3",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=S75vg7Wtf7w",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 24
+        }
+      ]
+    },
+    {
+      "practice_identity": "GrkL5",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=8u1bVbwYy0U",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 27
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=ZvIeDk0y3WM",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 27
+        }
+      ]
+    },
+    {
+      "practice_identity": "Grx8Y",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=Dhk6rcqi128",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 12
+        }
+      ]
+    },
+    {
+      "practice_identity": "GryK3",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=DVlWLOV-FPw",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 36
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gryw4",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=wYZuLK6ShUk",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 5
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=kkJn4ypmq3M",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 5
+        }
+      ]
+    },
+    {
+      "practice_identity": "GvBn8",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=mpVrVnvDV50",
+          "priority": 0,
+          "source_file": "RLM Amusements - Current.csv",
+          "source_row": 37
+        }
+      ]
+    },
+    {
+      "practice_identity": "GweeP",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=roJbHZe4YfQ",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 23
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=qxv1rdFisR8",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 23
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 2",
+          "url": "https://www.youtube.com/watch?v=9rLcMSuommU",
+          "priority": 1,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 23
+        }
+      ]
+    },
+    {
+      "practice_identity": "Gzy89",
+      "videos": [
+        {
+          "provider": "local",
+          "kind": "tutorial",
+          "label": "Tutorial 1",
+          "url": "https://www.youtube.com/watch?v=3PpBgoYxgk4",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 48
+        },
+        {
+          "provider": "local",
+          "kind": "gameplay",
+          "label": "Gameplay 1",
+          "url": "https://www.youtube.com/watch?v=6cX3kmMY72Y",
+          "priority": 0,
+          "source_file": "Avenue Pinball - Current.csv",
+          "source_row": 48
+        }
+      ]
+    }
+  ]
+}

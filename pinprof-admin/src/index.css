@@ -558,6 +558,19 @@ a {
   margin: 0.15rem 0 0;
 }
 
+.panel-header-title-group {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.panel-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
 .pill,
 .tag {
   display: inline-flex;
@@ -642,6 +655,105 @@ a {
   gap: 0.35rem;
   margin-top: 0.55rem;
   overflow: auto;
+}
+
+.control-board-toolbar {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.control-board-filter-header {
+  margin-top: 0.15rem;
+}
+
+.view-toggle-row,
+.filter-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.view-toggle.active,
+.filter-chip.active {
+  background: linear-gradient(180deg, #f7db8b 0%, #d8ab33 100%);
+  color: #201806;
+  border-color: rgba(216, 171, 51, 0.36);
+}
+
+.control-board-table-wrap {
+  margin-top: 0.55rem;
+  max-height: min(50vh, 32rem);
+  overflow: auto;
+  border-radius: var(--pp-panel-corner);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+  background: color-mix(in srgb, var(--pp-panel-strong) 76%, transparent);
+}
+
+.control-board-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+.control-board-table th,
+.control-board-table td {
+  padding: 0.5rem 0.55rem;
+  border-bottom: 1px solid rgba(95, 135, 121, 0.12);
+  vertical-align: top;
+  text-align: left;
+}
+
+.control-board-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--pp-panel) 92%, white 8%);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pp-ink-faint);
+}
+
+.control-board-table tbody tr {
+  cursor: pointer;
+}
+
+.control-board-table tbody tr:hover {
+  background: color-mix(in srgb, rgba(240, 210, 124, 0.18) 55%, transparent);
+}
+
+.control-board-table tbody tr.selected {
+  background: linear-gradient(135deg, rgba(240, 210, 124, 0.24), rgba(95, 135, 121, 0.1));
+  box-shadow: inset 0 0 0 1px rgba(216, 171, 51, 0.18);
+}
+
+.control-board-group-row td {
+  padding: 0.45rem 0.55rem;
+  background: color-mix(in srgb, var(--pp-panel) 88%, transparent);
+  border-bottom-color: rgba(95, 135, 121, 0.16);
+}
+
+.control-board-group-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.control-board-table tbody tr:focus-visible {
+  outline: 2px solid rgba(216, 171, 51, 0.45);
+  outline-offset: -2px;
+}
+
+.table-title-cell {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.table-title-cell strong,
+.table-title-cell span {
+  min-width: 0;
 }
 
 .machine-row {
@@ -829,6 +941,24 @@ a {
   align-self: start;
 }
 
+.playfield-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.playfield-workbench {
+  display: grid;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.playfield-workbench-main,
+.playfield-workbench-editor {
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+}
+
 .hero-copy {
   display: grid;
   gap: 0.46rem;
@@ -993,6 +1123,10 @@ a {
   gap: 0.65rem;
 }
 
+.asset-card-summary {
+  font-size: 0.82rem;
+}
+
 .asset-card,
 .alias-card {
   padding: 0.72rem;
@@ -1021,6 +1155,35 @@ a {
 .asset-card code,
 .asset-card a {
   margin: 0;
+}
+
+.compact-details {
+  border-radius: var(--pp-control-corner);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+  background: color-mix(in srgb, var(--pp-panel-strong) 70%, transparent);
+  padding: 0.15rem 0.2rem;
+}
+
+.compact-details summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--pp-ink-soft);
+  padding: 0.45rem 0.55rem;
+}
+
+.compact-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.compact-details[open] summary {
+  padding-bottom: 0.25rem;
+}
+
+.compact-path-list,
+.compact-details .form-grid {
+  padding: 0 0.35rem 0.35rem;
 }
 
 .two-up-panel {
@@ -1054,6 +1217,277 @@ a {
 .alias-list {
   display: grid;
   gap: 0.55rem;
+}
+
+.membership-grid,
+.link-source-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.membership-card {
+  align-content: start;
+}
+
+.inline-button-row {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.video-override-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.video-override-row {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.68rem;
+  border-radius: var(--pp-control-corner);
+  background: color-mix(in srgb, var(--pp-panel-strong) 80%, transparent);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+}
+
+.video-override-controls {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pinside-status-card {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.3rem;
+  padding: 0.55rem 0.72rem 0.72rem;
+  border-radius: var(--pp-panel-corner);
+  background: color-mix(in srgb, var(--pp-panel-strong) 80%, transparent);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+}
+
+.pinside-status-card .asset-card-head {
+  margin: 0;
+}
+
+.pinside-status-card .asset-card-head h3 {
+  margin: 0;
+}
+
+.pinside-process-line {
+  margin-top: 0.08rem;
+  margin-bottom: 0;
+}
+
+.playfield-mask-panel {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.8rem;
+  border-radius: var(--pp-panel-corner);
+  background: color-mix(in srgb, var(--pp-panel-strong) 80%, transparent);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+}
+
+.playfield-mask-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  padding: 0.55rem;
+  background: rgba(13, 28, 59, 0.54);
+  backdrop-filter: blur(6px);
+}
+
+.playfield-mask-dialog {
+  display: grid;
+  gap: 0.85rem;
+  width: min(100%, 1540px);
+  margin: auto;
+  padding: 0.95rem;
+  height: calc(100vh - 1.1rem);
+  max-height: calc(100vh - 1.1rem);
+  overflow: auto;
+  border-radius: calc(var(--pp-panel-corner) + 0.25rem);
+  background: color-mix(in srgb, var(--pp-panel) 94%, white 6%);
+  border: 1px solid rgba(95, 135, 121, 0.18);
+  box-shadow: 0 24px 70px rgba(13, 28, 59, 0.28);
+}
+
+.playfield-mask-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.playfield-mask-dialog-header h2 {
+  margin: 0;
+}
+
+.playfield-mask-dialog-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: minmax(0, 1.6fr) minmax(18rem, 1fr) minmax(18rem, 1fr);
+  align-items: start;
+}
+
+.playfield-mask-editor-card {
+  align-content: start;
+}
+
+.playfield-mask-stage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  line-height: 0;
+  border-radius: 0;
+  border: 1px solid rgba(95, 135, 121, 0.18);
+  background: #fff;
+  cursor: crosshair;
+}
+
+.playfield-mask-image-shell {
+  padding: 22px;
+  background: #fff;
+}
+
+.playfield-mask-stage img,
+.playfield-mask-stage svg {
+  display: block;
+  width: 100%;
+}
+
+.playfield-mask-stage img {
+  height: auto;
+  vertical-align: top;
+}
+
+.playfield-mask-stage svg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.mask-polygon {
+  fill: rgba(216, 171, 51, 0.2);
+  stroke: rgba(216, 171, 51, 0.9);
+  stroke-width: 0.6;
+}
+
+.mask-edge {
+  stroke: rgba(13, 28, 59, 0.9);
+  stroke-width: 2;
+}
+
+.mask-point {
+  fill: #f7f9fc;
+  stroke: #0d1c3b;
+  stroke-width: 2;
+  cursor: grab;
+}
+
+.mask-magnifier {
+  position: absolute;
+  width: 136px;
+  height: 136px;
+  overflow: hidden;
+  border: 1px solid rgba(13, 28, 59, 0.72);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(13, 28, 59, 0.18);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.mask-magnifier canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mask-magnifier-crosshair {
+  position: absolute;
+  inset: 0;
+}
+
+.mask-magnifier-crosshair::before,
+.mask-magnifier-crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(216, 171, 51, 0.92);
+}
+
+.mask-magnifier-crosshair::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.mask-magnifier-crosshair::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.playfield-mask-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.playfield-preview-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.playfield-preview-card {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.72rem;
+  border-radius: var(--pp-panel-corner);
+  background: color-mix(in srgb, var(--pp-panel-strong) 78%, transparent);
+  border: 1px solid rgba(95, 135, 121, 0.14);
+}
+
+.playfield-mask-preview-frame {
+  overflow: hidden;
+  border-radius: 0;
+  border: 1px solid rgba(95, 135, 121, 0.14);
+  background: #000;
+  line-height: 0;
+}
+
+.playfield-mask-preview-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+.log-preview {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.log-preview code {
+  padding: 0.5rem 0.62rem;
+  border-radius: var(--pp-control-corner);
+  background: color-mix(in srgb, var(--pp-control) 92%, transparent);
+  border: 1px solid rgba(95, 135, 121, 0.12);
+}
+
+.link-list {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.link-list a {
+  font-size: 0.82rem;
 }
 
 .timestamp {
@@ -1100,7 +1534,11 @@ a {
   .two-up-panel,
   .asset-grid,
   .editor-grid,
-  .hero-media-grid {
+  .playfield-workbench,
+  .playfield-mask-dialog-grid,
+  .hero-media-grid,
+  .membership-grid,
+  .link-source-grid {
     grid-template-columns: 1fr;
   }
 

@@ -1,0 +1,733 @@
+{
+  "version": 1,
+  "generated_at": "2026-03-17T07:44:24Z",
+  "layout_areas": [
+    {
+      "source_id": "venue--pm-8760",
+      "area": "U",
+      "area_order": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "area": "D",
+      "area_order": 2
+    }
+  ],
+  "machine_layout": [
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GWyBj-MdEbK",
+      "area": null,
+      "group_number": 1,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GEL0V-MyN8E-A1Dkr",
+      "area": null,
+      "group_number": 1,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "Gxv81-M610r",
+      "area": null,
+      "group_number": 1,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GV8wB-Mq12N",
+      "area": null,
+      "group_number": 1,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GLWll-M1r8O-ARnV7",
+      "area": null,
+      "group_number": 1,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G6lnq-MRj7Z",
+      "area": null,
+      "group_number": 2,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GRVoX-MLE7l",
+      "area": null,
+      "group_number": 2,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GYWvw-MKNP4",
+      "area": null,
+      "group_number": 2,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G4PBO-MyNeb-A9E6x",
+      "area": null,
+      "group_number": 2,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GR6wO-MDvzk",
+      "area": null,
+      "group_number": 2,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G5Kvx-MQdpl",
+      "area": null,
+      "group_number": 3,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GrP6q-M5Rp1",
+      "area": null,
+      "group_number": 3,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GO0q3-MOEy8-ARol7",
+      "area": null,
+      "group_number": 3,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "Gr8l3-MDWr0",
+      "area": null,
+      "group_number": 3,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GoEkx-MdEzN-ARJQz",
+      "area": null,
+      "group_number": 3,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G4yen-MD12Y",
+      "area": null,
+      "group_number": 3,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GRD79-M0odk",
+      "area": null,
+      "group_number": 3,
+      "position": 7
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "Grx8Y-MKNe9",
+      "area": null,
+      "group_number": 3,
+      "position": 8
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GQKyP-Mx0O4",
+      "area": null,
+      "group_number": 3,
+      "position": 9
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G7ZEz-MBRYn",
+      "area": null,
+      "group_number": 3,
+      "position": 10
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GrXy3-ML0Ey",
+      "area": null,
+      "group_number": 3,
+      "position": 11
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GRKx7-MJ49e",
+      "area": null,
+      "group_number": 4,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G5YDN-MJKYo",
+      "area": null,
+      "group_number": 4,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G4jPX-M85YZ",
+      "area": null,
+      "group_number": 4,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GrPbb-MJZX6",
+      "area": null,
+      "group_number": 5,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GweeP-Ml9pZ-ARZoY",
+      "area": null,
+      "group_number": 5,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G5728-MDbjD",
+      "area": null,
+      "group_number": 5,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "Gr2wz-MLBob",
+      "area": null,
+      "group_number": 5,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GD7Ld-ME0BP",
+      "area": null,
+      "group_number": 5,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GK17D-MKNKd-A15Yn",
+      "area": null,
+      "group_number": 5,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GryK3-MQrWk",
+      "area": null,
+      "group_number": 5,
+      "position": 7
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "GvBn8-Mz291",
+      "area": null,
+      "group_number": 5,
+      "position": 8
+    },
+    {
+      "source_id": "venue--pm-16470",
+      "opdb_id": "G4dOQ-MyNbb",
+      "area": null,
+      "group_number": 5,
+      "position": 9
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4xbP-Mp45Y",
+      "area": "D",
+      "group_number": 5,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GK1Ej-MePok-A1zKx",
+      "area": "D",
+      "group_number": 5,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gxv81-Mo1rp-A9Qew",
+      "area": "D",
+      "group_number": 5,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GQK1P-Ml95Z-A9bjw",
+      "area": "D",
+      "group_number": 5,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GZVOd-MwNxZ-AR8vV",
+      "area": "D",
+      "group_number": 5,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GQKyP-MP3OK-A1KoX",
+      "area": "D",
+      "group_number": 6,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GEL0V-MyN8E-ARq7n",
+      "area": "D",
+      "group_number": 6,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GR9Nr-MVKol",
+      "area": "D",
+      "group_number": 6,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GLWll-M1r8O-A1kx7",
+      "area": "D",
+      "group_number": 6,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GK17D-MdEqz",
+      "area": "D",
+      "group_number": 6,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G41d5-M9REd",
+      "area": "D",
+      "group_number": 6,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4do5-MW9z8",
+      "area": "D",
+      "group_number": 7,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GD7Ld-MBRP4-A1e4P",
+      "area": "D",
+      "group_number": 7,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GweeP-Ml9pZ-A9vXB",
+      "area": "D",
+      "group_number": 7,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G5pe4-MePZv",
+      "area": "D",
+      "group_number": 7,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G3EBl-MRj6e-ARzbx",
+      "area": "D",
+      "group_number": 7,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gzy89-M0oPy-A9xXV",
+      "area": "D",
+      "group_number": 7,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gj66P-MXr0E-A1nx0",
+      "area": "U",
+      "group_number": 1,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GRBE4-MQK1Z",
+      "area": "U",
+      "group_number": 1,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4dOQ-MyNbb",
+      "area": "U",
+      "group_number": 1,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gryw4-MNEKn",
+      "area": "U",
+      "group_number": 1,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G7ZEz-MyN3K-ARl3o",
+      "area": "U",
+      "group_number": 2,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G5vLR-MwNwy",
+      "area": "U",
+      "group_number": 2,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GRvBL-MP3Ev",
+      "area": "U",
+      "group_number": 2,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GBLLP-MW900-AOEEN",
+      "area": "U",
+      "group_number": 2,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Grx8Y-MKNe9",
+      "area": "U",
+      "group_number": 3,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gr3EW-MD3Nj",
+      "area": "U",
+      "group_number": 3,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4xZy-MLno6",
+      "area": "U",
+      "group_number": 3,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4835-M2YPK-ARkb7",
+      "area": "U",
+      "group_number": 3,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4llj-MQYb2",
+      "area": "U",
+      "group_number": 3,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4ODR-MDXEy",
+      "area": "U",
+      "group_number": 3,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G2Lkd-M0ope-A97xV",
+      "area": "U",
+      "group_number": 4,
+      "position": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GpeoL-MkPz1-A944p",
+      "area": "U",
+      "group_number": 4,
+      "position": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G43W4-MdEjy",
+      "area": "U",
+      "group_number": 4,
+      "position": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4qX5-Ml9jb",
+      "area": "U",
+      "group_number": 4,
+      "position": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GweeP-Ml9pZ-ARZoY",
+      "area": "U",
+      "group_number": 4,
+      "position": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G6lnq-Mq1kv",
+      "area": "U",
+      "group_number": 4,
+      "position": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GbPde-M5Rkv",
+      "area": "U",
+      "group_number": 4,
+      "position": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GoEkx-MdEzN-AR50E",
+      "area": "U",
+      "group_number": 4,
+      "position": 8
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GrkL5-MJoNN",
+      "area": "U",
+      "group_number": 4,
+      "position": 9
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gd2Xb-MRjpZ-A92v0",
+      "area": "U",
+      "group_number": 4,
+      "position": 10
+    }
+  ],
+  "machine_bank": [
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4835-M2YPK-ARkb7",
+      "bank": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4do5-MW9z8",
+      "bank": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G6lnq-Mq1kv",
+      "bank": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GQK1P-Ml95Z-A9bjw",
+      "bank": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gryw4-MNEKn",
+      "bank": 1
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G41d5-M9REd",
+      "bank": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GBLLP-MW900-AOEEN",
+      "bank": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GR9Nr-MVKol",
+      "bank": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gd2Xb-MRjpZ-A92v0",
+      "bank": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GpeoL-MkPz1-A944p",
+      "bank": 2
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4llj-MQYb2",
+      "bank": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G7ZEz-MyN3K-ARl3o",
+      "bank": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GD7Ld-MBRP4-A1e4P",
+      "bank": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GZVOd-MwNxZ-AR8vV",
+      "bank": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GbPde-M5Rkv",
+      "bank": 3
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G43W4-MdEjy",
+      "bank": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4xbP-Mp45Y",
+      "bank": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GLWll-M1r8O-A1kx7",
+      "bank": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gj66P-MXr0E-A1nx0",
+      "bank": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Grx8Y-MKNe9",
+      "bank": 4
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4ODR-MDXEy",
+      "bank": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G5pe4-MePZv",
+      "bank": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G5vLR-MwNwy",
+      "bank": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GQKyP-MP3OK-A1KoX",
+      "bank": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GoEkx-MdEzN-AR50E",
+      "bank": 5
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4qX5-Ml9jb",
+      "bank": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GK17D-MdEqz",
+      "bank": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GK1Ej-MePok-A1zKx",
+      "bank": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GRBE4-MQK1Z",
+      "bank": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gr3EW-MD3Nj",
+      "bank": 6
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G2Lkd-M0ope-A97xV",
+      "bank": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G3EBl-MRj6e-ARzbx",
+      "bank": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GEL0V-MyN8E-ARq7n",
+      "bank": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GRvBL-MP3Ev",
+      "bank": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GrkL5-MJoNN",
+      "bank": 7
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "G4xZy-MLno6",
+      "bank": 8
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "GweeP-Ml9pZ-ARZoY",
+      "bank": 8
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gxv81-Mo1rp-A9Qew",
+      "bank": 8
+    },
+    {
+      "source_id": "venue--pm-8760",
+      "opdb_id": "Gzy89-M0oPy-A9xXV",
+      "bank": 8
+    }
+  ]
+}

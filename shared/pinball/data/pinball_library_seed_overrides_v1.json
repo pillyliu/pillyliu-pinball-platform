@@ -1,358 +1,436 @@
 {
-  "generatedAt": "2026-03-15T04:04:57Z",
+  "generatedAt": "2026-03-17T07:44:24Z",
   "playfieldOverrides": [
     {
       "practiceIdentity": "G2Lkd",
       "opdbGroupId": "G2Lkd",
-      "playfieldLocalPath": "/pinball/images/playfields/G2Lkd-M0ope-A97xV-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G2Lkd-M0ope-A97xV-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2022/01/Rush-LE-Playfield-gadf.jpg"
     },
     {
       "practiceIdentity": "G3EBl",
       "opdbGroupId": "G3EBl",
-      "playfieldLocalPath": "/pinball/images/playfields/G3EBl-MRj6e-ARzbx-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G3EBl-MRj6e-ARzbx-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2023/07/Venom-LE-Playfield-akjnef.jpg"
+    },
+    {
+      "practiceIdentity": "G417d",
+      "opdbGroupId": "G417d",
+      "playfieldLocalPath": "/pinball/images/playfields/G417d-MJkXV-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/b/2b/03/b2b039037572b3ade00fc822ffc7c009adbe647a.jpeg"
     },
     {
       "practiceIdentity": "G41d5",
       "opdbGroupId": "G41d5",
-      "playfieldLocalPath": "/pinball/images/playfields/G41d5-M9REd-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G41d5-M9REd-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/b/27/84/b27843ac978234bd05ae2a302b0887e3366de366.jpeg"
+    },
+    {
+      "practiceIdentity": "G43BW",
+      "opdbGroupId": "G43BW",
+      "playfieldLocalPath": "/pinball/images/playfields/G43BW-M3dKV-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/8/03/1c/8031cfb7eb2b6596a94b538b7baf4e5ade07c541.jpeg"
     },
     {
       "practiceIdentity": "G43W4",
       "opdbGroupId": "G43W4",
-      "playfieldLocalPath": "/pinball/images/playfields/G43W4-MdEjy-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G43W4-MdEjy-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/10/ACDC-Premium-no-Drummer-LUCI-PF-012518.jpg"
     },
     {
       "practiceIdentity": "G4835",
       "opdbGroupId": "G4835",
-      "playfieldLocalPath": "/pinball/images/playfields/G4835-M2YPK-A9ylv-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4835-M2YPK-A9ylv-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/2/3d/21/23d219b17c275ab7e997c05b4c9de0ca621a40f9.jpeg"
     },
     {
       "practiceIdentity": "G48w3",
       "opdbGroupId": "G48w3",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/G48w3-Mq1Zk-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/d/fa/85/dfa851db7fffeb93188025d8f412f1d45ade5ee2.jpeg"
     },
     {
       "practiceIdentity": "G4do5",
       "opdbGroupId": "G4do5",
-      "playfieldLocalPath": "/pinball/images/playfields/G4do5-MDlN7-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4do5-MDlN7-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/3/47/76/347761a38183898a7fe902139f96794862a0f25d.jpeg"
     },
     {
       "practiceIdentity": "G4dOQ",
       "opdbGroupId": "G4dOQ",
-      "playfieldLocalPath": "/pinball/images/playfields/G4dOQ-MW970-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/G4dOQ-MW970-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/10/IM-LE-Playfield-01b.png"
+    },
+    {
+      "practiceIdentity": "G4e1d",
+      "opdbGroupId": "G4e1d",
+      "playfieldLocalPath": "/pinball/images/playfields/G4e1d-MJ5Bj-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/9/25/50/9255085d1c08cd833665fc361faff100a47d1c1f.jpg"
     },
     {
       "practiceIdentity": "G4jPX",
       "opdbGroupId": "G4jPX",
-      "playfieldLocalPath": "/pinball/images/playfields/G4jPX-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4jPX-playfield.webp",
       "playfieldSourceUrl": "https://i.imgur.com/YmBikcx.jpeg"
+    },
+    {
+      "practiceIdentity": "G4JZ4",
+      "opdbGroupId": "G4JZ4",
+      "playfieldLocalPath": "/pinball/images/playfields/G4JZ4-ML0pL-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/2/40/f6/240f666e2a994147be7bbc34ce64b9378f0dfd03.jpeg"
     },
     {
       "practiceIdentity": "G4llj",
       "opdbGroupId": "G4llj",
-      "playfieldLocalPath": "/pinball/images/playfields/G4llj-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4llj-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg"
     },
     {
       "practiceIdentity": "G4ODR",
       "opdbGroupId": "G4ODR",
-      "playfieldLocalPath": "/pinball/images/playfields/G4ODR-MDXEy-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4ODR-MDXEy-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/2/b3/34/2b334721aa24cf45100e0874684ca1ac32b6066e.jpeg"
     },
     {
       "practiceIdentity": "G4PBO",
       "opdbGroupId": "G4PBO",
-      "playfieldLocalPath": "/pinball/images/playfields/G4PBO-MyNeb-A9E6x-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4PBO-MyNeb-A9E6x-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/1/13/91/11391f5e555c44d51d57e53b80cdb54ef6747435.jpeg"
+    },
+    {
+      "practiceIdentity": "G4qbX",
+      "opdbGroupId": "G4qbX",
+      "playfieldLocalPath": "/pinball/images/playfields/G4qbX-MJw5r-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/e/7e/d8/e7ed88c3bd5ffd3fafa6206a7c664a8cb91b152f.jpeg"
     },
     {
       "practiceIdentity": "G4qX5",
       "opdbGroupId": "G4qX5",
-      "playfieldLocalPath": "/pinball/images/playfields/G4qX5-Ml9jb-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4qX5-Ml9jb-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/8d/1e/e8d1e693e8bf1644b84cf301a83ef8809dc42dc5.jpeg"
     },
     {
       "practiceIdentity": "G4xbP",
       "opdbGroupId": "G4xbP",
-      "playfieldLocalPath": "/pinball/images/playfields/G4xbP-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4xbP-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg"
     },
     {
       "practiceIdentity": "G4xZy",
       "opdbGroupId": "G4xZy",
-      "playfieldLocalPath": "/pinball/images/playfields/G4xZy-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4xZy-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg"
     },
     {
       "practiceIdentity": "G4yen",
       "opdbGroupId": "G4yen",
-      "playfieldLocalPath": "/pinball/images/playfields/G4yen-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4yen-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/03/e4/a03e4d88ad5527ec10bd96e43a7484727e2c8b92.jpg"
+    },
+    {
+      "practiceIdentity": "G4yVw",
+      "opdbGroupId": "G4yVw",
+      "playfieldLocalPath": "/pinball/images/playfields/G4yVw-M85j8-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/e/11/22/e1122cbc35e7c87420262a45a4000fb911b0da35.jpg"
     },
     {
       "practiceIdentity": "G56lO",
       "opdbGroupId": "G56lO",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/G56lO-MDXpW-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/bc/cf/ebccfcad51bb3bbf0dbf7a48da98714995508ebe.jpeg"
     },
     {
       "practiceIdentity": "G5728",
       "opdbGroupId": "G5728",
-      "playfieldLocalPath": "/pinball/images/playfields/G5728-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5728-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/4/05/70/40570b35e1413f4a6785ea7a8c95250491894cd9.jpeg"
     },
     {
       "practiceIdentity": "G5Kvx",
       "opdbGroupId": "G5Kvx",
-      "playfieldLocalPath": "/pinball/images/playfields/G5Kvx-playfield.jpeg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5Kvx-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/e2/d5/ae2d55c13d08c63a9e13b4431d5f747740ba4536.jpeg"
     },
     {
       "practiceIdentity": "G5pe4",
       "opdbGroupId": "G5pe4",
-      "playfieldLocalPath": "/pinball/images/playfields/G5pe4-MePZv-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5pe4-MePZv-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/6/3f/ea/63fea245ad8041e4db2684fb1f5f9c5caa5a7890.jpeg"
+    },
+    {
+      "practiceIdentity": "G5poe",
+      "opdbGroupId": "G5poe",
+      "playfieldLocalPath": "/pinball/images/playfields/G5poe-MQrb5-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/5/95/2b/5952b90e876633f9805e3445c016d6a1117d038e.jpeg"
     },
     {
       "practiceIdentity": "G5vLR",
       "opdbGroupId": "G5vLR",
-      "playfieldLocalPath": "/pinball/images/playfields/G5vLR-ME049-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/G5vLR-ME049-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/10/StarWarsLE-Playfield.png"
+    },
+    {
+      "practiceIdentity": "G5WoB",
+      "opdbGroupId": "G5WoB",
+      "playfieldLocalPath": "/pinball/images/playfields/G5WoB-MDyNZ-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/0/4d/d8/04dd864891e264123d7a3b91e49bfd2c40797db4.jpeg"
     },
     {
       "practiceIdentity": "G5YDN",
       "opdbGroupId": "G5YDN",
-      "playfieldLocalPath": "/pinball/images/playfields/G5YDN-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5YDN-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/c/82/b2/c82b233dfdc3733dfccbf79248680629b04fa1af.jpg"
+    },
+    {
+      "practiceIdentity": "G5YWX",
+      "opdbGroupId": "G5YWX",
+      "playfieldLocalPath": "/pinball/images/playfields/G5YWX-MDxXX-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/6/55/c8/655c8223283759792785708ec9f0980946d6dc8c.jpeg"
     },
     {
       "practiceIdentity": "G6lnq",
       "opdbGroupId": "G6lnq",
-      "playfieldLocalPath": "/pinball/images/playfields/G6lnq-M6153-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/G6lnq-M6153-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/09/DP-LE-Playfield-01a.png"
     },
     {
       "practiceIdentity": "G7ZEz",
       "opdbGroupId": "G7ZEz",
-      "playfieldLocalPath": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G7ZEz-MyN3K-ARl3o-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2024/09/LEXTop-3kjafh89hf.jpg"
     },
     {
       "practiceIdentity": "GBLLP",
       "opdbGroupId": "GBLLP",
-      "playfieldLocalPath": "/pinball/images/playfields/GBLLP-MW900-A1KoQ-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GBLLP-MW900-A1KoQ-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2021/05/Mandalorian-LE-Playfield-01-afnkjkn3fad.jpg"
     },
     {
       "practiceIdentity": "GbPde",
       "opdbGroupId": "GbPde",
-      "playfieldLocalPath": "/pinball/images/playfields/GbPde-M5Rkv-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GbPde-M5Rkv-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2019/01/Munsters-Pro-Playfield.jpg"
     },
     {
       "practiceIdentity": "Gd266",
       "opdbGroupId": "Gd266",
-      "playfieldLocalPath": "/pinball/images/playfields/Gd266-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gd266-playfield.webp",
       "playfieldSourceUrl": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg"
     },
     {
       "practiceIdentity": "Gd2Xb",
       "opdbGroupId": "Gd2Xb",
-      "playfieldLocalPath": "/pinball/images/playfields/Gd2Xb-MRjpZ-A92v0-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gd2Xb-MRjpZ-A92v0-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2020/05/TMNT-LE-Playfield_New_Decal-4tnasdfad.jpg"
     },
     {
       "practiceIdentity": "GD7Ld",
       "opdbGroupId": "GD7Ld",
-      "playfieldLocalPath": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GD7Ld-MBRP4-A1e4P-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2019/03/BlackKnight-LE-Playfield-01a.jpg"
     },
     {
       "practiceIdentity": "GEL0V",
       "opdbGroupId": "GEL0V",
-      "playfieldLocalPath": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GEL0V-MyN8E-ARq7n-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2025/04/LETopPlayfield.jpg"
     },
     {
       "practiceIdentity": "Gj66P",
       "opdbGroupId": "Gj66P",
-      "playfieldLocalPath": "/pinball/images/playfields/Gj66P-MXr0E-ARkqN-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gj66P-MXr0E-ARkqN-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2020/08/Avengers-LE-Playfield-lknawef.jpg"
     },
     {
       "practiceIdentity": "GK17D",
       "opdbGroupId": "GK17D",
-      "playfieldLocalPath": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg"
     },
     {
       "practiceIdentity": "GK1Ej",
       "opdbGroupId": "GK1Ej",
-      "playfieldLocalPath": "/pinball/images/playfields/GK1Ej-MePok-A1zKx-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GK1Ej-MePok-A1zKx-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2025/01/DungeonLETopPlayfield-adfkjehfa3.jpg"
     },
     {
       "practiceIdentity": "GLWll",
       "opdbGroupId": "GLWll",
-      "playfieldLocalPath": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GLWll-M1r8O-A1kx7-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2024/01/Jaws-LE-Playfield-adfkj3r.jpg"
     },
     {
       "practiceIdentity": "GO0q3",
       "opdbGroupId": "GO0q3",
-      "playfieldLocalPath": "/pinball/images/playfields/GO0q3-MOEy8-ARrPz-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GO0q3-MOEy8-ARrPz-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2024/10/MetalliPlayfLEFinal-kjahefae.jpg"
     },
     {
       "practiceIdentity": "GoEkx",
       "opdbGroupId": "GoEkx",
-      "playfieldLocalPath": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GoEkx-MdEzN-AR50E-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/7e/9c/07e9cdea6118a2510e706c58058c11c9252b4c22.jpeg"
     },
     {
       "practiceIdentity": "GpeoL",
       "opdbGroupId": "GpeoL",
-      "playfieldLocalPath": "/pinball/images/playfields/GpeoL-MkPz1-A944p-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GpeoL-MkPz1-A944p-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2023/02/FooFighters-LE-Playfield-akjh3f.jpg"
     },
     {
       "practiceIdentity": "GQK1P",
       "opdbGroupId": "GQK1P",
-      "playfieldLocalPath": "/pinball/images/playfields/GQK1P-Ml95Z-A9bjw-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GQK1P-Ml95Z-A9bjw-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2024/05/JohnWick-LE-Playfield-akldhjf3rkljhaesf5yshbt.jpg"
     },
     {
       "practiceIdentity": "GQKyP",
       "opdbGroupId": "GQKyP",
-      "playfieldLocalPath": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GQKyP-MP3OK-A1KoX-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2022/09/JamesBond-LE-Playfield-knadf.jpg"
     },
     {
       "practiceIdentity": "Gr2wz",
       "opdbGroupId": "Gr2wz",
-      "playfieldLocalPath": "/pinball/images/playfields/Gr2wz-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gr2wz-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/3/8f/66/38f663cba178595c6aa1c815df14ca14e1ffd698.jpeg"
     },
     {
       "practiceIdentity": "Gr3EW",
       "opdbGroupId": "Gr3EW",
-      "playfieldLocalPath": "/pinball/images/playfields/Gr3EW-M1r9Y-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gr3EW-M1r9Y-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/f/3d/11/f3d112c32278e7dd32ae24673374ba3325906513.jpeg"
     },
     {
       "practiceIdentity": "GR6wO",
       "opdbGroupId": "GR6wO",
-      "playfieldLocalPath": "/pinball/images/playfields/GR6wO-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GR6wO-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/7e/de/07ede2316a85b78651102912d42f91c0863a6043.jpeg"
+    },
+    {
+      "practiceIdentity": "GR7ZX",
+      "opdbGroupId": "GR7ZX",
+      "playfieldLocalPath": "/pinball/images/playfields/GR7ZX-MQ23b-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/f/25/e7/f25e7f356b4d67ba4cb0baf8b1e61c83e4cd5cc6.png"
     },
     {
       "practiceIdentity": "Gr8l3",
       "opdbGroupId": "Gr8l3",
-      "playfieldLocalPath": "/pinball/images/playfields/Gr8l3-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gr8l3-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/fb/e4/efbe43af5567c672de54c72192a19430497ce7c5.jpeg"
+    },
+    {
+      "practiceIdentity": "GR91N",
+      "opdbGroupId": "GR91N",
+      "playfieldLocalPath": "/pinball/images/playfields/GR91N-MLOyE-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/8/c7/b8/8c7b8473f0f593b536f8092cc0362c86c291f0b9.jpeg"
     },
     {
       "practiceIdentity": "GR9Nr",
       "opdbGroupId": "GR9Nr",
-      "playfieldLocalPath": "/pinball/images/playfields/GR9Nr-MVKol-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/GR9Nr-MVKol-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/10/Stern-GhostbustersLE-Playfield-01x.png"
     },
     {
       "practiceIdentity": "GRBE4",
       "opdbGroupId": "GRBE4",
-      "playfieldLocalPath": "/pinball/images/playfields/GRBE4-MQK1Z-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRBE4-MQK1Z-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/d6/40/0d640d48344cfa61e36c945d5c273959cf36aed8.jpeg"
     },
     {
       "practiceIdentity": "GRD79",
       "opdbGroupId": "GRD79",
-      "playfieldLocalPath": "/pinball/images/playfields/GRD79-M0odk-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRD79-M0odk-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/61/43/06143560c26dad7e3540ffe50af56c90259829b5.jpg"
     },
     {
       "practiceIdentity": "GrkL5",
       "opdbGroupId": "GrkL5",
-      "playfieldLocalPath": "/pinball/images/playfields/GrkL5-MJoNN-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrkL5-MJoNN-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/6a/75/56a75c9be016d166a14066947458f2c7570b7526.jpg"
     },
     {
       "practiceIdentity": "GRKx7",
       "opdbGroupId": "GRKx7",
-      "playfieldLocalPath": "/pinball/images/playfields/GRKx7-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRKx7-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/cf/11/7cf116170b0e4015323c3c653d51f7ce7c02f1a8.jpg"
+    },
+    {
+      "practiceIdentity": "GRokz",
+      "opdbGroupId": "GRokz",
+      "playfieldLocalPath": "/pinball/images/playfields/GRokz-ML8oW-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/4/28/5f/4285f7599c2c29d08724dc9da3f3a5b5bb90bda4.jpeg"
     },
     {
       "practiceIdentity": "GrP6q",
       "opdbGroupId": "GrP6q",
-      "playfieldLocalPath": "/pinball/images/playfields/GrP6q-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrP6q-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/82/28/782286aa112e543b8416be1bf1a94b7b73fbbaf0.jpg"
     },
     {
       "practiceIdentity": "GrPbb",
       "opdbGroupId": "GrPbb",
-      "playfieldLocalPath": "/pinball/images/playfields/GrPbb-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrPbb-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/94/d7/894d7e9f11718560a3ff8dc1ff1175ce868fcdfb.jpeg"
     },
     {
       "practiceIdentity": "GrPKO",
       "opdbGroupId": "GrPKO",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/GrPKO-MLO5X-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/ea/3c/7ea3cfc1ec340c88cdafd604dc3bf6f25568805a.jpeg"
     },
     {
       "practiceIdentity": "GrqZX",
       "opdbGroupId": "GrqZX",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/GrqZX-MDEPd-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/a9/58/ea9582f5d1c070eccc05f54d5b1f670a44820909.jpg"
     },
     {
       "practiceIdentity": "GRvBL",
       "opdbGroupId": "GRvBL",
-      "playfieldLocalPath": "/pinball/images/playfields/GRvBL-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRvBL-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg"
     },
     {
       "practiceIdentity": "GRVjq",
       "opdbGroupId": "GRVjq",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/GRVjq-MD0z2-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/cc/38/5cc380a1e8549688af83112fb70da50c12d4a009.jpg"
     },
     {
       "practiceIdentity": "GRVoX",
       "opdbGroupId": "GRVoX",
-      "playfieldLocalPath": "/pinball/images/playfields/GRVoX-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRVoX-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/c/84/78/c847882714e37e7150e43a6f2e29027030fcafd9.jpg"
     },
     {
       "practiceIdentity": "GRwv0",
       "opdbGroupId": "GRwv0",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/GRwv0-MJ99E-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/70/4c/a704cc8d3723846382490fb40e51435449f78b28.jpg"
+    },
+    {
+      "practiceIdentity": "GRWyB",
+      "opdbGroupId": "GRWyB",
+      "playfieldLocalPath": "/pinball/images/playfields/GRWyB-MLz6Z-playfield.webp",
+      "playfieldSourceUrl": "https://o.pinside.com/1/f8/d7/1f8d763df644eb86ca4e4c3053c6872131ec97d8.jpeg"
     },
     {
       "practiceIdentity": "Grx8Y",
       "opdbGroupId": "Grx8Y",
-      "playfieldLocalPath": "/pinball/images/playfields/Grx8Y-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Grx8Y-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg"
     },
     {
       "practiceIdentity": "GrXy3",
       "opdbGroupId": "GrXy3",
-      "playfieldLocalPath": "/pinball/images/playfields/GrXy3-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrXy3-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/d3/0e/8d30e91fa2664ac28ef48f87feeed51d71c91e5b.jpg"
     },
     {
       "practiceIdentity": "Grybw",
       "opdbGroupId": "Grybw",
-      "playfieldLocalPath": null,
+      "playfieldLocalPath": "/pinball/images/playfields/Grybw-M5R0n-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/1/89/cb/189cb7c762c0046757052f87e2680cd5e8c7445e.jpeg"
     },
     {
@@ -364,25 +442,25 @@
     {
       "practiceIdentity": "Gryw4",
       "opdbGroupId": "Gryw4",
-      "playfieldLocalPath": "/pinball/images/playfields/Gryw4-MwNwZ-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gryw4-MwNwZ-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2018/10/PREM-PF.jpg"
     },
     {
       "practiceIdentity": "GV8wB",
       "opdbGroupId": "GV8wB",
-      "playfieldLocalPath": "/pinball/images/playfields/GV8wB-MRjKd-ARz2r-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GV8wB-MRjKd-ARz2r-playfield.webp",
       "playfieldSourceUrl": null
     },
     {
       "practiceIdentity": "GvBn8",
       "opdbGroupId": "GvBn8",
-      "playfieldLocalPath": "/pinball/images/playfields/GvBn8-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GvBn8-playfield.webp",
       "playfieldSourceUrl": "https://o.pinside.com/2/91/f2/291f2be351242ef4f1bd9247a1de9f6f72599e89.jpeg"
     },
     {
       "practiceIdentity": "GweeP",
       "opdbGroupId": "GweeP",
-      "playfieldLocalPath": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GweeP-Ml9pZ-A9vXB-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2021/09/Godzilla-LE-Playfield-afasdf.jpg"
     },
     {
@@ -394,25 +472,25 @@
     {
       "practiceIdentity": "Gxv81",
       "opdbGroupId": "Gxv81",
-      "playfieldLocalPath": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gxv81-Mo1rp-A9Qew-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2025/09/EmpireLETopx.jpg"
     },
     {
       "practiceIdentity": "GYWvw",
       "opdbGroupId": "GYWvw",
-      "playfieldLocalPath": "/pinball/images/playfields/GYWvw-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/GYWvw-playfield.webp",
       "playfieldSourceUrl": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png"
     },
     {
       "practiceIdentity": "GZVOd",
       "opdbGroupId": "GZVOd",
-      "playfieldLocalPath": "/pinball/images/playfields/GZVOd-MwNxZ-AO25N-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GZVOd-MwNxZ-AO25N-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2023/10/ElviraPlayFieldA9145.jpg"
     },
     {
       "practiceIdentity": "Gzy89",
       "opdbGroupId": "Gzy89",
-      "playfieldLocalPath": "/pinball/images/playfields/Gzy89-M0oPy-A9xXV-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gzy89-M0oPy-A9xXV-playfield.webp",
       "playfieldSourceUrl": "https://sternpinball.com/wp-content/uploads/2019/12/StrangerThings-LE-Playfield-09j4gnjrf.jpg"
     }
   ]

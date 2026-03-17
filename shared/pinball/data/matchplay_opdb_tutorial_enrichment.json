@@ -1,0 +1,3927 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-17T07:44:16Z",
+  "reference_catalog": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/data/published/opdb_catalog_v1.json",
+  "rows": [
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G0l8P"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=U4uHZFGOhm0",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=6na106yYIVM",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G417d"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=jzrhkccmurg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G417e"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=vJEN7XblXHM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=8_RVKPDOGcA",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G41d5"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=nLZKQwsnCTY",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G41do"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=cR5mvi_edM4",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=X0WSUMGx5Hg",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=6a57EEKHbLw",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=c_XxpuwBxAI",
+            "index": 3
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 5",
+            "videoUrl": "https://www.youtube.com/watch?v=ddkT0GjKbLo",
+            "index": 4
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G41yq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=d5oUZwDBjyU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G420r"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=x1L8_4dvjaE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G42E2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=NYltAw1Fqm8",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=YlXFzn4uzGQ",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=jvZr2mbcVj8",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G42k0"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=Jhy-QSZgyok",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=7_bSwpLsVoU",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G439V"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=EP7zLvd3_Ys",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G43W4"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=tev-rXWVPxk",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=fwEHp1LN8XY",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G43kO"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=PNer3raNCZU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G43oq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=6sfhWDwTeYE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G43wE"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=p0C9HxNChKA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G482d"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=QTgGw6Qr6Y8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4835"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=yjuNbxOo0NE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G48ZN"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-BYKMLIuo3Q",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G48kY"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=kS_GbgF5Lss",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4ELZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ZX9pOcXhYK0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4N6n"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=2Wv1qNaNiw0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4NnZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=5ebZf3UefYI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4O1L"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=EXMT1bJqeuE",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=elcbDfFBXj8",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4X2l"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-F3Tan2qhE0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4XPZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=8GgrYUaQEpU",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=ObJbbLYpbpc",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4ZVB"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=L147NzX1a9k",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=0PmY7GlRNMI",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4d8k"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=LFd2UfxIuMg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4dOQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=AlPGt5KicO4",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4dWd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=vEl6ywIOfdc",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=Nxh-Hl2yMPk",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4j2z"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=DJB1J1T00Fw",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4jBk"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=hnrtaNgtRUU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4jQw"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=8A4DNY_9qqo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4jXW"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=MsbOAlEiswM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=JCSWlz5lprw",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4jjx"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=t8KeBP19qes",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4llj"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=LrB5Lk3Arlc",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=9FybUfYB5Ek",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4q3L"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=xoWfFFs2o9g",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=5M_pc7WXu94",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4qbX"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=BPcpDyJQJKc",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4qvL"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=X2Fsi8Hk6o0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4x2Y"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=iawmrs69jrQ",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=KQfpZx9dv1w",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4xXQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=wDq1zoDAwrk",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4xqN"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=RE0-k_TUv2s",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4xwQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=vswieHVNPKk",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=KWoPrmk2gm8",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4xyR"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=8VQnxmZZer0",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=jFACqXbzI5s",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4xzV"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=SqERo6bd3jI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G4yVw"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=HOXy2xpY25o",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G50Wr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=6anzcM-wG_g",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G50kj"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=kKD3GeUUwJM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G56vo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=hTBBmjnkc2E",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G56zB"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=OivgT9NXxbI",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=Un7pwLB7-6k",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5728"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=OGfEer2VTsM",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G578Y"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=pOu5oBFP2MM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G57X4"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=_hohHUVe3iE",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=xEh_ypadq3A",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G57y6"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=NwX3HrQPRqU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G59ZY"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=iqyxn1EH1OA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G59bo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=X2pQjoYiEZg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G59zN"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=IOu6avRn3t4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5BLE"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=BzLXJMNdoXs",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5D94"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=3ElO-GwUNhE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5Dz7"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=wI8Z6R1ss8I",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5KXk"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=jZELQUhY3e4",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=2wDKkYMMjts",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=RHMYH8B2eJY",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=b3-63iuGRQQ",
+            "index": 3
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5LW9"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=wx82w1SJN18",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5Lk0"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=2XOuGDBBPME",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=SGEzPctUEGY",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5QXO"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=nmGaMrI4BHI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5V8q"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=qYc9lY8rCOo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5WBr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=RBA0nakCRz0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5WOo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=0m2KcowIc1I",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5WXd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=kvr9siSNU2k",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5Wjk"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=wTh9Cbkqhe0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5WoB"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bdi5Zv4mWPI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5Wxd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=60a_nKnEdUA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5b38"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=pwehPOz3za8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5bQq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=mWRR4giwrkM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5bYr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=AUJYsokJQKw",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=s9ghTWHEwTo",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5bv3"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-HyWKU6YwxY",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=eRCVYJIrvEI",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=_lUGlSTIY9M",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5nkY"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=LLzfPm9a5dg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5nz5"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=2_hBRbG8iyg",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=giWIYnlsvKk",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=yiEbaeLFL-E",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=0XFvLi0tovw",
+            "index": 3
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5oEz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=GEic410xAd0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5po2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=dDEujaDKlSk",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5poe"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bvKnTJQayRc",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=94EaR9JlcVU",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=xFPOhGHPERo",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5vLR"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=84BqfY_lwug",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5vnL"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=FREl6vJsfJM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5vq2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=fY9zmp8a-YQ",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5w3q"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=fZ4xHEVYtJ8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G5zQO"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ktJkKgdJ1ko",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "G6lnq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=XMOpWL-gAwA",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GBLLP"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=S2gGY8BTddI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GO0q3"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=KGlbYxBt2Zk",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GQKb2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=AD-Oef3DBcg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR07v"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=XY7C6B_uDCo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR67j"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=GoGo5yrhOrI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR68o"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bb5_mhOHQWg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR6Oy"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=K3D5VYyjgiI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR6W8"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=MjJAVl-bdgk",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=AYbUjxotfj0",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR6d8"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=mo0TXLh5IP4",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=_MeugJhOdwU",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=Xksv9zrQTNg",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR6do"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=h5ZO-BFkGtQ",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR6kW"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=6sP1oOYKeRg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR99Y"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=j-qO66V4LUk",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=IzULZUXc_zg",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR9Bx"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=3v8-RbvWMCU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR9Nr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=3WhGslpP6NM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR9lZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=owQYSjmuTFE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR9o1"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=XQbRraVhyi4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GR9qY"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=AmXnMA-Urr8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBE4"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=npKSo6Y-D_A",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBKZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=_c07uPqiRdQ",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBZl"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ekkf4Z-O0Mo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBxQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=rlLBljEhD3c",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBxq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bMhKRhUT9X0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRBzQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=XGCScm4lecQ",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRD2P"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=my_Moq66MMs",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRDqo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=lx7C1-A-6GI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRKOX"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=W2NgByitFwg",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=gVq675JSmKQ",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRKWZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=4YU5zGlIECo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRL2z"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=dXrwMWOeSnY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRLzj"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-OJbcHwoOBM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=p7yPutRCPNY",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=BN9w1imDHIQ",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRQ6d"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ZRCxaI_BmIY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRQKz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=9zVJLyIf-F8",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=M_FVbAZsNLI",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRVEJ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=4BLt8QNG1L0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRVZ8"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=2KbDrhP9RXo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRVjJ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=JP5Axk3VLic",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRVoX"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=cHL8kz-yVeY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRVq4"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-y0Ehmnt3U8",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=OPPiAg2eL_U",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=kPeRN0YzSS0",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRWBd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=v2kPwKvkNi4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRWd2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=s4t1oq4PE1g",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRWvz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=BOP6gXVB0VU",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=O5d6ld6k8Fw",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=Q1dVGwTM0fs",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRWyB"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ghtDxTljex8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRY2O"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=i_hZis0maeA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRY7E"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=hMj8LH78zgU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRYPN"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=qldmAwTUGGY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRYox"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=yO5XgYXLHVU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRbPY"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=NCg-cAyKL2o",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRnPz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bFKvbsyt6XI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRnwQ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-oAihoDI_UM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=flk_3J0fgK8",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=qBQJS-lMn3s",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRo7K"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=1olt8o55iYk",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRoWo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-WKQL35sIQo",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRoZw"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=UsaRNkdYZXE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRokL"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=Cc_wj1zV4mc",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRoz4"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=y2tuz3YcSXM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=WMIBlO3uyfQ",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRpbW"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=0ZFG3SUQUBs",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRvJV"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=xt61aMsPnF0",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRvzd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=QVK8SaJUccY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRw0r"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ZHWZa_CHnkA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRwYo"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ITN63IQ-vbE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRwjq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=XKt7mUeyiXs",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GRwv0"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=zfWr6veFgaQ",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GYWBZ"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=UUU_FEVAIDs",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GZVOd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=2SdIZ-7Me9o",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gd2Xb"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=LxAeJua4eyQ",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=WNHNFXUYrDI",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gj66P"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=wCH-Q-zDkK4",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=HByeWdJJx20",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GoEkx"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=tU9DTZ4I3Co",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=GwmgpJrZXok",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GqZZ1"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=8Le_NGSJor4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr16e"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ua7ishbtZoE",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr1Ko"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=hkWUsgzkthw",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr2Y2"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=U6jfkhnlj7Q",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr2wz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=Ff3gl0-rjw4",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr31Y"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=UTZ64bfzbng",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr3EW"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=gVE919IMPNc",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr3Lq"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=TWdgXaG9Cnc",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=cE6kZKYl97o",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr8PN"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=f5_FjTu0ldI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gr8jd"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=e_MVI3Uu8fc",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrE7e"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=kNOWXKKNqRw",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=Q3TBiEZN_s0",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrENE"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=p4ZcM7jQkNM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrEWx"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=ZGVirmO6Q68",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrEZ5"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=kuZPzexp1A4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrJ2Z"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=fm0WXpLxMnM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=As7c_box8-8",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=CKZXLv-gbfM",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=NZ1wF8I2NtA",
+            "index": 3
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrN90"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=Ul5Zp5z4mpU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrNWn"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=x_hJC1wpE_c",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrNd0"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=gPTmUoTrvu4",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=qymw6njciz4",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=bKeYQDmpsu0",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrNlV"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=qNOWom2-DB8",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrNnr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=AbFOMWyU_eA",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=dxXHpLGQIaY",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrNpx"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=PZCo9rcyg4w",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrO0D"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=4BOGGzdDBjE",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=RJcaGjQC5xI",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=CyfIf55X7B4",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrOpb"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=FmdMfgCOYoM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrPJz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=qoBfATpVrmY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrPO3"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=CfdWm7pGAXM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=_MXOOt8_Xro",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=obPrMXB1AUo",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=ZDM7keshKyA",
+            "index": 3
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrPzV"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=QS7QzTGgNrw",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=zcnrcG3kHHo",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrX09"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=TbCzkv6mL80",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrX7q"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=dPOa_0RLBy4",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrXEW"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=B_PKDn0OuFw",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=7cU0APTMXcA",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrXlr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=4JhOe_Oju_g",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrXzD"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=DYy0aNj9GLU",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=SLUj2a3FRiA",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=tM1atYmuY-c",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=aC1FssasIpY",
+            "index": 3
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrZ1k"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=cCr9k0QK2aw",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrZBr"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=-Kfn_pJ_WNg",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrZnn"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=SoxXQ6wHVII",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrdDB"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=xz4hI1s3caI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gre0B"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=88u0O104wDw",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grep0"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=bDzp2GoUOXw",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=8pSvP-PD_K4",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grj6X"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=EFX2_0nDoMI",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=amxYzgduEGo",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrjDz"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=F-UEWoNhrvM",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrkW3"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=m0rC02OjnZY",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrlZe"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=H8uIqjg5o7E",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grlxe"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=_gaCEWjyuOI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grlxp"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=LFIpeOec-as",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grlzn"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=UW3OFFfLxtA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GrqZX"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=a9PnCwcYPwY",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=zttZPQy1vnk",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grx1z"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=nRn2S7eboAw",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grx8Y"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=Cl305fAERXA",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=h3q315Fy8ic",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=y_BgVLzT3I0",
+            "index": 2
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Grxvy"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=K9l7Rfk2dRA",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gry7q"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=Uvs85pIvrnM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=Gq8YhzdBINE",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GvBQX"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=FgNMKhK0VyI",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GweeP"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=8_VdNWGnxcM",
+            "index": 1
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gweel"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=0rmTGcnVTlM",
+            "index": 0
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=jJNt9G6I5m4",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=HZ3q8QELbJg",
+            "index": 2
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 4",
+            "videoUrl": "https://www.youtube.com/watch?v=o8PYTcPgWpY",
+            "index": 3
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 5",
+            "videoUrl": "https://www.youtube.com/watch?v=BEwMCHRV_o4",
+            "index": 4
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "GxvQ7"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 1",
+            "videoUrl": "https://www.youtube.com/watch?v=eizJUCT-wWU",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "payload": {
+        "entry": {
+          "machineGroup": {
+            "opdbId": "Gzy89"
+          }
+        },
+        "videos": [
+          {
+            "type": "tutorial",
+            "label": "Tutorial 2",
+            "videoUrl": "https://www.youtube.com/watch?v=I02bLDDEYj0",
+            "index": 1
+          },
+          {
+            "type": "tutorial",
+            "label": "Tutorial 3",
+            "videoUrl": "https://www.youtube.com/watch?v=9sjxX1oMFgw",
+            "index": 2
+          }
+        ]
+      }
+    }
+  ]
+}

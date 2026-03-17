@@ -10,18 +10,18 @@ This document captures how pinball data/assets are currently sourced and maintai
   - `https://docs.google.com/spreadsheets/d/e/2PACX-1vTlFuhuOFWj3Wbki2wOaHTUCUojPQ_5DsPJ8ta4P0zlQNLijHFHwbSQ7gJhosdlWVn-todC_t9AWmkq/pub?gid=2051576512&single=true&output=csv`
 - Local canonical shared app data is kept in:
   - `shared/pinball`
-- `pinball_library.json` is generated from CSV via:
-  - `lpl-library/scripts/build_pinball_library.ts`
+- `pinball_library_v3.json` is generated from the venue CSV inputs via:
+  - `lpl-library/scripts/build_pinball_library_v3.ts`
 - `LPL_Standings.csv` and `LPL_Stats.csv` are maintained from season data (Season 14 through current Season 24) and updated manually every ~2 weeks.
 - League calculations are produced externally by Joseph (league director's husband). This repo ingests already-calculated data.
 
 ## Current Process by Data Type
 
-### 1) Library CSV -> JSON
+### 1) Venue CSVs -> Library JSON
 
 - Update Avenue game data in Google Sheets.
 - Consume published CSV export.
-- Generate `pinball_library.json` using `build_pinball_library.ts`.
+- Generate `pinball_library_v3.json` using `build_pinball_library_v3.ts`.
 - Regenerate canonical manifest/update log before build/deploy.
 
 ### 2) Standings + Stats CSVs

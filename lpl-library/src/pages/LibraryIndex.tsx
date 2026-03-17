@@ -26,7 +26,7 @@ import {
   loadLibrarySourceState,
   loadResolvedLibraryData,
   locationBankText,
-  manufacturerYearText,
+  manufacturerYearCardText,
   preferredDefaultSortMode,
   preferredDefaultYearDescending,
   preferredLibrarySourceId,
@@ -43,7 +43,7 @@ import {
 type SortMode = "area" | "bank" | "alphabetical" | "year";
 type SettingsView = "home" | "manufacturer" | "venue";
 
-const BUILTIN_SOURCE_IDS = new Set(["venue--rlm-amusements", "venue--the-avenue-cafe"]);
+const BUILTIN_SOURCE_IDS = new Set(["venue--pm-16470", "venue--pm-8760"]);
 const VENUE_MIN_GAME_COUNT_STORAGE_KEY = "lpl-library:settings-add-venue-min-game-count:v1";
 
 function fallbackSourceState(): LibrarySourceState {
@@ -181,7 +181,7 @@ function GameCard({ game }: { game: LibraryGame }) {
           <span className="line-clamp-2 min-w-0">{game.name}</span>
         </div>
         <div className="mt-1 flex min-w-0 items-center gap-1.5 text-xs text-white/95">
-          <span className="min-w-0 truncate">{manufacturerYearText(game)}</span>
+          <span className="min-w-0 truncate">{manufacturerYearCardText(game)}</span>
           {game.variant && (
             <span className="max-w-[5.25rem] truncate rounded-full border border-white/20 bg-black/45 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-white/90">
               {game.variant}
@@ -205,7 +205,7 @@ export default function LibraryIndex() {
   const [importedSources, setImportedSources] = useState<ImportedSourceRecord[]>([]);
   const [sourceGameCounts, setSourceGameCounts] = useState<Record<string, number>>({});
   const [sourceState, setSourceState] = useState<LibrarySourceState>(() => loadLibrarySourceState());
-  const [selectedSourceId, setSelectedSourceId] = useState("venue--the-avenue-cafe");
+  const [selectedSourceId, setSelectedSourceId] = useState("venue--pm-8760");
   const [query, setQuery] = useState("");
   const [bank, setBank] = useState<number | "all">("all");
   const [sortMode, setSortMode] = useState<SortMode>("area");
@@ -550,12 +550,14 @@ export default function LibraryIndex() {
         subtitle: "Built-in venue",
         imported: null as ImportedSourceRecord | null,
       })),
-    ...importedSources.map((source) => ({
+    ...importedSources
+      .filter((source) => !BUILTIN_SOURCE_IDS.has(source.id))
+      .map((source) => ({
       source: { id: source.id, name: source.name, type: source.type } as LibrarySource,
       builtin: false,
       subtitle: sourceSubtitle(source, manufacturerOptions, sourceGameCounts),
       imported: source,
-    })),
+      })),
   ];
 
   const controls = (

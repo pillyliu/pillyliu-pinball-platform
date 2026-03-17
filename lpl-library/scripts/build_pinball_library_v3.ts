@@ -91,12 +91,83 @@ type LibraryV3 = {
   items: LibraryV3Item[];
 };
 
+type VenueLayoutArea = {
+  source_id: string;
+  area: string;
+  area_order: number;
+};
+
+type VenueMachineLayout = {
+  source_id: string;
+  opdb_id: string;
+  area: string | null;
+  group_number: number | null;
+  position: number | null;
+};
+
+type VenueMachineBank = {
+  source_id: string;
+  opdb_id: string;
+  bank: number;
+};
+
+type VenueMetadataOverlays = {
+  version: number;
+  generated_at: string;
+  layout_areas: VenueLayoutArea[];
+  machine_layout: VenueMachineLayout[];
+  machine_bank: VenueMachineBank[];
+};
+
+type VenueMetadataOverlayIndex = {
+  areaOrderByKey: Map<string, number>;
+  machineLayoutByKey: Map<string, VenueMachineLayout>;
+  machineBankByKey: Map<string, VenueMachineBank>;
+};
+
+type CuratedLocalRulesheetRecord = {
+  practice_identity: string;
+  kind: string;
+  local_path: string;
+  notes?: string;
+};
+
+type CuratedLocalRulesheetResources = {
+  version: number;
+  records: CuratedLocalRulesheetRecord[];
+};
+
+type ResolvedVenueMetadata = {
+  area: string | null;
+  area_order: number | null;
+  group: number | null;
+  position: number | null;
+  bank: number | null;
+};
+
+type CatalogVariantMachine = {
+  practiceIdentity: string;
+  opdbMachineId: string;
+  name: string;
+  variant: string | null;
+  manufacturerName: string | null;
+  year: number | null;
+};
+
+type CatalogVariantIndex = {
+  byPracticeIdentity: Map<string, CatalogVariantMachine[]>;
+  byOpdbId: Map<string, CatalogVariantMachine>;
+};
+
 const SHARED_PINBALL_DIR = path.resolve("../shared/pinball");
 const SHARED_PINBALL_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
 const SHARED_PINBALL_IMAGES_DIR = path.join(SHARED_PINBALL_DIR, "images", "playfields");
 const SHARED_PINBALL_RULESHEETS_DIR = path.join(SHARED_PINBALL_DIR, "rulesheets");
 const SHARED_PINBALL_GAMEINFO_DIR = path.join(SHARED_PINBALL_DIR, "gameinfo");
+const OPDB_CATALOG_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_catalog_v1.json");
 const PINPROF_ADMIN_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinprof_admin_v1.sqlite");
+const VENUE_METADATA_OVERLAYS_PATH = path.join(SHARED_PINBALL_DATA_DIR, "venue_metadata_overlays_v1.json");
+const CURATED_LOCAL_RULESHEETS_PATH = path.join(SHARED_PINBALL_DATA_DIR, "local_rulesheet_curations_v1.json");
 const SUPPORTED_PLAYFIELD_EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg"];
 function slugify(input: string): string {
   return input
@@ -145,6 +216,11 @@ function getHeaderValue(row: RawRow, ...keys: string[]): string {
   return "";
 }
 
+function venueSourceIdFromPmLocation(pmLocationId: string | null): string | null {
+  const cleaned = cleanString(pmLocationId);
+  return cleaned ? `venue--pm-${cleaned}` : null;
+}
+
 function detectLibraryType(row: RawRow): LibraryType {
   const pmLocationId = cleanString(getHeaderValue(row, "PM_location_id"));
   const venue = cleanString(getHeaderValue(row, "Venue"));
@@ -155,6 +231,7 @@ function detectLibraryType(row: RawRow): LibraryType {
 function buildLibraryIdentity(row: RawRow) {
   const libraryType = detectLibraryType(row);
   if (libraryType === "venue") {
+    const pmLocationId = cleanString(getHeaderValue(row, "PM_location_id"));
     const venueName =
       cleanString(getHeaderValue(row, "Venue")) ||
       cleanString(getHeaderValue(row, "Venue Location")) ||
@@ -162,7 +239,7 @@ function buildLibraryIdentity(row: RawRow) {
     return {
       libraryType,
       libraryName: venueName,
-      libraryId: `venue--${slugify(venueName)}`,
+      libraryId: venueSourceIdFromPmLocation(pmLocationId) ?? `venue--${slugify(venueName)}`,
     };
   }
 
@@ -183,6 +260,116 @@ function isDuplicateHeaderRow(row: RawRow): boolean {
 
 function isBlankRow(row: RawRow): boolean {
   return Object.values(row).every((v) => String(v ?? "").trim() === "");
+}
+
+function overlayAreaKey(sourceId: string, area: string): string {
+  return `${sourceId}::${area}`;
+}
+
+function overlayMachineKey(sourceId: string, opdbId: string): string {
+  return `${sourceId}::${opdbId}`;
+}
+
+function loadVenueMetadataOverlays(): VenueMetadataOverlayIndex {
+  if (!fileExists(VENUE_METADATA_OVERLAYS_PATH)) {
+    return {
+      areaOrderByKey: new Map(),
+      machineLayoutByKey: new Map(),
+      machineBankByKey: new Map(),
+    };
+  }
+
+  try {
+    const raw = JSON.parse(fs.readFileSync(VENUE_METADATA_OVERLAYS_PATH, "utf8")) as Partial<VenueMetadataOverlays>;
+    const areaOrderByKey = new Map<string, number>();
+    const machineLayoutByKey = new Map<string, VenueMachineLayout>();
+    const machineBankByKey = new Map<string, VenueMachineBank>();
+
+    for (const entry of raw.layout_areas ?? []) {
+      if (!entry?.source_id || !entry.area || typeof entry.area_order !== "number") continue;
+      areaOrderByKey.set(overlayAreaKey(entry.source_id, entry.area), entry.area_order);
+    }
+
+    for (const entry of raw.machine_layout ?? []) {
+      if (!entry?.source_id || !entry.opdb_id) continue;
+      machineLayoutByKey.set(overlayMachineKey(entry.source_id, entry.opdb_id), {
+        source_id: entry.source_id,
+        opdb_id: entry.opdb_id,
+        area: cleanString(entry.area),
+        group_number: typeof entry.group_number === "number" ? entry.group_number : null,
+        position: typeof entry.position === "number" ? entry.position : null,
+      });
+    }
+
+    for (const entry of raw.machine_bank ?? []) {
+      if (!entry?.source_id || !entry.opdb_id || typeof entry.bank !== "number") continue;
+      machineBankByKey.set(overlayMachineKey(entry.source_id, entry.opdb_id), {
+        source_id: entry.source_id,
+        opdb_id: entry.opdb_id,
+        bank: entry.bank,
+      });
+    }
+
+    return { areaOrderByKey, machineLayoutByKey, machineBankByKey };
+  } catch (error) {
+    throw new Error(`Failed to parse venue metadata overlays at ${VENUE_METADATA_OVERLAYS_PATH}: ${String(error)}`);
+  }
+}
+
+function loadCuratedLocalRulesheetSet(): Set<string> {
+  if (!fileExists(CURATED_LOCAL_RULESHEETS_PATH)) return new Set();
+  try {
+    const raw = JSON.parse(fs.readFileSync(CURATED_LOCAL_RULESHEETS_PATH, "utf8")) as Partial<CuratedLocalRulesheetResources>;
+    const keep = new Set<string>();
+    for (const entry of raw.records ?? []) {
+      const practiceIdentity = cleanString(entry?.practice_identity);
+      const localPath = cleanString(entry?.local_path);
+      if (!practiceIdentity || !localPath?.startsWith("/pinball/rulesheets/")) continue;
+      keep.add(practiceIdentity);
+    }
+    return keep;
+  } catch (error) {
+    throw new Error(`Failed to parse curated local rulesheet resources at ${CURATED_LOCAL_RULESHEETS_PATH}: ${String(error)}`);
+  }
+}
+
+function resolveVenueMetadata(
+  row: RawRow,
+  libraryId: string,
+  opdbId: string | null,
+  overlays: VenueMetadataOverlayIndex,
+): ResolvedVenueMetadata {
+  const fallbackArea = cleanString(getHeaderValue(row, "Area", "Location"));
+  const fallbackAreaOrder = toIntOrNull(getHeaderValue(row, "AreaOrder"));
+  const fallbackGroup = toIntOrNull(getHeaderValue(row, "Group"));
+  const fallbackPosition = toIntOrNull(getHeaderValue(row, "Position"));
+  const fallbackBank = toIntOrNull(getHeaderValue(row, "Bank"));
+
+  if (!opdbId) {
+    return {
+      area: fallbackArea,
+      area_order: fallbackAreaOrder,
+      group: fallbackGroup,
+      position: fallbackPosition,
+      bank: fallbackBank,
+    };
+  }
+
+  const layout = overlays.machineLayoutByKey.get(overlayMachineKey(libraryId, opdbId));
+  const bank = overlays.machineBankByKey.get(overlayMachineKey(libraryId, opdbId));
+  const area = layout ? cleanString(layout.area) : fallbackArea;
+  const areaOrder =
+    layout && area
+      ? overlays.areaOrderByKey.get(overlayAreaKey(libraryId, area)) ?? fallbackAreaOrder
+      : fallbackAreaOrder;
+
+  return {
+    area,
+    area_order: areaOrder ?? null,
+    group: layout ? layout.group_number : fallbackGroup,
+    position: layout ? layout.position : fallbackPosition,
+    bank: bank?.bank ?? fallbackBank,
+  };
 }
 
 const LEGACY_MANUFACTURER_SLUG_ALIASES: Record<string, string[]> = {
@@ -264,6 +451,82 @@ function opdbGroupIdFromOPDBID(opdbID: string | null): string | null {
   return match?.[1] ?? null;
 }
 
+function normalizeMatchText(input: string | null): string {
+  return String(input ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function catalogLooksLikeVariantSuffix(value: string): boolean {
+  const lowered = value.trim().toLowerCase();
+  if (!lowered) return false;
+  return lowered === "premium" ||
+    lowered === "pro" ||
+    lowered === "le" ||
+    lowered === "ce" ||
+    lowered === "se" ||
+    lowered === "home" ||
+    lowered.includes("anniversary") ||
+    lowered.includes("limited edition") ||
+    lowered.includes("special edition") ||
+    lowered.includes("collector") ||
+    lowered === "premium/le" ||
+    lowered === "premium le" ||
+    lowered === "premium-le";
+}
+
+function normalizeCatalogVariantLabel(value: string | null): string | null {
+  const trimmed = String(value ?? "").trim();
+  if (!trimmed) return null;
+  const lowered = trimmed.toLowerCase();
+  if (lowered === "null" || lowered === "none") return null;
+  if (lowered === "premium") return "Premium";
+  if (lowered === "pro") return "Pro";
+  if (lowered === "le" || lowered.includes("limited edition")) return "LE";
+  if (lowered === "ce" || lowered.includes("collector")) return "CE";
+  if (lowered === "se" || lowered.includes("special edition")) return "SE";
+  if (lowered === "premium/le" || lowered === "premium le" || lowered === "premium-le") return "Premium/LE";
+  if (lowered.includes("anniversary")) {
+    return trimmed
+      .split(/\s+/)
+      .map((token) => {
+        const normalized = token.toLowerCase();
+        if (normalized === "le" || normalized === "ce" || normalized === "se") return normalized.toUpperCase();
+        return token.slice(0, 1).toUpperCase() + token.slice(1);
+      })
+      .join(" ");
+  }
+  return trimmed;
+}
+
+function catalogVariantSuffixFromTitle(title: string): string | null {
+  const trimmedTitle = title.trim();
+  if (!trimmedTitle.endsWith(")")) return null;
+  const openParenIndex = trimmedTitle.lastIndexOf("(");
+  if (openParenIndex <= 0) return null;
+  const rawSuffix = trimmedTitle.slice(openParenIndex + 1, -1).trim();
+  if (!catalogLooksLikeVariantSuffix(rawSuffix)) return null;
+  return normalizeCatalogVariantLabel(rawSuffix);
+}
+
+function resolvedCatalogDisplayTitle(title: string, explicitVariant: string | null): string {
+  const trimmedTitle = title.trim();
+  if (!trimmedTitle.endsWith(")")) return trimmedTitle;
+  const openParenIndex = trimmedTitle.lastIndexOf("(");
+  if (openParenIndex <= 0) return trimmedTitle;
+  const rawSuffix = trimmedTitle.slice(openParenIndex + 1, -1).trim();
+  if (!catalogLooksLikeVariantSuffix(rawSuffix)) return trimmedTitle;
+  const normalizedSuffix = normalizeCatalogVariantLabel(rawSuffix);
+  const normalizedExplicit = normalizeCatalogVariantLabel(explicitVariant);
+  if (normalizedExplicit && normalizedSuffix && normalizedExplicit !== normalizedSuffix) {
+    return trimmedTitle;
+  }
+  const baseTitle = trimmedTitle.slice(0, openParenIndex).trim();
+  return baseTitle || trimmedTitle;
+}
+
 function fileExists(p: string): boolean {
   try {
     return fs.existsSync(p);
@@ -287,6 +550,129 @@ function parseOpdbIdParts(opdbId: string | null | undefined) {
     groupId,
     machineId,
     aliasId: aliasPart ? clean : null,
+  };
+}
+
+function loadCatalogVariantIndex(): CatalogVariantIndex {
+  if (!fileExists(OPDB_CATALOG_PATH)) {
+    return {
+      byPracticeIdentity: new Map(),
+      byOpdbId: new Map(),
+    };
+  }
+
+  const root = JSON.parse(fs.readFileSync(OPDB_CATALOG_PATH, "utf8")) as { machines?: unknown[] };
+  const machines = Array.isArray(root.machines) ? root.machines : [];
+  const byPracticeIdentity = new Map<string, CatalogVariantMachine[]>();
+  const byOpdbId = new Map<string, CatalogVariantMachine>();
+
+  for (const entry of machines) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) continue;
+    const item = entry as Record<string, unknown>;
+    const practiceIdentity = cleanString(item.practice_identity);
+    const opdbMachineId = cleanString(item.opdb_machine_id);
+    const name = cleanString(item.name);
+    if (!practiceIdentity || !opdbMachineId || !name) continue;
+    const machine: CatalogVariantMachine = {
+      practiceIdentity,
+      opdbMachineId,
+      name,
+      variant: cleanString(item.variant),
+      manufacturerName: cleanString(item.manufacturer_name),
+      year: toIntOrNull(item.year),
+    };
+    const existing = byPracticeIdentity.get(practiceIdentity) ?? [];
+    existing.push(machine);
+    byPracticeIdentity.set(practiceIdentity, existing);
+    byOpdbId.set(opdbMachineId, machine);
+  }
+
+  return { byPracticeIdentity, byOpdbId };
+}
+
+function scoreCatalogVariantCandidate(rawOpdbId: string, variant: string, machine: CatalogVariantMachine): number {
+  let score = 0;
+  const normalizedVariant = normalizeMatchText(variant);
+  const normalizedMachineName = normalizeMatchText(machine.name);
+  const normalizedMachineVariant = normalizeMatchText(machine.variant);
+  if (machine.opdbMachineId === rawOpdbId) score += 100;
+  if (machine.name.toLowerCase().includes(`(${variant.toLowerCase()})`)) {
+    score += 300;
+  } else if (normalizedMachineName.includes(normalizedVariant)) {
+    score += 200;
+  }
+  if (normalizedMachineVariant && normalizedMachineVariant === normalizedVariant) score += 250;
+  if (machine.name.includes("/")) score -= 25;
+  if (machine.opdbMachineId.includes("-A")) score += 10;
+  return score;
+}
+
+function resolveRowOpdbId(row: RawRow, catalogVariants: CatalogVariantIndex): string | null {
+  const rawOpdbId = cleanString(getHeaderValue(row, "opdb_id"));
+  if (!rawOpdbId) return null;
+  if (rawOpdbId.includes("-A")) return rawOpdbId;
+
+  const variant = cleanString(getHeaderValue(row, "Variant"));
+  if (!variant) return rawOpdbId;
+
+  const practiceIdentity = cleanString(getHeaderValue(row, "practice_identity")) ?? opdbGroupIdFromOPDBID(rawOpdbId);
+  if (!practiceIdentity) return rawOpdbId;
+
+  const candidates = catalogVariants.byPracticeIdentity.get(practiceIdentity) ?? [];
+  if (!candidates.length) return rawOpdbId;
+
+  let best: { score: number; opdbMachineId: string } | null = null;
+  for (const candidate of candidates) {
+    const score = scoreCatalogVariantCandidate(rawOpdbId, variant, candidate);
+    if (!best || score > best.score) {
+      best = { score, opdbMachineId: candidate.opdbMachineId };
+    }
+  }
+
+  return best && best.score > 100 ? best.opdbMachineId : rawOpdbId;
+}
+
+function resolveCatalogMachineForRow(
+  row: RawRow,
+  opdbId: string | null,
+  catalogVariants: CatalogVariantIndex,
+): CatalogVariantMachine | null {
+  const normalizedOpdbId = cleanString(opdbId);
+  if (!normalizedOpdbId) return null;
+
+  const exact = catalogVariants.byOpdbId.get(normalizedOpdbId);
+  if (exact) return exact;
+
+  const variant = cleanString(getHeaderValue(row, "Variant"));
+  if (!variant) return null;
+
+  const practiceIdentity = cleanString(getHeaderValue(row, "practice_identity")) ?? opdbGroupIdFromOPDBID(normalizedOpdbId);
+  if (!practiceIdentity) return null;
+  const candidates = catalogVariants.byPracticeIdentity.get(practiceIdentity) ?? [];
+  if (!candidates.length) return null;
+
+  let best: { score: number; machine: CatalogVariantMachine } | null = null;
+  for (const candidate of candidates) {
+    const score = scoreCatalogVariantCandidate(normalizedOpdbId, variant, candidate);
+    if (!best || score > best.score) {
+      best = { score, machine: candidate };
+    }
+  }
+  return best && best.score > 100 ? best.machine : null;
+}
+
+function resolveCatalogDisplayFields(machine: CatalogVariantMachine): {
+  game: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: number | null;
+} {
+  const variant = normalizeCatalogVariantLabel(machine.variant) ?? catalogVariantSuffixFromTitle(machine.name);
+  return {
+    game: resolvedCatalogDisplayTitle(machine.name, variant),
+    variant,
+    manufacturer: machine.manufacturerName,
+    year: machine.year,
   };
 }
 
@@ -457,10 +843,10 @@ function resolveInputCsvPaths(): string[] {
   if (args.length > 0) {
     return args.map((p) => path.resolve(p));
   }
-
-  const avenue = path.join(SHARED_PINBALL_DATA_DIR, "Avenue Pinball - Current.csv");
-  const rlm = path.join(SHARED_PINBALL_DATA_DIR, "RLM Amusements - Current.csv");
-  return [avenue, rlm].filter((p) => fs.existsSync(p));
+  return [
+    path.join(SHARED_PINBALL_DATA_DIR, "Avenue Pinball - Current.csv"),
+    path.join(SHARED_PINBALL_DATA_DIR, "RLM Amusements - Current.csv"),
+  ].filter((candidate) => fileExists(candidate));
 }
 
 function writeJsonIfChanged(outPath: string, next: LibraryV3) {
@@ -486,12 +872,11 @@ function writeJsonIfChanged(outPath: string, next: LibraryV3) {
 
 function main() {
   const inputCsvPaths = resolveInputCsvPaths();
-  if (!inputCsvPaths.length) {
-    throw new Error("No input CSV files found for v3 builder.");
-  }
-
   const outPath = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
   const adminPlayfieldAssets = loadAdminPlayfieldAssetMap();
+  const catalogVariants = loadCatalogVariantIndex();
+  const venueMetadataOverlays = loadVenueMetadataOverlays();
+  const curatedLocalRulesheets = loadCuratedLocalRulesheetSet();
   const items: LibraryV3Item[] = [];
   const allColumns = new Set<string>();
 
@@ -507,15 +892,32 @@ function main() {
 
     rawRows.forEach((row, idx) => {
       if (!row || isBlankRow(row) || isDuplicateHeaderRow(row)) return;
-      const game = cleanString(getHeaderValue(row, "Game"));
-      if (!game) return;
+      const legacyGame = cleanString(getHeaderValue(row, "Game"));
+      if (!legacyGame) return;
 
       const { libraryType, libraryId, libraryName } = buildLibraryIdentity(row);
-      const opdbID = cleanString(getHeaderValue(row, "opdb_id"));
+      const opdbID = resolveRowOpdbId(row, catalogVariants);
+      const catalogMachine = resolveCatalogMachineForRow(row, opdbID, catalogVariants);
+      const catalogFields = catalogMachine ? resolveCatalogDisplayFields(catalogMachine) : null;
       const practiceIdentity = cleanString(getHeaderValue(row, "practice_identity")) ?? opdbGroupIdFromOPDBID(opdbID);
       const legacySlug = deriveLegacySlug(row);
       const rulesheetPracticeBase = practiceIdentity ? `${practiceIdentity}-rulesheet` : null;
       const gameinfoPracticeBase = practiceIdentity ? `${practiceIdentity}-gameinfo` : null;
+      const rulesheetUrl = cleanUrl(getHeaderValue(row, "Rulesheet"));
+      const rulesheetLocalPractice =
+        practiceIdentity && curatedLocalRulesheets.has(practiceIdentity)
+          ? findMarkdownLocalPath(SHARED_PINBALL_RULESHEETS_DIR, rulesheetPracticeBase)
+          : null;
+      const venueMetadata =
+        libraryType === "venue"
+          ? resolveVenueMetadata(row, libraryId, opdbID, venueMetadataOverlays)
+          : {
+              area: null,
+              area_order: null,
+              group: null,
+              position: null,
+              bank: null,
+            };
 
       const columns: Record<string, string> = {};
       for (const h of headers) columns[h] = String(row[h] ?? "");
@@ -528,42 +930,42 @@ function main() {
         library_id: libraryId,
         library_name: libraryName,
 
-        game,
-        variant: cleanString(getHeaderValue(row, "Variant")),
-        manufacturer: cleanString(getHeaderValue(row, "Manufacturer")),
-        year: toIntOrNull(getHeaderValue(row, "Year")),
+        game: catalogFields?.game ?? legacyGame,
+        variant: catalogFields?.variant ?? cleanString(getHeaderValue(row, "Variant")),
+        manufacturer: catalogFields?.manufacturer ?? cleanString(getHeaderValue(row, "Manufacturer")),
+        year: catalogFields?.year ?? toIntOrNull(getHeaderValue(row, "Year")),
 
         venue: cleanString(getHeaderValue(row, "Venue")),
         pm_location_id: cleanString(getHeaderValue(row, "PM_location_id")),
         venue_location: cleanString(getHeaderValue(row, "Venue Location")),
-        area: cleanString(getHeaderValue(row, "Area", "Location")),
-        area_order: toIntOrNull(getHeaderValue(row, "AreaOrder")),
-        group: toIntOrNull(getHeaderValue(row, "Group")),
-        position: toIntOrNull(getHeaderValue(row, "Position")),
-        bank: toIntOrNull(getHeaderValue(row, "Bank")),
+        area: venueMetadata.area,
+        area_order: venueMetadata.area_order,
+        group: venueMetadata.group,
+        position: venueMetadata.position,
+        bank: venueMetadata.bank,
 
         slug: legacySlug,
 
-        rulesheet_url: cleanUrl(getHeaderValue(row, "Rulesheet")),
+        rulesheet_url: rulesheetUrl,
         playfield_image_url: cleanUrl(getHeaderValue(row, "Playfield Image")),
         videos: buildVideos(row),
 
         assets: {
-          rulesheet_local_practice: findMarkdownLocalPath(SHARED_PINBALL_RULESHEETS_DIR, rulesheetPracticeBase),
+          rulesheet_local_practice: rulesheetLocalPractice,
           gameinfo_local_practice: findMarkdownLocalPath(SHARED_PINBALL_GAMEINFO_DIR, gameinfoPracticeBase),
           playfield_local_practice: resolvePracticePlayfieldLocalPath(opdbID, practiceIdentity, adminPlayfieldAssets),
         },
 
         sort_keys: {
-          alphabetical: slugify(game),
-          year: toIntOrNull(getHeaderValue(row, "Year")),
+          alphabetical: slugify(catalogFields?.game ?? legacyGame),
+          year: catalogFields?.year ?? toIntOrNull(getHeaderValue(row, "Year")),
           location: {
-            areaOrder: toIntOrNull(getHeaderValue(row, "AreaOrder")),
-            area: cleanString(getHeaderValue(row, "Area", "Location")),
-            group: toIntOrNull(getHeaderValue(row, "Group")),
-            position: toIntOrNull(getHeaderValue(row, "Position")),
+            areaOrder: venueMetadata.area_order,
+            area: venueMetadata.area,
+            group: venueMetadata.group,
+            position: venueMetadata.position,
           },
-          bank: toIntOrNull(getHeaderValue(row, "Bank")),
+          bank: venueMetadata.bank,
         },
 
         columns,

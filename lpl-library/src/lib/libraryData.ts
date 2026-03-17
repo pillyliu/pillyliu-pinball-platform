@@ -204,17 +204,52 @@ type PublicLibraryOverridesRoot = {
   playfieldOverrides: PublicLibraryPlayfieldOverrideRecord[];
 };
 
+type VenueMachineLayoutOverlayRecord = {
+  source_id: string;
+  opdb_id: string;
+  area: string | null;
+  group_number: number | null;
+  position: number | null;
+};
+
+type VenueMachineBankOverlayRecord = {
+  source_id: string;
+  opdb_id: string;
+  bank: number;
+};
+
+type VenueMetadataOverlayIndex = {
+  areaOrderByKey: Map<string, number>;
+  machineLayoutByKey: Map<string, VenueMachineLayoutOverlayRecord>;
+  machineBankByKey: Map<string, VenueMachineBankOverlayRecord>;
+};
+
+type ResolvedImportedVenueMetadata = {
+  area: string | null;
+  areaOrder: number | null;
+  group: number | null;
+  position: number | null;
+  bank: number | null;
+};
+
 const OPDB_CATALOG_PATH = "/pinball/data/opdb_catalog_v1.json";
 const LIBRARY_PATH = "/pinball/data/pinball_library_v3.json";
 const PUBLIC_LIBRARY_OVERRIDES_PATH = "/pinball/data/pinball_library_seed_overrides_v1.json";
+const VENUE_METADATA_OVERLAYS_PATH = "/pinball/data/venue_metadata_overlays_v1.json";
+const DEFAULT_IMPORTED_SOURCES_PATH = "/pinball/data/default_pm_venue_sources_v1.json";
 const MISSING_ARTWORK_PATH = "/pinball/images/playfields/fallback-image-not-available_2048.webp";
 const FALLBACK_PLAYFIELD_700 = MISSING_ARTWORK_PATH;
 const FALLBACK_PLAYFIELD_1400 = MISSING_ARTWORK_PATH;
-const DEFAULT_AVENUE_SOURCE_IDS = ["venue--the-avenue-cafe", "the-avenue"] as const;
-const BUILTIN_SOURCE_IDS = ["venue--rlm-amusements", "venue--the-avenue-cafe"] as const;
+const PM_AVENUE_SOURCE_ID = "venue--pm-8760";
+const PM_RLM_SOURCE_ID = "venue--pm-16470";
+const DEFAULT_AVENUE_SOURCE_IDS = [PM_AVENUE_SOURCE_ID] as const;
+const BUILTIN_SOURCE_IDS = [PM_RLM_SOURCE_ID, PM_AVENUE_SOURCE_ID] as const;
 const LEGACY_SOURCE_ID_ALIASES: Record<string, string> = {
-  "the-avenue": "venue--the-avenue-cafe",
-  "rlm-amusements": "venue--rlm-amusements",
+  "the-avenue": PM_AVENUE_SOURCE_ID,
+  "the-avenue-cafe": PM_AVENUE_SOURCE_ID,
+  "venue--the-avenue-cafe": PM_AVENUE_SOURCE_ID,
+  "rlm-amusements": PM_RLM_SOURCE_ID,
+  "venue--rlm-amusements": PM_RLM_SOURCE_ID,
 };
 const LIBRARY_SOURCE_STATE_COOKIE = "lpl_library_source_state_v1";
 const IMPORTED_SOURCES_STORAGE_KEY = "lpl-library:imported-sources:v1";
@@ -224,7 +259,12 @@ let baseCatalogPromise: Promise<{
   payload: ParsedLibraryData;
   catalogRoot: CatalogRoot;
   publicOverrides: PublicLibraryOverridesRoot;
+  venueMetadataOverlays: VenueMetadataOverlayIndex;
 }> | null = null;
+
+type DefaultImportedSourcesRoot = {
+  records?: ImportedSourceRecord[];
+};
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof document !== "undefined";
@@ -269,14 +309,18 @@ function canonicalLibrarySourceId(raw: string | null | undefined): string | null
 }
 
 function slugifySourceId(value: string): string {
-  return (
+  const slug = (
     value
       .trim()
       .toLowerCase()
       .replace(/&/g, "and")
       .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "") || "the-avenue"
+      .replace(/^-+|-+$/g, "")
   );
+  if (!slug) return PM_AVENUE_SOURCE_ID;
+  if (slug === "the-avenue" || slug === "the-avenue-cafe") return PM_AVENUE_SOURCE_ID;
+  if (slug === "rlm-amusements") return PM_RLM_SOURCE_ID;
+  return slug;
 }
 
 function deriveRouteId(item: Record<string, unknown>, slug: string, fallback: string): string {
@@ -294,19 +338,26 @@ function deriveRouteId(item: Record<string, unknown>, slug: string, fallback: st
 function normalizeLibraryCachePath(path: string | null | undefined): string | null {
   const raw = normalizedOptionalString(path);
   if (!raw) return null;
+  const normalizePlayfieldPublishedPath = (value: string): string =>
+    value.replace(/(\/pinball\/images\/playfields\/.+?)(?:_(700|1400))?\.[A-Za-z0-9]+$/i, "$1.webp");
   if (raw.startsWith("/")) return raw;
   if (raw.startsWith("http://") || raw.startsWith("https://")) {
     try {
       const url = new URL(raw);
       if (url.host.toLowerCase() === "pillyliu.com" && url.pathname) {
-        return url.pathname;
+        return url.pathname.includes("/pinball/images/playfields/")
+          ? normalizePlayfieldPublishedPath(url.pathname)
+          : url.pathname;
       }
     } catch {
       return raw;
     }
     return raw;
   }
-  return `/${raw}`;
+  const normalized = `/${raw}`;
+  return normalized.includes("/pinball/images/playfields/")
+    ? normalizePlayfieldPublishedPath(normalized)
+    : normalized;
 }
 
 function normalizeLibraryPlayfieldLocalPath(path: string | null | undefined): string | null {
@@ -596,6 +647,45 @@ export function loadImportedSources(): ImportedSourceRecord[] {
   }
 }
 
+function dedupeImportedSources(
+  defaults: ImportedSourceRecord[],
+  stored: ImportedSourceRecord[],
+): ImportedSourceRecord[] {
+  const byId = new Map<string, ImportedSourceRecord>();
+  for (const source of defaults) {
+    byId.set(source.id, source);
+  }
+  for (const source of stored) {
+    byId.set(source.id, source);
+  }
+  return [...byId.values()].sort((left, right) => {
+    if (left.type !== right.type) return left.type.localeCompare(right.type);
+    return left.name.localeCompare(right.name, undefined, { sensitivity: "base" });
+  });
+}
+
+async function fetchDefaultImportedSources(): Promise<ImportedSourceRecord[]> {
+  try {
+    const raw = await fetchPinballJson<DefaultImportedSourcesRoot>(DEFAULT_IMPORTED_SOURCES_PATH);
+    const records = Array.isArray(raw?.records) ? raw.records : [];
+    return records
+      .map((source) => ({
+        ...source,
+        id: canonicalLibrarySourceId(source.id) ?? source.id,
+        name: normalizedOptionalString(source.name) ?? source.id,
+        providerSourceId: normalizedOptionalString(source.providerSourceId) ?? "",
+        machineIds: Array.isArray(source.machineIds)
+          ? source.machineIds.map((id) => normalizedOptionalString(id)).filter(Boolean) as string[]
+          : [],
+        type: normalizeSourceType(source.type),
+        provider: source.provider,
+      }))
+      .filter((source) => source.id && source.providerSourceId);
+  } catch {
+    return [];
+  }
+}
+
 export function saveImportedSources(records: ImportedSourceRecord[]) {
   if (!isBrowser()) return;
   window.localStorage.setItem(IMPORTED_SOURCES_STORAGE_KEY, JSON.stringify(records));
@@ -670,17 +760,27 @@ async function fetchPublicLibraryOverrides(): Promise<PublicLibraryOverridesRoot
   }
 }
 
+async function fetchVenueMetadataOverlays(): Promise<VenueMetadataOverlayIndex> {
+  try {
+    return parseVenueMetadataOverlays(await fetchPinballJson<unknown>(VENUE_METADATA_OVERLAYS_PATH));
+  } catch {
+    return emptyVenueMetadataOverlayIndex();
+  }
+}
+
 async function loadBaseCatalog(): Promise<{
   payload: ParsedLibraryData;
   catalogRoot: CatalogRoot;
   publicOverrides: PublicLibraryOverridesRoot;
+  venueMetadataOverlays: VenueMetadataOverlayIndex;
 }> {
   if (!baseCatalogPromise) {
     baseCatalogPromise = (async () => {
-      const [libraryResult, catalogResult, publicOverridesResult] = await Promise.allSettled([
+      const [libraryResult, catalogResult, publicOverridesResult, venueMetadataResult] = await Promise.allSettled([
         fetchPinballJson<unknown>(LIBRARY_PATH),
         fetchPinballJson<unknown>(OPDB_CATALOG_PATH),
         fetchPublicLibraryOverrides(),
+        fetchVenueMetadataOverlays(),
       ]);
       if (libraryResult.status !== "fulfilled") {
         throw libraryResult.reason;
@@ -691,6 +791,9 @@ async function loadBaseCatalog(): Promise<{
         publicOverrides: publicOverridesResult.status === "fulfilled"
           ? publicOverridesResult.value
           : { playfieldOverrides: [] },
+        venueMetadataOverlays: venueMetadataResult.status === "fulfilled"
+          ? venueMetadataResult.value
+          : emptyVenueMetadataOverlayIndex(),
       };
     })();
   }
@@ -732,6 +835,123 @@ function parsePublicLibraryPlayfieldOverride(value: unknown): PublicLibraryPlayf
     playfieldLocalPath,
     playfieldSourceUrl,
   };
+}
+
+function emptyVenueMetadataOverlayIndex(): VenueMetadataOverlayIndex {
+  return {
+    areaOrderByKey: new Map(),
+    machineLayoutByKey: new Map(),
+    machineBankByKey: new Map(),
+  };
+}
+
+function venueOverlayAreaKey(sourceId: string, area: string): string {
+  return `${sourceId}::${area}`;
+}
+
+function venueOverlayMachineKey(sourceId: string, opdbId: string): string {
+  return `${sourceId}::${opdbId}`;
+}
+
+function expandOverlayCandidateId(value: string | null | undefined): string[] {
+  const normalized = normalizedOptionalString(value);
+  if (!normalized) return [];
+  const out: string[] = [];
+  let current: string | null = normalized;
+  while (current) {
+    if (!out.includes(current)) out.push(current);
+    const dashIndex = current.lastIndexOf("-");
+    if (dashIndex <= 0) break;
+    current = current.slice(0, dashIndex);
+  }
+  return out;
+}
+
+function parseVenueMetadataOverlays(raw: unknown): VenueMetadataOverlayIndex {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return emptyVenueMetadataOverlayIndex();
+  }
+
+  const root = raw as {
+    layout_areas?: unknown[];
+    machine_layout?: unknown[];
+    machine_bank?: unknown[];
+  };
+  const areaOrderByKey = new Map<string, number>();
+  const machineLayoutByKey = new Map<string, VenueMachineLayoutOverlayRecord>();
+  const machineBankByKey = new Map<string, VenueMachineBankOverlayRecord>();
+
+  for (const value of Array.isArray(root.layout_areas) ? root.layout_areas : []) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) continue;
+    const row = value as Record<string, unknown>;
+    const sourceId = normalizedOptionalString(row.source_id);
+    const area = normalizedOptionalString(row.area);
+    const areaOrder = parseNumber(row.area_order);
+    if (!sourceId || !area || areaOrder == null) continue;
+    areaOrderByKey.set(venueOverlayAreaKey(sourceId, area), areaOrder);
+  }
+
+  for (const value of Array.isArray(root.machine_layout) ? root.machine_layout : []) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) continue;
+    const row = value as Record<string, unknown>;
+    const sourceId = normalizedOptionalString(row.source_id);
+    const opdbId = normalizedOptionalString(row.opdb_id);
+    if (!sourceId || !opdbId) continue;
+    machineLayoutByKey.set(venueOverlayMachineKey(sourceId, opdbId), {
+      source_id: sourceId,
+      opdb_id: opdbId,
+      area: normalizedOptionalString(row.area),
+      group_number: parseNumber(row.group_number),
+      position: parseNumber(row.position),
+    });
+  }
+
+  for (const value of Array.isArray(root.machine_bank) ? root.machine_bank : []) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) continue;
+    const row = value as Record<string, unknown>;
+    const sourceId = normalizedOptionalString(row.source_id);
+    const opdbId = normalizedOptionalString(row.opdb_id);
+    const bank = parseNumber(row.bank);
+    if (!sourceId || !opdbId || bank == null) continue;
+    machineBankByKey.set(venueOverlayMachineKey(sourceId, opdbId), {
+      source_id: sourceId,
+      opdb_id: opdbId,
+      bank,
+    });
+  }
+
+  return { areaOrderByKey, machineLayoutByKey, machineBankByKey };
+}
+
+function resolveImportedVenueMetadata(
+  sourceId: string,
+  requestedMachineId: string,
+  machine: CatalogMachineRecord,
+  overlays: VenueMetadataOverlayIndex,
+): ResolvedImportedVenueMetadata | null {
+  const candidateIds = [
+    ...expandOverlayCandidateId(requestedMachineId),
+    ...expandOverlayCandidateId(machine.opdbMachineId),
+    ...expandOverlayCandidateId(machine.opdbGroupId),
+    ...expandOverlayCandidateId(machine.practiceIdentity),
+  ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+
+  for (const candidateId of candidateIds) {
+    const layout = overlays.machineLayoutByKey.get(venueOverlayMachineKey(sourceId, candidateId));
+    const bank = overlays.machineBankByKey.get(venueOverlayMachineKey(sourceId, candidateId));
+    if (!layout && !bank) continue;
+
+    const area = normalizedOptionalString(layout?.area);
+    return {
+      area,
+      areaOrder: area ? overlays.areaOrderByKey.get(venueOverlayAreaKey(sourceId, area)) ?? null : null,
+      group: layout?.group_number ?? null,
+      position: layout?.position ?? null,
+      bank: bank?.bank ?? null,
+    };
+  }
+
+  return null;
 }
 
 function parseLibraryPayload(raw: unknown): ParsedLibraryData {
@@ -782,7 +1002,7 @@ function parseBaseGame(value: unknown, index: number): LibraryGame | null {
     normalizedOptionalString(item.library_name) ??
     normalizedOptionalString(item.sourceName) ??
     normalizedOptionalString(item.venue) ??
-    "The Avenue";
+    "The Avenue Cafe";
   const sourceId =
     canonicalLibrarySourceId(normalizedOptionalString(item.library_id)) ??
     canonicalLibrarySourceId(normalizedOptionalString(item.sourceId)) ??
@@ -794,7 +1014,7 @@ function parseBaseGame(value: unknown, index: number): LibraryGame | null {
     opdbId: normalizedOptionalString(item.opdb_id),
     opdbGroupId: normalizedOptionalString(item.opdb_group_id),
     variant: normalizedOptionalString(item.variant),
-    sourceId: sourceId ?? "the-avenue",
+    sourceId: sourceId ?? PM_AVENUE_SOURCE_ID,
     sourceName,
     sourceType: normalizeSourceType(item.library_type ?? item.sourceType),
     area: normalizedOptionalString(item.area) ?? normalizedOptionalString(item.location),
@@ -861,7 +1081,7 @@ function inferSourcesFromGames(games: LibraryGame[]): LibrarySource[] {
       type: game.sourceType,
     });
   }
-  return byId.size ? [...byId.values()] : [{ id: "venue--the-avenue-cafe", name: "The Avenue Cafe", type: "venue" }];
+  return byId.size ? [...byId.values()] : [{ id: PM_AVENUE_SOURCE_ID, name: "The Avenue Cafe", type: "venue" }];
 }
 
 function parseCatalogRoot(raw: unknown): CatalogRoot {
@@ -991,6 +1211,76 @@ function compareGroupDefaultMachine(left: CatalogMachineRecord, right: CatalogMa
   return (left.opdbMachineId ?? left.practiceIdentity).localeCompare(right.opdbMachineId ?? right.practiceIdentity, undefined, { sensitivity: "base" });
 }
 
+function normalizeCatalogVariantLabel(value: string | null | undefined): string | null {
+  const trimmed = normalizedOptionalString(value);
+  if (!trimmed) return null;
+  const lowered = trimmed.toLowerCase();
+  if (lowered === "premium") return "Premium";
+  if (lowered === "pro") return "Pro";
+  if (lowered === "le" || lowered.includes("limited edition")) return "LE";
+  if (lowered === "ce" || lowered.includes("collector")) return "CE";
+  if (lowered === "se" || lowered.includes("special edition")) return "SE";
+  if (lowered === "premium/le" || lowered === "premium le" || lowered === "premium-le") return "Premium/LE";
+  if (lowered === "arcade") return "Arcade";
+  if (lowered === "wizard") return "Wizard";
+  if (lowered.includes("anniversary")) {
+    return trimmed.split(" ").filter(Boolean).map((token) => {
+      const lower = token.toLowerCase();
+      if (lower === "le" || lower === "ce" || lower === "se") return lower.toUpperCase();
+      return token.charAt(0).toUpperCase() + token.slice(1);
+    }).join(" ");
+  }
+  return trimmed;
+}
+
+function looksLikeCatalogVariantSuffix(value: string): boolean {
+  const lowered = value.trim().toLowerCase();
+  if (!lowered) return false;
+  return lowered === "premium"
+    || lowered === "pro"
+    || lowered === "le"
+    || lowered === "ce"
+    || lowered === "se"
+    || lowered === "home"
+    || lowered === "arcade"
+    || lowered === "wizard"
+    || lowered.includes("anniversary")
+    || lowered.includes("limited edition")
+    || lowered.includes("special edition")
+    || lowered.includes("collector")
+    || lowered === "premium/le"
+    || lowered === "premium le"
+    || lowered === "premium-le";
+}
+
+function resolvedCatalogVariantLabel(title: string, explicitVariant: string | null | undefined): string | null {
+  const explicit = normalizeCatalogVariantLabel(explicitVariant);
+  if (explicit) return explicit;
+  const trimmedTitle = title.trim();
+  if (!trimmedTitle.endsWith(")")) return null;
+  const openParenIndex = trimmedTitle.lastIndexOf("(");
+  if (openParenIndex <= 0) return null;
+  const rawSuffix = trimmedTitle.slice(openParenIndex + 1, -1).trim();
+  if (!looksLikeCatalogVariantSuffix(rawSuffix)) return null;
+  return normalizeCatalogVariantLabel(rawSuffix);
+}
+
+function resolvedCatalogDisplayTitle(title: string, explicitVariant: string | null | undefined): string {
+  const trimmedTitle = title.trim();
+  if (!trimmedTitle.endsWith(")")) return trimmedTitle;
+  const openParenIndex = trimmedTitle.lastIndexOf("(");
+  if (openParenIndex <= 0) return trimmedTitle;
+  const rawSuffix = trimmedTitle.slice(openParenIndex + 1, -1).trim();
+  if (!looksLikeCatalogVariantSuffix(rawSuffix)) return trimmedTitle;
+  const normalizedSuffix = normalizeCatalogVariantLabel(rawSuffix);
+  const normalizedExplicit = normalizeCatalogVariantLabel(explicitVariant);
+  if (normalizedExplicit && normalizedSuffix && normalizedExplicit !== normalizedSuffix) {
+    return trimmedTitle;
+  }
+  const baseTitle = trimmedTitle.slice(0, openParenIndex).trim();
+  return baseTitle || trimmedTitle;
+}
+
 function catalogVariantScore(machineVariant: string | null, requestedVariant: string | null): number {
   const normalizedMachineVariant = normalizedOptionalString(machineVariant)?.toLowerCase() ?? null;
   const normalizedRequested = normalizedOptionalString(requestedVariant)?.toLowerCase() ?? null;
@@ -1089,53 +1379,230 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
   return null;
 }
 
+function localRulesheetReference(localPath: string | null | undefined): ReferenceLink[] {
+  const normalizedPath = normalizeLibraryCachePath(normalizedOptionalString(localPath));
+  if (!normalizedPath) return [];
+  return [{ label: "Local", url: "", provider: "local", localPath: normalizedPath }];
+}
+
+function isPmVenueSourceId(sourceId: string | null | undefined): boolean {
+  const normalized = canonicalLibrarySourceId(sourceId)?.toLowerCase() ?? "";
+  return normalized.startsWith("venue--pm-");
+}
+
+function rulesheetReferenceMergeKey(link: ReferenceLink): string {
+  const localPath = normalizeLibraryCachePath(normalizedOptionalString(link.localPath));
+  if (localPath) return `local::${localPath.toLowerCase()}`;
+  const url = normalizedOptionalString(link.url);
+  if (url) return `url::${url.toLowerCase()}`;
+  const provider = normalizedOptionalString(link.provider)?.toLowerCase() ?? "";
+  const label = normalizedOptionalString(link.label)?.toLowerCase() ?? "";
+  return `fallback::${provider}::${label}`;
+}
+
+function mergeRulesheetReferences(...groups: ReferenceLink[][]): ReferenceLink[] {
+  const merged: ReferenceLink[] = [];
+  const seen = new Set<string>();
+  const singletonProviders = new Set(["bob", "pp", "papa", "prof", "opdb"]);
+  const seenSingletonProviders = new Set<string>();
+  for (const group of groups) {
+    for (const link of group) {
+      const normalizedLink: ReferenceLink = {
+        label: link.label,
+        url: normalizedOptionalString(link.url) ?? "",
+        provider: normalizedOptionalString(link.provider),
+        localPath: normalizeLibraryCachePath(normalizedOptionalString(link.localPath)),
+      };
+      const key = rulesheetReferenceMergeKey(normalizedLink);
+      if (seen.has(key)) continue;
+      const providerKey = normalizedOptionalString(normalizedLink.provider)?.toLowerCase() ?? null;
+      if (providerKey && singletonProviders.has(providerKey) && seenSingletonProviders.has(providerKey)) {
+        continue;
+      }
+      seen.add(key);
+      if (providerKey && singletonProviders.has(providerKey)) {
+        seenSingletonProviders.add(providerKey);
+      }
+      merged.push(normalizedLink);
+    }
+  }
+  return merged;
+}
+
 function resolveRulesheetLinks(links: CatalogRulesheetLinkRecord[]): ResolvedRulesheetLinks {
   const sortedLinks = [...links].sort((left, right) => {
+    const providerCompare = compareMaybeNumber(
+      catalogRulesheetSortRank(left.provider, left.label, left.url),
+      catalogRulesheetSortRank(right.provider, right.label, right.url),
+    );
+    if (providerCompare) return providerCompare;
     const priorityCompare = compareMaybeNumber(left.priority, right.priority);
     if (priorityCompare) return priorityCompare;
     return left.label.localeCompare(right.label, undefined, { sensitivity: "base" });
   });
+  const localPath = normalizeLibraryCachePath(sortedLinks[0]?.localPath ?? null);
+  const externalLinks = sortedLinks.flatMap((link): ReferenceLink[] => (
+    link.url
+      ? [{
+          label: catalogRulesheetLabel(link.provider, link.label),
+          url: link.url,
+          provider: link.provider,
+          localPath: normalizeLibraryCachePath(link.localPath),
+        }]
+      : []
+  ));
   return {
-    localPath: sortedLinks[0]?.localPath ?? null,
-    links: sortedLinks.flatMap((link): ReferenceLink[] => (
-      link.url
-        ? [{
-            label: catalogRulesheetLabel(link.provider, link.label),
-            url: link.url,
-            provider: link.provider,
-            localPath: normalizeLibraryCachePath(link.localPath),
-          }]
-        : []
-    )),
+    localPath,
+    links: mergeRulesheetReferences(localRulesheetReference(localPath), externalLinks),
   };
 }
 
+function catalogRulesheetSortRank(providerRawValue: string, label: string, url: string | null | undefined): number {
+  const normalizedProvider = normalizedOptionalString(providerRawValue)?.toLowerCase();
+  switch (normalizedProvider) {
+    case "local":
+      return 0;
+    case "tf":
+      return 1;
+    case "prof":
+      return 2;
+    case "bob":
+      return 3;
+    case "papa":
+      return 4;
+    case "pp":
+      return 5;
+    case "opdb":
+      return 6;
+    default: {
+      const inferred = referenceLinkProvider({ label, url: normalizedOptionalString(url) ?? "", provider: normalizedProvider ?? null, localPath: null });
+      switch (inferred) {
+        case "local":
+          return 0;
+        case "tf":
+          return 1;
+        case "prof":
+          return 2;
+        case "bob":
+          return 3;
+        case "papa":
+          return 4;
+        case "pp":
+          return 5;
+        case "opdb":
+          return 6;
+        default:
+          return 7;
+      }
+    }
+  }
+}
+
 function compareVideoLinks(left: CatalogVideoLinkRecord, right: CatalogVideoLinkRecord): number {
+  const providerCompare = compareMaybeNumber(videoProviderOrder(left.provider), videoProviderOrder(right.provider));
+  if (providerCompare) return providerCompare;
+  const kindCompare = compareMaybeNumber(videoKindOrder(left.kind), videoKindOrder(right.kind));
+  if (kindCompare) return kindCompare;
   const priorityCompare = compareMaybeNumber(left.priority, right.priority);
   if (priorityCompare) return priorityCompare;
   return left.label.localeCompare(right.label, undefined, { sensitivity: "base" });
 }
 
-function resolveVideoLinks(videoLinks: CatalogVideoLinkRecord[]): Video[] {
-  const groupedByProvider = new Map<string, CatalogVideoLinkRecord[]>();
-  for (const link of videoLinks) {
-    const key = link.provider.toLowerCase();
-    groupedByProvider.set(key, [...(groupedByProvider.get(key) ?? []), link]);
+function videoProviderOrder(provider: string | null | undefined): number {
+  switch ((provider ?? "").trim().toLowerCase()) {
+    case "local":
+      return 0;
+    case "matchplay":
+      return 1;
+    default:
+      return 99;
   }
-  const preferred =
-    groupedByProvider.get("local")?.sort(compareVideoLinks) ??
-    groupedByProvider.get("matchplay")?.sort(compareVideoLinks) ??
-    [];
-  return preferred
-    .map((link) => {
-      if (!link.url) return null;
-      return {
-        kind: link.kind ?? "",
-        label: link.label,
-        url: link.url,
-      };
-    })
-    .filter((entry): entry is Video => Boolean(entry));
+}
+
+function videoKindOrder(kind: string | null | undefined): number {
+  switch ((kind ?? "").trim().toLowerCase()) {
+    case "tutorial":
+      return 0;
+    case "gameplay":
+      return 1;
+    case "competition":
+      return 2;
+    default:
+      return 99;
+  }
+}
+
+function extractYouTubeVideoId(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.trim().toLowerCase();
+    const pathParts = parsed.pathname.split("/").filter(Boolean);
+
+    if (host === "youtu.be" || host === "www.youtu.be") {
+      return pathParts[0] ?? null;
+    }
+
+    if (
+      host === "youtube.com" ||
+      host === "www.youtube.com" ||
+      host === "m.youtube.com" ||
+      host === "music.youtube.com" ||
+      host === "youtube-nocookie.com" ||
+      host === "www.youtube-nocookie.com" ||
+      host.endsWith(".youtube.com") ||
+      host.endsWith(".youtube-nocookie.com")
+    ) {
+      if (pathParts[0] === "watch") {
+        return parsed.searchParams.get("v");
+      }
+      if ((pathParts[0] === "embed" || pathParts[0] === "shorts" || pathParts[0] === "live") && pathParts[1]) {
+        return pathParts[1];
+      }
+      return parsed.searchParams.get("v");
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function canonicalVideoIdentity(url: string): string {
+  const youtubeId = extractYouTubeVideoId(url);
+  if (youtubeId) return `youtube:${youtubeId}`;
+  return `url:${url.trim()}`;
+}
+
+function canonicalVideoMergeKey(kind: string | null | undefined, url: string): string {
+  return `${(kind ?? "").trim().toLowerCase()}::${canonicalVideoIdentity(url)}`;
+}
+
+function resolveVideoLinks(videoLinks: CatalogVideoLinkRecord[]): Video[] {
+  const selected = new Map<string, CatalogVideoLinkRecord>();
+  for (const link of [...videoLinks].sort(compareVideoLinks)) {
+    if (!link.url) continue;
+    const key = canonicalVideoMergeKey(link.kind, link.url);
+    if (!selected.has(key)) {
+      selected.set(key, link);
+    }
+  }
+  return [...selected.values()].map((link) => ({
+    kind: link.kind ?? "",
+    label: link.label,
+    url: link.url ?? "",
+  }));
+}
+
+function mergeResolvedVideos(primary: Video[], secondary: Video[]): Video[] {
+  const merged = new Map<string, Video>();
+  for (const video of [...primary, ...secondary]) {
+    if (!video.url) continue;
+    const key = canonicalVideoMergeKey(video.kind, video.url);
+    if (!merged.has(key)) {
+      merged.set(key, video);
+    }
+  }
+  return [...merged.values()];
 }
 
 function buildLegacyCuratedOverrides(games: LibraryGame[]): Map<string, LegacyCuratedOverride> {
@@ -1149,15 +1616,16 @@ function buildLegacyCuratedOverrides(games: LibraryGame[]): Map<string, LegacyCu
     current.manufacturerOverride ??= normalizedOptionalString(game.manufacturer);
     current.yearOverride ??= game.year;
     current.playfieldLocalPath ??= normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
-    current.playfieldSourceUrl ??= normalizedOptionalString(game.playfieldImageUrl);
     current.gameinfoLocalPath ??= normalizedOptionalString(game.gameinfoLocal);
     current.rulesheetLocalPath ??= normalizedOptionalString(game.rulesheetLocal);
     if (!current.rulesheetLinks?.length) {
-      current.rulesheetLinks = game.rulesheetLinks.length
-        ? game.rulesheetLinks
-        : game.rulesheetUrl
-          ? [{ label: "Rulesheet", url: game.rulesheetUrl, provider: null, localPath: null }]
-          : [];
+      current.rulesheetLinks = isPmVenueSourceId(game.sourceId)
+        ? []
+        : game.rulesheetLinks.length
+          ? game.rulesheetLinks
+          : game.rulesheetUrl
+            ? [{ label: "Rulesheet", url: game.rulesheetUrl, provider: null, localPath: null }]
+            : [];
     }
     if (!current.videos?.length && game.videos.length) {
       current.videos = game.videos;
@@ -1266,37 +1734,41 @@ function resolveLegacyGame(
   const playfieldLocalPath =
     normalizedOptionalString(curatedOverride?.playfieldLocalPath) ??
     normalizedOptionalString(legacyGame.playfieldLocalOriginal ?? legacyGame.playfieldLocal);
-  const curatedPlayfieldSourceUrl =
-    normalizedOptionalString(curatedOverride?.playfieldSourceUrl) ??
-    normalizedOptionalString(legacyGame.playfieldImageUrl);
   const opdbPlayfieldSourceUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
-  const hasCuratedPlayfield = Boolean(playfieldLocalPath || curatedPlayfieldSourceUrl);
-  const resolvedRulesheets = hasCuratedRulesheet
-    ? {
-        localPath: normalizedOptionalString(legacyGame.rulesheetLocal),
-        links: legacyGame.rulesheetLinks.length
-          ? legacyGame.rulesheetLinks
-          : legacyGame.rulesheetUrl
-            ? [{ label: "Rulesheet", url: legacyGame.rulesheetUrl, provider: null, localPath: null }]
-            : [],
-      }
-    : resolveRulesheetLinks(rulesheetLinksByPracticeIdentity.get(practiceIdentity) ?? []);
-  const resolvedVideos = hasCuratedVideos
-    ? legacyGame.videos
-    : resolveVideoLinks(videoLinksByPracticeIdentity.get(practiceIdentity) ?? []);
-  const playfieldImageUrl = hasCuratedPlayfield
-    ? curatedPlayfieldSourceUrl
-    : opdbPlayfieldSourceUrl;
   const groupPlayfieldLocalPath = normalizedOptionalString(
     groupPlayfieldOverrides.get(normalizedOptionalString(legacyGame.opdbGroupId) ?? machine.opdbGroupId ?? practiceIdentity)?.playfieldLocalPath,
   );
+  const hasCuratedPlayfield = Boolean(playfieldLocalPath || groupPlayfieldLocalPath);
+  const catalogResolvedRulesheets = resolveRulesheetLinks(rulesheetLinksByPracticeIdentity.get(practiceIdentity) ?? []);
+  const legacyResolvedLinks = legacyGame.rulesheetLinks.length
+    ? (isPmVenueSourceId(legacyGame.sourceId) ? [] : legacyGame.rulesheetLinks)
+    : legacyGame.rulesheetUrl && !isPmVenueSourceId(legacyGame.sourceId)
+      ? [{ label: "Rulesheet", url: legacyGame.rulesheetUrl, provider: null, localPath: null }]
+      : [];
+  const resolvedRulesheets = hasCuratedRulesheet
+    ? {
+        localPath: normalizedOptionalString(legacyGame.rulesheetLocal),
+        links: mergeRulesheetReferences(
+          localRulesheetReference(legacyGame.rulesheetLocal),
+          legacyResolvedLinks,
+          catalogResolvedRulesheets.links,
+        ),
+      }
+    : catalogResolvedRulesheets;
+  const resolvedVideos = mergeResolvedVideos(
+    hasCuratedVideos ? legacyGame.videos : [],
+    resolveVideoLinks(videoLinksByPracticeIdentity.get(practiceIdentity) ?? []),
+  );
+  const playfieldImageUrl = opdbPlayfieldSourceUrl;
 
   return {
     ...legacyGame,
     practiceIdentity,
     opdbId: normalizedOptionalString(legacyGame.opdbId) ?? machine.opdbMachineId,
     opdbGroupId: normalizedOptionalString(legacyGame.opdbGroupId) ?? machine.opdbGroupId,
-    variant: normalizedOptionalString(legacyGame.variant ?? machine.variant),
+    variant: normalizeCatalogVariantLabel(legacyGame.variant ?? machine.variant)
+      ?? resolvedCatalogVariantLabel(machine.name, machine.variant),
+    name: normalizedOptionalString(legacyGame.name) ?? resolvedCatalogDisplayTitle(machine.name, machine.variant),
     manufacturer: normalizedOptionalString(manufacturerName),
     year: legacyGame.year ?? machine.year,
     primaryImageUrl: normalizedOptionalString(machine.primaryImageMediumUrl),
@@ -1339,29 +1811,34 @@ function resolveImportedGame(
   groupPlayfieldOverrides: Map<string, GroupPlayfieldOverride>,
   rulesheetLinks: CatalogRulesheetLinkRecord[],
   videoLinks: CatalogVideoLinkRecord[],
+  venueMetadata: ResolvedImportedVenueMetadata | null,
 ): LibraryGame {
   const curatedOverride = curatedOverrideForKeys(machine.practiceIdentity, machine.opdbGroupId, curatedOverrides);
   const manufacturerName =
     curatedOverride?.manufacturerOverride ??
     machine.manufacturerName ??
     (machine.manufacturerId ? manufacturerById.get(machine.manufacturerId)?.name ?? null : null);
+  const catalogResolvedRulesheets = resolveRulesheetLinks(rulesheetLinks);
   const resolvedRulesheets = !curatedOverride?.rulesheetLocalPath && !(curatedOverride?.rulesheetLinks?.length)
-    ? resolveRulesheetLinks(rulesheetLinks)
+    ? catalogResolvedRulesheets
     : {
         localPath: normalizedOptionalString(curatedOverride?.rulesheetLocalPath),
-        links: curatedOverride?.rulesheetLinks ?? [],
+        links: mergeRulesheetReferences(
+          localRulesheetReference(curatedOverride?.rulesheetLocalPath),
+          curatedOverride?.rulesheetLinks ?? [],
+          catalogResolvedRulesheets.links,
+        ),
       };
-  const resolvedVideos = curatedOverride?.videos?.length
-    ? curatedOverride.videos
-    : resolveVideoLinks(videoLinks);
+  const resolvedVideos = mergeResolvedVideos(
+    curatedOverride?.videos?.length ? curatedOverride.videos : [],
+    resolveVideoLinks(videoLinks),
+  );
   const playfieldLocalPath = normalizedOptionalString(curatedOverride?.playfieldLocalPath);
   const groupPlayfieldLocalPath = normalizedOptionalString(
     groupPlayfieldOverrides.get(machine.opdbGroupId ?? machine.practiceIdentity)?.playfieldLocalPath,
   );
-  const curatedPlayfieldSourceUrl = normalizedOptionalString(curatedOverride?.playfieldSourceUrl);
   const opdbPlayfieldSourceUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageMediumUrl);
-  const hasCuratedPlayfield = Boolean(playfieldLocalPath || curatedPlayfieldSourceUrl);
-  const playfieldSourceUrl = hasCuratedPlayfield ? curatedPlayfieldSourceUrl : opdbPlayfieldSourceUrl;
+  const hasCuratedPlayfield = Boolean(playfieldLocalPath || groupPlayfieldLocalPath);
   const slug = normalizedOptionalString(machine.slug) ?? machine.practiceIdentity;
   const routeId = `${source.id}::${slug}`;
   return {
@@ -1372,22 +1849,23 @@ function resolveImportedGame(
     opdbGroupId: machine.opdbGroupId,
     variant: source.type === "manufacturer"
       ? null
-      : normalizedOptionalString(curatedOverride?.variantOverride ?? machine.variant),
+      : normalizeCatalogVariantLabel(curatedOverride?.variantOverride ?? machine.variant)
+        ?? resolvedCatalogVariantLabel(machine.name, machine.variant),
     sourceId: source.id,
     sourceName: source.name,
     sourceType: source.type,
-    area: null,
-    areaOrder: null,
-    group: null,
-    position: null,
-    bank: null,
-    name: normalizedOptionalString(curatedOverride?.nameOverride) ?? machine.name,
+    area: venueMetadata?.area ?? null,
+    areaOrder: venueMetadata?.areaOrder ?? null,
+    group: venueMetadata?.group ?? null,
+    position: venueMetadata?.position ?? null,
+    bank: venueMetadata?.bank ?? null,
+    name: normalizedOptionalString(curatedOverride?.nameOverride) ?? resolvedCatalogDisplayTitle(machine.name, machine.variant),
     manufacturer: normalizedOptionalString(manufacturerName),
     year: curatedOverride?.yearOverride ?? machine.year,
     slug,
     primaryImageUrl: normalizedOptionalString(machine.primaryImageMediumUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
-    playfieldImageUrl: playfieldSourceUrl,
+    playfieldImageUrl: opdbPlayfieldSourceUrl,
     alternatePlayfieldImageUrl: hasCuratedPlayfield ? opdbPlayfieldSourceUrl : null,
     playfieldLocalOriginal: normalizeLibraryCachePath(playfieldLocalPath),
     playfieldLocal: normalizeLibraryPlayfieldLocalPath(playfieldLocalPath),
@@ -1418,13 +1896,18 @@ function mergeCatalogs(
   basePayload: ParsedLibraryData,
   catalogRoot: CatalogRoot,
   publicOverrides: PublicLibraryOverridesRoot,
+  venueMetadataOverlays: VenueMetadataOverlayIndex,
   importedSources: ImportedSourceRecord[],
 ): ParsedLibraryData {
+  const importedSourceIds = new Set(importedSources.map((source) => source.id));
+  const filteredBaseGames = basePayload.games.filter((game) => !importedSourceIds.has(game.sourceId));
+  const filteredBaseSources = basePayload.sources.filter((source) => !importedSourceIds.has(source.id));
+
   if (!catalogRoot.machines.length) {
     return {
-      games: basePayload.games,
+      games: filteredBaseGames,
       sources: dedupeSources([
-        ...basePayload.sources,
+        ...filteredBaseSources,
         ...importedSources.map((source) => ({ id: source.id, name: source.name, type: source.type })),
       ]),
     };
@@ -1451,7 +1934,7 @@ function mergeCatalogs(
     videoLinksByPracticeIdentity.set(link.practiceIdentity, [...(videoLinksByPracticeIdentity.get(link.practiceIdentity) ?? []), link]);
   }
 
-  const mergedBaseGames = basePayload.games.map((game) =>
+  const mergedBaseGames = filteredBaseGames.map((game) =>
     resolveLegacyGame(
       game,
       machineByPracticeIdentity,
@@ -1486,6 +1969,7 @@ function mergeCatalogs(
             groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
+            null,
           ),
         );
       }
@@ -1505,6 +1989,7 @@ function mergeCatalogs(
             groupPlayfieldOverrides,
             rulesheetLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
             videoLinksByPracticeIdentity.get(machine.practiceIdentity) ?? [],
+            resolveImportedVenueMetadata(source.id, machineId, machine, venueMetadataOverlays),
           ),
         );
       }
@@ -1514,7 +1999,7 @@ function mergeCatalogs(
   return {
     games: [...mergedBaseGames, ...importedGames],
     sources: dedupeSources([
-      ...basePayload.sources,
+      ...filteredBaseSources,
       ...importedSources.map((source) => ({ id: source.id, name: source.name, type: source.type })),
     ]),
   };
@@ -1544,9 +2029,13 @@ function resolveVisibleSources(sources: LibrarySource[], state: LibrarySourceSta
 }
 
 export async function loadResolvedLibraryData(): Promise<ResolvedLibraryData> {
-  const [{ payload, catalogRoot, publicOverrides }, importedSourcesRaw] = await Promise.all([loadBaseCatalog(), Promise.resolve(loadImportedSources())]);
-  const importedSources = await repairImportedSources(importedSourcesRaw);
-  const mergedPayload = mergeCatalogs(payload, catalogRoot, publicOverrides, importedSources);
+  const [{ payload, catalogRoot, publicOverrides, venueMetadataOverlays }, importedSourcesRaw, defaultImportedSources] = await Promise.all([
+    loadBaseCatalog(),
+    Promise.resolve(loadImportedSources()),
+    fetchDefaultImportedSources(),
+  ]);
+  const importedSources = await repairImportedSources(dedupeImportedSources(defaultImportedSources, importedSourcesRaw));
+  const mergedPayload = mergeCatalogs(payload, catalogRoot, publicOverrides, venueMetadataOverlays, importedSources);
   const sourceGameCounts = mergedPayload.games.reduce<Record<string, number>>((counts, game) => {
     const sourceId = game.sourceId;
     const existing = counts[sourceId];
@@ -1635,7 +2124,8 @@ export function preferredDefaultSortMode(source: LibrarySource, games: LibraryGa
     const area = normalizedOptionalString(game.area);
     return Boolean(area);
   });
-  return hasArea ? "area" : "alphabetical";
+  const hasPosition = games.some((game) => (game.group ?? 0) > 0 || (game.position ?? 0) > 0);
+  return hasArea || hasPosition ? "area" : "alphabetical";
 }
 
 export function preferredDefaultYearDescending(source: LibrarySource, games: LibraryGame[]): boolean {
@@ -1679,6 +2169,21 @@ export function sortLibraryGames(games: LibraryGame[], sortMode: SortMode, yearD
 
 export function manufacturerYearText(game: LibraryGame): string {
   return game.year ? `${game.manufacturer ?? "—"} • ${game.year}` : (game.manufacturer ?? "—");
+}
+
+function abbreviateLibraryCardManufacturer(manufacturer: string | null | undefined): string | null {
+  const normalized = normalizedOptionalString(manufacturer);
+  if (!normalized) return null;
+  const lower = normalized.toLowerCase();
+  if (lower === "jersey jack pinball") return "JJP";
+  if (lower === "barrels of fun") return "BoF";
+  if (lower === "chicago gaming company") return "CGC";
+  return normalized;
+}
+
+export function manufacturerYearCardText(game: LibraryGame): string {
+  const maker = abbreviateLibraryCardManufacturer(game.manufacturer) ?? "—";
+  return game.year ? `${maker} • ${game.year}` : maker;
 }
 
 export function locationText(game: LibraryGame): string | null {
@@ -1729,7 +2234,6 @@ function explicitPlayfieldCandidates(game: LibraryGame): string[] {
     resolveLibraryUrl(groupLocal1400),
     resolveLibraryUrl(game.groupPlayfieldLocal),
     resolveLibraryUrl(groupLocal700),
-    resolveLibraryUrl(game.playfieldImageUrl),
   ]);
 }
 
@@ -1752,6 +2256,23 @@ function playfieldSourceLabelForGame(game: LibraryGame): string {
     }
   } catch {
     // Fall through to remote.
+  }
+  return "Remote";
+}
+
+function playfieldSourceLabelForUrl(url: string | null | undefined): string {
+  const playfieldUrl = resolveLibraryUrl(url);
+  if (!playfieldUrl) return "View";
+  try {
+    const parsed = new URL(playfieldUrl, "https://pillyliu.com");
+    if (parsed.host.toLowerCase() === "pillyliu.com" && parsed.pathname.startsWith("/pinball/images/playfields/")) {
+      return "Local";
+    }
+    if (parsed.host.toLowerCase().includes("opdb.org") || parsed.host.toLowerCase().includes("img.opdb.org")) {
+      return "OPDB";
+    }
+  } catch {
+    return "Remote";
   }
   return "Remote";
 }
@@ -1804,7 +2325,7 @@ export function resolvedPlayfieldOptions(
     explicitCandidates.forEach((candidate) => usedCandidates.add(candidate));
   } else {
     const primaryCandidates = dedupeResolvedUrls([
-      resolveLibraryUrl(liveStatus?.effectiveUrl),
+      liveStatus?.effectiveKind === "external" ? null : resolveLibraryUrl(liveStatus?.effectiveUrl),
     ]);
     if (primaryCandidates.length) {
       let title = playfieldSourceLabelForGame(game);
@@ -1820,18 +2341,23 @@ export function resolvedPlayfieldOptions(
   }
 
   const liveUrl = resolveLibraryUrl(liveStatus?.effectiveUrl);
-  if (liveUrl && liveKind !== "missing" && !usedCandidates.has(liveUrl)) {
+  if (liveUrl && liveKind !== "missing" && liveKind !== "external" && !usedCandidates.has(liveUrl)) {
     let title = playfieldSourceLabelForGame(game);
     if (liveKind === "pillyliu") title = "Local";
     if (liveKind === "opdb") title = "OPDB";
-    if (liveKind === "external") title = "Remote";
     options.push({ title, candidates: [liveUrl] });
     usedCandidates.add(liveUrl);
   }
 
+  const primaryUrl = resolveLibraryUrl(game.playfieldImageUrl);
+  if (primaryUrl && !usedCandidates.has(primaryUrl)) {
+    options.push({ title: playfieldSourceLabelForUrl(primaryUrl), candidates: [primaryUrl] });
+    usedCandidates.add(primaryUrl);
+  }
+
   const alternateUrl = resolveLibraryUrl(game.alternatePlayfieldImageUrl);
   if (alternateUrl && !usedCandidates.has(alternateUrl)) {
-    options.push({ title: "OPDB", candidates: [alternateUrl] });
+    options.push({ title: playfieldSourceLabelForUrl(alternateUrl), candidates: [alternateUrl] });
     usedCandidates.add(alternateUrl);
   }
 

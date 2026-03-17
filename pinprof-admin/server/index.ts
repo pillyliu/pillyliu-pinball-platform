@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import fsp from "node:fs/promises";
@@ -6,7 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import cookieParser from "cookie-parser";
 import Database from "better-sqlite3";
-import express, { type NextFunction, type Request, type Response } from "express";
+import express, { type Express, type NextFunction, type Request, type Response } from "express";
 import multer from "multer";
 import sharp from "sharp";
 
@@ -60,6 +60,127 @@ type BuiltInGameRow = {
   rulesheetUrl: string | null;
 };
 
+type MachineMembershipRow = {
+  libraryEntryId: string;
+  sourceId: string;
+  sourceName: string;
+  sourceType: string;
+  practiceIdentity: string | null;
+  opdbId: string | null;
+  area: string | null;
+  areaOrder: number | null;
+  groupNumber: number | null;
+  position: number | null;
+  bank: number | null;
+  name: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: number | null;
+  slug: string | null;
+  primaryImageUrl: string | null;
+  primaryImageLargeUrl: string | null;
+  playfieldImageUrl: string | null;
+  playfieldLocalPath: string | null;
+  playfieldSourceLabel: string | null;
+  gameinfoLocalPath: string | null;
+  rulesheetLocalPath: string | null;
+  rulesheetUrl: string | null;
+};
+
+type MembershipVideoRow = {
+  libraryEntryId: string;
+  kind: string;
+  label: string;
+  url: string;
+  priority: number;
+};
+
+type MembershipRulesheetLinkRow = {
+  libraryEntryId: string;
+  label: string;
+  url: string;
+  priority: number;
+};
+
+type MachineVideoLinkRow = {
+  practiceIdentity: string;
+  provider: string;
+  kind: string;
+  label: string;
+  url: string;
+  priority: number;
+};
+
+type MachineRulesheetLinkRow = {
+  practiceIdentity: string;
+  provider: string;
+  label: string;
+  url: string;
+  priority: number;
+};
+
+type AdminVideoOverrideRecord = {
+  video_override_id: number;
+  practice_identity: string;
+  kind: string;
+  label: string;
+  url: string;
+  priority: number;
+  created_at: string;
+  updated_at: string;
+};
+
+type ControlBoardRow = {
+  practiceIdentity: string;
+  opdbMachineId: string | null;
+  opdbGroupId: string | null;
+  slug: string;
+  name: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: number | null;
+  primaryImageUrl: string | null;
+  playfieldImageUrl: string | null;
+  libraryEntryId: string | null;
+  sourceId: string | null;
+  sourceName: string | null;
+  sourceType: string | null;
+  area: string | null;
+  areaOrder: number | null;
+  groupNumber: number | null;
+  position: number | null;
+  bank: number | null;
+  membershipCount: number;
+  membershipPlayfieldImageUrl: string | null;
+  membershipRulesheetUrl: string | null;
+  membershipRulesheetLocalPath: string | null;
+  membershipGameinfoLocalPath: string | null;
+  hasOpdbPlayfield: 0 | 1;
+  hasOpdbBackglass: 0 | 1;
+  hasBuiltInPlayfield: 0 | 1;
+  hasBuiltInRulesheet: 0 | 1;
+  hasBuiltInGameinfo: 0 | 1;
+  hasAdminOverride: 0 | 1;
+  hasAdminPlayfield: 0 | 1;
+  hasAdminRulesheet: 0 | 1;
+  hasAdminGameinfo: 0 | 1;
+  builtInVideoCount: number;
+  builtInTutorialCount: number;
+  builtInGameplayCount: number;
+  builtInCompetitionCount: number;
+  catalogVideoCount: number;
+  catalogTutorialCount: number;
+  catalogGameplayCount: number;
+  catalogCompetitionCount: number;
+  overrideVideoCount: number;
+  overrideTutorialCount: number;
+  overrideGameplayCount: number;
+  overrideCompetitionCount: number;
+  builtInRulesheetLinkCount: number;
+  catalogRulesheetLinkCount: number;
+  overrideRulesheetLinkCount: number;
+};
+
 type MachineAliasRow = {
   opdbMachineId: string;
   slug: string;
@@ -96,10 +217,22 @@ type PlayfieldAssetRecord = {
   source_opdb_machine_id: string;
   covered_alias_ids_json: string;
   playfield_local_path: string | null;
+  playfield_original_local_path: string | null;
+  playfield_reference_local_path: string | null;
   playfield_source_url: string | null;
+  playfield_source_page_url: string | null;
+  playfield_source_page_snapshot_path: string | null;
   playfield_source_note: string | null;
+  playfield_web_local_path_1400: string | null;
+  playfield_web_local_path_700: string | null;
+  playfield_mask_polygon_json: string | null;
   created_at: string;
   updated_at: string;
+};
+
+type PlayfieldMaskPoint = {
+  x: number;
+  y: number;
 };
 
 type ActivityRecord = {
@@ -117,24 +250,253 @@ type WorkspaceStateRecord = {
   updated_at: string;
 };
 
+type PinsidePhotoBrowserSessionState = {
+  child: ChildProcess | null;
+  practiceIdentity: string;
+  searchTerm: string;
+  searchMode: "machine-key" | "machine-slug" | "game-search";
+  machineKey: string | null;
+  machineSlug: string | null;
+  resolvedBy: string | null;
+  machineSlugCandidates: string[];
+  viewerUrl: string;
+  logPath: string;
+  manifestPath: string;
+  stateFilePath: string;
+  host: string;
+  port: number;
+  launchedAt: string;
+  status: "starting" | "running" | "exited" | "failed";
+  exitCode: number | null;
+  signal: NodeJS.Signals | null;
+};
+
+type PinsideSavedFinalRecord = {
+  adId: string;
+  adTitle: string | null;
+  adUrl: string | null;
+  photoIndex: number | null;
+  filename: string | null;
+  previewUrl: string | null;
+  fullUrl: string | null;
+  originalUrl: string | null;
+  selectedAt: string | null;
+  savedAt: string | null;
+};
+
+type PinsideAuditLookupEntry = {
+  game: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: string | null;
+  pinsideId: string;
+  pinsideSlug: string | null;
+  pinsideGroup: string | null;
+  sourceFile: string | null;
+};
+
+type PinsideAuditLookupIndex = {
+  byFingerprint: Map<string, PinsideAuditLookupEntry[]>;
+};
+
+type PinsideLaunchTarget = {
+  searchTerm: string;
+  gameQuery: string;
+  expectedTitle: string;
+  expectedManufacturer: string | null;
+  expectedYear: string | null;
+  searchMode: "machine-key" | "machine-slug" | "game-search";
+  machineKey: string | null;
+  machineSlug: string | null;
+  resolvedBy: string | null;
+  machineSlugCandidates: string[];
+};
+
+type PinballLayoutMode = "workspace" | "legacy";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "../..");
-const APP_ROOT = path.resolve(ROOT, "pinprof-admin");
+function cleanEnvPath(value: string | undefined): string | null {
+  const trimmed = String(value ?? "").trim();
+  return trimmed ? path.resolve(trimmed) : null;
+}
+
+function pathExists(candidate: string): boolean {
+  return fs.existsSync(candidate);
+}
+
+function firstExistingPath(candidates: Array<string | null | undefined>): string | null {
+  for (const candidate of candidates) {
+    const normalized = cleanEnvPath(candidate ?? undefined);
+    if (normalized && pathExists(normalized)) {
+      return normalized;
+    }
+  }
+  return null;
+}
+
+function resolveWorkspaceRoot(appRoot: string): string {
+  const configured = cleanEnvPath(process.env.PINPROF_ADMIN_WORKSPACE_ROOT);
+  if (configured) return configured;
+  const candidates = [path.resolve(path.join(appRoot, "../..")), path.resolve(path.join(appRoot, ".."))];
+  return (
+    candidates.find((candidate) =>
+      [
+        path.join(candidate, "workspace"),
+        path.join(candidate, "shared", "pinball"),
+        path.join(candidate, "scripts"),
+        path.join(candidate, "tools"),
+      ].some((probe) => pathExists(probe)),
+    ) ?? candidates[0]
+  );
+}
+
+function resolveLegacyWebsiteRoot(root: string): string {
+  const configured = cleanEnvPath(process.env.PINPROF_ADMIN_LEGACY_WEBSITE_ROOT);
+  if (configured) return configured;
+  if (pathExists(path.join(root, "shared", "pinball"))) {
+    return root;
+  }
+  return path.resolve(path.join(root, "../Pillyliu Pinball Website"));
+}
+
+const APP_ROOT = path.resolve(process.env.PINPROF_ADMIN_APP_ROOT ?? path.join(__dirname, ".."));
+const ROOT = resolveWorkspaceRoot(APP_ROOT);
+const LEGACY_WEBSITE_ROOT = resolveLegacyWebsiteRoot(ROOT);
 const DIST_DIR = path.join(APP_ROOT, "dist");
-const SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
-const SHARED_DATA_DIR = path.join(SHARED_PINBALL_DIR, "data");
-const SHARED_RULESHEETS_DIR = path.join(SHARED_PINBALL_DIR, "rulesheets");
-const SHARED_GAMEINFO_DIR = path.join(SHARED_PINBALL_DIR, "gameinfo");
-const SHARED_PLAYFIELDS_DIR = path.join(SHARED_PINBALL_DIR, "images", "playfields");
+const WORKSPACE_DIR = path.join(ROOT, "workspace");
+const SHARED_PINBALL_DIR_OVERRIDE = cleanEnvPath(process.env.PINPROF_ADMIN_SHARED_PINBALL_DIR);
+const LEGACY_SHARED_PINBALL_DIR = path.join(ROOT, "shared", "pinball");
+const PINBALL_LAYOUT_MODE: PinballLayoutMode =
+  SHARED_PINBALL_DIR_OVERRIDE || (!pathExists(WORKSPACE_DIR) && pathExists(LEGACY_SHARED_PINBALL_DIR))
+    ? "legacy"
+    : "workspace";
+const SHARED_PINBALL_DIR = path.resolve(SHARED_PINBALL_DIR_OVERRIDE ?? LEGACY_SHARED_PINBALL_DIR);
+const SOURCE_DATA_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" ? path.join(WORKSPACE_DIR, "data", "source") : path.join(SHARED_PINBALL_DIR, "data");
+const PUBLISHED_DATA_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" ? path.join(WORKSPACE_DIR, "data", "published") : path.join(SHARED_PINBALL_DIR, "data");
+const MANIFESTS_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" ? path.join(WORKSPACE_DIR, "manifests") : SHARED_PINBALL_DIR;
+const SHARED_DATA_DIR = PINBALL_LAYOUT_MODE === "workspace" ? path.join(WORKSPACE_DIR, "db") : path.join(SHARED_PINBALL_DIR, "data");
+const LEGACY_SHARED_DATA_DIR = path.join(LEGACY_WEBSITE_ROOT, "shared", "pinball", "data");
+const PUBLISHED_DATA_DEPLOY_MIRROR_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" && path.resolve(LEGACY_SHARED_DATA_DIR) !== path.resolve(PUBLISHED_DATA_DIR)
+    ? LEGACY_SHARED_DATA_DIR
+    : null;
+const SHARED_RULESHEETS_DIR =
+  PINBALL_LAYOUT_MODE === "workspace"
+    ? path.join(WORKSPACE_DIR, "assets", "rulesheets")
+    : path.join(SHARED_PINBALL_DIR, "rulesheets");
+const SHARED_GAMEINFO_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" ? path.join(WORKSPACE_DIR, "assets", "gameinfo") : path.join(SHARED_PINBALL_DIR, "gameinfo");
+const SHARED_PLAYFIELDS_DIR =
+  PINBALL_LAYOUT_MODE === "workspace"
+    ? path.join(WORKSPACE_DIR, "assets", "playfields")
+    : path.join(SHARED_PINBALL_DIR, "images", "playfields");
+const LEGACY_SHARED_PLAYFIELDS_DIR = path.join(LEGACY_WEBSITE_ROOT, "shared", "pinball", "images", "playfields");
+const PLAYFIELD_DEPLOY_MIRROR_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" && path.resolve(LEGACY_SHARED_PLAYFIELDS_DIR) !== path.resolve(SHARED_PLAYFIELDS_DIR)
+    ? LEGACY_SHARED_PLAYFIELDS_DIR
+    : null;
+const PLAYFIELD_SOURCE_ROOT_DIR = path.join(WORKSPACE_DIR, "assets", "playfield_sources");
+const PLAYFIELD_SOURCE_ORIGINALS_DIR = path.join(PLAYFIELD_SOURCE_ROOT_DIR, "originals");
+const PLAYFIELD_SOURCE_REFERENCES_DIR = path.join(PLAYFIELD_SOURCE_ROOT_DIR, "references");
+const SHARED_BACKGLASSES_DIR =
+  PINBALL_LAYOUT_MODE === "workspace"
+    ? path.join(WORKSPACE_DIR, "assets", "backglasses")
+    : path.join(SHARED_PINBALL_DIR, "images", "backglasses");
 const SEED_DB_PATH = path.join(SHARED_DATA_DIR, "pinball_library_seed_v1.sqlite");
 const ADMIN_DB_PATH = path.join(SHARED_DATA_DIR, "pinprof_admin_v1.sqlite");
-const APPLY_OVERRIDES_SCRIPT = path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs");
+const APPLY_OVERRIDES_SCRIPT =
+  cleanEnvPath(process.env.PINPROF_ADMIN_APPLY_OVERRIDES_SCRIPT) ??
+  firstExistingPath([
+    path.join(ROOT, "scripts", "publish", "apply-admin-overrides.mjs"),
+    path.join(ROOT, "tools", "pinprof", "apply-admin-overrides.mjs"),
+    path.join(LEGACY_WEBSITE_ROOT, "tools", "pinprof", "apply-admin-overrides.mjs"),
+  ]) ??
+  path.join(ROOT, "scripts", "publish", "apply-admin-overrides.mjs");
+const EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT =
+  cleanEnvPath(process.env.PINPROF_ADMIN_EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT) ??
+  firstExistingPath([
+    path.join(ROOT, "scripts", "publish", "export_library_seed_overrides.py"),
+    path.join(ROOT, "tools", "pinprof", "export_library_seed_overrides.py"),
+    path.join(LEGACY_WEBSITE_ROOT, "tools", "pinprof", "export_library_seed_overrides.py"),
+  ]) ??
+  path.join(ROOT, "scripts", "publish", "export_library_seed_overrides.py");
+const PINBALL_WEB_PATH_MAPPINGS = [
+  { prefix: "/pinball/images/playfields/", dir: SHARED_PLAYFIELDS_DIR },
+  { prefix: "/pinball/images/backglasses/", dir: SHARED_BACKGLASSES_DIR },
+  { prefix: "/pinball/rulesheets/", dir: SHARED_RULESHEETS_DIR },
+  { prefix: "/pinball/gameinfo/", dir: SHARED_GAMEINFO_DIR },
+];
+const PINBALL_ROOT_FILE_CANDIDATES = {
+  "cache-manifest.json": [path.join(PUBLISHED_DATA_DIR, "cache-manifest.json"), path.join(MANIFESTS_DIR, "cache-manifest.json")],
+  "cache-update-log.json": [
+    path.join(PUBLISHED_DATA_DIR, "cache-update-log.json"),
+    path.join(MANIFESTS_DIR, "cache-update-log.json"),
+  ],
+} as const;
+const DEPLOY_MIRRORED_PUBLISHED_DATA_FILES = ["pinball_library_seed_overrides_v1.json"] as const;
+const DEPLOY_MIRRORED_SQLITE_FILES = ["pinprof_admin_v1.sqlite", "pinball_library_seed_v1.sqlite"] as const;
 const SESSION_COOKIE = "pinprof_admin_session";
 const SESSION_SECRET = process.env.PINPROF_SESSION_SECRET ?? "pinprof-dev-secret";
 const ADMIN_PASSWORD = process.env.PINPROF_ADMIN_PASSWORD ?? "change-me";
 const PASSWORD_CONFIGURED = Boolean(process.env.PINPROF_ADMIN_PASSWORD);
 const PORT = Number.parseInt(process.env.PINPROF_ADMIN_PORT ?? "8787", 10);
 const SUPPORTED_PLAYFIELD_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"] as const;
+const PLAYFIELD_WEBP_QUALITY = 90;
+const PLAYFIELD_WEBP_1400_QUALITY = 85;
+const PLAYFIELD_WEBP_700_QUALITY = 75;
+const PLAYFIELD_TRIM_THRESHOLD = 18;
+const PLAYFIELD_MASK_POINT_MIN = 0;
+const PLAYFIELD_MASK_POINT_MAX = 1;
+const ALLOWED_VIDEO_KINDS = ["tutorial", "gameplay", "competition"] as const;
+const CONTROL_BOARD_STATUS_FILTERS = [
+  "used_in_app",
+  "has_override",
+  "missing_playfield",
+  "missing_backglass",
+  "missing_rulesheet",
+  "missing_videos",
+] as const;
+const PINSIDE_BROWSER_SCRIPT =
+  cleanEnvPath(process.env.PINPROF_ADMIN_PINSIDE_BROWSER_SCRIPT) ??
+  firstExistingPath([
+    path.join(ROOT, "scripts", "search", "pinside_photo_browser.py"),
+    path.join(LEGACY_WEBSITE_ROOT, "scripts", "search", "pinside_photo_browser.py"),
+  ]) ??
+  path.join(ROOT, "scripts", "search", "pinside_photo_browser.py");
+const PINSIDE_LINK_AUDIT_REPORT_PATH =
+  firstExistingPath([
+    path.join(PUBLISHED_DATA_DIR, "pinside_link_audit_report.json"),
+    path.join(MANIFESTS_DIR, "pinside_link_audit_report.json"),
+  ]) ?? path.join(PUBLISHED_DATA_DIR, "pinside_link_audit_report.json");
+const PINSIDE_BROWSER_HOST = process.env.PINPROF_ADMIN_PINSIDE_HOST ?? "127.0.0.1";
+const PINSIDE_BROWSER_PORT = Math.max(1024, Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_PORT ?? "8765", 10) || 8765);
+const PINSIDE_BROWSER_DISCOVERY_LIMIT = Math.max(
+  0,
+  Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_DISCOVERY_LIMIT ?? "0", 10) || 0,
+);
+const PINSIDE_BROWSER_INITIAL_AD_LIMIT = Math.max(
+  1,
+  Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_INITIAL_AD_LIMIT ?? "1", 10) || 1,
+);
+const PINSIDE_BROWSER_STARTUP_TARGET_LIMIT = Math.max(
+  1,
+  Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_STARTUP_TARGET_LIMIT ?? "20", 10) || 20,
+);
+const PINSIDE_BROWSER_PREFETCH_WINDOW = Math.max(
+  1,
+  Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_PREFETCH_WINDOW ?? "5", 10) || 5,
+);
+const PINSIDE_BROWSER_LOGIN_WAIT_SECONDS = Math.max(
+  8,
+  Number.parseInt(process.env.PINPROF_ADMIN_PINSIDE_LOGIN_WAIT_SECONDS ?? "8", 10) || 8,
+);
+const PINSIDE_BROWSER_PYTHON_BIN = process.env.PINPROF_ADMIN_PYTHON_BIN ?? "python3";
+const PINSIDE_BROWSER_PREFER_HEADLESS = /^(1|true|yes)$/i.test(process.env.PINPROF_ADMIN_PINSIDE_PREFER_HEADLESS ?? "");
+const PINSIDE_BROWSER_FORCE_HEADED = /^(1|true|yes)$/i.test(process.env.PINPROF_ADMIN_PINSIDE_FORCE_HEADED ?? "");
+const PINSIDE_BROWSER_ALLOW_VISIBLE_RETRY = /^(1|true|yes)$/i.test(process.env.PINPROF_ADMIN_PINSIDE_ALLOW_VISIBLE_RETRY ?? "1");
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 25 * 1024 * 1024 },
@@ -155,6 +517,310 @@ function cleanInteger(value: unknown): number | null {
   const num = Number.parseInt(trimmed, 10);
   return Number.isFinite(num) ? num : null;
 }
+
+function normalizePinsideOriginalUrl(value: unknown): string | null {
+  const trimmed = cleanString(value);
+  if (!trimmed) return null;
+  if (/^https?:\/\/o\.pinside\.com\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const pathValue = trimmed.replace(/^\/+/, "");
+  const originalAssetPathPattern = /^[0-9a-f]{1,3}(?:\/[0-9a-f]{1,3}){2,}\/[^?#]+\.(?:jpe?g|png|webp|gif|bmp|avif)$/i;
+  if (originalAssetPathPattern.test(pathValue)) {
+    return `https://o.pinside.com/${pathValue}`;
+  }
+
+  try {
+    const parsed = new URL(trimmed, "https://pinside.com");
+    const archivePrefix = "/pinball/market/classifieds/archive/";
+    if (/(^|\.)pinside\.com$/i.test(parsed.hostname) && parsed.pathname.startsWith(archivePrefix)) {
+      const suffix = parsed.pathname.slice(archivePrefix.length).replace(/^\/+/, "");
+      if (originalAssetPathPattern.test(suffix)) {
+        return `https://o.pinside.com/${suffix}`;
+      }
+    }
+    return parsed.href;
+  } catch {
+    return trimmed;
+  }
+}
+
+function normalizeHttpUrl(value: unknown, label: string): string {
+  const trimmed = cleanString(value);
+  if (!trimmed) {
+    throw new Error(`${label} is required.`);
+  }
+  try {
+    const parsed = new URL(trimmed);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+      throw new Error(`${label} must use http or https.`);
+    }
+    return parsed.toString();
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("must use http or https")) {
+      throw error;
+    }
+    throw new Error(`${label} must be a valid http(s) URL.`);
+  }
+}
+
+function normalizeOptionalHttpUrl(value: unknown, label: string): string | null {
+  const trimmed = cleanString(value);
+  return trimmed ? normalizeHttpUrl(trimmed, label) : null;
+}
+
+function normalizeVideoKind(value: unknown, contextLabel: string): (typeof ALLOWED_VIDEO_KINDS)[number] {
+  const normalized = cleanString(value)?.toLowerCase();
+  if (!normalized) {
+    throw new Error(`${contextLabel} is required.`);
+  }
+  if (!ALLOWED_VIDEO_KINDS.includes(normalized as (typeof ALLOWED_VIDEO_KINDS)[number])) {
+    throw new Error(`${contextLabel} must be tutorial, gameplay, or competition.`);
+  }
+  return normalized as (typeof ALLOWED_VIDEO_KINDS)[number];
+}
+
+function parseQueryStringList(value: unknown): string[] {
+  const rawItems = Array.isArray(value) ? value : value == null ? [] : [value];
+  return Array.from(
+    new Set(
+      rawItems
+        .flatMap((item) => String(item ?? "").split(","))
+        .map((item) => cleanString(item))
+        .filter((item): item is string => Boolean(item)),
+    ),
+  );
+}
+
+function parseControlBoardStatusFilters(value: unknown): Array<(typeof CONTROL_BOARD_STATUS_FILTERS)[number]> {
+  const valid = new Set<string>(CONTROL_BOARD_STATUS_FILTERS);
+  return parseQueryStringList(value).filter(
+    (item): item is (typeof CONTROL_BOARD_STATUS_FILTERS)[number] => valid.has(item),
+  );
+}
+
+function buildControlBoardStatusClauses(statuses: Array<(typeof CONTROL_BOARD_STATUS_FILTERS)[number]>) {
+  return statuses.map((status) => {
+    if (status === "used_in_app") {
+      return `coalesce(mc.membershipCount, 0) > 0`;
+    }
+    if (status === "has_override") {
+      return `(mo.practice_identity IS NOT NULL OR coalesce(apc.playfieldAssetCount, 0) > 0 OR coalesce(ovc.overrideVideoCount, 0) > 0)`;
+    }
+    if (status === "missing_playfield") {
+      return `
+        coalesce(apc.playfieldAssetCount, 0) = 0
+        AND (b.playfield_local_path IS NULL OR trim(b.playfield_local_path) = '')
+        AND (c.playfieldImageUrl IS NULL OR trim(c.playfieldImageUrl) = '')
+      `;
+    }
+    if (status === "missing_backglass") {
+      return `(c.primaryImageUrl IS NULL OR trim(c.primaryImageUrl) = '')`;
+    }
+    if (status === "missing_rulesheet") {
+      return `
+        (mo.rulesheet_local_path IS NULL OR trim(mo.rulesheet_local_path) = '')
+        AND (b.rulesheet_local_path IS NULL OR trim(b.rulesheet_local_path) = '')
+        AND (b.rulesheet_url IS NULL OR trim(b.rulesheet_url) = '')
+        AND coalesce(mrc.builtInRulesheetLinkCount, 0) = 0
+        AND coalesce(crc.catalogRulesheetLinkCount, 0) = 0
+        AND coalesce(orc.overrideRulesheetLinkCount, 0) = 0
+      `;
+    }
+    return `
+      coalesce(mvc.builtInVideoCount, 0) = 0
+      AND coalesce(cvc.catalogVideoCount, 0) = 0
+      AND coalesce(ovc.overrideVideoCount, 0) = 0
+    `;
+  });
+}
+
+function normalizeLooseText(value: unknown): string {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizePinsideVariant(value: unknown): string {
+  const normalized = normalizeLooseText(value)
+    .replace(/\blimited edition\b/g, "le")
+    .replace(/\bcollector'?s edition\b/g, "ce")
+    .replace(/\bcollectors edition\b/g, "ce")
+    .trim();
+  if (!normalized) return "";
+  if (/\bpro\b/.test(normalized)) return "pro";
+  if (/\bpremium\b/.test(normalized)) return "premium";
+  if (/\ble\b/.test(normalized)) return "le";
+  if (/\bce\b/.test(normalized)) return "ce";
+  if (/\bse\b/.test(normalized)) return "se";
+  if (/\bgold\b/.test(normalized)) return "gold";
+  return normalized;
+}
+
+function normalizePinsideManufacturer(value: unknown): string {
+  let normalized = normalizeLooseText(value);
+  if (normalized === "pb") return "pinball brothers";
+  if (normalized === "jjp") return "jersey jack pinball";
+  normalized = normalized
+    .replace(/\bllc\b/g, "")
+    .replace(/\bpinball inc\b/g, "")
+    .replace(/\binc\b/g, "")
+    .replace(/\bcompany\b/g, "")
+    .replace(/\bco\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (normalized === "stern pinball") return "stern";
+  if (normalized === "chicago gaming company") return "chicago gaming";
+  if (normalized === "spooky pinball") return "spooky";
+  return normalized;
+}
+
+function buildPinsideFingerprint(
+  name: string | null | undefined,
+  variant: string | null | undefined,
+  manufacturer: string | null | undefined,
+  year: string | number | null | undefined,
+): string {
+  const normalizedName = normalizeLooseText(name);
+  if (!normalizedName) return "";
+  const normalizedVariant = normalizePinsideVariant(variant);
+  const normalizedManufacturer = normalizePinsideManufacturer(manufacturer);
+  const normalizedYear = cleanString(year)?.trim() ?? "";
+  return [normalizedName, normalizedVariant, normalizedManufacturer, normalizedYear].join("|");
+}
+
+function buildSlugCandidates(
+  slug: string | null | undefined,
+  manufacturer: string | null | undefined,
+  fallbackTitle: string | null | undefined,
+  fallbackVariant: string | null | undefined,
+  fallbackYear: string | number | null | undefined,
+): string[] {
+  const candidates = new Set<string>();
+  const manufacturerSlug = normalizeLooseText(manufacturer).replace(/\s+/g, "-");
+  const titleSlug = normalizeLooseText(fallbackTitle).replace(/\s+/g, "-");
+  const variantSlug = normalizePinsideVariant(fallbackVariant);
+  const yearSlug = fallbackYear == null ? "" : String(fallbackYear).trim();
+
+  const addSlug = (value: string | null | undefined) => {
+    const normalized = cleanString(value)?.toLowerCase();
+    if (!normalized) return;
+    candidates.add(normalized);
+    const withoutYear = normalized.replace(/-\d{4}$/, "");
+    if (withoutYear) candidates.add(withoutYear);
+    if (manufacturerSlug) {
+      const manufacturerPrefix = `${manufacturerSlug}-`;
+      if (normalized.startsWith(manufacturerPrefix)) {
+        candidates.add(normalized.slice(manufacturerPrefix.length));
+      }
+      if (withoutYear.startsWith(manufacturerPrefix)) {
+        candidates.add(withoutYear.slice(manufacturerPrefix.length));
+      }
+    }
+  };
+
+  addSlug(slug);
+  if (titleSlug) {
+    if (manufacturerSlug && yearSlug) {
+      addSlug(`${manufacturerSlug}-${titleSlug}-${yearSlug}`);
+      if (variantSlug) {
+        addSlug(`${manufacturerSlug}-${titleSlug}-${variantSlug}-${yearSlug}`);
+      }
+    }
+    if (yearSlug) {
+      addSlug(`${titleSlug}-${yearSlug}`);
+      if (variantSlug) {
+        addSlug(`${titleSlug}-${variantSlug}-${yearSlug}`);
+      }
+    }
+    addSlug(titleSlug);
+    if (variantSlug) {
+      addSlug(`${titleSlug}-${variantSlug}`);
+    }
+    if (manufacturerSlug) {
+      addSlug(`${manufacturerSlug}-${titleSlug}`);
+      if (variantSlug) {
+        addSlug(`${manufacturerSlug}-${titleSlug}-${variantSlug}`);
+      }
+    }
+  }
+
+  return Array.from(candidates)
+    .filter(Boolean)
+    .sort((left, right) => {
+      const score = (value: string) => {
+        let result = value.split("-").length;
+        if (titleSlug && value.includes(titleSlug)) result += 8;
+        if (manufacturerSlug && value.includes(manufacturerSlug)) result += 5;
+        if (yearSlug && value.includes(yearSlug)) result += 5;
+        if (variantSlug && value.includes(variantSlug)) result += 3;
+        if (titleSlug && value === titleSlug) result -= 12;
+        return result;
+      };
+      return score(right) - score(left);
+    });
+}
+
+function readJsonFileSafe(filePath: string | null): unknown {
+  if (!filePath || !pathExists(filePath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function loadPinsideAuditLookupIndex(): PinsideAuditLookupIndex {
+  const index: PinsideAuditLookupIndex = {
+    byFingerprint: new Map<string, PinsideAuditLookupEntry[]>(),
+  };
+  const raw = readJsonFileSafe(PINSIDE_LINK_AUDIT_REPORT_PATH) as
+    | {
+        results?: Array<{
+          source_file?: string;
+          sheet?: {
+            game?: string;
+            variant?: string;
+            manufacturer?: string;
+            year?: string;
+          };
+          resolved?: {
+            pinside_id?: string;
+            pinside_slug?: string;
+            pinside_group?: string;
+          } | null;
+        }>;
+      }
+    | null;
+  for (const result of raw?.results ?? []) {
+    const pinsideId = cleanString(result.resolved?.pinside_id);
+    const game = cleanString(result.sheet?.game);
+    if (!pinsideId || !game) continue;
+    const entry: PinsideAuditLookupEntry = {
+      game,
+      variant: cleanString(result.sheet?.variant),
+      manufacturer: cleanString(result.sheet?.manufacturer),
+      year: cleanString(result.sheet?.year),
+      pinsideId,
+      pinsideSlug: cleanString(result.resolved?.pinside_slug),
+      pinsideGroup: cleanString(result.resolved?.pinside_group),
+      sourceFile: cleanString(result.source_file),
+    };
+    const fingerprint = buildPinsideFingerprint(entry.game, entry.variant, entry.manufacturer, entry.year);
+    if (!fingerprint) continue;
+    const existing = index.byFingerprint.get(fingerprint) ?? [];
+    existing.push(entry);
+    index.byFingerprint.set(fingerprint, existing);
+  }
+  return index;
+}
+
+const PINSIDE_AUDIT_LOOKUP_INDEX = loadPinsideAuditLookupIndex();
 
 function escapeSqlitePath(value: string): string {
   return value.replace(/'/g, "''");
@@ -183,10 +849,30 @@ function verifySessionToken(value: string | undefined): boolean {
 function toPinballFsPath(webPath: string | null): string | null {
   const normalized = String(webPath ?? "").trim();
   if (!normalized.startsWith("/pinball/")) return null;
-  const relative = normalized.replace(/^\/pinball\/?/, "");
-  const fsPath = path.resolve(SHARED_PINBALL_DIR, relative);
-  if (!fsPath.startsWith(path.resolve(SHARED_PINBALL_DIR))) return null;
-  return fsPath;
+  const alternatePlayfieldWebpPath = normalized.startsWith("/pinball/images/playfields/")
+    ? normalized.replace(/(\/pinball\/images\/playfields\/.+?)(?:_(700|1400))?\.[A-Za-z0-9]+$/i, "$1.webp")
+    : null;
+  if (PINBALL_LAYOUT_MODE === "legacy") {
+    const relative = normalized.replace(/^\/pinball\/?/, "");
+    const fsPath = path.resolve(SHARED_PINBALL_DIR, relative);
+    if (!fsPath.startsWith(path.resolve(SHARED_PINBALL_DIR))) return null;
+    if (fs.existsSync(fsPath) || !alternatePlayfieldWebpPath || alternatePlayfieldWebpPath === normalized) return fsPath;
+    const altRelative = alternatePlayfieldWebpPath.replace(/^\/pinball\/?/, "");
+    const altFsPath = path.resolve(SHARED_PINBALL_DIR, altRelative);
+    return altFsPath.startsWith(path.resolve(SHARED_PINBALL_DIR)) ? altFsPath : fsPath;
+  }
+  for (const mapping of PINBALL_WEB_PATH_MAPPINGS) {
+    if (!normalized.startsWith(mapping.prefix)) continue;
+    const relative = normalized.slice(mapping.prefix.length);
+    const fsPath = path.resolve(mapping.dir, relative);
+    if (!fsPath.startsWith(path.resolve(mapping.dir))) return null;
+    if (fs.existsSync(fsPath) || !alternatePlayfieldWebpPath || alternatePlayfieldWebpPath === normalized) return fsPath;
+    if (!alternatePlayfieldWebpPath.startsWith(mapping.prefix)) return fsPath;
+    const altRelative = alternatePlayfieldWebpPath.slice(mapping.prefix.length);
+    const altFsPath = path.resolve(mapping.dir, altRelative);
+    return altFsPath.startsWith(path.resolve(mapping.dir)) ? altFsPath : fsPath;
+  }
+  return null;
 }
 
 function inferImageExtension(sourceName: string | null, contentType: string | null): string {
@@ -199,7 +885,15 @@ function inferImageExtension(sourceName: string | null, contentType: string | nu
   };
   const fromType = contentType ? contentMap[contentType.toLowerCase()] : null;
   if (fromType) return fromType;
-  const ext = sourceName ? path.extname(sourceName).toLowerCase() : "";
+  let extSource = cleanString(sourceName) ?? "";
+  if (/^https?:\/\//i.test(extSource)) {
+    try {
+      extSource = new URL(extSource).pathname;
+    } catch {
+      extSource = cleanString(sourceName) ?? "";
+    }
+  }
+  const ext = extSource ? path.extname(extSource).toLowerCase() : "";
   if ([".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"].includes(ext)) {
     return ext === ".jpeg" ? ".jpg" : ext;
   }
@@ -285,24 +979,413 @@ function findExistingPlayfieldWebPath(baseName: string): string | null {
   return null;
 }
 
-async function removeExistingPlayfieldFiles(baseName: string) {
-  const entries = await fsp.readdir(SHARED_PLAYFIELDS_DIR, { withFileTypes: true }).catch(() => []);
-  await Promise.all(
-    entries
-      .filter((entry) => entry.isFile() && entry.name.startsWith(baseName))
-      .map((entry) => fsp.rm(path.join(SHARED_PLAYFIELDS_DIR, entry.name), { force: true })),
+function buildPlayfieldAssetPaths(baseName: string, sourceExtension = ".jpg") {
+  return {
+    publishedFsPath: path.join(SHARED_PLAYFIELDS_DIR, `${baseName}.webp`),
+    publishedWebPath: `/pinball/images/playfields/${baseName}.webp`,
+    published1400FsPath: path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_1400.webp`),
+    published1400WebPath: `/pinball/images/playfields/${baseName}_1400.webp`,
+    published700FsPath: path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_700.webp`),
+    published700WebPath: `/pinball/images/playfields/${baseName}_700.webp`,
+    originalFsPath: path.join(PLAYFIELD_SOURCE_ORIGINALS_DIR, `${baseName}.original${sourceExtension}`),
+    referenceFsPath: path.join(PLAYFIELD_SOURCE_REFERENCES_DIR, `${baseName}.source.json`),
+    sourcePageSnapshotFsPath: path.join(PLAYFIELD_SOURCE_REFERENCES_DIR, `${baseName}.ad.html`),
+  };
+}
+
+function playfieldSourceExtension(originalPath: string | null) {
+  const normalized = cleanString(originalPath);
+  const ext = normalized ? path.extname(normalized).toLowerCase() : "";
+  return ext && SUPPORTED_PLAYFIELD_EXTENSIONS.includes(ext as (typeof SUPPORTED_PLAYFIELD_EXTENSIONS)[number]) ? ext : ".jpg";
+}
+
+function parsePlayfieldMaskPolygonJson(value: string | null): PlayfieldMaskPoint[] | null {
+  const normalized = cleanString(value);
+  if (!normalized) return null;
+  try {
+    const parsed = JSON.parse(normalized);
+    if (!Array.isArray(parsed)) return null;
+    const points = parsed.flatMap((point) => {
+      if (!point || typeof point !== "object") return [];
+      const x = Number((point as { x?: unknown }).x);
+      const y = Number((point as { y?: unknown }).y);
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return [];
+      return [{
+        x: Math.max(PLAYFIELD_MASK_POINT_MIN, Math.min(PLAYFIELD_MASK_POINT_MAX, x)),
+        y: Math.max(PLAYFIELD_MASK_POINT_MIN, Math.min(PLAYFIELD_MASK_POINT_MAX, y)),
+      }];
+    });
+    return points.length >= 3 ? points : null;
+  } catch {
+    return null;
+  }
+}
+
+function normalizePlayfieldMaskPoints(value: unknown): PlayfieldMaskPoint[] | null {
+  if (value == null) return null;
+  if (!Array.isArray(value)) {
+    throw new Error("Mask polygon must be an array of points.");
+  }
+  if (!value.length) return null;
+  const points = value.map((point, index) => {
+    if (!point || typeof point !== "object") {
+      throw new Error(`Mask point ${index + 1} is invalid.`);
+    }
+    const x = Number((point as { x?: unknown }).x);
+    const y = Number((point as { y?: unknown }).y);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      throw new Error(`Mask point ${index + 1} must include numeric x and y.`);
+    }
+    if (x < PLAYFIELD_MASK_POINT_MIN || x > PLAYFIELD_MASK_POINT_MAX || y < PLAYFIELD_MASK_POINT_MIN || y > PLAYFIELD_MASK_POINT_MAX) {
+      throw new Error(`Mask point ${index + 1} must stay within the editor border range.`);
+    }
+    return { x, y };
+  });
+  if (points.length < 3) {
+    throw new Error("Mask polygon needs at least 3 points.");
+  }
+  return points;
+}
+
+function stringifyPlayfieldMaskPoints(points: PlayfieldMaskPoint[] | null): string | null {
+  return points?.length ? JSON.stringify(points) : null;
+}
+
+function buildPlayfieldMaskSvg(points: PlayfieldMaskPoint[], width: number, height: number) {
+  const polygon = points
+    .map((point) => `${(point.x * width).toFixed(2)},${(point.y * height).toFixed(2)}`)
+    .join(" ");
+  return Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><polygon points="${polygon}" fill="white"/></svg>`,
+    "utf8",
   );
 }
 
+function buildPlayfieldMaskCropBounds(points: PlayfieldMaskPoint[], width: number, height: number) {
+  const xs = points.map((point) => Math.max(0, Math.min(1, point.x)) * width);
+  const ys = points.map((point) => Math.max(0, Math.min(1, point.y)) * height);
+  const left = Math.max(0, Math.min(width - 1, Math.floor(Math.min(...xs))));
+  const top = Math.max(0, Math.min(height - 1, Math.floor(Math.min(...ys))));
+  const right = Math.max(left + 1, Math.min(width, Math.ceil(Math.max(...xs))));
+  const bottom = Math.max(top + 1, Math.min(height, Math.ceil(Math.max(...ys))));
+  return {
+    left,
+    top,
+    width: right - left,
+    height: bottom - top,
+  };
+}
+
+async function removePrefixedFiles(dir: string, prefix: string) {
+  const entries = await fsp.readdir(dir, { withFileTypes: true }).catch(() => []);
+  await Promise.all(
+    entries
+      .filter((entry) => entry.isFile() && entry.name.startsWith(prefix))
+      .map((entry) => fsp.rm(path.join(dir, entry.name), { force: true })),
+  );
+}
+
+async function removeExistingPlayfieldFiles(baseName: string) {
+  await Promise.all([
+    removePrefixedFiles(SHARED_PLAYFIELDS_DIR, baseName),
+    removePrefixedFiles(PLAYFIELD_SOURCE_ORIGINALS_DIR, baseName),
+    removePrefixedFiles(PLAYFIELD_SOURCE_REFERENCES_DIR, baseName),
+  ]);
+}
+
+async function syncPublishedPlayfieldFamilyToDeployMirror(
+  baseName: string,
+  assetPaths: Pick<
+    ReturnType<typeof buildPlayfieldAssetPaths>,
+    "publishedFsPath" | "published1400FsPath" | "published700FsPath"
+  >,
+) {
+  if (!PLAYFIELD_DEPLOY_MIRROR_DIR) return;
+
+  await ensureDir(PLAYFIELD_DEPLOY_MIRROR_DIR);
+
+  const targetFiles = [
+    assetPaths.publishedFsPath,
+    assetPaths.published1400FsPath,
+    assetPaths.published700FsPath,
+  ].map((sourcePath) => ({
+    sourcePath,
+    fileName: path.basename(sourcePath),
+    targetPath: path.join(PLAYFIELD_DEPLOY_MIRROR_DIR, path.basename(sourcePath)),
+  }));
+
+  await Promise.all(
+    targetFiles.map(({ sourcePath, targetPath }) => fsp.copyFile(sourcePath, targetPath)),
+  );
+
+  const keep = new Set(targetFiles.map(({ fileName }) => fileName));
+  const entries = await fsp.readdir(PLAYFIELD_DEPLOY_MIRROR_DIR, { withFileTypes: true }).catch(() => []);
+  await Promise.all(
+    entries
+      .filter((entry) => entry.isFile() && entry.name.startsWith(baseName) && !keep.has(entry.name))
+      .map((entry) => fsp.rm(path.join(PLAYFIELD_DEPLOY_MIRROR_DIR, entry.name), { force: true })),
+  );
+}
+
+async function renamePrefixedFiles(dir: string, currentBase: string, nextBase: string) {
+  const entries = await fsp.readdir(dir, { withFileTypes: true }).catch(() => []);
+  const family = entries.filter((entry) => entry.isFile() && entry.name.startsWith(currentBase));
+  if (!family.length) return;
+
+  const conflicts = family.filter((entry) => fs.existsSync(path.join(dir, entry.name.replace(currentBase, nextBase))));
+  if (conflicts.length) {
+    throw new Error(`Cannot rename ${currentBase} to ${nextBase}; destination files already exist.`);
+  }
+
+  for (const entry of family) {
+    const nextName = entry.name.replace(currentBase, nextBase);
+    await fsp.rename(path.join(dir, entry.name), path.join(dir, nextName));
+  }
+}
+
+async function writePlayfieldReferencePackage(
+  baseName: string,
+  input: {
+    originalFsPath: string;
+    referenceFsPath: string;
+    sourcePageSnapshotFsPath: string;
+    sourceUrl: string | null;
+    sourcePageUrl: string | null;
+    sourceNote: string | null;
+    sourceName: string | null;
+    contentType: string | null;
+    publishedWebPath: string;
+    published1400WebPath: string;
+    published700WebPath: string;
+    maskPoints: PlayfieldMaskPoint[] | null;
+  },
+) {
+  let snapshotPath: string | null = null;
+  let snapshotStatus = "not-requested";
+  let snapshotError: string | null = null;
+
+  if (input.sourcePageUrl) {
+    snapshotStatus = "requested";
+    try {
+      const response = await fetch(input.sourcePageUrl, {
+        headers: {
+          Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "User-Agent": "pinprof-admin/1.0",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Snapshot fetch failed with ${response.status}`);
+      }
+      const html = await response.text();
+      await fsp.writeFile(input.sourcePageSnapshotFsPath, html, "utf8");
+      snapshotPath = input.sourcePageSnapshotFsPath;
+      snapshotStatus = "saved";
+    } catch (error) {
+      snapshotStatus = "failed";
+      snapshotError = error instanceof Error ? error.message : "Unknown snapshot error";
+    }
+  }
+
+  const referencePayload = {
+    baseName,
+    importedAt: nowIso(),
+    originalLocalPath: input.originalFsPath,
+    sourceName: input.sourceName,
+    contentType: input.contentType,
+    sourceUrl: input.sourceUrl,
+    sourcePageUrl: input.sourcePageUrl,
+    sourceNote: input.sourceNote,
+    published: {
+      highRes: input.publishedWebPath,
+      width1400: input.published1400WebPath,
+      width700: input.published700WebPath,
+    },
+    maskPolygon: input.maskPoints,
+    sourcePageSnapshot: {
+      status: snapshotStatus,
+      localPath: snapshotPath,
+      error: snapshotError,
+    },
+  };
+
+  await fsp.writeFile(input.referenceFsPath, `${JSON.stringify(referencePayload, null, 2)}\n`, "utf8");
+  return {
+    referencePath: input.referenceFsPath,
+    snapshotPath,
+  };
+}
+
+function resolvePlayfieldEditorFsPath(asset: PlayfieldAssetRecord | null): string | null {
+  if (!asset) return null;
+  const originalFsPath = cleanString(asset.playfield_original_local_path);
+  if (originalFsPath && fs.existsSync(originalFsPath)) {
+    return originalFsPath;
+  }
+  const publishedFsPath = toPinballFsPath(asset.playfield_local_path);
+  if (publishedFsPath && fs.existsSync(publishedFsPath)) {
+    return publishedFsPath;
+  }
+  return null;
+}
+
+async function publishPlayfieldDerivatives(
+  buffer: Buffer,
+  assetPaths: ReturnType<typeof buildPlayfieldAssetPaths>,
+  maskPoints: PlayfieldMaskPoint[] | null,
+) {
+  const rotatedBuffer = await sharp(buffer, { failOn: "warning" }).rotate().toBuffer();
+  const metadata = await sharp(rotatedBuffer).metadata();
+  if (!metadata.width || !metadata.height) {
+    throw new Error("Could not determine image dimensions for playfield processing.");
+  }
+
+  let image = sharp(rotatedBuffer).ensureAlpha();
+  if (maskPoints?.length) {
+    image = image.composite([
+      {
+        input: buildPlayfieldMaskSvg(maskPoints, metadata.width, metadata.height),
+        blend: "dest-in",
+      },
+    ]);
+  }
+
+  const maskedBuffer = await image.png().toBuffer();
+  const compositedBuffer = await sharp({
+    create: {
+      width: metadata.width,
+      height: metadata.height,
+      channels: 4,
+      background: "#000000",
+    },
+  })
+    .composite([{ input: maskedBuffer }])
+    .png()
+    .toBuffer();
+
+  let flattened = sharp(compositedBuffer);
+
+  if (maskPoints?.length) {
+    flattened = flattened.extract(buildPlayfieldMaskCropBounds(maskPoints, metadata.width, metadata.height));
+  } else {
+    flattened = flattened.trim({ threshold: PLAYFIELD_TRIM_THRESHOLD });
+  }
+
+  const flattenedBuffer = await flattened.removeAlpha().toColourspace("srgb").png().toBuffer();
+
+  await sharp(flattenedBuffer)
+    .webp({ quality: PLAYFIELD_WEBP_QUALITY })
+    .toFile(assetPaths.publishedFsPath);
+  await sharp(flattenedBuffer)
+    .resize({ width: 1400, withoutEnlargement: true })
+    .webp({ quality: PLAYFIELD_WEBP_1400_QUALITY })
+    .toFile(assetPaths.published1400FsPath);
+  await sharp(flattenedBuffer)
+    .resize({ width: 700, withoutEnlargement: true })
+    .webp({ quality: PLAYFIELD_WEBP_700_QUALITY })
+    .toFile(assetPaths.published700FsPath);
+}
+
 function runApplyOverrides() {
+  if (!pathExists(APPLY_OVERRIDES_SCRIPT)) {
+    throw new Error(`Apply overrides script not found: ${APPLY_OVERRIDES_SCRIPT}`);
+  }
+  const childEnv: NodeJS.ProcessEnv = {
+    ...process.env,
+    PINPROF_ADMIN_WORKSPACE_ROOT: ROOT,
+  };
+  if (PINBALL_LAYOUT_MODE === "legacy" || SHARED_PINBALL_DIR_OVERRIDE) {
+    childEnv.PINPROF_ADMIN_SHARED_PINBALL_DIR = SHARED_PINBALL_DIR;
+  } else {
+    delete childEnv.PINPROF_ADMIN_SHARED_PINBALL_DIR;
+  }
   execFileSync("node", [APPLY_OVERRIDES_SCRIPT], {
     cwd: ROOT,
     stdio: "pipe",
+    env: childEnv,
   });
+  if (pathExists(EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT)) {
+    execFileSync(PINSIDE_BROWSER_PYTHON_BIN, [EXPORT_LIBRARY_SEED_OVERRIDES_SCRIPT], {
+      cwd: ROOT,
+      stdio: "pipe",
+      env: childEnv,
+    });
+  }
+  checkpointWorkspaceSqliteFiles();
+  syncPublishedDataFilesToDeployMirror();
+}
+
+function checkpointWorkspaceSqliteFiles() {
+  try {
+    adminDb.pragma("wal_checkpoint(TRUNCATE)");
+  } catch {
+    // Ignore checkpoint failures and fall back to best-effort file mirroring.
+  }
+
+  for (const dbPath of [SEED_DB_PATH]) {
+    if (!pathExists(dbPath)) continue;
+    try {
+      const checkpointDb = new Database(dbPath);
+      checkpointDb.pragma("wal_checkpoint(TRUNCATE)");
+      checkpointDb.close();
+    } catch {
+      // Ignore checkpoint failures and continue mirroring what we can.
+    }
+  }
+}
+
+function syncPublishedDataFilesToDeployMirror() {
+  if (!PUBLISHED_DATA_DEPLOY_MIRROR_DIR) return;
+  fs.mkdirSync(PUBLISHED_DATA_DEPLOY_MIRROR_DIR, { recursive: true });
+  for (const fileName of DEPLOY_MIRRORED_PUBLISHED_DATA_FILES) {
+    const sourcePath = path.join(PUBLISHED_DATA_DIR, fileName);
+    if (!pathExists(sourcePath)) continue;
+    fs.copyFileSync(sourcePath, path.join(PUBLISHED_DATA_DEPLOY_MIRROR_DIR, fileName));
+  }
+  for (const fileName of DEPLOY_MIRRORED_SQLITE_FILES) {
+    const sourcePath = path.join(SHARED_DATA_DIR, fileName);
+    const targetPath = path.join(PUBLISHED_DATA_DEPLOY_MIRROR_DIR, fileName);
+    if (!pathExists(sourcePath)) continue;
+    fs.copyFileSync(sourcePath, targetPath);
+    for (const suffix of ["-shm", "-wal"]) {
+      const transientTarget = `${targetPath}${suffix}`;
+      if (pathExists(transientTarget)) {
+        fs.rmSync(transientTarget, { force: true });
+      }
+    }
+  }
 }
 
 function jsonError(res: Response, status: number, message: string) {
   res.status(status).type("text/plain").send(message);
+}
+
+function sendFirstExistingFile(res: Response, candidates: readonly string[]) {
+  const match = candidates.find((candidate) => pathExists(candidate));
+  if (!match) {
+    res.status(404).end();
+    return;
+  }
+  res.sendFile(match);
+}
+
+function mountPinballStatic(app: Express) {
+  if (PINBALL_LAYOUT_MODE === "legacy") {
+    app.use("/pinball", express.static(SHARED_PINBALL_DIR));
+    return;
+  }
+
+  app.use("/pinball/images/playfields", express.static(SHARED_PLAYFIELDS_DIR));
+  app.use("/pinball/images/backglasses", express.static(SHARED_BACKGLASSES_DIR));
+  app.use("/pinball/rulesheets", express.static(SHARED_RULESHEETS_DIR));
+  app.use("/pinball/gameinfo", express.static(SHARED_GAMEINFO_DIR));
+  app.use("/pinball/data", express.static(PUBLISHED_DATA_DIR));
+  app.use("/pinball/data", express.static(SOURCE_DATA_DIR));
+  app.get("/pinball/cache-manifest.json", (_req, res) => {
+    sendFirstExistingFile(res, PINBALL_ROOT_FILE_CANDIDATES["cache-manifest.json"]);
+  });
+  app.get("/pinball/cache-update-log.json", (_req, res) => {
+    sendFirstExistingFile(res, PINBALL_ROOT_FILE_CANDIDATES["cache-update-log.json"]);
+  });
 }
 
 function loadManufacturerFilterPayload(): FilterPayload {
@@ -379,13 +1462,32 @@ adminDb.exec(`
     source_opdb_machine_id TEXT NOT NULL,
     covered_alias_ids_json TEXT NOT NULL,
     playfield_local_path TEXT,
+    playfield_original_local_path TEXT,
+    playfield_reference_local_path TEXT,
     playfield_source_url TEXT,
+    playfield_source_page_url TEXT,
+    playfield_source_page_snapshot_path TEXT,
     playfield_source_note TEXT,
+    playfield_web_local_path_1400 TEXT,
+    playfield_web_local_path_700 TEXT,
+    playfield_mask_polygon_json TEXT,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
     UNIQUE(practice_identity, source_opdb_machine_id)
   );
   CREATE INDEX IF NOT EXISTS idx_playfield_assets_practice ON playfield_assets(practice_identity);
+  CREATE TABLE IF NOT EXISTS machine_video_overrides (
+    video_override_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    practice_identity TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    label TEXT NOT NULL,
+    url TEXT NOT NULL,
+    priority INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_machine_video_overrides_practice_priority
+    ON machine_video_overrides(practice_identity, priority, video_override_id);
   CREATE TABLE IF NOT EXISTS activity_log (
     activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
     practice_identity TEXT NOT NULL,
@@ -401,6 +1503,30 @@ adminDb.exec(`
     updated_at TEXT NOT NULL
   );
 `);
+
+function ensureSqliteColumns(
+  db: Database.Database,
+  tableName: string,
+  columns: Array<{ name: string; definition: string }>,
+) {
+  const existingColumns = new Set(
+    (db.prepare(`PRAGMA table_info(${tableName})`).all() as Array<{ name: string }>).map((row) => row.name),
+  );
+  for (const column of columns) {
+    if (existingColumns.has(column.name)) continue;
+    db.exec(`ALTER TABLE ${tableName} ADD COLUMN ${column.name} ${column.definition}`);
+  }
+}
+
+ensureSqliteColumns(adminDb, "playfield_assets", [
+  { name: "playfield_original_local_path", definition: "TEXT" },
+  { name: "playfield_reference_local_path", definition: "TEXT" },
+  { name: "playfield_source_page_url", definition: "TEXT" },
+  { name: "playfield_source_page_snapshot_path", definition: "TEXT" },
+  { name: "playfield_web_local_path_1400", definition: "TEXT" },
+  { name: "playfield_web_local_path_700", definition: "TEXT" },
+  { name: "playfield_mask_polygon_json", definition: "TEXT" },
+]);
 
 const adminCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides").get() as { total: number }).total;
 if (adminCount === 0 && fs.existsSync(SEED_DB_PATH)) {
@@ -499,8 +1625,68 @@ if (adminCount === 0 && fs.existsSync(SEED_DB_PATH)) {
   bootstrapSeed.close();
 }
 
+const adminVideoOverrideCount = (
+  adminDb.prepare("SELECT COUNT(*) AS total FROM machine_video_overrides").get() as { total: number }
+).total;
+if (adminVideoOverrideCount === 0 && fs.existsSync(SEED_DB_PATH)) {
+  const bootstrapSeed = new Database(SEED_DB_PATH, { readonly: true });
+  const hasSeedVideoOverrides = bootstrapSeed
+    .prepare(`
+      SELECT name
+      FROM sqlite_master
+      WHERE type = 'table' AND name = 'override_videos'
+    `)
+    .get() as { name: string } | undefined;
+  if (hasSeedVideoOverrides) {
+    const existing = bootstrapSeed
+      .prepare(`
+        SELECT
+          practice_identity,
+          kind,
+          label,
+          url,
+          priority
+        FROM override_videos
+        ORDER BY practice_identity, priority, lower(label)
+      `)
+      .all() as Array<Omit<AdminVideoOverrideRecord, "video_override_id" | "created_at" | "updated_at">>;
+    const insert = adminDb.prepare(`
+      INSERT INTO machine_video_overrides (
+        practice_identity,
+        kind,
+        label,
+        url,
+        priority,
+        created_at,
+        updated_at
+      ) VALUES (
+        @practice_identity,
+        @kind,
+        @label,
+        @url,
+        @priority,
+        @created_at,
+        @updated_at
+      )
+    `);
+    const timestamp = nowIso();
+    const transaction = adminDb.transaction((rows: Array<Omit<AdminVideoOverrideRecord, "video_override_id" | "created_at" | "updated_at">>) => {
+      for (const row of rows) {
+        insert.run({
+          ...row,
+          created_at: timestamp,
+          updated_at: timestamp,
+        });
+      }
+    });
+    transaction(existing);
+  }
+  bootstrapSeed.close();
+}
+
 const seedDb = new Database(SEED_DB_PATH);
 seedDb.exec(`ATTACH DATABASE '${escapeSqlitePath(ADMIN_DB_PATH)}' AS admin`);
+let pinsidePhotoBrowserSession: PinsidePhotoBrowserSessionState | null = null;
 
 function getMachineRow(practiceIdentity: string): MachineRow | null {
   const row = seedDb
@@ -577,6 +1763,167 @@ function getBuiltInGameRow(practiceIdentity: string): BuiltInGameRow | null {
   return row ?? null;
 }
 
+function sqlPlaceholders(count: number) {
+  return Array.from({ length: count }, () => "?").join(", ");
+}
+
+function getMachineMembershipRows(practiceIdentity: string): MachineMembershipRow[] {
+  return seedDb.prepare(`
+    SELECT
+      library_entry_id AS libraryEntryId,
+      source_id AS sourceId,
+      source_name AS sourceName,
+      source_type AS sourceType,
+      practice_identity AS practiceIdentity,
+      opdb_id AS opdbId,
+      area,
+      area_order AS areaOrder,
+      group_number AS groupNumber,
+      position,
+      bank,
+      name,
+      variant,
+      manufacturer,
+      year,
+      slug,
+      primary_image_url AS primaryImageUrl,
+      primary_image_large_url AS primaryImageLargeUrl,
+      playfield_image_url AS playfieldImageUrl,
+      playfield_local_path AS playfieldLocalPath,
+      playfield_source_label AS playfieldSourceLabel,
+      gameinfo_local_path AS gameinfoLocalPath,
+      rulesheet_local_path AS rulesheetLocalPath,
+      rulesheet_url AS rulesheetUrl
+    FROM built_in_games
+    WHERE practice_identity = ?
+    ORDER BY
+      lower(source_name),
+      area_order IS NULL,
+      area_order,
+      group_number IS NULL,
+      group_number,
+      position IS NULL,
+      position,
+      lower(library_entry_id)
+  `).all(practiceIdentity) as MachineMembershipRow[];
+}
+
+function getBuiltInVideoRowsByMembership(libraryEntryIds: string[]) {
+  if (!libraryEntryIds.length) return new Map<string, MembershipVideoRow[]>();
+  const rows = seedDb.prepare(`
+    SELECT
+      library_entry_id AS libraryEntryId,
+      kind,
+      label,
+      url,
+      priority
+    FROM built_in_videos
+    WHERE library_entry_id IN (${sqlPlaceholders(libraryEntryIds.length)})
+    ORDER BY lower(library_entry_id), lower(kind), priority, lower(label)
+  `).all(...libraryEntryIds) as MembershipVideoRow[];
+  const grouped = new Map<string, MembershipVideoRow[]>();
+  for (const row of rows) {
+    const existing = grouped.get(row.libraryEntryId) ?? [];
+    existing.push(row);
+    grouped.set(row.libraryEntryId, existing);
+  }
+  return grouped;
+}
+
+function getBuiltInRulesheetRowsByMembership(libraryEntryIds: string[]) {
+  if (!libraryEntryIds.length) return new Map<string, MembershipRulesheetLinkRow[]>();
+  const rows = seedDb.prepare(`
+    SELECT
+      library_entry_id AS libraryEntryId,
+      label,
+      url,
+      priority
+    FROM built_in_rulesheet_links
+    WHERE library_entry_id IN (${sqlPlaceholders(libraryEntryIds.length)})
+    ORDER BY lower(library_entry_id), priority, lower(label)
+  `).all(...libraryEntryIds) as MembershipRulesheetLinkRow[];
+  const grouped = new Map<string, MembershipRulesheetLinkRow[]>();
+  for (const row of rows) {
+    const existing = grouped.get(row.libraryEntryId) ?? [];
+    existing.push(row);
+    grouped.set(row.libraryEntryId, existing);
+  }
+  return grouped;
+}
+
+function getCatalogVideoLinks(practiceIdentity: string): MachineVideoLinkRow[] {
+  return seedDb.prepare(`
+    SELECT
+      practice_identity AS practiceIdentity,
+      provider,
+      kind,
+      label,
+      url,
+      priority
+    FROM catalog_video_links
+    WHERE practice_identity = ?
+    ORDER BY lower(provider), lower(kind), priority, lower(label)
+  `).all(practiceIdentity) as MachineVideoLinkRow[];
+}
+
+function getOverrideVideoLinks(practiceIdentity: string): MachineVideoLinkRow[] {
+  return adminDb.prepare(`
+    SELECT
+      practice_identity AS practiceIdentity,
+      'override' AS provider,
+      kind,
+      label,
+      url,
+      priority
+    FROM machine_video_overrides
+    WHERE practice_identity = ?
+    ORDER BY priority, lower(kind), lower(label)
+  `).all(practiceIdentity) as MachineVideoLinkRow[];
+}
+
+function getCatalogRulesheetLinks(practiceIdentity: string): MachineRulesheetLinkRow[] {
+  return seedDb.prepare(`
+    SELECT
+      practice_identity AS practiceIdentity,
+      provider,
+      label,
+      url,
+      priority
+    FROM catalog_rulesheet_links
+    WHERE practice_identity = ?
+    ORDER BY lower(provider), priority, lower(label)
+  `).all(practiceIdentity) as MachineRulesheetLinkRow[];
+}
+
+function getOverrideRulesheetLinks(practiceIdentity: string): MachineRulesheetLinkRow[] {
+  return seedDb.prepare(`
+    SELECT
+      practice_identity AS practiceIdentity,
+      'override' AS provider,
+      label,
+      url,
+      priority
+    FROM override_rulesheet_links
+    WHERE practice_identity = ?
+    ORDER BY priority, lower(label)
+  `).all(practiceIdentity) as MachineRulesheetLinkRow[];
+}
+
+function dedupeRulesheetLinks(links: Array<{ label: string; url: string; priority: number }>) {
+  const seen = new Set<string>();
+  const deduped: Array<{ label: string; url: string; priority: number }> = [];
+  for (const link of links) {
+    const url = cleanString(link.url);
+    const label = cleanString(link.label);
+    if (!url || !label) continue;
+    const key = `${label}::${url}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push({ label, url, priority: link.priority });
+  }
+  return deduped.sort((left, right) => left.priority - right.priority || left.label.localeCompare(right.label));
+}
+
 function getMachineAliases(practiceIdentity: string): MachineAliasRow[] {
   return seedDb.prepare(`
     SELECT
@@ -607,8 +1954,15 @@ function getPlayfieldAssetRecords(practiceIdentity: string): PlayfieldAssetRecor
         source_opdb_machine_id,
         covered_alias_ids_json,
         playfield_local_path,
+        playfield_original_local_path,
+        playfield_reference_local_path,
         playfield_source_url,
+        playfield_source_page_url,
+        playfield_source_page_snapshot_path,
         playfield_source_note,
+        playfield_web_local_path_1400,
+        playfield_web_local_path_700,
+        playfield_mask_polygon_json,
         created_at,
         updated_at
       FROM playfield_assets
@@ -678,8 +2032,15 @@ function bootstrapLegacyPlayfieldAssets() {
       source_opdb_machine_id,
       covered_alias_ids_json,
       playfield_local_path,
+      playfield_original_local_path,
+      playfield_reference_local_path,
       playfield_source_url,
+      playfield_source_page_url,
+      playfield_source_page_snapshot_path,
       playfield_source_note,
+      playfield_web_local_path_1400,
+      playfield_web_local_path_700,
+      playfield_mask_polygon_json,
       created_at,
       updated_at
     ) VALUES (
@@ -687,16 +2048,30 @@ function bootstrapLegacyPlayfieldAssets() {
       @source_opdb_machine_id,
       @covered_alias_ids_json,
       @playfield_local_path,
+      @playfield_original_local_path,
+      @playfield_reference_local_path,
       @playfield_source_url,
+      @playfield_source_page_url,
+      @playfield_source_page_snapshot_path,
       @playfield_source_note,
+      @playfield_web_local_path_1400,
+      @playfield_web_local_path_700,
+      @playfield_mask_polygon_json,
       @created_at,
       @updated_at
     )
     ON CONFLICT(practice_identity, source_opdb_machine_id) DO UPDATE SET
       covered_alias_ids_json=excluded.covered_alias_ids_json,
       playfield_local_path=excluded.playfield_local_path,
+      playfield_original_local_path=excluded.playfield_original_local_path,
+      playfield_reference_local_path=excluded.playfield_reference_local_path,
       playfield_source_url=excluded.playfield_source_url,
+      playfield_source_page_url=excluded.playfield_source_page_url,
+      playfield_source_page_snapshot_path=excluded.playfield_source_page_snapshot_path,
       playfield_source_note=excluded.playfield_source_note,
+      playfield_web_local_path_1400=excluded.playfield_web_local_path_1400,
+      playfield_web_local_path_700=excluded.playfield_web_local_path_700,
+      playfield_mask_polygon_json=excluded.playfield_mask_polygon_json,
       updated_at=excluded.updated_at
   `);
 
@@ -710,8 +2085,15 @@ function bootstrapLegacyPlayfieldAssets() {
         source_opdb_machine_id: sourceAlias.opdbMachineId,
         covered_alias_ids_json: stringifyCoveredAliasIds([sourceAlias.opdbMachineId]),
         playfield_local_path: row.playfield_local_path,
+        playfield_original_local_path: null,
+        playfield_reference_local_path: null,
         playfield_source_url: row.playfield_source_url,
+        playfield_source_page_url: null,
+        playfield_source_page_snapshot_path: null,
         playfield_source_note: row.playfield_source_note,
+        playfield_web_local_path_1400: null,
+        playfield_web_local_path_700: null,
+        playfield_mask_polygon_json: null,
         created_at: row.created_at,
         updated_at: row.updated_at,
       });
@@ -723,19 +2105,12 @@ function bootstrapLegacyPlayfieldAssets() {
 
 async function renameExistingPlayfieldFiles(currentBase: string, nextBase: string) {
   if (currentBase === nextBase) return;
-  const entries = await fsp.readdir(SHARED_PLAYFIELDS_DIR, { withFileTypes: true }).catch(() => []);
-  const family = entries.filter((entry) => entry.isFile() && entry.name.startsWith(currentBase));
-  if (!family.length) return;
-
-  const conflicts = family.filter((entry) => fs.existsSync(path.join(SHARED_PLAYFIELDS_DIR, entry.name.replace(currentBase, nextBase))));
-  if (conflicts.length) {
-    throw new Error(`Cannot rename ${currentBase} to ${nextBase}; destination files already exist.`);
+  await renamePrefixedFiles(SHARED_PLAYFIELDS_DIR, currentBase, nextBase);
+  if (PLAYFIELD_DEPLOY_MIRROR_DIR) {
+    await renamePrefixedFiles(PLAYFIELD_DEPLOY_MIRROR_DIR, currentBase, nextBase);
   }
-
-  for (const entry of family) {
-    const nextName = entry.name.replace(currentBase, nextBase);
-    await fsp.rename(path.join(SHARED_PLAYFIELDS_DIR, entry.name), path.join(SHARED_PLAYFIELDS_DIR, nextName));
-  }
+  await renamePrefixedFiles(PLAYFIELD_SOURCE_ORIGINALS_DIR, currentBase, nextBase);
+  await renamePrefixedFiles(PLAYFIELD_SOURCE_REFERENCES_DIR, currentBase, nextBase);
 }
 
 async function ensureExistingPlayfieldPath(practiceIdentity: string, sourceAliasId: string, existingPath: string | null) {
@@ -755,7 +2130,19 @@ async function ensureExistingPlayfieldPath(practiceIdentity: string, sourceAlias
 function upsertPlayfieldAssetRecord(
   practiceIdentity: string,
   sourceAliasId: string,
-  patch: Pick<PlayfieldAssetRecord, "playfield_local_path" | "playfield_source_url" | "playfield_source_note">,
+  patch: Pick<
+    PlayfieldAssetRecord,
+    | "playfield_local_path"
+    | "playfield_original_local_path"
+    | "playfield_reference_local_path"
+    | "playfield_source_url"
+    | "playfield_source_page_url"
+    | "playfield_source_page_snapshot_path"
+    | "playfield_source_note"
+    | "playfield_web_local_path_1400"
+    | "playfield_web_local_path_700"
+    | "playfield_mask_polygon_json"
+  >,
 ) {
   const existing = adminDb
     .prepare(`
@@ -773,8 +2160,15 @@ function upsertPlayfieldAssetRecord(
         source_opdb_machine_id,
         covered_alias_ids_json,
         playfield_local_path,
+        playfield_original_local_path,
+        playfield_reference_local_path,
         playfield_source_url,
+        playfield_source_page_url,
+        playfield_source_page_snapshot_path,
         playfield_source_note,
+        playfield_web_local_path_1400,
+        playfield_web_local_path_700,
+        playfield_mask_polygon_json,
         created_at,
         updated_at
       ) VALUES (
@@ -782,16 +2176,30 @@ function upsertPlayfieldAssetRecord(
         @source_opdb_machine_id,
         @covered_alias_ids_json,
         @playfield_local_path,
+        @playfield_original_local_path,
+        @playfield_reference_local_path,
         @playfield_source_url,
+        @playfield_source_page_url,
+        @playfield_source_page_snapshot_path,
         @playfield_source_note,
+        @playfield_web_local_path_1400,
+        @playfield_web_local_path_700,
+        @playfield_mask_polygon_json,
         @created_at,
         @updated_at
       )
       ON CONFLICT(practice_identity, source_opdb_machine_id) DO UPDATE SET
         covered_alias_ids_json=excluded.covered_alias_ids_json,
         playfield_local_path=excluded.playfield_local_path,
+        playfield_original_local_path=excluded.playfield_original_local_path,
+        playfield_reference_local_path=excluded.playfield_reference_local_path,
         playfield_source_url=excluded.playfield_source_url,
+        playfield_source_page_url=excluded.playfield_source_page_url,
+        playfield_source_page_snapshot_path=excluded.playfield_source_page_snapshot_path,
         playfield_source_note=excluded.playfield_source_note,
+        playfield_web_local_path_1400=excluded.playfield_web_local_path_1400,
+        playfield_web_local_path_700=excluded.playfield_web_local_path_700,
+        playfield_mask_polygon_json=excluded.playfield_mask_polygon_json,
         updated_at=excluded.updated_at
     `)
     .run({
@@ -799,8 +2207,15 @@ function upsertPlayfieldAssetRecord(
       source_opdb_machine_id: sourceAliasId,
       covered_alias_ids_json: stringifyCoveredAliasIds([sourceAliasId]),
       playfield_local_path: patch.playfield_local_path,
+      playfield_original_local_path: patch.playfield_original_local_path,
+      playfield_reference_local_path: patch.playfield_reference_local_path,
       playfield_source_url: patch.playfield_source_url,
+      playfield_source_page_url: patch.playfield_source_page_url,
+      playfield_source_page_snapshot_path: patch.playfield_source_page_snapshot_path,
       playfield_source_note: patch.playfield_source_note,
+      playfield_web_local_path_1400: patch.playfield_web_local_path_1400,
+      playfield_web_local_path_700: patch.playfield_web_local_path_700,
+      playfield_mask_polygon_json: patch.playfield_mask_polygon_json,
       created_at: existing?.created_at ?? now,
       updated_at: now,
     });
@@ -811,7 +2226,19 @@ function upsertPlayfieldAssetRecord(
 function reassignPlayfieldAssetRecord(
   playfieldAssetId: number,
   sourceAliasId: string,
-  patch: Pick<PlayfieldAssetRecord, "playfield_local_path" | "playfield_source_url" | "playfield_source_note">,
+  patch: Pick<
+    PlayfieldAssetRecord,
+    | "playfield_local_path"
+    | "playfield_original_local_path"
+    | "playfield_reference_local_path"
+    | "playfield_source_url"
+    | "playfield_source_page_url"
+    | "playfield_source_page_snapshot_path"
+    | "playfield_source_note"
+    | "playfield_web_local_path_1400"
+    | "playfield_web_local_path_700"
+    | "playfield_mask_polygon_json"
+  >,
 ) {
   adminDb
     .prepare(`
@@ -820,8 +2247,15 @@ function reassignPlayfieldAssetRecord(
         source_opdb_machine_id = ?,
         covered_alias_ids_json = ?,
         playfield_local_path = ?,
+        playfield_original_local_path = ?,
+        playfield_reference_local_path = ?,
         playfield_source_url = ?,
+        playfield_source_page_url = ?,
+        playfield_source_page_snapshot_path = ?,
         playfield_source_note = ?,
+        playfield_web_local_path_1400 = ?,
+        playfield_web_local_path_700 = ?,
+        playfield_mask_polygon_json = ?,
         updated_at = ?
       WHERE playfield_asset_id = ?
     `)
@@ -829,8 +2263,15 @@ function reassignPlayfieldAssetRecord(
       sourceAliasId,
       stringifyCoveredAliasIds([sourceAliasId]),
       patch.playfield_local_path,
+      patch.playfield_original_local_path,
+      patch.playfield_reference_local_path,
       patch.playfield_source_url,
+      patch.playfield_source_page_url,
+      patch.playfield_source_page_snapshot_path,
       patch.playfield_source_note,
+      patch.playfield_web_local_path_1400,
+      patch.playfield_web_local_path_700,
+      patch.playfield_mask_polygon_json,
       nowIso(),
       playfieldAssetId,
     );
@@ -912,6 +2353,445 @@ function buildActivityPayload(practiceIdentity: string) {
       createdAt: row.created_at,
     };
   });
+}
+
+function findPinsideAuditMatch(
+  name: string | null | undefined,
+  variant: string | null | undefined,
+  manufacturer: string | null | undefined,
+  year: string | number | null | undefined,
+): PinsideAuditLookupEntry | null {
+  const fingerprint = buildPinsideFingerprint(name, variant, manufacturer, year);
+  if (!fingerprint) return null;
+  const matches = PINSIDE_AUDIT_LOOKUP_INDEX.byFingerprint.get(fingerprint) ?? [];
+  const deduped = Array.from(new Map(matches.map((entry) => [entry.pinsideId, entry])).values());
+  return deduped.length === 1 ? deduped[0] : null;
+}
+
+function buildPinsideSearchTerm(machine: MachineRow) {
+  const title = cleanString(machine.nameOverride) ?? machine.name;
+  const manufacturer = cleanString(machine.manufacturerOverride) ?? machine.manufacturer;
+  const year = machine.yearOverride ?? machine.year;
+  const normalizedTitle = cleanString(title) ?? "";
+  const isWeakTitle = normalizedTitle.length <= 4 || !/[a-z]/i.test(normalizedTitle) || /^\d+$/.test(normalizedTitle);
+  if (isWeakTitle) {
+    return [manufacturer, normalizedTitle, year == null ? null : String(year)].filter(Boolean).join(" ");
+  }
+  return normalizedTitle;
+}
+
+function resolvePinsideLaunchTarget(machine: MachineRow, memberships: MachineMembershipRow[]): PinsideLaunchTarget {
+  const searchTerm = buildPinsideSearchTerm(machine) || machine.name;
+  const title = cleanString(machine.nameOverride) ?? machine.name;
+  const variant = cleanString(machine.variantOverride) ?? machine.variant;
+  const manufacturer = cleanString(machine.manufacturerOverride) ?? machine.manufacturer;
+  const year = machine.yearOverride ?? machine.year;
+  const expectedYear = year == null ? null : String(year);
+  const gameQuery = [title, variant].filter(Boolean).join(" ") || searchTerm;
+
+  for (const membership of memberships) {
+    const match = findPinsideAuditMatch(membership.name, membership.variant, membership.manufacturer, membership.year);
+    if (match) {
+      return {
+        searchTerm,
+        gameQuery,
+        expectedTitle: title,
+        expectedManufacturer: manufacturer,
+        expectedYear,
+        searchMode: "machine-key",
+        machineKey: match.pinsideId,
+        machineSlug: match.pinsideSlug,
+        resolvedBy: match.sourceFile ? `audit:${match.sourceFile}` : "audit",
+        machineSlugCandidates: [],
+      };
+    }
+  }
+
+  const machineMatch = findPinsideAuditMatch(title, variant, manufacturer, year);
+  if (machineMatch) {
+    return {
+      searchTerm,
+      gameQuery,
+      expectedTitle: title,
+      expectedManufacturer: manufacturer,
+      expectedYear,
+      searchMode: "machine-key",
+      machineKey: machineMatch.pinsideId,
+      machineSlug: machineMatch.pinsideSlug,
+      resolvedBy: machineMatch.sourceFile ? `audit:${machineMatch.sourceFile}` : "audit",
+      machineSlugCandidates: [],
+    };
+  }
+
+  const slugCandidates = new Set<string>();
+  for (const membership of memberships) {
+    for (const slug of buildSlugCandidates(membership.slug, membership.manufacturer, membership.name, membership.variant, membership.year)) {
+      slugCandidates.add(slug);
+    }
+  }
+  for (const slug of buildSlugCandidates(machine.slug, manufacturer, title, variant, expectedYear)) {
+    slugCandidates.add(slug);
+  }
+
+  const machineSlugCandidates = Array.from(slugCandidates).slice(0, 8);
+  if (machineSlugCandidates.length > 0) {
+    return {
+      searchTerm,
+      gameQuery,
+      expectedTitle: title,
+      expectedManufacturer: manufacturer,
+      expectedYear,
+      searchMode: "machine-slug",
+      machineKey: null,
+      machineSlug: machineSlugCandidates[0],
+      resolvedBy: "slug-candidate",
+      machineSlugCandidates,
+    };
+  }
+
+  return {
+    searchTerm,
+    gameQuery,
+    expectedTitle: title,
+    expectedManufacturer: manufacturer,
+    expectedYear,
+    searchMode: "game-search",
+    machineKey: null,
+    machineSlug: null,
+    resolvedBy: null,
+    machineSlugCandidates: [],
+  };
+}
+
+function readRecentLogLines(logPath: string | null, limit = 8): string[] {
+  if (!logPath || !pathExists(logPath)) return [];
+  try {
+    const text = fs.readFileSync(logPath, "utf8");
+    return text
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .slice(-limit);
+  } catch {
+    return [];
+  }
+}
+
+function readLatestPinsideSavedFinal(session: PinsidePhotoBrowserSessionState | null): PinsideSavedFinalRecord | null {
+  if (!session?.manifestPath) return null;
+  const savesPath = path.join(path.dirname(session.manifestPath), "saved.json");
+  if (!pathExists(savesPath)) return null;
+  try {
+    const payload = JSON.parse(fs.readFileSync(savesPath, "utf8")) as { saves?: Array<Record<string, unknown>> };
+    const saves = Array.isArray(payload.saves) ? payload.saves : [];
+    if (!saves.length) return null;
+    const latest = saves
+      .slice()
+      .sort((left, right) => {
+        const leftValue = Date.parse(cleanString(left.savedAt) ?? "") || 0;
+        const rightValue = Date.parse(cleanString(right.savedAt) ?? "") || 0;
+        return rightValue - leftValue;
+      })[0];
+    if (!latest) return null;
+    return {
+      adId: cleanString(latest.adId) ?? "",
+      adTitle: cleanString(latest.adTitle),
+      adUrl: cleanString(latest.adUrl),
+      photoIndex: cleanInteger(latest.photoIndex),
+      filename: cleanString(latest.filename),
+      previewUrl: cleanString(latest.previewUrl),
+      fullUrl: cleanString(latest.fullUrl),
+      originalUrl: normalizePinsideOriginalUrl(latest.originalUrl),
+      selectedAt: cleanString(latest.selectedAt),
+      savedAt: cleanString(latest.savedAt),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function serializePinsidePhotoBrowserSession(session: PinsidePhotoBrowserSessionState | null) {
+  if (!session) {
+    return {
+      active: false,
+      status: "idle",
+      practiceIdentity: null,
+      searchTerm: null,
+      searchMode: null,
+      machineKey: null,
+      machineSlug: null,
+      resolvedBy: null,
+      machineSlugCandidates: [],
+      viewerUrl: `http://${PINSIDE_BROWSER_HOST}:${PINSIDE_BROWSER_PORT}/`,
+      logPath: null,
+      manifestPath: null,
+      stateFilePath: null,
+      launchedAt: null,
+      exitCode: null,
+      signal: null,
+      latestSavedFinal: null,
+      recentLogLines: [],
+    };
+  }
+
+  const active = session.child !== null && session.exitCode == null && session.signal == null && session.status !== "failed";
+  const recentLogLines = readRecentLogLines(session.logPath);
+  const latestSavedFinal = readLatestPinsideSavedFinal(session);
+  return {
+    active,
+    status: session.status,
+    practiceIdentity: session.practiceIdentity,
+    searchTerm: session.searchTerm,
+    searchMode: session.searchMode,
+    machineKey: session.machineKey,
+    machineSlug: session.machineSlug,
+    resolvedBy: session.resolvedBy,
+    machineSlugCandidates: session.machineSlugCandidates,
+    viewerUrl: session.viewerUrl,
+    logPath: session.logPath,
+    manifestPath: session.manifestPath,
+    stateFilePath: session.stateFilePath,
+    launchedAt: session.launchedAt,
+    exitCode: session.exitCode,
+    signal: session.signal,
+    latestSavedFinal,
+    recentLogLines,
+  };
+}
+
+function stopPinsidePhotoBrowserSession() {
+  if (!pinsidePhotoBrowserSession?.child) return;
+  try {
+    pinsidePhotoBrowserSession.child.kill("SIGTERM");
+  } catch {
+    // Ignore failed cleanup if the child already exited.
+  }
+}
+
+function terminatePinsidePhotoBrowserSession() {
+  const previousSession = pinsidePhotoBrowserSession;
+  stopPinsidePhotoBrowserSession();
+  stopDetachedPinsideViewerProcesses();
+
+  if (!previousSession) {
+    pinsidePhotoBrowserSession = null;
+    return serializePinsidePhotoBrowserSession(null);
+  }
+
+  pinsidePhotoBrowserSession = {
+    ...previousSession,
+    child: null,
+    status: "exited",
+    exitCode: previousSession.exitCode ?? 0,
+    signal: previousSession.signal ?? "SIGTERM",
+  };
+  return serializePinsidePhotoBrowserSession(pinsidePhotoBrowserSession);
+}
+
+function stopDetachedPinsideViewerProcesses() {
+  const searchPatterns = [
+    `${path.basename(PINSIDE_BROWSER_SCRIPT)} serve --host ${PINSIDE_BROWSER_HOST} --port ${PINSIDE_BROWSER_PORT}`,
+    `${path.basename(PINSIDE_BROWSER_SCRIPT)} launch --host ${PINSIDE_BROWSER_HOST} --port ${PINSIDE_BROWSER_PORT}`,
+  ];
+  for (const searchPattern of searchPatterns) {
+    try {
+      execFileSync("pkill", ["-f", searchPattern], { stdio: "ignore" });
+    } catch {
+      // Ignore when there is no matching detached process.
+    }
+  }
+  try {
+    const listeningPids = execFileSync("lsof", ["-tiTCP:" + String(PINSIDE_BROWSER_PORT), "-sTCP:LISTEN"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .split(/\r?\n/)
+      .map((value) => value.trim())
+      .filter(Boolean);
+    for (const pid of listeningPids) {
+      try {
+        process.kill(Number(pid), "SIGTERM");
+      } catch {
+        // Ignore processes that already exited.
+      }
+    }
+  } catch {
+    // Ignore when no process is listening on the viewer port.
+  }
+}
+
+function launchPinsidePhotoBrowser(practiceIdentity: string) {
+  const machine = getMachineRow(practiceIdentity);
+  if (!machine) {
+    throw new Error(`Unknown machine: ${practiceIdentity}`);
+  }
+  if (!pathExists(PINSIDE_BROWSER_SCRIPT)) {
+    throw new Error(`Pinside photo browser script not found: ${PINSIDE_BROWSER_SCRIPT}`);
+  }
+
+  stopPinsidePhotoBrowserSession();
+  stopDetachedPinsideViewerProcesses();
+
+  const memberships = getMachineMembershipRows(practiceIdentity);
+  const launchTarget = resolvePinsideLaunchTarget(machine, memberships);
+  const searchTerm = launchTarget.searchTerm;
+  const viewerUrl = `http://${PINSIDE_BROWSER_HOST}:${PINSIDE_BROWSER_PORT}/`;
+  const manifestDir = path.join(MANIFESTS_DIR, "pinside_photo_browser");
+  const manifestPath = path.join(manifestDir, "manifest.json");
+  const picksPath = path.join(manifestDir, "picks.json");
+  const savesPath = path.join(manifestDir, "saved.json");
+  const stateFilePath = path.join(manifestDir, "playwright_state.json");
+  const logDir = path.join(WORKSPACE_DIR, "cache");
+  const logPath = path.join(logDir, "pinside_photo_browser.log");
+  const hasSavedPlaywrightState = pathExists(stateFilePath);
+  const shouldLaunchHeadless = hasSavedPlaywrightState && PINSIDE_BROWSER_PREFER_HEADLESS && !PINSIDE_BROWSER_FORCE_HEADED;
+  fs.mkdirSync(manifestDir, { recursive: true });
+  fs.mkdirSync(logDir, { recursive: true });
+  fs.writeFileSync(picksPath, JSON.stringify({ savedAt: nowIso(), picks: [] }, null, 2), "utf8");
+  fs.writeFileSync(savesPath, JSON.stringify({ savedAt: nowIso(), saves: [] }, null, 2), "utf8");
+  fs.writeFileSync(
+    manifestPath,
+    JSON.stringify(
+      {
+        generatedAt: nowIso(),
+        sourceMode: "pending",
+        sourceGame: launchTarget.searchTerm,
+        sourceMachineKey: launchTarget.machineKey,
+        sourceMachineSlug: launchTarget.machineSlug,
+        sourceMachineSlugCandidates: launchTarget.machineSlugCandidates,
+        practiceIdentity,
+        pending: true,
+        ads: [],
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  );
+  const logFd = fs.openSync(logPath, "w");
+  const childArgs = [
+    PINSIDE_BROWSER_SCRIPT,
+    "launch",
+    "--game",
+    launchTarget.gameQuery,
+    "--result-limit",
+    String(PINSIDE_BROWSER_DISCOVERY_LIMIT),
+    "--initial-ad-limit",
+    String(PINSIDE_BROWSER_INITIAL_AD_LIMIT),
+    "--startup-target-limit",
+    String(PINSIDE_BROWSER_STARTUP_TARGET_LIMIT),
+    "--prefetch-window",
+    String(PINSIDE_BROWSER_PREFETCH_WINDOW),
+    "--host",
+    PINSIDE_BROWSER_HOST,
+    "--port",
+    String(PINSIDE_BROWSER_PORT),
+    "--manifest",
+    manifestPath,
+    "--state-file",
+    stateFilePath,
+  ];
+  if (launchTarget.expectedTitle) {
+    childArgs.push("--expected-title", launchTarget.expectedTitle);
+  }
+  if (launchTarget.expectedManufacturer) {
+    childArgs.push("--expected-manufacturer", launchTarget.expectedManufacturer);
+  }
+  if (launchTarget.expectedYear) {
+    childArgs.push("--expected-year", launchTarget.expectedYear);
+  }
+  if (shouldLaunchHeadless) {
+    childArgs.push("--headless");
+    if (PINSIDE_BROWSER_ALLOW_VISIBLE_RETRY) {
+      childArgs.push("--allow-visible-retry");
+    }
+  } else if (!hasSavedPlaywrightState) {
+    childArgs.push("--pause-for-login", "--login-wait-seconds", String(PINSIDE_BROWSER_LOGIN_WAIT_SECONDS));
+  }
+  if (launchTarget.machineKey) {
+    childArgs.push("--machine-key", launchTarget.machineKey);
+  }
+  for (const machineSlug of launchTarget.machineSlugCandidates) {
+    childArgs.push("--machine-slug", machineSlug);
+  }
+  const child = spawn(
+    PINSIDE_BROWSER_PYTHON_BIN,
+    childArgs,
+    {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        PYTHONUNBUFFERED: "1",
+      },
+      stdio: ["ignore", logFd, logFd],
+    },
+  );
+
+  const session: PinsidePhotoBrowserSessionState = {
+    child,
+    practiceIdentity,
+    searchTerm,
+    searchMode: launchTarget.searchMode,
+    machineKey: launchTarget.machineKey,
+    machineSlug: launchTarget.machineSlug,
+    resolvedBy: launchTarget.resolvedBy,
+    machineSlugCandidates: launchTarget.machineSlugCandidates,
+    viewerUrl,
+    logPath,
+    manifestPath,
+    stateFilePath,
+    host: PINSIDE_BROWSER_HOST,
+    port: PINSIDE_BROWSER_PORT,
+    launchedAt: nowIso(),
+    status: "starting",
+    exitCode: null,
+    signal: null,
+  };
+  pinsidePhotoBrowserSession = session;
+
+  child.once("spawn", () => {
+    if (pinsidePhotoBrowserSession === session) {
+      pinsidePhotoBrowserSession = {
+        ...session,
+        child,
+        status: "running",
+      };
+    }
+  });
+
+  child.once("error", () => {
+    try {
+      fs.closeSync(logFd);
+    } catch {
+      // Ignore close failures.
+    }
+    if (pinsidePhotoBrowserSession === session) {
+      pinsidePhotoBrowserSession = {
+        ...session,
+        child: null,
+        status: "failed",
+      };
+    }
+  });
+
+  child.once("exit", (code, signal) => {
+    try {
+      fs.closeSync(logFd);
+    } catch {
+      // Ignore close failures.
+    }
+    if (pinsidePhotoBrowserSession === session) {
+      pinsidePhotoBrowserSession = {
+        ...session,
+        child: null,
+        status: code === 0 ? "exited" : "failed",
+        exitCode: code,
+        signal,
+      };
+    }
+  });
+
+  return serializePinsidePhotoBrowserSession(session);
 }
 
 function getWorkspaceNote(workspaceKey: string): WorkspaceStateRecord | null {
@@ -1128,6 +3008,71 @@ function upsertOverride(practiceIdentity: string, patch: Partial<OverrideRecord>
   runApplyOverrides();
 }
 
+function parseVideoOverrideRows(value: unknown) {
+  if (!Array.isArray(value)) {
+    throw new Error("Videos payload must be an array.");
+  }
+
+  const normalized: Array<Pick<AdminVideoOverrideRecord, "kind" | "label" | "url" | "priority">> = [];
+  value.forEach((entry, index) => {
+    const row = entry && typeof entry === "object" ? (entry as Record<string, unknown>) : {};
+    const kindInput = cleanString(row.kind);
+    const labelInput = cleanString(row.label);
+    const urlInput = cleanString(row.url);
+
+    if (!kindInput && !labelInput && !urlInput) {
+      return;
+    }
+
+    const rowNumber = index + 1;
+    const kind = normalizeVideoKind(kindInput, `Video row ${rowNumber} kind`);
+    const label = cleanString(labelInput);
+    if (!label) {
+      throw new Error(`Video row ${rowNumber} label is required.`);
+    }
+    const url = normalizeHttpUrl(urlInput, `Video row ${rowNumber} URL`);
+
+    normalized.push({
+      kind,
+      label,
+      url,
+      priority: normalized.length,
+    });
+  });
+
+  return normalized;
+}
+
+function replaceVideoOverrides(practiceIdentity: string, rows: Array<Pick<AdminVideoOverrideRecord, "kind" | "label" | "url" | "priority">>) {
+  const machine = getMachineRow(practiceIdentity);
+  if (!machine) {
+    throw new Error(`Unknown machine: ${practiceIdentity}`);
+  }
+
+  const removeExisting = adminDb.prepare("DELETE FROM machine_video_overrides WHERE practice_identity = ?");
+  const insert = adminDb.prepare(`
+    INSERT INTO machine_video_overrides (
+      practice_identity,
+      kind,
+      label,
+      url,
+      priority,
+      created_at,
+      updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+  `);
+  const transaction = adminDb.transaction((nextRows: Array<Pick<AdminVideoOverrideRecord, "kind" | "label" | "url" | "priority">>) => {
+    removeExisting.run(practiceIdentity);
+    const timestamp = nowIso();
+    for (const row of nextRows) {
+      insert.run(practiceIdentity, row.kind, row.label, row.url, row.priority, timestamp, timestamp);
+    }
+  });
+
+  transaction(rows);
+  runApplyOverrides();
+}
+
 async function readFileTextIfPresent(webPath: string | null): Promise<string> {
   const fsPath = toPinballFsPath(webPath);
   if (!fsPath) return "";
@@ -1175,31 +3120,58 @@ async function savePlayfield(
   sourceName: string | null,
   contentType: string | null,
   sourceUrl: string | null,
+  sourcePageUrl: string | null,
   sourceNote: string | null,
+  maskPoints: PlayfieldMaskPoint[] | null = null,
 ) {
-  await ensureDir(SHARED_PLAYFIELDS_DIR);
+  await Promise.all([
+    ensureDir(SHARED_PLAYFIELDS_DIR),
+    ensureDir(PLAYFIELD_SOURCE_ORIGINALS_DIR),
+    ensureDir(PLAYFIELD_SOURCE_REFERENCES_DIR),
+  ]);
   const aliases = getMachineAliases(practiceIdentity);
   const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, getOverrideRecord(practiceIdentity));
   const baseName = playfieldBaseName(alias.opdbMachineId);
   await removeExistingPlayfieldFiles(baseName);
 
   const ext = inferImageExtension(sourceName, contentType);
-  const originalFsPath = path.join(SHARED_PLAYFIELDS_DIR, `${baseName}${ext}`);
-  await fsp.writeFile(originalFsPath, buffer);
+  const assetPaths = buildPlayfieldAssetPaths(baseName, ext);
+  await fsp.writeFile(assetPaths.originalFsPath, buffer);
+  await publishPlayfieldDerivatives(buffer, assetPaths, maskPoints);
+  await syncPublishedPlayfieldFamilyToDeployMirror(baseName, assetPaths);
 
-  const image = sharp(buffer, { failOn: "warning" }).rotate();
-  await image.clone().resize({ width: 700, withoutEnlargement: true }).webp({ quality: 75 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_700.webp`));
-  await image.clone().resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 85 }).toFile(path.join(SHARED_PLAYFIELDS_DIR, `${baseName}_1400.webp`));
+  const referencePackage = await writePlayfieldReferencePackage(baseName, {
+    originalFsPath: assetPaths.originalFsPath,
+    referenceFsPath: assetPaths.referenceFsPath,
+    sourcePageSnapshotFsPath: assetPaths.sourcePageSnapshotFsPath,
+    sourceUrl,
+    sourcePageUrl,
+    sourceNote,
+    sourceName,
+    contentType,
+    publishedWebPath: assetPaths.publishedWebPath,
+    published1400WebPath: assetPaths.published1400WebPath,
+    published700WebPath: assetPaths.published700WebPath,
+    maskPoints,
+  });
 
   upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, {
-    playfield_local_path: `/pinball/images/playfields/${baseName}${ext}`,
+    playfield_local_path: assetPaths.publishedWebPath,
+    playfield_original_local_path: assetPaths.originalFsPath,
+    playfield_reference_local_path: referencePackage.referencePath,
     playfield_source_url: sourceUrl,
+    playfield_source_page_url: sourcePageUrl,
+    playfield_source_page_snapshot_path: referencePackage.snapshotPath,
     playfield_source_note: sourceNote,
+    playfield_web_local_path_1400: assetPaths.published1400WebPath,
+    playfield_web_local_path_700: assetPaths.published700WebPath,
+    playfield_mask_polygon_json: stringifyPlayfieldMaskPoints(maskPoints),
   });
+  runApplyOverrides();
   return {
     sourceAliasId: alias.opdbMachineId,
     sourceAliasLabel: formatAliasLabel(alias),
-    localPath: `/pinball/images/playfields/${baseName}${ext}`,
+    localPath: assetPaths.publishedWebPath,
   };
 }
 
@@ -1207,6 +3179,7 @@ async function importPlayfieldFromUrl(
   practiceIdentity: string,
   machineAliasId: string | null,
   sourceUrl: string,
+  sourcePageUrl: string | null,
   sourceNote: string | null,
 ) {
   const response = await fetch(sourceUrl);
@@ -1218,7 +3191,7 @@ async function importPlayfieldFromUrl(
     throw new Error(`Remote content is not an image: ${contentType}`);
   }
   const buffer = Buffer.from(await response.arrayBuffer());
-  return savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourceNote ?? sourceUrl);
+  return savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourcePageUrl, sourceNote ?? sourceUrl);
 }
 
 async function importPlayfieldFromPath(
@@ -1226,6 +3199,7 @@ async function importPlayfieldFromPath(
   machineAliasId: string | null,
   sourcePath: string,
   sourceUrl: string | null,
+  sourcePageUrl: string | null,
   sourceNote: string | null,
 ) {
   const resolved = path.resolve(sourcePath);
@@ -1234,10 +3208,86 @@ async function importPlayfieldFromPath(
     throw new Error(`Image file not found: ${resolved}`);
   }
   const buffer = await fsp.readFile(resolved);
-  const result = await savePlayfield(practiceIdentity, machineAliasId, buffer, resolved, null, sourceUrl, sourceNote ?? resolved);
+  const result = await savePlayfield(
+    practiceIdentity,
+    machineAliasId,
+    buffer,
+    resolved,
+    null,
+    sourceUrl,
+    sourcePageUrl,
+    sourceNote ?? resolved,
+  );
   return {
     ...result,
     sourcePath: resolved,
+  };
+}
+
+async function savePlayfieldMask(
+  practiceIdentity: string,
+  machineAliasId: string | null,
+  maskPoints: PlayfieldMaskPoint[] | null,
+) {
+  const aliases = getMachineAliases(practiceIdentity);
+  const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, getOverrideRecord(practiceIdentity));
+  const asset =
+    getPlayfieldAssetRecords(practiceIdentity).find((row) => row.source_opdb_machine_id === alias.opdbMachineId) ??
+    resolvePlayfieldAssetForAlias(practiceIdentity, alias.opdbMachineId);
+  if (!asset) {
+    throw new Error("Import or upload a playfield before saving a polygon mask.");
+  }
+
+  const sourceFsPath = resolvePlayfieldEditorFsPath(asset);
+  if (!sourceFsPath) {
+    throw new Error("No original playfield source file is available for mask editing.");
+  }
+
+  await Promise.all([
+    ensureDir(SHARED_PLAYFIELDS_DIR),
+    ensureDir(PLAYFIELD_SOURCE_ORIGINALS_DIR),
+    ensureDir(PLAYFIELD_SOURCE_REFERENCES_DIR),
+  ]);
+
+  const baseName = playfieldBaseName(alias.opdbMachineId);
+  const assetPaths = buildPlayfieldAssetPaths(baseName, playfieldSourceExtension(asset.playfield_original_local_path));
+  const buffer = await fsp.readFile(sourceFsPath);
+  await publishPlayfieldDerivatives(buffer, assetPaths, maskPoints);
+  await syncPublishedPlayfieldFamilyToDeployMirror(baseName, assetPaths);
+  const referencePackage = await writePlayfieldReferencePackage(baseName, {
+    originalFsPath: asset.playfield_original_local_path ?? sourceFsPath,
+    referenceFsPath: assetPaths.referenceFsPath,
+    sourcePageSnapshotFsPath: assetPaths.sourcePageSnapshotFsPath,
+    sourceUrl: asset.playfield_source_url,
+    sourcePageUrl: asset.playfield_source_page_url,
+    sourceNote: asset.playfield_source_note,
+    sourceName: path.basename(sourceFsPath),
+    contentType: null,
+    publishedWebPath: assetPaths.publishedWebPath,
+    published1400WebPath: assetPaths.published1400WebPath,
+    published700WebPath: assetPaths.published700WebPath,
+    maskPoints,
+  });
+
+  upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, {
+    playfield_local_path: assetPaths.publishedWebPath,
+    playfield_original_local_path: asset.playfield_original_local_path ?? sourceFsPath,
+    playfield_reference_local_path: referencePackage.referencePath,
+    playfield_source_url: asset.playfield_source_url,
+    playfield_source_page_url: asset.playfield_source_page_url,
+    playfield_source_page_snapshot_path: referencePackage.snapshotPath ?? asset.playfield_source_page_snapshot_path,
+    playfield_source_note: asset.playfield_source_note,
+    playfield_web_local_path_1400: assetPaths.published1400WebPath,
+    playfield_web_local_path_700: assetPaths.published700WebPath,
+    playfield_mask_polygon_json: stringifyPlayfieldMaskPoints(maskPoints),
+  });
+  runApplyOverrides();
+
+  return {
+    sourceAliasId: alias.opdbMachineId,
+    sourceAliasLabel: formatAliasLabel(alias),
+    localPath: assetPaths.publishedWebPath,
+    maskPoints,
   };
 }
 
@@ -1245,6 +3295,7 @@ async function savePlayfieldCoverage(
   practiceIdentity: string,
   machineAliasId: string | null,
   sourceUrl: string | null,
+  sourcePageUrl: string | null,
   sourceNote: string | null,
 ) {
   const aliases = getMachineAliases(practiceIdentity);
@@ -1256,11 +3307,29 @@ async function savePlayfieldCoverage(
     alias.opdbMachineId,
     fallbackAsset?.playfield_local_path ?? null,
   );
+  const reboundPaths = buildPlayfieldAssetPaths(
+    playfieldBaseName(alias.opdbMachineId),
+    playfieldSourceExtension(existingAsset?.playfield_original_local_path ?? fallbackAsset?.playfield_original_local_path ?? null),
+  );
+  const reboundOriginalLocalPath = fs.existsSync(reboundPaths.originalFsPath) ? reboundPaths.originalFsPath : null;
+  const reboundReferenceLocalPath = fs.existsSync(reboundPaths.referenceFsPath) ? reboundPaths.referenceFsPath : null;
+  const reboundSourcePageSnapshotPath = fs.existsSync(reboundPaths.sourcePageSnapshotFsPath)
+    ? reboundPaths.sourcePageSnapshotFsPath
+    : null;
+  const rebound1400LocalPath = fs.existsSync(reboundPaths.published1400FsPath) ? reboundPaths.published1400WebPath : null;
+  const rebound700LocalPath = fs.existsSync(reboundPaths.published700FsPath) ? reboundPaths.published700WebPath : null;
   if (!existingAsset && fallbackAsset && fallbackAsset.source_opdb_machine_id !== alias.opdbMachineId) {
     reassignPlayfieldAssetRecord(fallbackAsset.playfield_asset_id, alias.opdbMachineId, {
       playfield_local_path: localPath,
+      playfield_original_local_path: reboundOriginalLocalPath,
+      playfield_reference_local_path: reboundReferenceLocalPath,
       playfield_source_url: sourceUrl ?? fallbackAsset.playfield_source_url ?? null,
+      playfield_source_page_url: sourcePageUrl ?? fallbackAsset.playfield_source_page_url ?? null,
+      playfield_source_page_snapshot_path: reboundSourcePageSnapshotPath,
       playfield_source_note: sourceNote ?? fallbackAsset.playfield_source_note ?? null,
+      playfield_web_local_path_1400: rebound1400LocalPath,
+      playfield_web_local_path_700: rebound700LocalPath,
+      playfield_mask_polygon_json: fallbackAsset.playfield_mask_polygon_json,
     });
     syncLegacyPlayfieldOverride(practiceIdentity, getPlayfieldAssetRecords(practiceIdentity));
     return {
@@ -1271,8 +3340,16 @@ async function savePlayfieldCoverage(
   }
   upsertPlayfieldAssetRecord(practiceIdentity, alias.opdbMachineId, {
     playfield_local_path: localPath,
-    playfield_source_url: sourceUrl ?? existingAsset?.playfield_source_url ?? null,
-    playfield_source_note: sourceNote ?? existingAsset?.playfield_source_note ?? null,
+    playfield_original_local_path: reboundOriginalLocalPath,
+    playfield_reference_local_path: reboundReferenceLocalPath,
+    playfield_source_url: sourceUrl ?? existingAsset?.playfield_source_url ?? fallbackAsset?.playfield_source_url ?? null,
+    playfield_source_page_url:
+      sourcePageUrl ?? existingAsset?.playfield_source_page_url ?? fallbackAsset?.playfield_source_page_url ?? null,
+    playfield_source_page_snapshot_path: reboundSourcePageSnapshotPath,
+    playfield_source_note: sourceNote ?? existingAsset?.playfield_source_note ?? fallbackAsset?.playfield_source_note ?? null,
+    playfield_web_local_path_1400: rebound1400LocalPath,
+    playfield_web_local_path_700: rebound700LocalPath,
+    playfield_mask_polygon_json: existingAsset?.playfield_mask_polygon_json ?? fallbackAsset?.playfield_mask_polygon_json ?? null,
   });
   return {
     sourceAliasId: alias.opdbMachineId,
@@ -1290,8 +3367,15 @@ function buildPlayfieldAssetPayloads(practiceIdentity: string, aliases: MachineA
       sourceAliasId: row.source_opdb_machine_id,
       sourceAliasLabel: sourceAlias ? formatAliasLabel(sourceAlias) : row.source_opdb_machine_id,
       localPath: row.playfield_local_path,
+      originalLocalPath: row.playfield_original_local_path,
+      referenceLocalPath: row.playfield_reference_local_path,
       sourceUrl: row.playfield_source_url,
+      sourcePageUrl: row.playfield_source_page_url,
+      sourcePageSnapshotPath: row.playfield_source_page_snapshot_path,
       sourceNote: row.playfield_source_note,
+      web1400LocalPath: row.playfield_web_local_path_1400,
+      web700LocalPath: row.playfield_web_local_path_700,
+      maskPolygonPoints: parsePlayfieldMaskPolygonJson(row.playfield_mask_polygon_json),
       updatedAt: row.updated_at,
     };
   });
@@ -1308,7 +3392,7 @@ function authRequired(req: Request, res: Response, next: NextFunction) {
 const app = express();
 app.use(cookieParser());
 app.use(express.json({ limit: "12mb" }));
-app.use("/pinball", express.static(SHARED_PINBALL_DIR));
+mountPinballStatic(app);
 
 app.get("/api/session", (_req, res) => {
   res.json({
@@ -1350,6 +3434,8 @@ app.get("/api/summary", authRequired, (_req, res) => {
           SELECT practice_identity FROM machine_overrides
           UNION ALL
           SELECT practice_identity FROM playfield_assets
+          UNION ALL
+          SELECT practice_identity FROM machine_video_overrides
         )
       `)
       .get() as { total: number }
@@ -1370,8 +3456,12 @@ app.get("/api/summary", authRequired, (_req, res) => {
     overriddenMachines,
     playfieldOverrides,
     rulesheetOverrides,
+    pinballLayoutMode: PINBALL_LAYOUT_MODE,
     adminDbPath: ADMIN_DB_PATH,
     seedDbPath: SEED_DB_PATH,
+    playfieldsDir: SHARED_PLAYFIELDS_DIR,
+    rulesheetsDir: SHARED_RULESHEETS_DIR,
+    applyOverridesScript: APPLY_OVERRIDES_SCRIPT,
   });
 });
 
@@ -1401,6 +3491,392 @@ app.get("/api/activity", authRequired, (req, res) => {
   const limit = Math.min(100, Math.max(1, cleanInteger(req.query.limit) ?? 40));
   res.json({
     items: buildGlobalActivityPayload(limit),
+  });
+});
+
+app.get("/api/tools/pinside-photo-browser", authRequired, (_req, res) => {
+  res.json(serializePinsidePhotoBrowserSession(pinsidePhotoBrowserSession));
+});
+
+app.post("/api/tools/pinside-photo-browser/stop", authRequired, (_req, res) => {
+  try {
+    const session = terminatePinsidePhotoBrowserSession();
+    res.json(session);
+  } catch (error) {
+    jsonError(res, 500, error instanceof Error ? error.message : "Failed to stop archived playfields.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/pinside-photo-browser/launch", authRequired, (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const session = launchPinsidePhotoBrowser(practiceIdentity);
+    recordActivity(practiceIdentity, "pinside_browser_launched", "Launched archived Pinside photo browser.", {
+      searchTerm: session.searchTerm,
+      searchMode: session.searchMode,
+      machineKey: session.machineKey,
+      machineSlug: session.machineSlug,
+      resolvedBy: session.resolvedBy,
+      viewerUrl: session.viewerUrl,
+    });
+    res.json(session);
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to launch Pinside photo browser.");
+  }
+});
+
+app.get("/api/control-board", authRequired, (req, res) => {
+  const query = cleanString(req.query.query);
+  const manufacturer = cleanString(req.query.manufacturer);
+  const sourceName = cleanString(req.query.sourceName);
+  const statuses = parseControlBoardStatusFilters(req.query.status);
+  const sort = cleanString(req.query.sort);
+  const page = Math.max(1, cleanInteger(req.query.page) ?? 1);
+  const pageSize = Math.min(250, Math.max(1, cleanInteger(req.query.pageSize) ?? 50));
+  const offset = (page - 1) * pageSize;
+  const like = query ? `%${query}%` : null;
+  const whereClauses: string[] = [];
+  if (like) {
+    whereClauses.push(
+      `(
+        c.name LIKE @like
+        OR c.slug LIKE @like
+        OR c.manufacturer LIKE @like
+        OR c.practiceIdentity LIKE @like
+        OR c.opdbGroupId LIKE @like
+        OR coalesce(b.source_name, '') LIKE @like
+        OR coalesce(b.area, '') LIKE @like
+      )`,
+    );
+  }
+  if (manufacturer) {
+    whereClauses.push(`c.manufacturer = @manufacturer`);
+  }
+  if (sourceName) {
+    whereClauses.push(`b.source_name = @sourceName`);
+  }
+  whereClauses.push(...buildControlBoardStatusClauses(statuses));
+  const whereSql = whereClauses.length ? `WHERE ${whereClauses.join(" AND ")}` : "";
+  const orderSql =
+    sort === "year_asc"
+      ? `
+        ORDER BY
+          c.year IS NULL,
+          c.year ASC,
+          lower(c.manufacturer),
+          lower(c.name),
+          lower(coalesce(c.variant, '')),
+          lower(coalesce(b.source_name, '')),
+          b.area_order IS NULL,
+          b.area_order,
+          b.group_number IS NULL,
+          b.group_number,
+          b.position IS NULL,
+          b.position
+      `
+      : sort === "year_desc"
+        ? `
+          ORDER BY
+            c.year IS NULL,
+            c.year DESC,
+            lower(c.manufacturer),
+            lower(c.name),
+            lower(coalesce(c.variant, '')),
+            lower(coalesce(b.source_name, '')),
+            b.area_order IS NULL,
+            b.area_order,
+            b.group_number IS NULL,
+            b.group_number,
+            b.position IS NULL,
+            b.position
+        `
+        : sort === "source_position"
+          ? `
+            ORDER BY
+              lower(coalesce(b.source_name, '')),
+              b.area_order IS NULL,
+              b.area_order,
+              b.group_number IS NULL,
+              b.group_number,
+              b.position IS NULL,
+              b.position,
+              lower(c.name),
+              lower(coalesce(c.variant, ''))
+          `
+          : `
+            ORDER BY
+              lower(c.manufacturer),
+              lower(c.name),
+              lower(coalesce(c.variant, '')),
+              c.year IS NULL,
+              c.year DESC,
+              lower(coalesce(b.source_name, '')),
+              b.area_order IS NULL,
+              b.area_order,
+              b.group_number IS NULL,
+              b.group_number,
+              b.position IS NULL,
+              b.position
+          `;
+
+  const withSql = `
+    WITH canonical AS (
+      SELECT
+        practiceIdentity,
+        opdbMachineId,
+        opdbGroupId,
+        slug,
+        name,
+        variant,
+        manufacturer,
+        year,
+        primaryImageUrl,
+        playfieldImageUrl
+      FROM (
+        SELECT
+          m.practice_identity AS practiceIdentity,
+          m.opdb_machine_id AS opdbMachineId,
+          m.opdb_group_id AS opdbGroupId,
+          m.slug AS slug,
+          m.name AS name,
+          m.variant AS variant,
+          m.manufacturer_name AS manufacturer,
+          m.year AS year,
+          m.primary_image_large_url AS primaryImageUrl,
+          m.playfield_image_large_url AS playfieldImageUrl,
+          ROW_NUMBER() OVER (
+            PARTITION BY m.practice_identity
+            ORDER BY
+              CASE WHEN m.variant IS NULL OR trim(m.variant) = '' THEN 0 ELSE 1 END,
+              lower(coalesce(m.variant, '')),
+              lower(m.opdb_machine_id)
+          ) AS rank_index
+        FROM machines m
+      )
+      WHERE rank_index = 1
+    ),
+    membership_counts AS (
+      SELECT practice_identity, COUNT(*) AS membershipCount
+      FROM built_in_games
+      GROUP BY practice_identity
+    ),
+    membership_video_counts AS (
+      SELECT
+        library_entry_id,
+        COUNT(*) AS builtInVideoCount,
+        SUM(CASE WHEN kind = 'tutorial' THEN 1 ELSE 0 END) AS builtInTutorialCount,
+        SUM(CASE WHEN kind = 'gameplay' THEN 1 ELSE 0 END) AS builtInGameplayCount,
+        SUM(CASE WHEN kind = 'competition' THEN 1 ELSE 0 END) AS builtInCompetitionCount
+      FROM built_in_videos
+      GROUP BY library_entry_id
+    ),
+    catalog_video_counts AS (
+      SELECT
+        practice_identity,
+        COUNT(*) AS catalogVideoCount,
+        SUM(CASE WHEN kind = 'tutorial' THEN 1 ELSE 0 END) AS catalogTutorialCount,
+        SUM(CASE WHEN kind = 'gameplay' THEN 1 ELSE 0 END) AS catalogGameplayCount,
+        SUM(CASE WHEN kind = 'competition' THEN 1 ELSE 0 END) AS catalogCompetitionCount
+      FROM catalog_video_links
+      GROUP BY practice_identity
+    ),
+    override_video_counts AS (
+      SELECT
+        practice_identity,
+        COUNT(*) AS overrideVideoCount,
+        SUM(CASE WHEN kind = 'tutorial' THEN 1 ELSE 0 END) AS overrideTutorialCount,
+        SUM(CASE WHEN kind = 'gameplay' THEN 1 ELSE 0 END) AS overrideGameplayCount,
+        SUM(CASE WHEN kind = 'competition' THEN 1 ELSE 0 END) AS overrideCompetitionCount
+      FROM admin.machine_video_overrides
+      GROUP BY practice_identity
+    ),
+    membership_rulesheet_counts AS (
+      SELECT
+        library_entry_id,
+        COUNT(*) AS builtInRulesheetLinkCount
+      FROM built_in_rulesheet_links
+      GROUP BY library_entry_id
+    ),
+    catalog_rulesheet_counts AS (
+      SELECT
+        practice_identity,
+        COUNT(*) AS catalogRulesheetLinkCount
+      FROM catalog_rulesheet_links
+      GROUP BY practice_identity
+    ),
+    override_rulesheet_counts AS (
+      SELECT
+        practice_identity,
+        COUNT(*) AS overrideRulesheetLinkCount
+      FROM override_rulesheet_links
+      GROUP BY practice_identity
+    ),
+    admin_playfield_counts AS (
+      SELECT
+        practice_identity,
+        COUNT(*) AS playfieldAssetCount
+      FROM admin.playfield_assets
+      WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''
+      GROUP BY practice_identity
+    )
+  `;
+  const fromSql = `
+    FROM canonical c
+    LEFT JOIN built_in_games b ON b.practice_identity = c.practiceIdentity
+    LEFT JOIN membership_counts mc ON mc.practice_identity = c.practiceIdentity
+    LEFT JOIN membership_video_counts mvc ON mvc.library_entry_id = b.library_entry_id
+    LEFT JOIN catalog_video_counts cvc ON cvc.practice_identity = c.practiceIdentity
+    LEFT JOIN override_video_counts ovc ON ovc.practice_identity = c.practiceIdentity
+    LEFT JOIN membership_rulesheet_counts mrc ON mrc.library_entry_id = b.library_entry_id
+    LEFT JOIN catalog_rulesheet_counts crc ON crc.practice_identity = c.practiceIdentity
+    LEFT JOIN override_rulesheet_counts orc ON orc.practice_identity = c.practiceIdentity
+    LEFT JOIN admin.machine_overrides mo ON mo.practice_identity = c.practiceIdentity
+    LEFT JOIN admin_playfield_counts apc ON apc.practice_identity = c.practiceIdentity
+  `;
+  const selectSql = `
+    SELECT
+      c.practiceIdentity,
+      c.opdbMachineId,
+      c.opdbGroupId,
+      c.slug,
+      c.name,
+      c.variant,
+      c.manufacturer,
+      c.year,
+      c.primaryImageUrl,
+      c.playfieldImageUrl,
+      b.library_entry_id AS libraryEntryId,
+      b.source_id AS sourceId,
+      b.source_name AS sourceName,
+      b.source_type AS sourceType,
+      b.area AS area,
+      b.area_order AS areaOrder,
+      b.group_number AS groupNumber,
+      b.position AS position,
+      b.bank AS bank,
+      coalesce(mc.membershipCount, 0) AS membershipCount,
+      b.playfield_image_url AS membershipPlayfieldImageUrl,
+      b.rulesheet_url AS membershipRulesheetUrl,
+      b.rulesheet_local_path AS membershipRulesheetLocalPath,
+      b.gameinfo_local_path AS membershipGameinfoLocalPath,
+      CASE WHEN c.playfieldImageUrl IS NULL OR trim(c.playfieldImageUrl) = '' THEN 0 ELSE 1 END AS hasOpdbPlayfield,
+      CASE WHEN c.primaryImageUrl IS NULL OR trim(c.primaryImageUrl) = '' THEN 0 ELSE 1 END AS hasOpdbBackglass,
+      CASE WHEN b.playfield_local_path IS NULL OR trim(b.playfield_local_path) = '' THEN 0 ELSE 1 END AS hasBuiltInPlayfield,
+      CASE WHEN b.rulesheet_local_path IS NULL OR trim(b.rulesheet_local_path) = '' THEN 0 ELSE 1 END AS hasBuiltInRulesheet,
+      CASE WHEN b.gameinfo_local_path IS NULL OR trim(b.gameinfo_local_path) = '' THEN 0 ELSE 1 END AS hasBuiltInGameinfo,
+      CASE
+        WHEN mo.practice_identity IS NOT NULL OR coalesce(apc.playfieldAssetCount, 0) > 0 OR coalesce(ovc.overrideVideoCount, 0) > 0
+        THEN 1
+        ELSE 0
+      END AS hasAdminOverride,
+      CASE WHEN coalesce(apc.playfieldAssetCount, 0) > 0 THEN 1 ELSE 0 END AS hasAdminPlayfield,
+      CASE WHEN mo.rulesheet_local_path IS NULL OR trim(mo.rulesheet_local_path) = '' THEN 0 ELSE 1 END AS hasAdminRulesheet,
+      CASE WHEN mo.gameinfo_local_path IS NULL OR trim(mo.gameinfo_local_path) = '' THEN 0 ELSE 1 END AS hasAdminGameinfo,
+      coalesce(mvc.builtInVideoCount, 0) AS builtInVideoCount,
+      coalesce(mvc.builtInTutorialCount, 0) AS builtInTutorialCount,
+      coalesce(mvc.builtInGameplayCount, 0) AS builtInGameplayCount,
+      coalesce(mvc.builtInCompetitionCount, 0) AS builtInCompetitionCount,
+      coalesce(cvc.catalogVideoCount, 0) AS catalogVideoCount,
+      coalesce(cvc.catalogTutorialCount, 0) AS catalogTutorialCount,
+      coalesce(cvc.catalogGameplayCount, 0) AS catalogGameplayCount,
+      coalesce(cvc.catalogCompetitionCount, 0) AS catalogCompetitionCount,
+      coalesce(ovc.overrideVideoCount, 0) AS overrideVideoCount,
+      coalesce(ovc.overrideTutorialCount, 0) AS overrideTutorialCount,
+      coalesce(ovc.overrideGameplayCount, 0) AS overrideGameplayCount,
+      coalesce(ovc.overrideCompetitionCount, 0) AS overrideCompetitionCount,
+      coalesce(mrc.builtInRulesheetLinkCount, 0) AS builtInRulesheetLinkCount,
+      coalesce(crc.catalogRulesheetLinkCount, 0) AS catalogRulesheetLinkCount,
+      coalesce(orc.overrideRulesheetLinkCount, 0) AS overrideRulesheetLinkCount
+  `;
+
+  const rows = seedDb.prepare(`
+    ${withSql}
+    ${selectSql}
+    ${fromSql}
+    ${whereSql}
+    ${orderSql}
+    LIMIT @limit OFFSET @offset
+  `).all({
+    like,
+    manufacturer,
+    sourceName,
+    limit: pageSize,
+    offset,
+  }) as ControlBoardRow[];
+
+  const total = (
+    seedDb.prepare(`
+      ${withSql}
+      SELECT COUNT(*) AS total
+      ${fromSql}
+      ${whereSql}
+    `).get({ like, manufacturer, sourceName }) as { total: number }
+  ).total;
+
+  res.json({
+    items: rows.map((row) => ({
+      practiceIdentity: row.practiceIdentity,
+      opdbMachineId: row.opdbMachineId,
+      opdbGroupId: row.opdbGroupId,
+      slug: row.slug,
+      name: row.name,
+      variant: row.variant,
+      manufacturer: row.manufacturer,
+      year: row.year,
+      primaryImageUrl: row.primaryImageUrl,
+      playfieldImageUrl: row.playfieldImageUrl,
+      membership: {
+        libraryEntryId: row.libraryEntryId,
+        sourceId: row.sourceId,
+        sourceName: row.sourceName,
+        sourceType: row.sourceType,
+        area: row.area,
+        areaOrder: row.areaOrder,
+        groupNumber: row.groupNumber,
+        position: row.position,
+        bank: row.bank,
+        count: row.membershipCount,
+        playfieldImageUrl: row.membershipPlayfieldImageUrl,
+        rulesheetUrl: row.membershipRulesheetUrl,
+      },
+      coverage: {
+        hasOpdbPlayfield: row.hasOpdbPlayfield === 1,
+        hasOpdbBackglass: row.hasOpdbBackglass === 1,
+        hasBuiltInPlayfield: row.hasBuiltInPlayfield === 1,
+        hasBuiltInRulesheet: row.hasBuiltInRulesheet === 1,
+        hasBuiltInGameinfo: row.hasBuiltInGameinfo === 1,
+        hasAdminOverride: row.hasAdminOverride === 1,
+        hasAdminPlayfield: row.hasAdminPlayfield === 1,
+        hasAdminRulesheet: row.hasAdminRulesheet === 1,
+        hasAdminGameinfo: row.hasAdminGameinfo === 1,
+        hasEffectivePlayfield: row.hasAdminPlayfield === 1 || row.hasBuiltInPlayfield === 1 || row.hasOpdbPlayfield === 1,
+        hasEffectiveBackglass: row.hasOpdbBackglass === 1,
+        hasEffectiveRulesheet:
+          row.hasAdminRulesheet === 1 ||
+          row.hasBuiltInRulesheet === 1 ||
+          Boolean(cleanString(row.membershipRulesheetUrl)) ||
+          row.catalogRulesheetLinkCount > 0 ||
+          row.overrideRulesheetLinkCount > 0 ||
+          row.builtInRulesheetLinkCount > 0,
+        hasEffectiveGameinfo: row.hasAdminGameinfo === 1 || row.hasBuiltInGameinfo === 1,
+      },
+      videos: {
+        builtInCount: row.builtInVideoCount,
+        catalogCount: row.catalogVideoCount,
+        overrideCount: row.overrideVideoCount,
+        tutorialCount: row.builtInTutorialCount + row.catalogTutorialCount + row.overrideTutorialCount,
+        gameplayCount: row.builtInGameplayCount + row.catalogGameplayCount + row.overrideGameplayCount,
+        competitionCount: row.builtInCompetitionCount + row.catalogCompetitionCount + row.overrideCompetitionCount,
+      },
+      rulesheets: {
+        builtInCount: row.builtInRulesheetLinkCount + (cleanString(row.membershipRulesheetUrl) ? 1 : 0),
+        catalogCount: row.catalogRulesheetLinkCount,
+        overrideCount: row.overrideRulesheetLinkCount,
+      },
+    })),
+    total,
+    page,
+    pageSize,
   });
 });
 
@@ -1558,6 +4034,50 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
   const effectiveGameinfoPath = row.gameinfoLocalPath ?? builtIn?.gameinfoLocalPath ?? null;
   const rulesheetContent = await readFileTextIfPresent(effectiveRulesheetPath);
   const gameinfoContent = await readFileTextIfPresent(effectiveGameinfoPath);
+  const memberships = getMachineMembershipRows(practiceIdentity);
+  const membershipIds = memberships.map((membership) => membership.libraryEntryId);
+  const builtInVideosByMembership = getBuiltInVideoRowsByMembership(membershipIds);
+  const builtInRulesheetsByMembership = getBuiltInRulesheetRowsByMembership(membershipIds);
+  const membershipPayload = memberships.map((membership) => {
+    const builtInVideoLinks = builtInVideosByMembership.get(membership.libraryEntryId) ?? [];
+    const builtInRulesheetLinks = dedupeRulesheetLinks([
+      ...(membership.rulesheetUrl
+        ? [{ label: "Rulesheet", url: membership.rulesheetUrl, priority: -1 }]
+        : []),
+      ...(builtInRulesheetsByMembership.get(membership.libraryEntryId) ?? []),
+    ]);
+    return {
+      libraryEntryId: membership.libraryEntryId,
+      sourceId: membership.sourceId,
+      sourceName: membership.sourceName,
+      sourceType: membership.sourceType,
+      practiceIdentity: membership.practiceIdentity,
+      opdbId: membership.opdbId,
+      area: membership.area,
+      areaOrder: membership.areaOrder,
+      groupNumber: membership.groupNumber,
+      position: membership.position,
+      bank: membership.bank,
+      name: membership.name,
+      variant: membership.variant,
+      manufacturer: membership.manufacturer,
+      year: membership.year,
+      slug: membership.slug,
+      primaryImageUrl: membership.primaryImageUrl,
+      primaryImageLargeUrl: membership.primaryImageLargeUrl,
+      playfieldImageUrl: membership.playfieldImageUrl,
+      playfieldLocalPath: membership.playfieldLocalPath,
+      playfieldSourceLabel: membership.playfieldSourceLabel,
+      rulesheetLocalPath: membership.rulesheetLocalPath,
+      gameinfoLocalPath: membership.gameinfoLocalPath,
+      builtInVideoLinks,
+      builtInRulesheetLinks,
+    };
+  });
+  const catalogVideoLinks = getCatalogVideoLinks(practiceIdentity);
+  const overrideVideoLinks = getOverrideVideoLinks(practiceIdentity);
+  const catalogRulesheetLinks = getCatalogRulesheetLinks(practiceIdentity);
+  const overrideRulesheetLinks = getOverrideRulesheetLinks(practiceIdentity);
 
   const playfieldAsset =
     effectivePlayfieldLocalPath
@@ -1576,8 +4096,15 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
           targetAliasLabel: formatAliasLabel(playfieldAlias),
           targetFilename: playfieldBaseName(playfieldAlias.opdbMachineId),
           localPath: effectivePlayfieldLocalPath,
+          localOriginalPath: resolvedPlayfieldAsset?.originalLocalPath ?? null,
+          localReferencePath: resolvedPlayfieldAsset?.referenceLocalPath ?? null,
           localSourceUrl: resolvedPlayfieldAsset?.sourceUrl ?? row.playfieldSourceUrl ?? row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null,
+          localSourcePageUrl: resolvedPlayfieldAsset?.sourcePageUrl ?? null,
+          localSourcePageSnapshotPath: resolvedPlayfieldAsset?.sourcePageSnapshotPath ?? null,
           localSourceNote: resolvedPlayfieldAsset?.sourceNote ?? row.playfieldSourceNote ?? null,
+          localWeb1400Path: resolvedPlayfieldAsset?.web1400LocalPath ?? null,
+          localWeb700Path: resolvedPlayfieldAsset?.web700LocalPath ?? null,
+          localMaskPolygonPoints: resolvedPlayfieldAsset?.maskPolygonPoints ?? null,
           fallbackOpdbUrl: row.playfieldImageUrl ?? null,
         }
       : effectivePlayfieldRemoteUrl
@@ -1589,8 +4116,15 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
             targetAliasLabel: formatAliasLabel(playfieldAlias),
             targetFilename: playfieldBaseName(playfieldAlias.opdbMachineId),
             localPath: null,
+            localOriginalPath: null,
+            localReferencePath: null,
             localSourceUrl: null,
+            localSourcePageUrl: null,
+            localSourcePageSnapshotPath: null,
             localSourceNote: null,
+            localWeb1400Path: null,
+            localWeb700Path: null,
+            localMaskPolygonPoints: null,
             fallbackOpdbUrl: effectivePlayfieldRemoteUrl,
           }
         : {
@@ -1601,8 +4135,15 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
             targetAliasLabel: formatAliasLabel(playfieldAlias),
             targetFilename: playfieldBaseName(playfieldAlias.opdbMachineId),
             localPath: null,
+            localOriginalPath: null,
+            localReferencePath: null,
             localSourceUrl: null,
+            localSourcePageUrl: null,
+            localSourcePageSnapshotPath: null,
             localSourceNote: null,
+            localWeb1400Path: null,
+            localWeb700Path: null,
+            localMaskPolygonPoints: null,
             fallbackOpdbUrl: null,
           };
 
@@ -1687,6 +4228,7 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
       playfieldAliasId: resolvedPlayfieldAsset?.sourceAliasId ?? playfieldAlias.opdbMachineId,
       playfieldLocalPath: resolvedPlayfieldAsset?.localPath ?? row.overridePlayfieldLocalPath,
       playfieldSourceUrl: resolvedPlayfieldAsset?.sourceUrl ?? row.playfieldSourceUrl ?? "",
+      playfieldSourcePageUrl: resolvedPlayfieldAsset?.sourcePageUrl ?? "",
       playfieldSourceNote: resolvedPlayfieldAsset?.sourceNote ?? row.playfieldSourceNote ?? "",
       rulesheetLocalPath: row.overrideRulesheetLocalPath,
       rulesheetSourceUrl: row.rulesheetSourceUrl ?? "",
@@ -1721,6 +4263,13 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
     },
     rulesheetContent,
     gameinfoContent,
+    memberships: membershipPayload,
+    links: {
+      catalogVideos: catalogVideoLinks,
+      overrideVideos: overrideVideoLinks,
+      catalogRulesheetLinks,
+      overrideRulesheetLinks,
+    },
     activity: buildActivityPayload(practiceIdentity),
   });
 });
@@ -1746,6 +4295,26 @@ app.put("/api/machines/:practiceIdentity/override", authRequired, (req, res) => 
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to save override.");
+  }
+});
+
+app.put("/api/machines/:practiceIdentity/videos", authRequired, (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const rows = parseVideoOverrideRows(req.body?.videos);
+    replaceVideoOverrides(practiceIdentity, rows);
+    recordActivity(
+      practiceIdentity,
+      "video_overrides_saved",
+      rows.length ? "Saved manual video overrides." : "Cleared manual video overrides.",
+      {
+        count: String(rows.length),
+        kinds: Array.from(new Set(rows.map((row) => row.kind))).join(", "),
+      },
+    );
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save video overrides.");
   }
 });
 
@@ -1811,21 +4380,24 @@ app.post("/api/machines/:practiceIdentity/rulesheet/import-path", authRequired, 
 app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, async (req, res) => {
   try {
     const practiceIdentity = String(req.params.practiceIdentity);
-    const sourceUrl = cleanString(req.body?.sourceUrl);
+    const sourceUrl = normalizeHttpUrl(req.body?.sourceUrl, "Remote image URL");
     if (!sourceUrl) {
       throw new Error("Remote image URL is required.");
     }
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
     const result = await importPlayfieldFromUrl(
       practiceIdentity,
       sourceAliasId,
       sourceUrl,
+      sourcePageUrl,
       cleanString(req.body?.sourceNote),
     );
     recordActivity(practiceIdentity, "playfield_imported", "Imported playfield from remote URL.", {
       alias: result.sourceAliasLabel,
       savedPath: result.localPath,
       sourceUrl,
+      sourcePageUrl,
       sourceNote: cleanString(req.body?.sourceNote),
     });
     res.json({ ok: true });
@@ -1841,19 +4413,23 @@ app.post("/api/machines/:practiceIdentity/playfield/import-path", authRequired, 
     if (!sourcePath) {
       throw new Error("Local image path is required.");
     }
+    const sourceUrl = normalizeOptionalHttpUrl(req.body?.sourceUrl, "Source image URL");
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
     const result = await importPlayfieldFromPath(
       practiceIdentity,
       sourceAliasId,
       sourcePath,
-      cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       cleanString(req.body?.sourceNote),
     );
     recordActivity(practiceIdentity, "playfield_imported", "Imported playfield from local file.", {
       alias: result.sourceAliasLabel,
       sourcePath: result.sourcePath,
       savedPath: result.localPath,
-      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       sourceNote: cleanString(req.body?.sourceNote),
     });
     res.json({ ok: true });
@@ -1868,6 +4444,8 @@ app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, uploa
     if (!req.file?.buffer) {
       throw new Error("No image uploaded.");
     }
+    const sourceUrl = normalizeOptionalHttpUrl(req.body?.sourceUrl, "Source image URL");
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
     const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
     const result = await savePlayfield(
       practiceIdentity,
@@ -1875,19 +4453,63 @@ app.post("/api/machines/:practiceIdentity/playfield/upload", authRequired, uploa
       req.file.buffer,
       req.file.originalname,
       req.file.mimetype,
-      cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       cleanString(req.body?.sourceNote) ?? req.file.originalname,
     );
     recordActivity(practiceIdentity, "playfield_uploaded", "Uploaded playfield from browser.", {
       alias: result.sourceAliasLabel,
       uploadedFile: req.file.originalname,
       savedPath: result.localPath,
-      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       sourceNote: cleanString(req.body?.sourceNote) ?? req.file.originalname,
     });
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to upload playfield.");
+  }
+});
+
+app.get("/api/machines/:practiceIdentity/playfield/editor-source", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const sourceAliasId = cleanString(req.query.machineAliasId ?? req.query.playfieldAliasId);
+    const aliases = getMachineAliases(practiceIdentity);
+    const alias = resolvePlayfieldAlias(practiceIdentity, sourceAliasId, aliases, getOverrideRecord(practiceIdentity));
+    const asset =
+      getPlayfieldAssetRecords(practiceIdentity).find((row) => row.source_opdb_machine_id === alias.opdbMachineId) ??
+      resolvePlayfieldAssetForAlias(practiceIdentity, alias.opdbMachineId);
+    const fsPath = resolvePlayfieldEditorFsPath(asset);
+    if (!fsPath) {
+      throw new Error("No local playfield source file available for editor.");
+    }
+    res.setHeader("Cache-Control", "no-store");
+    res.sendFile(fsPath);
+  } catch (error) {
+    jsonError(res, 404, error instanceof Error ? error.message : "Playfield editor source not found.");
+  }
+});
+
+app.put("/api/machines/:practiceIdentity/playfield/mask", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.playfieldAliasId);
+    const maskPoints = normalizePlayfieldMaskPoints(req.body?.maskPolygonPoints);
+    const result = await savePlayfieldMask(practiceIdentity, sourceAliasId, maskPoints);
+    recordActivity(
+      practiceIdentity,
+      "playfield_mask_saved",
+      maskPoints?.length ? "Saved polygon playfield mask." : "Cleared polygon playfield mask.",
+      {
+        alias: result.sourceAliasLabel,
+        savedPath: result.localPath,
+        pointCount: maskPoints ? String(maskPoints.length) : "0",
+      },
+    );
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save playfield mask.");
   }
 });
 
@@ -1898,16 +4520,20 @@ app.put("/api/machines/:practiceIdentity/playfield/coverage", authRequired, asyn
     if (!sourceAliasId) {
       throw new Error("A source alias is required.");
     }
+    const sourceUrl = normalizeOptionalHttpUrl(req.body?.sourceUrl, "Source image URL");
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
     const result = await savePlayfieldCoverage(
       practiceIdentity,
       sourceAliasId,
-      cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       cleanString(req.body?.sourceNote),
     );
     recordActivity(practiceIdentity, "playfield_rebound", "Rebound existing playfield to a source alias.", {
       alias: result.sourceAliasLabel,
       savedPath: result.localPath,
-      sourceUrl: cleanString(req.body?.sourceUrl),
+      sourceUrl,
+      sourcePageUrl,
       sourceNote: cleanString(req.body?.sourceNote),
     });
     res.json({ ok: true });
@@ -1922,6 +4548,8 @@ if (fs.existsSync(DIST_DIR)) {
     res.sendFile(path.join(DIST_DIR, "index.html"));
   });
 }
+
+stopDetachedPinsideViewerProcesses();
 
 app.listen(PORT, () => {
   process.stdout.write(`PinProf admin listening on http://localhost:${PORT}\n`);

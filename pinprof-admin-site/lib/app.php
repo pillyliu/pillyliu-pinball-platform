@@ -323,7 +323,16 @@ function pinprof_web_path_to_fs(?string $webPath): ?string
     if ($fs === false) {
         return null;
     }
-    return $fs . '/' . $relative;
+    $full = $fs . '/' . $relative;
+    if (is_file($full) || !str_starts_with($clean, $prefix . '/images/playfields/')) {
+        return $full;
+    }
+    $alternateWebPath = preg_replace('#(' . preg_quote($prefix . '/images/playfields/', '#') . '.+?)(?:_(700|1400))?\.[A-Za-z0-9]+$#i', '$1.webp', $clean);
+    if (!is_string($alternateWebPath) || $alternateWebPath === $clean) {
+        return $full;
+    }
+    $alternateRelative = substr($alternateWebPath, strlen($prefix) + 1);
+    return $fs . '/' . $alternateRelative;
 }
 
 function pinprof_preferred_alias(array $aliases): ?array

@@ -10,49 +10,27 @@ import {
 import { NAV_LINKS } from "../../shared/ui/navLinks";
 
 const DEFAULT_TARGETS_URL = "/pinball/data/LPL_Targets.csv";
+const RESOLVED_TARGETS_URL = "/pinball/data/lpl_targets_resolved_v1.json";
 
 type TargetRow = {
   game: string;
+  practiceIdentity: string | null;
+  opdbId: string | null;
+  location: string | null;
+  areaOrder: number | null;
+  group: number | null;
+  position: number | null;
+  bank: number | null;
   secondHighestAvg: number;
   fourthHighestAvg: number;
   eighthHighestAvg: number;
-};
-
-type GameMeta = {
-  name: string;
-  location?: string | null;
-  group?: number | null;
-  position?: number | null;
-  bank?: number | null;
-  sourceId?: string | null;
-  sourceName?: string | null;
-};
-
-type LibraryV3Item = {
-  game?: string | null;
-  area?: string | null;
-  group?: number | null;
-  position?: number | null;
-  bank?: number | null;
-  library_id?: string | null;
-  sourceId?: string | null;
-  library_name?: string | null;
-  sourceName?: string | null;
-  venue?: string | null;
+  fallbackOrder: number;
 };
 
 type SortMode = "location" | "bank" | "alphabetical";
 
-type EnrichedTargetRow = TargetRow & {
-  location: string | null;
-  group: number | null;
-  position: number | null;
-  bank: number | null;
-};
-
 export default function App() {
   const [rows, setRows] = useState<TargetRow[]>([]);
-  const [metaRows, setMetaRows] = useState<GameMeta[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [sortMode, setSortMode] = useState<SortMode>("location");
   const [bankFilter, setBankFilter] = useState<number | "all">("all");
@@ -74,20 +52,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    fetchPinballJson<unknown>("/pinball/data/pinball_library_v3.json")
-      .then((data) => setMetaRows(deriveGameMetaRows(data)))
-      .catch(() => setMetaRows([]));
-  }, []);
-
-  useEffect(() => {
     (async () => {
       try {
         setError(null);
-        const text = await fetchPinballText(dataUrl);
-        setRows(parseTargetsCSV(text));
+        if (dataUrl === DEFAULT_TARGETS_URL) {
+          const payload = await fetchPinballJson<unknown>(RESOLVED_TARGETS_URL);
+          setRows(parseResolvedTargetsJson(payload));
+        } else {
+          const text = await fetchPinballText(dataUrl);
+          setRows(parseTargetsCSV(text));
+        }
       } catch (e: unknown) {
         setRows([]);
-        setError(e instanceof Error ? e.message : "Failed to load targets CSV");
+        setError(e instanceof Error ? e.message : "Failed to load targets data");
       }
     })();
   }, [dataUrl]);
@@ -97,14 +74,15 @@ export default function App() {
     setDataUrl(dataUrl);
   }
 
-  const metaByName = useMemo(() => buildMetaByName(metaRows), [metaRows]);
-  const sortedRows = useMemo(() => sortRows(rows, metaByName, sortMode), [rows, metaByName, sortMode]);
+  const sortedRows = useMemo(() => sortRows(rows, sortMode), [rows, sortMode]);
   const bankOptions = useMemo<number[]>(() => {
-    const s = new Set<number>();
+    const values = new Set<number>();
     for (const row of sortedRows) {
-      if (typeof row.bank === "number" && Number.isFinite(row.bank) && row.bank > 0) s.add(row.bank);
+      if (typeof row.bank === "number" && Number.isFinite(row.bank) && row.bank > 0) {
+        values.add(row.bank);
+      }
     }
-    return Array.from(s).sort((a, b) => a - b);
+    return Array.from(values).sort((a, b) => a - b);
   }, [sortedRows]);
   const filteredRows = useMemo(
     () =>
@@ -215,7 +193,7 @@ export default function App() {
           <tbody>
             {filteredRows.map((row) => (
               <tr
-                key={row.game}
+                key={`${row.practiceIdentity ?? "unmatched"}::${row.fallbackOrder}`}
                 className="table-body-row"
               >
                 <td className="table-body-cell text-neutral-100">{row.game}</td>
@@ -264,23 +242,9 @@ function formatBank(bank: number | null): string {
   return String(bank);
 }
 
-function sortRows(
-  rows: TargetRow[],
-  metaByName: Map<string, GameMeta>,
-  sortMode: SortMode
-): EnrichedTargetRow[] {
-  const enriched: EnrichedTargetRow[] = rows.map((row) => {
-    const meta = metaByName.get(normalizeGameName(row.game));
-    return {
-      ...row,
-      location: typeof meta?.location === "string" && meta.location.trim() ? meta.location.trim() : null,
-      group: typeof meta?.group === "number" ? meta.group : null,
-      position: typeof meta?.position === "number" ? meta.position : null,
-      bank: typeof meta?.bank === "number" ? meta.bank : null,
-    };
-  });
-
-  enriched.sort((a, b) => {
+function sortRows(rows: TargetRow[], sortMode: SortMode): TargetRow[] {
+  const sorted = [...rows];
+  sorted.sort((a, b) => {
     if (sortMode === "alphabetical") {
       return alpha(a.game, b.game);
     }
@@ -290,113 +254,20 @@ function sortRows(
         compareMaybeNumber(a.bank, b.bank) ||
         compareMaybeNumber(a.group, b.group) ||
         compareMaybeNumber(a.position, b.position) ||
+        compareMaybeNumber(a.fallbackOrder, b.fallbackOrder) ||
         alpha(a.game, b.game)
       );
     }
 
     return (
+      compareMaybeNumber(a.areaOrder, b.areaOrder) ||
       compareMaybeNumber(a.group, b.group) ||
       compareMaybeNumber(a.position, b.position) ||
+      compareMaybeNumber(a.fallbackOrder, b.fallbackOrder) ||
       alpha(a.game, b.game)
     );
   });
-
-  return enriched;
-}
-
-function buildMetaByName(rows: GameMeta[]): Map<string, GameMeta> {
-  const map = new Map<string, GameMeta>();
-  for (const row of rows) {
-    const canonical = normalizeGameName(row.name ?? "");
-    if (!canonical) continue;
-    const existing = map.get(canonical);
-    if (!existing || isPreferredMeta(row, existing)) {
-      map.set(canonical, row);
-    }
-  }
-
-  for (const [source, target] of Object.entries(NAME_ALIASES)) {
-    const canonicalTarget = normalizeGameName(target);
-    const meta = map.get(canonicalTarget);
-    if (!meta) continue;
-    map.set(normalizeGameName(source), meta);
-  }
-
-  return map;
-}
-
-function deriveGameMetaRows(raw: unknown): GameMeta[] {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 3) {
-    return [];
-  }
-
-  const items = Array.isArray((raw as { items?: unknown[] }).items) ? (raw as { items: unknown[] }).items : [];
-  const rows: GameMeta[] = [];
-  for (const item of items) {
-    const row = (item ?? {}) as LibraryV3Item;
-    const name = String(row.game ?? "").trim();
-    if (!name) continue;
-    const sourceId = String(row.library_id ?? row.sourceId ?? "").trim() || null;
-    const sourceName = String(row.library_name ?? row.sourceName ?? row.venue ?? "").trim() || null;
-    if (!isAvenueSource(sourceId, sourceName)) continue;
-    rows.push({
-      name,
-      location: String(row.area ?? "").trim() || null,
-      group: typeof row.group === "number" ? row.group : null,
-      position: typeof row.position === "number" ? row.position : null,
-      bank: typeof row.bank === "number" ? row.bank : null,
-      sourceId,
-      sourceName,
-    });
-  }
-  return rows;
-}
-
-function isPreferredMeta(candidate: GameMeta, current: GameMeta): boolean {
-  return metaScore(candidate) > metaScore(current);
-}
-
-function metaScore(meta: GameMeta): number {
-  let score = 0;
-  if (isAvenueSource(meta.sourceId, meta.sourceName)) score += 1000;
-  if (typeof meta.bank === "number" && Number.isFinite(meta.bank) && meta.bank > 0) score += 100;
-  if (typeof meta.location === "string" && meta.location.trim()) score += 10;
-  if (typeof meta.group === "number" && Number.isFinite(meta.group)) score += 5;
-  if (typeof meta.position === "number" && Number.isFinite(meta.position)) score += 5;
-  return score;
-}
-
-function isAvenueSource(sourceId?: string | null, sourceName?: string | null): boolean {
-  const normalizedId = String(sourceId ?? "").trim().toLowerCase();
-  if (normalizedId === "venue--the-avenue-cafe") return true;
-
-  const normalizedName = String(sourceName ?? "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ");
-  return normalizedName === "the avenue cafe" || normalizedName === "the avenue";
-}
-
-const NAME_ALIASES: Record<string, string> = {
-  "Uncanny X-Men": "The Uncanny X-Men",
-  "Jurassic Park (Stern 2019)": "Jurassic Park",
-  "Star Wars (2017)": "Star Wars",
-  "James Bond": "James Bond 007",
-  "Indiana Jones": "Indiana Jones: The Pinball Adventure",
-  "Dungeons and Dragons": "Dungeons & Dragons: The Tyrant's Eye",
-  "The Getaway": "The Getaway: High Speed II",
-  "Attack From Mars": "Attack from Mars",
-  Tron: "Tron: Legacy",
-  TMNT: "Teenage Mutant Ninja Turtles",
-  "Fall of the Empire": "Star Wars: Fall of the Empire",
-};
-
-function normalizeGameName(value: string): string {
-  return String(value ?? "")
-    .toLowerCase()
-    .replace(/\([^)]*\)/g, " ")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+  return sorted;
 }
 
 function compareMaybeNumber(a: number | null, b: number | null): number {
@@ -425,7 +296,7 @@ function parseTargetsCSV(text: string): TargetRow[] {
 
   return body
     .filter((row) => row.length === headers.length)
-    .map((row) => {
+    .map((row, index) => {
       const record: Record<string, string> = {};
       headers.forEach((h, i) => {
         record[h] = row[i] ?? "";
@@ -433,16 +304,56 @@ function parseTargetsCSV(text: string): TargetRow[] {
 
       return {
         game: record.game?.trim() ?? "",
+        practiceIdentity: null,
+        opdbId: null,
+        location: null,
+        areaOrder: null,
+        group: null,
+        position: null,
+        bank: null,
         secondHighestAvg: parseNumber(record.second_highest_avg),
         fourthHighestAvg: parseNumber(record.fourth_highest_avg),
         eighthHighestAvg: parseNumber(record.eighth_highest_avg),
+        fallbackOrder: index,
       };
     })
-    .filter((r) => r.game);
+    .filter((row) => row.game);
 }
 
-function parseNumber(value: string): number {
-  const n = Number(String(value ?? "").replace(/,/g, "").trim());
+function parseResolvedTargetsJson(raw: unknown): TargetRow[] {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw) || Number((raw as { version?: unknown }).version ?? 0) < 1) {
+    return [];
+  }
+
+  const items = Array.isArray((raw as { items?: unknown[] }).items) ? (raw as { items: unknown[] }).items : [];
+  return items
+    .map((value, index) => {
+      const row = (value ?? {}) as Record<string, unknown>;
+      const game = String(row.game ?? "").trim();
+      if (!game) return null;
+      return {
+        game,
+        practiceIdentity: typeof row.practice_identity === "string" && row.practice_identity.trim()
+          ? row.practice_identity.trim()
+          : null,
+        opdbId: typeof row.opdb_id === "string" && row.opdb_id.trim() ? row.opdb_id.trim() : null,
+        location: typeof row.area === "string" && row.area.trim() ? row.area.trim() : null,
+        areaOrder: typeof row.area_order === "number" ? row.area_order : null,
+        group: typeof row.group === "number" ? row.group : null,
+        position: typeof row.position === "number" ? row.position : null,
+        bank: typeof row.bank === "number" ? row.bank : null,
+        secondHighestAvg: parseNumber(row.second_highest_avg),
+        fourthHighestAvg: parseNumber(row.fourth_highest_avg),
+        eighthHighestAvg: parseNumber(row.eighth_highest_avg),
+        fallbackOrder: typeof row.order === "number" ? row.order : index,
+      };
+    })
+    .filter((row): row is TargetRow => Boolean(row));
+}
+
+function parseNumber(value: unknown): number {
+  const normalized = String(value ?? "").replace(/,/g, "").trim();
+  const n = Number(normalized);
   return Number.isFinite(n) ? n : 0;
 }
 
