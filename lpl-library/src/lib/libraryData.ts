@@ -1394,15 +1394,14 @@ function buildLibraryGame(
     ? venueLayoutForMachine(source.id, requestedId, machine, layers)
     : { area: null, areaOrder: null, group: null, position: null, bank: null };
   const playfieldLocalOriginal = normalizeLibraryCachePath(
-    playfieldAsset?.playfieldOriginalLocalPath ??
-      playfieldAsset?.playfieldLocalPath ??
+    playfieldAsset?.playfieldLocalPath ??
       playfieldAsset?.playfieldWebLocalPath1400 ??
       playfieldAsset?.playfieldWebLocalPath700,
   );
   const playfieldLocal = normalizeLibraryPlayfieldLocalPath(
     playfieldAsset?.playfieldWebLocalPath700 ??
-      playfieldAsset?.playfieldLocalPath ??
-      playfieldAsset?.playfieldOriginalLocalPath,
+      playfieldAsset?.playfieldWebLocalPath1400 ??
+      playfieldAsset?.playfieldLocalPath,
   );
   const opdbPlayfieldUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageUrl);
   const hasLocalPlayfield = Boolean(playfieldLocalOriginal || playfieldLocal);

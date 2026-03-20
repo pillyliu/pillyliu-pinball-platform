@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-20T12:27:40Z",
+  "generatedAt": "2026-03-20T12:47:41Z",
   "records": [
     {
       "playfieldAssetId": 15,
@@ -19,7 +19,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 39,
@@ -39,7 +39,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 110,
@@ -49,17 +49,17 @@
         "G417d-MJkXV"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G417d-MJkXV-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G417d-MJkXV-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G417d-MJkXV-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G417d-MJkXV-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G417d-MJkXV-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/b/2b/03/b2b039037572b3ade00fc822ffc7c009adbe647a.jpeg",
       "playfieldSourceNote": "IMG_6993.jpeg",
       "playfieldSourcePageUrl": "https://pinside.com/pinball/market/classifieds/archive/199799",
-      "playfieldSourcePageSnapshotPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G417d-MJkXV-playfield.ad.html",
+      "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.22284604613067716,\"y\":0.006023977013771921},{\"x\":0.09489022167032155,\"y\":1},{\"x\":0.9843588998388333,\"y\":1},{\"x\":0.8144931173875135,\"y\":0}]",
       "createdAt": "2026-03-15T15:39:31.416Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 35,
@@ -79,7 +79,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 79,
@@ -89,8 +89,8 @@
         "G43BW-M3dKV"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G43BW-M3dKV-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G43BW-M3dKV-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G43BW-M3dKV-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G43BW-M3dKV-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G43BW-M3dKV-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/03/1c/8031cfb7eb2b6596a94b538b7baf4e5ade07c541.jpeg",
@@ -99,7 +99,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.20436902932727638,\"y\":0},{\"x\":0,\"y\":0.8247923201026124},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.6243223472588257},{\"x\":0.8115505377780747,\"y\":0}]",
       "createdAt": "2026-03-15T02:02:45.597Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 17,
@@ -119,7 +119,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 12,
@@ -139,7 +139,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 68,
@@ -149,8 +149,8 @@
         "G48w3-Mq1Zk"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G48w3-Mq1Zk-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/G48w3-Mq1Zk-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G48w3-Mq1Zk-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G48w3-Mq1Zk-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G48w3-Mq1Zk-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/d/fa/85/dfa851db7fffeb93188025d8f412f1d45ade5ee2.jpeg",
@@ -159,7 +159,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.13638185583539314,\"y\":0},{\"x\":0.046262275369096134,\"y\":1},{\"x\":0.9303627496826775,\"y\":1},{\"x\":0.8289331284654953,\"y\":0}]",
       "createdAt": "2026-03-08T15:17:25.322Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 36,
@@ -179,7 +179,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 3,
@@ -199,7 +199,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 117,
@@ -209,37 +209,17 @@
         "G4e1d-MJ5Bj"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G4e1d-MJ5Bj-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G4e1d-MJ5Bj-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4e1d-MJ5Bj-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G4e1d-MJ5Bj-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G4e1d-MJ5Bj-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/9/25/50/9255085d1c08cd833665fc361faff100a47d1c1f.jpg",
       "playfieldSourceNote": "1000023379.jpg",
       "playfieldSourcePageUrl": "https://pinside.com/pinball/market/classifieds/archive/182176",
-      "playfieldSourcePageSnapshotPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4e1d-MJ5Bj-playfield.ad.html",
+      "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.20518404703052975,\"y\":0},{\"x\":0.07624423809205692,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.983781427555039},{\"x\":0.8158260404836662,\"y\":0}]",
       "createdAt": "2026-03-15T17:08:46.961Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 204,
-      "practiceIdentity": "G4jPX",
-      "sourceOpdbMachineId": "G4jPX",
-      "coveredAliasIds": [
-        "G4jPX"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4jPX-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G4jPX-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4jPX-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 56,
@@ -248,18 +228,18 @@
       "coveredAliasIds": [
         "G4jPX-M85YZ"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4jPX-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4jPX-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G4jPX-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4jPX-playfield_1400.webp",
       "playfieldSourceUrl": "https://i.imgur.com/YmBikcx.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 80,
@@ -269,37 +249,17 @@
         "G4JZ4-ML0pL"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G4JZ4-ML0pL-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G4JZ4-ML0pL-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4JZ4-ML0pL-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G4JZ4-ML0pL-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G4JZ4-ML0pL-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/2/40/f6/240f666e2a994147be7bbc34ce64b9378f0dfd03.jpeg",
       "playfieldSourceNote": "C7C98F67-C431-4621-BCAC-D5A5F1E95D96.jpeg",
       "playfieldSourcePageUrl": "https://pinside.com/pinball/market/classifieds/archive/151370",
-      "playfieldSourcePageSnapshotPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4JZ4-ML0pL-playfield.ad.html",
+      "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.1712940076157392,\"y\":0},{\"x\":0,\"y\":0.7406331105388153},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.8064543605262894},{\"x\":0.7854632908009888,\"y\":0}]",
       "createdAt": "2026-03-15T02:29:15.337Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 125,
-      "practiceIdentity": "G4llj",
-      "sourceOpdbMachineId": "G4llj",
-      "coveredAliasIds": [
-        "G4llj"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4llj-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G4llj-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4llj-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 13,
@@ -308,18 +268,18 @@
       "coveredAliasIds": [
         "G4llj-MQYb2"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4llj-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4llj-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G4llj-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4llj-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/91/cf/791cf5d4f708e88307574989d06d4c6d7f470d45.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 14,
@@ -339,7 +299,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 45,
@@ -359,7 +319,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 93,
@@ -369,8 +329,8 @@
         "G4qbX-MJw5r"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G4qbX-MJw5r-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G4qbX-MJw5r-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4qbX-MJw5r-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G4qbX-MJw5r-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G4qbX-MJw5r-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/7e/d8/e7ed88c3bd5ffd3fafa6206a7c664a8cb91b152f.jpeg",
@@ -379,7 +339,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.13698309840336695,\"y\":0},{\"x\":0,\"y\":0.7207018528353692},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.8569088012185223},{\"x\":0.8384594829313915,\"y\":0}]",
       "createdAt": "2026-03-15T12:08:32.360Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 18,
@@ -399,27 +359,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 146,
-      "practiceIdentity": "G4xbP",
-      "sourceOpdbMachineId": "G4xbP",
-      "coveredAliasIds": [
-        "G4xbP"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4xbP-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G4xbP-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4xbP-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 25,
@@ -428,38 +368,18 @@
       "coveredAliasIds": [
         "G4xbP-Mp45Y"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4xbP-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4xbP-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G4xbP-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4xbP-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/e3/0c/5e30c4ed45066488681a5b99ee9e807c6a73abcb.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
-    },
-    {
-      "playfieldAssetId": 176,
-      "practiceIdentity": "G4xZy",
-      "sourceOpdbMachineId": "G4xZy",
-      "coveredAliasIds": [
-        "G4xZy"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4xZy-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G4xZy-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4xZy-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 11,
@@ -468,25 +388,25 @@
       "coveredAliasIds": [
         "G4xZy-MLno6"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4xZy-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G4xZy-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G4xZy-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G4xZy-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/ba/d3/abad3588aa6bbbeb655e870adce3c785b072cdb1.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
-      "playfieldAssetId": 201,
+      "playfieldAssetId": 365,
       "practiceIdentity": "G4yen",
-      "sourceOpdbMachineId": "G4yen",
+      "sourceOpdbMachineId": "G4yen-MD12Y",
       "coveredAliasIds": [
-        "G4yen"
+        "G4yen-MD12Y"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G4yen-playfield.webp",
       "playfieldOriginalLocalPath": null,
@@ -498,30 +418,8 @@
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 51,
-      "practiceIdentity": "G4yen",
-      "sourceOpdbMachineId": "G4yen-MXrYj",
-      "coveredAliasIds": [
-        "G4yen-MD12Y",
-        "G4yen-MD12Y-AOEew",
-        "G4yen-MXrYj"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G4yen-playfield.jpg",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
-      "playfieldSourceUrl": "https://o.pinside.com/a/03/e4/a03e4d88ad5527ec10bd96e43a7484727e2c8b92.jpg",
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "createdAt": "2026-03-20T12:46:58Z",
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 112,
@@ -531,8 +429,8 @@
         "G4yVw-M85j8"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G4yVw-M85j8-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G4yVw-M85j8-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G4yVw-M85j8-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G4yVw-M85j8-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G4yVw-M85j8-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/11/22/e1122cbc35e7c87420262a45a4000fb911b0da35.jpg",
@@ -541,7 +439,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.257993185917563,\"y\":0.036505566522701996},{\"x\":0.02384260805665041,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.7575882075897107},{\"x\":0.8333422406306367,\"y\":0.01792209874440091}]",
       "createdAt": "2026-03-15T16:21:21.352Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 66,
@@ -551,8 +449,8 @@
         "G56lO-MDXpW"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G56lO-MDXpW-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/G56lO-MDXpW-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G56lO-MDXpW-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G56lO-MDXpW-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G56lO-MDXpW-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/bc/cf/ebccfcad51bb3bbf0dbf7a48da98714995508ebe.jpeg",
@@ -561,14 +459,14 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-08T15:08:54.817Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
-      "playfieldAssetId": 137,
+      "playfieldAssetId": 301,
       "practiceIdentity": "G5728",
-      "sourceOpdbMachineId": "G5728",
+      "sourceOpdbMachineId": "G5728-MDbjD",
       "coveredAliasIds": [
-        "G5728"
+        "G5728-MDbjD"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G5728-playfield.webp",
       "playfieldOriginalLocalPath": null,
@@ -580,49 +478,8 @@
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 58,
-      "practiceIdentity": "G5728",
-      "sourceOpdbMachineId": "G5728-MKN3R",
-      "coveredAliasIds": [
-        "G5728-MDbjD",
-        "G5728-MKN3R"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G5728-playfield.jpg",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
-      "playfieldSourceUrl": "https://o.pinside.com/4/05/70/40570b35e1413f4a6785ea7a8c95250491894cd9.jpeg",
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
-    },
-    {
-      "playfieldAssetId": 135,
-      "practiceIdentity": "G5Kvx",
-      "sourceOpdbMachineId": "G5Kvx",
-      "coveredAliasIds": [
-        "G5Kvx"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G5Kvx-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G5Kvx-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G5Kvx-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "createdAt": "2026-03-20T12:46:58Z",
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 47,
@@ -631,18 +488,18 @@
       "coveredAliasIds": [
         "G5Kvx-MQdpl"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G5Kvx-playfield.jpeg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5Kvx-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G5Kvx-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G5Kvx-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/e2/d5/ae2d55c13d08c63a9e13b4431d5f747740ba4536.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 38,
@@ -662,7 +519,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 108,
@@ -672,17 +529,17 @@
         "G5poe-MQrb5"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G5poe-MQrb5-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G5poe-MQrb5-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G5poe-MQrb5-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G5poe-MQrb5-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G5poe-MQrb5-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/95/2b/5952b90e876633f9805e3445c016d6a1117d038e.jpeg",
       "playfieldSourceNote": "IMG_3437.jpeg",
       "playfieldSourcePageUrl": "https://pinside.com/pinball/market/classifieds/archive/185781",
-      "playfieldSourcePageSnapshotPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G5poe-MQrb5-playfield.ad.html",
+      "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.2718169568548707,\"y\":0.06944416922619637},{\"x\":0.7743005099210019,\"y\":0.07291687308035272},{\"x\":0.8708090042009036,\"y\":0.8786832458139304},{\"x\":0.18505112420407407,\"y\":0.8796492618646586}]",
       "createdAt": "2026-03-15T15:28:36.512Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 6,
@@ -702,7 +559,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 101,
@@ -712,8 +569,8 @@
         "G5WoB-MDyNZ"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G5WoB-MDyNZ-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G5WoB-MDyNZ-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G5WoB-MDyNZ-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G5WoB-MDyNZ-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G5WoB-MDyNZ-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/4d/d8/04dd864891e264123d7a3b91e49bfd2c40797db4.jpeg",
@@ -722,27 +579,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.13789832320128265,\"y\":0},{\"x\":0,\"y\":0.5867794266475616},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.9026142546518502},{\"x\":0.7703453804529361,\"y\":0}]",
       "createdAt": "2026-03-15T13:35:08.436Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 151,
-      "practiceIdentity": "G5YDN",
-      "sourceOpdbMachineId": "G5YDN",
-      "coveredAliasIds": [
-        "G5YDN"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/G5YDN-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/G5YDN-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/G5YDN-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 55,
@@ -752,18 +589,18 @@
         "G5YDN-M2YB0",
         "G5YDN-MJKYo"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/G5YDN-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/G5YDN-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/G5YDN-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/G5YDN-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/c/82/b2/c82b233dfdc3733dfccbf79248680629b04fa1af.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 97,
@@ -773,8 +610,8 @@
         "G5YWX-MDxXX"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/G5YWX-MDxXX-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/G5YWX-MDxXX-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/G5YWX-MDxXX-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/G5YWX-MDxXX-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/G5YWX-MDxXX-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/6/55/c8/655c8223283759792785708ec9f0980946d6dc8c.jpeg",
@@ -783,7 +620,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.23455808671253925,\"y\":0.07489252753199122},{\"x\":0,\"y\":0.6805211788401991},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.6590141593097713},{\"x\":0.8141191796379184,\"y\":0.06184552022686962}]",
       "createdAt": "2026-03-15T13:19:11.213Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 20,
@@ -803,7 +640,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 5,
@@ -823,7 +660,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 8,
@@ -843,7 +680,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 21,
@@ -863,27 +700,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 165,
-      "practiceIdentity": "Gd266",
-      "sourceOpdbMachineId": "Gd266",
-      "coveredAliasIds": [
-        "Gd266"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gd266-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/Gd266-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gd266-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 42,
@@ -892,18 +709,18 @@
       "coveredAliasIds": [
         "Gd266-ME0l7"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gd266-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gd266-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/Gd266-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gd266-playfield_1400.webp",
       "playfieldSourceUrl": "https://static.wixstatic.com/media/2f5381_04e1591eec9847d0832a576341b878f6~mv2.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 24,
@@ -923,7 +740,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 37,
@@ -943,7 +760,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 31,
@@ -963,7 +780,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 1,
@@ -983,7 +800,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 34,
@@ -1003,7 +820,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 26,
@@ -1023,7 +840,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 33,
@@ -1043,7 +860,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 49,
@@ -1063,7 +880,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 22,
@@ -1083,7 +900,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 16,
@@ -1103,7 +920,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 28,
@@ -1123,7 +940,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 30,
@@ -1143,27 +960,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 131,
-      "practiceIdentity": "Gr2wz",
-      "sourceOpdbMachineId": "Gr2wz",
-      "coveredAliasIds": [
-        "Gr2wz"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gr2wz-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/Gr2wz-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gr2wz-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 59,
@@ -1172,18 +969,18 @@
       "coveredAliasIds": [
         "Gr2wz-MLBob"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gr2wz-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gr2wz-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/Gr2wz-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gr2wz-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/3/8f/66/38f663cba178595c6aa1c815df14ca14e1ffd698.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 10,
@@ -1203,27 +1000,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 152,
-      "practiceIdentity": "GR6wO",
-      "sourceOpdbMachineId": "GR6wO",
-      "coveredAliasIds": [
-        "GR6wO"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GR6wO-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GR6wO-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GR6wO-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 46,
@@ -1232,18 +1009,18 @@
       "coveredAliasIds": [
         "GR6wO-MDvzk"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GR6wO-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GR6wO-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GR6wO-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GR6wO-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/0/7e/de/07ede2316a85b78651102912d42f91c0863a6043.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 103,
@@ -1253,8 +1030,8 @@
         "GR7ZX-MQ23b"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GR7ZX-MQ23b-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/GR7ZX-MQ23b-playfield.original.png",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GR7ZX-MQ23b-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GR7ZX-MQ23b-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GR7ZX-MQ23b-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/f/25/e7/f25e7f356b4d67ba4cb0baf8b1e61c83e4cd5cc6.png",
@@ -1263,27 +1040,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.04854031665441913,\"y\":0},{\"x\":0.033729708063330886,\"y\":0.44217964247696656},{\"x\":0.00604582804462556,\"y\":0.9335352200565283},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":0.9990647337831519,\"y\":0.9602429982013728},{\"x\":0.9774333622820496,\"y\":0.6204125830488566},{\"x\":0.9681875876812078,\"y\":0.22653525676320524},{\"x\":0.9603714342975482,\"y\":0}]",
       "createdAt": "2026-03-15T14:48:07.290Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 168,
-      "practiceIdentity": "Gr8l3",
-      "sourceOpdbMachineId": "Gr8l3",
-      "coveredAliasIds": [
-        "Gr8l3"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gr8l3-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/Gr8l3-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gr8l3-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 50,
@@ -1292,18 +1049,18 @@
       "coveredAliasIds": [
         "Gr8l3-MDWr0"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/Gr8l3-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Gr8l3-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/Gr8l3-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/Gr8l3-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/fb/e4/efbe43af5567c672de54c72192a19430497ce7c5.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 91,
@@ -1313,8 +1070,8 @@
         "GR91N-MLOyE"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GR91N-MLOyE-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/GR91N-MLOyE-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GR91N-MLOyE-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GR91N-MLOyE-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GR91N-MLOyE-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/c7/b8/8c7b8473f0f593b536f8092cc0362c86c291f0b9.jpeg",
@@ -1323,7 +1080,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.2018772129066738,\"y\":0},{\"x\":0.8028392010154319,\"y\":0},{\"x\":1,\"y\":0.810868931661888},{\"x\":1,\"y\":1},{\"x\":0,\"y\":1},{\"x\":0,\"y\":0.797105007365246}]",
       "createdAt": "2026-03-15T03:52:50.403Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 32,
@@ -1343,7 +1100,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 2,
@@ -1363,7 +1120,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 52,
@@ -1383,7 +1140,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 23,
@@ -1403,27 +1160,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 160,
-      "practiceIdentity": "GRKx7",
-      "sourceOpdbMachineId": "GRKx7",
-      "coveredAliasIds": [
-        "GRKx7"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRKx7-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GRKx7-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRKx7-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 54,
@@ -1432,18 +1169,18 @@
       "coveredAliasIds": [
         "GRKx7-MJ49e"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRKx7-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRKx7-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GRKx7-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRKx7-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/cf/11/7cf116170b0e4015323c3c653d51f7ce7c02f1a8.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 114,
@@ -1453,8 +1190,8 @@
         "GRokz-ML8oW"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GRokz-ML8oW-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/GRokz-ML8oW-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GRokz-ML8oW-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GRokz-ML8oW-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GRokz-ML8oW-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/4/28/5f/4285f7599c2c29d08724dc9da3f3a5b5bb90bda4.jpeg",
@@ -1463,27 +1200,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.24127864252789097,\"y\":0.023213051015602296},{\"x\":0.039307902999532365,\"y\":0.9197889631537283},{\"x\":1,\"y\":0.9202900003006222},{\"x\":1,\"y\":0.9011102983175172},{\"x\":0.7768388001870532,\"y\":0.01891415229525117}]",
       "createdAt": "2026-03-15T16:59:48.241Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 154,
-      "practiceIdentity": "GrP6q",
-      "sourceOpdbMachineId": "GrP6q",
-      "coveredAliasIds": [
-        "GrP6q"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrP6q-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GrP6q-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrP6q-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 48,
@@ -1492,38 +1209,18 @@
       "coveredAliasIds": [
         "GrP6q-M5Rp1"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrP6q-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrP6q-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GrP6q-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrP6q-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/82/28/782286aa112e543b8416be1bf1a94b7b73fbbaf0.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
-    },
-    {
-      "playfieldAssetId": 163,
-      "practiceIdentity": "GrPbb",
-      "sourceOpdbMachineId": "GrPbb",
-      "coveredAliasIds": [
-        "GrPbb"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrPbb-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GrPbb-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrPbb-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 57,
@@ -1532,18 +1229,18 @@
       "coveredAliasIds": [
         "GrPbb-MJZX6"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrPbb-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrPbb-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GrPbb-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrPbb-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/94/d7/894d7e9f11718560a3ff8dc1ff1175ce868fcdfb.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 70,
@@ -1553,8 +1250,8 @@
         "GrPKO-MLO5X"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GrPKO-MLO5X-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/GrPKO-MLO5X-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GrPKO-MLO5X-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GrPKO-MLO5X-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GrPKO-MLO5X-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/7/ea/3c/7ea3cfc1ec340c88cdafd604dc3bf6f25568805a.jpeg",
@@ -1563,7 +1260,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.1982229941879885,\"y\":0.029521108694998646},{\"x\":0,\"y\":0.8900924914573166},{\"x\":0,\"y\":1},{\"x\":0.9760438239027324,\"y\":1},{\"x\":0.7434163938806867,\"y\":0.023628911847524376}]",
       "createdAt": "2026-03-08T15:23:32.173Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 72,
@@ -1573,8 +1270,8 @@
         "GrqZX-MDEPd"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GrqZX-MDEPd-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/GrqZX-MDEPd-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GrqZX-MDEPd-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GrqZX-MDEPd-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GrqZX-MDEPd-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/e/a9/58/ea9582f5d1c070eccc05f54d5b1f670a44820909.jpg",
@@ -1583,27 +1280,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.1738487146291844,\"y\":0.015129297532943625},{\"x\":0.06553673809083463,\"y\":1},{\"x\":0.9809770403445269,\"y\":1},{\"x\":0.825774789294301,\"y\":0.012568116516397504}]",
       "createdAt": "2026-03-08T15:30:54.306Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 177,
-      "practiceIdentity": "GRvBL",
-      "sourceOpdbMachineId": "GRvBL",
-      "coveredAliasIds": [
-        "GRvBL"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRvBL-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GRvBL-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRvBL-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 7,
@@ -1612,18 +1289,18 @@
       "coveredAliasIds": [
         "GRvBL-MP3Ev"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRvBL-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRvBL-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GRvBL-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRvBL-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/f/17/19/f17197f2468dbd54b299f41969cc4d876565c109.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 69,
@@ -1633,8 +1310,8 @@
         "GRVjq-MD0z2"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GRVjq-MD0z2-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/GRVjq-MD0z2-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GRVjq-MD0z2-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GRVjq-MD0z2-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GRVjq-MD0z2-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/5/cc/38/5cc380a1e8549688af83112fb70da50c12d4a009.jpg",
@@ -1643,27 +1320,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.16721223862649476,\"y\":0.007395308288156484},{\"x\":0,\"y\":0.9634343090196708},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.7701492088623451},{\"x\":0.8063063664907475,\"y\":0.0031865962542462897}]",
       "createdAt": "2026-03-08T15:19:41.428Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 138,
-      "practiceIdentity": "GRVoX",
-      "sourceOpdbMachineId": "GRVoX",
-      "coveredAliasIds": [
-        "GRVoX"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRVoX-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GRVoX-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRVoX-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 43,
@@ -1674,18 +1331,18 @@
         "GRVoX-MLE7l",
         "GRVoX-MDWEq"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GRVoX-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GRVoX-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GRVoX-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GRVoX-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/c/84/78/c847882714e37e7150e43a6f2e29027030fcafd9.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 67,
@@ -1695,8 +1352,8 @@
         "GRwv0-MJ99E"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GRwv0-MJ99E-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/GRwv0-MJ99E-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GRwv0-MJ99E-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GRwv0-MJ99E-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GRwv0-MJ99E-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/a/70/4c/a704cc8d3723846382490fb40e51435449f78b28.jpg",
@@ -1705,7 +1362,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.22462422339501636,\"y\":0},{\"x\":0,\"y\":0.8567133967312337},{\"x\":0,\"y\":1},{\"x\":0.9996325739862382,\"y\":1},{\"x\":1,\"y\":0.6693705971360717},{\"x\":0.8330416193466498,\"y\":0}]",
       "createdAt": "2026-03-08T15:16:32.953Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 95,
@@ -1715,8 +1372,8 @@
         "GRWyB-MLz6Z"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/GRWyB-MLz6Z-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/originals/GRWyB-MLz6Z-playfield.original.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/GRWyB-MLz6Z-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/GRWyB-MLz6Z-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/GRWyB-MLz6Z-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/1/f8/d7/1f8d763df644eb86ca4e4c3053c6872131ec97d8.jpeg",
@@ -1725,27 +1382,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.2480760237824838,\"y\":0.019783451745112382},{\"x\":0.048693967532901325,\"y\":0.8585321615744592},{\"x\":0.9059322600040083,\"y\":0.8660527291493392},{\"x\":0.7678802859242434,\"y\":0.024761255799504975}]",
       "createdAt": "2026-03-15T13:03:17.854Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 148,
-      "practiceIdentity": "Grx8Y",
-      "sourceOpdbMachineId": "Grx8Y",
-      "coveredAliasIds": [
-        "Grx8Y"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/Grx8Y-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/Grx8Y-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/Grx8Y-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 9,
@@ -1754,38 +1391,18 @@
       "coveredAliasIds": [
         "Grx8Y-MKNe9"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/Grx8Y-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/Grx8Y-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/Grx8Y-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/Grx8Y-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/6/4b/68/64b682d2839fa8b161984c0c5aee9f32831640dd.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
-    },
-    {
-      "playfieldAssetId": 139,
-      "practiceIdentity": "GrXy3",
-      "sourceOpdbMachineId": "GrXy3",
-      "coveredAliasIds": [
-        "GrXy3"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrXy3-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GrXy3-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrXy3-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 53,
@@ -1794,18 +1411,18 @@
       "coveredAliasIds": [
         "GrXy3-ML0Ey"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GrXy3-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GrXy3-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GrXy3-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GrXy3-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/8/d3/0e/8d30e91fa2664ac28ef48f87feeed51d71c91e5b.jpg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 71,
@@ -1815,8 +1432,8 @@
         "Grybw-M5R0n"
       ],
       "playfieldLocalPath": "/pinball/images/playfields/Grybw-M5R0n-playfield.webp",
-      "playfieldOriginalLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfields/Grybw-M5R0n-playfield.jpg",
-      "playfieldReferenceLocalPath": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/assets/playfield_sources/references/Grybw-M5R0n-playfield.source.json",
+      "playfieldOriginalLocalPath": null,
+      "playfieldReferenceLocalPath": null,
       "playfieldWebLocalPath700": "/pinball/images/playfields/Grybw-M5R0n-playfield_700.webp",
       "playfieldWebLocalPath1400": "/pinball/images/playfields/Grybw-M5R0n-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/1/89/cb/189cb7c762c0046757052f87e2680cd5e8c7445e.jpeg",
@@ -1825,27 +1442,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": "[{\"x\":0.1412785014135116,\"y\":0},{\"x\":0,\"y\":0.6124368374120678},{\"x\":0,\"y\":1},{\"x\":1,\"y\":1},{\"x\":1,\"y\":0.6960566729416428},{\"x\":0.8291632539829322,\"y\":0}]",
       "createdAt": "2026-03-08T15:26:38.261Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 182,
-      "practiceIdentity": "GryK3",
-      "sourceOpdbMachineId": "GryK3",
-      "coveredAliasIds": [
-        "GryK3"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GryK3-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GryK3-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GryK3-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 60,
@@ -1857,15 +1454,15 @@
       "playfieldLocalPath": "/pinball/images/playfields/GryK3-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GryK3-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GryK3-playfield_1400.webp",
       "playfieldSourceUrl": "https://cdn.prod.website-files.com/630f7e3a17d08a21ae05d20a/683ce9ed6e7c64e06127da82_RPWy96zmATcYkDm-6nYntR0TP72VW4NPkhHSov4XHo0.webp",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 4,
@@ -1885,7 +1482,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 73,
@@ -1905,27 +1502,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-09T02:08:56.425Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 187,
-      "practiceIdentity": "GvBn8",
-      "sourceOpdbMachineId": "GvBn8",
-      "coveredAliasIds": [
-        "GvBn8"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GvBn8-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GvBn8-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GvBn8-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 61,
@@ -1934,18 +1511,18 @@
       "coveredAliasIds": [
         "GvBn8-Mz291"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GvBn8-playfield.jpg",
+      "playfieldLocalPath": "/pinball/images/playfields/GvBn8-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GvBn8-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GvBn8-playfield_1400.webp",
       "playfieldSourceUrl": "https://o.pinside.com/2/91/f2/291f2be351242ef4f1bd9247a1de9f6f72599e89.jpeg",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 62,
@@ -1965,7 +1542,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T23:23:42.077Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 41,
@@ -1985,7 +1562,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 27,
@@ -2005,27 +1582,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
-    },
-    {
-      "playfieldAssetId": 188,
-      "practiceIdentity": "GYWvw",
-      "sourceOpdbMachineId": "GYWvw",
-      "coveredAliasIds": [
-        "GYWvw"
-      ],
-      "playfieldLocalPath": "/pinball/images/playfields/GYWvw-playfield.webp",
-      "playfieldOriginalLocalPath": null,
-      "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": "/pinball/images/playfields/GYWvw-playfield_700.webp",
-      "playfieldWebLocalPath1400": "/pinball/images/playfields/GYWvw-playfield_1400.webp",
-      "playfieldSourceUrl": null,
-      "playfieldSourceNote": null,
-      "playfieldSourcePageUrl": null,
-      "playfieldSourcePageSnapshotPath": null,
-      "playfieldMaskPolygonJson": null,
-      "createdAt": "2026-03-20T12:27:09Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 44,
@@ -2034,18 +1591,18 @@
       "coveredAliasIds": [
         "GYWvw-MKNP4"
       ],
-      "playfieldLocalPath": "/pinball/images/playfields/GYWvw-playfield.png",
+      "playfieldLocalPath": "/pinball/images/playfields/GYWvw-playfield.webp",
       "playfieldOriginalLocalPath": null,
       "playfieldReferenceLocalPath": null,
-      "playfieldWebLocalPath700": null,
-      "playfieldWebLocalPath1400": null,
+      "playfieldWebLocalPath700": "/pinball/images/playfields/GYWvw-playfield_700.webp",
+      "playfieldWebLocalPath1400": "/pinball/images/playfields/GYWvw-playfield_1400.webp",
       "playfieldSourceUrl": "https://www.spookypinball.com/wp-content/uploads/2024/11/Spooky-Evil-Dead-Playfield.png",
       "playfieldSourceNote": null,
       "playfieldSourcePageUrl": null,
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-07T08:13:07.792Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 29,
@@ -2065,7 +1622,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     },
     {
       "playfieldAssetId": 40,
@@ -2085,7 +1642,7 @@
       "playfieldSourcePageSnapshotPath": null,
       "playfieldMaskPolygonJson": null,
       "createdAt": "2026-03-07T08:13:07.792Z",
-      "updatedAt": "2026-03-20T12:27:39Z"
+      "updatedAt": "2026-03-20T12:47:41Z"
     }
   ]
 }
