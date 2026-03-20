@@ -70,6 +70,7 @@ function youtubeId(url: string): string | null {
 function shortRulesheetTitle(link: ReferenceLink): string {
   switch (referenceLinkProvider(link)) {
     case "pinprof":
+    case "local":
       return "PinProf";
     case "tf":
       return "TF";
@@ -80,7 +81,7 @@ function shortRulesheetTitle(link: ReferenceLink): string {
     case "bob":
       return "Bob";
     default:
-      return "Local";
+      return "PinProf";
   }
 }
 
@@ -348,7 +349,7 @@ export default function GamePage() {
                   })
                 ) : hasLocalRulesheet ? (
                   <Link className={SUBTLE_BUTTON_CLASS} to={`/rules/${encodeURIComponent(game.routeId)}`}>
-                    Local
+                    PinProf
                   </Link>
                 ) : (
                   <span className="rounded-xl bg-neutral-800 px-4 py-2 text-sm text-neutral-400">Unavailable</span>
@@ -438,7 +439,7 @@ export default function GamePage() {
           </Panel>
         </div>
 
-        {(primaryRulesheet?.url || game.playfieldImageUrl) && (
+        {primaryRulesheet?.url && (
           <div className="mt-8 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
             {primaryRulesheet?.url && (
               <a
@@ -448,16 +449,6 @@ export default function GamePage() {
                 rel="noreferrer"
               >
                 {primaryRulesheet.label}
-              </a>
-            )}
-            {game.playfieldImageUrl && (
-              <a
-                className="rounded-lg bg-neutral-900 px-2.5 py-1 text-xs text-neutral-200 ring-1 ring-neutral-700 hover:ring-neutral-500"
-                href={game.playfieldImageUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Playfield (source)
               </a>
             )}
           </div>

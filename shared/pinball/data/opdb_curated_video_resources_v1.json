@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-03-18T16:04:24Z",
+  "generated_at": "2026-03-20T12:31:44Z",
   "source_files": [
-    "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/data/source/Avenue Pinball - Current.csv",
-    "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/data/source/RLM Amusements - Current.csv",
+    "/Users/pillyliu/Documents/Codex/Pillyliu Pinball Website/shared/pinball/data/Avenue Pinball - Current.csv",
+    "/Users/pillyliu/Documents/Codex/Pillyliu Pinball Website/shared/pinball/data/RLM Amusements - Current.csv",
     "/Users/pillyliu/Documents/Codex/PinProf Admin/configs/curated_video_overrides_v1.json"
   ],
   "rows": [

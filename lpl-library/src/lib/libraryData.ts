@@ -591,6 +591,7 @@ function resolveLibraryUrl(pathOrUrl: string | null | undefined): string | null 
   const raw = normalizedOptionalString(pathOrUrl);
   if (!raw) return null;
   if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
+  if (raw.startsWith("/Users/") || raw.startsWith("/private/")) return null;
   return raw.startsWith("/") ? raw : `/${raw}`;
 }
 
@@ -599,6 +600,7 @@ function normalizeLibraryCachePath(path: string | null | undefined): string | nu
   if (!raw) return null;
   const normalizePlayfieldPublishedPath = (value: string): string =>
     value.replace(/(\/pinball\/images\/playfields\/.+?)(?:_(700|1400))?\.[A-Za-z0-9]+$/i, "$1.webp");
+  if (raw.startsWith("/Users/") || raw.startsWith("/private/")) return null;
   if (raw.startsWith("/")) return raw.includes("/pinball/images/playfields/") ? normalizePlayfieldPublishedPath(raw) : raw;
   if (raw.startsWith("http://") || raw.startsWith("https://")) {
     try {
@@ -1662,30 +1664,30 @@ function derivePlayfieldVariant(local: string, width: 700 | 1400): string | null
 }
 
 function explicitPlayfieldCandidates(game: LibraryGame): string[] {
-  const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal ?? game.playfieldLocal);
-  const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
+  const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal);
   const local1400 = localOriginal ? derivePlayfieldVariant(localOriginal, 1400) : null;
-  const groupLocalOriginal = normalizedOptionalString(game.groupPlayfieldLocalOriginal ?? game.groupPlayfieldLocal);
-  const groupLocal700 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 700) : null;
+  const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
+  const groupLocalOriginal = normalizedOptionalString(game.groupPlayfieldLocalOriginal);
   const groupLocal1400 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 1400) : null;
+  const groupLocal700 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 700) : null;
   return dedupeResolvedUrls([
     resolveLibraryUrl(game.playfieldLocalOriginal),
     resolveLibraryUrl(local1400),
-    resolveLibraryUrl(game.playfieldLocal),
     resolveLibraryUrl(local700),
     resolveLibraryUrl(game.groupPlayfieldLocalOriginal),
     resolveLibraryUrl(groupLocal1400),
-    resolveLibraryUrl(game.groupPlayfieldLocal),
     resolveLibraryUrl(groupLocal700),
+    resolveLibraryUrl(game.playfieldLocal),
+    resolveLibraryUrl(game.groupPlayfieldLocal),
   ]);
 }
 
 function playfieldSourceLabelForGame(game: LibraryGame): string {
   if (game.playfieldSourceLabel) {
-    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "Local";
+    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "PinProf";
   }
   if (game.playfieldLocalOriginal || game.playfieldLocal || game.groupPlayfieldLocalOriginal || game.groupPlayfieldLocal) {
-    return "Local";
+    return "PinProf";
   }
   const playfieldUrl = resolveLibraryUrl(game.playfieldImageUrl);
   if (!playfieldUrl) return "View";
