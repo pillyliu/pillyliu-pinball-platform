@@ -263,10 +263,17 @@ export default function RulesheetPage() {
           {loading ? (
             <div className="text-sm text-neutral-400">Loading rulesheet…</div>
           ) : md ? (
-            <div className="prose prose-invert max-w-none break-words prose-headings:scroll-mt-24 prose-a:text-sky-300 prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-th:border prose-th:border-neutral-700 prose-th:px-2 prose-th:py-1 prose-td:border prose-td:border-neutral-800 prose-td:px-2 prose-td:py-1 [&_.pinball-rulesheet]:overflow-x-hidden [&_.pinball-rulesheet]:text-neutral-100 [&_.pinball-rulesheet]:leading-[1.45] [&_.pinball-rulesheet]:[overflow-wrap:anywhere] [&_.pinball-rulesheet_a]:underline [&_.pinball-rulesheet_img]:h-auto [&_.pinball-rulesheet_img]:max-w-full [&_.pinball-rulesheet_ul]:pl-5 [&_.pinball-rulesheet_ol]:pl-5 [&_.remote-rulesheet]:mt-4 [&_.rulesheet-attribution]:mb-4 [&_.rulesheet-attribution]:block [&_.rulesheet-attribution]:text-xs [&_.rulesheet-attribution]:leading-5 [&_.rulesheet-attribution]:text-neutral-400 [&_.rulesheet-attribution_a]:text-sky-300 [&_.legacy-rulesheet_.bodyTitle]:mt-4 [&_.legacy-rulesheet_.bodyTitle]:block [&_.legacy-rulesheet_.bodyTitle]:text-lg [&_.legacy-rulesheet_.bodyTitle]:font-semibold [&_.legacy-rulesheet_.bodySmall]:block [&_.legacy-rulesheet_.bodySmall]:text-sm [&_.legacy-rulesheet_.bodySmall]:text-neutral-300 [&_.rulesheet-preformatted]:m-0 [&_.rulesheet-preformatted]:whitespace-pre-wrap [&_.rulesheet-preformatted]:rounded-none [&_.rulesheet-preformatted]:bg-transparent [&_.rulesheet-preformatted]:p-0 [&_.rulesheet-preformatted]:text-base [&_.rulesheet-preformatted]:leading-[1.45] [&_.rulesheet-preformatted]:font-sans [&_.rulesheet-preformatted]:[font-family:inherit]">
+            <div className="rulesheet-rich-content prose prose-invert max-w-none break-words">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeRaw], [rehypeSanitize, sanitizeSchema]]}
+                components={{
+                  table: ({ node: _node, ...props }) => (
+                    <div className="table-scroll">
+                      <table {...props} />
+                    </div>
+                  ),
+                }}
               >
                 {md}
               </ReactMarkdown>

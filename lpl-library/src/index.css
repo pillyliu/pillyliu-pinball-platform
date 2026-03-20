@@ -28,6 +28,282 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.rulesheet-rich-content {
+  color: rgb(245 245 245);
+}
+
+.rulesheet-rich-content,
+.rulesheet-rich-content .pinball-rulesheet,
+.rulesheet-rich-content .remote-rulesheet {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.5;
+}
+
+.rulesheet-rich-content > :first-child,
+.rulesheet-rich-content .pinball-rulesheet > :first-child,
+.rulesheet-rich-content .remote-rulesheet > :first-child {
+  margin-top: 0 !important;
+}
+
+.rulesheet-rich-content > :last-child,
+.rulesheet-rich-content .pinball-rulesheet > :last-child,
+.rulesheet-rich-content .remote-rulesheet > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.rulesheet-rich-content p,
+.rulesheet-rich-content ul,
+.rulesheet-rich-content ol,
+.rulesheet-rich-content blockquote,
+.rulesheet-rich-content pre,
+.rulesheet-rich-content .table-scroll,
+.rulesheet-rich-content hr {
+  margin: 0 0 0.95rem;
+}
+
+.rulesheet-rich-content a {
+  color: rgb(125 211 252);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  transition: background-color 140ms ease;
+}
+
+.rulesheet-rich-content a:hover {
+  background: rgba(125, 211, 252, 0.12);
+}
+
+.rulesheet-rich-content h1,
+.rulesheet-rich-content h2,
+.rulesheet-rich-content h3,
+.rulesheet-rich-content h4,
+.rulesheet-rich-content h5,
+.rulesheet-rich-content h6 {
+  color: rgb(250 250 250);
+  line-height: 1.2;
+  margin: 1.35rem 0 0.55rem;
+  scroll-margin-top: 6rem;
+}
+
+.rulesheet-rich-content h1 {
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+}
+
+.rulesheet-rich-content h2 {
+  font-size: 1.35rem;
+  letter-spacing: -0.015em;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rulesheet-rich-content h3 {
+  font-size: 1.08rem;
+}
+
+.rulesheet-rich-content h4,
+.rulesheet-rich-content h5,
+.rulesheet-rich-content h6 {
+  font-size: 0.98rem;
+}
+
+.rulesheet-rich-content strong {
+  color: rgb(250 250 250);
+}
+
+.rulesheet-rich-content small,
+.rulesheet-rich-content .bodySmall,
+.rulesheet-rich-content .rulesheet-attribution {
+  color: rgb(163 163 163);
+}
+
+.rulesheet-rich-content ul,
+.rulesheet-rich-content ol {
+  padding-left: 1.35rem;
+}
+
+.rulesheet-rich-content li {
+  margin: 0.18rem 0;
+}
+
+.rulesheet-rich-content li > ul,
+.rulesheet-rich-content li > ol {
+  margin-top: 0.28rem;
+  margin-bottom: 0.28rem;
+}
+
+.rulesheet-rich-content blockquote {
+  margin-left: 0;
+  padding: 0.15rem 0 0.15rem 0.95rem;
+  border-left: 3px solid rgba(125, 211, 252, 0.46);
+  color: rgb(163 163 163);
+  background: transparent;
+}
+
+.rulesheet-rich-content code,
+.rulesheet-rich-content pre {
+  background: rgb(17 24 39 / 0.92);
+  border-radius: 10px;
+  color: rgb(243 244 246);
+}
+
+.rulesheet-rich-content code {
+  padding: 0.12rem 0.34rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.rulesheet-rich-content pre {
+  padding: 12px 14px;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rulesheet-rich-content pre code {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.rulesheet-rich-content .table-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgb(23 23 23 / 0.8);
+}
+
+.rulesheet-rich-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: auto;
+  margin: 0;
+}
+
+.rulesheet-rich-content th,
+.rulesheet-rich-content td {
+  padding: 8px 10px;
+  vertical-align: top;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rulesheet-rich-content tr > :last-child {
+  border-right: none;
+}
+
+.rulesheet-rich-content tbody tr:last-child td,
+.rulesheet-rich-content table tr:last-child td {
+  border-bottom: none;
+}
+
+.rulesheet-rich-content th {
+  background: rgb(38 38 38 / 0.92);
+  text-align: left;
+}
+
+.rulesheet-rich-content thead tr:first-child th:first-child,
+.rulesheet-rich-content table tr:first-child > *:first-child {
+  border-top-left-radius: 12px;
+}
+
+.rulesheet-rich-content thead tr:first-child th:last-child,
+.rulesheet-rich-content table tr:first-child > *:last-child {
+  border-top-right-radius: 12px;
+}
+
+.rulesheet-rich-content tbody tr:last-child td:first-child,
+.rulesheet-rich-content table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.rulesheet-rich-content tbody tr:last-child td:last-child,
+.rulesheet-rich-content table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.rulesheet-rich-content .primer-rulesheet table td:first-child,
+.rulesheet-rich-content .primer-rulesheet table th:first-child {
+  width: 34%;
+  min-width: 7.5rem;
+}
+
+.rulesheet-rich-content .primer-rulesheet table td:last-child,
+.rulesheet-rich-content .primer-rulesheet table th:last-child {
+  width: 66%;
+}
+
+.rulesheet-rich-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem auto;
+  border-radius: 10px;
+}
+
+.rulesheet-rich-content table img,
+.rulesheet-rich-content .table-scroll img {
+  width: auto;
+  max-height: min(42vh, 24rem);
+  object-fit: contain;
+}
+
+.rulesheet-rich-content hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rulesheet-rich-content .pinball-rulesheet,
+.rulesheet-rich-content .remote-rulesheet {
+  display: block;
+}
+
+.rulesheet-rich-content .legacy-rulesheet .bodyTitle {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 1rem 0 0.4rem;
+}
+
+.rulesheet-rich-content .legacy-rulesheet .bodySmall {
+  display: block;
+  font-size: 0.92rem;
+  opacity: 0.88;
+}
+
+.rulesheet-rich-content .legacy-rulesheet pre.rulesheet-preformatted,
+.rulesheet-rich-content .rulesheet-preformatted {
+  white-space: pre-wrap;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+.rulesheet-rich-content .rulesheet-attribution {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  opacity: 0.92;
+  margin-bottom: 0.8rem;
+}
+
+.rulesheet-rich-content .rulesheet-attribution,
+.rulesheet-rich-content .rulesheet-attribution * {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .library-controls-fixed {
   position: fixed;
   inset-inline: 0;
