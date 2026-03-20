@@ -88,8 +88,8 @@ function ResourceRow({ title, children }: { title: string; children: ReactNode }
   return (
     <div className="flex items-center gap-2 text-sm">
       <div className="shrink-0 font-semibold text-neutral-400">{title}:</div>
-      <div className="min-w-0 flex-1 overflow-x-auto">
-        <div className="flex min-h-[2.25rem] items-center gap-2">{children}</div>
+      <div className="min-w-0 flex-1 overflow-x-auto py-1">
+        <div className="flex min-h-[2.25rem] items-center gap-2 px-1">{children}</div>
       </div>
     </div>
   );
