@@ -489,6 +489,7 @@ function selectImageUrl(
   imagesValue: unknown,
   preferredType: "backglass" | "playfield",
   preferredSize: "medium" | "large",
+  allowUntypedFallback = true,
 ): string | null {
   const images = Array.isArray(imagesValue) ? imagesValue : [];
   const normalizedImages = images
@@ -505,13 +506,15 @@ function selectImageUrl(
       };
     });
   const preferred = normalizedImages.find((image) => image.type === preferredType && image.primary)
-    ?? normalizedImages.find((image) => image.type === preferredType)
-    ?? normalizedImages.find((image) => image.primary)
-    ?? normalizedImages[0];
-  if (!preferred) return null;
+    ?? normalizedImages.find((image) => image.type === preferredType);
+  const fallback = allowUntypedFallback
+    ? normalizedImages.find((image) => image.primary) ?? normalizedImages[0]
+    : null;
+  const selected = preferred ?? fallback;
+  if (!selected) return null;
   return preferredSize === "large"
-    ? preferred.large ?? preferred.medium
-    : preferred.medium ?? preferred.large;
+    ? selected.large ?? selected.medium
+    : selected.medium ?? selected.large;
 }
 
 function machineHasPrimaryImage(machine: MachineRecord): boolean {
@@ -690,8 +693,8 @@ function parseRawOpdbRows(rows: RawOpdbRow[]): { machines: MachineRecord[]; manu
       year: Number.isFinite(year) ? year : null,
       primaryImageUrl: selectImageUrl(row.images, "backglass", "medium"),
       primaryImageLargeUrl: selectImageUrl(row.images, "backglass", "large"),
-      playfieldImageUrl: selectImageUrl(row.images, "playfield", "medium"),
-      playfieldImageLargeUrl: selectImageUrl(row.images, "playfield", "large"),
+      playfieldImageUrl: selectImageUrl(row.images, "playfield", "medium", false),
+      playfieldImageLargeUrl: selectImageUrl(row.images, "playfield", "large", false),
       opdbType: normalizedOptionalString(row.type),
       opdbDisplay: normalizedOptionalString(row.display),
       opdbShortname: normalizedOptionalString(row.shortname),
