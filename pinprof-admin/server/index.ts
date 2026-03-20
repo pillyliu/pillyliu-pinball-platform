@@ -130,6 +130,51 @@ type AdminVideoOverrideRecord = {
   updated_at: string;
 };
 
+type AdminVideoAssetRecord = {
+  video_asset_id: number;
+  opdb_id: string;
+  provider: string;
+  kind: string;
+  label: string;
+  url: string;
+  priority: number;
+  is_hidden: number;
+  is_active: number;
+  note: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+type AdminRulesheetAssetRecord = {
+  rulesheet_asset_id: number;
+  opdb_id: string;
+  provider: string;
+  label: string;
+  url: string | null;
+  local_path: string | null;
+  source_url: string | null;
+  note: string | null;
+  priority: number;
+  is_hidden: number;
+  is_active: number;
+  created_at: string;
+  updated_at: string;
+};
+
+type AdminGameinfoAssetRecord = {
+  gameinfo_asset_id: number;
+  opdb_id: string;
+  provider: string;
+  label: string;
+  local_path: string | null;
+  priority: number;
+  is_hidden: number;
+  is_active: number;
+  note: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 type ControlBoardRow = {
   practiceIdentity: string;
   opdbMachineId: string | null;
@@ -244,6 +289,55 @@ type ActivityRecord = {
   created_at: string;
 };
 
+type VenueEntryOverrideRecord = {
+  library_entry_id: string;
+  source_id: string;
+  source_name: string;
+  source_type: string;
+  practice_identity: string | null;
+  opdb_id: string | null;
+  area: string | null;
+  area_order: number | null;
+  group_number: number | null;
+  position: number | null;
+  bank: number | null;
+  name: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: number | null;
+  playfield_image_url: string | null;
+  rulesheet_url: string | null;
+  tutorial_links_json: string;
+  gameplay_links_json: string;
+  competition_links_json: string;
+  created_at: string;
+  updated_at: string;
+};
+
+type VenueEntryEditPayload = {
+  area: string | null;
+  areaOrder: number | null;
+  groupNumber: number | null;
+  position: number | null;
+  bank: number | null;
+  name: string;
+  variant: string | null;
+  manufacturer: string | null;
+  year: number | null;
+  playfieldImageUrl: string | null;
+  rulesheetUrl: string | null;
+  tutorialLinks: string[];
+  gameplayLinks: string[];
+  competitionLinks: string[];
+};
+
+type VenueSourceMeta = {
+  sourceId: string;
+  sourceName: string;
+  venueLocation: string | null;
+  pmLocationId: string | null;
+};
+
 type WorkspaceStateRecord = {
   workspace_key: string;
   note_text: string | null;
@@ -322,6 +416,30 @@ function cleanEnvPath(value: string | undefined): string | null {
 
 function pathExists(candidate: string): boolean {
   return fs.existsSync(candidate);
+}
+
+function normalizeRulesheetAssetUrl(rawUrl: string): string {
+  try {
+    const parsed = new URL(rawUrl.trim());
+    const host = parsed.host.toLowerCase().replace(/^www\./, "");
+    const scheme = parsed.protocol === "http:" || parsed.protocol === "https:" ? "https:" : parsed.protocol;
+    const pathname = parsed.pathname || "/";
+    return `${scheme}//${host}${pathname}`;
+  } catch {
+    return rawUrl.trim();
+  }
+}
+
+function isGeneratedRulesheetProviderUrl(rawUrl: string): boolean {
+  const normalized = normalizeRulesheetAssetUrl(rawUrl).toLowerCase();
+  return (
+    normalized.includes("tiltforums.com/") ||
+    normalized.includes("pinballprimer.github.io/") ||
+    normalized.includes("pinballprimer.com/") ||
+    normalized.includes("pinball.org/") ||
+    normalized.includes("silverballmania.com/") ||
+    normalized.includes("flippers.be/")
+  );
 }
 
 function firstExistingPath(candidates: Array<string | null | undefined>): string | null {
@@ -1488,6 +1606,96 @@ adminDb.exec(`
   );
   CREATE INDEX IF NOT EXISTS idx_machine_video_overrides_practice_priority
     ON machine_video_overrides(practice_identity, priority, video_override_id);
+  CREATE TABLE IF NOT EXISTS video_assets (
+    video_asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    opdb_id TEXT NOT NULL,
+    provider TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    label TEXT NOT NULL,
+    url TEXT NOT NULL,
+    priority INTEGER NOT NULL,
+    is_hidden INTEGER NOT NULL DEFAULT 0,
+    is_active INTEGER NOT NULL DEFAULT 1,
+    note TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE(opdb_id, provider, kind, url)
+  );
+  CREATE INDEX IF NOT EXISTS idx_video_assets_opdb_provider
+    ON video_assets(opdb_id, provider, kind, is_active, is_hidden, priority, video_asset_id);
+  CREATE TABLE IF NOT EXISTS rulesheet_assets (
+    rulesheet_asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    opdb_id TEXT NOT NULL,
+    provider TEXT NOT NULL,
+    label TEXT NOT NULL,
+    url TEXT,
+    local_path TEXT,
+    source_url TEXT,
+    note TEXT,
+    priority INTEGER NOT NULL,
+    is_hidden INTEGER NOT NULL DEFAULT 0,
+    is_active INTEGER NOT NULL DEFAULT 1,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_rulesheet_assets_opdb_provider
+    ON rulesheet_assets(opdb_id, provider, is_active, is_hidden, priority, rulesheet_asset_id);
+  CREATE TABLE IF NOT EXISTS gameinfo_assets (
+    gameinfo_asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    opdb_id TEXT NOT NULL,
+    provider TEXT NOT NULL,
+    label TEXT NOT NULL,
+    local_path TEXT,
+    priority INTEGER NOT NULL,
+    is_hidden INTEGER NOT NULL DEFAULT 0,
+    is_active INTEGER NOT NULL DEFAULT 1,
+    note TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_gameinfo_assets_opdb_provider
+    ON gameinfo_assets(opdb_id, provider, is_active, is_hidden, priority, gameinfo_asset_id);
+  CREATE TABLE IF NOT EXISTS venue_entry_overrides (
+    library_entry_id TEXT PRIMARY KEY,
+    source_id TEXT NOT NULL,
+    source_name TEXT NOT NULL,
+    source_type TEXT NOT NULL,
+    practice_identity TEXT,
+    opdb_id TEXT,
+    area TEXT,
+    area_order INTEGER,
+    group_number INTEGER,
+    position INTEGER,
+    bank INTEGER,
+    name TEXT NOT NULL,
+    variant TEXT,
+    manufacturer TEXT,
+    year INTEGER,
+    playfield_image_url TEXT,
+    rulesheet_url TEXT,
+    tutorial_links_json TEXT NOT NULL,
+    gameplay_links_json TEXT NOT NULL,
+    competition_links_json TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_venue_entry_overrides_source ON venue_entry_overrides(source_id, updated_at DESC);
+  CREATE TABLE IF NOT EXISTS venue_layout_assets (
+    library_entry_id TEXT PRIMARY KEY,
+    source_id TEXT NOT NULL,
+    source_name TEXT NOT NULL,
+    source_type TEXT NOT NULL,
+    practice_identity TEXT,
+    opdb_id TEXT,
+    area TEXT,
+    area_order INTEGER,
+    group_number INTEGER,
+    position INTEGER,
+    bank INTEGER,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_venue_layout_assets_source ON venue_layout_assets(source_id, updated_at DESC);
   CREATE TABLE IF NOT EXISTS activity_log (
     activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
     practice_identity TEXT NOT NULL,
@@ -1684,6 +1892,218 @@ if (adminVideoOverrideCount === 0 && fs.existsSync(SEED_DB_PATH)) {
   bootstrapSeed.close();
 }
 
+const adminVideoAssetCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM video_assets").get() as { total: number }).total;
+if (adminVideoAssetCount === 0) {
+  const existing = adminDb
+    .prepare(`
+      SELECT
+        practice_identity,
+        kind,
+        label,
+        url,
+        priority
+      FROM machine_video_overrides
+      ORDER BY practice_identity, priority, lower(label)
+    `)
+    .all() as Array<Omit<AdminVideoAssetRecord, "video_asset_id" | "opdb_id" | "provider" | "is_hidden" | "is_active" | "note" | "created_at" | "updated_at"> & { practice_identity: string }>;
+  if (existing.length) {
+    const insert = adminDb.prepare(`
+      INSERT INTO video_assets (
+        opdb_id,
+        provider,
+        kind,
+        label,
+        url,
+        priority,
+        is_hidden,
+        is_active,
+        note,
+        created_at,
+        updated_at
+      ) VALUES (
+        @opdb_id,
+        'pinprof',
+        @kind,
+        @label,
+        @url,
+        @priority,
+        0,
+        1,
+        NULL,
+        @created_at,
+        @updated_at
+      )
+      ON CONFLICT(opdb_id, provider, kind, url) DO UPDATE SET
+        label=excluded.label,
+        priority=excluded.priority,
+        updated_at=excluded.updated_at
+    `);
+    const timestamp = nowIso();
+    const transaction = adminDb.transaction((rows: typeof existing) => {
+      for (const row of rows) {
+        insert.run({
+          opdb_id: row.practice_identity,
+          kind: row.kind,
+          label: row.label,
+          url: row.url,
+          priority: row.priority,
+          created_at: timestamp,
+          updated_at: timestamp,
+        });
+      }
+    });
+    transaction(existing);
+  }
+}
+
+const adminRulesheetAssetCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM rulesheet_assets").get() as { total: number }).total;
+if (adminRulesheetAssetCount === 0) {
+  const timestamp = nowIso();
+  const insert = adminDb.prepare(`
+    INSERT INTO rulesheet_assets (
+      opdb_id,
+      provider,
+      label,
+      url,
+      local_path,
+      source_url,
+      note,
+      priority,
+      is_hidden,
+      is_active,
+      created_at,
+      updated_at
+    ) VALUES (
+      @opdb_id,
+      'pinprof',
+      @label,
+      @url,
+      @local_path,
+      @source_url,
+      @note,
+      @priority,
+      0,
+      1,
+      @created_at,
+      @updated_at
+    )
+  `);
+  const existingOverrideRulesheetRows = fs.existsSync(SEED_DB_PATH)
+    ? (() => {
+        const bootstrapSeed = new Database(SEED_DB_PATH, { readonly: true });
+        try {
+          const hasSeedRulesheetOverrides = bootstrapSeed
+            .prepare(`
+              SELECT name
+              FROM sqlite_master
+              WHERE type = 'table' AND name = 'override_rulesheet_links'
+            `)
+            .get() as { name: string } | undefined;
+          if (!hasSeedRulesheetOverrides) return [] as Array<{ practice_identity: string; label: string; url: string; priority: number }>;
+          return bootstrapSeed
+            .prepare(`
+              SELECT
+                practice_identity,
+                label,
+                url,
+                priority
+              FROM override_rulesheet_links
+              ORDER BY practice_identity, priority, lower(label)
+            `)
+            .all() as Array<{ practice_identity: string; label: string; url: string; priority: number }>;
+        } finally {
+          bootstrapSeed.close();
+        }
+      })()
+    : [];
+  const localRulesheetCurationsPath = path.join(PUBLISHED_DATA_DIR, "local_rulesheet_curations_v1.json");
+  const curatedLocalRecords = pathExists(localRulesheetCurationsPath)
+    ? ((JSON.parse(fs.readFileSync(localRulesheetCurationsPath, "utf8")) as { records?: Array<{ practice_identity?: string; local_path?: string; notes?: string }> }).records ?? [])
+    : [];
+  const machineRulesheetRows = adminDb
+    .prepare(`
+      SELECT
+        practice_identity,
+        rulesheet_local_path,
+        rulesheet_source_url,
+        rulesheet_source_note
+      FROM machine_overrides
+    `)
+    .all() as Array<{ practice_identity: string; rulesheet_local_path: string | null; rulesheet_source_url: string | null; rulesheet_source_note: string | null }>;
+  const deduped = new Map<string, { opdb_id: string; label: string; url: string | null; local_path: string | null; source_url: string | null; note: string | null; priority: number; created_at: string; updated_at: string }>();
+  for (const row of machineRulesheetRows) {
+    const opdbId = cleanString(row.practice_identity);
+    const localPath = cleanString(row.rulesheet_local_path);
+    const sourceUrl = cleanString(row.rulesheet_source_url);
+    if (!opdbId) continue;
+    if (localPath) {
+      deduped.set(`local:${opdbId}:${localPath}`, {
+        opdb_id: opdbId,
+        label: "Rulesheet (PinProf)",
+        url: null,
+        local_path: localPath,
+        source_url: sourceUrl,
+        note: cleanString(row.rulesheet_source_note),
+        priority: 0,
+        created_at: timestamp,
+        updated_at: timestamp,
+      });
+    } else if (sourceUrl && !isGeneratedRulesheetProviderUrl(sourceUrl)) {
+      const normalizedUrl = normalizeRulesheetAssetUrl(sourceUrl);
+      deduped.set(`url:${opdbId}:${normalizedUrl}`, {
+        opdb_id: opdbId,
+        label: "Rulesheet (PinProf)",
+        url: normalizedUrl,
+        local_path: null,
+        source_url: normalizedUrl,
+        note: cleanString(row.rulesheet_source_note),
+        priority: 0,
+        created_at: timestamp,
+        updated_at: timestamp,
+      });
+    }
+  }
+  for (const row of curatedLocalRecords) {
+    const opdbId = cleanString(row.practice_identity);
+    const localPath = cleanString(row.local_path);
+    if (!opdbId || !localPath) continue;
+    deduped.set(`local:${opdbId}:${localPath}`, {
+      opdb_id: opdbId,
+      label: "Rulesheet (PinProf)",
+      url: null,
+      local_path: localPath,
+      source_url: null,
+      note: cleanString(row.notes),
+      priority: 0,
+      created_at: timestamp,
+      updated_at: timestamp,
+    });
+  }
+  for (const row of existingOverrideRulesheetRows) {
+    const opdbId = cleanString(row.practice_identity);
+    const url = cleanString(row.url);
+    if (!opdbId || !url || isGeneratedRulesheetProviderUrl(url)) continue;
+    const normalizedUrl = normalizeRulesheetAssetUrl(url);
+    deduped.set(`url:${opdbId}:${normalizedUrl}`, {
+      opdb_id: opdbId,
+      label: cleanString(row.label) ?? "Rulesheet (PinProf)",
+      url: normalizedUrl,
+      local_path: null,
+      source_url: normalizedUrl,
+      note: null,
+      priority: row.priority ?? 0,
+      created_at: timestamp,
+      updated_at: timestamp,
+    });
+  }
+  const transaction = adminDb.transaction((rows: Array<{ opdb_id: string; label: string; url: string | null; local_path: string | null; source_url: string | null; note: string | null; priority: number; created_at: string; updated_at: string }>) => {
+    for (const row of rows) {
+      insert.run(row);
+    }
+  });
+  transaction(Array.from(deduped.values()).sort((a, b) => a.opdb_id.localeCompare(b.opdb_id) || a.priority - b.priority));
+}
+
 const seedDb = new Database(SEED_DB_PATH);
 seedDb.exec(`ATTACH DATABASE '${escapeSqlitePath(ADMIN_DB_PATH)}' AS admin`);
 let pinsidePhotoBrowserSession: PinsidePhotoBrowserSessionState | null = null;
@@ -1851,6 +2271,787 @@ function getBuiltInRulesheetRowsByMembership(libraryEntryIds: string[]) {
   return grouped;
 }
 
+function getVenueEntryOverrideRecords() {
+  return adminDb
+    .prepare(`
+      SELECT *
+      FROM venue_entry_overrides
+      ORDER BY datetime(updated_at) DESC, lower(source_name), lower(name), lower(library_entry_id)
+    `)
+    .all() as VenueEntryOverrideRecord[];
+}
+
+function parseStoredVenueUrlArray(value: string | null) {
+  if (!value) return [] as string[];
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((entry) => cleanString(entry))
+      .filter((entry): entry is string => Boolean(entry));
+  } catch {
+    return [];
+  }
+}
+
+function normalizeVenueUrlSlots(value: unknown, label: string) {
+  if (!Array.isArray(value)) {
+    throw new Error(`${label} must be an array.`);
+  }
+  if (value.length > 4) {
+    throw new Error(`${label} can have at most 4 links.`);
+  }
+  const normalized: string[] = [];
+  value.forEach((entry, index) => {
+    const trimmed = cleanString(entry);
+    if (!trimmed) return;
+    normalized.push(normalizeHttpUrl(trimmed, `${label} ${index + 1}`));
+  });
+  return normalized;
+}
+
+function serializeVenueUrlSlots(value: string[]) {
+  return JSON.stringify(value);
+}
+
+function readPublishedVenueSourceMetadata() {
+  const out = new Map<string, VenueSourceMeta>();
+  const publishedLibraryPath = path.join(PUBLISHED_DATA_DIR, "pinball_library_v3.json");
+  if (!pathExists(publishedLibraryPath)) {
+    return out;
+  }
+
+  try {
+    const raw = JSON.parse(fs.readFileSync(publishedLibraryPath, "utf8")) as {
+      items?: Array<Record<string, unknown>>;
+    };
+    for (const item of raw.items ?? []) {
+      const sourceId = cleanString(item.library_id) ?? cleanString(item.source_id);
+      const sourceName = cleanString(item.library_name) ?? cleanString(item.venue);
+      if (!sourceId || !sourceName || out.has(sourceId)) continue;
+      out.set(sourceId, {
+        sourceId,
+        sourceName,
+        venueLocation: cleanString(item.venue_location),
+        pmLocationId: cleanString(item.pm_location_id),
+      });
+    }
+  } catch {
+    return out;
+  }
+
+  return out;
+}
+
+function getAllVenueMembershipRows() {
+  return seedDb.prepare(`
+    SELECT
+      library_entry_id AS libraryEntryId,
+      source_id AS sourceId,
+      source_name AS sourceName,
+      source_type AS sourceType,
+      practice_identity AS practiceIdentity,
+      opdb_id AS opdbId,
+      area,
+      area_order AS areaOrder,
+      group_number AS groupNumber,
+      position,
+      bank,
+      name,
+      variant,
+      manufacturer,
+      year,
+      slug,
+      primary_image_url AS primaryImageUrl,
+      primary_image_large_url AS primaryImageLargeUrl,
+      playfield_image_url AS playfieldImageUrl,
+      playfield_local_path AS playfieldLocalPath,
+      playfield_source_label AS playfieldSourceLabel,
+      gameinfo_local_path AS gameinfoLocalPath,
+      rulesheet_local_path AS rulesheetLocalPath,
+      rulesheet_url AS rulesheetUrl
+    FROM built_in_games
+    WHERE source_type = 'venue'
+    ORDER BY
+      lower(source_name),
+      area_order IS NULL,
+      area_order,
+      group_number IS NULL,
+      group_number,
+      position IS NULL,
+      position,
+      lower(name),
+      lower(coalesce(variant, '')),
+      lower(library_entry_id)
+  `).all() as MachineMembershipRow[];
+}
+
+function getVenueStudioBaseComparableRow(libraryEntryId: string) {
+  const row = seedDb.prepare(`
+    SELECT
+      library_entry_id AS libraryEntryId,
+      source_id AS sourceId,
+      source_name AS sourceName,
+      source_type AS sourceType,
+      practice_identity AS practiceIdentity,
+      opdb_id AS opdbId,
+      area,
+      area_order AS areaOrder,
+      group_number AS groupNumber,
+      position,
+      bank,
+      name,
+      variant,
+      manufacturer,
+      year,
+      slug,
+      primary_image_url AS primaryImageUrl,
+      primary_image_large_url AS primaryImageLargeUrl,
+      playfield_image_url AS playfieldImageUrl,
+      playfield_local_path AS playfieldLocalPath,
+      playfield_source_label AS playfieldSourceLabel,
+      gameinfo_local_path AS gameinfoLocalPath,
+      rulesheet_local_path AS rulesheetLocalPath,
+      rulesheet_url AS rulesheetUrl
+    FROM built_in_games
+    WHERE library_entry_id = ?
+    LIMIT 1
+  `).get(libraryEntryId) as MachineMembershipRow | undefined;
+  if (!row) return null;
+
+  const builtInVideos = getBuiltInVideoRowsByMembership([libraryEntryId]).get(libraryEntryId) ?? [];
+  const builtInRulesheetLinks = dedupeRulesheetLinks(
+    (getBuiltInRulesheetRowsByMembership([libraryEntryId]).get(libraryEntryId) ?? []).map((item) => ({
+      label: item.label,
+      url: item.url,
+      priority: item.priority,
+    })),
+  );
+
+  return {
+    ...row,
+    links: {
+      playfieldImageUrl: cleanString(row.playfieldImageUrl),
+      rulesheetUrl: cleanString(row.rulesheetUrl) ?? builtInRulesheetLinks[0]?.url ?? null,
+      tutorial: builtInVideos.filter((item) => item.kind === "tutorial").map((item) => item.url),
+      gameplay: builtInVideos.filter((item) => item.kind === "gameplay").map((item) => item.url),
+      competition: builtInVideos.filter((item) => item.kind === "competition").map((item) => item.url),
+    },
+  };
+}
+
+function getCanonicalAssetMap() {
+  const rows = seedDb.prepare(`
+    WITH canonical AS (
+      SELECT
+        practiceIdentity,
+        primaryImageUrl,
+        playfieldImageUrl
+      FROM (
+        SELECT
+          m.practice_identity AS practiceIdentity,
+          m.primary_image_large_url AS primaryImageUrl,
+          m.playfield_image_large_url AS playfieldImageUrl,
+          ROW_NUMBER() OVER (
+            PARTITION BY m.practice_identity
+            ORDER BY
+              CASE WHEN m.variant IS NULL OR trim(m.variant) = '' THEN 0 ELSE 1 END,
+              lower(coalesce(m.variant, '')),
+              lower(m.opdb_machine_id)
+          ) AS rank_index
+        FROM machines m
+      )
+      WHERE rank_index = 1
+    )
+    SELECT practiceIdentity, primaryImageUrl, playfieldImageUrl
+    FROM canonical
+  `).all() as Array<{ practiceIdentity: string; primaryImageUrl: string | null; playfieldImageUrl: string | null }>;
+  return new Map(rows.map((row) => [row.practiceIdentity, row] as const));
+}
+
+function getCountMap(
+  db: Database.Database,
+  sql: string,
+) {
+  const rows = db.prepare(sql).all() as Array<{ practiceIdentity: string; count: number }>;
+  return new Map(rows.map((row) => [row.practiceIdentity, row.count] as const));
+}
+
+function getMachineOverrideMap() {
+  const rows = adminDb.prepare(`
+    SELECT
+      practice_identity AS practiceIdentity,
+      rulesheet_local_path AS rulesheetLocalPath,
+      gameinfo_local_path AS gameinfoLocalPath
+    FROM machine_overrides
+  `).all() as Array<{ practiceIdentity: string; rulesheetLocalPath: string | null; gameinfoLocalPath: string | null }>;
+  return new Map(rows.map((row) => [row.practiceIdentity, row] as const));
+}
+
+function getVenueStudioRows() {
+  const sourceMeta = readPublishedVenueSourceMetadata();
+  const baseRows = getAllVenueMembershipRows();
+  const overrideMap = new Map(getVenueEntryOverrideRecords().map((row) => [row.library_entry_id, row] as const));
+  const libraryEntryIds = baseRows.map((row) => row.libraryEntryId);
+  const builtInVideosByMembership = getBuiltInVideoRowsByMembership(libraryEntryIds);
+  const builtInRulesheetsByMembership = getBuiltInRulesheetRowsByMembership(libraryEntryIds);
+  const canonicalMap = getCanonicalAssetMap();
+  const machineOverrideMap = getMachineOverrideMap();
+  const adminPlayfieldCounts = getCountMap(
+    adminDb,
+    `
+      SELECT
+        practice_identity AS practiceIdentity,
+        COUNT(*) AS count
+      FROM playfield_assets
+      WHERE playfield_local_path IS NOT NULL AND trim(playfield_local_path) != ''
+      GROUP BY practice_identity
+    `,
+  );
+  const catalogVideoCounts = getCountMap(
+    seedDb,
+    `
+      SELECT
+        practice_identity AS practiceIdentity,
+        COUNT(*) AS count
+      FROM catalog_video_links
+      GROUP BY practice_identity
+    `,
+  );
+  const overrideVideoCounts = getCountMap(
+    adminDb,
+    `
+      SELECT
+        opdb_id AS practiceIdentity,
+        COUNT(*) AS count
+      FROM video_assets
+      WHERE provider = 'pinprof'
+        AND is_active = 1
+        AND is_hidden = 0
+      GROUP BY opdb_id
+    `,
+  );
+  const catalogRulesheetCounts = getCountMap(
+    seedDb,
+    `
+      SELECT
+        practice_identity AS practiceIdentity,
+        COUNT(*) AS count
+      FROM catalog_rulesheet_links
+      GROUP BY practice_identity
+    `,
+  );
+  const overrideRulesheetCounts = getCountMap(
+    adminDb,
+    `
+      SELECT
+        opdb_id AS practiceIdentity,
+        COUNT(*) AS count
+      FROM rulesheet_assets
+      WHERE provider = 'pinprof'
+        AND is_active = 1
+        AND is_hidden = 0
+        AND url IS NOT NULL
+        AND trim(url) != ''
+      GROUP BY opdb_id
+    `,
+  );
+
+  return baseRows.map((row) => {
+    const override = overrideMap.get(row.libraryEntryId) ?? null;
+    const builtInVideos = builtInVideosByMembership.get(row.libraryEntryId) ?? [];
+    const builtInRulesheetLinks = dedupeRulesheetLinks(
+      (builtInRulesheetsByMembership.get(row.libraryEntryId) ?? []).map((item) => ({
+        label: item.label,
+        url: item.url,
+        priority: item.priority,
+      })),
+    );
+    const tutorialLinks = override
+      ? parseStoredVenueUrlArray(override.tutorial_links_json)
+      : builtInVideos.filter((item) => item.kind === "tutorial").map((item) => item.url);
+    const gameplayLinks = override
+      ? parseStoredVenueUrlArray(override.gameplay_links_json)
+      : builtInVideos.filter((item) => item.kind === "gameplay").map((item) => item.url);
+    const competitionLinks = override
+      ? parseStoredVenueUrlArray(override.competition_links_json)
+      : builtInVideos.filter((item) => item.kind === "competition").map((item) => item.url);
+    const machineMeta = row.practiceIdentity ? canonicalMap.get(row.practiceIdentity) ?? null : null;
+    const machineOverride = row.practiceIdentity ? machineOverrideMap.get(row.practiceIdentity) ?? null : null;
+    const effectivePlayfieldImageUrl = override ? cleanString(override.playfield_image_url) : cleanString(row.playfieldImageUrl);
+    const effectiveRulesheetUrl =
+      override != null
+        ? cleanString(override.rulesheet_url)
+        : cleanString(row.rulesheetUrl) ?? builtInRulesheetLinks[0]?.url ?? null;
+    const hasAnyVenueVideo = tutorialLinks.length + gameplayLinks.length + competitionLinks.length > 0;
+    const hasEffectivePlayfield =
+      Boolean(effectivePlayfieldImageUrl) ||
+      Boolean(cleanString(row.playfieldLocalPath)) ||
+      Boolean(adminPlayfieldCounts.get(row.practiceIdentity ?? "") ?? 0) ||
+      Boolean(machineMeta?.playfieldImageUrl);
+    const hasEffectiveRulesheet =
+      Boolean(effectiveRulesheetUrl) ||
+      Boolean(cleanString(row.rulesheetLocalPath)) ||
+      Boolean(machineOverride?.rulesheetLocalPath) ||
+      builtInRulesheetLinks.length > 0 ||
+      Boolean(catalogRulesheetCounts.get(row.practiceIdentity ?? "") ?? 0) ||
+      Boolean(overrideRulesheetCounts.get(row.practiceIdentity ?? "") ?? 0);
+    const hasEffectiveGameinfo = Boolean(cleanString(row.gameinfoLocalPath)) || Boolean(machineOverride?.gameinfoLocalPath);
+    const needsAttention = !hasEffectivePlayfield || !hasEffectiveRulesheet || !hasAnyVenueVideo;
+    const meta = sourceMeta.get(row.sourceId) ?? {
+      sourceId: row.sourceId,
+      sourceName: row.sourceName,
+      venueLocation: null,
+      pmLocationId: null,
+    };
+
+    return {
+      libraryEntryId: row.libraryEntryId,
+      sourceId: row.sourceId,
+      sourceName: row.sourceName,
+      sourceType: row.sourceType,
+      venueLocation: meta.venueLocation,
+      pmLocationId: meta.pmLocationId,
+      practiceIdentity: row.practiceIdentity,
+      opdbId: row.opdbId,
+      slug: row.slug,
+      name: override?.name ?? row.name,
+      variant: override?.variant ?? row.variant,
+      manufacturer: override?.manufacturer ?? row.manufacturer,
+      year: override?.year ?? row.year,
+      area: override?.area ?? row.area,
+      areaOrder: override?.area_order ?? row.areaOrder,
+      groupNumber: override?.group_number ?? row.groupNumber,
+      position: override?.position ?? row.position,
+      bank: override?.bank ?? row.bank,
+      links: {
+        playfieldImageUrl: effectivePlayfieldImageUrl,
+        rulesheetUrl: effectiveRulesheetUrl,
+        tutorial: tutorialLinks,
+        gameplay: gameplayLinks,
+        competition: competitionLinks,
+      },
+      assets: {
+        builtInPlayfieldLocalPath: row.playfieldLocalPath,
+        builtInRulesheetLocalPath: row.rulesheetLocalPath,
+        builtInGameinfoLocalPath: row.gameinfoLocalPath,
+        builtInRulesheetLinks: builtInRulesheetLinks.map((item) => item.url),
+        canonicalPlayfieldUrl: machineMeta?.playfieldImageUrl ?? null,
+        canonicalBackglassUrl: machineMeta?.primaryImageUrl ?? null,
+        primaryImageUrl: row.primaryImageLargeUrl ?? row.primaryImageUrl,
+        adminPlayfieldCount: adminPlayfieldCounts.get(row.practiceIdentity ?? "") ?? 0,
+        adminHasRulesheet: Boolean(machineOverride?.rulesheetLocalPath),
+        adminHasGameinfo: Boolean(machineOverride?.gameinfoLocalPath),
+        catalogVideoCount: catalogVideoCounts.get(row.practiceIdentity ?? "") ?? 0,
+        overrideVideoCount: overrideVideoCounts.get(row.practiceIdentity ?? "") ?? 0,
+        catalogRulesheetCount: catalogRulesheetCounts.get(row.practiceIdentity ?? "") ?? 0,
+        overrideRulesheetCount: overrideRulesheetCounts.get(row.practiceIdentity ?? "") ?? 0,
+      },
+      flags: {
+        isEdited: Boolean(override),
+        needsAttention,
+        hasVenuePlayfield: Boolean(effectivePlayfieldImageUrl),
+        hasVenueRulesheet: Boolean(effectiveRulesheetUrl),
+        hasVenueVideos: hasAnyVenueVideo,
+        hasEffectivePlayfield,
+        hasEffectiveRulesheet,
+        hasEffectiveGameinfo,
+      },
+      updatedAt: override?.updated_at ?? null,
+    };
+  });
+}
+
+function getVenueStudioSnapshot() {
+  const rows = getVenueStudioRows();
+  const sourceMap = rows.reduce((map, row) => {
+      const existing = map.get(row.sourceId) ?? {
+        sourceId: row.sourceId,
+        sourceName: row.sourceName,
+        sourceType: row.sourceType,
+        venueLocation: row.venueLocation,
+        pmLocationId: row.pmLocationId,
+        rowCount: 0,
+        editedRows: 0,
+        needsAttentionRows: 0,
+        missingPlayfieldRows: 0,
+        missingRulesheetRows: 0,
+        zeroVideoRows: 0,
+      };
+      existing.rowCount += 1;
+      if (row.flags.isEdited) existing.editedRows += 1;
+      if (row.flags.needsAttention) existing.needsAttentionRows += 1;
+      if (!row.flags.hasEffectivePlayfield) existing.missingPlayfieldRows += 1;
+      if (!row.flags.hasEffectiveRulesheet) existing.missingRulesheetRows += 1;
+      if (!row.flags.hasVenueVideos) existing.zeroVideoRows += 1;
+      map.set(row.sourceId, existing);
+      return map;
+    }, new Map<string, {
+      sourceId: string;
+      sourceName: string;
+      sourceType: string;
+      venueLocation: string | null;
+      pmLocationId: string | null;
+      rowCount: number;
+      editedRows: number;
+      needsAttentionRows: number;
+      missingPlayfieldRows: number;
+      missingRulesheetRows: number;
+      zeroVideoRows: number;
+    }>());
+  const sources = Array.from(sourceMap.values()).sort((left, right) =>
+    left.sourceName.localeCompare(right.sourceName, undefined, { sensitivity: "base" }),
+  );
+
+  return { sources, rows };
+}
+
+function parseVenueEntryEditPayload(body: unknown): VenueEntryEditPayload {
+  const value = body && typeof body === "object" ? (body as Record<string, unknown>) : {};
+  const name = cleanString(value.name);
+  if (!name) {
+    throw new Error("Game name is required.");
+  }
+
+  const year = cleanInteger(value.year);
+  if (year != null && (year < 1930 || year > 2100)) {
+    throw new Error("Year must be between 1930 and 2100.");
+  }
+
+  return {
+    area: cleanString(value.area),
+    areaOrder: cleanInteger(value.areaOrder),
+    groupNumber: cleanInteger(value.groupNumber),
+    position: cleanInteger(value.position),
+    bank: cleanInteger(value.bank),
+    name,
+    variant: cleanString(value.variant),
+    manufacturer: cleanString(value.manufacturer),
+    year,
+    playfieldImageUrl: normalizeOptionalHttpUrl(value.playfieldImageUrl, "Playfield image URL"),
+    rulesheetUrl: normalizeOptionalHttpUrl(value.rulesheetUrl, "Rulesheet URL"),
+    tutorialLinks: normalizeVenueUrlSlots(value.tutorialLinks ?? [], "Tutorial links"),
+    gameplayLinks: normalizeVenueUrlSlots(value.gameplayLinks ?? [], "Gameplay links"),
+    competitionLinks: normalizeVenueUrlSlots(value.competitionLinks ?? [], "Competition links"),
+  };
+}
+
+function upsertVenueEntryOverride(libraryEntryId: string, patch: VenueEntryEditPayload) {
+  const base = getVenueStudioBaseComparableRow(libraryEntryId);
+  if (!base) {
+    throw new Error(`Unknown venue row: ${libraryEntryId}`);
+  }
+
+  const existing = adminDb
+    .prepare("SELECT * FROM venue_entry_overrides WHERE library_entry_id = ?")
+    .get(libraryEntryId) as VenueEntryOverrideRecord | undefined;
+
+  const comparableBase = {
+    area: base.area,
+    areaOrder: base.areaOrder,
+    groupNumber: base.groupNumber,
+    position: base.position,
+    bank: base.bank,
+    name: base.name,
+    variant: base.variant,
+    manufacturer: base.manufacturer,
+    year: base.year,
+    playfieldImageUrl: base.links.playfieldImageUrl,
+    rulesheetUrl: base.links.rulesheetUrl,
+    tutorialLinks: base.links.tutorial,
+    gameplayLinks: base.links.gameplay,
+    competitionLinks: base.links.competition,
+  };
+
+  const matchesBase =
+    comparableBase.area === patch.area &&
+    comparableBase.areaOrder === patch.areaOrder &&
+    comparableBase.groupNumber === patch.groupNumber &&
+    comparableBase.position === patch.position &&
+    comparableBase.bank === patch.bank &&
+    comparableBase.name === patch.name &&
+    comparableBase.variant === patch.variant &&
+    comparableBase.manufacturer === patch.manufacturer &&
+    comparableBase.year === patch.year &&
+    comparableBase.playfieldImageUrl === patch.playfieldImageUrl &&
+    comparableBase.rulesheetUrl === patch.rulesheetUrl &&
+    JSON.stringify(comparableBase.tutorialLinks) === JSON.stringify(patch.tutorialLinks) &&
+    JSON.stringify(comparableBase.gameplayLinks) === JSON.stringify(patch.gameplayLinks) &&
+    JSON.stringify(comparableBase.competitionLinks) === JSON.stringify(patch.competitionLinks);
+
+  if (matchesBase) {
+    adminDb.prepare("DELETE FROM venue_entry_overrides WHERE library_entry_id = ?").run(libraryEntryId);
+    return { row: base, reset: true };
+  }
+
+  const next: VenueEntryOverrideRecord = {
+    library_entry_id: libraryEntryId,
+    source_id: base.sourceId,
+    source_name: base.sourceName,
+    source_type: base.sourceType,
+    practice_identity: base.practiceIdentity,
+    opdb_id: base.opdbId,
+    area: patch.area,
+    area_order: patch.areaOrder,
+    group_number: patch.groupNumber,
+    position: patch.position,
+    bank: patch.bank,
+    name: patch.name,
+    variant: patch.variant,
+    manufacturer: patch.manufacturer,
+    year: patch.year,
+    playfield_image_url: patch.playfieldImageUrl,
+    rulesheet_url: patch.rulesheetUrl,
+    tutorial_links_json: serializeVenueUrlSlots(patch.tutorialLinks),
+    gameplay_links_json: serializeVenueUrlSlots(patch.gameplayLinks),
+    competition_links_json: serializeVenueUrlSlots(patch.competitionLinks),
+    created_at: existing?.created_at ?? nowIso(),
+    updated_at: nowIso(),
+  };
+
+  adminDb.prepare(`
+    INSERT INTO venue_entry_overrides (
+      library_entry_id,
+      source_id,
+      source_name,
+      source_type,
+      practice_identity,
+      opdb_id,
+      area,
+      area_order,
+      group_number,
+      position,
+      bank,
+      name,
+      variant,
+      manufacturer,
+      year,
+      playfield_image_url,
+      rulesheet_url,
+      tutorial_links_json,
+      gameplay_links_json,
+      competition_links_json,
+      created_at,
+      updated_at
+    ) VALUES (
+      @library_entry_id,
+      @source_id,
+      @source_name,
+      @source_type,
+      @practice_identity,
+      @opdb_id,
+      @area,
+      @area_order,
+      @group_number,
+      @position,
+      @bank,
+      @name,
+      @variant,
+      @manufacturer,
+      @year,
+      @playfield_image_url,
+      @rulesheet_url,
+      @tutorial_links_json,
+      @gameplay_links_json,
+      @competition_links_json,
+      @created_at,
+      @updated_at
+    )
+    ON CONFLICT(library_entry_id) DO UPDATE SET
+      source_id=excluded.source_id,
+      source_name=excluded.source_name,
+      source_type=excluded.source_type,
+      practice_identity=excluded.practice_identity,
+      opdb_id=excluded.opdb_id,
+      area=excluded.area,
+      area_order=excluded.area_order,
+      group_number=excluded.group_number,
+      position=excluded.position,
+      bank=excluded.bank,
+      name=excluded.name,
+      variant=excluded.variant,
+      manufacturer=excluded.manufacturer,
+      year=excluded.year,
+      playfield_image_url=excluded.playfield_image_url,
+      rulesheet_url=excluded.rulesheet_url,
+      tutorial_links_json=excluded.tutorial_links_json,
+      gameplay_links_json=excluded.gameplay_links_json,
+      competition_links_json=excluded.competition_links_json,
+      updated_at=excluded.updated_at
+  `).run(next);
+  syncVenueLayoutAsset(libraryEntryId);
+
+  return { row: next, reset: false };
+}
+
+function syncVenueLayoutAsset(libraryEntryId: string) {
+  const base = getVenueStudioBaseComparableRow(libraryEntryId);
+  if (!base || base.sourceType !== "venue" || !base.sourceId || !base.opdbId) {
+    adminDb.prepare("DELETE FROM venue_layout_assets WHERE library_entry_id = ?").run(libraryEntryId);
+    return;
+  }
+
+  const override = adminDb
+    .prepare("SELECT * FROM venue_entry_overrides WHERE library_entry_id = ?")
+    .get(libraryEntryId) as VenueEntryOverrideRecord | undefined;
+  const existing = adminDb
+    .prepare("SELECT created_at FROM venue_layout_assets WHERE library_entry_id = ?")
+    .get(libraryEntryId) as { created_at: string } | undefined;
+  const now = nowIso();
+
+  adminDb.prepare(`
+    INSERT INTO venue_layout_assets (
+      library_entry_id,
+      source_id,
+      source_name,
+      source_type,
+      practice_identity,
+      opdb_id,
+      area,
+      area_order,
+      group_number,
+      position,
+      bank,
+      created_at,
+      updated_at
+    ) VALUES (
+      @library_entry_id,
+      @source_id,
+      @source_name,
+      @source_type,
+      @practice_identity,
+      @opdb_id,
+      @area,
+      @area_order,
+      @group_number,
+      @position,
+      @bank,
+      @created_at,
+      @updated_at
+    )
+    ON CONFLICT(library_entry_id) DO UPDATE SET
+      source_id=excluded.source_id,
+      source_name=excluded.source_name,
+      source_type=excluded.source_type,
+      practice_identity=excluded.practice_identity,
+      opdb_id=excluded.opdb_id,
+      area=excluded.area,
+      area_order=excluded.area_order,
+      group_number=excluded.group_number,
+      position=excluded.position,
+      bank=excluded.bank,
+      updated_at=excluded.updated_at
+  `).run({
+    library_entry_id: libraryEntryId,
+    source_id: base.sourceId,
+    source_name: base.sourceName,
+    source_type: base.sourceType,
+    practice_identity: base.practiceIdentity,
+    opdb_id: base.opdbId,
+    area: override?.area ?? base.area,
+    area_order: override?.area_order ?? base.areaOrder,
+    group_number: override?.group_number ?? base.groupNumber,
+    position: override?.position ?? base.position,
+    bank: override?.bank ?? base.bank,
+    created_at: existing?.created_at ?? override?.created_at ?? now,
+    updated_at: override?.updated_at ?? now,
+  });
+}
+
+function deleteVenueEntryOverride(libraryEntryId: string) {
+  adminDb.prepare("DELETE FROM venue_entry_overrides WHERE library_entry_id = ?").run(libraryEntryId);
+  syncVenueLayoutAsset(libraryEntryId);
+}
+
+function csvEscape(value: string | number | null | undefined) {
+  const text = String(value ?? "");
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, "\"\"")}"` : text;
+}
+
+function buildVenueStudioCsv(sourceId: string) {
+  const snapshot = getVenueStudioSnapshot();
+  const source = snapshot.sources.find((item) => item.sourceId === sourceId);
+  if (!source) {
+    throw new Error(`Unknown venue source: ${sourceId}`);
+  }
+  const rows = snapshot.rows.filter((row) => row.sourceId === sourceId);
+  const headers = [
+    "library_entry_id",
+    "practice_identity",
+    "opdb_id",
+    "Venue",
+    "PM_location_id",
+    "Venue Location",
+    "Area",
+    "AreaOrder",
+    "Group",
+    "Position",
+    "Bank",
+    "Game",
+    "Variant",
+    "Manufacturer",
+    "Year",
+    "Playfield Image",
+    "Rulesheet",
+    "Tutorial 1",
+    "Tutorial 2",
+    "Tutorial 3",
+    "Tutorial 4",
+    "Gameplay 1",
+    "Gameplay 2",
+    "Gameplay 3",
+    "Gameplay 4",
+    "Competition 1",
+    "Competition 2",
+    "Competition 3",
+    "Competition 4",
+  ];
+
+  const lines = [
+    headers.join(","),
+    ...rows.map((row) =>
+      [
+        row.libraryEntryId,
+        row.practiceIdentity,
+        row.opdbId,
+        row.sourceName,
+        row.pmLocationId,
+        row.venueLocation,
+        row.area,
+        row.areaOrder,
+        row.groupNumber,
+        row.position,
+        row.bank,
+        row.name,
+        row.variant,
+        row.manufacturer,
+        row.year,
+        row.links.playfieldImageUrl,
+        row.links.rulesheetUrl,
+        row.links.tutorial[0] ?? null,
+        row.links.tutorial[1] ?? null,
+        row.links.tutorial[2] ?? null,
+        row.links.tutorial[3] ?? null,
+        row.links.gameplay[0] ?? null,
+        row.links.gameplay[1] ?? null,
+        row.links.gameplay[2] ?? null,
+        row.links.gameplay[3] ?? null,
+        row.links.competition[0] ?? null,
+        row.links.competition[1] ?? null,
+        row.links.competition[2] ?? null,
+        row.links.competition[3] ?? null,
+      ]
+        .map(csvEscape)
+        .join(","),
+    ),
+  ];
+
+  return {
+    fileName: `${source.sourceName.replace(/[^A-Za-z0-9]+/g, "_").replace(/^_+|_+$/g, "").toLowerCase() || "venue"}.csv`,
+    csv: `${lines.join("\n")}\n`,
+  };
+}
+
 function getCatalogVideoLinks(practiceIdentity: string): MachineVideoLinkRow[] {
   return seedDb.prepare(`
     SELECT
@@ -1867,6 +3068,22 @@ function getCatalogVideoLinks(practiceIdentity: string): MachineVideoLinkRow[] {
 }
 
 function getOverrideVideoLinks(practiceIdentity: string): MachineVideoLinkRow[] {
+  const assetRows = adminDb.prepare(`
+    SELECT
+      opdb_id AS practiceIdentity,
+      'pinprof' AS provider,
+      kind,
+      label,
+      url,
+      priority
+    FROM video_assets
+    WHERE opdb_id = ?
+      AND provider = 'pinprof'
+      AND is_active = 1
+      AND is_hidden = 0
+    ORDER BY priority, lower(kind), lower(label)
+  `).all(practiceIdentity) as MachineVideoLinkRow[];
+  if (assetRows.length) return assetRows;
   return adminDb.prepare(`
     SELECT
       practice_identity AS practiceIdentity,
@@ -1896,6 +3113,23 @@ function getCatalogRulesheetLinks(practiceIdentity: string): MachineRulesheetLin
 }
 
 function getOverrideRulesheetLinks(practiceIdentity: string): MachineRulesheetLinkRow[] {
+  const assetRows = adminDb.prepare(`
+    SELECT
+      opdb_id AS practiceIdentity,
+      'pinprof' AS provider,
+      label,
+      url,
+      priority
+    FROM rulesheet_assets
+    WHERE opdb_id = ?
+      AND provider = 'pinprof'
+      AND is_active = 1
+      AND is_hidden = 0
+      AND url IS NOT NULL
+      AND trim(url) != ''
+    ORDER BY priority, lower(label)
+  `).all(practiceIdentity) as MachineRulesheetLinkRow[];
+  if (assetRows.length) return assetRows;
   return seedDb.prepare(`
     SELECT
       practice_identity AS practiceIdentity,
@@ -1907,6 +3141,34 @@ function getOverrideRulesheetLinks(practiceIdentity: string): MachineRulesheetLi
     WHERE practice_identity = ?
     ORDER BY priority, lower(label)
   `).all(practiceIdentity) as MachineRulesheetLinkRow[];
+}
+
+function getGameinfoAssetRecord(practiceIdentity: string): AdminGameinfoAssetRecord | null {
+  return (
+    adminDb.prepare(`
+      SELECT
+        gameinfo_asset_id,
+        opdb_id,
+        provider,
+        label,
+        local_path,
+        priority,
+        is_hidden,
+        is_active,
+        note,
+        created_at,
+        updated_at
+      FROM gameinfo_assets
+      WHERE opdb_id = ?
+        AND provider = 'pinprof'
+        AND is_active = 1
+        AND is_hidden = 0
+        AND local_path IS NOT NULL
+        AND trim(local_path) != ''
+      ORDER BY priority, lower(local_path)
+      LIMIT 1
+    `).get(practiceIdentity) as AdminGameinfoAssetRecord | undefined
+  ) ?? null;
 }
 
 function dedupeRulesheetLinks(links: Array<{ label: string; url: string; priority: number }>) {
@@ -1944,6 +3206,7 @@ function getMachineAliases(practiceIdentity: string): MachineAliasRow[] {
 }
 
 bootstrapLegacyPlayfieldAssets();
+bootstrapLegacyGameinfoAssets();
 
 function getPlayfieldAssetRecords(practiceIdentity: string): PlayfieldAssetRecord[] {
   return adminDb
@@ -2008,6 +3271,45 @@ function syncLegacyPlayfieldOverride(practiceIdentity: string, assetRows?: Playf
     playfield_source_url: primary.playfield_source_url,
     playfield_source_note: primary.playfield_source_note,
   });
+}
+
+function bootstrapLegacyGameinfoAssets() {
+  const legacyRows = adminDb
+    .prepare(`
+      SELECT practice_identity, gameinfo_local_path, created_at, updated_at
+      FROM machine_overrides
+      WHERE gameinfo_local_path IS NOT NULL AND trim(gameinfo_local_path) != ''
+    `)
+    .all() as Array<{ practice_identity: string; gameinfo_local_path: string; created_at: string; updated_at: string }>;
+
+  if (!legacyRows.length) return;
+
+  const hasRows = (
+    adminDb.prepare("SELECT COUNT(*) AS total FROM gameinfo_assets").get() as { total: number }
+  ).total;
+  if (hasRows > 0) return;
+
+  const insert = adminDb.prepare(`
+    INSERT INTO gameinfo_assets (
+      opdb_id,
+      provider,
+      label,
+      local_path,
+      priority,
+      is_hidden,
+      is_active,
+      note,
+      created_at,
+      updated_at
+    ) VALUES (?, 'pinprof', 'Game Info (PinProf)', ?, 0, 0, 1, NULL, ?, ?)
+  `);
+  const transaction = adminDb.transaction((rows: typeof legacyRows) => {
+    for (const row of rows) {
+      insert.run(row.practice_identity, row.gameinfo_local_path, row.created_at, row.updated_at);
+    }
+  });
+
+  transaction(legacyRows);
 }
 
 function bootstrapLegacyPlayfieldAssets() {
@@ -3049,17 +4351,21 @@ function replaceVideoOverrides(practiceIdentity: string, rows: Array<Pick<AdminV
     throw new Error(`Unknown machine: ${practiceIdentity}`);
   }
 
-  const removeExisting = adminDb.prepare("DELETE FROM machine_video_overrides WHERE practice_identity = ?");
+  const removeExisting = adminDb.prepare("DELETE FROM video_assets WHERE opdb_id = ? AND provider = 'pinprof'");
   const insert = adminDb.prepare(`
-    INSERT INTO machine_video_overrides (
-      practice_identity,
+    INSERT INTO video_assets (
+      opdb_id,
+      provider,
       kind,
       label,
       url,
       priority,
+      is_hidden,
+      is_active,
+      note,
       created_at,
       updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, 'pinprof', ?, ?, ?, ?, 0, 1, NULL, ?, ?)
   `);
   const transaction = adminDb.transaction((nextRows: Array<Pick<AdminVideoOverrideRecord, "kind" | "label" | "url" | "priority">>) => {
     removeExisting.run(practiceIdentity);
@@ -3070,6 +4376,75 @@ function replaceVideoOverrides(practiceIdentity: string, rows: Array<Pick<AdminV
   });
 
   transaction(rows);
+  runApplyOverrides();
+}
+
+function syncPinprofRulesheetAssets(practiceIdentity: string) {
+  const override = getOverrideRecord(practiceIdentity);
+  const removeExisting = adminDb.prepare("DELETE FROM rulesheet_assets WHERE opdb_id = ? AND provider = 'pinprof'");
+  const insert = adminDb.prepare(`
+    INSERT INTO rulesheet_assets (
+      opdb_id,
+      provider,
+      label,
+      url,
+      local_path,
+      source_url,
+      note,
+      priority,
+      is_hidden,
+      is_active,
+      created_at,
+      updated_at
+    ) VALUES (?, 'pinprof', ?, ?, ?, ?, ?, ?, 0, 1, ?, ?)
+  `);
+  const timestamp = nowIso();
+  const localPath = cleanString(override?.rulesheet_local_path);
+  const sourceUrl = cleanString(override?.rulesheet_source_url);
+  const sourceNote = cleanString(override?.rulesheet_source_note);
+
+  const transaction = adminDb.transaction(() => {
+    removeExisting.run(practiceIdentity);
+    if (localPath) {
+      insert.run(practiceIdentity, "Rulesheet (PinProf)", null, localPath, sourceUrl, sourceNote, 0, timestamp, timestamp);
+      return;
+    }
+    if (sourceUrl && !isGeneratedRulesheetProviderUrl(sourceUrl)) {
+      const normalizedUrl = normalizeRulesheetAssetUrl(sourceUrl);
+      insert.run(practiceIdentity, "Rulesheet (PinProf)", normalizedUrl, null, normalizedUrl, sourceNote, 0, timestamp, timestamp);
+    }
+  });
+  transaction();
+  runApplyOverrides();
+}
+
+function syncPinprofGameinfoAssets(practiceIdentity: string) {
+  const override = getOverrideRecord(practiceIdentity);
+  const removeExisting = adminDb.prepare("DELETE FROM gameinfo_assets WHERE opdb_id = ? AND provider = 'pinprof'");
+  const insert = adminDb.prepare(`
+    INSERT INTO gameinfo_assets (
+      opdb_id,
+      provider,
+      label,
+      local_path,
+      priority,
+      is_hidden,
+      is_active,
+      note,
+      created_at,
+      updated_at
+    ) VALUES (?, 'pinprof', 'Game Info (PinProf)', ?, 0, 0, 1, NULL, ?, ?)
+  `);
+  const timestamp = nowIso();
+  const localPath = cleanString(override?.gameinfo_local_path);
+
+  const transaction = adminDb.transaction(() => {
+    removeExisting.run(practiceIdentity);
+    if (localPath) {
+      insert.run(practiceIdentity, localPath, timestamp, timestamp);
+    }
+  });
+  transaction();
   runApplyOverrides();
 }
 
@@ -3094,6 +4469,7 @@ async function saveRulesheetMarkdown(practiceIdentity: string, markdown: string,
     rulesheet_source_url: sourceUrl,
     rulesheet_source_note: sourceNote,
   });
+  syncPinprofRulesheetAssets(practiceIdentity);
   return {
     localPath: `/pinball/rulesheets/${filename}`,
   };
@@ -3107,6 +4483,39 @@ async function importRulesheetFromPath(practiceIdentity: string, sourcePath: str
   }
   const markdown = await fsp.readFile(resolved, "utf8");
   const result = await saveRulesheetMarkdown(practiceIdentity, markdown, sourceUrl, sourceNote ?? resolved);
+  return {
+    ...result,
+    sourcePath: resolved,
+  };
+}
+
+async function saveGameinfoMarkdown(practiceIdentity: string, markdown: string) {
+  const normalized = markdown.trim();
+  if (!normalized) {
+    throw new Error("Game info markdown cannot be empty.");
+  }
+
+  await ensureDir(SHARED_GAMEINFO_DIR);
+  const filename = `${practiceIdentity}-gameinfo.md`;
+  const fsPath = path.join(SHARED_GAMEINFO_DIR, filename);
+  await fsp.writeFile(fsPath, normalized.endsWith("\n") ? normalized : `${normalized}\n`, "utf8");
+  upsertOverride(practiceIdentity, {
+    gameinfo_local_path: `/pinball/gameinfo/${filename}`,
+  });
+  syncPinprofGameinfoAssets(practiceIdentity);
+  return {
+    localPath: `/pinball/gameinfo/${filename}`,
+  };
+}
+
+async function importGameinfoFromPath(practiceIdentity: string, sourcePath: string) {
+  const resolved = path.resolve(sourcePath);
+  const stat = await fsp.stat(resolved).catch(() => null);
+  if (!stat?.isFile()) {
+    throw new Error(`Game info file not found: ${resolved}`);
+  }
+  const markdown = await fsp.readFile(resolved, "utf8");
+  const result = await saveGameinfoMarkdown(practiceIdentity, markdown);
   return {
     ...result,
     sourcePath: resolved,
@@ -3435,7 +4844,17 @@ app.get("/api/summary", authRequired, (_req, res) => {
           UNION ALL
           SELECT practice_identity FROM playfield_assets
           UNION ALL
-          SELECT practice_identity FROM machine_video_overrides
+          SELECT opdb_id AS practice_identity
+          FROM gameinfo_assets
+          WHERE provider = 'pinprof'
+            AND is_active = 1
+            AND is_hidden = 0
+          UNION ALL
+          SELECT opdb_id AS practice_identity
+          FROM video_assets
+          WHERE provider = 'pinprof'
+            AND is_active = 1
+            AND is_hidden = 0
         )
       `)
       .get() as { total: number }
@@ -3522,6 +4941,81 @@ app.post("/api/machines/:practiceIdentity/pinside-photo-browser/launch", authReq
     res.json(session);
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to launch Pinside photo browser.");
+  }
+});
+
+app.get("/api/venue-studio", authRequired, (_req, res) => {
+  res.json(getVenueStudioSnapshot());
+});
+
+app.put("/api/venue-studio/entries/:libraryEntryId", authRequired, (req, res) => {
+  try {
+    const libraryEntryId = String(req.params.libraryEntryId);
+    const payload = parseVenueEntryEditPayload(req.body);
+    const base = getVenueStudioBaseComparableRow(libraryEntryId);
+    if (!base) {
+      jsonError(res, 404, "Venue row not found.");
+      return;
+    }
+
+    const result = upsertVenueEntryOverride(libraryEntryId, payload);
+    if (base.practiceIdentity) {
+      recordActivity(
+        base.practiceIdentity,
+        result.reset ? "venue_row_reset" : "venue_row_updated",
+        result.reset
+          ? `Reset ${base.sourceName} venue row for ${base.name}.`
+          : `Updated ${base.sourceName} venue row for ${payload.name}.`,
+        {
+          source: base.sourceName,
+          libraryEntryId,
+          slot: [payload.area ? `A${payload.area}` : null, payload.groupNumber != null ? `G${payload.groupNumber}` : null, payload.position != null ? `P${payload.position}` : null, payload.bank != null ? `B${payload.bank}` : null]
+            .filter(Boolean)
+            .join(" · "),
+        },
+      );
+    }
+
+    const snapshot = getVenueStudioSnapshot();
+    const item = snapshot.rows.find((row) => row.libraryEntryId === libraryEntryId);
+    res.json({ item, reset: result.reset });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save venue row.");
+  }
+});
+
+app.delete("/api/venue-studio/entries/:libraryEntryId", authRequired, (req, res) => {
+  try {
+    const libraryEntryId = String(req.params.libraryEntryId);
+    const base = getVenueStudioBaseComparableRow(libraryEntryId);
+    if (!base) {
+      jsonError(res, 404, "Venue row not found.");
+      return;
+    }
+    deleteVenueEntryOverride(libraryEntryId);
+    if (base.practiceIdentity) {
+      recordActivity(base.practiceIdentity, "venue_row_reset", `Reset ${base.sourceName} venue row for ${base.name}.`, {
+        source: base.sourceName,
+        libraryEntryId,
+      });
+    }
+    res.status(204).end();
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to reset venue row.");
+  }
+});
+
+app.get("/api/venue-studio/export/:sourceId.csv", authRequired, (req, res) => {
+  try {
+    const sourceId = String(req.params.sourceId);
+    const payload = buildVenueStudioCsv(sourceId);
+    res
+      .status(200)
+      .type("text/csv")
+      .setHeader("Content-Disposition", `attachment; filename="${payload.fileName}"`)
+      .send(payload.csv);
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to export venue CSV.");
   }
 });
 
@@ -3682,13 +5176,16 @@ app.get("/api/control-board", authRequired, (req, res) => {
     ),
     override_video_counts AS (
       SELECT
-        practice_identity,
+        opdb_id AS practice_identity,
         COUNT(*) AS overrideVideoCount,
         SUM(CASE WHEN kind = 'tutorial' THEN 1 ELSE 0 END) AS overrideTutorialCount,
         SUM(CASE WHEN kind = 'gameplay' THEN 1 ELSE 0 END) AS overrideGameplayCount,
         SUM(CASE WHEN kind = 'competition' THEN 1 ELSE 0 END) AS overrideCompetitionCount
-      FROM admin.machine_video_overrides
-      GROUP BY practice_identity
+      FROM admin.video_assets
+      WHERE provider = 'pinprof'
+        AND is_active = 1
+        AND is_hidden = 0
+      GROUP BY opdb_id
     ),
     membership_rulesheet_counts AS (
       SELECT
@@ -3706,10 +5203,15 @@ app.get("/api/control-board", authRequired, (req, res) => {
     ),
     override_rulesheet_counts AS (
       SELECT
-        practice_identity,
+        opdb_id AS practice_identity,
         COUNT(*) AS overrideRulesheetLinkCount
-      FROM override_rulesheet_links
-      GROUP BY practice_identity
+      FROM admin.rulesheet_assets
+      WHERE provider = 'pinprof'
+        AND is_active = 1
+        AND is_hidden = 0
+        AND url IS NOT NULL
+        AND trim(url) != ''
+      GROUP BY opdb_id
     ),
     admin_playfield_counts AS (
       SELECT
@@ -4019,6 +5521,7 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
   const builtIn = getBuiltInGameRow(practiceIdentity);
   const aliases = getMachineAliases(practiceIdentity);
   const overrideRecord = getOverrideRecord(practiceIdentity);
+  const gameinfoAssetRecord = getGameinfoAssetRecord(practiceIdentity);
   const playfieldAlias = resolvePlayfieldAlias(practiceIdentity, null, aliases, overrideRecord);
   const playfieldAssets = buildPlayfieldAssetPayloads(practiceIdentity, aliases);
   const resolvedPlayfieldAssetRecord = resolvePlayfieldAssetForAlias(practiceIdentity, playfieldAlias.opdbMachineId);
@@ -4031,7 +5534,7 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
   const effectivePlayfieldRemoteUrl = row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null;
   const effectiveRulesheetPath = row.overrideRulesheetLocalPath ?? row.rulesheetLocalPath ?? builtIn?.rulesheetLocalPath ?? null;
   const effectiveRulesheetUrl = row.rulesheetSourceUrl ?? builtIn?.rulesheetUrl ?? null;
-  const effectiveGameinfoPath = row.gameinfoLocalPath ?? builtIn?.gameinfoLocalPath ?? null;
+  const effectiveGameinfoPath = gameinfoAssetRecord?.local_path ?? row.gameinfoLocalPath ?? builtIn?.gameinfoLocalPath ?? null;
   const rulesheetContent = await readFileTextIfPresent(effectiveRulesheetPath);
   const gameinfoContent = await readFileTextIfPresent(effectiveGameinfoPath);
   const memberships = getMachineMembershipRows(practiceIdentity);
@@ -4194,7 +5697,10 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
     effectiveGameinfoPath
       ? {
           effectiveKind: "pillyliu",
-          effectiveLabel: assetOriginLabel("pillyliu", row.gameinfoLocalPath ? "override/library markdown" : "library markdown"),
+          effectiveLabel: assetOriginLabel(
+            "pillyliu",
+            gameinfoAssetRecord?.local_path ? "game info asset markdown" : row.gameinfoLocalPath ? "override/library markdown" : "library markdown",
+          ),
           effectiveUrl: effectiveGameinfoPath,
           localPath: effectiveGameinfoPath,
         }
@@ -4286,6 +5792,7 @@ app.put("/api/machines/:practiceIdentity/override", authRequired, (req, res) => 
       rulesheet_source_note: cleanString(req.body?.rulesheetSourceNote),
       notes: cleanString(req.body?.notes),
     });
+    syncPinprofRulesheetAssets(practiceIdentity);
     recordActivity(practiceIdentity, "metadata_saved", "Saved machine metadata overrides.", {
       name: cleanString(req.body?.nameOverride),
       variant: cleanString(req.body?.variantOverride),
@@ -4374,6 +5881,37 @@ app.post("/api/machines/:practiceIdentity/rulesheet/import-path", authRequired, 
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to import rulesheet.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/gameinfo/save", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const result = await saveGameinfoMarkdown(practiceIdentity, String(req.body?.markdown ?? ""));
+    recordActivity(practiceIdentity, "gameinfo_saved", "Saved game info markdown.", {
+      path: result.localPath,
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to save game info.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/gameinfo/import-path", authRequired, async (req, res) => {
+  try {
+    const sourcePath = cleanString(req.body?.sourcePath);
+    if (!sourcePath) {
+      throw new Error("Local game info path is required.");
+    }
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const result = await importGameinfoFromPath(practiceIdentity, sourcePath);
+    recordActivity(practiceIdentity, "gameinfo_imported", "Imported game info from local file.", {
+      sourcePath: result.sourcePath,
+      savedPath: result.localPath,
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to import game info.");
   }
 });
 

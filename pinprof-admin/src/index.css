@@ -1526,6 +1526,259 @@ a {
   overflow-wrap: anywhere;
 }
 
+.topbar-brand {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.workspace-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.workspace-switcher-button.active {
+  border-color: rgba(216, 171, 51, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(216, 171, 51, 0.16);
+}
+
+.venue-studio-workspace {
+  display: block;
+}
+
+.venue-studio-editor-surface {
+  padding: 0;
+  background: transparent;
+}
+
+.venue-studio-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.venue-studio-hero,
+.venue-studio-list-panel,
+.venue-studio-editor-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.venue-studio-hero-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.venue-studio-hero-copy h2,
+.venue-editor-copy h2 {
+  margin: 0;
+}
+
+.venue-studio-hero-toolbar {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.4fr) auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.venue-studio-search {
+  margin: 0;
+}
+
+.venue-studio-toggle-stack {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.venue-source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.venue-source-card,
+.venue-row-card {
+  width: 100%;
+  border: 1px solid rgba(95, 135, 121, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 255, 0.9)),
+    rgba(255, 255, 255, 0.88);
+  color: var(--pp-ink);
+  text-align: left;
+  padding: 0.95rem;
+  border-radius: 14px;
+  box-shadow: var(--pp-shadow);
+}
+
+.venue-source-card.active,
+.venue-row-card.selected {
+  border-color: rgba(216, 171, 51, 0.48);
+  box-shadow:
+    inset 0 0 0 1px rgba(216, 171, 51, 0.16),
+    0 18px 38px rgba(68, 83, 115, 0.18);
+}
+
+.venue-source-card-head,
+.venue-row-card-top,
+.venue-row-group-head,
+.venue-row-card-footer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.venue-source-card-head div,
+.venue-row-card-top div {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.venue-source-card-head span,
+.venue-row-card-top span {
+  color: var(--pp-ink-faint);
+  font-size: 0.78rem;
+}
+
+.venue-source-metrics,
+.venue-studio-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.venue-source-metrics div,
+.venue-studio-summary-strip div {
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(95, 135, 121, 0.12);
+  background: color-mix(in srgb, var(--pp-control) 86%, white 14%);
+}
+
+.venue-source-metrics span,
+.venue-studio-summary-strip span {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pp-ink);
+}
+
+.venue-source-metrics small,
+.venue-studio-summary-strip small {
+  color: var(--pp-ink-faint);
+}
+
+.venue-studio-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(460px, 1.2fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.venue-row-groups {
+  display: grid;
+  gap: 0.95rem;
+  max-height: calc(100vh - 19rem);
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.venue-row-group,
+.venue-row-list,
+.venue-editor-copy,
+.venue-editor-header,
+.venue-editor-section {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.venue-row-card-footer code {
+  font-size: 0.76rem;
+}
+
+.venue-editor-hero {
+  display: grid;
+  grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.venue-editor-image-frame {
+  border-radius: 16px;
+  border: 1px solid rgba(95, 135, 121, 0.14);
+  overflow: hidden;
+  min-height: 220px;
+  background:
+    linear-gradient(145deg, rgba(216, 171, 51, 0.1), rgba(95, 135, 121, 0.08)),
+    color-mix(in srgb, var(--pp-panel-strong) 88%, white 12%);
+}
+
+.venue-editor-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.venue-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.sticky-actions {
+  position: sticky;
+  top: 0.25rem;
+  z-index: 2;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(216, 171, 51, 0.2);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 255, 0.9)),
+    rgba(255, 255, 255, 0.88);
+}
+
+.venue-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.venue-editor-section {
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(95, 135, 121, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 255, 0.88)),
+    rgba(255, 255, 255, 0.84);
+}
+
+.venue-editor-section-wide {
+  grid-column: 1 / -1;
+}
+
+.venue-link-grid,
+.venue-stack-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+:root[data-theme="dark"] .venue-source-card,
+:root[data-theme="dark"] .venue-row-card,
+:root[data-theme="dark"] .sticky-actions,
+:root[data-theme="dark"] .venue-editor-section {
+  background:
+    linear-gradient(145deg, rgba(39, 52, 72, 0.96), rgba(24, 33, 47, 0.98)),
+    rgba(25, 34, 48, 0.9);
+  border-color: rgba(140, 183, 171, 0.16);
+}
+
+:root[data-theme="dark"] .venue-source-metrics div,
+:root[data-theme="dark"] .venue-studio-summary-strip div {
+  background: linear-gradient(180deg, rgba(57, 71, 93, 0.86), rgba(43, 56, 76, 0.94));
+  border-color: rgba(140, 183, 171, 0.12);
+}
+
 @media (max-width: 1100px) {
   .workspace-shell,
   .hero-panel,
@@ -1538,7 +1791,13 @@ a {
   .playfield-mask-dialog-grid,
   .hero-media-grid,
   .membership-grid,
-  .link-source-grid {
+  .link-source-grid,
+  .venue-studio-layout,
+  .venue-editor-grid,
+  .venue-link-grid,
+  .venue-stack-list,
+  .venue-editor-hero,
+  .venue-studio-hero-toolbar {
     grid-template-columns: 1fr;
   }
 
@@ -1578,6 +1837,16 @@ a {
   }
 
   .inline-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace-switcher,
+  .venue-editor-actions {
+    flex-direction: column;
+  }
+
+  .venue-source-metrics,
+  .venue-studio-summary-strip {
     grid-template-columns: 1fr;
   }
 

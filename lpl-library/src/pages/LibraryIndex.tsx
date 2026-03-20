@@ -714,9 +714,21 @@ export default function LibraryIndex() {
 
         {!loading && games.length === 0 && (
           <div className="mt-8 text-neutral-400">
-            No data loaded. Confirm canonical files{" "}
-            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/pinball_library_v3.json</code> and{" "}
-            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/opdb_catalog_v1.json</code> are deployed.
+            No data loaded. Confirm the clean foundation files are deployed:
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/opdb_export.json</code>,
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/default_pm_venue_sources_v1.json</code>,
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/rulesheet_assets.json</code>,
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/video_assets.json</code>,
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/playfield_assets.json</code>,
+            {" "}
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/gameinfo_assets.json</code>,
+            {" "}
+            and <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/venue_layout_assets.json</code>.
           </div>
         )}
       </PageContainer>

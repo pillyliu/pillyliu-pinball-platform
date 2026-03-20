@@ -1,4 +1,5 @@
 import { type FormEvent, Fragment, type PointerEvent as ReactPointerEvent, startTransition, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import VenueStudio from "./VenueStudio";
 
 type SessionPayload = {
   authenticated: boolean;
@@ -382,6 +383,7 @@ type MachineSortOption = "name" | "year_asc" | "year_desc" | "source_position";
 type ThemePreference = "system" | "dark" | "light";
 type MachinePanelKey = "playfield" | "backglass" | "rulesheet" | "gameinfoAliases" | "memberships" | "videoLinks" | "assetStack" | "metadata";
 type MachinePanelCollapseState = Record<MachinePanelKey, boolean>;
+type AdminWorkspaceView = "control-board" | "venue-studio";
 
 const PAGE_SIZE = 20;
 const MASK_POINT_MIN = 0;
@@ -428,6 +430,14 @@ const emptyOverridePayload = (): SaveOverridePayload => ({
   rulesheetSourceNote: "",
   notes: "",
 });
+
+function parseWorkspaceView(hash: string): AdminWorkspaceView {
+  return hash === "#venue-studio" ? "venue-studio" : "control-board";
+}
+
+function workspaceViewHash(view: AdminWorkspaceView): string {
+  return view === "venue-studio" ? "#venue-studio" : "";
+}
 
 async function apiFetch<T>(input: string, init?: RequestInit): Promise<T> {
   const response = await fetch(input, {
@@ -667,6 +677,9 @@ function controlBoardRowKey(item: ControlBoardItem) {
 }
 
 export default function App() {
+  const [workspaceView, setWorkspaceView] = useState<AdminWorkspaceView>(() =>
+    typeof window === "undefined" ? "control-board" : parseWorkspaceView(window.location.hash),
+  );
   const [themePreference, setThemePreference] = useState<ThemePreference>(() => getStoredThemePreference());
   const [session, setSession] = useState<SessionPayload | null>(null);
   const [summary, setSummary] = useState<SummaryPayload | null>(null);
@@ -695,6 +708,7 @@ export default function App() {
   const [overrideForm, setOverrideForm] = useState<SaveOverridePayload>(emptyOverridePayload);
   const [videoOverrideDrafts, setVideoOverrideDrafts] = useState<VideoOverrideDraft[]>([]);
   const [rulesheetMarkdown, setRulesheetMarkdown] = useState("");
+  const [gameinfoMarkdown, setGameinfoMarkdown] = useState("");
   const [password, setPassword] = useState("");
   const [loadingMachines, setLoadingMachines] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
@@ -813,6 +827,15 @@ export default function App() {
     });
   }
 
+  function changeWorkspaceView(nextView: AdminWorkspaceView) {
+    setWorkspaceView(nextView);
+    if (typeof window === "undefined") return;
+    const nextHash = workspaceViewHash(nextView);
+    if (window.location.hash === nextHash) return;
+    const nextUrl = `${window.location.pathname}${window.location.search}${nextHash}`;
+    window.history.replaceState(null, "", nextUrl);
+  }
+
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
 
@@ -834,6 +857,15 @@ export default function App() {
     mediaQuery.addEventListener("change", applyTheme);
     return () => mediaQuery.removeEventListener("change", applyTheme);
   }, [themePreference]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const handleHashChange = () => {
+      setWorkspaceView(parseWorkspaceView(window.location.hash));
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   useEffect(() => {
     apiFetch<SessionPayload>("api/session")
@@ -967,6 +999,7 @@ export default function App() {
         });
         setVideoOverrideDrafts((payload.links?.overrideVideos ?? []).map((link) => createVideoOverrideDraft(link)));
         setRulesheetMarkdown(payload.rulesheetContent);
+        setGameinfoMarkdown(payload.gameinfoContent);
       })
       .catch((error) => setToast({ tone: "error", message: extractMessage(error) }))
       .finally(() => setLoadingDetail(false));
@@ -1538,6 +1571,38 @@ export default function App() {
     );
   }
 
+  async function handleSaveGameinfo() {
+    if (!selectedIdentity) return;
+    await runAction(
+      "save-gameinfo",
+      () =>
+        apiFetch(`api/machines/${selectedIdentity}/gameinfo/save`, {
+          method: "POST",
+          body: JSON.stringify({
+            markdown: gameinfoMarkdown,
+          }),
+        }),
+      "Game info markdown saved.",
+    );
+  }
+
+  async function handleUploadGameinfo(file: File | null) {
+    if (!selectedIdentity || !file) return;
+    await runAction(
+      "upload-gameinfo",
+      async () => {
+        const markdown = await file.text();
+        await apiFetch(`api/machines/${selectedIdentity}/gameinfo/save`, {
+          method: "POST",
+          body: JSON.stringify({
+            markdown,
+          }),
+        });
+      },
+      "Game info uploaded from file.",
+    );
+  }
+
   async function handleImportPlayfieldUrl() {
     if (!selectedIdentity || !overrideForm.playfieldSourceUrl.trim()) return;
     await runAction(
@@ -1617,9 +1682,25 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div>
+        <div className="topbar-brand">
           <p className="eyebrow">PinProf Admin</p>
           <h1>OPDB catalog + override workspace</h1>
+          <div className="workspace-switcher" role="group" aria-label="Workspace view">
+            <button
+              type="button"
+              className={`secondary-button workspace-switcher-button ${workspaceView === "control-board" ? "active" : ""}`}
+              onClick={() => changeWorkspaceView("control-board")}
+            >
+              Control Board
+            </button>
+            <button
+              type="button"
+              className={`secondary-button workspace-switcher-button ${workspaceView === "venue-studio" ? "active" : ""}`}
+              onClick={() => changeWorkspaceView("venue-studio")}
+            >
+              Venue Studio
+            </button>
+          </div>
         </div>
         <div className="topbar-actions">
           <div className="theme-toggle" role="group" aria-label="Theme">
@@ -1676,6 +1757,21 @@ export default function App() {
 
       {toast && <div className={`toast inline-toast ${toast.tone}`}>{toast.message}</div>}
 
+      {workspaceView === "venue-studio" ? (
+        <main className="workspace-shell venue-studio-workspace">
+          <section className="editor venue-studio-editor-surface">
+            <VenueStudio
+              onOpenMachine={(practiceIdentity) => {
+                startTransition(() => {
+                  setSelectedIdentity(practiceIdentity);
+                  setSelectedRowKey(null);
+                  changeWorkspaceView("control-board");
+                });
+              }}
+            />
+          </section>
+        </main>
+      ) : (
       <main className="workspace-shell">
         <button
           className={`sidebar-toggle sidebar-toggle-left ${searchCollapsed ? "collapsed" : ""}`}
@@ -2554,18 +2650,48 @@ export default function App() {
                           {machinePanelCollapsed.gameinfoAliases ? "Expand" : "Collapse"}
                         </button>
                       </div>
+                      <p className="muted">PinProf markdown tied to the OPDB group, with alias context on the side.</p>
                     </div>
+                    <button onClick={handleSaveGameinfo} disabled={busyAction === "save-gameinfo"}>
+                      {busyAction === "save-gameinfo" ? "Saving…" : "Save game info"}
+                    </button>
                   </div>
                   {!machinePanelCollapsed.gameinfoAliases && (
                     <>
                   <div>
                     <div className="panel-header slim">
                       <div>
-                        <h2>Game info preview</h2>
-                        <p className="muted">Supplemental notes layered on top of the OPDB foundation.</p>
+                        <h2>Game info markdown</h2>
+                        <p className="muted">This is the canonical PinProf game info asset for the OPDB group.</p>
                       </div>
                     </div>
-                    <pre className="markdown-preview">{detail.gameinfoContent || "No game info markdown yet."}</pre>
+                    <label className="field upload-field">
+                      Upload markdown file from browser
+                      <input
+                        type="file"
+                        accept=".md,.markdown,.txt,text/markdown,text/plain"
+                        onChange={(event) => {
+                          const file = event.target.files?.[0] ?? null;
+                          void handleUploadGameinfo(file);
+                          event.currentTarget.value = "";
+                        }}
+                      />
+                    </label>
+                    <label className="field">
+                      Markdown
+                      <textarea
+                        rows={16}
+                        value={gameinfoMarkdown}
+                        onChange={(event) => setGameinfoMarkdown(event.target.value)}
+                        placeholder="# Game info"
+                      />
+                    </label>
+                    <div className="path-list">
+                      <div>
+                        <small>Game info markdown path</small>
+                        <code>{detail.override.gameinfoLocalPath ?? detail.sources.assets.gameinfo.localPath ?? "None"}</code>
+                      </div>
+                    </div>
                   </div>
                   <div>
                     <div className="panel-header slim">
@@ -3017,6 +3143,7 @@ export default function App() {
           <small>Activity</small>
         </button>
       </main>
+      )}
       {detail && maskEditorOverlayOpen && (
         <div
           className="playfield-mask-overlay"

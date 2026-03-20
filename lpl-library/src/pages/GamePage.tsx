@@ -69,6 +69,8 @@ function youtubeId(url: string): string | null {
 
 function shortRulesheetTitle(link: ReferenceLink): string {
   switch (referenceLinkProvider(link)) {
+    case "pinprof":
+      return "PinProf";
     case "tf":
       return "TF";
     case "pp":

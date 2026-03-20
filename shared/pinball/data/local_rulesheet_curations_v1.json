@@ -68,6 +68,11 @@
       "local_path": "/pinball/rulesheets/G5pe4-rulesheet.md"
     },
     {
+      "practice_identity": "GK17D",
+      "kind": "curated_local_markdown",
+      "local_path": "/pinball/rulesheets/GK17D-rulesheet.md"
+    },
+    {
       "practice_identity": "GR6wO",
       "kind": "curated_local_markdown",
       "local_path": "/pinball/rulesheets/GR6wO-rulesheet.md"

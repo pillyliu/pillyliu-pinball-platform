@@ -504,9 +504,9 @@ async function rebuildCuratedVideoResources() {
 }
 
 async function refreshSharedCatalogLinksFromCurrentEnrichment() {
-  if (!(await pathExists(PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT))) {
+  if (!(await pathExists(FETCH_OPDB_SNAPSHOT_SCRIPT))) {
     console.warn(
-      `Skipping shared catalog link refresh; missing ${path.relative(ROOT, PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT)}`
+      `Skipping shared catalog link refresh; missing ${path.relative(ROOT, FETCH_OPDB_SNAPSHOT_SCRIPT)}`
     );
     return;
   }
@@ -514,38 +514,16 @@ async function refreshSharedCatalogLinksFromCurrentEnrichment() {
   await run(
     "python3",
     [
-      PINPROF_ADMIN_FETCH_OPDB_SNAPSHOT_SCRIPT,
+      FETCH_OPDB_SNAPSHOT_SCRIPT,
       "--matchplay-merged",
       SHARED_MATCHPLAY_ENRICHMENT_PATH,
       "--external-resources",
       SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH,
-      "--curated-video-resources",
-      SHARED_CURATED_VIDEO_RESOURCES_PATH,
-      "--output",
+      "--ios-output",
       SHARED_OPDB_CATALOG_PATH,
+      "--skip-android",
       "--min-export-age-minutes",
       "1440",
-    ],
-    ROOT
-  );
-
-  if (!(await pathExists(PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT))) {
-    console.warn(
-      `Skipping shared catalog rulesheet link refresh; missing ${path.relative(ROOT, PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT)}`
-    );
-    return;
-  }
-
-  await run(
-    "python3",
-    [
-      PINPROF_ADMIN_REFRESH_CATALOG_RULESHEET_LINKS_SCRIPT,
-      "--catalog",
-      SHARED_OPDB_CATALOG_PATH,
-      "--external",
-      SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH,
-      "--output",
-      SHARED_OPDB_CATALOG_PATH,
     ],
     ROOT
   );

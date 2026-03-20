@@ -1,26 +1,26 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-17T07:59:14Z",
+  "generated_at": "2026-03-20T03:45:28Z",
   "reference_catalog": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/data/published/opdb_catalog_v1.json",
   "stats": {
-    "groups": 729,
+    "groups": 730,
     "by_source_counts": {
       "bobs_guide": 422,
       "pinball_org": 182,
       "pinball_primer": 631,
-      "tiltforums": 93
+      "tiltforums": 92
     },
     "live_inventory_counts": {
       "bob": 422,
       "papa": 187,
       "pp": 629,
-      "tf": 100
+      "tf": 101
     },
     "live_matched_counts": {
       "bob": 422,
       "papa": 182,
       "pp": 629,
-      "tf": 87
+      "tf": 86
     },
     "excluded_counts": {
       "papa": 5,
@@ -122,8 +122,21 @@
         }
       ]
     },
-    "unmatched_counts": {},
-    "unmatched": {}
+    "unmatched_counts": {
+      "tf": 2
+    },
+    "unmatched": {
+      "tf": [
+        {
+          "title": "Stern Jurassic Park Rulesheet",
+          "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644"
+        },
+        {
+          "title": "Elvira’s House of Horrors Rulesheet",
+          "url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815"
+        }
+      ]
+    }
   },
   "groups": [
     {
@@ -8426,9 +8439,6 @@
           "tiltforums": [
             {
               "url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet-wip/5815"
-            },
-            {
-              "url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815"
             }
           ]
         }
@@ -11487,6 +11497,18 @@
       }
     },
     {
+      "opdb_group_id": "GvBzO",
+      "rulesheets": {
+        "by_source": {
+          "tiltforums": [
+            {
+              "url": "https://tiltforums.com/t/winchester-mystery-house-rulesheet/10143"
+            }
+          ]
+        }
+      }
+    },
+    {
       "opdb_group_id": "Gwe3B",
       "rulesheets": {
         "by_source": {
@@ -11552,9 +11574,6 @@
           "tiltforums": [
             {
               "url": "https://tiltforums.com/t/jurassic-park-home-rulesheet/9185"
-            },
-            {
-              "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644"
             }
           ]
         }

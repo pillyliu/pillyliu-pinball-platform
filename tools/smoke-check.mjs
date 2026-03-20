@@ -17,6 +17,13 @@ const REQUIRED_DATA_FILES = [
   "LPL_Standings.csv",
   "LPL_Stats.csv",
   "LPL_Targets.csv",
+  "opdb_export.json",
+  "default_pm_venue_sources_v1.json",
+  "rulesheet_assets.json",
+  "video_assets.json",
+  "playfield_assets.json",
+  "gameinfo_assets.json",
+  "venue_layout_assets.json",
   "pinball_library_v3.json",
 ];
 const REQUIRED_IMAGE_FILES = [
