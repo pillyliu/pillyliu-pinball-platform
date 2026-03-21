@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-20T12:27:39Z",
+  "generated_at": "2026-03-21T14:36:53Z",
   "reference_catalog": "/Users/pillyliu/Documents/Codex/PinProf Admin/workspace/data/published/opdb_catalog_v1.json",
   "stats": {
-    "groups": 730,
+    "groups": 731,
     "by_source_counts": {
       "bobs_guide": 422,
       "pinball_org": 182,
       "pinball_primer": 631,
-      "tiltforums": 92
+      "tiltforums": 93
     },
     "live_inventory_counts": {
       "bob": 422,
@@ -20,7 +20,7 @@
       "bob": 422,
       "papa": 182,
       "pp": 629,
-      "tf": 86
+      "tf": 87
     },
     "excluded_counts": {
       "papa": 5,
@@ -123,14 +123,10 @@
       ]
     },
     "unmatched_counts": {
-      "tf": 2
+      "tf": 1
     },
     "unmatched": {
       "tf": [
-        {
-          "title": "Stern Jurassic Park Rulesheet",
-          "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644"
-        },
         {
           "title": "Elvira’s House of Horrors Rulesheet",
           "url": "https://tiltforums.com/t/elvira-s-house-of-horrors-rulesheet/5815"
@@ -1646,6 +1642,17 @@
       "opdb_group_id": "G4ZVB",
       "rulesheets": {
         "by_source": {
+          "pinball_org": [
+            {
+              "url": "https://pinball.org/rules/jurassicpark-notes.txt"
+            },
+            {
+              "url": "https://pinball.org/rules/jurassicpark-notes2.html"
+            },
+            {
+              "url": "https://pinball.org/rules/jurassicpark.html"
+            }
+          ],
           "pinball_primer": [
             {
               "url": "https://pinballprimer.github.io/jurassicpark_G4ZVB.html"
@@ -5279,6 +5286,18 @@
           "tiltforums": [
             {
               "url": "https://tiltforums.com/t/toy-story-4-rulesheet/7707"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "opdb_group_id": "GK17D",
+      "rulesheets": {
+        "by_source": {
+          "tiltforums": [
+            {
+              "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644"
             }
           ]
         }
@@ -11560,17 +11579,6 @@
       "opdb_group_id": "GxvvB",
       "rulesheets": {
         "by_source": {
-          "pinball_org": [
-            {
-              "url": "https://pinball.org/rules/jurassicpark-notes.txt"
-            },
-            {
-              "url": "https://pinball.org/rules/jurassicpark-notes2.html"
-            },
-            {
-              "url": "https://pinball.org/rules/jurassicpark.html"
-            }
-          ],
           "tiltforums": [
             {
               "url": "https://tiltforums.com/t/jurassic-park-home-rulesheet/9185"

@@ -196,6 +196,21 @@ type MachineDetail = {
       playfieldImageUrl: string | null;
       updatedAt: string | null;
     }>;
+    backglassAssets: Array<{
+      backglassAssetId: number;
+      sourceAliasId: string;
+      sourceAliasLabel: string;
+      localPath: string | null;
+      originalLocalPath: string | null;
+      referenceLocalPath: string | null;
+      sourceUrl: string | null;
+      sourcePageUrl: string | null;
+      sourcePageSnapshotPath: string | null;
+      sourceNote: string | null;
+      web1400LocalPath: string | null;
+      web700LocalPath: string | null;
+      updatedAt: string | null;
+    }>;
     playfieldAssets: Array<{
       playfieldAssetId: number;
       sourceAliasId: string;
@@ -217,9 +232,18 @@ type MachineDetail = {
         effectiveKind: "opdb" | "pillyliu" | "external" | "missing";
         effectiveLabel: string;
         effectiveUrl: string | null;
-        localPath?: string | null;
-        localSourceUrl?: string | null;
-        localSourceNote?: string | null;
+        targetAliasId: string;
+        targetAliasLabel: string;
+        targetFilename: string;
+        localPath: string | null;
+        localOriginalPath: string | null;
+        localReferencePath: string | null;
+        localSourceUrl: string | null;
+        localSourcePageUrl: string | null;
+        localSourcePageSnapshotPath: string | null;
+        localSourceNote: string | null;
+        localWeb1400Path: string | null;
+        localWeb700Path: string | null;
         fallbackOpdbUrl: string | null;
       };
       playfield: {

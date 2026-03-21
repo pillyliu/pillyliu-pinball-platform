@@ -89,8 +89,8 @@ function ResourceRow({ title, children }: { title: string; children: ReactNode }
   return (
     <div className="flex items-center gap-2 text-sm">
       <div className="shrink-0 font-semibold text-neutral-400">{title}:</div>
-      <div className="min-w-0 flex-1 overflow-x-auto py-1">
-        <div className="flex min-h-[2.25rem] items-center gap-2 px-1">{children}</div>
+      <div className="min-w-0 flex-1 overflow-x-auto py-0.5">
+        <div className="flex min-h-[2rem] items-center gap-2 px-1">{children}</div>
       </div>
     </div>
   );
@@ -314,7 +314,7 @@ export default function GamePage() {
               )}
             </div>
 
-            <div className="space-y-3 p-4">
+            <div className="space-y-2 px-4 py-3">
               <ResourceRow title="Rulesheet">
                 {rulesheetLinks.length ? (
                   rulesheetLinks.map((link, index) => {
@@ -438,21 +438,6 @@ export default function GamePage() {
             </div>
           </Panel>
         </div>
-
-        {primaryRulesheet?.url && (
-          <div className="mt-8 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
-            {primaryRulesheet?.url && (
-              <a
-                className="rounded-lg bg-neutral-900 px-2.5 py-1 text-xs text-neutral-200 ring-1 ring-neutral-700 hover:ring-neutral-500"
-                href={primaryRulesheet.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {primaryRulesheet.label}
-              </a>
-            )}
-          </div>
-        )}
       </PageContainer>
     </div>
   );

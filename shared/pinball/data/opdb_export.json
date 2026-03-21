@@ -121393,6 +121393,34 @@
     "images": []
   },
   {
+    "opdb_id": "G3EYo-Mo1ep",
+    "is_machine": true,
+    "name": "Yukon Yeti",
+    "common_name": null,
+    "shortname": "YY",
+    "physical_machine": 1,
+    "ipdb_id": null,
+    "manufacture_date": "2026-03-18",
+    "manufacturer": {
+      "manufacturer_id": 143,
+      "name": "Turner Pinball",
+      "full_name": "Turner Pinball",
+      "created_at": "2024-03-13",
+      "updated_at": "2024-03-13"
+    },
+    "type": "ss",
+    "display": "lcd",
+    "player_count": 4,
+    "features": [
+      "Limited edition"
+    ],
+    "keywords": [],
+    "description": null,
+    "created_at": "2026-03-20",
+    "updated_at": "2026-03-20",
+    "images": []
+  },
+  {
     "opdb_id": "GRoz4-MrRPw-A97X1",
     "is_alias": true,
     "name": "Batman 66 (Super LE)",

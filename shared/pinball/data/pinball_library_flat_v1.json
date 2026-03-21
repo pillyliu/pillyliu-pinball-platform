@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-03-20T12:27:41Z",
+  "generated_at": "2026-03-21T14:36:55Z",
   "notes": {
     "purpose": "Flattened built-in library payload for website/app consumers.",
     "compatibility": "Includes current flat fields plus compartmented nested sections for gradual migration."
@@ -5599,11 +5599,11 @@
       "alternate_playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "playfield_local_path": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg",
       "gameinfo_local_path": "/pinball/gameinfo/GK17D-gameinfo.md",
-      "rulesheet_local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
+      "rulesheet_local_path": null,
       "playfield_source_label": null,
       "assets": {
         "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg",
-        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md"
       },
       "media": {
@@ -5619,17 +5619,9 @@
           "source_label": null
         },
         "rulesheets": {
-          "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
+          "local_path": null,
           "primary_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
           "links": [
-            {
-              "label": "Local rulesheet",
-              "url": null,
-              "provider": "pinprof",
-              "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
-              "priority": -1,
-              "is_custom": true
-            },
             {
               "label": "Rulesheet",
               "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
@@ -5688,14 +5680,6 @@
       },
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "rulesheet_links": [
-        {
-          "label": "Local rulesheet",
-          "url": null,
-          "provider": "pinprof",
-          "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
-          "priority": -1,
-          "is_custom": true
-        },
         {
           "label": "Rulesheet",
           "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
@@ -12994,11 +12978,11 @@
       "alternate_playfield_image_url": "https://sternpinball.com/wp-content/uploads/2019/07/JurassicPark-LE-Playfield.jpg",
       "playfield_local_path": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg",
       "gameinfo_local_path": "/pinball/gameinfo/GK17D-gameinfo.md",
-      "rulesheet_local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
+      "rulesheet_local_path": null,
       "playfield_source_label": null,
       "assets": {
         "playfield_local_practice": "/pinball/images/playfields/GK17D-MKNKd-AOyKv-playfield.jpg",
-        "rulesheet_local_practice": "/pinball/rulesheets/GK17D-rulesheet.md",
+        "rulesheet_local_practice": null,
         "gameinfo_local_practice": "/pinball/gameinfo/GK17D-gameinfo.md"
       },
       "media": {
@@ -13014,17 +12998,9 @@
           "source_label": null
         },
         "rulesheets": {
-          "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
+          "local_path": null,
           "primary_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
           "links": [
-            {
-              "label": "Local rulesheet",
-              "url": null,
-              "provider": "pinprof",
-              "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
-              "priority": -1,
-              "is_custom": true
-            },
             {
               "label": "Rulesheet",
               "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
@@ -13083,14 +13059,6 @@
       },
       "rulesheet_url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",
       "rulesheet_links": [
-        {
-          "label": "Local rulesheet",
-          "url": null,
-          "provider": "pinprof",
-          "local_path": "/pinball/rulesheets/GK17D-rulesheet.md",
-          "priority": -1,
-          "is_custom": true
-        },
         {
           "label": "Rulesheet",
           "url": "https://tiltforums.com/t/stern-jurassic-park-rulesheet/5644",

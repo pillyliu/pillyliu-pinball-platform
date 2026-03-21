@@ -275,6 +275,24 @@ type PlayfieldAssetRecord = {
   updated_at: string;
 };
 
+type BackglassAssetRecord = {
+  backglass_asset_id: number;
+  practice_identity: string;
+  source_opdb_machine_id: string;
+  covered_alias_ids_json: string;
+  backglass_local_path: string | null;
+  backglass_original_local_path: string | null;
+  backglass_reference_local_path: string | null;
+  backglass_source_url: string | null;
+  backglass_source_page_url: string | null;
+  backglass_source_page_snapshot_path: string | null;
+  backglass_source_note: string | null;
+  backglass_web_local_path_1400: string | null;
+  backglass_web_local_path_700: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 type PlayfieldMaskPoint = {
   x: number;
   y: number;
@@ -523,6 +541,14 @@ const SHARED_BACKGLASSES_DIR =
   PINBALL_LAYOUT_MODE === "workspace"
     ? path.join(WORKSPACE_DIR, "assets", "backglasses")
     : path.join(SHARED_PINBALL_DIR, "images", "backglasses");
+const LEGACY_SHARED_BACKGLASSES_DIR = path.join(LEGACY_WEBSITE_ROOT, "shared", "pinball", "images", "backglasses");
+const BACKGLASS_DEPLOY_MIRROR_DIR =
+  PINBALL_LAYOUT_MODE === "workspace" && path.resolve(LEGACY_SHARED_BACKGLASSES_DIR) !== path.resolve(SHARED_BACKGLASSES_DIR)
+    ? LEGACY_SHARED_BACKGLASSES_DIR
+    : null;
+const BACKGLASS_SOURCE_ROOT_DIR = path.join(WORKSPACE_DIR, "assets", "backglass_sources");
+const BACKGLASS_SOURCE_ORIGINALS_DIR = path.join(BACKGLASS_SOURCE_ROOT_DIR, "originals");
+const BACKGLASS_SOURCE_REFERENCES_DIR = path.join(BACKGLASS_SOURCE_ROOT_DIR, "references");
 const SEED_DB_PATH = path.join(SHARED_DATA_DIR, "pinball_library_seed_v1.sqlite");
 const ADMIN_DB_PATH = path.join(SHARED_DATA_DIR, "pinprof_admin_v1.sqlite");
 const APPLY_OVERRIDES_SCRIPT =
@@ -565,6 +591,9 @@ const SUPPORTED_PLAYFIELD_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".gif"
 const PLAYFIELD_WEBP_QUALITY = 90;
 const PLAYFIELD_WEBP_1400_QUALITY = 85;
 const PLAYFIELD_WEBP_700_QUALITY = 75;
+const BACKGLASS_WEBP_QUALITY = 90;
+const BACKGLASS_WEBP_1400_QUALITY = 85;
+const BACKGLASS_WEBP_700_QUALITY = 75;
 const PLAYFIELD_TRIM_THRESHOLD = 18;
 const PLAYFIELD_MASK_POINT_MIN = 0;
 const PLAYFIELD_MASK_POINT_MAX = 1;
@@ -1026,13 +1055,30 @@ function playfieldBaseName(aliasId: string) {
   return `${aliasId}-playfield`;
 }
 
+function backglassBaseName(aliasId: string) {
+  return `${aliasId}-backglass`;
+}
+
 function practicePlayfieldBaseName(practiceIdentity: string) {
   return `${practiceIdentity}-playfield`;
+}
+
+function practiceBackglassBaseName(practiceIdentity: string) {
+  return `${practiceIdentity}-backglass`;
 }
 
 function playfieldBaseNameFromWebPath(webPath: string | null): string | null {
   const normalized = cleanString(webPath);
   if (!normalized?.startsWith("/pinball/images/playfields/")) return null;
+  const filename = path.basename(normalized);
+  const ext = path.extname(filename);
+  const stem = ext ? filename.slice(0, -ext.length) : filename;
+  return stem.replace(/_(700|1400)$/i, "") || null;
+}
+
+function backglassBaseNameFromWebPath(webPath: string | null): string | null {
+  const normalized = cleanString(webPath);
+  if (!normalized?.startsWith("/pinball/images/backglasses/")) return null;
   const filename = path.basename(normalized);
   const ext = path.extname(filename);
   const stem = ext ? filename.slice(0, -ext.length) : filename;
@@ -1097,6 +1143,16 @@ function findExistingPlayfieldWebPath(baseName: string): string | null {
   return null;
 }
 
+function findExistingBackglassWebPath(baseName: string): string | null {
+  for (const ext of SUPPORTED_PLAYFIELD_EXTENSIONS) {
+    const fsPath = path.join(SHARED_BACKGLASSES_DIR, `${baseName}${ext}`);
+    if (fs.existsSync(fsPath)) {
+      return `/pinball/images/backglasses/${baseName}${ext}`;
+    }
+  }
+  return null;
+}
+
 function buildPlayfieldAssetPaths(baseName: string, sourceExtension = ".jpg") {
   return {
     publishedFsPath: path.join(SHARED_PLAYFIELDS_DIR, `${baseName}.webp`),
@@ -1111,7 +1167,27 @@ function buildPlayfieldAssetPaths(baseName: string, sourceExtension = ".jpg") {
   };
 }
 
+function buildBackglassAssetPaths(baseName: string, sourceExtension = ".jpg") {
+  return {
+    publishedFsPath: path.join(SHARED_BACKGLASSES_DIR, `${baseName}.webp`),
+    publishedWebPath: `/pinball/images/backglasses/${baseName}.webp`,
+    published1400FsPath: path.join(SHARED_BACKGLASSES_DIR, `${baseName}_1400.webp`),
+    published1400WebPath: `/pinball/images/backglasses/${baseName}_1400.webp`,
+    published700FsPath: path.join(SHARED_BACKGLASSES_DIR, `${baseName}_700.webp`),
+    published700WebPath: `/pinball/images/backglasses/${baseName}_700.webp`,
+    originalFsPath: path.join(BACKGLASS_SOURCE_ORIGINALS_DIR, `${baseName}.original${sourceExtension}`),
+    referenceFsPath: path.join(BACKGLASS_SOURCE_REFERENCES_DIR, `${baseName}.source.json`),
+    sourcePageSnapshotFsPath: path.join(BACKGLASS_SOURCE_REFERENCES_DIR, `${baseName}.ad.html`),
+  };
+}
+
 function playfieldSourceExtension(originalPath: string | null) {
+  const normalized = cleanString(originalPath);
+  const ext = normalized ? path.extname(normalized).toLowerCase() : "";
+  return ext && SUPPORTED_PLAYFIELD_EXTENSIONS.includes(ext as (typeof SUPPORTED_PLAYFIELD_EXTENSIONS)[number]) ? ext : ".jpg";
+}
+
+function backglassSourceExtension(originalPath: string | null) {
   const normalized = cleanString(originalPath);
   const ext = normalized ? path.extname(normalized).toLowerCase() : "";
   return ext && SUPPORTED_PLAYFIELD_EXTENSIONS.includes(ext as (typeof SUPPORTED_PLAYFIELD_EXTENSIONS)[number]) ? ext : ".jpg";
@@ -1211,6 +1287,14 @@ async function removeExistingPlayfieldFiles(baseName: string) {
   ]);
 }
 
+async function removeExistingBackglassFiles(baseName: string) {
+  await Promise.all([
+    removePrefixedFiles(SHARED_BACKGLASSES_DIR, baseName),
+    removePrefixedFiles(BACKGLASS_SOURCE_ORIGINALS_DIR, baseName),
+    removePrefixedFiles(BACKGLASS_SOURCE_REFERENCES_DIR, baseName),
+  ]);
+}
+
 async function syncPublishedPlayfieldFamilyToDeployMirror(
   baseName: string,
   assetPaths: Pick<
@@ -1242,6 +1326,40 @@ async function syncPublishedPlayfieldFamilyToDeployMirror(
     entries
       .filter((entry) => entry.isFile() && entry.name.startsWith(baseName) && !keep.has(entry.name))
       .map((entry) => fsp.rm(path.join(PLAYFIELD_DEPLOY_MIRROR_DIR, entry.name), { force: true })),
+  );
+}
+
+async function syncPublishedBackglassFamilyToDeployMirror(
+  baseName: string,
+  assetPaths: Pick<
+    ReturnType<typeof buildBackglassAssetPaths>,
+    "publishedFsPath" | "published1400FsPath" | "published700FsPath"
+  >,
+) {
+  if (!BACKGLASS_DEPLOY_MIRROR_DIR) return;
+
+  await ensureDir(BACKGLASS_DEPLOY_MIRROR_DIR);
+
+  const targetFiles = [
+    assetPaths.publishedFsPath,
+    assetPaths.published1400FsPath,
+    assetPaths.published700FsPath,
+  ].map((sourcePath) => ({
+    sourcePath,
+    fileName: path.basename(sourcePath),
+    targetPath: path.join(BACKGLASS_DEPLOY_MIRROR_DIR, path.basename(sourcePath)),
+  }));
+
+  await Promise.all(
+    targetFiles.map(({ sourcePath, targetPath }) => fsp.copyFile(sourcePath, targetPath)),
+  );
+
+  const keep = new Set(targetFiles.map(({ fileName }) => fileName));
+  const entries = await fsp.readdir(BACKGLASS_DEPLOY_MIRROR_DIR, { withFileTypes: true }).catch(() => []);
+  await Promise.all(
+    entries
+      .filter((entry) => entry.isFile() && entry.name.startsWith(baseName) && !keep.has(entry.name))
+      .map((entry) => fsp.rm(path.join(BACKGLASS_DEPLOY_MIRROR_DIR, entry.name), { force: true })),
   );
 }
 
@@ -1333,6 +1451,76 @@ async function writePlayfieldReferencePackage(
   };
 }
 
+async function writeBackglassReferencePackage(
+  baseName: string,
+  input: {
+    originalFsPath: string;
+    referenceFsPath: string;
+    sourcePageSnapshotFsPath: string;
+    sourceUrl: string | null;
+    sourcePageUrl: string | null;
+    sourceNote: string | null;
+    sourceName: string | null;
+    contentType: string | null;
+    publishedWebPath: string;
+    published1400WebPath: string;
+    published700WebPath: string;
+  },
+) {
+  let snapshotPath: string | null = null;
+  let snapshotStatus = "not-requested";
+  let snapshotError: string | null = null;
+
+  if (input.sourcePageUrl) {
+    snapshotStatus = "requested";
+    try {
+      const response = await fetch(input.sourcePageUrl, {
+        headers: {
+          Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "User-Agent": "pinprof-admin/1.0",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Snapshot fetch failed with ${response.status}`);
+      }
+      const html = await response.text();
+      await fsp.writeFile(input.sourcePageSnapshotFsPath, html, "utf8");
+      snapshotPath = input.sourcePageSnapshotFsPath;
+      snapshotStatus = "saved";
+    } catch (error) {
+      snapshotStatus = "failed";
+      snapshotError = error instanceof Error ? error.message : "Unknown snapshot error";
+    }
+  }
+
+  const referencePayload = {
+    baseName,
+    importedAt: nowIso(),
+    originalLocalPath: input.originalFsPath,
+    sourceName: input.sourceName,
+    contentType: input.contentType,
+    sourceUrl: input.sourceUrl,
+    sourcePageUrl: input.sourcePageUrl,
+    sourceNote: input.sourceNote,
+    published: {
+      highRes: input.publishedWebPath,
+      width1400: input.published1400WebPath,
+      width700: input.published700WebPath,
+    },
+    sourcePageSnapshot: {
+      status: snapshotStatus,
+      localPath: snapshotPath,
+      error: snapshotError,
+    },
+  };
+
+  await fsp.writeFile(input.referenceFsPath, `${JSON.stringify(referencePayload, null, 2)}\n`, "utf8");
+  return {
+    referencePath: input.referenceFsPath,
+    snapshotPath,
+  };
+}
+
 function resolvePlayfieldEditorFsPath(asset: PlayfieldAssetRecord | null): string | null {
   if (!asset) return null;
   const originalFsPath = cleanString(asset.playfield_original_local_path);
@@ -1340,6 +1528,19 @@ function resolvePlayfieldEditorFsPath(asset: PlayfieldAssetRecord | null): strin
     return originalFsPath;
   }
   const publishedFsPath = toPinballFsPath(asset.playfield_local_path);
+  if (publishedFsPath && fs.existsSync(publishedFsPath)) {
+    return publishedFsPath;
+  }
+  return null;
+}
+
+function resolveBackglassEditorFsPath(asset: BackglassAssetRecord | null): string | null {
+  if (!asset) return null;
+  const originalFsPath = cleanString(asset.backglass_original_local_path);
+  if (originalFsPath && fs.existsSync(originalFsPath)) {
+    return originalFsPath;
+  }
+  const publishedFsPath = toPinballFsPath(asset.backglass_local_path);
   if (publishedFsPath && fs.existsSync(publishedFsPath)) {
     return publishedFsPath;
   }
@@ -1400,6 +1601,22 @@ async function publishPlayfieldDerivatives(
   await sharp(flattenedBuffer)
     .resize({ width: 700, withoutEnlargement: true })
     .webp({ quality: PLAYFIELD_WEBP_700_QUALITY })
+    .toFile(assetPaths.published700FsPath);
+}
+
+async function publishBackglassDerivatives(
+  buffer: Buffer,
+  assetPaths: ReturnType<typeof buildBackglassAssetPaths>,
+) {
+  const rotatedBuffer = await sharp(buffer, { failOn: "warning" }).rotate().toBuffer();
+  await sharp(rotatedBuffer).webp({ quality: BACKGLASS_WEBP_QUALITY }).toFile(assetPaths.publishedFsPath);
+  await sharp(rotatedBuffer)
+    .resize({ width: 1400, withoutEnlargement: true })
+    .webp({ quality: BACKGLASS_WEBP_1400_QUALITY })
+    .toFile(assetPaths.published1400FsPath);
+  await sharp(rotatedBuffer)
+    .resize({ width: 700, withoutEnlargement: true })
+    .webp({ quality: BACKGLASS_WEBP_700_QUALITY })
     .toFile(assetPaths.published700FsPath);
 }
 
@@ -1594,6 +1811,25 @@ adminDb.exec(`
     UNIQUE(practice_identity, source_opdb_machine_id)
   );
   CREATE INDEX IF NOT EXISTS idx_playfield_assets_practice ON playfield_assets(practice_identity);
+  CREATE TABLE IF NOT EXISTS backglass_assets (
+    backglass_asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    practice_identity TEXT NOT NULL,
+    source_opdb_machine_id TEXT NOT NULL,
+    covered_alias_ids_json TEXT NOT NULL,
+    backglass_local_path TEXT,
+    backglass_original_local_path TEXT,
+    backglass_reference_local_path TEXT,
+    backglass_source_url TEXT,
+    backglass_source_page_url TEXT,
+    backglass_source_page_snapshot_path TEXT,
+    backglass_source_note TEXT,
+    backglass_web_local_path_1400 TEXT,
+    backglass_web_local_path_700 TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE(practice_identity, source_opdb_machine_id)
+  );
+  CREATE INDEX IF NOT EXISTS idx_backglass_assets_practice ON backglass_assets(practice_identity);
   CREATE TABLE IF NOT EXISTS machine_video_overrides (
     video_override_id INTEGER PRIMARY KEY AUTOINCREMENT,
     practice_identity TEXT NOT NULL,
@@ -1734,6 +1970,14 @@ ensureSqliteColumns(adminDb, "playfield_assets", [
   { name: "playfield_web_local_path_1400", definition: "TEXT" },
   { name: "playfield_web_local_path_700", definition: "TEXT" },
   { name: "playfield_mask_polygon_json", definition: "TEXT" },
+]);
+ensureSqliteColumns(adminDb, "backglass_assets", [
+  { name: "backglass_original_local_path", definition: "TEXT" },
+  { name: "backglass_reference_local_path", definition: "TEXT" },
+  { name: "backglass_source_page_url", definition: "TEXT" },
+  { name: "backglass_source_page_snapshot_path", definition: "TEXT" },
+  { name: "backglass_web_local_path_1400", definition: "TEXT" },
+  { name: "backglass_web_local_path_700", definition: "TEXT" },
 ]);
 
 const adminCount = (adminDb.prepare("SELECT COUNT(*) AS total FROM machine_overrides").get() as { total: number }).total;
@@ -3235,6 +3479,32 @@ function getPlayfieldAssetRecords(practiceIdentity: string): PlayfieldAssetRecor
     .all(practiceIdentity) as PlayfieldAssetRecord[];
 }
 
+function getBackglassAssetRecords(practiceIdentity: string): BackglassAssetRecord[] {
+  return adminDb
+    .prepare(`
+      SELECT
+        backglass_asset_id,
+        practice_identity,
+        source_opdb_machine_id,
+        covered_alias_ids_json,
+        backglass_local_path,
+        backglass_original_local_path,
+        backglass_reference_local_path,
+        backglass_source_url,
+        backglass_source_page_url,
+        backglass_source_page_snapshot_path,
+        backglass_source_note,
+        backglass_web_local_path_1400,
+        backglass_web_local_path_700,
+        created_at,
+        updated_at
+      FROM backglass_assets
+      WHERE practice_identity = ?
+      ORDER BY datetime(updated_at) DESC, lower(source_opdb_machine_id)
+    `)
+    .all(practiceIdentity) as BackglassAssetRecord[];
+}
+
 function resolvePlayfieldAssetForAlias(practiceIdentity: string, aliasId: string | null, assets?: PlayfieldAssetRecord[]) {
   const requestedAliasId = cleanString(aliasId);
   if (!requestedAliasId) return null;
@@ -3252,12 +3522,39 @@ function resolvePlayfieldAssetForAlias(practiceIdentity: string, aliasId: string
   return best?.row ?? null;
 }
 
+function resolveBackglassAssetForAlias(practiceIdentity: string, aliasId: string | null, assets?: BackglassAssetRecord[]) {
+  const requestedAliasId = cleanString(aliasId);
+  if (!requestedAliasId) return null;
+  const rows = assets ?? getBackglassAssetRecords(practiceIdentity);
+  let best: { score: number; row: BackglassAssetRecord } | null = null;
+  for (const row of rows) {
+    const fsPath = toPinballFsPath(row.backglass_local_path);
+    if (!fsPath || !fs.existsSync(fsPath)) continue;
+    const score = scorePlayfieldSourceMatch(requestedAliasId, row.source_opdb_machine_id);
+    if (score < 0) continue;
+    if (!best || score > best.score) {
+      best = { score, row };
+    }
+  }
+  return best?.row ?? null;
+}
+
 function pickPrimaryPlayfieldAsset(practiceIdentity: string, assets?: PlayfieldAssetRecord[]) {
   const rows = assets ?? getPlayfieldAssetRecords(practiceIdentity);
   if (!rows.length) return null;
   const preferredAlias = resolvePlayfieldAlias(practiceIdentity, null, undefined, getOverrideRecord(practiceIdentity));
   return (
     resolvePlayfieldAssetForAlias(practiceIdentity, preferredAlias.opdbMachineId, rows) ??
+    rows[0]
+  );
+}
+
+function pickPrimaryBackglassAsset(practiceIdentity: string, assets?: BackglassAssetRecord[]) {
+  const rows = assets ?? getBackglassAssetRecords(practiceIdentity);
+  if (!rows.length) return null;
+  const preferredAlias = resolvePlayfieldAlias(practiceIdentity, null, undefined, getOverrideRecord(practiceIdentity));
+  return (
+    resolveBackglassAssetForAlias(practiceIdentity, preferredAlias.opdbMachineId, rows) ??
     rows[0]
   );
 }
@@ -3523,6 +3820,95 @@ function upsertPlayfieldAssetRecord(
     });
 
   syncLegacyPlayfieldOverride(practiceIdentity, getPlayfieldAssetRecords(practiceIdentity));
+}
+
+function upsertBackglassAssetRecord(
+  practiceIdentity: string,
+  sourceAliasId: string,
+  patch: Pick<
+    BackglassAssetRecord,
+    | "backglass_local_path"
+    | "backglass_original_local_path"
+    | "backglass_reference_local_path"
+    | "backglass_source_url"
+    | "backglass_source_page_url"
+    | "backglass_source_page_snapshot_path"
+    | "backglass_source_note"
+    | "backglass_web_local_path_1400"
+    | "backglass_web_local_path_700"
+  >,
+) {
+  const existing = adminDb
+    .prepare(`
+      SELECT *
+      FROM backglass_assets
+      WHERE practice_identity = ? AND source_opdb_machine_id = ?
+    `)
+    .get(practiceIdentity, sourceAliasId) as BackglassAssetRecord | undefined;
+  const now = nowIso();
+
+  adminDb
+    .prepare(`
+      INSERT INTO backglass_assets (
+        practice_identity,
+        source_opdb_machine_id,
+        covered_alias_ids_json,
+        backglass_local_path,
+        backglass_original_local_path,
+        backglass_reference_local_path,
+        backglass_source_url,
+        backglass_source_page_url,
+        backglass_source_page_snapshot_path,
+        backglass_source_note,
+        backglass_web_local_path_1400,
+        backglass_web_local_path_700,
+        created_at,
+        updated_at
+      ) VALUES (
+        @practice_identity,
+        @source_opdb_machine_id,
+        @covered_alias_ids_json,
+        @backglass_local_path,
+        @backglass_original_local_path,
+        @backglass_reference_local_path,
+        @backglass_source_url,
+        @backglass_source_page_url,
+        @backglass_source_page_snapshot_path,
+        @backglass_source_note,
+        @backglass_web_local_path_1400,
+        @backglass_web_local_path_700,
+        @created_at,
+        @updated_at
+      )
+      ON CONFLICT(practice_identity, source_opdb_machine_id) DO UPDATE SET
+        covered_alias_ids_json=excluded.covered_alias_ids_json,
+        backglass_local_path=excluded.backglass_local_path,
+        backglass_original_local_path=excluded.backglass_original_local_path,
+        backglass_reference_local_path=excluded.backglass_reference_local_path,
+        backglass_source_url=excluded.backglass_source_url,
+        backglass_source_page_url=excluded.backglass_source_page_url,
+        backglass_source_page_snapshot_path=excluded.backglass_source_page_snapshot_path,
+        backglass_source_note=excluded.backglass_source_note,
+        backglass_web_local_path_1400=excluded.backglass_web_local_path_1400,
+        backglass_web_local_path_700=excluded.backglass_web_local_path_700,
+        updated_at=excluded.updated_at
+    `)
+    .run({
+      practice_identity: practiceIdentity,
+      source_opdb_machine_id: sourceAliasId,
+      covered_alias_ids_json: stringifyCoveredAliasIds([sourceAliasId]),
+      backglass_local_path: patch.backglass_local_path,
+      backglass_original_local_path: patch.backglass_original_local_path,
+      backglass_reference_local_path: patch.backglass_reference_local_path,
+      backglass_source_url: patch.backglass_source_url,
+      backglass_source_page_url: patch.backglass_source_page_url,
+      backglass_source_page_snapshot_path: patch.backglass_source_page_snapshot_path,
+      backglass_source_note: patch.backglass_source_note,
+      backglass_web_local_path_1400: patch.backglass_web_local_path_1400,
+      backglass_web_local_path_700: patch.backglass_web_local_path_700,
+      created_at: existing?.created_at ?? now,
+      updated_at: now,
+    });
 }
 
 function reassignPlayfieldAssetRecord(
@@ -4584,6 +4970,64 @@ async function savePlayfield(
   };
 }
 
+async function saveBackglass(
+  practiceIdentity: string,
+  machineAliasId: string | null,
+  buffer: Buffer,
+  sourceName: string | null,
+  contentType: string | null,
+  sourceUrl: string | null,
+  sourcePageUrl: string | null,
+  sourceNote: string | null,
+) {
+  await Promise.all([
+    ensureDir(SHARED_BACKGLASSES_DIR),
+    ensureDir(BACKGLASS_SOURCE_ORIGINALS_DIR),
+    ensureDir(BACKGLASS_SOURCE_REFERENCES_DIR),
+  ]);
+  const aliases = getMachineAliases(practiceIdentity);
+  const alias = resolvePlayfieldAlias(practiceIdentity, machineAliasId, aliases, getOverrideRecord(practiceIdentity));
+  const baseName = backglassBaseName(alias.opdbMachineId);
+  await removeExistingBackglassFiles(baseName);
+
+  const ext = inferImageExtension(sourceName, contentType);
+  const assetPaths = buildBackglassAssetPaths(baseName, ext);
+  await fsp.writeFile(assetPaths.originalFsPath, buffer);
+  await publishBackglassDerivatives(buffer, assetPaths);
+  await syncPublishedBackglassFamilyToDeployMirror(baseName, assetPaths);
+
+  const referencePackage = await writeBackglassReferencePackage(baseName, {
+    originalFsPath: assetPaths.originalFsPath,
+    referenceFsPath: assetPaths.referenceFsPath,
+    sourcePageSnapshotFsPath: assetPaths.sourcePageSnapshotFsPath,
+    sourceUrl,
+    sourcePageUrl,
+    sourceNote,
+    sourceName,
+    contentType,
+    publishedWebPath: assetPaths.publishedWebPath,
+    published1400WebPath: assetPaths.published1400WebPath,
+    published700WebPath: assetPaths.published700WebPath,
+  });
+
+  upsertBackglassAssetRecord(practiceIdentity, alias.opdbMachineId, {
+    backglass_local_path: assetPaths.publishedWebPath,
+    backglass_original_local_path: assetPaths.originalFsPath,
+    backglass_reference_local_path: referencePackage.referencePath,
+    backglass_source_url: sourceUrl,
+    backglass_source_page_url: sourcePageUrl,
+    backglass_source_page_snapshot_path: referencePackage.snapshotPath,
+    backglass_source_note: sourceNote,
+    backglass_web_local_path_1400: assetPaths.published1400WebPath,
+    backglass_web_local_path_700: assetPaths.published700WebPath,
+  });
+  return {
+    sourceAliasId: alias.opdbMachineId,
+    sourceAliasLabel: formatAliasLabel(alias),
+    localPath: assetPaths.publishedWebPath,
+  };
+}
+
 async function importPlayfieldFromUrl(
   practiceIdentity: string,
   machineAliasId: string | null,
@@ -4603,6 +5047,25 @@ async function importPlayfieldFromUrl(
   return savePlayfield(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourcePageUrl, sourceNote ?? sourceUrl);
 }
 
+async function importBackglassFromUrl(
+  practiceIdentity: string,
+  machineAliasId: string | null,
+  sourceUrl: string,
+  sourcePageUrl: string | null,
+  sourceNote: string | null,
+) {
+  const response = await fetch(sourceUrl);
+  if (!response.ok) {
+    throw new Error(`Image download failed with ${response.status}`);
+  }
+  const contentType = response.headers.get("content-type");
+  if (contentType && !contentType.toLowerCase().startsWith("image/")) {
+    throw new Error(`Remote content is not an image: ${contentType}`);
+  }
+  const buffer = Buffer.from(await response.arrayBuffer());
+  return saveBackglass(practiceIdentity, machineAliasId, buffer, sourceUrl, contentType, sourceUrl, sourcePageUrl, sourceNote ?? sourceUrl);
+}
+
 async function importPlayfieldFromPath(
   practiceIdentity: string,
   machineAliasId: string | null,
@@ -4618,6 +5081,36 @@ async function importPlayfieldFromPath(
   }
   const buffer = await fsp.readFile(resolved);
   const result = await savePlayfield(
+    practiceIdentity,
+    machineAliasId,
+    buffer,
+    resolved,
+    null,
+    sourceUrl,
+    sourcePageUrl,
+    sourceNote ?? resolved,
+  );
+  return {
+    ...result,
+    sourcePath: resolved,
+  };
+}
+
+async function importBackglassFromPath(
+  practiceIdentity: string,
+  machineAliasId: string | null,
+  sourcePath: string,
+  sourceUrl: string | null,
+  sourcePageUrl: string | null,
+  sourceNote: string | null,
+) {
+  const resolved = path.resolve(sourcePath);
+  const stat = await fsp.stat(resolved).catch(() => null);
+  if (!stat?.isFile()) {
+    throw new Error(`Image file not found: ${resolved}`);
+  }
+  const buffer = await fsp.readFile(resolved);
+  const result = await saveBackglass(
     practiceIdentity,
     machineAliasId,
     buffer,
@@ -4790,6 +5283,28 @@ function buildPlayfieldAssetPayloads(practiceIdentity: string, aliases: MachineA
   });
 }
 
+function buildBackglassAssetPayloads(practiceIdentity: string, aliases: MachineAliasRow[]) {
+  const aliasMap = new Map(aliases.map((alias) => [alias.opdbMachineId, alias]));
+  return getBackglassAssetRecords(practiceIdentity).map((row) => {
+    const sourceAlias = aliasMap.get(row.source_opdb_machine_id);
+    return {
+      backglassAssetId: row.backglass_asset_id,
+      sourceAliasId: row.source_opdb_machine_id,
+      sourceAliasLabel: sourceAlias ? formatAliasLabel(sourceAlias) : row.source_opdb_machine_id,
+      localPath: row.backglass_local_path,
+      originalLocalPath: row.backglass_original_local_path,
+      referenceLocalPath: row.backglass_reference_local_path,
+      sourceUrl: row.backglass_source_url,
+      sourcePageUrl: row.backglass_source_page_url,
+      sourcePageSnapshotPath: row.backglass_source_page_snapshot_path,
+      sourceNote: row.backglass_source_note,
+      web1400LocalPath: row.backglass_web_local_path_1400,
+      web700LocalPath: row.backglass_web_local_path_700,
+      updatedAt: row.updated_at,
+    };
+  });
+}
+
 function authRequired(req: Request, res: Response, next: NextFunction) {
   if (verifySessionToken(req.cookies[SESSION_COOKIE])) {
     next();
@@ -4843,6 +5358,8 @@ app.get("/api/summary", authRequired, (_req, res) => {
           SELECT practice_identity FROM machine_overrides
           UNION ALL
           SELECT practice_identity FROM playfield_assets
+          UNION ALL
+          SELECT practice_identity FROM backglass_assets
           UNION ALL
           SELECT opdb_id AS practice_identity
           FROM gameinfo_assets
@@ -5523,15 +6040,24 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
   const overrideRecord = getOverrideRecord(practiceIdentity);
   const gameinfoAssetRecord = getGameinfoAssetRecord(practiceIdentity);
   const playfieldAlias = resolvePlayfieldAlias(practiceIdentity, null, aliases, overrideRecord);
+  const backglassAlias = resolvePlayfieldAlias(practiceIdentity, null, aliases, overrideRecord);
   const playfieldAssets = buildPlayfieldAssetPayloads(practiceIdentity, aliases);
+  const backglassAssets = buildBackglassAssetPayloads(practiceIdentity, aliases);
   const resolvedPlayfieldAssetRecord = resolvePlayfieldAssetForAlias(practiceIdentity, playfieldAlias.opdbMachineId);
+  const resolvedBackglassAssetRecord = resolveBackglassAssetForAlias(practiceIdentity, backglassAlias.opdbMachineId);
   const resolvedPlayfieldAsset =
     resolvedPlayfieldAssetRecord
       ? playfieldAssets.find((asset) => asset.sourceAliasId === resolvedPlayfieldAssetRecord.source_opdb_machine_id) ?? null
       : null;
+  const resolvedBackglassAsset =
+    resolvedBackglassAssetRecord
+      ? backglassAssets.find((asset) => asset.sourceAliasId === resolvedBackglassAssetRecord.source_opdb_machine_id) ?? null
+      : null;
   const effectivePlayfieldLocalPath =
     resolvedPlayfieldAsset?.localPath ?? row.overridePlayfieldLocalPath ?? row.playfieldLocalPath ?? builtIn?.playfieldLocalPath ?? null;
   const effectivePlayfieldRemoteUrl = row.playfieldImageUrl ?? builtIn?.playfieldImageUrl ?? null;
+  const effectiveBackglassLocalPath = resolvedBackglassAsset?.localPath ?? null;
+  const effectiveBackglassRemoteUrl = row.primaryImageUrl ?? null;
   const effectiveRulesheetPath = row.overrideRulesheetLocalPath ?? row.rulesheetLocalPath ?? builtIn?.rulesheetLocalPath ?? null;
   const effectiveRulesheetUrl = row.rulesheetSourceUrl ?? builtIn?.rulesheetUrl ?? null;
   const effectiveGameinfoPath = gameinfoAssetRecord?.local_path ?? row.gameinfoLocalPath ?? builtIn?.gameinfoLocalPath ?? null;
@@ -5651,17 +6177,63 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
           };
 
   const backglassAsset =
-    row.primaryImageUrl
+    effectiveBackglassLocalPath
+      ? {
+          effectiveKind: "pillyliu",
+          effectiveLabel: assetOriginLabel(
+            "pillyliu",
+            resolvedBackglassAsset ? `local source ${resolvedBackglassAsset.sourceAliasLabel}` : "local source",
+          ),
+          effectiveUrl: effectiveBackglassLocalPath,
+          targetAliasId: backglassAlias.opdbMachineId,
+          targetAliasLabel: formatAliasLabel(backglassAlias),
+          targetFilename: backglassBaseName(backglassAlias.opdbMachineId),
+          localPath: effectiveBackglassLocalPath,
+          localOriginalPath: resolvedBackglassAsset?.originalLocalPath ?? null,
+          localReferencePath: resolvedBackglassAsset?.referenceLocalPath ?? null,
+          localSourceUrl: resolvedBackglassAsset?.sourceUrl ?? null,
+          localSourcePageUrl: resolvedBackglassAsset?.sourcePageUrl ?? null,
+          localSourcePageSnapshotPath: resolvedBackglassAsset?.sourcePageSnapshotPath ?? null,
+          localSourceNote: resolvedBackglassAsset?.sourceNote ?? null,
+          localWeb1400Path: resolvedBackglassAsset?.web1400LocalPath ?? null,
+          localWeb700Path: resolvedBackglassAsset?.web700LocalPath ?? null,
+          fallbackOpdbUrl: effectiveBackglassRemoteUrl,
+        }
+      : effectiveBackglassRemoteUrl
       ? {
           effectiveKind: "opdb",
           effectiveLabel: assetOriginLabel("opdb", "primary/backglass image"),
-          effectiveUrl: row.primaryImageUrl,
-          fallbackOpdbUrl: row.primaryImageUrl,
+          effectiveUrl: effectiveBackglassRemoteUrl,
+          targetAliasId: backglassAlias.opdbMachineId,
+          targetAliasLabel: formatAliasLabel(backglassAlias),
+          targetFilename: backglassBaseName(backglassAlias.opdbMachineId),
+          localPath: null,
+          localOriginalPath: null,
+          localReferencePath: null,
+          localSourceUrl: null,
+          localSourcePageUrl: null,
+          localSourcePageSnapshotPath: null,
+          localSourceNote: null,
+          localWeb1400Path: null,
+          localWeb700Path: null,
+          fallbackOpdbUrl: effectiveBackglassRemoteUrl,
         }
       : {
           effectiveKind: "missing",
           effectiveLabel: assetOriginLabel("missing", "no backglass image"),
           effectiveUrl: null,
+          targetAliasId: backglassAlias.opdbMachineId,
+          targetAliasLabel: formatAliasLabel(backglassAlias),
+          targetFilename: backglassBaseName(backglassAlias.opdbMachineId),
+          localPath: null,
+          localOriginalPath: null,
+          localReferencePath: null,
+          localSourceUrl: null,
+          localSourcePageUrl: null,
+          localSourcePageSnapshotPath: null,
+          localSourceNote: null,
+          localWeb1400Path: null,
+          localWeb700Path: null,
           fallbackOpdbUrl: null,
         };
 
@@ -5731,6 +6303,9 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
       variantOverride: row.variantOverride ?? "",
       manufacturerOverride: row.manufacturerOverride ?? "",
       yearOverride: row.yearOverride == null ? "" : String(row.yearOverride),
+      backglassLocalPath: resolvedBackglassAsset?.localPath ?? null,
+      backglassSourceUrl: resolvedBackglassAsset?.sourceUrl ?? "",
+      backglassSourceNote: resolvedBackglassAsset?.sourceNote ?? "",
       playfieldAliasId: resolvedPlayfieldAsset?.sourceAliasId ?? playfieldAlias.opdbMachineId,
       playfieldLocalPath: resolvedPlayfieldAsset?.localPath ?? row.overridePlayfieldLocalPath,
       playfieldSourceUrl: resolvedPlayfieldAsset?.sourceUrl ?? row.playfieldSourceUrl ?? "",
@@ -5759,6 +6334,7 @@ app.get("/api/machines/:practiceIdentity", authRequired, async (req, res) => {
         playfieldImageUrl: alias.playfieldImageUrl,
         updatedAt: alias.updatedAt,
       })),
+      backglassAssets,
       playfieldAssets,
       assets: {
         backglass: backglassAsset,
@@ -5941,6 +6517,100 @@ app.post("/api/machines/:practiceIdentity/playfield/import-url", authRequired, a
     res.json({ ok: true });
   } catch (error) {
     jsonError(res, 400, error instanceof Error ? error.message : "Failed to import playfield from URL.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/backglass/import-url", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const sourceUrl = normalizeHttpUrl(req.body?.sourceUrl, "Remote image URL");
+    if (!sourceUrl) {
+      throw new Error("Remote image URL is required.");
+    }
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
+    const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.backglassAliasId);
+    const result = await importBackglassFromUrl(
+      practiceIdentity,
+      sourceAliasId,
+      sourceUrl,
+      sourcePageUrl,
+      cleanString(req.body?.sourceNote),
+    );
+    recordActivity(practiceIdentity, "backglass_imported", "Imported backglass from remote URL.", {
+      alias: result.sourceAliasLabel,
+      savedPath: result.localPath,
+      sourceUrl,
+      sourcePageUrl,
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to import backglass from URL.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/backglass/import-path", authRequired, async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    const sourcePath = cleanString(req.body?.sourcePath);
+    if (!sourcePath) {
+      throw new Error("Local image path is required.");
+    }
+    const sourceUrl = normalizeOptionalHttpUrl(req.body?.sourceUrl, "Source image URL");
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
+    const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.backglassAliasId);
+    const result = await importBackglassFromPath(
+      practiceIdentity,
+      sourceAliasId,
+      sourcePath,
+      sourceUrl,
+      sourcePageUrl,
+      cleanString(req.body?.sourceNote),
+    );
+    recordActivity(practiceIdentity, "backglass_imported", "Imported backglass from local file.", {
+      alias: result.sourceAliasLabel,
+      sourcePath: result.sourcePath,
+      savedPath: result.localPath,
+      sourceUrl,
+      sourcePageUrl,
+      sourceNote: cleanString(req.body?.sourceNote),
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to import backglass from local file.");
+  }
+});
+
+app.post("/api/machines/:practiceIdentity/backglass/upload", authRequired, upload.single("image"), async (req, res) => {
+  try {
+    const practiceIdentity = String(req.params.practiceIdentity);
+    if (!req.file?.buffer) {
+      throw new Error("No image uploaded.");
+    }
+    const sourceUrl = normalizeOptionalHttpUrl(req.body?.sourceUrl, "Source image URL");
+    const sourcePageUrl = normalizeOptionalHttpUrl(req.body?.sourcePageUrl, "Source ad URL");
+    const sourceAliasId = cleanString(req.body?.machineAliasId ?? req.body?.backglassAliasId);
+    const result = await saveBackglass(
+      practiceIdentity,
+      sourceAliasId,
+      req.file.buffer,
+      req.file.originalname,
+      req.file.mimetype,
+      sourceUrl,
+      sourcePageUrl,
+      cleanString(req.body?.sourceNote) ?? req.file.originalname,
+    );
+    recordActivity(practiceIdentity, "backglass_uploaded", "Uploaded backglass from browser.", {
+      alias: result.sourceAliasLabel,
+      uploadedFile: req.file.originalname,
+      savedPath: result.localPath,
+      sourceUrl,
+      sourcePageUrl,
+      sourceNote: cleanString(req.body?.sourceNote) ?? req.file.originalname,
+    });
+    res.json({ ok: true });
+  } catch (error) {
+    jsonError(res, 400, error instanceof Error ? error.message : "Failed to upload backglass.");
   }
 });
 

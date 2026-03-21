@@ -32,6 +32,12 @@ const REQUIRED_IMAGE_FILES = [
   "ui/shake-warnings/professor-danger-danger_1024.webp",
   "ui/shake-warnings/professor-tilt_1024.webp",
 ];
+const FALLBACK_IMAGE_FILE = "playfields/fallback-image-not-available_2048.webp";
+const WARNING_IMAGE_FILES = [
+  "ui/shake-warnings/professor-danger_1024.webp",
+  "ui/shake-warnings/professor-danger-danger_1024.webp",
+  "ui/shake-warnings/professor-tilt_1024.webp",
+];
 
 function rel(p) {
   return path.relative(ROOT, p);
@@ -123,6 +129,19 @@ async function validateSharedPinball() {
       const key = `/pinball/images/${relImagePath}`;
       if (!manifest.files[key]) {
         errors.push(`Manifest missing file key: ${key} (shared/pinball)`);
+      }
+    }
+  }
+
+  const fallbackImagePath = path.join(imagesDir, FALLBACK_IMAGE_FILE);
+  if (await exists(fallbackImagePath)) {
+    const fallbackImage = await fs.readFile(fallbackImagePath);
+    for (const relImagePath of WARNING_IMAGE_FILES) {
+      const fullPath = path.join(imagesDir, relImagePath);
+      if (!(await exists(fullPath))) continue;
+      const image = await fs.readFile(fullPath);
+      if (Buffer.compare(image, fallbackImage) === 0) {
+        errors.push(`Warning image incorrectly matches fallback placeholder: ${rel(fullPath)}`);
       }
     }
   }
