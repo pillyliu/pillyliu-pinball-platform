@@ -76,6 +76,7 @@ const ANDROID_STARTER_PACK_DATA_DIR = path.join(PINPROF_ANDROID_STARTER_PACK_PIN
 const SHARED_OPDB_CATALOG_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_catalog_v1.json");
 const SHARED_LIBRARY_V3_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_v3.json");
 const SHARED_LIBRARY_SEED_DB_PATH = path.join(SHARED_PINBALL_DATA_DIR, "pinball_library_seed_v1.sqlite");
+const SHARED_RULESHEET_ASSETS_PATH = path.join(SHARED_PINBALL_DATA_DIR, "rulesheet_assets.json");
 const SHARED_RULESHEET_AUDIT_PATH = path.join(SHARED_PINBALL_DATA_DIR, "rulesheet_link_audit.json");
 const SHARED_MATCHPLAY_ENRICHMENT_PATH = path.join(SHARED_PINBALL_DATA_DIR, "matchplay_opdb_tutorial_enrichment.json");
 const SHARED_EXTERNAL_RULESHEET_RESOURCES_PATH = path.join(SHARED_PINBALL_DATA_DIR, "opdb_external_rulesheet_resources.json");
@@ -666,6 +667,17 @@ async function collectSharedLocalRulesheetPaths() {
     }
   } finally {
     db.close();
+  }
+
+  const rulesheetAssetsRoot = await readJson(SHARED_RULESHEET_ASSETS_PATH).catch(() => null);
+  const rulesheetAssets = Array.isArray(rulesheetAssetsRoot?.records) ? rulesheetAssetsRoot.records : [];
+  for (const asset of rulesheetAssets) {
+    if (asset?.isHidden === true) continue;
+    if (asset && typeof asset === "object" && "isActive" in asset && asset.isActive === false) continue;
+    const localPath = typeof asset?.localPath === "string" ? asset.localPath.trim() : "";
+    if (localPath.startsWith("/pinball/rulesheets/")) {
+      keepPaths.add(localPath);
+    }
   }
 
   return keepPaths;

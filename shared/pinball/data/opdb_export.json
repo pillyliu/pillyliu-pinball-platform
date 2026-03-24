@@ -25456,6 +25456,30 @@
             "height": 210
           }
         }
+      },
+      {
+        "title": null,
+        "primary": true,
+        "type": "playfield",
+        "urls": {
+          "medium": "https://img.opdb.org/60f05504-eab8-45c6-8a05-676fd609b338-medium.jpg",
+          "large": "https://img.opdb.org/60f05504-eab8-45c6-8a05-676fd609b338-large.jpg",
+          "small": "https://img.opdb.org/60f05504-eab8-45c6-8a05-676fd609b338-small.jpg"
+        },
+        "sizes": {
+          "medium": {
+            "width": 411,
+            "height": 640
+          },
+          "large": {
+            "width": 864,
+            "height": 1346
+          },
+          "small": {
+            "width": 161,
+            "height": 250
+          }
+        }
       }
     ]
   },
@@ -121421,6 +121445,32 @@
     "images": []
   },
   {
+    "opdb_id": "Gwej3-MrRYv",
+    "is_machine": true,
+    "name": "The 3 Musketeers",
+    "common_name": null,
+    "shortname": "3M",
+    "physical_machine": 1,
+    "ipdb_id": null,
+    "manufacture_date": "2026-03-01",
+    "manufacturer": {
+      "manufacturer_id": 134,
+      "name": "HEXA Pinball",
+      "full_name": "HEXA Pinball",
+      "created_at": "2023-06-07",
+      "updated_at": "2023-06-07"
+    },
+    "type": "ss",
+    "display": "lcd",
+    "player_count": 4,
+    "features": [],
+    "keywords": [],
+    "description": null,
+    "created_at": "2026-03-22",
+    "updated_at": "2026-03-22",
+    "images": []
+  },
+  {
     "opdb_id": "GRoz4-MrRPw-A97X1",
     "is_alias": true,
     "name": "Batman 66 (Super LE)",
@@ -130885,6 +130935,66 @@
             "width": 250,
             "height": 156
           }
+        }
+      }
+    ]
+  },
+  {
+    "opdb_id": "Gwej3-MrRYv-AOx2j",
+    "is_alias": true,
+    "name": "The 3 Musketeers (Elegance Edition)",
+    "common_name": "",
+    "shortname": "3M",
+    "ipdb_id": null,
+    "manufacture_date": "2026-03-01",
+    "manufacturer": {
+      "manufacturer_id": 134,
+      "name": "HEXA Pinball",
+      "full_name": "HEXA Pinball",
+      "created_at": "2023-06-07",
+      "updated_at": "2023-06-07"
+    },
+    "features": [
+      "Limited edition"
+    ],
+    "keywords": [],
+    "created_at": "2026-03-22",
+    "updated_at": "2026-03-23",
+    "images": []
+  },
+  {
+    "opdb_id": "G900001-1",
+    "is_machine": true,
+    "name": "PinProf: The Final Exam",
+    "common_name": "PinProf: The Final Exam",
+    "shortname": "PinProf",
+    "physical_machine": 1,
+    "manufacture_date": "1982-09-03",
+    "manufacturer": {
+      "manufacturer_id": 9001,
+      "name": "PinProf Labs"
+    },
+    "type": "ss",
+    "display": "alphanumeric",
+    "player_count": 4,
+    "description": "A long-lost pinball treasure.",
+    "images": [
+      {
+        "title": "Backglass",
+        "primary": true,
+        "type": "backglass",
+        "urls": {
+          "medium": "/pinball/images/backglasses/G900001-1-backglass.webp",
+          "large": "/pinball/images/backglasses/G900001-1-backglass.webp"
+        }
+      },
+      {
+        "title": "Playfield",
+        "primary": true,
+        "type": "playfield",
+        "urls": {
+          "medium": "/pinball/images/playfields/G900001-1-playfield_700.webp",
+          "large": "/pinball/images/playfields/G900001-1-playfield_1400.webp"
         }
       }
     ]

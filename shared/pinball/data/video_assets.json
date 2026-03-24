@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-21T16:55:12Z",
+  "generatedAt": "2026-03-24T07:04:32Z",
   "records": [
     {
-      "videoAssetId": 5656,
+      "videoAssetId": 7206,
       "opdbId": "G0l8P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -12,11 +12,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5657,
+      "videoAssetId": 7207,
       "opdbId": "G0l8P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -26,8 +26,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 1,
@@ -58,7 +58,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5658,
+      "videoAssetId": 7208,
       "opdbId": "G2Lkd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -68,11 +68,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5659,
+      "videoAssetId": 7209,
       "opdbId": "G2Lkd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -82,8 +82,8 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 2,
@@ -128,7 +128,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5660,
+      "videoAssetId": 7210,
       "opdbId": "G417d",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -138,11 +138,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5661,
+      "videoAssetId": 7211,
       "opdbId": "G417e",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -152,11 +152,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5662,
+      "videoAssetId": 7212,
       "opdbId": "G417e",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -166,8 +166,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 6,
@@ -184,7 +184,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5664,
+      "videoAssetId": 7214,
       "opdbId": "G41d5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -194,11 +194,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5665,
+      "videoAssetId": 7215,
       "opdbId": "G41d5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -208,11 +208,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5666,
+      "videoAssetId": 7216,
       "opdbId": "G41d5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -222,11 +222,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5667,
+      "videoAssetId": 7217,
       "opdbId": "G41d5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -236,11 +236,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5663,
+      "videoAssetId": 7213,
       "opdbId": "G41d5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -250,11 +250,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5668,
+      "videoAssetId": 7218,
       "opdbId": "G41do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -264,11 +264,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5669,
+      "videoAssetId": 7219,
       "opdbId": "G41do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -278,11 +278,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5670,
+      "videoAssetId": 7220,
       "opdbId": "G41do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -292,11 +292,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5671,
+      "videoAssetId": 7221,
       "opdbId": "G41do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -306,11 +306,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5672,
+      "videoAssetId": 7222,
       "opdbId": "G41do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -320,11 +320,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5673,
+      "videoAssetId": 7223,
       "opdbId": "G41yq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -334,11 +334,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5674,
+      "videoAssetId": 7224,
       "opdbId": "G420r",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -348,11 +348,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5675,
+      "videoAssetId": 7225,
       "opdbId": "G42E2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -362,11 +362,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5676,
+      "videoAssetId": 7226,
       "opdbId": "G42E2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -376,11 +376,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5677,
+      "videoAssetId": 7227,
       "opdbId": "G42E2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -390,11 +390,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5678,
+      "videoAssetId": 7228,
       "opdbId": "G42k0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -404,11 +404,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5679,
+      "videoAssetId": 7229,
       "opdbId": "G42k0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -418,11 +418,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5680,
+      "videoAssetId": 7230,
       "opdbId": "G439V",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -432,11 +432,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5685,
+      "videoAssetId": 7235,
       "opdbId": "G43kO",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -446,11 +446,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5686,
+      "videoAssetId": 7236,
       "opdbId": "G43oq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -460,8 +460,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 7,
@@ -492,7 +492,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5683,
+      "videoAssetId": 7233,
       "opdbId": "G43W4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -502,11 +502,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "German-language tutorial.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5684,
+      "videoAssetId": 7234,
       "opdbId": "G43W4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -516,11 +516,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Matches your gameplay video.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5681,
+      "videoAssetId": 7231,
       "opdbId": "G43W4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -530,11 +530,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5682,
+      "videoAssetId": 7232,
       "opdbId": "G43W4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -544,11 +544,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5687,
+      "videoAssetId": 7237,
       "opdbId": "G43wE",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -558,11 +558,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5688,
+      "videoAssetId": 7238,
       "opdbId": "G482d",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -572,8 +572,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 9,
@@ -590,7 +590,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5689,
+      "videoAssetId": 7239,
       "opdbId": "G4835",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -600,11 +600,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5691,
+      "videoAssetId": 7241,
       "opdbId": "G48kY",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -614,11 +614,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5690,
+      "videoAssetId": 7240,
       "opdbId": "G48ZN",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -628,11 +628,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5703,
+      "videoAssetId": 7253,
       "opdbId": "G4d8k",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -642,8 +642,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 12,
@@ -674,7 +674,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5710,
+      "videoAssetId": 7260,
       "opdbId": "G4do5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -684,8 +684,8 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 11,
@@ -702,7 +702,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5705,
+      "videoAssetId": 7255,
       "opdbId": "G4dOQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -712,11 +712,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5706,
+      "videoAssetId": 7256,
       "opdbId": "G4dOQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -726,11 +726,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5707,
+      "videoAssetId": 7257,
       "opdbId": "G4dOQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -740,11 +740,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5704,
+      "videoAssetId": 7254,
       "opdbId": "G4dOQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -754,11 +754,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5708,
+      "videoAssetId": 7258,
       "opdbId": "G4dWd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -768,11 +768,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5709,
+      "videoAssetId": 7259,
       "opdbId": "G4dWd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -782,11 +782,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5692,
+      "videoAssetId": 7242,
       "opdbId": "G4ELZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -796,11 +796,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5711,
+      "videoAssetId": 7261,
       "opdbId": "G4j2z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -810,11 +810,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5712,
+      "videoAssetId": 7262,
       "opdbId": "G4jBk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -824,11 +824,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5717,
+      "videoAssetId": 7267,
       "opdbId": "G4jjx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -838,8 +838,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 14,
@@ -856,7 +856,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5713,
+      "videoAssetId": 7263,
       "opdbId": "G4jPX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -866,11 +866,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5714,
+      "videoAssetId": 7264,
       "opdbId": "G4jQw",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -880,11 +880,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5715,
+      "videoAssetId": 7265,
       "opdbId": "G4jXW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -894,11 +894,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5716,
+      "videoAssetId": 7266,
       "opdbId": "G4jXW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -908,8 +908,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 15,
@@ -926,7 +926,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5718,
+      "videoAssetId": 7268,
       "opdbId": "G4llj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -936,11 +936,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5719,
+      "videoAssetId": 7269,
       "opdbId": "G4llj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -950,11 +950,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5693,
+      "videoAssetId": 7243,
       "opdbId": "G4N6n",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -964,11 +964,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5694,
+      "videoAssetId": 7244,
       "opdbId": "G4NnZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -978,11 +978,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5695,
+      "videoAssetId": 7245,
       "opdbId": "G4O1L",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -992,11 +992,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5696,
+      "videoAssetId": 7246,
       "opdbId": "G4O1L",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1006,8 +1006,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 10,
@@ -1024,7 +1024,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5697,
+      "videoAssetId": 7247,
       "opdbId": "G4ODR",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1034,11 +1034,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5720,
+      "videoAssetId": 7270,
       "opdbId": "G4q3L",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1048,11 +1048,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5721,
+      "videoAssetId": 7271,
       "opdbId": "G4q3L",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1062,11 +1062,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5723,
+      "videoAssetId": 7273,
       "opdbId": "G4qbX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1076,11 +1076,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5724,
+      "videoAssetId": 7274,
       "opdbId": "G4qvL",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1090,8 +1090,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 16,
@@ -1108,7 +1108,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5722,
+      "videoAssetId": 7272,
       "opdbId": "G4qX5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1118,11 +1118,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5698,
+      "videoAssetId": 7248,
       "opdbId": "G4X2l",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1132,11 +1132,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5725,
+      "videoAssetId": 7275,
       "opdbId": "G4x2Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1146,11 +1146,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5726,
+      "videoAssetId": 7276,
       "opdbId": "G4x2Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1160,8 +1160,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 18,
@@ -1178,7 +1178,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5699,
+      "videoAssetId": 7249,
       "opdbId": "G4XPZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1188,11 +1188,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5700,
+      "videoAssetId": 7250,
       "opdbId": "G4XPZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1202,11 +1202,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5728,
+      "videoAssetId": 7278,
       "opdbId": "G4xqN",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1216,11 +1216,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5729,
+      "videoAssetId": 7279,
       "opdbId": "G4xwQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1230,11 +1230,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5730,
+      "videoAssetId": 7280,
       "opdbId": "G4xwQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1244,11 +1244,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5727,
+      "videoAssetId": 7277,
       "opdbId": "G4xXQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1258,11 +1258,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5731,
+      "videoAssetId": 7281,
       "opdbId": "G4xyR",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1272,11 +1272,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5732,
+      "videoAssetId": 7282,
       "opdbId": "G4xyR",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1286,11 +1286,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5733,
+      "videoAssetId": 7283,
       "opdbId": "G4xzV",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1300,8 +1300,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 17,
@@ -1332,7 +1332,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5734,
+      "videoAssetId": 7284,
       "opdbId": "G4yVw",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1342,11 +1342,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5701,
+      "videoAssetId": 7251,
       "opdbId": "G4ZVB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1356,11 +1356,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5702,
+      "videoAssetId": 7252,
       "opdbId": "G4ZVB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1370,11 +1370,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5736,
+      "videoAssetId": 7286,
       "opdbId": "G50kj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1384,11 +1384,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5735,
+      "videoAssetId": 7285,
       "opdbId": "G50Wr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1398,11 +1398,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5737,
+      "videoAssetId": 7287,
       "opdbId": "G56vo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1412,11 +1412,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5738,
+      "videoAssetId": 7288,
       "opdbId": "G56zB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1426,11 +1426,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5739,
+      "videoAssetId": 7289,
       "opdbId": "G56zB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1440,8 +1440,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 20,
@@ -1458,7 +1458,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5741,
+      "videoAssetId": 7291,
       "opdbId": "G5728",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1468,11 +1468,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5740,
+      "videoAssetId": 7290,
       "opdbId": "G5728",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1482,11 +1482,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5742,
+      "videoAssetId": 7292,
       "opdbId": "G578Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1496,11 +1496,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5743,
+      "videoAssetId": 7293,
       "opdbId": "G57X4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1510,11 +1510,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5744,
+      "videoAssetId": 7294,
       "opdbId": "G57X4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1524,11 +1524,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5745,
+      "videoAssetId": 7295,
       "opdbId": "G57y6",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1538,11 +1538,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5747,
+      "videoAssetId": 7297,
       "opdbId": "G59bo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1552,11 +1552,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5748,
+      "videoAssetId": 7298,
       "opdbId": "G59zN",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1566,11 +1566,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5746,
+      "videoAssetId": 7296,
       "opdbId": "G59ZY",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1580,11 +1580,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5767,
+      "videoAssetId": 7317,
       "opdbId": "G5b38",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1594,11 +1594,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5749,
+      "videoAssetId": 7299,
       "opdbId": "G5BLE",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1608,11 +1608,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5768,
+      "videoAssetId": 7318,
       "opdbId": "G5bQq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1622,11 +1622,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5771,
+      "videoAssetId": 7321,
       "opdbId": "G5bv3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1636,11 +1636,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5772,
+      "videoAssetId": 7322,
       "opdbId": "G5bv3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1650,11 +1650,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5773,
+      "videoAssetId": 7323,
       "opdbId": "G5bv3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1664,11 +1664,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5769,
+      "videoAssetId": 7319,
       "opdbId": "G5bYr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1678,11 +1678,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5770,
+      "videoAssetId": 7320,
       "opdbId": "G5bYr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1692,11 +1692,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5750,
+      "videoAssetId": 7300,
       "opdbId": "G5D94",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1706,11 +1706,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5751,
+      "videoAssetId": 7301,
       "opdbId": "G5Dz7",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1720,8 +1720,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 21,
@@ -1738,7 +1738,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5752,
+      "videoAssetId": 7302,
       "opdbId": "G5KXk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1748,11 +1748,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5753,
+      "videoAssetId": 7303,
       "opdbId": "G5KXk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1762,11 +1762,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5754,
+      "videoAssetId": 7304,
       "opdbId": "G5KXk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1776,11 +1776,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5755,
+      "videoAssetId": 7305,
       "opdbId": "G5KXk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1790,11 +1790,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5757,
+      "videoAssetId": 7307,
       "opdbId": "G5Lk0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1804,11 +1804,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5758,
+      "videoAssetId": 7308,
       "opdbId": "G5Lk0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1818,11 +1818,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5756,
+      "videoAssetId": 7306,
       "opdbId": "G5LW9",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1832,11 +1832,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5774,
+      "videoAssetId": 7324,
       "opdbId": "G5nkY",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1846,11 +1846,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5775,
+      "videoAssetId": 7325,
       "opdbId": "G5nz5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1860,11 +1860,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5776,
+      "videoAssetId": 7326,
       "opdbId": "G5nz5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1874,11 +1874,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5777,
+      "videoAssetId": 7327,
       "opdbId": "G5nz5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1888,11 +1888,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5778,
+      "videoAssetId": 7328,
       "opdbId": "G5nz5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1902,11 +1902,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5779,
+      "videoAssetId": 7329,
       "opdbId": "G5oEz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1916,8 +1916,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 22,
@@ -1948,7 +1948,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5780,
+      "videoAssetId": 7330,
       "opdbId": "G5pe4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1958,11 +1958,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5781,
+      "videoAssetId": 7331,
       "opdbId": "G5pe4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1972,11 +1972,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5782,
+      "videoAssetId": 7332,
       "opdbId": "G5po2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -1986,11 +1986,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5783,
+      "videoAssetId": 7333,
       "opdbId": "G5poe",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2000,11 +2000,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5784,
+      "videoAssetId": 7334,
       "opdbId": "G5poe",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2014,11 +2014,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5785,
+      "videoAssetId": 7335,
       "opdbId": "G5poe",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2028,11 +2028,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5759,
+      "videoAssetId": 7309,
       "opdbId": "G5QXO",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2042,11 +2042,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5760,
+      "videoAssetId": 7310,
       "opdbId": "G5V8q",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2056,8 +2056,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 24,
@@ -2074,7 +2074,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5786,
+      "videoAssetId": 7336,
       "opdbId": "G5vLR",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2084,11 +2084,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5787,
+      "videoAssetId": 7337,
       "opdbId": "G5vnL",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2098,11 +2098,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5788,
+      "videoAssetId": 7338,
       "opdbId": "G5vq2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2112,11 +2112,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5789,
+      "videoAssetId": 7339,
       "opdbId": "G5w3q",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2126,11 +2126,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5761,
+      "videoAssetId": 7311,
       "opdbId": "G5WBr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2140,11 +2140,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5764,
+      "videoAssetId": 7314,
       "opdbId": "G5Wjk",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2154,11 +2154,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5765,
+      "videoAssetId": 7315,
       "opdbId": "G5WoB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2168,11 +2168,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5762,
+      "videoAssetId": 7312,
       "opdbId": "G5WOo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2182,11 +2182,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5763,
+      "videoAssetId": 7313,
       "opdbId": "G5WXd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2196,11 +2196,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5766,
+      "videoAssetId": 7316,
       "opdbId": "G5Wxd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2210,11 +2210,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5790,
+      "videoAssetId": 7340,
       "opdbId": "G5zQO",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2224,8 +2224,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 25,
@@ -2242,7 +2242,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5791,
+      "videoAssetId": 7341,
       "opdbId": "G6lnq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2252,8 +2252,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 26,
@@ -2270,7 +2270,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5792,
+      "videoAssetId": 7342,
       "opdbId": "GBLLP",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2280,8 +2280,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 47,
@@ -2340,7 +2340,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5871,
+      "videoAssetId": 7421,
       "opdbId": "Gd2Xb",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2350,11 +2350,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5872,
+      "videoAssetId": 7422,
       "opdbId": "Gd2Xb",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2364,8 +2364,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 27,
@@ -2424,7 +2424,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5793,
+      "videoAssetId": 7343,
       "opdbId": "GEL0V",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2434,8 +2434,8 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 51,
@@ -2466,7 +2466,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5875,
+      "videoAssetId": 7425,
       "opdbId": "Gj66P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2476,11 +2476,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5873,
+      "videoAssetId": 7423,
       "opdbId": "Gj66P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2490,11 +2490,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5874,
+      "videoAssetId": 7424,
       "opdbId": "Gj66P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2504,8 +2504,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 31,
@@ -2578,7 +2578,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5794,
+      "videoAssetId": 7344,
       "opdbId": "GLWll",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2588,11 +2588,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5795,
+      "videoAssetId": 7345,
       "opdbId": "GO0q3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2602,8 +2602,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 53,
@@ -2620,7 +2620,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5876,
+      "videoAssetId": 7426,
       "opdbId": "GoEkx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2630,8 +2630,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 54,
@@ -2648,7 +2648,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5877,
+      "videoAssetId": 7427,
       "opdbId": "GoEkx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2658,8 +2658,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 55,
@@ -2690,7 +2690,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5878,
+      "videoAssetId": 7428,
       "opdbId": "GpeoL",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2700,11 +2700,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5796,
+      "videoAssetId": 7346,
       "opdbId": "GQKb2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2714,8 +2714,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 36,
@@ -2746,7 +2746,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5879,
+      "videoAssetId": 7429,
       "opdbId": "GqZZ1",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2756,11 +2756,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5797,
+      "videoAssetId": 7347,
       "opdbId": "GR07v",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2770,11 +2770,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5880,
+      "videoAssetId": 7430,
       "opdbId": "Gr16e",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2784,11 +2784,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5881,
+      "videoAssetId": 7431,
       "opdbId": "Gr1Ko",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2798,8 +2798,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 57,
@@ -2830,7 +2830,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5883,
+      "videoAssetId": 7433,
       "opdbId": "Gr2wz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2840,11 +2840,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5882,
+      "videoAssetId": 7432,
       "opdbId": "Gr2Y2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2854,11 +2854,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5884,
+      "videoAssetId": 7434,
       "opdbId": "Gr31Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2868,8 +2868,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 59,
@@ -2900,7 +2900,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5885,
+      "videoAssetId": 7435,
       "opdbId": "Gr3EW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2910,11 +2910,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5886,
+      "videoAssetId": 7436,
       "opdbId": "Gr3Lq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2924,11 +2924,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5887,
+      "videoAssetId": 7437,
       "opdbId": "Gr3Lq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2938,11 +2938,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5798,
+      "videoAssetId": 7348,
       "opdbId": "GR67j",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2952,11 +2952,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5799,
+      "videoAssetId": 7349,
       "opdbId": "GR68o",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2966,11 +2966,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5803,
+      "videoAssetId": 7353,
       "opdbId": "GR6d8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2980,11 +2980,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5804,
+      "videoAssetId": 7354,
       "opdbId": "GR6d8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -2994,11 +2994,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5805,
+      "videoAssetId": 7355,
       "opdbId": "GR6d8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3008,11 +3008,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5806,
+      "videoAssetId": 7356,
       "opdbId": "GR6do",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3022,11 +3022,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5807,
+      "videoAssetId": 7357,
       "opdbId": "GR6kW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3036,11 +3036,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5800,
+      "videoAssetId": 7350,
       "opdbId": "GR6Oy",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3050,11 +3050,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5801,
+      "videoAssetId": 7351,
       "opdbId": "GR6W8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3064,11 +3064,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5802,
+      "videoAssetId": 7352,
       "opdbId": "GR6W8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3078,8 +3078,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 38,
@@ -3096,7 +3096,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5889,
+      "videoAssetId": 7439,
       "opdbId": "Gr8jd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3106,8 +3106,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 61,
@@ -3124,7 +3124,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5888,
+      "videoAssetId": 7438,
       "opdbId": "Gr8PN",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3134,11 +3134,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5808,
+      "videoAssetId": 7358,
       "opdbId": "GR99Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3148,11 +3148,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5809,
+      "videoAssetId": 7359,
       "opdbId": "GR99Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3162,11 +3162,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5810,
+      "videoAssetId": 7360,
       "opdbId": "GR9Bx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3176,11 +3176,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5812,
+      "videoAssetId": 7362,
       "opdbId": "GR9lZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3190,11 +3190,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5811,
+      "videoAssetId": 7361,
       "opdbId": "GR9Nr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3204,11 +3204,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5813,
+      "videoAssetId": 7363,
       "opdbId": "GR9o1",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3218,11 +3218,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5814,
+      "videoAssetId": 7364,
       "opdbId": "GR9qY",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3232,8 +3232,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 39,
@@ -3250,7 +3250,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5816,
+      "videoAssetId": 7366,
       "opdbId": "GRBE4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3260,11 +3260,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5815,
+      "videoAssetId": 7365,
       "opdbId": "GRBE4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3274,11 +3274,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5817,
+      "videoAssetId": 7367,
       "opdbId": "GRBKZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3288,11 +3288,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5851,
+      "videoAssetId": 7401,
       "opdbId": "GRbPY",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3302,11 +3302,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5819,
+      "videoAssetId": 7369,
       "opdbId": "GRBxQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3316,11 +3316,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5820,
+      "videoAssetId": 7370,
       "opdbId": "GRBxq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3330,11 +3330,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5818,
+      "videoAssetId": 7368,
       "opdbId": "GRBZl",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3344,11 +3344,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5821,
+      "videoAssetId": 7371,
       "opdbId": "GRBzQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3358,11 +3358,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5822,
+      "videoAssetId": 7372,
       "opdbId": "GRD2P",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3372,8 +3372,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 40,
@@ -3390,7 +3390,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5932,
+      "videoAssetId": 7482,
       "opdbId": "GrdDB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3400,11 +3400,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5823,
+      "videoAssetId": 7373,
       "opdbId": "GRDqo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3414,11 +3414,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5933,
+      "videoAssetId": 7483,
       "opdbId": "Gre0B",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3428,11 +3428,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5890,
+      "videoAssetId": 7440,
       "opdbId": "GrE7e",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3442,11 +3442,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5891,
+      "videoAssetId": 7441,
       "opdbId": "GrE7e",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3456,11 +3456,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5892,
+      "videoAssetId": 7442,
       "opdbId": "GrENE",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3470,11 +3470,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5934,
+      "videoAssetId": 7484,
       "opdbId": "Grep0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3484,11 +3484,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5935,
+      "videoAssetId": 7485,
       "opdbId": "Grep0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3498,11 +3498,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5893,
+      "videoAssetId": 7443,
       "opdbId": "GrEWx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3512,11 +3512,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5894,
+      "videoAssetId": 7444,
       "opdbId": "GrEZ5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3526,11 +3526,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5895,
+      "videoAssetId": 7445,
       "opdbId": "GrJ2Z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3540,11 +3540,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5896,
+      "videoAssetId": 7446,
       "opdbId": "GrJ2Z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3554,11 +3554,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5897,
+      "videoAssetId": 7447,
       "opdbId": "GrJ2Z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3568,11 +3568,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5898,
+      "videoAssetId": 7448,
       "opdbId": "GrJ2Z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3582,11 +3582,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5936,
+      "videoAssetId": 7486,
       "opdbId": "Grj6X",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3596,11 +3596,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5937,
+      "videoAssetId": 7487,
       "opdbId": "Grj6X",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3610,11 +3610,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5938,
+      "videoAssetId": 7488,
       "opdbId": "GrjDz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3624,8 +3624,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 64,
@@ -3656,7 +3656,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5939,
+      "videoAssetId": 7489,
       "opdbId": "GrkL5",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3666,11 +3666,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5824,
+      "videoAssetId": 7374,
       "opdbId": "GRKOX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3680,11 +3680,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5825,
+      "videoAssetId": 7375,
       "opdbId": "GRKOX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3694,11 +3694,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5940,
+      "videoAssetId": 7490,
       "opdbId": "GrkW3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3708,11 +3708,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5826,
+      "videoAssetId": 7376,
       "opdbId": "GRKWZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3722,8 +3722,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 41,
@@ -3740,7 +3740,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5827,
+      "videoAssetId": 7377,
       "opdbId": "GRL2z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3750,11 +3750,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5942,
+      "videoAssetId": 7492,
       "opdbId": "Grlxe",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3764,11 +3764,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5943,
+      "videoAssetId": 7493,
       "opdbId": "Grlxp",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3778,11 +3778,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5941,
+      "videoAssetId": 7491,
       "opdbId": "GrlZe",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3792,11 +3792,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5828,
+      "videoAssetId": 7378,
       "opdbId": "GRLzj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3806,11 +3806,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5829,
+      "videoAssetId": 7379,
       "opdbId": "GRLzj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3820,11 +3820,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5830,
+      "videoAssetId": 7380,
       "opdbId": "GRLzj",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3834,11 +3834,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5944,
+      "videoAssetId": 7494,
       "opdbId": "Grlzn",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3848,11 +3848,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5899,
+      "videoAssetId": 7449,
       "opdbId": "GrN90",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3862,11 +3862,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5901,
+      "videoAssetId": 7451,
       "opdbId": "GrNd0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3876,11 +3876,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5902,
+      "videoAssetId": 7452,
       "opdbId": "GrNd0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3890,11 +3890,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5903,
+      "videoAssetId": 7453,
       "opdbId": "GrNd0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3904,11 +3904,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5904,
+      "videoAssetId": 7454,
       "opdbId": "GrNlV",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3918,11 +3918,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5905,
+      "videoAssetId": 7455,
       "opdbId": "GrNnr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3932,11 +3932,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5906,
+      "videoAssetId": 7456,
       "opdbId": "GrNnr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3946,11 +3946,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5907,
+      "videoAssetId": 7457,
       "opdbId": "GrNpx",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3960,11 +3960,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5852,
+      "videoAssetId": 7402,
       "opdbId": "GRnPz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3974,11 +3974,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5900,
+      "videoAssetId": 7450,
       "opdbId": "GrNWn",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -3988,11 +3988,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5853,
+      "videoAssetId": 7403,
       "opdbId": "GRnwQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4002,11 +4002,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5854,
+      "videoAssetId": 7404,
       "opdbId": "GRnwQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4016,11 +4016,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5855,
+      "videoAssetId": 7405,
       "opdbId": "GRnwQ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4030,11 +4030,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5908,
+      "videoAssetId": 7458,
       "opdbId": "GrO0D",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4044,11 +4044,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5909,
+      "videoAssetId": 7459,
       "opdbId": "GrO0D",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4058,11 +4058,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5910,
+      "videoAssetId": 7460,
       "opdbId": "GrO0D",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4072,11 +4072,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5856,
+      "videoAssetId": 7406,
       "opdbId": "GRo7K",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4086,11 +4086,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5859,
+      "videoAssetId": 7409,
       "opdbId": "GRokL",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4100,11 +4100,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5911,
+      "videoAssetId": 7461,
       "opdbId": "GrOpb",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4114,11 +4114,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5857,
+      "videoAssetId": 7407,
       "opdbId": "GRoWo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4128,11 +4128,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5860,
+      "videoAssetId": 7410,
       "opdbId": "GRoz4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4142,11 +4142,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5861,
+      "videoAssetId": 7411,
       "opdbId": "GRoz4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4156,11 +4156,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5858,
+      "videoAssetId": 7408,
       "opdbId": "GRoZw",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4170,8 +4170,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 62,
@@ -4188,7 +4188,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5862,
+      "videoAssetId": 7412,
       "opdbId": "GRpbW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4198,11 +4198,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5912,
+      "videoAssetId": 7462,
       "opdbId": "GrPJz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4212,11 +4212,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5913,
+      "videoAssetId": 7463,
       "opdbId": "GrPO3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4226,11 +4226,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5914,
+      "videoAssetId": 7464,
       "opdbId": "GrPO3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4240,11 +4240,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5915,
+      "videoAssetId": 7465,
       "opdbId": "GrPO3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4254,11 +4254,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5916,
+      "videoAssetId": 7466,
       "opdbId": "GrPO3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4268,11 +4268,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5917,
+      "videoAssetId": 7467,
       "opdbId": "GrPzV",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4282,11 +4282,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5918,
+      "videoAssetId": 7468,
       "opdbId": "GrPzV",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4296,11 +4296,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5831,
+      "videoAssetId": 7381,
       "opdbId": "GRQ6d",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4310,11 +4310,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5832,
+      "videoAssetId": 7382,
       "opdbId": "GRQKz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4324,11 +4324,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5833,
+      "videoAssetId": 7383,
       "opdbId": "GRQKz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4338,11 +4338,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5945,
+      "videoAssetId": 7495,
       "opdbId": "GrqZX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4352,11 +4352,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5946,
+      "videoAssetId": 7496,
       "opdbId": "GrqZX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4366,8 +4366,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 42,
@@ -4398,7 +4398,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5834,
+      "videoAssetId": 7384,
       "opdbId": "GRVEJ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4408,11 +4408,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5836,
+      "videoAssetId": 7386,
       "opdbId": "GRVjJ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4422,11 +4422,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5863,
+      "videoAssetId": 7413,
       "opdbId": "GRvJV",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4436,11 +4436,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5837,
+      "videoAssetId": 7387,
       "opdbId": "GRVoX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4450,11 +4450,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5838,
+      "videoAssetId": 7388,
       "opdbId": "GRVq4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4464,11 +4464,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5839,
+      "videoAssetId": 7389,
       "opdbId": "GRVq4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4478,11 +4478,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5840,
+      "videoAssetId": 7390,
       "opdbId": "GRVq4",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4492,11 +4492,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5835,
+      "videoAssetId": 7385,
       "opdbId": "GRVZ8",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4506,11 +4506,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5864,
+      "videoAssetId": 7414,
       "opdbId": "GRvzd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4520,11 +4520,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5865,
+      "videoAssetId": 7415,
       "opdbId": "GRw0r",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4534,11 +4534,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5841,
+      "videoAssetId": 7391,
       "opdbId": "GRWBd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4548,11 +4548,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5842,
+      "videoAssetId": 7392,
       "opdbId": "GRWd2",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4562,11 +4562,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5867,
+      "videoAssetId": 7417,
       "opdbId": "GRwjq",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4576,11 +4576,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5868,
+      "videoAssetId": 7418,
       "opdbId": "GRwv0",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4590,11 +4590,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5843,
+      "videoAssetId": 7393,
       "opdbId": "GRWvz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4604,11 +4604,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5844,
+      "videoAssetId": 7394,
       "opdbId": "GRWvz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4618,11 +4618,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5845,
+      "videoAssetId": 7395,
       "opdbId": "GRWvz",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4632,11 +4632,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5846,
+      "videoAssetId": 7396,
       "opdbId": "GRWyB",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4646,11 +4646,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5866,
+      "videoAssetId": 7416,
       "opdbId": "GRwYo",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4660,11 +4660,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5919,
+      "videoAssetId": 7469,
       "opdbId": "GrX09",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4674,11 +4674,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5947,
+      "videoAssetId": 7497,
       "opdbId": "Grx1z",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4688,11 +4688,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5920,
+      "videoAssetId": 7470,
       "opdbId": "GrX7q",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4702,8 +4702,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 66,
@@ -4720,7 +4720,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5948,
+      "videoAssetId": 7498,
       "opdbId": "Grx8Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4730,11 +4730,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5949,
+      "videoAssetId": 7499,
       "opdbId": "Grx8Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4744,11 +4744,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5950,
+      "videoAssetId": 7500,
       "opdbId": "Grx8Y",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4758,11 +4758,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5921,
+      "videoAssetId": 7471,
       "opdbId": "GrXEW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4772,11 +4772,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5922,
+      "videoAssetId": 7472,
       "opdbId": "GrXEW",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4786,11 +4786,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5923,
+      "videoAssetId": 7473,
       "opdbId": "GrXlr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4800,11 +4800,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5951,
+      "videoAssetId": 7501,
       "opdbId": "Grxvy",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4814,8 +4814,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 63,
@@ -4832,7 +4832,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5924,
+      "videoAssetId": 7474,
       "opdbId": "GrXy3",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4842,11 +4842,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5925,
+      "videoAssetId": 7475,
       "opdbId": "GrXzD",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4856,11 +4856,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5926,
+      "videoAssetId": 7476,
       "opdbId": "GrXzD",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4870,11 +4870,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5927,
+      "videoAssetId": 7477,
       "opdbId": "GrXzD",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4884,11 +4884,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5928,
+      "videoAssetId": 7478,
       "opdbId": "GrXzD",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4898,11 +4898,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5847,
+      "videoAssetId": 7397,
       "opdbId": "GRY2O",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4912,11 +4912,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5848,
+      "videoAssetId": 7398,
       "opdbId": "GRY7E",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4926,11 +4926,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5952,
+      "videoAssetId": 7502,
       "opdbId": "Gry7q",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4940,11 +4940,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5953,
+      "videoAssetId": 7503,
       "opdbId": "Gry7q",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4954,8 +4954,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 67,
@@ -4972,7 +4972,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5850,
+      "videoAssetId": 7400,
       "opdbId": "GRYox",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4982,11 +4982,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5849,
+      "videoAssetId": 7399,
       "opdbId": "GRYPN",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -4996,8 +4996,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 68,
@@ -5028,7 +5028,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5929,
+      "videoAssetId": 7479,
       "opdbId": "GrZ1k",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5038,11 +5038,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5930,
+      "videoAssetId": 7480,
       "opdbId": "GrZBr",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5052,11 +5052,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5931,
+      "videoAssetId": 7481,
       "opdbId": "GrZnn",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5066,8 +5066,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 70,
@@ -5084,7 +5084,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5954,
+      "videoAssetId": 7504,
       "opdbId": "GvBQX",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5094,11 +5094,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5957,
+      "videoAssetId": 7507,
       "opdbId": "Gweel",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5108,11 +5108,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5958,
+      "videoAssetId": 7508,
       "opdbId": "Gweel",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5122,11 +5122,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5959,
+      "videoAssetId": 7509,
       "opdbId": "Gweel",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5136,11 +5136,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5960,
+      "videoAssetId": 7510,
       "opdbId": "Gweel",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5150,11 +5150,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5961,
+      "videoAssetId": 7511,
       "opdbId": "Gweel",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5164,8 +5164,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 71,
@@ -5196,7 +5196,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5956,
+      "videoAssetId": 7506,
       "opdbId": "GweeP",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5206,8 +5206,8 @@
       "isHidden": true,
       "isActive": true,
       "note": "Removed during manual review.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 73,
@@ -5224,7 +5224,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5955,
+      "videoAssetId": 7505,
       "opdbId": "GweeP",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5234,8 +5234,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 44,
@@ -5266,7 +5266,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5962,
+      "videoAssetId": 7512,
       "opdbId": "GxvQ7",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5276,11 +5276,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5869,
+      "videoAssetId": 7419,
       "opdbId": "GYWBZ",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5290,8 +5290,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 46,
@@ -5308,7 +5308,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5870,
+      "videoAssetId": 7420,
       "opdbId": "GZVOd",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5318,8 +5318,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
       "videoAssetId": 74,
@@ -5350,7 +5350,7 @@
       "updatedAt": "2026-03-19T11:30:14Z"
     },
     {
-      "videoAssetId": 5965,
+      "videoAssetId": 7515,
       "opdbId": "Gzy89",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5360,11 +5360,11 @@
       "isHidden": true,
       "isActive": true,
       "note": "German-language tutorial.",
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5963,
+      "videoAssetId": 7513,
       "opdbId": "Gzy89",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5374,11 +5374,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "videoAssetId": 5964,
+      "videoAssetId": 7514,
       "opdbId": "Gzy89",
       "provider": "matchplay",
       "kind": "tutorial",
@@ -5388,8 +5388,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-21T16:55:12Z",
+  "generatedAt": "2026-03-24T07:04:32Z",
   "records": [
     {
-      "gameinfoAssetId": 1017,
+      "gameinfoAssetId": 1263,
       "opdbId": "G2Lkd",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -11,11 +11,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1018,
+      "gameinfoAssetId": 1264,
       "opdbId": "G3EBl",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -24,11 +24,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1019,
+      "gameinfoAssetId": 1265,
       "opdbId": "G41d5",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -37,11 +37,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1020,
+      "gameinfoAssetId": 1266,
       "opdbId": "G43W4",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -50,11 +50,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1021,
+      "gameinfoAssetId": 1267,
       "opdbId": "G4835",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -63,11 +63,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1025,
+      "gameinfoAssetId": 1271,
       "opdbId": "G4do5",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -76,11 +76,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1024,
+      "gameinfoAssetId": 1270,
       "opdbId": "G4dOQ",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -89,11 +89,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1026,
+      "gameinfoAssetId": 1272,
       "opdbId": "G4jPX",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -102,11 +102,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1027,
+      "gameinfoAssetId": 1273,
       "opdbId": "G4llj",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -115,11 +115,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1022,
+      "gameinfoAssetId": 1268,
       "opdbId": "G4ODR",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -128,11 +128,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1023,
+      "gameinfoAssetId": 1269,
       "opdbId": "G4PBO",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -141,11 +141,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1028,
+      "gameinfoAssetId": 1274,
       "opdbId": "G4qX5",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -154,11 +154,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1030,
+      "gameinfoAssetId": 1276,
       "opdbId": "G4xbP",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -167,11 +167,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1029,
+      "gameinfoAssetId": 1275,
       "opdbId": "G4xZy",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -180,11 +180,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1031,
+      "gameinfoAssetId": 1277,
       "opdbId": "G4yen",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -193,11 +193,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1032,
+      "gameinfoAssetId": 1278,
       "opdbId": "G5728",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -206,11 +206,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1033,
+      "gameinfoAssetId": 1279,
       "opdbId": "G5Kvx",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -219,11 +219,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1035,
+      "gameinfoAssetId": 1281,
       "opdbId": "G5pe4",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -232,11 +232,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1036,
+      "gameinfoAssetId": 1282,
       "opdbId": "G5vLR",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -245,11 +245,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1034,
+      "gameinfoAssetId": 1280,
       "opdbId": "G5YDN",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -258,11 +258,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1037,
+      "gameinfoAssetId": 1283,
       "opdbId": "G6lnq",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -271,11 +271,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1038,
+      "gameinfoAssetId": 1284,
       "opdbId": "G7ZEz",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -284,11 +284,24 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1039,
+      "gameinfoAssetId": 1285,
+      "opdbId": "G900001",
+      "provider": "pinprof",
+      "label": "Game Info (PinProf)",
+      "localPath": "/pinball/gameinfo/G900001-gameinfo.md",
+      "priority": 0,
+      "isHidden": false,
+      "isActive": true,
+      "note": null,
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
+    },
+    {
+      "gameinfoAssetId": 1286,
       "opdbId": "GBLLP",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -297,11 +310,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1058,
+      "gameinfoAssetId": 1305,
       "opdbId": "GbPde",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -310,11 +323,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1059,
+      "gameinfoAssetId": 1306,
       "opdbId": "Gd266",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -323,11 +336,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1060,
+      "gameinfoAssetId": 1307,
       "opdbId": "Gd2Xb",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -336,11 +349,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1040,
+      "gameinfoAssetId": 1287,
       "opdbId": "GD7Ld",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -349,11 +362,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1041,
+      "gameinfoAssetId": 1288,
       "opdbId": "GEL0V",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -362,11 +375,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1061,
+      "gameinfoAssetId": 1308,
       "opdbId": "Gj66P",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -375,11 +388,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1042,
+      "gameinfoAssetId": 1289,
       "opdbId": "GK17D",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -388,11 +401,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1043,
+      "gameinfoAssetId": 1290,
       "opdbId": "GK1Ej",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -401,11 +414,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1044,
+      "gameinfoAssetId": 1291,
       "opdbId": "GLWll",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -414,11 +427,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1045,
+      "gameinfoAssetId": 1292,
       "opdbId": "GO0q3",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -427,11 +440,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1062,
+      "gameinfoAssetId": 1309,
       "opdbId": "GoEkx",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -440,11 +453,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1063,
+      "gameinfoAssetId": 1310,
       "opdbId": "GpeoL",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -453,11 +466,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1046,
+      "gameinfoAssetId": 1293,
       "opdbId": "GQK1P",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -466,11 +479,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1047,
+      "gameinfoAssetId": 1294,
       "opdbId": "GQKyP",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -479,11 +492,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1064,
+      "gameinfoAssetId": 1311,
       "opdbId": "Gr2wz",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -492,11 +505,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1065,
+      "gameinfoAssetId": 1312,
       "opdbId": "Gr3EW",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -505,11 +518,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1048,
+      "gameinfoAssetId": 1295,
       "opdbId": "GR6wO",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -518,11 +531,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1066,
+      "gameinfoAssetId": 1313,
       "opdbId": "Gr8l3",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -531,11 +544,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1049,
+      "gameinfoAssetId": 1296,
       "opdbId": "GR9Nr",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -544,11 +557,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1050,
+      "gameinfoAssetId": 1297,
       "opdbId": "GRBE4",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -557,11 +570,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1051,
+      "gameinfoAssetId": 1298,
       "opdbId": "GRD79",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -570,11 +583,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1070,
+      "gameinfoAssetId": 1317,
       "opdbId": "GrkL5",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -583,11 +596,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1052,
+      "gameinfoAssetId": 1299,
       "opdbId": "GRKx7",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -596,11 +609,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1067,
+      "gameinfoAssetId": 1314,
       "opdbId": "GrP6q",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -609,11 +622,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1068,
+      "gameinfoAssetId": 1315,
       "opdbId": "GrPbb",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -622,11 +635,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1054,
+      "gameinfoAssetId": 1301,
       "opdbId": "GRvBL",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -635,11 +648,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1053,
+      "gameinfoAssetId": 1300,
       "opdbId": "GRVoX",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -648,11 +661,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1071,
+      "gameinfoAssetId": 1318,
       "opdbId": "Grx8Y",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -661,11 +674,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1069,
+      "gameinfoAssetId": 1316,
       "opdbId": "GrXy3",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -674,11 +687,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1072,
+      "gameinfoAssetId": 1319,
       "opdbId": "GryK3",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -687,11 +700,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1073,
+      "gameinfoAssetId": 1320,
       "opdbId": "Gryw4",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -700,11 +713,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1074,
+      "gameinfoAssetId": 1321,
       "opdbId": "GvBn8",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -713,11 +726,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1075,
+      "gameinfoAssetId": 1322,
       "opdbId": "GweeP",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -726,11 +739,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1055,
+      "gameinfoAssetId": 1302,
       "opdbId": "GWyBj",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -739,11 +752,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1076,
+      "gameinfoAssetId": 1323,
       "opdbId": "Gxv81",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -752,11 +765,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1056,
+      "gameinfoAssetId": 1303,
       "opdbId": "GYWvw",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -765,11 +778,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1057,
+      "gameinfoAssetId": 1304,
       "opdbId": "GZVOd",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -778,11 +791,11 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     },
     {
-      "gameinfoAssetId": 1077,
+      "gameinfoAssetId": 1324,
       "opdbId": "Gzy89",
       "provider": "pinprof",
       "label": "Game Info (PinProf)",
@@ -791,8 +804,8 @@
       "isHidden": false,
       "isActive": true,
       "note": null,
-      "createdAt": "2026-03-21T16:55:11Z",
-      "updatedAt": "2026-03-21T16:55:11Z"
+      "createdAt": "2026-03-24T07:04:31Z",
+      "updatedAt": "2026-03-24T07:04:31Z"
     }
   ]
 }
