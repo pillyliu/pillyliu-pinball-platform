@@ -1,65 +1,60 @@
 # Deploy Readiness Checklist
 
-Use this checklist before every production upload/deploy to `pillyliu.com`.
+Use this before every production deploy to `pillyliu.com`.
 
 ## 1) Update Canonical Data
 
-- Update only canonical data in `shared/pinball/...`.
-- Do not hand-edit app copies in any `*/public/pinball/...` directory.
+Make edits in `../PinProf Admin/workspace` or through the local PinProf Admin app.
 
-## 2) Run Validation + Sync
+Typical sources:
 
-From repo root:
+- `workspace/data/source/*.csv`
+- `workspace/assets/*`
+- canonical admin DB entries managed by PinProf Admin
+
+## 2) Rebuild Canonical Publish Outputs
+
+From `PinProf Admin`:
 
 ```bash
-npm run league:update-check
-npm run sync:pinball
+bash '/Users/pillyliu/Documents/Codex/PinProf Admin/scripts/publish/rebuild-shared-pinball-payload.sh'
 ```
 
-## 3) Build All Pages
+This refreshes the published `/pinball` payload inputs and the app preload bundle from the same workspace.
 
-From repo root:
+## 3) Build Site Apps
+
+From this repo:
 
 ```bash
 npm run build:all
+npm run build:pinprof-admin
 ```
-
-Expected built route outputs:
-- `pillyliu-landing/dist` for `/`
-- `lpl-library/dist` for `/lpl-library`
-- `lpl-standings/dist` for `/lpl-standings`
-- `lpl-stats/dist` for `/lpl-stats`
-- `lpl-targets/dist` for `/lpl-targets`
-
-Note:
-- Pinball app `dist` folders should not carry their own `dist/pinball` payload.
-- Canonical pinball data is deployed once from `shared/pinball` to `/pinball`.
 
 ## 4) Run Smoke Check
 
-From repo root:
+From this repo:
 
 ```bash
 npm run check:smoke
 ```
 
-This checks:
-- Each app has `dist/index.html` and built assets.
-- Canonical shared pinball data exists and is valid:
-  - `shared/pinball/cache-manifest.json`
-  - `shared/pinball/cache-update-log.json`
-  - required files in `shared/pinball/data`
-  - required `/pinball/data/...` keys are present in manifest.
+This verifies the expected PinProf Admin inputs and website build outputs before deploy.
 
 ## 5) Deploy
 
-- Deploy each app dist to its route target using your current hosting process.
-- Keep canonical production shared data available at:
-  - `https://pillyliu.com/pinball/...`
+From this repo:
+
+```bash
+./deploy.sh
+```
+
+`deploy.sh` stages `/pinball` from `PinProf Admin/workspace`, syncs the app preload bundle, and uploads the website payloads.
 
 ## 6) Post-Deploy Smoke
 
 Verify in browser:
+
 - `https://pillyliu.com/`
 - `https://pillyliu.com/lpl-library/`
 - `https://pillyliu.com/lpl-standings/`
@@ -67,18 +62,8 @@ Verify in browser:
 - `https://pillyliu.com/lpl-targets/`
 
 Check:
-- Pages render without broken assets.
-- Current data appears.
-- Navigation links and key table views work.
 
-## 7) Rollback Plan
-
-If production issue is detected:
-- Roll back to previous known-good `dist` upload immediately.
-- Revert offending commit locally if needed:
-
-```bash
-git revert <commit-sha>
-```
-
-- Rebuild and redeploy with checklist above.
+- pages render without broken assets
+- current data appears
+- `/pinball/...` assets resolve normally
+- app-facing data files are live

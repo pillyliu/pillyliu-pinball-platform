@@ -2,34 +2,34 @@
 
 ## Goal
 
-Use one canonical dataset for all pinball pages so updates are made once and deployed once.
+Use one canonical pinball dataset across website, deploy, and app preload without maintaining a second website-local source tree.
 
 ## Canonical Source
 
-- Source-of-truth directory:
-  - `shared/pinball`
+The source of truth is `../PinProf Admin/workspace`:
 
-## Distribution Model
+- `workspace/data/source` for venue and league CSV inputs
+- `workspace/data/raw/opdb_export.json` for raw OPDB machine/group data
+- `workspace/assets/*` for playfields, backglasses, rulesheets, and gameinfo assets
+- `workspace/data/published/*` for generated CAF publish layers
+- app-owned shared support files live in `../Pinball App/Pinball App 2/Pinball App 2/SharedAppSupport`
 
-- App bundles do not include their own `pinball` payload anymore.
-- Production serves canonical shared data at:
-  - `/pinball/...`
-- Apps consume absolute `/pinball/...` URLs at runtime.
+## Website Repo Role
 
-## Sync Rules
+This repo is a consumer of the canonical data, not the editing home.
 
-- Do not manually edit app-local `public/pinball` content.
-- Edit files only in `shared/pinball`.
-- Generate manifest/update log from root:
-  - `npm run sync:pinball`
-- Optional legacy command to copy canonical data into each app `public/pinball`:
-  - `npm run sync:pinball:apps`
-- Manifest and update log are generated in:
-  - `shared/pinball/cache-manifest.json`
-  - `shared/pinball/cache-update-log.json`
+- `deploy.sh` stages `/pinball` from `PinProf Admin/workspace`
+- `npm run check:smoke` validates the expected PinProf Admin inputs/outputs
+- website apps read the deployed `/pinball/...` payload at runtime
 
-## Why This Exists
+## App Distribution Model
 
-- Prevents drift and duplicate static payload across app builds.
-- Reduces app `dist` size and noisy git churn.
-- Keeps deploy flow simple: upload `shared/pinball` once, upload app bundles separately.
+- App preload bundles are built from the same `PinProf Admin/workspace` data.
+- Production still serves the shared public payload at `/pinball/...`.
+- The app uses bundled preload for core data, then refreshes from hosted `/pinball/...` where appropriate.
+
+## Local Legacy Paths
+
+- Do not edit `shared/pinball` as a source of truth.
+- The last local `shared/pinball` copy is archived for local reference only.
+- Do not recreate old `pinball_library_v3.json`, `opdb_catalog_v1.json`, `pinball_library_flat_v1.json`, or `pinball_library_seed_v1.sqlite` workflows here.

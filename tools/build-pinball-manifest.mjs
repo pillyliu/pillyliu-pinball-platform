@@ -132,7 +132,7 @@ export async function buildPinballManifest(options = {}) {
   const manifest = {
     schemaVersion: 1,
     generatedAt,
-    source: toPosix(path.relative(ROOT, pinballDir) || "shared/pinball"),
+    source: toPosix(path.relative(ROOT, pinballDir) || "pinball"),
     totalFiles: Object.keys(files).length,
     files,
   };

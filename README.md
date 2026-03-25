@@ -1,6 +1,6 @@
 # Pillyliu Pinball Platform
 
-Monorepo for `pillyliu.com` and related pinball apps.
+Monorepo for `pillyliu.com` and the public pinball website apps.
 
 ## Apps
 
@@ -9,30 +9,31 @@ Monorepo for `pillyliu.com` and related pinball apps.
 - `lpl-standings` -> `/lpl-standings/`
 - `lpl-stats` -> `/lpl-stats/`
 - `lpl-targets` -> `/lpl-targets/`
-- `pinprof-admin` -> static frontend for hosted/private admin UI
-- `pinprof-admin-site` -> PHP/MariaDB backend runtime for shared hosting deployment
+- `pinprof-admin-site` -> PHP/MariaDB runtime deployed on shared hosting
 
 ## Canonical Data Model
 
-- Shared source of truth: `shared/pinball`
-- Production canonical route: `/pinball/...`
-- App bundles do not ship their own `dist/pinball` payload.
+- Source of truth lives in `../PinProf Admin/workspace`, not in this repo.
+- Canonical machine/catalog data is built from raw `opdb_export.json`, canonical asset layers, Pinball Map venue imports, and venue layout overlays inside `PinProf Admin`.
+- This repo consumes those published outputs during smoke/build/deploy.
+- Production still serves the shared public payload at `/pinball/...`.
+- App preload bundles are also built from `PinProf Admin/workspace` and synced during deploy.
+- App-only shared support files such as `pinside_group_map.json`, shake-warning art, and intro overlay sources now live in the `Pinball App` repo, not here or in `PinProf Admin`.
+- The old local `shared/pinball` tree has been retired and archived for local reference only.
 
-## Common Commands (repo root)
+## Common Commands
 
 ```bash
-npm run sync:pinball        # regenerate shared/pinball manifest + update log
-npm run league:update-check # validate core CSV/JSON integrity
-npm run build:all           # build all apps
-npm run build:pinprof-admin # build the hosted admin frontend
-npm run check:smoke         # smoke check builds + shared/pinball contract
-./deploy.sh                 # build + smoke + deploy
+npm run build:all
+npm run build:pinprof-admin
+npm run check:smoke
+./deploy.sh
 ```
 
 ## Further Docs
 
-- `PILLYLIU_WEB_DESIGN_SYSTEM.md` - shared UI/design contract (required before UI/layout changes)
-- `PINBALL_SOP.md` - operational runbook
+- `PINBALL_SOP.md` - current operational runbook
 - `DEPLOY_READINESS_CHECKLIST.md` - pre/post deploy checklist
-- `SHARED_DATA_CONTRACT.md` - shared pinball contract
+- `SHARED_DATA_CONTRACT.md` - current data ownership and publish contract
+- `PINBALL_DATA_WORKFLOW.md` - workflow overview by workspace
 - `BRAND_STYLE.md` - cross-site header/brand style rules

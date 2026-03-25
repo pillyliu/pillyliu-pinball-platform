@@ -13,13 +13,9 @@ dist/
 # Local/generated pinball tooling artifacts
 .pinball-public-backup/
 tmp/
+archive/**
+!archive/
+!archive/README.md
 tools/rulesheets/.playwright-cli/
 tools/rulesheets/tmp_html/
-shared/pinball/cache-manifest.json
-shared/pinball/cache-update-log.json
 tmp_opdb_catalog_v1.json
-shared/pinball/data/local_asset_intake_report.json
-shared/pinball/data/opdb_catalog_v1.json
-shared/pinball/data/pinball_library_seed_v1.sqlite
-shared/pinball/data/pinprof_admin_v1.sqlite
-shared/pinball/data/rulesheet_link_audit.json

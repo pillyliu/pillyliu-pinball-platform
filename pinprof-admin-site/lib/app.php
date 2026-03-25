@@ -155,6 +155,159 @@ function pinprof_pick_first_non_empty(array $values): ?string
     return null;
 }
 
+function pinprof_slugify(string $value): string
+{
+    $lowered = strtolower(str_replace('&', ' and ', $value));
+    $slug = preg_replace('/[^a-z0-9]+/', '-', $lowered);
+    $slug = is_string($slug) ? preg_replace('/-{2,}/', '-', $slug) : null;
+    $slug = is_string($slug) ? trim($slug, '-') : '';
+    return $slug !== '' ? $slug : 'unknown';
+}
+
+function pinprof_derive_variant(?string $machineName, ?string $groupName): ?string
+{
+    $machine = pinprof_clean_string($machineName);
+    if ($machine === null) {
+        return null;
+    }
+
+    $group = pinprof_clean_string($groupName);
+    if ($group === null) {
+        return $machine;
+    }
+    if ($machine === $group) {
+        return null;
+    }
+
+    $prefix = $group . ' (';
+    if (str_starts_with($machine, $prefix) && str_ends_with($machine, ')')) {
+        $variant = trim(substr($machine, strlen($prefix), -1));
+        return $variant !== '' ? $variant : null;
+    }
+
+    if (strtolower($machine) === strtolower($group)) {
+        return null;
+    }
+    if (strtolower(substr($machine, 0, strlen($group))) === strtolower($group)) {
+        $suffix = trim(substr($machine, strlen($group)), " -:()");
+        return $suffix !== '' ? $suffix : $machine;
+    }
+    return $machine;
+}
+
+function pinprof_extract_opdb_image_urls(array $images, ?string $imageType = null): ?array
+{
+    $filtered = [];
+    foreach ($images as $image) {
+        if (!is_array($image)) {
+            continue;
+        }
+        if ($imageType !== null && pinprof_clean_string($image['type'] ?? null) !== $imageType) {
+            continue;
+        }
+        $filtered[] = $image;
+    }
+
+    usort($filtered, static function (array $left, array $right): int {
+        $leftPrimary = !empty($left['primary']) ? 0 : 1;
+        $rightPrimary = !empty($right['primary']) ? 0 : 1;
+        if ($leftPrimary !== $rightPrimary) {
+            return $leftPrimary <=> $rightPrimary;
+        }
+        return strcmp(
+            strtolower((string) ($left['title'] ?? '')),
+            strtolower((string) ($right['title'] ?? ''))
+        );
+    });
+
+    if ($filtered === []) {
+        return null;
+    }
+
+    $urls = is_array($filtered[0]['urls'] ?? null) ? $filtered[0]['urls'] : [];
+    $medium = pinprof_clean_string($urls['medium'] ?? null);
+    $large = pinprof_clean_string($urls['large'] ?? null);
+    if ($medium === null && $large === null) {
+        return null;
+    }
+
+    return [
+        'medium_url' => $medium ?? $large,
+        'large_url' => $large ?? $medium,
+    ];
+}
+
+function pinprof_opdb_machine_rows(): array
+{
+    static $rows = null;
+    if ($rows !== null) {
+        return $rows;
+    }
+
+    $payload = pinprof_load_json('data/opdb_export.json');
+    $rows = [];
+
+    foreach ($payload as $record) {
+        if (!is_array($record)) {
+            continue;
+        }
+
+        $opdbId = pinprof_clean_string($record['opdb_id'] ?? null);
+        if ($opdbId === null) {
+            continue;
+        }
+
+        $groupId = explode('-', $opdbId, 2)[0] ?? null;
+        $groupId = pinprof_clean_string($groupId);
+        if ($groupId === null) {
+            continue;
+        }
+
+        $manufacturer = is_array($record['manufacturer'] ?? null) ? $record['manufacturer'] : [];
+        $manufacturerName = pinprof_clean_string($manufacturer['name'] ?? null);
+        $groupName = pinprof_clean_string($record['common_name'] ?? null);
+        $machineName = pinprof_pick_first_non_empty([
+            $record['name'] ?? null,
+            $groupName,
+            $opdbId,
+        ]) ?? $opdbId;
+        $canonicalName = $groupName ?? $machineName;
+        $variant = pinprof_derive_variant($machineName, $groupName ?? $machineName);
+        $manufactureDate = pinprof_clean_string($record['manufacture_date'] ?? null);
+        $year = null;
+        if ($manufactureDate !== null && preg_match('/^\d{4}/', $manufactureDate, $matches) === 1) {
+            $year = (int) $matches[0];
+        }
+
+        $slugParts = array_values(array_filter([
+            $manufacturerName,
+            $canonicalName,
+            $variant,
+            $year !== null ? (string) $year : null,
+        ], static fn (?string $value): bool => $value !== null && $value !== ''));
+
+        $images = is_array($record['images'] ?? null) ? $record['images'] : [];
+        $rows[] = [
+            'practice_identity' => $groupId,
+            'opdb_machine_id' => $opdbId,
+            'opdb_group_id' => $groupId,
+            'slug' => pinprof_slugify(implode(' ', $slugParts)),
+            'name' => $canonicalName,
+            'variant' => $variant,
+            'manufacturer_name' => $manufacturerName,
+            'year' => $year,
+            'primary_image' => pinprof_extract_opdb_image_urls($images, 'backglass') ?? pinprof_extract_opdb_image_urls($images),
+            'playfield_image' => pinprof_extract_opdb_image_urls($images, 'playfield'),
+            'updated_at' => pinprof_pick_first_non_empty([
+                $record['updated_at'] ?? null,
+                $record['created_at'] ?? null,
+            ]),
+        ];
+    }
+
+    return $rows;
+}
+
 function pinprof_opdb_groups(): array
 {
     static $groups = null;
@@ -162,14 +315,9 @@ function pinprof_opdb_groups(): array
         return $groups;
     }
 
-    $catalog = pinprof_load_json('data/opdb_catalog_v1.json');
-    $machines = is_array($catalog['machines'] ?? null) ? $catalog['machines'] : [];
     $groups = [];
 
-    foreach ($machines as $machine) {
-        if (!is_array($machine)) {
-            continue;
-        }
+    foreach (pinprof_opdb_machine_rows() as $machine) {
         $practice = pinprof_clean_string($machine['practice_identity'] ?? null);
         if ($practice === null) {
             continue;
@@ -198,47 +346,124 @@ function pinprof_opdb_groups(): array
     return $groups;
 }
 
-function pinprof_library_items_by_practice(): array
+function pinprof_published_asset_indexes(): array
 {
-    static $map = null;
-    if ($map !== null) {
-        return $map;
+    static $indexes = null;
+    if ($indexes !== null) {
+        return $indexes;
     }
 
-    $library = pinprof_load_json('data/pinball_library_v3.json');
-    $items = is_array($library['items'] ?? null) ? $library['items'] : [];
-    $map = [];
+    $indexes = [
+        'rulesheet' => [],
+        'gameinfo' => [],
+        'playfield' => [],
+        'backglass' => [],
+    ];
 
-    foreach ($items as $item) {
-        if (!is_array($item)) {
+    $rulesheetPayload = pinprof_load_json('data/rulesheet_assets.json');
+    $rulesheetRows = is_array($rulesheetPayload['records'] ?? null) ? $rulesheetPayload['records'] : [];
+    foreach ($rulesheetRows as $row) {
+        if (!is_array($row)) {
             continue;
         }
-        $practice = pinprof_clean_string($item['practice_identity'] ?? null);
+        if (array_key_exists('isActive', $row) && empty($row['isActive'])) {
+            continue;
+        }
+        if (!empty($row['isHidden'])) {
+            continue;
+        }
+        $practice = pinprof_clean_string($row['opdbId'] ?? null);
         if ($practice === null) {
             continue;
         }
-        $map[$practice][] = $item;
+        $hasLocal = pinprof_clean_string($row['localPath'] ?? null) !== null;
+        $hasUrl = pinprof_pick_first_non_empty([$row['url'] ?? null, $row['sourceUrl'] ?? null]) !== null;
+        if (!$hasLocal && !$hasUrl) {
+            continue;
+        }
+        $indexes['rulesheet'][$practice][] = $row;
     }
 
-    foreach ($map as &$rows) {
+    foreach ($indexes['rulesheet'] as &$rows) {
         usort($rows, static function (array $left, array $right): int {
-            $leftVariant = strtolower((string) ($left['variant'] ?? ''));
-            $rightVariant = strtolower((string) ($right['variant'] ?? ''));
-            if ($leftVariant === '' && $rightVariant !== '') {
-                return -1;
-            }
-            if ($rightVariant === '' && $leftVariant !== '') {
-                return 1;
+            $leftPriority = (int) ($left['priority'] ?? 0);
+            $rightPriority = (int) ($right['priority'] ?? 0);
+            if ($leftPriority !== $rightPriority) {
+                return $leftPriority <=> $rightPriority;
             }
             return strcmp(
-                strtolower((string) ($left['library_entry_id'] ?? '')),
-                strtolower((string) ($right['library_entry_id'] ?? ''))
+                strtolower((string) ($left['label'] ?? ($left['provider'] ?? ''))),
+                strtolower((string) ($right['label'] ?? ($right['provider'] ?? '')))
             );
         });
     }
     unset($rows);
 
-    return $map;
+    $gameinfoPayload = pinprof_load_json('data/gameinfo_assets.json');
+    $gameinfoRows = is_array($gameinfoPayload['records'] ?? null) ? $gameinfoPayload['records'] : [];
+    foreach ($gameinfoRows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        if (array_key_exists('isActive', $row) && empty($row['isActive'])) {
+            continue;
+        }
+        if (!empty($row['isHidden'])) {
+            continue;
+        }
+        $practice = pinprof_clean_string($row['opdbId'] ?? null);
+        $localPath = pinprof_clean_string($row['localPath'] ?? null);
+        if ($practice === null || $localPath === null) {
+            continue;
+        }
+        $indexes['gameinfo'][$practice][] = $row;
+    }
+
+    $playfieldPayload = pinprof_load_json('data/playfield_assets.json');
+    $playfieldRows = is_array($playfieldPayload['records'] ?? null) ? $playfieldPayload['records'] : [];
+    foreach ($playfieldRows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $practice = pinprof_clean_string($row['practiceIdentity'] ?? null);
+        if ($practice === null) {
+            continue;
+        }
+        $indexes['playfield'][$practice][] = $row;
+    }
+    foreach ($indexes['playfield'] as &$rows) {
+        usort($rows, static function (array $left, array $right): int {
+            return strcmp(
+                strtolower((string) ($left['sourceOpdbMachineId'] ?? '')),
+                strtolower((string) ($right['sourceOpdbMachineId'] ?? ''))
+            );
+        });
+    }
+    unset($rows);
+
+    $backglassPayload = pinprof_load_json('data/backglass_assets.json');
+    $backglassRows = is_array($backglassPayload['records'] ?? null) ? $backglassPayload['records'] : [];
+    foreach ($backglassRows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $practice = pinprof_clean_string($row['practiceIdentity'] ?? null);
+        if ($practice === null) {
+            continue;
+        }
+        $indexes['backglass'][$practice][] = $row;
+    }
+    foreach ($indexes['backglass'] as &$rows) {
+        usort($rows, static function (array $left, array $right): int {
+            return strcmp(
+                strtolower((string) ($left['sourceOpdbMachineId'] ?? '')),
+                strtolower((string) ($right['sourceOpdbMachineId'] ?? ''))
+            );
+        });
+    }
+    unset($rows);
+
+    return $indexes;
 }
 
 function pinprof_all_override_rows(): array
@@ -556,43 +781,102 @@ function pinprof_build_playfield_asset_payloads(string $practiceIdentity, array 
     return $rows;
 }
 
-function pinprof_preferred_library_item(array $items): ?array
+function pinprof_select_preferred_published_binary_asset(?string $preferredOpdbMachineId, array $rows): ?array
 {
-    return $items[0] ?? null;
+    $requested = pinprof_clean_string($preferredOpdbMachineId);
+    if ($requested === null) {
+        return $rows[0] ?? null;
+    }
+
+    $best = null;
+    $bestScore = -1;
+    foreach ($rows as $row) {
+        if (!is_array($row)) {
+            continue;
+        }
+        $score = pinprof_score_playfield_source_match($requested, $row['sourceOpdbMachineId'] ?? null);
+        if ($score > $bestScore) {
+            $best = $row;
+            $bestScore = $score;
+        }
+    }
+
+    return $best ?? ($rows[0] ?? null);
 }
 
-function pinprof_curated_assets(?array $item): array
+function pinprof_caf_machine_assets(string $opdbGroupId, ?string $preferredOpdbMachineId = null): array
 {
-    $assets = is_array($item['assets'] ?? null) ? $item['assets'] : [];
+    $indexes = pinprof_published_asset_indexes();
+    $rulesheetRows = $indexes['rulesheet'][$opdbGroupId] ?? [];
+    $gameinfoRows = $indexes['gameinfo'][$opdbGroupId] ?? [];
+    $playfieldRow = pinprof_select_preferred_published_binary_asset($preferredOpdbMachineId, $indexes['playfield'][$opdbGroupId] ?? []);
+    $backglassRow = pinprof_select_preferred_published_binary_asset($preferredOpdbMachineId, $indexes['backglass'][$opdbGroupId] ?? []);
+
+    $rulesheetLocalRow = null;
+    $rulesheetUrlRow = null;
+    foreach ($rulesheetRows as $row) {
+        if ($rulesheetLocalRow === null && pinprof_clean_string($row['localPath'] ?? null) !== null) {
+            $rulesheetLocalRow = $row;
+        }
+        if ($rulesheetUrlRow === null && pinprof_pick_first_non_empty([$row['url'] ?? null, $row['sourceUrl'] ?? null]) !== null) {
+            $rulesheetUrlRow = $row;
+        }
+        if ($rulesheetLocalRow !== null && $rulesheetUrlRow !== null) {
+            break;
+        }
+    }
+
+    $gameinfoRow = null;
+    foreach ($gameinfoRows as $row) {
+        if (pinprof_clean_string($row['localPath'] ?? null) !== null) {
+            $gameinfoRow = $row;
+            break;
+        }
+    }
+
+    $hasPublishedAssets = $playfieldRow !== null
+        || $backglassRow !== null
+        || $rulesheetLocalRow !== null
+        || $rulesheetUrlRow !== null
+        || $gameinfoRow !== null;
+
     return [
-        'playfieldLocalPath' => pinprof_clean_string($assets['playfield_local_practice'] ?? null),
-        'rulesheetLocalPath' => pinprof_clean_string($assets['rulesheet_local_practice'] ?? null),
-        'gameinfoLocalPath' => pinprof_clean_string($assets['gameinfo_local_practice'] ?? null),
-        'playfieldImageUrl' => pinprof_clean_string($item['playfield_image_url'] ?? null),
-        'rulesheetUrl' => pinprof_clean_string($item['rulesheet_url'] ?? null),
-        'sourceName' => pinprof_clean_string($item['library_name'] ?? null),
-        'sourceType' => pinprof_clean_string($item['library_type'] ?? null),
-        'sourceId' => pinprof_clean_string($item['library_id'] ?? null),
-        'name' => pinprof_clean_string($item['game'] ?? null),
-        'variant' => pinprof_clean_string($item['variant'] ?? null),
-        'manufacturer' => pinprof_clean_string($item['manufacturer'] ?? null),
-        'year' => pinprof_clean_int($item['year'] ?? null),
+        'playfieldLocalPath' => pinprof_clean_string($playfieldRow['playfieldLocalPath'] ?? null),
+        'playfieldImageUrl' => pinprof_clean_string($playfieldRow['playfieldSourceUrl'] ?? null),
+        'playfieldSourceNote' => pinprof_clean_string($playfieldRow['playfieldSourceNote'] ?? null),
+        'rulesheetLocalPath' => pinprof_clean_string($rulesheetLocalRow['localPath'] ?? null),
+        'rulesheetUrl' => pinprof_pick_first_non_empty([
+            $rulesheetUrlRow['url'] ?? null,
+            $rulesheetUrlRow['sourceUrl'] ?? null,
+        ]),
+        'rulesheetSourceNote' => pinprof_pick_first_non_empty([
+            $rulesheetLocalRow['note'] ?? null,
+            $rulesheetUrlRow['note'] ?? null,
+        ]),
+        'gameinfoLocalPath' => pinprof_clean_string($gameinfoRow['localPath'] ?? null),
+        'backglassLocalPath' => pinprof_clean_string($backglassRow['backglassLocalPath'] ?? null),
+        'backglassSourceUrl' => pinprof_clean_string($backglassRow['backglassSourceUrl'] ?? null),
+        'backglassSourceNote' => pinprof_clean_string($backglassRow['backglassSourceNote'] ?? null),
+        'sourceName' => $hasPublishedAssets ? 'CAF published assets' : null,
+        'sourceType' => $hasPublishedAssets ? 'caf' : null,
+        'sourceId' => $hasPublishedAssets ? 'caf-published' : null,
+        'name' => null,
+        'variant' => null,
+        'manufacturer' => null,
+        'year' => null,
     ];
 }
 
 function pinprof_machine_detail(string $practiceIdentity): array
 {
     $groups = pinprof_opdb_groups();
-    $libraryByPractice = pinprof_library_items_by_practice();
     $aliases = $groups[$practiceIdentity] ?? null;
     if ($aliases === null) {
         throw new RuntimeException("Machine not found: {$practiceIdentity}");
     }
 
     $preferredAlias = pinprof_preferred_alias($aliases);
-    $libraryItems = $libraryByPractice[$practiceIdentity] ?? [];
-    $preferredLibrary = pinprof_preferred_library_item($libraryItems);
-    $curated = pinprof_curated_assets($preferredLibrary ?? []);
+    $caf = pinprof_caf_machine_assets($practiceIdentity, pinprof_alias_id($preferredAlias ?? []));
     $override = pinprof_override_row($practiceIdentity) ?? [];
     $playfieldAlias = pinprof_resolve_playfield_alias($practiceIdentity, null, $aliases, $override);
     $playfieldAliasId = pinprof_alias_id($playfieldAlias) ?? '';
@@ -616,28 +900,29 @@ function pinprof_machine_detail(string $practiceIdentity): array
         $preferredAlias['playfield_image']['large_url'] ?? null,
         $preferredAlias['playfield_image']['medium_url'] ?? null,
     ]);
-    $curatedPlayfieldUrl = $curated['playfieldImageUrl'];
     $effectivePlayfieldUrl = pinprof_pick_first_non_empty([
         $resolvedPlayfieldAsset['localPath'] ?? null,
         $override['playfield_local_path'] ?? null,
-        $curated['playfieldLocalPath'],
-        $curatedPlayfieldUrl,
+        $caf['playfieldLocalPath'],
+        $caf['playfieldImageUrl'],
         $opdbPlayfieldUrl,
     ]);
     $effectiveRulesheetPath = pinprof_pick_first_non_empty([
         $override['rulesheet_local_path'] ?? null,
-        $curated['rulesheetLocalPath'],
+        $caf['rulesheetLocalPath'],
     ]);
     $effectiveRulesheetUrl = pinprof_pick_first_non_empty([
         $override['rulesheet_source_url'] ?? null,
-        $curated['rulesheetUrl'],
+        $caf['rulesheetUrl'],
     ]);
     $effectiveGameinfoPath = pinprof_pick_first_non_empty([
         $override['gameinfo_local_path'] ?? null,
-        $curated['gameinfoLocalPath'],
+        $caf['gameinfoLocalPath'],
     ]);
     $effectiveBackglassUrl = pinprof_pick_first_non_empty([
         $override['backglass_local_path'] ?? null,
+        $caf['backglassLocalPath'],
+        $caf['backglassSourceUrl'],
         $primaryImageUrl,
     ]);
 
@@ -645,28 +930,26 @@ function pinprof_machine_detail(string $practiceIdentity): array
         ? 'pillyliu'
         : (($override['playfield_local_path'] ?? null)
             ? 'pillyliu'
-            : ($curated['playfieldLocalPath'] ? 'pillyliu' : pinprof_url_kind($effectivePlayfieldUrl)));
-    $backglassKind = $override['backglass_local_path'] ?? null ? 'pillyliu' : pinprof_url_kind($effectiveBackglassUrl);
+            : ($caf['playfieldLocalPath'] ? 'pillyliu' : pinprof_url_kind($effectivePlayfieldUrl)));
+    $backglassKind = (($override['backglass_local_path'] ?? null) || $caf['backglassLocalPath'])
+        ? 'pillyliu'
+        : pinprof_url_kind($effectiveBackglassUrl);
     $rulesheetKind = $effectiveRulesheetPath ? 'pillyliu' : ($effectiveRulesheetUrl ? 'external' : 'missing');
     $gameinfoKind = $effectiveGameinfoPath ? 'pillyliu' : 'missing';
 
     $machineName = pinprof_pick_first_non_empty([
         $override['name_override'] ?? null,
-        $curated['name'],
         $preferredAlias['name'] ?? null,
     ]) ?? $practiceIdentity;
     $machineVariant = pinprof_pick_first_non_empty([
         $override['variant_override'] ?? null,
-        $curated['variant'],
         $preferredAlias['variant'] ?? null,
     ]);
     $manufacturer = pinprof_pick_first_non_empty([
         $override['manufacturer_override'] ?? null,
-        $curated['manufacturer'],
         $preferredAlias['manufacturer_name'] ?? null,
     ]);
     $year = pinprof_clean_int($override['year_override'] ?? null)
-        ?? $curated['year']
         ?? pinprof_clean_int($preferredAlias['year'] ?? null);
 
     return [
@@ -686,13 +969,10 @@ function pinprof_machine_detail(string $practiceIdentity): array
             'primaryImageUrl' => $primaryImageUrl,
             'playfieldLocalPath' => pinprof_pick_first_non_empty([
                 $resolvedPlayfieldAsset['localPath'] ?? null,
-                $curated['playfieldLocalPath'],
                 $override['playfield_local_path'] ?? null,
+                $caf['playfieldLocalPath'],
             ]),
-            'rulesheetLocalPath' => pinprof_pick_first_non_empty([
-                $curated['rulesheetLocalPath'],
-                $override['rulesheet_local_path'] ?? null,
-            ]),
+            'rulesheetLocalPath' => $effectiveRulesheetPath,
         ],
         'override' => [
             'nameOverride' => (string) ($override['name_override'] ?? ''),
@@ -715,9 +995,9 @@ function pinprof_machine_detail(string $practiceIdentity): array
         ],
         'sources' => [
             'builtIn' => [
-                'sourceId' => $curated['sourceId'],
-                'sourceName' => $curated['sourceName'],
-                'sourceType' => $curated['sourceType'],
+                'sourceId' => $caf['sourceId'],
+                'sourceName' => $caf['sourceName'],
+                'sourceType' => $caf['sourceType'],
             ],
             'aliases' => array_map(static function (array $alias): array {
                 return [
@@ -743,9 +1023,18 @@ function pinprof_machine_detail(string $practiceIdentity): array
                     'effectiveKind' => $backglassKind,
                     'effectiveLabel' => pinprof_asset_label($backglassKind, $backglassKind === 'pillyliu' ? 'override image' : 'primary/backglass image'),
                     'effectiveUrl' => $effectiveBackglassUrl,
-                    'localPath' => pinprof_clean_string($override['backglass_local_path'] ?? null),
-                    'localSourceUrl' => pinprof_clean_string($override['backglass_source_url'] ?? null),
-                    'localSourceNote' => pinprof_clean_string($override['backglass_source_note'] ?? null),
+                    'localPath' => pinprof_pick_first_non_empty([
+                        $override['backglass_local_path'] ?? null,
+                        $caf['backglassLocalPath'],
+                    ]),
+                    'localSourceUrl' => pinprof_pick_first_non_empty([
+                        $override['backglass_source_url'] ?? null,
+                        $caf['backglassSourceUrl'],
+                    ]),
+                    'localSourceNote' => pinprof_pick_first_non_empty([
+                        $override['backglass_source_note'] ?? null,
+                        $caf['backglassSourceNote'],
+                    ]),
                     'fallbackOpdbUrl' => $primaryImageUrl,
                 ],
                 'playfield' => [
@@ -763,14 +1052,18 @@ function pinprof_machine_detail(string $practiceIdentity): array
                     'localPath' => pinprof_pick_first_non_empty([
                         $resolvedPlayfieldAsset['localPath'] ?? null,
                         $override['playfield_local_path'] ?? null,
-                        $curated['playfieldLocalPath'],
+                        $caf['playfieldLocalPath'],
                     ]),
                     'localSourceUrl' => pinprof_pick_first_non_empty([
                         $resolvedPlayfieldAsset['sourceUrl'] ?? null,
                         $override['playfield_source_url'] ?? null,
-                        $curatedPlayfieldUrl,
+                        $caf['playfieldImageUrl'],
                     ]),
-                    'localSourceNote' => pinprof_clean_string($resolvedPlayfieldAsset['sourceNote'] ?? ($override['playfield_source_note'] ?? null)),
+                    'localSourceNote' => pinprof_pick_first_non_empty([
+                        $resolvedPlayfieldAsset['sourceNote'] ?? null,
+                        $override['playfield_source_note'] ?? null,
+                        $caf['playfieldSourceNote'],
+                    ]),
                     'fallbackOpdbUrl' => $opdbPlayfieldUrl,
                 ],
                 'rulesheet' => [
@@ -779,7 +1072,10 @@ function pinprof_machine_detail(string $practiceIdentity): array
                     'effectiveUrl' => $effectiveRulesheetPath ?? $effectiveRulesheetUrl,
                     'localPath' => $effectiveRulesheetPath,
                     'sourceUrl' => $effectiveRulesheetUrl,
-                    'sourceNote' => pinprof_clean_string($override['rulesheet_source_note'] ?? null),
+                    'sourceNote' => pinprof_pick_first_non_empty([
+                        $override['rulesheet_source_note'] ?? null,
+                        $caf['rulesheetSourceNote'],
+                    ]),
                 ],
                 'gameinfo' => [
                     'effectiveKind' => $gameinfoKind,
@@ -896,36 +1192,30 @@ function pinprof_manufacturer_filters(): array
 function pinprof_list_machines(?string $query, ?string $manufacturerFilter, string $sortOrder, int $page, int $pageSize): array
 {
     $groups = pinprof_opdb_groups();
-    $libraryByPractice = pinprof_library_items_by_practice();
     $overrides = pinprof_all_override_rows();
     $rows = [];
     $needle = $query !== null ? strtolower($query) : null;
 
     foreach ($groups as $practiceIdentity => $aliases) {
         $preferredAlias = pinprof_preferred_alias($aliases);
-        $preferredLibrary = pinprof_preferred_library_item($libraryByPractice[$practiceIdentity] ?? []);
-        $curated = pinprof_curated_assets($preferredLibrary ?? []);
+        $caf = pinprof_caf_machine_assets($practiceIdentity, pinprof_alias_id($preferredAlias ?? []));
         $override = $overrides[$practiceIdentity] ?? null;
         $playfieldAssets = pinprof_playfield_asset_rows($practiceIdentity);
         $primaryPlayfieldAsset = pinprof_pick_primary_playfield_asset($practiceIdentity, $playfieldAssets);
 
         $name = pinprof_pick_first_non_empty([
             $override['name_override'] ?? null,
-            $curated['name'],
             $preferredAlias['name'] ?? null,
         ]) ?? $practiceIdentity;
         $variant = pinprof_pick_first_non_empty([
             $override['variant_override'] ?? null,
-            $curated['variant'],
             $preferredAlias['variant'] ?? null,
         ]);
         $manufacturer = pinprof_pick_first_non_empty([
             $override['manufacturer_override'] ?? null,
-            $curated['manufacturer'],
             $preferredAlias['manufacturer_name'] ?? null,
         ]);
         $year = pinprof_clean_int($override['year_override'] ?? null)
-            ?? $curated['year']
             ?? pinprof_clean_int($preferredAlias['year'] ?? null);
 
         $searchHaystack = strtolower(implode(' ', array_filter([
@@ -963,11 +1253,11 @@ function pinprof_list_machines(?string $query, ?string $manufacturerFilter, stri
             'playfieldLocalPath' => pinprof_pick_first_non_empty([
                 $primaryPlayfieldAsset['playfield_local_path'] ?? null,
                 $override['playfield_local_path'] ?? null,
-                $curated['playfieldLocalPath'],
+                $caf['playfieldLocalPath'],
             ]),
             'rulesheetLocalPath' => pinprof_pick_first_non_empty([
                 $override['rulesheet_local_path'] ?? null,
-                $curated['rulesheetLocalPath'],
+                $caf['rulesheetLocalPath'],
             ]),
             'hasAdminOverride' => $override !== null || $playfieldAssets !== [],
         ];
@@ -1018,8 +1308,7 @@ function pinprof_list_machines(?string $query, ?string $manufacturerFilter, stri
 function pinprof_summary(): array
 {
     $groups = pinprof_opdb_groups();
-    $catalog = pinprof_load_json('data/opdb_catalog_v1.json');
-    $machineRows = is_array($catalog['machines'] ?? null) ? $catalog['machines'] : [];
+    $machineRows = pinprof_opdb_machine_rows();
     $pdo = pinprof_pdo();
     $overriddenMachines = (int) $pdo->query('
         SELECT COUNT(DISTINCT practice_identity)
@@ -1039,7 +1328,7 @@ function pinprof_summary(): array
         'playfieldOverrides' => $playfieldOverrides,
         'rulesheetOverrides' => $rulesheetOverrides,
         'adminDbPath' => 'MariaDB/MySQL',
-        'seedDbPath' => pinprof_web_root('data/opdb_catalog_v1.json'),
+        'catalogSourcePath' => pinprof_web_root('data/opdb_export.json'),
     ];
 }
 

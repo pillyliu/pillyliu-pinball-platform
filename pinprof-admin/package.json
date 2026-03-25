@@ -4,14 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm:dev:server\" \"npm:dev:web\"",
-    "dev:server": "tsx watch server/index.ts",
-    "dev:web": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "tsx server/index.ts",
-    "pinprof-admin:apply-overrides": "node ../../scripts/publish/apply-admin-overrides.mjs",
-    "pinprof-admin:rename-playfields-to-machine-alias": "node ../../scripts/publish/rename-playfields-to-machine-alias.mjs"
+    "dev": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run dev",
+    "dev:server": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run dev:server",
+    "dev:web": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run dev:web",
+    "build": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run build",
+    "preview": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run preview",
+    "start": "npm --prefix \"../../PinProf Admin/apps/admin-ui\" run start"
   },
   "dependencies": {
     "better-sqlite3": "^12.4.1",

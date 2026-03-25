@@ -13,7 +13,7 @@ type SummaryPayload = {
   playfieldOverrides: number;
   rulesheetOverrides: number;
   adminDbPath: string;
-  seedDbPath: string;
+  catalogSourcePath: string;
 };
 
 type FilterPayload = {
@@ -2198,7 +2198,7 @@ export default function App() {
                     <div className="path-list">
                       <div>
                         <small>Catalog Feed</small>
-                        <code>{summary?.seedDbPath ?? "—"}</code>
+                        <code>{summary?.catalogSourcePath ?? "—"}</code>
                       </div>
                       <div>
                         <small>Override Store</small>
