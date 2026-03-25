@@ -50,9 +50,7 @@ The old Google Sheets and venue-CSV workflow for Avenue, RLM, and Codex is also 
 
 That means this repo should no longer be used to:
 
-- regenerate `pinball_library_v3.json`
-- regenerate `opdb_catalog_v1.json`
-- regenerate `pinball_library_flat_v1.json`
-- regenerate `pinball_library_seed_v1.sqlite`
-- sync starter-pack data from a website-local mirror
-- sync Avenue/RLM/Codex Google Sheets or derive canonical data from their CSV exports
+- regenerate legacy merged library or catalog bridge files
+- rebuild legacy seed databases or flattened bridge payloads
+- sync app preload or hosted payloads from a website-local mirror
+- sync Avenue/RLM/Codex Google Sheets or derive canonical pinball data from their CSV exports

@@ -32,4 +32,4 @@ This repo is a consumer of the canonical data, not the editing home.
 
 - Do not edit `shared/pinball` as a source of truth.
 - The last local `shared/pinball` copy is archived for local reference only.
-- Do not recreate old `pinball_library_v3.json`, `opdb_catalog_v1.json`, `pinball_library_flat_v1.json`, or `pinball_library_seed_v1.sqlite` workflows here.
+- Do not recreate legacy merged-payload, flattened-library, or seed-database workflows here.
