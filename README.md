@@ -9,7 +9,7 @@ Monorepo for `pillyliu.com` and the public pinball website apps.
 - `lpl-standings` -> `/lpl-standings/`
 - `lpl-stats` -> `/lpl-stats/`
 - `lpl-targets` -> `/lpl-targets/`
-- `pinprof-admin-site` -> PHP/MariaDB runtime deployed on shared hosting
+- remote `pinprof-admin/` deploy -> staged from `../PinProf Admin/apps/admin-ui` and `../PinProf Admin/apps/admin-site-runtime`
 
 ## Canonical Data Model
 

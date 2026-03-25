@@ -101,3 +101,20 @@ Why this was archived:
 - the website no longer reads local `shared/pinball` as a source of truth
 - everything still needed from that tree now lives in `PinProf Admin/workspace` or, for app-only support assets, in `Pinball App/Pinball App 2/Pinball App 2/SharedAppSupport`
 - the remaining files were either mirrored copies of canonical data/assets or retired bridge artifacts that no longer belong in the active workflow
+
+## Archived on 2026-03-25 (Retired website-local admin copies)
+
+Folder:
+
+- `archive/2026-03-25-website-local-admin-retired/`
+
+Archived today:
+
+- `pinprof-admin/`
+- `pinprof-admin-site/`
+
+Why these were archived:
+
+- your real local runtime is `/Users/pillyliu/Desktop/PinProf Admin.command`, which launches `PinProf Admin/apps/admin-ui`
+- deploy already stages the canonical admin frontend/runtime from the `PinProf Admin` repo, not these website-local copies
+- leaving duplicate local admin trees in the website repo made it look like there were still two supported local admin homes
