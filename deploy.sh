@@ -286,6 +286,7 @@ stage_pinball_payload() {
     "data/gameinfo_assets.json"
     "data/venue_layout_assets.json"
     "data/LPL_Targets.csv"
+    "data/LPL_IFPA_Players.csv"
     "data/lpl_targets_resolved_v1.json"
     "data/LPL_Stats.csv"
     "data/LPL_Standings.csv"

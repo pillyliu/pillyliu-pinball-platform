@@ -33,6 +33,10 @@ const REQUIRED_PINBALL_FILES = [
     webPath: "/pinball/data/LPL_Targets.csv",
   },
   {
+    filePath: path.join(PINPROF_ADMIN_SOURCE_DATA_DIR, "LPL_IFPA_Players.csv"),
+    webPath: "/pinball/data/LPL_IFPA_Players.csv",
+  },
+  {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "lpl_targets_resolved_v1.json"),
     webPath: "/pinball/data/lpl_targets_resolved_v1.json",
   },
