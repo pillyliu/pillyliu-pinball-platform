@@ -97,7 +97,7 @@ function ResourceRow({ title, children }: { title: string; children: ReactNode }
 }
 
 export default function GamePage() {
-  const { slug } = useParams();
+  const { gameId } = useParams();
   const [game, setGame] = useState<LibraryGame | null>(null);
   const [gameLookupStatus, setGameLookupStatus] = useState<"idle" | "loading" | "done">("idle");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
@@ -127,7 +127,7 @@ export default function GamePage() {
       try {
         const bundle = await loadResolvedLibraryData();
         if (cancelled) return;
-        setGame(findLibraryGame(bundle.games, slug));
+        setGame(findLibraryGame(bundle.games, gameId));
       } catch {
         if (cancelled) return;
         setGame(null);
@@ -139,12 +139,12 @@ export default function GamePage() {
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [gameId]);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!gameId) return;
     if (gameLookupStatus === "loading") return;
-    const key = game?.routeId ?? slug;
+    const key = game?.routeId ?? gameId;
     const candidates = game ? gameInfoMarkdownCandidates(game) : [];
 
     let cancelled = false;
@@ -175,7 +175,7 @@ export default function GamePage() {
     return () => {
       cancelled = true;
     };
-  }, [game, gameLookupStatus, slug]);
+  }, [game, gameLookupStatus, gameId]);
 
   useEffect(() => {
     const practiceIdentity = game?.practiceIdentity ?? null;
@@ -217,13 +217,13 @@ export default function GamePage() {
   }, [selectedVideoId, videoCards]);
 
   const infoStatus = useMemo(() => {
-    const key = game?.routeId ?? slug;
+    const key = game?.routeId ?? gameId;
     if (!key) return "idle";
     if (infoState.key !== key) return "loading";
     return infoState.status;
-  }, [game?.routeId, infoState.key, infoState.status, slug]);
+  }, [game?.routeId, infoState.key, infoState.status, gameId]);
 
-  const infoMd = infoState.key === (game?.routeId ?? slug) ? infoState.md : null;
+  const infoMd = infoState.key === (game?.routeId ?? gameId) ? infoState.md : null;
   const metaLine = useMemo(() => {
     if (!game) return "—";
     const parts = [manufacturerYearText(game)];

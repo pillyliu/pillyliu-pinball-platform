@@ -10,8 +10,8 @@ export default function App() {
     <Suspense fallback={<div className="p-6 text-neutral-300">Loading...</div>}>
       <Routes>
         <Route path="/" element={<LibraryIndex />} />
-        <Route path="/game/:slug" element={<GamePage />} />
-        <Route path="/rules/:slug" element={<RulesheetPage />} />
+        <Route path="/game/:gameId" element={<GamePage />} />
+        <Route path="/rules/:gameId" element={<RulesheetPage />} />
       </Routes>
     </Suspense>
   );

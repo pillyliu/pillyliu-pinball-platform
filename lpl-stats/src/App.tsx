@@ -218,7 +218,7 @@ export default function App() {
             value={player}
             setValue={setPlayer}
             opts={players}
-            clear={[() => setBankNumber(""), () => setMachine("")]}
+            clear={[() => setMachine("")]}
             formatOptionLabel={(option) => formatPlayerDisplayName(String(option), redactedPlayers)}
           />
           <Filter label="Machine" value={machine} setValue={setMachine} opts={machines} />

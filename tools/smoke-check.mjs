@@ -37,6 +37,10 @@ const REQUIRED_PINBALL_FILES = [
     webPath: "/pinball/data/LPL_IFPA_Players.csv",
   },
   {
+    filePath: path.join(PINPROF_ADMIN_SOURCE_DATA_DIR, "lpl_machine_mappings_v1.json"),
+    webPath: "/pinball/data/lpl_machine_mappings_v1.json",
+  },
+  {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "lpl_targets_resolved_v1.json"),
     webPath: "/pinball/data/lpl_targets_resolved_v1.json",
   },
@@ -47,6 +51,10 @@ const REQUIRED_PINBALL_FILES = [
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "opdb_export.json"),
     webPath: "/pinball/data/opdb_export.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "practice_identity_curations_v1.json"),
+    webPath: "/pinball/data/practice_identity_curations_v1.json",
   },
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "backglass_assets.json"),

@@ -219,6 +219,16 @@ type AssetLayerPayload<T> = {
   records?: T[];
 };
 
+type PracticeIdentityCurationsRoot = {
+  splits?: Array<{
+    opdbGroupId?: string;
+    practiceEntries?: Array<{
+      practiceIdentity?: string;
+      memberOpdbIds?: string[];
+    }>;
+  }>;
+};
+
 type RawManufacturerSummary = {
   id: string;
   name: string;
@@ -264,6 +274,7 @@ type CanonicalLayers = {
 };
 
 const RAW_OPDB_EXPORT_PATH = "/pinball/data/opdb_export.json";
+const PRACTICE_IDENTITY_CURATIONS_PATH = "/pinball/data/practice_identity_curations_v1.json";
 const RULESHEET_ASSETS_PATH = "/pinball/data/rulesheet_assets.json";
 const VIDEO_ASSETS_PATH = "/pinball/data/video_assets.json";
 const PLAYFIELD_ASSETS_PATH = "/pinball/data/playfield_assets.json";
@@ -391,6 +402,31 @@ function parseOpdbIdParts(opdbIdRaw: string | null | undefined) {
 function expandOpdbCandidateIds(opdbIdRaw: string | null | undefined): string[] {
   const { fullId, machineId, groupId } = parseOpdbIdParts(opdbIdRaw);
   return [fullId, machineId, groupId].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+}
+
+function parsePracticeIdentityCurations(raw: unknown): Map<string, string> {
+  const out = new Map<string, string>();
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return out;
+  const root = raw as PracticeIdentityCurationsRoot;
+  for (const split of root.splits ?? []) {
+    if (!split || typeof split !== "object") continue;
+    for (const entry of split.practiceEntries ?? []) {
+      const practiceIdentity = normalizedOptionalString(entry?.practiceIdentity);
+      if (!practiceIdentity) continue;
+      for (const memberId of entry?.memberOpdbIds ?? []) {
+        const opdbId = normalizedOptionalString(memberId);
+        if (!opdbId) continue;
+        out.set(opdbId, practiceIdentity);
+      }
+    }
+  }
+  return out;
+}
+
+function resolvePracticeIdentity(opdbIdRaw: string | null | undefined, curatedPracticeIdentities: Map<string, string>): string | null {
+  const { fullId, groupId } = parseOpdbIdParts(opdbIdRaw);
+  if (!fullId) return null;
+  return curatedPracticeIdentities.get(fullId) ?? groupId ?? fullId;
 }
 
 function normalizeCatalogVariantLabel(value: string | null | undefined): string | null {
@@ -636,7 +672,7 @@ function normalizeLibraryPlayfieldLocalPath(path: string | null | undefined): st
 }
 
 function groupKeyForGame(game: Pick<LibraryGame, "opdbGroupId" | "practiceIdentity" | "routeId">): string {
-  return normalizedOptionalString(game.opdbGroupId) ?? normalizedOptionalString(game.practiceIdentity) ?? game.routeId;
+  return normalizedOptionalString(game.practiceIdentity) ?? game.routeId;
 }
 
 function dedupeSources(sources: LibrarySource[]): LibrarySource[] {
@@ -658,7 +694,10 @@ function groupByKey<T>(rows: T[], readKey: (row: T) => string | null): Map<strin
   return out;
 }
 
-function parseRawOpdbRows(rows: RawOpdbRow[]): { machines: MachineRecord[]; manufacturerOptions: CatalogManufacturerOption[] } {
+function parseRawOpdbRows(
+  rows: RawOpdbRow[],
+  curatedPracticeIdentities: Map<string, string>,
+): { machines: MachineRecord[]; manufacturerOptions: CatalogManufacturerOption[] } {
   const machines: MachineRecord[] = [];
   const manufacturerBuckets = new Map<string, RawManufacturerSummary & { groupKeys: Set<string> }>();
 
@@ -668,6 +707,8 @@ function parseRawOpdbRows(rows: RawOpdbRow[]): { machines: MachineRecord[]; manu
     if (!opdbId || !name) continue;
     const parts = parseOpdbIdParts(opdbId);
     if (!parts.groupId || !parts.machineId) continue;
+    const practiceIdentity = resolvePracticeIdentity(opdbId, curatedPracticeIdentities);
+    if (!practiceIdentity) continue;
     const manufacturerObject = row.manufacturer && typeof row.manufacturer === "object" && !Array.isArray(row.manufacturer)
       ? row.manufacturer as Record<string, unknown>
       : {};
@@ -681,10 +722,10 @@ function parseRawOpdbRows(rows: RawOpdbRow[]): { machines: MachineRecord[]; manu
 
     machines.push({
       opdbId,
-      practiceIdentity: parts.groupId,
+      practiceIdentity,
       opdbGroupId: parts.groupId,
       opdbMachineId: parts.machineId,
-      slug: opdbId,
+      slug: practiceIdentity,
       name,
       displayTitle,
       variant,
@@ -754,6 +795,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
     canonicalLayersPromise = (async () => {
       const [
         rawOpdbRows,
+        practiceIdentityCurationsRaw,
         rulesheetAssetsRaw,
         videoAssetsRaw,
         playfieldAssetsRaw,
@@ -761,6 +803,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         venueLayoutAssetsRaw,
       ] = await Promise.all([
         fetchPinballJson<RawOpdbRow[]>(RAW_OPDB_EXPORT_PATH),
+        fetchPinballJson<unknown>(PRACTICE_IDENTITY_CURATIONS_PATH),
         fetchPinballJson<unknown>(RULESHEET_ASSETS_PATH),
         fetchPinballJson<unknown>(VIDEO_ASSETS_PATH),
         fetchPinballJson<unknown>(PLAYFIELD_ASSETS_PATH),
@@ -768,7 +811,11 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         fetchPinballJson<unknown>(VENUE_LAYOUT_ASSETS_PATH),
       ]);
 
-      const { machines, manufacturerOptions } = parseRawOpdbRows(Array.isArray(rawOpdbRows) ? rawOpdbRows : []);
+      const curatedPracticeIdentities = parsePracticeIdentityCurations(practiceIdentityCurationsRaw);
+      const { machines, manufacturerOptions } = parseRawOpdbRows(
+        Array.isArray(rawOpdbRows) ? rawOpdbRows : [],
+        curatedPracticeIdentities,
+      );
       const machineByOpdbId = new Map(machines.map((machine) => [machine.opdbId, machine] as const));
       const machinesByPracticeIdentity = groupByKey(machines, (machine) => machine.practiceIdentity);
 
@@ -1179,7 +1226,7 @@ function rulesheetLinksForMachine(machine: MachineRecord, layers: CanonicalLayer
   const linksByCandidate: ReferenceLink[][] = [];
   let localPath: string | null = null;
 
-  for (const candidateId of expandOpdbCandidateIds(machine.opdbId)) {
+  for (const candidateId of [machine.practiceIdentity]) {
     const candidateRows = (layers.rulesheetAssetsByOpdbId.get(candidateId) ?? [])
       .filter((row) => row.isActive && !row.isHidden)
       .sort((left, right) => {
@@ -1282,7 +1329,7 @@ function canonicalVideoMergeKey(kind: string | null | undefined, url: string): s
 
 function videosForMachine(machine: MachineRecord, layers: CanonicalLayers): Video[] {
   const out = new Map<string, Video>();
-  for (const candidateId of expandOpdbCandidateIds(machine.opdbId)) {
+  for (const candidateId of [machine.practiceIdentity]) {
     const rows = (layers.videoAssetsByOpdbId.get(candidateId) ?? [])
       .filter((row) => row.isActive && !row.isHidden && normalizedOptionalString(row.url))
       .sort((left, right) => {
@@ -1343,7 +1390,7 @@ function playfieldAssetForMachine(machine: MachineRecord, layers: CanonicalLayer
 }
 
 function gameinfoPathForMachine(machine: MachineRecord, layers: CanonicalLayers): string | null {
-  for (const candidateId of expandOpdbCandidateIds(machine.opdbId)) {
+  for (const candidateId of [machine.practiceIdentity]) {
     const rows = (layers.gameinfoAssetsByOpdbId.get(candidateId) ?? [])
       .filter((row) => row.isActive && !row.isHidden && normalizedOptionalString(row.localPath))
       .sort((left, right) => {
@@ -1427,7 +1474,7 @@ function buildLibraryGame(
     name: machine.displayTitle,
     manufacturer: normalizedOptionalString(machine.manufacturerName),
     year: machine.year,
-    slug: requestedId,
+    slug: machine.practiceIdentity,
     primaryImageUrl: normalizedOptionalString(machine.primaryImageUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
     playfieldImageUrl: opdbPlayfieldUrl,
@@ -1647,13 +1694,12 @@ export function locationBankText(game: LibraryGame): string {
   return parts.join(" • ");
 }
 
-export function findLibraryGame(games: LibraryGame[], slug: string | undefined): LibraryGame | null {
-  if (!slug) return null;
+export function findLibraryGame(games: LibraryGame[], gameId: string | undefined): LibraryGame | null {
+  if (!gameId) return null;
   return games.find((game) =>
-    game.routeId === slug ||
-    game.slug === slug ||
-    game.opdbId === slug ||
-    game.practiceIdentity === slug,
+    game.routeId === gameId ||
+    game.opdbId === gameId ||
+    game.practiceIdentity === gameId,
   ) ?? null;
 }
 
@@ -1843,7 +1889,6 @@ export function gameInfoMarkdownCandidates(game: LibraryGame): string[] {
   return [
     resolveLibraryUrl(game.gameinfoLocal),
     game.practiceIdentity ? `/pinball/gameinfo/${game.practiceIdentity}-gameinfo.md` : null,
-    game.opdbGroupId ? `/pinball/gameinfo/${game.opdbGroupId}-gameinfo.md` : null,
   ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
 }
 

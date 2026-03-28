@@ -94,7 +94,7 @@ function scrollToHash(hash: string) {
 }
 
 export default function RulesheetPage() {
-  const { slug } = useParams();
+  const { gameId } = useParams();
   const [searchParams] = useSearchParams();
   const [game, setGame] = useState<LibraryGame | null>(null);
   const [resolveStatus, setResolveStatus] = useState<"idle" | "loading" | "done">("idle");
@@ -109,7 +109,7 @@ export default function RulesheetPage() {
   });
 
   useEffect(() => {
-    if (!slug) {
+    if (!gameId) {
       setResolveStatus("done");
       setGame(null);
       return;
@@ -120,7 +120,7 @@ export default function RulesheetPage() {
       try {
         const bundle = await loadResolvedLibraryData();
         if (cancelled) return;
-        setGame(findLibraryGame(bundle.games, slug));
+        setGame(findLibraryGame(bundle.games, gameId));
       } catch {
         if (cancelled) return;
         setGame(null);
@@ -132,13 +132,13 @@ export default function RulesheetPage() {
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [gameId]);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!gameId) return;
     if (resolveStatus === "loading") return;
     const requestedSource = searchParams.get("source")?.trim().toLowerCase() ?? null;
-    const key = `${game?.routeId ?? slug}::${requestedSource ?? "default"}`;
+    const key = `${game?.routeId ?? gameId}::${requestedSource ?? "default"}`;
     const selectedRulesheet = game
       ? requestedSource
         ? game.rulesheetLinks.find((link) => referenceLinkProvider(link) === requestedSource)
@@ -202,7 +202,7 @@ export default function RulesheetPage() {
     return () => {
       cancelled = true;
     };
-  }, [game, resolveStatus, searchParams, slug]);
+  }, [game, resolveStatus, searchParams, gameId]);
 
   useEffect(() => {
     if (!rulesheetState.md || !window.location.hash) return;
@@ -241,7 +241,7 @@ export default function RulesheetPage() {
   }, []);
 
   const requestedSource = searchParams.get("source")?.trim().toLowerCase() ?? null;
-  const stateKey = `${game?.routeId ?? slug ?? ""}::${requestedSource ?? "default"}`;
+  const stateKey = `${game?.routeId ?? gameId ?? ""}::${requestedSource ?? "default"}`;
   const loading = stateKey ? rulesheetState.key !== stateKey : false;
   const md = rulesheetState.key === stateKey ? rulesheetState.md : null;
   const externalRulesheet = useMemo(() => {
