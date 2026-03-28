@@ -91,7 +91,7 @@ export default function App() {
 
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>Pinball Library</h3>
-            <p className='mt-2 text-sm text-neutral-400'>Rulesheets, guides, and machine pages - all in one place.</p>
+            <p className='mt-2 text-sm text-neutral-400'>Rulesheets, guides, and videos, all in one place.</p>
             <a className={CARD_BUTTON_CLASS} href='https://pillyliu.com/lpl-library/'>
               Open Library
             </a>
@@ -101,7 +101,7 @@ export default function App() {
 
       <section className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-5 md:p-6'>
         <h2 className='m-0 text-lg font-semibold tracking-tight text-neutral-100'>Contact</h2>
-        <p className='mt-2 text-sm text-neutral-400'>Prefer email. Smoke signals only for multiballs.</p>
+        <p className='mt-2 text-sm text-neutral-400'>Prefer email or morse code via telegraph.</p>
         <p className='mt-3'>
           <a className={CARD_BUTTON_CLASS} href='mailto:pillyliu@gmail.com'>
             Email Peter
@@ -113,7 +113,7 @@ export default function App() {
       </section>
 
       <footer className='px-1 text-sm text-neutral-500'>
-        <p>&copy; 2026 Peter Liu. Built with caffeine and curiosity.</p>
+        <p>&copy; 2026 Peter Liu. Built with caffeine.</p>
       </footer>
     </SiteShell>
   );
