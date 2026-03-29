@@ -27,6 +27,7 @@ PINPROF_ADMIN_RULESHEETS_DIR="${PINPROF_ADMIN_RULESHEETS_DIR:-$PINPROF_ADMIN_WOR
 PINPROF_ADMIN_GAMEINFO_DIR="${PINPROF_ADMIN_GAMEINFO_DIR:-$PINPROF_ADMIN_WORKSPACE_ROOT/assets/gameinfo}"
 PINPROF_ADMIN_MANIFESTS_DIR="${PINPROF_ADMIN_MANIFESTS_DIR:-$PINPROF_ADMIN_WORKSPACE_ROOT/manifests}"
 PINPROF_ADMIN_APP_PRELOAD_ROOT="${PINPROF_ADMIN_APP_PRELOAD_ROOT:-$PINPROF_ADMIN_WORKSPACE_ROOT/app-preload}"
+PINBALL_API_SOURCE_DIR="${PINBALL_API_SOURCE_DIR:-$ROOT_DIR/shared/pinball-api}"
 PINPROF_ADMIN_FRONTEND_DIR="${PINPROF_ADMIN_FRONTEND_DIR:-$PINPROF_ADMIN_SOURCE_ROOT/apps/admin-ui}"
 PINPROF_ADMIN_FRONTEND_DIST="${PINPROF_ADMIN_FRONTEND_DIST:-$PINPROF_ADMIN_FRONTEND_DIR/dist}"
 PINPROF_ADMIN_SITE_RUNTIME="${PINPROF_ADMIN_SITE_RUNTIME:-$PINPROF_ADMIN_SOURCE_ROOT/apps/admin-site-runtime}"
@@ -217,6 +218,7 @@ stage_pinball_payload() {
   mkdir -p "${PINBALL_STAGE_DIR}/pinball"
   mkdir -p \
     "${PINBALL_STAGE_DIR}/pinball/data" \
+    "${PINBALL_STAGE_DIR}/pinball/api" \
     "${PINBALL_STAGE_DIR}/pinball/images/playfields" \
     "${PINBALL_STAGE_DIR}/pinball/images/backglasses" \
     "${PINBALL_STAGE_DIR}/pinball/rulesheets" \
@@ -250,6 +252,11 @@ stage_pinball_payload() {
     "${PINBALL_STAGE_DIR}/pinball/gameinfo" \
     --exclude='.gitkeep' \
     --exclude='.DS_Store'
+  stage_merge_tree \
+    "${PINBALL_API_SOURCE_DIR}" \
+    "${PINBALL_STAGE_DIR}/pinball/api" \
+    --exclude='.gitkeep' \
+    --exclude='.DS_Store'
 
   if [[ -f "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-manifest.json" ]]; then
     stage_copy_file \
@@ -277,6 +284,7 @@ stage_pinball_payload() {
   local required_files=(
     "cache-manifest.json"
     "cache-update-log.json"
+    "api/rulesheet.php"
     "data/opdb_export.json"
     "data/practice_identity_curations_v1.json"
     "data/backglass_assets.json"

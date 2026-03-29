@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { handlePinballRulesheetProxyRequest } from "./pinballRulesheetProxy";
 
 type NextFn = (err?: unknown) => void;
 type Middleware = (req: IncomingMessage, res: ServerResponse, next: NextFn) => void;
@@ -34,38 +35,43 @@ function toSafeFsPath(sharedPinballDir: string, urlPath: string): string | null 
 
 function makePinballMiddleware(sharedPinballDir: string): Middleware {
   return (req: IncomingMessage, res: ServerResponse, next: NextFn) => {
-    const rawUrl = req.url ?? "/";
-    const pathname = rawUrl.split("?")[0] ?? "/";
-    if (pathname !== "/pinball" && !pathname.startsWith("/pinball/")) {
-      next();
-      return;
-    }
+    handlePinballRulesheetProxyRequest(req, res)
+      .then((handled) => {
+        if (handled) return;
+        const rawUrl = req.url ?? "/";
+        const pathname = rawUrl.split("?")[0] ?? "/";
+        if (pathname !== "/pinball" && !pathname.startsWith("/pinball/")) {
+          next();
+          return;
+        }
 
-    const fsPath = toSafeFsPath(sharedPinballDir, pathname);
-    if (!fsPath) {
-      res.statusCode = 400;
-      res.end("Invalid path");
-      return;
-    }
+        const fsPath = toSafeFsPath(sharedPinballDir, pathname);
+        if (!fsPath) {
+          res.statusCode = 400;
+          res.end("Invalid path");
+          return;
+        }
 
-    fs.stat(fsPath, (err, stat) => {
-      if (err || !stat.isFile()) {
-        res.statusCode = 404;
-        res.end("Not found");
-        return;
-      }
+        fs.stat(fsPath, (err, stat) => {
+          if (err || !stat.isFile()) {
+            res.statusCode = 404;
+            res.end("Not found");
+            return;
+          }
 
-      res.statusCode = 200;
-      res.setHeader("Content-Type", contentTypeFor(fsPath));
-      res.setHeader("Cache-Control", "no-cache");
+          res.statusCode = 200;
+          res.setHeader("Content-Type", contentTypeFor(fsPath));
+          res.setHeader("Cache-Control", "no-cache");
 
-      const stream = fs.createReadStream(fsPath);
-      stream.on("error", () => {
-        res.statusCode = 500;
-        res.end("Read error");
-      });
-      stream.pipe(res);
-    });
+          const stream = fs.createReadStream(fsPath);
+          stream.on("error", () => {
+            res.statusCode = 500;
+            res.end("Read error");
+          });
+          stream.pipe(res);
+        });
+      })
+      .catch((error) => next(error));
   };
 }
 
