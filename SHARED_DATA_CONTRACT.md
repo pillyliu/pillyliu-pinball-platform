@@ -21,6 +21,7 @@ This repo is a consumer of the canonical data, not the editing home.
 - `deploy.sh` stages `/pinball` from `PinProf Admin/workspace`
 - `npm run check:smoke` validates the expected PinProf Admin inputs/outputs
 - website apps read the deployed `/pinball/...` payload at runtime
+- Playfield assets now publish a single hosted `/pinball/images/playfields/*.webp` path; retired `_700` and `_1400` derivatives are not part of the shared contract.
 
 ## App Distribution Model
 

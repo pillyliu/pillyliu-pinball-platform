@@ -91,6 +91,7 @@ const REQUIRED_IMAGE_FILES = [
     webPath: "/pinball/images/playfields/fallback-image-not-available_2048.webp",
   },
 ];
+const RETIRED_PLAYFIELD_VARIANT_PATTERN = /_(700|1400)\.webp$/i;
 
 function rel(p) {
   return path.relative(ROOT, p);
@@ -137,6 +138,7 @@ async function validateCanonicalPinballSource() {
   const errors = [];
   const manifestPath = path.join(PINPROF_ADMIN_MANIFESTS_DIR, "cache-manifest.json");
   const updateLogPath = path.join(PINPROF_ADMIN_MANIFESTS_DIR, "cache-update-log.json");
+  const playfieldAssetsPath = path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "playfield_assets.json");
 
   if (!(await exists(manifestPath))) {
     errors.push(`Missing canonical pinball manifest: ${rel(manifestPath)}`);
@@ -165,6 +167,34 @@ async function validateCanonicalPinballSource() {
       errors.push(`Missing required image file: ${rel(filePath)}`);
       continue;
     }
+  }
+
+  const playfieldFiles = await readDirSafe(PINPROF_ADMIN_PLAYFIELDS_DIR);
+  const retiredPlayfieldFiles = playfieldFiles.filter((file) => RETIRED_PLAYFIELD_VARIANT_PATTERN.test(file));
+  if (retiredPlayfieldFiles.length) {
+    errors.push(
+      `Retired playfield variants still present: ${retiredPlayfieldFiles.slice(0, 5).join(", ")}`
+      + (retiredPlayfieldFiles.length > 5 ? ` (+${retiredPlayfieldFiles.length - 5} more)` : "")
+    );
+  }
+
+  try {
+    const playfieldAssets = JSON.parse(await fs.readFile(playfieldAssetsPath, "utf8"));
+    const records = Array.isArray(playfieldAssets?.records) ? playfieldAssets.records : [];
+    const staleFields = records.find((record) =>
+      Object.hasOwn(record, "playfieldWebLocalPath700") || Object.hasOwn(record, "playfieldWebLocalPath1400")
+    );
+    if (staleFields) {
+      errors.push(`Obsolete playfield variant fields found in published data: ${rel(playfieldAssetsPath)}`);
+    }
+    const stalePaths = records.find((record) =>
+      RETIRED_PLAYFIELD_VARIANT_PATTERN.test(String(record?.playfieldLocalPath ?? ""))
+    );
+    if (stalePaths) {
+      errors.push(`Retired playfield variant path found in published data: ${rel(playfieldAssetsPath)}`);
+    }
+  } catch {
+    errors.push(`Invalid JSON in published playfield assets: ${rel(playfieldAssetsPath)}`);
   }
 
   return errors;

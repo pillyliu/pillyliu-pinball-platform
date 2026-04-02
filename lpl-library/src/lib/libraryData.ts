@@ -173,8 +173,6 @@ type PlayfieldAssetRecord = {
   playfieldLocalPath: string | null;
   playfieldOriginalLocalPath: string | null;
   playfieldReferenceLocalPath: string | null;
-  playfieldWebLocalPath700: string | null;
-  playfieldWebLocalPath1400: string | null;
   playfieldSourceUrl: string | null;
   playfieldSourceNote: string | null;
   playfieldSourcePageUrl: string | null;
@@ -282,8 +280,7 @@ const GAMEINFO_ASSETS_PATH = "/pinball/data/gameinfo_assets.json";
 const VENUE_LAYOUT_ASSETS_PATH = "/pinball/data/venue_layout_assets.json";
 const DEFAULT_IMPORTED_SOURCES_PATH = "/pinball/data/default_pm_venue_sources_v1.json";
 const MISSING_ARTWORK_PATH = "/pinball/images/playfields/fallback-image-not-available_2048.webp";
-const FALLBACK_PLAYFIELD_700 = MISSING_ARTWORK_PATH;
-const FALLBACK_PLAYFIELD_1400 = MISSING_ARTWORK_PATH;
+const FALLBACK_PLAYFIELD = MISSING_ARTWORK_PATH;
 const PM_AVENUE_SOURCE_ID = "venue--pm-8760";
 const PM_RLM_SOURCE_ID = "venue--pm-16470";
 const DEFAULT_AVENUE_SOURCE_IDS = [PM_AVENUE_SOURCE_ID] as const;
@@ -634,19 +631,25 @@ function resolveLibraryUrl(pathOrUrl: string | null | undefined): string | null 
   return raw.startsWith("/") ? raw : `/${raw}`;
 }
 
+function normalizeLibraryPublishedPlayfieldPath(path: string | null | undefined): string | null {
+  const raw = normalizedOptionalString(path);
+  if (!raw) return null;
+  return raw.replace(/(\/pinball\/images\/playfields\/.+?)(?:_\d+)?\.[A-Za-z0-9]+$/i, "$1.webp");
+}
+
 function normalizeLibraryCachePath(path: string | null | undefined): string | null {
   const raw = normalizedOptionalString(path);
   if (!raw) return null;
-  const normalizePlayfieldPublishedPath = (value: string): string =>
-    value.replace(/(\/pinball\/images\/playfields\/.+?)(?:_(700|1400))?\.[A-Za-z0-9]+$/i, "$1.webp");
   if (raw.startsWith("/Users/") || raw.startsWith("/private/")) return null;
-  if (raw.startsWith("/")) return raw.includes("/pinball/images/playfields/") ? normalizePlayfieldPublishedPath(raw) : raw;
+  if (raw.startsWith("/")) {
+    return raw.includes("/pinball/images/playfields/") ? normalizeLibraryPublishedPlayfieldPath(raw) : raw;
+  }
   if (raw.startsWith("http://") || raw.startsWith("https://")) {
     try {
       const url = new URL(raw);
       if (url.host.toLowerCase() === "pillyliu.com" && url.pathname) {
         return url.pathname.includes("/pinball/images/playfields/")
-          ? normalizePlayfieldPublishedPath(url.pathname)
+          ? normalizeLibraryPublishedPlayfieldPath(url.pathname)
           : url.pathname;
       }
     } catch {
@@ -656,19 +659,12 @@ function normalizeLibraryCachePath(path: string | null | undefined): string | nu
   }
   const normalized = `/${raw}`;
   return normalized.includes("/pinball/images/playfields/")
-    ? normalizePlayfieldPublishedPath(normalized)
+    ? normalizeLibraryPublishedPlayfieldPath(normalized)
     : normalized;
 }
 
 function normalizeLibraryPlayfieldLocalPath(path: string | null | undefined): string | null {
-  const raw = normalizedOptionalString(path);
-  if (!raw) return null;
-  if (/_700\.webp$/i.test(raw)) return raw;
-  if (/_1400\.webp$/i.test(raw)) return raw.replace(/_1400\.webp$/i, "_700.webp");
-  if (raw.includes("/pinball/images/playfields/")) {
-    return raw.replace(/\.[A-Za-z0-9]+$/, "_700.webp");
-  }
-  return raw;
+  return normalizeLibraryCachePath(path);
 }
 
 function groupKeyForGame(game: Pick<LibraryGame, "opdbGroupId" | "practiceIdentity" | "routeId">): string {
@@ -1373,7 +1369,7 @@ function scorePlayfieldSourceMatch(requestedOpdbId: string | null, sourceOpdbId:
 
 function playfieldAssetForMachine(machine: MachineRecord, layers: CanonicalLayers): PlayfieldAssetRecord | null {
   const candidates = (layers.playfieldAssetsByPracticeIdentity.get(machine.practiceIdentity) ?? [])
-    .filter((row) => normalizedOptionalString(row.playfieldLocalPath) || normalizedOptionalString(row.playfieldWebLocalPath700) || normalizedOptionalString(row.playfieldWebLocalPath1400));
+    .filter((row) => normalizedOptionalString(row.playfieldLocalPath));
   if (!candidates.length) return null;
 
   let best: PlayfieldAssetRecord | null = null;
@@ -1443,16 +1439,8 @@ function buildLibraryGame(
   const layout = source.type === "venue" || source.type === "tournament"
     ? venueLayoutForMachine(source.id, requestedId, machine, layers)
     : { area: null, areaOrder: null, group: null, position: null, bank: null };
-  const playfieldLocalOriginal = normalizeLibraryCachePath(
-    playfieldAsset?.playfieldLocalPath ??
-      playfieldAsset?.playfieldWebLocalPath1400 ??
-      playfieldAsset?.playfieldWebLocalPath700,
-  );
-  const playfieldLocal = normalizeLibraryPlayfieldLocalPath(
-    playfieldAsset?.playfieldWebLocalPath700 ??
-      playfieldAsset?.playfieldWebLocalPath1400 ??
-      playfieldAsset?.playfieldLocalPath,
-  );
+  const playfieldLocalOriginal = normalizeLibraryCachePath(playfieldAsset?.playfieldLocalPath);
+  const playfieldLocal = normalizeLibraryPlayfieldLocalPath(playfieldAsset?.playfieldLocalPath);
   const opdbPlayfieldUrl = normalizedOptionalString(machine.playfieldImageLargeUrl ?? machine.playfieldImageUrl);
   const hasLocalPlayfield = Boolean(playfieldLocalOriginal || playfieldLocal);
 
@@ -1703,28 +1691,10 @@ export function findLibraryGame(games: LibraryGame[], gameId: string | undefined
   ) ?? null;
 }
 
-function derivePlayfieldVariant(local: string, width: 700 | 1400): string | null {
-  const trimmed = local.trim();
-  if (!trimmed.startsWith("/pinball/images/playfields/")) return null;
-  const match = trimmed.match(/^(.*?)(?:_(700|1400))?\.(webp|png|jpe?g)$/i);
-  if (!match) return null;
-  return `${match[1]}_${width}.webp`;
-}
-
 function explicitPlayfieldCandidates(game: LibraryGame): string[] {
-  const localOriginal = normalizedOptionalString(game.playfieldLocalOriginal);
-  const local1400 = localOriginal ? derivePlayfieldVariant(localOriginal, 1400) : null;
-  const local700 = localOriginal ? derivePlayfieldVariant(localOriginal, 700) : null;
-  const groupLocalOriginal = normalizedOptionalString(game.groupPlayfieldLocalOriginal);
-  const groupLocal1400 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 1400) : null;
-  const groupLocal700 = groupLocalOriginal ? derivePlayfieldVariant(groupLocalOriginal, 700) : null;
   return dedupeResolvedUrls([
     resolveLibraryUrl(game.playfieldLocalOriginal),
-    resolveLibraryUrl(local1400),
-    resolveLibraryUrl(local700),
     resolveLibraryUrl(game.groupPlayfieldLocalOriginal),
-    resolveLibraryUrl(groupLocal1400),
-    resolveLibraryUrl(groupLocal700),
     resolveLibraryUrl(game.playfieldLocal),
     resolveLibraryUrl(game.groupPlayfieldLocal),
   ]);
@@ -1779,15 +1749,13 @@ export function detailArtworkCandidates(game: LibraryGame): string[] {
 export function gamePlayfieldCandidates(game: LibraryGame): string[] {
   return [
     ...explicitPlayfieldCandidates(game),
-    FALLBACK_PLAYFIELD_700,
+    FALLBACK_PLAYFIELD,
   ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
 }
 
 export function directPlayfieldUrl(game: LibraryGame): string | null {
   const preferredCandidates = explicitPlayfieldCandidates(game);
-  return preferredCandidates.find((candidate) =>
-    candidate !== FALLBACK_PLAYFIELD_700 && candidate !== FALLBACK_PLAYFIELD_1400,
-  ) ?? null;
+  return preferredCandidates.find((candidate) => candidate !== FALLBACK_PLAYFIELD) ?? null;
 }
 
 export function resolvedPlayfieldOptions(
