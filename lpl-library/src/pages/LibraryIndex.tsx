@@ -275,7 +275,8 @@ export default function LibraryIndex() {
         setSourceState(bundle.sourceState);
         const preferredId = preferredLibrarySourceId(bundle.sources, bundle.sourceState, null);
         if (preferredId) setSelectedSourceId(preferredId);
-      } catch {
+      } catch (error) {
+        console.error("Failed to load library data.", error);
         if (cancelled) return;
         setGames([]);
         setSources([]);

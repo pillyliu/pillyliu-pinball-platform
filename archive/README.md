@@ -86,35 +86,26 @@ Why these were archived:
 - canonical editing now belongs in PinProf Admin data tables and workspace assets instead of spreadsheet helpers
 - `pinside_group_map.json` remains a separate support file for app Pinside import, but it is no longer rebuilt from the retired Codex sheet flow
 
-## Archived on 2026-03-25 (Retired shared payload snapshot)
+## Removed on 2026-04-12 (Retired shared payload snapshot)
 
-Folder:
+Removed folder:
 
 - `archive/2026-03-25-shared-pinball-payload/`
 
-Archived today:
-
-- the full local `shared/pinball/` tree that used to live at the repo root
-
-Why this was archived:
+Why this was removed:
 
 - the website no longer reads local `shared/pinball` as a source of truth
 - everything still needed from that tree now lives in `PinProf Admin/workspace` or, for app-only support assets, in `Pinball App/Pinball App 2/Pinball App 2/SharedAppSupport`
-- the remaining files were either mirrored copies of canonical data/assets or retired bridge artifacts that no longer belong in the active workflow
+- the snapshot was consuming substantial disk space while no longer serving as an active build, deploy, or runtime dependency
 
-## Archived on 2026-03-25 (Retired website-local admin copies)
+## Removed on 2026-04-12 (Retired website-local admin copies)
 
-Folder:
+Removed folder:
 
 - `archive/2026-03-25-website-local-admin-retired/`
 
-Archived today:
-
-- `pinprof-admin/`
-- `pinprof-admin-site/`
-
-Why these were archived:
+Why this was removed:
 
 - your real local runtime is `/Users/pillyliu/Desktop/PinProf Admin.command`, which launches `PinProf Admin/apps/admin-ui`
-- deploy already stages the canonical admin frontend/runtime from the `PinProf Admin` repo, not these website-local copies
-- leaving duplicate local admin trees in the website repo made it look like there were still two supported local admin homes
+- deploy already stages the canonical admin frontend/runtime from the `PinProf Admin` repo, not those website-local copies
+- the live `PinProf Admin` frontend/runtime had moved ahead of the archived mirror, so keeping both only added confusion and disk usage

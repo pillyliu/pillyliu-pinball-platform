@@ -3,16 +3,23 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "pillyliu-landing",
+    "lpl-library",
+    "lpl-standings",
+    "lpl-stats",
+    "lpl-targets"
+  ],
   "scripts": {
     "dev:pinprof-admin": "npm --prefix \"../PinProf Admin/apps/admin-ui\" run dev",
     "build:pinprof-admin": "npm --prefix \"../PinProf Admin/apps/admin-ui\" run build",
     "start:pinprof-admin": "npm --prefix \"../PinProf Admin/apps/admin-ui\" run start",
     "check:smoke": "node tools/smoke-check.mjs",
-    "build:lpl-library": "npm --prefix lpl-library run build",
-    "build:lpl-standings": "npm --prefix lpl-standings run build",
-    "build:lpl-stats": "npm --prefix lpl-stats run build",
-    "build:lpl-targets": "npm --prefix lpl-targets run build",
-    "build:pillyliu-landing": "npm --prefix pillyliu-landing run build",
+    "build:lpl-library": "npm run build --workspace lpl-library",
+    "build:lpl-standings": "npm run build --workspace lpl-standings",
+    "build:lpl-stats": "npm run build --workspace lpl-stats",
+    "build:lpl-targets": "npm run build --workspace lpl-targets",
+    "build:pillyliu-landing": "npm run build --workspace pillyliu-landing",
     "build:all": "npm run build:pillyliu-landing && npm run build:lpl-library && npm run build:lpl-standings && npm run build:lpl-stats && npm run build:lpl-targets"
   },
   "devDependencies": {

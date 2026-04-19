@@ -20,6 +20,7 @@ bash '/Users/pillyliu/Documents/Codex/PinProf Admin/scripts/publish/rebuild-shar
 3. From this repo, run:
 
 ```bash
+npm install
 npm run build:all
 npm run build:pinprof-admin
 npm run check:smoke

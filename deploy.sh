@@ -189,13 +189,18 @@ ensure_npm_dependencies() {
   fi
 }
 
+ensure_repo_workspace_dependencies() {
+  local lockfile="${ROOT_DIR}/package-lock.json"
+  local node_modules="${ROOT_DIR}/node_modules"
+
+  if [[ ! -d "${node_modules}" || ( -f "${lockfile}" && "${lockfile}" -nt "${node_modules}" ) ]]; then
+    echo "Installing npm workspace dependencies for website repo..."
+    npm ci
+  fi
+}
+
 prepare_build_environment() {
-  ensure_npm_dependencies "${ROOT_DIR}" "repo root"
-  ensure_npm_dependencies "${ROOT_DIR}/pillyliu-landing" "pillyliu-landing"
-  ensure_npm_dependencies "${ROOT_DIR}/lpl-library" "lpl-library"
-  ensure_npm_dependencies "${ROOT_DIR}/lpl-standings" "lpl-standings"
-  ensure_npm_dependencies "${ROOT_DIR}/lpl-stats" "lpl-stats"
-  ensure_npm_dependencies "${ROOT_DIR}/lpl-targets" "lpl-targets"
+  ensure_repo_workspace_dependencies
   ensure_npm_dependencies "${PINPROF_ADMIN_FRONTEND_DIR}" "pinprof-admin"
 }
 

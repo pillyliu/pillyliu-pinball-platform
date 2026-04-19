@@ -21,6 +21,14 @@ Monorepo for `pillyliu.com` and the public pinball website apps.
 - App-only shared support files such as `pinside_group_map.json`, shake-warning art, and intro overlay sources now live in the `Pinball App` repo, not here or in `PinProf Admin`.
 - The old local `shared/pinball` tree has been retired and archived for local reference only.
 
+## Dependency Model
+
+- The website apps are installed as one npm workspace from this repo root.
+- Shared dependencies are hoisted into the root `node_modules/` instead of being duplicated under each app.
+- Day-to-day editing stays the same: each app keeps its own `package.json`, Vite config, and `dist/` output.
+- Install website dependencies with `npm install` from this repo root.
+- `PinProf Admin` remains a separate install in `../PinProf Admin/apps/admin-ui`.
+
 ## Common Commands
 
 ```bash

@@ -848,7 +848,10 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         gameinfoAssetsByOpdbId,
         venueLayoutBySourceAndOpdbId,
       };
-    })();
+    })().catch((error) => {
+      canonicalLayersPromise = null;
+      throw error;
+    });
   }
 
   return canonicalLayersPromise;

@@ -23,6 +23,14 @@ function normalizePath(p: string): string {
   return p.startsWith("/") ? p : `/${p}`;
 }
 
+function assetUrls(path: string): string[] {
+  const primary = normalizePath(path);
+  const urls = [primary];
+  const alt = fallbackPath(primary);
+  if (alt !== primary) urls.push(alt);
+  return urls;
+}
+
 function storageKey(kind: string, path: string): string {
   return `${STORAGE_PREFIX}:${kind}:${normalizePath(path)}`;
 }
@@ -48,9 +56,7 @@ function fallbackPath(path: string): string {
 
 async function fetchResponseNetwork(path: string): Promise<{ response: Response; resolvedPath: string }> {
   const primary = normalizePath(path);
-  const urls = [primary];
-  const alt = fallbackPath(primary);
-  if (alt !== primary) urls.push(alt);
+  const urls = assetUrls(primary);
 
   let lastError: Error | null = null;
   for (const url of urls) {
@@ -71,10 +77,7 @@ async function fetchResponseNetwork(path: string): Promise<{ response: Response;
 async function readTextAssetCache(path: string): Promise<string | null> {
   if (!("caches" in window)) return null;
 
-  const primary = normalizePath(path);
-  const urls = [primary];
-  const alt = fallbackPath(primary);
-  if (alt !== primary) urls.push(alt);
+  const urls = assetUrls(path);
 
   try {
     const cache = await caches.open(ASSET_CACHE);
@@ -95,6 +98,64 @@ async function fetchTextNetwork(path: string): Promise<string> {
   return response.text();
 }
 
+function textHashStateKey(): string {
+  return `${STORAGE_PREFIX}:asset-hashes:text`;
+}
+
+function persistTextAsset(path: string, text: string, hash: string | null) {
+  const normalized = normalizePath(path);
+  try {
+    localStorage.setItem(
+      storageKey("text", normalized),
+      JSON.stringify({ hash, text, updatedAt: new Date().toISOString() })
+    );
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function clearStoredTextAsset(path: string) {
+  const normalized = normalizePath(path);
+  try {
+    localStorage.removeItem(storageKey("text", normalized));
+    const hashState = parseJson<Record<string, string>>(localStorage.getItem(textHashStateKey())) ?? {};
+    if (Object.hasOwn(hashState, normalized)) {
+      delete hashState[normalized];
+      localStorage.setItem(textHashStateKey(), JSON.stringify(hashState));
+    }
+  } catch {
+    // ignore storage errors
+  }
+}
+
+async function deleteTextAssetCache(path: string): Promise<void> {
+  if (!("caches" in window)) return;
+  try {
+    const cache = await caches.open(ASSET_CACHE);
+    await Promise.all(
+      assetUrls(path).map((url) => cache.delete(url).then(() => undefined).catch(() => undefined))
+    );
+  } catch {
+    // ignore cache cleanup failures
+  }
+}
+
+async function resetTextAssetState(path: string): Promise<void> {
+  clearStoredTextAsset(path);
+  await deleteTextAssetCache(path);
+}
+
+async function refreshTextAsset(path: string): Promise<string> {
+  const normalized = normalizePath(path);
+  const [text, manifest] = await Promise.all([
+    fetchTextNetwork(normalized),
+    loadManifest(),
+  ]);
+  const nextHash = manifest?.files?.[normalized]?.hash ?? null;
+  persistTextAsset(normalized, text, nextHash);
+  return text;
+}
+
 export async function loadManifest(): Promise<Manifest | null> {
   if (!manifestPromise) {
     manifestPromise = (async () => {
@@ -107,7 +168,9 @@ export async function loadManifest(): Promise<Manifest | null> {
       }
     })();
   }
-  return manifestPromise;
+  const manifest = await manifestPromise;
+  if (!manifest) manifestPromise = null;
+  return manifest;
 }
 
 export async function fetchPinballText(path: string): Promise<string> {
@@ -120,14 +183,13 @@ export async function fetchPinballText(path: string): Promise<string> {
   const manifest = await loadManifest();
   const nextHash = manifest?.files?.[normalized]?.hash ?? null;
 
-  if (cached && (!nextHash || cached.hash === nextHash)) {
+  if (cached && nextHash && cached.hash === nextHash) {
     return cached.text;
   }
 
   try {
     const text = await fetchTextNetwork(normalized);
-    const payload = { hash: nextHash, text, updatedAt: new Date().toISOString() };
-    localStorage.setItem(cacheKey, JSON.stringify(payload));
+    persistTextAsset(normalized, text, nextHash);
     return text;
   } catch (error) {
     const cachedAssetText = await readTextAssetCache(normalized);
@@ -138,8 +200,22 @@ export async function fetchPinballText(path: string): Promise<string> {
 }
 
 export async function fetchPinballJson<T>(path: string): Promise<T> {
-  const text = await fetchPinballText(path);
-  return JSON.parse(text) as T;
+  const normalized = normalizePath(path);
+  const text = await fetchPinballText(normalized);
+  try {
+    return JSON.parse(text) as T;
+  } catch (error) {
+    console.warn(`Invalid cached pinball JSON for ${normalized}; retrying from network.`, error);
+    await resetTextAssetState(normalized);
+    manifestPromise = null;
+    const refreshedText = await refreshTextAsset(normalized);
+    try {
+      return JSON.parse(refreshedText) as T;
+    } catch (refreshError) {
+      const message = refreshError instanceof Error ? refreshError.message : String(refreshError ?? "unknown");
+      throw new Error(`Invalid JSON returned for ${normalized}: ${message}`);
+    }
+  }
 }
 
 export async function prefetchPinballTextAssets(pathPrefixes: string[] = []): Promise<void> {
@@ -147,7 +223,7 @@ export async function prefetchPinballTextAssets(pathPrefixes: string[] = []): Pr
   const manifest = await loadManifest();
   if (!manifest) return;
 
-  const hashStateKey = `${STORAGE_PREFIX}:asset-hashes:text`;
+  const hashStateKey = textHashStateKey();
   const previous = parseJson<Record<string, string>>(localStorage.getItem(hashStateKey)) ?? {};
   const next: Record<string, string> = {};
 

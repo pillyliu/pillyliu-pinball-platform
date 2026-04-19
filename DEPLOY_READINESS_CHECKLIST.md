@@ -27,6 +27,7 @@ This refreshes the published `/pinball` payload inputs and the app preload bundl
 From this repo:
 
 ```bash
+npm install
 npm run build:all
 npm run build:pinprof-admin
 ```
