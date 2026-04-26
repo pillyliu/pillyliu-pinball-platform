@@ -257,17 +257,17 @@ function source_meta(string $provider): array
         'pp' => [
             'source_name' => 'Pinball Primer',
             'link_label' => 'Original page',
-            'details' => 'Preserve source attribution and any author/site rights notes from the original page.',
+            'details' => 'Source terms and author/site rights remain with Pinball Primer and its original author.',
         ],
         'papa' => [
             'source_name' => 'PAPA / pinball.org rulesheet archive',
             'link_label' => 'Original page',
-            'details' => 'Preserve source attribution and any author/site rights notes from the original page.',
+            'details' => 'Source terms and author/site rights remain with PAPA / pinball.org, the original archive, and its original contributors.',
         ],
         'bob' => [
             'source_name' => 'Silverball Rules (Bob Matthews source)',
             'link_label' => 'Original page',
-            'details' => 'Preserve source attribution and any author/site rights notes from the original page.',
+            'details' => 'Source terms and author/site rights remain with Bob Matthews / Silverball Rules.',
         ],
         default => [
             'source_name' => 'Rulesheet source',

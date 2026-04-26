@@ -203,19 +203,19 @@ function sourceMeta(provider: SupportedProvider): { sourceName: string; linkLabe
       return {
         sourceName: "Pinball Primer",
         linkLabel: "Original page",
-        details: "Preserve source attribution and any author/site rights notes from the original page.",
+        details: "Source terms and author/site rights remain with Pinball Primer and its original author.",
       };
     case "papa":
       return {
         sourceName: "PAPA / pinball.org rulesheet archive",
         linkLabel: "Original page",
-        details: "Preserve source attribution and any author/site rights notes from the original page.",
+        details: "Source terms and author/site rights remain with PAPA / pinball.org, the original archive, and its original contributors.",
       };
     case "bob":
       return {
         sourceName: "Silverball Rules (Bob Matthews source)",
         linkLabel: "Original page",
-        details: "Preserve source attribution and any author/site rights notes from the original page.",
+        details: "Source terms and author/site rights remain with Bob Matthews / Silverball Rules.",
       };
   }
 }
