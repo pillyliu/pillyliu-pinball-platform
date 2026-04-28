@@ -45,6 +45,10 @@ const REQUIRED_PINBALL_FILES = [
     webPath: "/pinball/data/lpl_targets_resolved_v1.json",
   },
   {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "lpl_targets_resolved_v2.json"),
+    webPath: "/pinball/data/lpl_targets_resolved_v2.json",
+  },
+  {
     filePath: path.join(PINPROF_ADMIN_SOURCE_DATA_DIR, "redacted_players.csv"),
     webPath: "/pinball/data/redacted_players.csv",
   },
@@ -83,6 +87,10 @@ const REQUIRED_PINBALL_FILES = [
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "venue_layout_assets.json"),
     webPath: "/pinball/data/venue_layout_assets.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pintips.json"),
+    webPath: "/pinball/data/pintips.json",
   },
 ];
 const REQUIRED_IMAGE_FILES = [

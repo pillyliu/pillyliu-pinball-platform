@@ -10,7 +10,7 @@ import {
 import { NAV_LINKS } from "../../shared/ui/navLinks";
 
 const DEFAULT_TARGETS_URL = "/pinball/data/LPL_Targets.csv";
-const RESOLVED_TARGETS_URL = "/pinball/data/lpl_targets_resolved_v1.json";
+const RESOLVED_TARGETS_URL = "/pinball/data/lpl_targets_resolved_v2.json";
 
 type TargetRow = {
   game: string;
@@ -57,7 +57,11 @@ export default function App() {
         setError(null);
         if (dataUrl === DEFAULT_TARGETS_URL) {
           const payload = await fetchPinballJson<unknown>(RESOLVED_TARGETS_URL);
-          setRows(parseResolvedTargetsJson(payload));
+          setRows(
+            parseResolvedTargetsJson(payload).filter(
+              (row) => typeof row.bank === "number" && Number.isFinite(row.bank) && row.bank > 0
+            )
+          );
         } else {
           const text = await fetchPinballText(dataUrl);
           setRows(parseTargetsCSV(text));

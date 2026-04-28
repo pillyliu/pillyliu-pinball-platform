@@ -299,10 +299,12 @@ stage_pinball_payload() {
     "data/playfield_assets.json"
     "data/gameinfo_assets.json"
     "data/venue_layout_assets.json"
+    "data/pintips.json"
     "data/LPL_Targets.csv"
     "data/LPL_IFPA_Players.csv"
     "data/lpl_machine_mappings_v1.json"
     "data/lpl_targets_resolved_v1.json"
+    "data/lpl_targets_resolved_v2.json"
     "data/LPL_Stats.csv"
     "data/LPL_Standings.csv"
     "data/redacted_players.csv"
@@ -354,6 +356,9 @@ stage_pinprof_site_payload() {
     --exclude='.DS_Store' \
     --exclude='README.md' \
     --exclude='package.json' \
+    --exclude='docs' \
+    --exclude='practice' \
+    --exclude='pinball' \
     "${site_source_dir}/" "${PINPROF_SITE_STAGE_DIR}/"
 }
 
@@ -513,7 +518,9 @@ rsync "${RSYNC_OPTS[@]}" --exclude='pinball/' lpl-targets/dist/ "${REMOTE}/lpl-t
 rsync "${RSYNC_OPTS[@]}" --exclude='config.php' "${PINPROF_ADMIN_STAGE_DIR}/" "${REMOTE}/pinprof-admin/"
 if [[ -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
   echo "Deploying PinProf.com..."
-  rsync "${RSYNC_OPTS[@]}" --filter='P .well-known/' "${PINPROF_SITE_STAGE_DIR}/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/"
+  rsync "${RSYNC_OPTS[@]}" --filter='P .well-known/' --filter='P pinball/' "${PINPROF_SITE_STAGE_DIR}/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/"
+  echo "Mirroring canonical pinball data to PinProf.com..."
+  rsync "${PINBALL_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/pinball/"
 fi
 
 if [[ "$DRY_RUN" -eq 0 ]]; then
