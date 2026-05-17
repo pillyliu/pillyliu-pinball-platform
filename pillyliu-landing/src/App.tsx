@@ -10,6 +10,7 @@ export default function App() {
   const landingNavItems = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
+    { href: 'https://pinprof.com/', label: 'PinProf' },
     { href: 'https://pillyliu.com/lpl-stats/', label: 'Stats' },
     { href: 'https://pillyliu.com/lpl-standings/', label: 'Standings' },
     { href: 'https://pillyliu.com/lpl-targets/', label: 'Targets' },
@@ -46,6 +47,9 @@ export default function App() {
               <a className={CTA_BUTTON_CLASS} href='https://pillyliu.com/lpl-library/'>
                 Open <strong className='ml-1'>Library</strong>
               </a>
+              <a className={CTA_BUTTON_CLASS} href='https://pinprof.com/'>
+                Open <strong className='ml-1'>PinProf</strong>
+              </a>
               <a className={CTA_BUTTON_CLASS} href='http://twitch.tv/pillyliu' target='_blank' rel='noreferrer'>
                 Watch on <strong className='ml-1'>Twitch</strong>
               </a>
@@ -64,7 +68,17 @@ export default function App() {
 
       <section id='projects' className='scroll-mt-24 rounded-2xl border border-neutral-800 bg-neutral-900/70 p-5 md:p-6'>
         <h2 className='m-0 text-lg font-semibold tracking-tight text-neutral-100'>Projects</h2>
-        <div className='mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4'>
+        <div className='mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3'>
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>PinProf</h3>
+            <p className='mt-2 text-sm text-neutral-400'>
+              PinProf is a comprehensive pinball study app. Rulesheets, playfield images, and video tutorials in one place. Easy to use practice and study tracker. Personal pinball collection manager. iOS and Android. Web app coming soon!
+            </p>
+            <a className={CARD_BUTTON_CLASS} href='https://pinprof.com/'>
+              Open PinProf
+            </a>
+          </article>
+
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>League Stats Viewer</h3>
             <p className='mt-2 text-sm text-neutral-400'>Interactive filters with machine-specific analytics.</p>

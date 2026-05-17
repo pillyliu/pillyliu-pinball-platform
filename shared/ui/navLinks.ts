@@ -1,5 +1,6 @@
 export const NAV_LINKS = [
   { href: "https://pillyliu.com/", label: "Home" },
+  { href: "https://pinprof.com/", label: "PinProf" },
   { href: "https://pillyliu.com/lpl-stats/", label: "Stats" },
   { href: "https://pillyliu.com/lpl-standings/", label: "Standings" },
   { href: "https://pillyliu.com/lpl-targets/", label: "Targets" },

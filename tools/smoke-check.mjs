@@ -127,11 +127,16 @@ async function validateApp(app) {
   const appRoot = path.join(ROOT, app.name);
   const distDir = path.join(appRoot, "dist");
   const indexHtml = path.join(distDir, "index.html");
+  const htaccess = path.join(distDir, ".htaccess");
   const assetsDir = path.join(distDir, "assets");
 
   if (!(await exists(indexHtml))) {
     errors.push(`Missing dist index: ${rel(indexHtml)}`);
     return errors;
+  }
+
+  if (!(await exists(htaccess))) {
+    errors.push(`Missing cache headers file: ${rel(htaccess)}`);
   }
 
   const assets = await readDirSafe(assetsDir);

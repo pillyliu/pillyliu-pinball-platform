@@ -303,6 +303,7 @@ stage_pinball_payload() {
     "data/LPL_Targets.csv"
     "data/LPL_IFPA_Players.csv"
     "data/lpl_machine_mappings_v1.json"
+    "data/lpl_player_insights_v1.json"
     "data/lpl_targets_resolved_v1.json"
     "data/lpl_targets_resolved_v2.json"
     "data/LPL_Stats.csv"
@@ -352,13 +353,21 @@ stage_pinprof_site_payload() {
   rsync -a \
     --exclude='.git' \
     --exclude='.gitignore' \
+    --exclude='.playwright-cli' \
+    --exclude='.playwright-mcp' \
     --exclude='node_modules' \
     --exclude='.DS_Store' \
     --exclude='README.md' \
     --exclude='package.json' \
     --exclude='docs' \
+    --exclude='output' \
+    --exclude='api' \
+    --exclude='app' \
     --exclude='practice' \
     --exclude='pinball' \
+    --exclude='scripts' \
+    --exclude='/PinProf Logo Upscaled.jpg' \
+    --exclude='/practice-*.png' \
     "${site_source_dir}/" "${PINPROF_SITE_STAGE_DIR}/"
 }
 
@@ -482,6 +491,7 @@ echo "Deploying landing..."
 rsync "${RSYNC_OPTS[@]}" pillyliu-landing/dist/assets/ "${REMOTE}/assets/"
 rsync "${RSYNC_OPTS[@]}" pillyliu-landing/dist/privacy/ "${REMOTE}/privacy/"
 for file in \
+  .htaccess \
   index.html \
   favicon.ico \
   favicon-16x16.png \
