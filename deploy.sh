@@ -361,9 +361,7 @@ stage_pinprof_site_payload() {
     --exclude='package.json' \
     --exclude='docs' \
     --exclude='output' \
-    --exclude='api' \
-    --exclude='app' \
-    --exclude='practice' \
+    --exclude='/practice' \
     --exclude='pinball' \
     --exclude='scripts' \
     --exclude='/PinProf Logo Upscaled.jpg' \

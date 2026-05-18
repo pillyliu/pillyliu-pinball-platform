@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pinball App Privacy Policy</title>
+  <title>PinProf Privacy Policy</title>
   <style>
     :root { color-scheme: light dark; }
     body {
@@ -34,12 +34,12 @@
 </head>
 <body>
   <main>
-    <h1>Pinball App Privacy Policy</h1>
-    <p class="meta"><strong>Effective date:</strong> February 9, 2026</p>
+    <h1>PinProf Privacy Policy</h1>
+    <p class="meta"><strong>Effective date:</strong> May 17, 2026</p>
 
     <div class="card">
       <p>
-        Pinball App ("the App") is provided by Peter Liu ("I," "me," "my").
+        PinProf ("the App") is provided by Peter Liu ("I," "me," "my").
         This Privacy Policy explains what information the App processes and how it is used.
       </p>
 
@@ -51,6 +51,10 @@
       <p>The App may process:</p>
       <ul>
         <li>League and game content files downloaded from the app data source (standings, stats, targets, machine info, rulesheets, images)</li>
+        <li>Information you choose to save in the App, such as practice history, goals, GameRoom records, settings, and local notes</li>
+        <li>Optional Cloud Sync account and sync data, if you choose to sign in and use Cloud Sync</li>
+        <li>Anonymous product analytics, unless you turn analytics off in Settings</li>
+        <li>Current location or venue search text when you choose to search for nearby venues</li>
         <li>Basic technical request data handled by your device/network stack when fetching remote content (for example, IP address at the network level)</li>
       </ul>
       <p>No sensitive personal information is intentionally collected through in-app forms.</p>
@@ -59,60 +63,87 @@
       <p>Data is used to:</p>
       <ul>
         <li>Display league standings, stats, targets, and machine library content</li>
+        <li>Save your app data, preferences, and progress on your device</li>
+        <li>Sync supported text data across your signed-in devices when you choose to use Cloud Sync</li>
+        <li>Find nearby venues when you choose to use current-location venue search</li>
+        <li>Understand which screens and features are used so the App can be improved and debugged</li>
         <li>Cache content locally for performance and offline-friendly behavior</li>
         <li>Refresh content metadata and updates</li>
       </ul>
 
       <h2>3. Data Storage</h2>
       <p>
-        The App stores downloaded content files in on-device cache storage to improve load speed and availability.
+        The App stores downloaded content files and user-created app data on your device to support local-first use.
       </p>
       <ul>
         <li>Cache data can be cleared by uninstalling/reinstalling the App</li>
-        <li>No in-app account system or cloud profile sync is provided at this time</li>
+        <li>Cloud Sync is optional and only applies when you choose to sign in and use it</li>
+        <li>Cloud Sync is intended for supported text data. Photos, videos, camera images, OCR images, and local media files are not synced in the current Cloud Sync version.</li>
       </ul>
 
       <h2>4. Analytics, Tracking, and Advertising</h2>
+      <p>
+        The App may use PostHog for product analytics. Analytics are used to understand and debug the App, not for advertising.
+        Analytics can be turned off in Settings.
+      </p>
       <ul>
         <li>No third-party advertising SDKs are used in the App</li>
         <li>No cross-app tracking is used for targeted advertising</li>
-        <li>If this changes, this policy will be updated</li>
+        <li>Analytics events are explicit named product events, such as screens viewed, buttons or dropdowns used, feature sections opened, app lifecycle events, and time spent on a screen or rulesheet</li>
+        <li>Analytics events do not intentionally include typed values, score values, OCR text, OCR images, IFPA or PRPA IDs, email addresses, auth codes, names, notes, import files, media files, or file paths</li>
+        <li>Session replay, wireframe replay, and screen recording analytics are not enabled for the 3.6.2 release</li>
       </ul>
 
-      <h2>5. Third-Party Content and Links</h2>
+      <h2>5. Optional Cloud Sync</h2>
+      <p>
+        If you choose to use Cloud Sync, the App may use Supabase to operate account sign-in and sync.
+        Cloud Sync may process your account email, sign-in code flow, supported synced text data, device/sync metadata, and related support diagnostics.
+      </p>
+      <p>Cloud Sync is optional. The App remains local-first and usable without Cloud Sync.</p>
+
+      <h2>6. Third-Party Content and Links</h2>
       <p>The App may display or link to third-party resources, including external websites and YouTube-hosted content.</p>
+      <p>
+        Venue search is powered by Pinball Map. If you use current-location venue search or enter a venue/address search,
+        PinProf sends that location or search text to Pinball Map to return nearby venue results.
+      </p>
       <p>When you open third-party content, their privacy policies and terms apply.</p>
 
-      <h2>6. Children's Privacy</h2>
+      <h2>7. Children's Privacy</h2>
       <p>
         The App is not directed to children under 13. Personal information is not knowingly collected from children.
       </p>
 
-      <h2>7. Data Sharing</h2>
+      <h2>8. Data Sharing</h2>
       <p>
-        Personal information is not sold. Personal data is not shared for advertising purposes.
-        Limited technical data may be processed by hosting/network providers as part of normal web delivery.
+        PinProf will never sell user data. PinProf will not share user data with advertisers, data brokers,
+        or other third parties for their own use. Trusted service providers may process limited data only to operate
+        PinProf features, including hosting/content delivery, optional Cloud Sync through Supabase, and product analytics
+        through PostHog. Pinball Map receives location or venue search information only when you use the venue search feature.
       </p>
 
-      <h2>8. Security</h2>
+      <h2>9. Security</h2>
       <p>
         Reasonable measures are used to protect content delivery and app operation.
         No method of transmission or storage is 100% secure.
       </p>
 
-      <h2>9. Your Choices</h2>
+      <h2>10. Your Choices</h2>
       <ul>
+        <li>Turn off product analytics in App Settings</li>
+        <li>Choose not to use Cloud Sync, or stop using Cloud Sync</li>
+        <li>Request account or synced-data deletion by contacting support</li>
         <li>Stop all data processing by uninstalling the App</li>
         <li>Avoid opening third-party links if you do not want their services to process data</li>
       </ul>
 
-      <h2>10. Changes to This Policy</h2>
+      <h2>11. Changes to This Policy</h2>
       <p>
         This Privacy Policy may be updated from time to time.
         Updates will be posted at this URL with a revised effective date.
       </p>
 
-      <h2>11. Contact</h2>
+      <h2>12. Contact</h2>
       <p>
         If you have questions about this Privacy Policy, contact:<br />
         Email: <a href="mailto:pillyliu@gmail.com">pillyliu@gmail.com</a>
