@@ -10,6 +10,7 @@ const PINPROF_ADMIN_SOURCE_DATA_DIR = path.join(PINPROF_ADMIN_WORKSPACE_DIR, "da
 const PINPROF_ADMIN_PUBLISHED_DATA_DIR = path.join(PINPROF_ADMIN_WORKSPACE_DIR, "data", "published");
 const PINPROF_ADMIN_MANIFESTS_DIR = path.join(PINPROF_ADMIN_WORKSPACE_DIR, "manifests");
 const PINPROF_ADMIN_PLAYFIELDS_DIR = path.join(PINPROF_ADMIN_WORKSPACE_DIR, "assets", "playfields");
+const PINPROF_ADMIN_GAMEINFO_DIR = path.join(PINPROF_ADMIN_WORKSPACE_DIR, "assets", "gameinfo");
 
 const APPS = [
   { name: "pillyliu-landing" },
@@ -83,6 +84,18 @@ const REQUIRED_PINBALL_FILES = [
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "gameinfo_assets.json"),
     webPath: "/pinball/data/gameinfo_assets.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pinside_credit_people_v1.json"),
+    webPath: "/pinball/data/pinside_credit_people_v1.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pinside_game_credits_v1.json"),
+    webPath: "/pinball/data/pinside_game_credits_v1.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_GAMEINFO_DIR, "GweeP-Ml9pZ-AOvNL-gameinfo.md"),
+    webPath: "/pinball/gameinfo/GweeP-Ml9pZ-AOvNL-gameinfo.md",
   },
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "venue_layout_assets.json"),

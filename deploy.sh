@@ -298,6 +298,8 @@ stage_pinball_payload() {
     "data/video_assets.json"
     "data/playfield_assets.json"
     "data/gameinfo_assets.json"
+    "data/pinside_credit_people_v1.json"
+    "data/pinside_game_credits_v1.json"
     "data/venue_layout_assets.json"
     "data/pintips.json"
     "data/LPL_Targets.csv"
@@ -309,6 +311,7 @@ stage_pinball_payload() {
     "data/LPL_Stats.csv"
     "data/LPL_Standings.csv"
     "data/redacted_players.csv"
+    "gameinfo/GweeP-Ml9pZ-AOvNL-gameinfo.md"
     "images/playfields/fallback-image-not-available_2048.webp"
   )
 
