@@ -105,7 +105,10 @@
       <p>The App may display or link to third-party resources, including external websites and YouTube-hosted content.</p>
       <p>
         Venue search is powered by Pinball Map. If you use current-location venue search or enter a venue/address search,
-        PinProf sends that location or search text to Pinball Map to return nearby venue results.
+        PinProf sends that location or search text through a secure PinProf.com server endpoint and then to Pinball Map
+        to return nearby venue results. The server endpoint uses request bodies rather than URL parameters and is designed
+        not to write typed addresses or precise coordinates to application logs. New imported venues retain their Pinball Map
+        venue ID for later lineup refreshes instead of requiring the original search text.
       </p>
       <p>When you open third-party content, their privacy policies and terms apply.</p>
 
@@ -119,7 +122,8 @@
         PinProf will never sell user data. PinProf will not share user data with advertisers, data brokers,
         or other third parties for their own use. Trusted service providers may process limited data only to operate
         PinProf features, including hosting/content delivery, optional Cloud Sync through Supabase, and product analytics
-        through PostHog. Pinball Map receives location or venue search information only when you use the venue search feature.
+        through PostHog. PinProf's hosting provider and Pinball Map process location or venue-search information only when
+        you use a venue lookup or another feature that explicitly requests nearby venue evidence.
       </p>
 
       <h2>9. Security</h2>

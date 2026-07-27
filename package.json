@@ -15,6 +15,7 @@
     "build:pinprof-admin": "npm --prefix \"../PinProf Admin/apps/admin-ui\" run build",
     "start:pinprof-admin": "npm --prefix \"../PinProf Admin/apps/admin-ui\" run start",
     "check:smoke": "node tools/smoke-check.mjs",
+    "test:pinball-map-broker": "php tests/pinball-map-broker/run.php",
     "build:lpl-library": "npm run build --workspace lpl-library",
     "build:lpl-standings": "npm run build --workspace lpl-standings",
     "build:lpl-stats": "npm run build --workspace lpl-stats",
