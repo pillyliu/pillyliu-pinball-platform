@@ -112,7 +112,13 @@ const REQUIRED_IMAGE_FILES = [
     webPath: "/pinball/images/playfields/fallback-image-not-available_2048.webp",
   },
 ];
-const RETIRED_PLAYFIELD_VARIANT_PATTERN = /_(700|1400)\.webp$/i;
+const RETIRED_PLAYFIELD_VARIANT_PATTERN = /_700\.webp$/i;
+
+function displayPlayfieldPath1400(fullPath) {
+  const cleanPath = String(fullPath ?? "").trim();
+  if (!cleanPath.toLowerCase().endsWith(".webp")) return null;
+  return `${cleanPath.slice(0, -5)}_1400.webp`;
+}
 
 function rel(p) {
   return path.relative(ROOT, p);
@@ -208,7 +214,7 @@ async function validateCanonicalPinballSource() {
     const playfieldAssets = JSON.parse(await fs.readFile(playfieldAssetsPath, "utf8"));
     const records = Array.isArray(playfieldAssets?.records) ? playfieldAssets.records : [];
     const staleFields = records.find((record) =>
-      Object.hasOwn(record, "playfieldWebLocalPath700") || Object.hasOwn(record, "playfieldWebLocalPath1400")
+      Object.hasOwn(record, "playfieldWebLocalPath700")
     );
     if (staleFields) {
       errors.push(`Obsolete playfield variant fields found in published data: ${rel(playfieldAssetsPath)}`);
@@ -218,6 +224,22 @@ async function validateCanonicalPinballSource() {
     );
     if (stalePaths) {
       errors.push(`Retired playfield variant path found in published data: ${rel(playfieldAssetsPath)}`);
+    }
+    const invalidDisplayRecord = records.find((record) => {
+      const expectedPath = displayPlayfieldPath1400(record?.playfieldLocalPath);
+      return expectedPath && record?.playfieldWebLocalPath1400 !== expectedPath;
+    });
+    if (invalidDisplayRecord) {
+      errors.push(`Missing or invalid 1400px playfield path in published data: ${rel(playfieldAssetsPath)}`);
+    }
+    const missingDisplayFile = records.find((record) => {
+      const displayPath = displayPlayfieldPath1400(record?.playfieldLocalPath);
+      if (!displayPath?.startsWith("/pinball/images/playfields/")) return false;
+      const filename = displayPath.slice("/pinball/images/playfields/".length);
+      return !playfieldFiles.includes(filename);
+    });
+    if (missingDisplayFile) {
+      errors.push(`Missing 1400px playfield derivative referenced by published data: ${rel(playfieldAssetsPath)}`);
     }
   } catch {
     errors.push(`Invalid JSON in published playfield assets: ${rel(playfieldAssetsPath)}`);
