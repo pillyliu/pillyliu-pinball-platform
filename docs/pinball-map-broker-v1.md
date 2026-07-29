@@ -7,7 +7,7 @@ POST https://pinprof.com/pinball/api/pinball-map.php
 Content-Type: application/json
 ```
 
-This is a narrow server-side broker, not a general proxy. It accepts only the four actions below and never accepts a provider URL, provider token, arbitrary query parameters, or write operation.
+This is a narrow server-side broker, not a general proxy. It accepts only the allowlisted actions below and never accepts a provider URL, provider token, arbitrary query parameters, or write operation.
 
 ## Security boundary
 
@@ -75,7 +75,19 @@ Unknown fields and unsupported schema versions are rejected.
 - The venue roster is never persisted or served from a broker cache.
 - Machine IDs join to the private stable machine catalog.
 
-### `vision_nearby`
+### `nearest_location_roster`
+
+```json
+{"latitude":42.3314,"longitude":-83.0458,"maxDistanceMiles":0.25}
+```
+
+- Returns the nearest live venue roster and stable machine mappings without applying a product-specific trust gate.
+- Omits Pinball Map's `max_distance` parameter, matching the pre-broker clients and preserving the provider's nearest-location default range; `maxDistanceMiles` is validated as client policy but applied only by the client.
+- The client retains its existing GPS accuracy, distance, status, title/variant, and offline-fallback behavior.
+- Parallel `machine_names` are preserved as `providerDisplayName`, so a catalog miss can still yield name-only evidence.
+- `rosterComplete=false` means the catalog join was incomplete. Library clients must not overwrite a saved lineup; Vision may retain explicitly untrusted name-only evidence.
+
+### `vision_nearby` (compatibility)
 
 ```json
 {"latitude":42.3314,"longitude":-83.0458,"horizontalAccuracyMeters":24.0}
@@ -145,7 +157,7 @@ Machine mapping is exact and has three states:
 - `missing_opdb_id`: the catalog record exists but its OPDB ID is null/blank.
 - `catalog_record_missing`: the roster referenced a machine absent from the current catalog.
 
-Clients may persist only `mapped_exact` OPDB IDs for exact Library or recognition identity. They must not derive an edition from `name`.
+Clients may persist only `mapped_exact` OPDB IDs for exact Library or recognition identity. They must not derive an exact edition identity from `name`. Clients may still parse parenthetical text such as `Premium` as descriptive title/variant metadata; doing so never creates or upgrades an OPDB identity.
 
 ## Error response
 
@@ -169,13 +181,13 @@ Provider response bodies, URLs containing the token, and raw cURL errors are nev
 
 ## Cache ownership
 
-The private catalog cache is `machines-v1.json`, outside both document roots:
+The private catalog cache is `machines-v2.json`, outside both document roots:
 
-- Lazy 24-hour full refresh from `machines.json?no_details=1`.
+- Lazy 24-hour full refresh from `machines.json`. The compatibility cache retains IPDB metadata previously carried by Vision while remaining one infrequent bulk request.
 - File lock prevents parallel refreshes.
 - A same-directory temporary file is flushed and atomically renamed only after validating a plausible full catalog.
 - Valid stale data is used when refresh fails.
-- At most three missing IDs use filtered `machines.json?no_details=1&id=...` refreshes; more than three trigger one full refresh.
+- At most three missing IDs use filtered `machines.json?id=...` refreshes; more than three trigger one full refresh.
 - Missing/null OPDB IDs stay unresolved.
 
 No search result or venue roster is written to this cache. Clients may keep their existing last-known offline Library lineup, but each user-triggered import/refresh must request a live roster first.
@@ -190,4 +202,4 @@ php -l shared/pinball-api/pinball-map.php
 php tests/pinball-map-broker/run.php
 ```
 
-Deployment must canary all four actions, verify `_lib` is not web-readable, inspect sanitized logs, and scan client artifacts for the provider token and direct `/api/v1/` calls.
+Deployment must canary all allowlisted actions, verify `_lib` is not web-readable, inspect sanitized logs, and scan client artifacts for the provider token and direct `/api/v1/` calls.

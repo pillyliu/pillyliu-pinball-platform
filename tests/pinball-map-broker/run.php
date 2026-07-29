@@ -68,6 +68,7 @@ function machine_catalog(int $count = 1_000): array
             'name' => $id === 1 ? 'Example (Pro)' : ($id === 2 ? 'Example (Premium)' : 'Machine ' . $id),
             'manufacturer' => 'Example Manufacturer',
             'year' => 2020,
+            'ipdb_id' => 10_000 + $id,
             'opdb_id' => $id === 2 ? null : 'OPDB-' . $id,
         ];
     }
@@ -177,8 +178,82 @@ $tests['location roster maps exact OPDB IDs and preserves null states'] = static
         assert_same(['mapped_exact', 'missing_opdb_id', 'catalog_record_missing'], array_column($result['data']['machines'], 'mappingStatus'), 'Mapping states changed.');
         assert_same(['OPDB-1'], $result['data']['mappedOpdbIds'], 'Only exact IDs should be imported.');
         assert_same(2, $result['data']['unmappedCount'], 'Unmapped count changed.');
+        assert_same(false, $result['data']['rosterComplete'], 'A missing catalog record must make the roster incomplete.');
+        assert_same(10_001, $result['data']['machines'][0]['ipdbId'], 'Compatibility IPDB metadata was not preserved.');
         assert_same('2026-07-27T12:00:00Z', $result['data']['location']['updatedAt'], 'Normalized update time changed.');
         assert_true(!in_array('locations/874/machine_details.json', array_column($provider->calls, 'path'), true), 'machine_details must not be called.');
+    } finally {
+        remove_test_directory($directories['root']);
+    }
+};
+
+$tests['nearest location roster preserves provider-shaped evidence without applying product distance policy'] = static function (): void {
+    $directories = make_test_directories();
+    try {
+        $provider = new FakeProvider(static function (string $path, array $query): array {
+            if ($path === 'locations/closest_by_lat_lon.json') {
+                return [
+                    'location' => [
+                        'id' => 73,
+                        'name' => 'Example Arcade',
+                        'city' => 'Detroit',
+                        'state' => 'MI',
+                        'distance' => 2.0,
+                        'machine_ids' => [1, 2],
+                        'machine_names' => ['Example (Pro)', 'Example (Premium)'],
+                    ],
+                ];
+            }
+            if ($path === 'machines.json') {
+                return ['machines' => machine_catalog()];
+            }
+            throw new RuntimeException('Unexpected provider call.');
+        });
+        $result = service_with($provider, $directories)->handle([
+            'schemaVersion' => 1,
+            'action' => 'nearest_location_roster',
+            'input' => ['latitude' => 42.3314, 'longitude' => -83.0458, 'maxDistanceMiles' => 0.25],
+            'client' => ['surface' => 'pinprof-vision-ios'],
+        ]);
+
+        assert_true(!array_key_exists('max_distance', $provider->calls[0]['query']), 'The broker must preserve Pinball Map\'s nearest-location default range.');
+        assert_same(2.0, $result['data']['location']['distanceMiles'], 'A nearest venue outside the client trust gate was discarded.');
+        assert_same(['Example (Pro)', 'Example (Premium)'], array_column($result['data']['machines'], 'providerDisplayName'), 'Provider display names lost alignment with machine IDs.');
+        assert_same(['mapped_exact', 'missing_opdb_id'], array_column($result['data']['machines'], 'mappingStatus'), 'Exact/null mapping states changed.');
+        assert_same(true, $result['data']['rosterComplete'], 'A null OPDB ID is unresolved, not an incomplete catalog.');
+        assert_true(!array_key_exists('no_details', $provider->calls[1]['query']), 'The private compatibility catalog must retain IPDB metadata.');
+    } finally {
+        remove_test_directory($directories['root']);
+    }
+};
+
+$tests['nearest location roster retains raw name-only evidence when the catalog is unavailable'] = static function (): void {
+    $directories = make_test_directories();
+    try {
+        $provider = new FakeProvider(static function (string $path): array {
+            if ($path === 'locations/closest_by_lat_lon.json') {
+                return [
+                    'location' => [
+                        'id' => 73,
+                        'name' => 'Example Arcade',
+                        'distance' => 0.05,
+                        'machine_ids' => [9_999],
+                        'machine_names' => ['Mystery Game (LE)'],
+                    ],
+                ];
+            }
+            throw new BrokerProblem('UPSTREAM_UNAVAILABLE', 502, 'Unavailable', true);
+        });
+        $result = service_with($provider, $directories)->handle([
+            'schemaVersion' => 1,
+            'action' => 'nearest_location_roster',
+            'input' => ['latitude' => 42.3314, 'longitude' => -83.0458, 'maxDistanceMiles' => 0.25],
+        ]);
+
+        assert_same(73, $result['data']['location']['id'], 'A catalog failure erased the matched venue.');
+        assert_same('Mystery Game (LE)', $result['data']['machines'][0]['providerDisplayName'], 'Raw name-only evidence was erased.');
+        assert_same('catalog_record_missing', $result['data']['machines'][0]['mappingStatus'], 'Catalog failure was not explicit.');
+        assert_same(false, $result['data']['rosterComplete'], 'Catalog failure must mark evidence incomplete.');
     } finally {
         remove_test_directory($directories['root']);
     }

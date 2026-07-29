@@ -22,7 +22,7 @@ import {
   type LibraryVenueSearchResult,
   availableSortModesForSource,
   cardArtworkCandidates,
-  fetchVenueRoster,
+  fetchVenueMachineIds,
   loadLibrarySourceState,
   loadResolvedLibraryData,
   locationBankText,
@@ -484,8 +484,8 @@ export default function LibraryIndex() {
     setVenueSearching(true);
     setVenueSearchError(null);
     try {
-      const roster = await fetchVenueRoster(venue.id.replace("venue--pm-", ""));
-      if (!roster.machineIds.length) {
+      const machineIds = await fetchVenueMachineIds(venue.id.replace("venue--pm-", ""));
+      if (!machineIds.length) {
         throw new Error("This venue does not currently expose any OPDB-linked machines to import.");
       }
       upsertImportedSource({
@@ -494,11 +494,10 @@ export default function LibraryIndex() {
         type: "venue",
         provider: "pinball_map",
         providerSourceId: venue.id.replace("venue--pm-", ""),
-        machineIds: roster.machineIds,
+        machineIds,
         lastSyncedAtMs: Date.now(),
-        searchQuery: "Address search",
+        searchQuery: venueQuery.trim(),
         distanceMiles: venueRadiusMiles,
-        unmappedMachineCount: roster.unmappedMachines.length,
       });
       const visibleState = setLibrarySourceVisible(venue.id, true, loadLibrarySourceState());
       const nextState = setSelectedLibrarySource(venue.id, visibleState);
@@ -517,12 +516,11 @@ export default function LibraryIndex() {
   const refreshImportedVenue = async (source: ImportedSourceRecord) => {
     setSettingsError(null);
     try {
-      const roster = await fetchVenueRoster(source.providerSourceId);
+      const machineIds = await fetchVenueMachineIds(source.providerSourceId);
       upsertImportedSource({
         ...source,
-        machineIds: roster.machineIds,
+        machineIds,
         lastSyncedAtMs: Date.now(),
-        unmappedMachineCount: roster.unmappedMachines.length,
       });
       await reloadLibrary();
     } catch (error) {
@@ -558,7 +556,7 @@ export default function LibraryIndex() {
       .map((source) => ({
       source: { id: source.id, name: source.name, type: source.type } as LibrarySource,
       builtin: false,
-      subtitle: `${sourceSubtitle(source, manufacturerOptions, sourceGameCounts)}${(source.unmappedMachineCount ?? 0) > 0 ? ` • ${source.unmappedMachineCount} unresolved Pinball Map machine${source.unmappedMachineCount === 1 ? "" : "s"}` : ""}`,
+      subtitle: sourceSubtitle(source, manufacturerOptions, sourceGameCounts),
       imported: source,
       })),
   ];

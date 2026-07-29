@@ -32,6 +32,7 @@ export type PinballMapBrokerRoster = {
   machines: PinballMapBrokerMachine[];
   mappedOpdbIds: string[];
   unmappedCount: number;
+  rosterComplete: boolean;
 };
 
 type BrokerEnvelope<T> = {
@@ -187,16 +188,23 @@ export async function brokerFetchPinballMapRoster(locationId: number): Promise<P
   const machines = (Array.isArray(data.machines) ? data.machines : [])
     .map(decodeMachine)
     .filter((machine): machine is PinballMapBrokerMachine => machine !== null);
-  const mappedOpdbIds = [...new Set(
-    machines
-      .filter((machine) => machine.mappingStatus === "mapped_exact")
-      .map((machine) => machine.opdbId)
-      .filter((id): id is string => Boolean(id)),
-  )];
+  if (data.rosterComplete === false || machines.some((machine) => machine.mappingStatus === "catalog_record_missing")) {
+    throw new PinballMapBrokerError(
+      "Pinball Map could not return the complete venue lineup. Please try again.",
+      "INCOMPLETE_ROSTER",
+      true,
+      null,
+    );
+  }
+  const mappedOpdbIds = machines
+    .filter((machine) => machine.mappingStatus === "mapped_exact")
+    .map((machine) => machine.opdbId)
+    .filter((id): id is string => Boolean(id));
   return {
     location,
     machines,
     mappedOpdbIds,
     unmappedCount: machines.filter((machine) => machine.mappingStatus !== "mapped_exact").length,
+    rosterComplete: true,
   };
 }

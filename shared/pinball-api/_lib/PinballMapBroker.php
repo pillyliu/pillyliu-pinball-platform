@@ -234,8 +234,8 @@ final class CatalogCache
     ) {
         ensure_private_directory($cacheDirectory);
         ensure_private_directory($lockDirectory);
-        $this->cachePath = rtrim($cacheDirectory, '/') . '/machines-v1.json';
-        $this->lockPath = rtrim($lockDirectory, '/') . '/machines-v1.lock';
+        $this->cachePath = rtrim($cacheDirectory, '/') . '/machines-v2.json';
+        $this->lockPath = rtrim($lockDirectory, '/') . '/machines-v2.lock';
         $this->clock = Closure::fromCallable($clock ?? static fn (): int => time());
     }
 
@@ -246,6 +246,16 @@ final class CatalogCache
     public function mapMachineIds(array $machineIds): array
     {
         $ids = array_values(array_unique(array_filter(array_map('intval', $machineIds), static fn (int $id): bool => $id > 0)));
+        if ($ids === []) {
+            return [
+                'machines' => [],
+                'metadata' => [
+                    'status' => 'not_requested',
+                    'fetchedAt' => null,
+                    'machineCount' => 0,
+                ],
+            ];
+        }
         $loaded = $this->loadOrRefresh();
         $catalog = $loaded['catalog'];
         $missing = array_values(array_filter($ids, static fn (int $id): bool => !isset($catalog['machines'][(string) $id])));
@@ -267,6 +277,7 @@ final class CatalogCache
                 $mapped[] = [
                     'pinballMapId' => $id,
                     'opdbId' => null,
+                    'ipdbId' => null,
                     'name' => null,
                     'manufacturer' => null,
                     'year' => null,
@@ -278,6 +289,7 @@ final class CatalogCache
             $mapped[] = [
                 'pinballMapId' => $id,
                 'opdbId' => $opdbId,
+                'ipdbId' => positive_int_or_null($record['ipdbId'] ?? null),
                 'name' => normalized_string($record['name'] ?? null),
                 'manufacturer' => normalized_string($record['manufacturer'] ?? null),
                 'year' => positive_int_or_null($record['year'] ?? null),
@@ -355,7 +367,7 @@ final class CatalogCache
 
             $changed = false;
             foreach ($stillMissing as $id) {
-                $payload = $this->provider->get('machines.json', ['no_details' => 1, 'id' => $id], 500_000, 10);
+                $payload = $this->provider->get('machines.json', ['id' => $id], 500_000, 10);
                 $records = isset($payload['machines']) && is_array($payload['machines']) ? $payload['machines'] : [];
                 foreach ($records as $record) {
                     $normalized = $this->normalizeMachine($record);
@@ -380,7 +392,10 @@ final class CatalogCache
     /** @return array<string, mixed> */
     private function fetchFullCatalog(): array
     {
-        $payload = $this->provider->get('machines.json', ['no_details' => 1], 12_000_000, 15);
+        // The compatibility catalog deliberately retains IPDB metadata because the
+        // pre-broker Vision evidence contract carried it. This remains one private,
+        // infrequent bulk request rather than a per-location machine_details call.
+        $payload = $this->provider->get('machines.json', [], 20_000_000, 15);
         $records = isset($payload['machines']) && is_array($payload['machines']) ? $payload['machines'] : [];
         $machines = [];
         foreach ($records as $record) {
@@ -395,7 +410,7 @@ final class CatalogCache
         ksort($machines, SORT_NUMERIC);
         $now = ($this->clock)();
         return [
-            'schema_version' => 1,
+            'schema_version' => 2,
             'fetched_at' => $now,
             'updated_at' => $now,
             'machines' => $machines,
@@ -415,6 +430,7 @@ final class CatalogCache
         return [
             'pinballMapId' => $id,
             'opdbId' => normalized_string($record['opdb_id'] ?? null),
+            'ipdbId' => positive_int_or_null($record['ipdb_id'] ?? null),
             'name' => normalized_string($record['name'] ?? null),
             'manufacturer' => normalized_string($record['manufacturer'] ?? null),
             'year' => positive_int_or_null($record['year'] ?? null),
@@ -436,7 +452,7 @@ final class CatalogCache
         } catch (JsonException) {
             return null;
         }
-        if (!is_array($catalog) || ($catalog['schema_version'] ?? null) !== 1 || !isset($catalog['machines']) || !is_array($catalog['machines'])) {
+        if (!is_array($catalog) || ($catalog['schema_version'] ?? null) !== 2 || !isset($catalog['machines']) || !is_array($catalog['machines'])) {
             return null;
         }
         $machineCount = count($catalog['machines']);
@@ -482,7 +498,7 @@ final class CatalogCache
             throw new BrokerProblem('CATALOG_WRITE_FAILED', 503, 'The Pinball Map machine catalog is temporarily unavailable.', true, null, $error);
         }
 
-        $tempPath = tempnam(dirname($this->cachePath), 'machines-v1.');
+        $tempPath = tempnam(dirname($this->cachePath), 'machines-v2.');
         if ($tempPath === false) {
             throw new BrokerProblem('CATALOG_WRITE_FAILED', 503, 'The Pinball Map machine catalog is temporarily unavailable.', true);
         }
@@ -515,7 +531,7 @@ final class CatalogCache
 final class BrokerService
 {
     public const SCHEMA_VERSION = 1;
-    private const ACTIONS = ['search_address', 'search_coordinates', 'location_roster', 'vision_nearby'];
+    private const ACTIONS = ['search_address', 'search_coordinates', 'location_roster', 'nearest_location_roster', 'vision_nearby'];
     private const CLIENT_SURFACES = [
         'pinprof-ios',
         'pinprof-android',
@@ -555,6 +571,7 @@ final class BrokerService
             'search_address' => $this->searchAddress($input),
             'search_coordinates' => $this->searchCoordinates($input),
             'location_roster' => $this->locationRoster($input),
+            'nearest_location_roster' => $this->nearestLocationRoster($input),
             'vision_nearby' => $this->visionNearby($input),
         };
     }
@@ -614,6 +631,84 @@ final class BrokerService
             'machines' => $mapping['machines'],
             'mappedOpdbIds' => mapped_opdb_ids($mapping['machines']),
             'unmappedCount' => count(array_filter($mapping['machines'], static fn (array $machine): bool => $machine['mappingStatus'] !== 'mapped_exact')),
+            'rosterComplete' => $this->rosterIsComplete($mapping['machines']),
+        ], 'live', $mapping['metadata']);
+    }
+
+    /**
+     * Return provider-equivalent nearest-venue and machine data without applying
+     * any client product policy. Swift and Python keep their pre-broker accuracy,
+     * distance, status, cache, and candidate transformations.
+     *
+     * @return array<string, mixed>
+     */
+    private function nearestLocationRoster(array $input): array
+    {
+        assert_only_keys($input, ['latitude', 'longitude', 'maxDistanceMiles']);
+        $latitude = required_float_in_range($input['latitude'] ?? null, 'latitude', -90, 90);
+        $longitude = required_float_in_range($input['longitude'] ?? null, 'longitude', -180, 180);
+        required_float_in_range($input['maxDistanceMiles'] ?? null, 'maxDistanceMiles', 0.01, 25);
+        $root = $this->provider->get('locations/closest_by_lat_lon.json', [
+            'lat' => format_coordinate($latitude),
+            'lon' => format_coordinate($longitude),
+            // Match the pre-broker clients: ask Pinball Map for its nearest venue
+            // using the provider's default range, then leave the precise product
+            // distance gate to the client.
+            'no_details' => 1,
+        ]);
+        $rawLocation = isset($root['location']) && is_array($root['location']) ? $root['location'] : null;
+        if ($rawLocation === null) {
+            return $this->success([
+                'location' => null,
+                'machines' => [],
+                'mappedOpdbIds' => [],
+                'unmappedCount' => 0,
+                'rosterComplete' => true,
+            ], 'live', null);
+        }
+
+        $machineIds = array_values(array_filter(
+            array_map('intval', is_array($rawLocation['machine_ids'] ?? null) ? $rawLocation['machine_ids'] : []),
+            static fn (int $id): bool => $id > 0,
+        ));
+        $providerNames = is_array($rawLocation['machine_names'] ?? null) ? array_values($rawLocation['machine_names']) : [];
+        try {
+            $mapping = $this->catalog->mapMachineIds($machineIds);
+        } catch (BrokerProblem $problem) {
+            $machines = [];
+            foreach ($machineIds as $index => $machineId) {
+                $machines[] = [
+                    'pinballMapId' => $machineId,
+                    'opdbId' => null,
+                    'ipdbId' => null,
+                    'name' => null,
+                    'providerDisplayName' => normalized_string($providerNames[$index] ?? null),
+                    'manufacturer' => null,
+                    'year' => null,
+                    'mappingStatus' => 'catalog_record_missing',
+                ];
+            }
+            return $this->success([
+                'location' => $this->normalizeLocation($rawLocation),
+                'machines' => $machines,
+                'mappedOpdbIds' => [],
+                'unmappedCount' => count($machines),
+                'rosterComplete' => false,
+            ], 'live', [
+                'status' => 'unavailable',
+                'fetchedAt' => null,
+                'machineCount' => 0,
+                'errorCode' => $problem->errorCode,
+            ]);
+        }
+
+        $machines = $this->machinesWithProviderNames($mapping['machines'], $machineIds, $providerNames);
+        return $this->success([
+            'location' => $this->normalizeLocation($rawLocation),
+            'machines' => $machines,
+            'mappedOpdbIds' => mapped_opdb_ids($machines),
+            'unmappedCount' => count(array_filter($machines, static fn (array $machine): bool => $machine['mappingStatus'] !== 'mapped_exact')),
+            'rosterComplete' => $this->rosterIsComplete($machines),
         ], 'live', $mapping['metadata']);
     }
 
@@ -671,14 +766,42 @@ final class BrokerService
 
         $machineIds = array_values(array_filter(array_map('intval', is_array($rawLocation['machine_ids'] ?? null) ? $rawLocation['machine_ids'] : []), static fn (int $id): bool => $id > 0));
         $mapping = $this->catalog->mapMachineIds($machineIds);
+        $providerNames = is_array($rawLocation['machine_names'] ?? null) ? array_values($rawLocation['machine_names']) : [];
+        $machines = $this->machinesWithProviderNames($mapping['machines'], $machineIds, $providerNames);
         return $this->success([
             'status' => 'matched',
             'location' => $location,
-            'machines' => $mapping['machines'],
-            'mappedOpdbIds' => mapped_opdb_ids($mapping['machines']),
-            'unmappedCount' => count(array_filter($mapping['machines'], static fn (array $machine): bool => $machine['mappingStatus'] !== 'mapped_exact')),
+            'machines' => $machines,
+            'mappedOpdbIds' => mapped_opdb_ids($machines),
+            'unmappedCount' => count(array_filter($machines, static fn (array $machine): bool => $machine['mappingStatus'] !== 'mapped_exact')),
+            'rosterComplete' => $this->rosterIsComplete($machines),
             'distanceGateMiles' => $distanceGate,
         ], 'live', $mapping['metadata']);
+    }
+
+    /**
+     * @param list<array<string, mixed>> $machines
+     * @param list<int> $machineIds
+     * @param list<mixed> $providerNames
+     * @return list<array<string, mixed>>
+     */
+    private function machinesWithProviderNames(array $machines, array $machineIds, array $providerNames): array
+    {
+        $namesById = [];
+        foreach ($machineIds as $index => $machineId) {
+            $namesById[$machineId] = normalized_string($providerNames[$index] ?? null);
+        }
+        return array_map(static function (array $machine) use ($namesById): array {
+            $machineId = positive_int_or_null($machine['pinballMapId'] ?? null);
+            $machine['providerDisplayName'] = $machineId === null ? null : ($namesById[$machineId] ?? null);
+            return $machine;
+        }, $machines);
+    }
+
+    /** @param list<array<string, mixed>> $machines */
+    private function rosterIsComplete(array $machines): bool
+    {
+        return !in_array('catalog_record_missing', array_column($machines, 'mappingStatus'), true);
     }
 
     /** @return list<array<string, mixed>> */

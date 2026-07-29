@@ -16,7 +16,7 @@ const PINPROF_ALLOWED_ORIGINS = [
     'https://pillyliu.com',
     'https://www.pillyliu.com',
 ];
-const PINPROF_BROKER_ACTIONS = ['search_address', 'search_coordinates', 'location_roster', 'vision_nearby'];
+const PINPROF_BROKER_ACTIONS = ['search_address', 'search_coordinates', 'location_roster', 'nearest_location_roster', 'vision_nearby'];
 const PINPROF_CLIENT_SURFACES = [
     'pinprof-ios',
     'pinprof-android',
@@ -126,7 +126,7 @@ try {
     $perActionLimit = match ($action) {
         'search_address', 'search_coordinates' => 12,
         'location_roster' => 30,
-        'vision_nearby' => 20,
+        'nearest_location_roster', 'vision_nearby' => 20,
         default => 12,
     };
     $rateLimiter->enforce('client-' . ($action ?? 'invalid'), $identity, $perActionLimit, 60);

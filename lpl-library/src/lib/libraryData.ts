@@ -2,7 +2,6 @@ import { fetchPinballJson } from "../../../shared/ui/pinballCache";
 import {
   brokerFetchPinballMapRoster,
   brokerSearchPinballMapVenues,
-  type PinballMapBrokerMachine,
 } from "./pinballMapBroker";
 
 export type Video = { kind: string; label: string; url: string };
@@ -82,7 +81,6 @@ export type ImportedSourceRecord = {
   lastSyncedAtMs?: number | null;
   searchQuery?: string | null;
   distanceMiles?: number | null;
-  unmappedMachineCount?: number | null;
 };
 
 export type LibrarySourceState = {
@@ -101,11 +99,6 @@ export type LibraryVenueSearchResult = {
   zip: string | null;
   distanceMiles: number | null;
   machineCount: number;
-};
-
-export type LibraryVenueRosterResult = {
-  machineIds: string[];
-  unmappedMachines: PinballMapBrokerMachine[];
 };
 
 export type ResolvedLibraryData = {
@@ -1056,7 +1049,6 @@ function loadImportedSources(): ImportedSourceRecord[] {
         city: normalizedOptionalString(source.city),
         state: normalizedOptionalString(source.state),
         updatedAt: normalizedOptionalString(source.updatedAt),
-        unmappedMachineCount: Math.max(0, Math.trunc(parseNumber(source.unmappedMachineCount) ?? 0)),
         type: normalizeSourceType(source.type),
         provider: source.provider,
       }))
@@ -1104,7 +1096,6 @@ async function fetchDefaultImportedSources(): Promise<ImportedSourceRecord[]> {
         city: normalizedOptionalString(source.city),
         state: normalizedOptionalString(source.state),
         updatedAt: normalizedOptionalString(source.updatedAt),
-        unmappedMachineCount: Math.max(0, Math.trunc(parseNumber(source.unmappedMachineCount) ?? 0)),
         type: normalizeSourceType(source.type),
         provider: source.provider,
       }))
@@ -1127,7 +1118,6 @@ export function upsertImportedSource(record: ImportedSourceRecord): ImportedSour
       city: normalizedOptionalString(record.city),
       state: normalizedOptionalString(record.state),
       updatedAt: normalizedOptionalString(record.updatedAt),
-      unmappedMachineCount: Math.max(0, Math.trunc(parseNumber(record.unmappedMachineCount) ?? 0)),
     },
   ].sort((left, right) => {
     if (left.type !== right.type) return left.type.localeCompare(right.type);
@@ -1877,64 +1867,9 @@ export function gameInfoMarkdownCandidates(game: LibraryGame): string[] {
   ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
 }
 
-const useLegacyPinballMapTransport = import.meta.env.DEV && import.meta.env.VITE_PINBALL_MAP_TRANSPORT === "legacy_direct";
-
-async function searchPinballMapVenuesLegacy(query: string, radiusMiles: number): Promise<LibraryVenueSearchResult[]> {
-  const trimmed = query.trim();
-  if (!trimmed) return [];
-  const encoded = encodeURIComponent(trimmed);
-  const response = await fetch(
-    `https://pinballmap.com/api/v1/locations/closest_by_address.json?address=${encoded}&max_distance=${radiusMiles}&send_all_within_distance=true&no_details=1`,
-  );
-  if (!response.ok) {
-    throw new Error(`Pinball Map request failed (${response.status})`);
-  }
-  const root = await response.json() as { locations?: Array<Record<string, unknown>> };
-  return (Array.isArray(root.locations) ? root.locations : []).map((location) => ({
-    id: `venue--pm-${parseNumber(location.id) ?? String(location.id ?? "").trim()}`,
-    name: normalizedOptionalString(location.name) ?? "Imported Venue",
-    city: normalizedOptionalString(location.city),
-    state: normalizedOptionalString(location.state),
-    zip: normalizedOptionalString(location.zip),
-    distanceMiles: typeof location.distance === "number" ? location.distance : null,
-    machineCount: parseNumber(location.machine_count) ?? parseNumber(location.num_machines) ?? 0,
-  }));
-}
-
-async function fetchVenueRosterLegacy(locationId: string): Promise<LibraryVenueRosterResult> {
-  const trimmed = locationId.trim();
-  if (!trimmed) return { machineIds: [], unmappedMachines: [] };
-  const response = await fetch(`https://pinballmap.com/api/v1/locations/${trimmed}/machine_details.json`);
-  if (!response.ok) {
-    throw new Error(`Pinball Map request failed (${response.status})`);
-  }
-  const root = await response.json() as { machines?: Array<Record<string, unknown>> };
-  const machines = Array.isArray(root.machines) ? root.machines : [];
-  const machineIds = [...new Set(
-    machines
-      .map((machine) => normalizedOptionalString(machine.opdb_id))
-      .filter((id): id is string => Boolean(id)),
-  )];
-  const unmappedMachines: PinballMapBrokerMachine[] = machines
-    .filter((machine) => !normalizedOptionalString(machine.opdb_id))
-    .map<PinballMapBrokerMachine>((machine) => ({
-      pinballMapId: parseNumber(machine.id) ?? 0,
-      opdbId: null,
-      name: normalizedOptionalString(machine.name),
-      manufacturer: normalizedOptionalString(machine.manufacturer),
-      year: parseNumber(machine.year),
-      mappingStatus: "missing_opdb_id",
-    }))
-    .filter((machine) => machine.pinballMapId > 0);
-  return { machineIds, unmappedMachines };
-}
-
 export async function searchPinballMapVenues(query: string, radiusMiles: number): Promise<LibraryVenueSearchResult[]> {
   const trimmed = query.trim();
   if (!trimmed) return [];
-  if (useLegacyPinballMapTransport) {
-    return searchPinballMapVenuesLegacy(trimmed, radiusMiles);
-  }
   const venues = await brokerSearchPinballMapVenues(trimmed, radiusMiles);
   return venues.map((venue) => ({
     id: `venue--pm-${venue.id}`,
@@ -1947,23 +1882,13 @@ export async function searchPinballMapVenues(query: string, radiusMiles: number)
   }));
 }
 
-export async function fetchVenueRoster(locationId: string): Promise<LibraryVenueRosterResult> {
+export async function fetchVenueMachineIds(locationId: string): Promise<string[]> {
   const trimmed = locationId.trim();
-  if (!trimmed) return { machineIds: [], unmappedMachines: [] };
-  if (useLegacyPinballMapTransport) {
-    return fetchVenueRosterLegacy(trimmed);
-  }
+  if (!trimmed) return [];
   const numericLocationId = Number.parseInt(trimmed, 10);
   if (!Number.isSafeInteger(numericLocationId) || numericLocationId <= 0 || String(numericLocationId) !== trimmed) {
     throw new Error("Invalid Pinball Map venue ID.");
   }
   const roster = await brokerFetchPinballMapRoster(numericLocationId);
-  return {
-    machineIds: roster.mappedOpdbIds,
-    unmappedMachines: roster.machines.filter((machine) => machine.mappingStatus !== "mapped_exact"),
-  };
-}
-
-export async function fetchVenueMachineIds(locationId: string): Promise<string[]> {
-  return (await fetchVenueRoster(locationId)).machineIds;
+  return roster.mappedOpdbIds;
 }
