@@ -268,11 +268,14 @@ export default function RulesheetPage() {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeRaw], [rehypeSanitize, sanitizeSchema]]}
                 components={{
-                  table: ({ node: _node, ...props }) => (
-                    <div className="table-scroll">
-                      <table {...props} />
-                    </div>
-                  ),
+                  table: ({ node: _node, ...props }) => {
+                    void _node;
+                    return (
+                      <div className="table-scroll">
+                        <table {...props} />
+                      </div>
+                    );
+                  },
                 }}
               >
                 {md}
