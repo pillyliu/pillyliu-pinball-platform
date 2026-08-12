@@ -21,11 +21,13 @@ This repo is a consumer of the canonical data, not the editing home.
 - `deploy.sh` stages `/pinball` from `PinProf Admin/workspace`
 - `npm run check:smoke` validates the expected PinProf Admin inputs/outputs
 - website apps read the deployed `/pinball/...` payload at runtime
+- PinTips publish as a required pair: source-faithful `pintips_v2.json` plus the indefinitely retained legacy-compatible `pintips.json`
 - Playfield assets now publish a single hosted `/pinball/images/playfields/*.webp` path; retired `_700` and `_1400` derivatives are not part of the shared contract.
 
 ## App Distribution Model
 
 - App preload bundles are built from the same `PinProf Admin/workspace` data.
+- Both PinTips files ship in preload bundles; updated clients prefer V2 and fall back to the legacy path.
 - Production still serves the shared public payload at `/pinball/...`.
 - The app uses bundled preload for core data, then refreshes from hosted `/pinball/...` where appropriate.
 

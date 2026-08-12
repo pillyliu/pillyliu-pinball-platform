@@ -41,6 +41,7 @@ PINPROF_SITE_SOURCE_DIR="${PINPROF_SITE_SOURCE_DIR:-$DEFAULT_PINPROF_SITE_SOURCE
 PINPROF_SITE_REMOTE_ROOT="${PINPROF_SITE_REMOTE_ROOT:-$DEFAULT_PINPROF_SITE_REMOTE_ROOT}"
 PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT="${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/rebuild-shared-pinball-payload.sh}"
 PINBALL_REMOTE_PROTECTED_PATHS="${PINBALL_REMOTE_PROTECTED_PATHS:-}"
+PINTIPS_CONTRACT_CHECK_SCRIPT="${PINTIPS_CONTRACT_CHECK_SCRIPT:-$ROOT_DIR/tools/validate-pintips-contract.mjs}"
 
 PINBALL_STAGE_DIR=""
 PINPROF_ADMIN_STAGE_DIR=""
@@ -218,6 +219,17 @@ refresh_pinprof_admin_shared_payload() {
   fi
 }
 
+validate_pinprof_pintips_contract() {
+  if [[ ! -f "${PINTIPS_CONTRACT_CHECK_SCRIPT}" ]]; then
+    echo "Missing PinTips contract checker: ${PINTIPS_CONTRACT_CHECK_SCRIPT}" >&2
+    exit 1
+  fi
+  echo "Validating PinTips V2/legacy compatibility contract..."
+  node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" \
+    --legacy "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/pintips.json" \
+    --v2 "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/pintips_v2.json"
+}
+
 stage_pinball_payload() {
   PINBALL_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinball-deploy.XXXXXX")"
   mkdir -p "${PINBALL_STAGE_DIR}/pinball"
@@ -305,6 +317,7 @@ stage_pinball_payload() {
     "data/pinside_game_credits_v1.json"
     "data/venue_layout_assets.json"
     "data/pintips.json"
+    "data/pintips_v2.json"
     "data/LPL_Targets.csv"
     "data/LPL_IFPA_Players.csv"
     "data/lpl_machine_mappings_v1.json"
@@ -473,6 +486,7 @@ else
   echo "Skipping canonical pinball payload refresh because --skip-build was requested."
 fi
 
+validate_pinprof_pintips_contract
 sync_shared_app_assets_to_local_apps
 sync_mobile_app_preload_to_local_apps
 
@@ -557,6 +571,15 @@ if [[ "$DRY_RUN" -eq 0 && -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_R
     ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
       "find '${PINPROF_SITE_REMOTE_ROOT}' -type d -exec chmod 755 {} \\; && find '${PINPROF_SITE_REMOTE_ROOT}' -type f -exec chmod 644 {} \\;"
   fi
+fi
+
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  echo "Verifying deployed PinTips contracts..."
+  PINTIPS_REMOTE_ARGS=(--base-url "https://pillyliu.com")
+  if [[ -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
+    PINTIPS_REMOTE_ARGS+=(--base-url "https://pinprof.com")
+  fi
+  node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" "${PINTIPS_REMOTE_ARGS[@]}"
 fi
 
 if [[ "$DRY_RUN" -eq 0 && "$SKIP_BUILD" -eq 0 ]]; then

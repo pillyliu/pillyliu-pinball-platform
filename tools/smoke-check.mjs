@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { validatePinTipsContractFiles } from "./validate-pintips-contract.mjs";
 
 const ROOT = process.cwd();
 const PINPROF_ADMIN_SOURCE_ROOT = path.resolve(
@@ -104,6 +105,10 @@ const REQUIRED_PINBALL_FILES = [
   {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pintips.json"),
     webPath: "/pinball/data/pintips.json",
+  },
+  {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pintips_v2.json"),
+    webPath: "/pinball/data/pintips_v2.json",
   },
 ];
 const REQUIRED_IMAGE_FILES = [
@@ -243,6 +248,16 @@ async function validateCanonicalPinballSource() {
     }
   } catch {
     errors.push(`Invalid JSON in published playfield assets: ${rel(playfieldAssetsPath)}`);
+  }
+
+  try {
+    const pinTipsResult = await validatePinTipsContractFiles({
+      legacyPath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pintips.json"),
+      v2Path: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "pintips_v2.json"),
+    });
+    errors.push(...pinTipsResult.errors);
+  } catch (error) {
+    errors.push(`PinTips contract validation failed: ${error?.message || error}`);
   }
 
   return errors;
