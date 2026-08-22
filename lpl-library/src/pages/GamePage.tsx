@@ -68,10 +68,13 @@ function youtubeId(url: string): string | null {
 }
 
 function shortRulesheetTitle(link: ReferenceLink): string {
+  const creditedTitle = link.label.trim().match(/^rulesheet\s*\(([^)]+)\)$/i)?.[1]?.trim();
   switch (referenceLinkProvider(link)) {
     case "pinprof":
     case "local":
-      return "PinProf";
+      return creditedTitle && !["local", "source"].includes(creditedTitle.toLowerCase())
+        ? creditedTitle
+        : "Source";
     case "tf":
       return "TF";
     case "pp":
@@ -81,7 +84,7 @@ function shortRulesheetTitle(link: ReferenceLink): string {
     case "bob":
       return "Bob";
     default:
-      return "PinProf";
+      return creditedTitle || "Source";
   }
 }
 
@@ -349,7 +352,7 @@ export default function GamePage() {
                   })
                 ) : hasLocalRulesheet ? (
                   <Link className={SUBTLE_BUTTON_CLASS} to={`/rules/${encodeURIComponent(game.routeId)}`}>
-                    PinProf
+                    Source
                   </Link>
                 ) : (
                   <span className="rounded-xl bg-neutral-800 px-4 py-2 text-sm text-neutral-400">Unavailable</span>
