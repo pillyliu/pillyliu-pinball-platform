@@ -10,6 +10,7 @@ export type ReferenceLink = {
   url: string;
   provider: string | null;
   localPath: string | null;
+  legacyUrls?: string[];
 };
 
 export type LibrarySourceType = "venue" | "category" | "manufacturer" | "tournament";
@@ -1172,18 +1173,20 @@ function rulesheetPreferenceOrder(link: ReferenceLink): number {
   switch (provider) {
     case "local":
       return 0;
-    case "pinprof":
+    case "prs":
       return 1;
     case "tf":
       return 2;
-    case "bob":
+    case "pinprof":
       return 3;
-    case "papa":
+    case "bob":
       return 4;
-    case "pp":
+    case "papa":
       return 5;
-    default:
+    case "pp":
       return 6;
+    default:
+      return 7;
   }
 }
 
@@ -1215,8 +1218,8 @@ function mergeRulesheetReferences(...groups: ReferenceLink[][]): ReferenceLink[]
 }
 
 function collapseDisplayedRulesheetReferences(links: ReferenceLink[]): ReferenceLink[] {
-  const hasTiltForums = links.some((link) => referenceLinkProvider(link) === "tf");
-  if (!hasTiltForums) return links;
+  const hasCommunityRulesheet = links.some((link) => ["tf", "prs"].includes(referenceLinkProvider(link) ?? ""));
+  if (!hasCommunityRulesheet) return links;
   return links.filter((link) => {
     const provider = referenceLinkProvider(link);
     const hasLocalPath = Boolean(normalizeLibraryCachePath(link.localPath));
@@ -1230,7 +1233,18 @@ function rulesheetLinksForMachine(machine: MachineRecord, layers: CanonicalLayer
   let localPath: string | null = null;
 
   for (const candidateId of [machine.practiceIdentity]) {
-    const candidateRows = (layers.rulesheetAssetsByOpdbId.get(candidateId) ?? [])
+    const allCandidateRows = layers.rulesheetAssetsByOpdbId.get(candidateId) ?? [];
+    const legacyTiltUrls = allCandidateRows
+      .filter((row) => !row.isHidden && referenceLinkProvider({
+        label: row.label,
+        url: row.url ?? row.sourceUrl ?? "",
+        provider: row.provider,
+        localPath: row.localPath,
+      }) === "tf")
+      .map((row) => normalizedOptionalString(row.url ?? row.sourceUrl))
+      .filter((url, index, urls): url is string => Boolean(url) && urls.indexOf(url) === index)
+      .sort();
+    const candidateRows = allCandidateRows
       .filter((row) => row.isActive && !row.isHidden)
       .sort((left, right) => {
         if (left.priority !== right.priority) return left.priority - right.priority;
@@ -1257,6 +1271,12 @@ function rulesheetLinksForMachine(machine: MachineRecord, layers: CanonicalLayer
         url,
         provider: normalizedOptionalString(row.provider),
         localPath: localCandidate,
+        legacyUrls: referenceLinkProvider({
+          label: row.label,
+          url,
+          provider: row.provider,
+          localPath: localCandidate,
+        }) === "prs" ? legacyTiltUrls : [],
       }];
     }));
   }
@@ -1825,10 +1845,18 @@ export function resolvedPlayfieldOptions(
 export function referenceLinkProvider(link: ReferenceLink | null | undefined): string | null {
   if (!link) return null;
   const explicit = normalizedOptionalString(link.provider)?.toLowerCase();
+  if (["pinballrulesheets", "pinball_rulesheets", "prs"].includes(explicit ?? "")) return "prs";
   if (explicit) return explicit;
   const label = link.label.toLowerCase();
   const url = normalizedOptionalString(link.url)?.toLowerCase() ?? "";
+  let host = "";
+  try {
+    host = new URL(url).hostname.toLowerCase();
+  } catch {
+    host = "";
+  }
   if (label.includes("(tf)") || url.includes("tiltforums.com")) return "tf";
+  if (label.includes("(prs)") || label.includes("pinball rule sheets") || host === "pinballrulesheets.com" || host === "www.pinballrulesheets.com") return "prs";
   if (label.includes("(pp)") || url.includes("pinballprimer.github.io") || url.includes("pinballprimer.com")) return "pp";
   if (label.includes("(papa)") || url.includes("pinball.org")) return "papa";
   if (label.includes("(bob)") || url.includes("silverballmania.com") || url.includes("flippers.be") || url.includes("bobs")) return "bob";
@@ -1839,6 +1867,8 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
 
 export function preferredRulesheetLink(game: LibraryGame): ReferenceLink | null {
   const links = game.rulesheetLinks;
+  const preferredPrs = links.find((link) => referenceLinkProvider(link) === "prs");
+  if (preferredPrs) return preferredPrs;
   const preferredTf = links.find((link) => referenceLinkProvider(link) === "tf");
   if (preferredTf) return preferredTf;
   return links[0] ?? (game.rulesheetUrl

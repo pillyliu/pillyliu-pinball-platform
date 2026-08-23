@@ -18,8 +18,10 @@ import {
   rulesheetMarkdownCandidatesForLink,
 } from "../lib/libraryData";
 
-async function fetchLiveRulesheet(provider: string, url: string): Promise<string> {
-  const endpoint = `/pinball/api/rulesheet.php?provider=${encodeURIComponent(provider)}&url=${encodeURIComponent(url)}`;
+async function fetchLiveRulesheet(provider: string, url: string, legacyUrl: string | null = null): Promise<string> {
+  const params = new URLSearchParams({ provider, url });
+  if (legacyUrl) params.set("legacy_url", legacyUrl);
+  const endpoint = `/pinball/api/rulesheet.php?${params.toString()}`;
   const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
   if (!response.ok) {
     throw new Error(`Live rulesheet request failed (${response.status})`);
@@ -172,7 +174,11 @@ export default function RulesheetPage() {
       }
       if (selectedRulesheet?.url && selectedProvider && selectedProvider !== "local") {
         try {
-          const text = await fetchLiveRulesheet(selectedProvider, selectedRulesheet.url);
+          const text = await fetchLiveRulesheet(
+            selectedProvider,
+            selectedRulesheet.url,
+            selectedRulesheet.legacyUrls?.[0] ?? null,
+          );
           if (cancelled) return;
           setRulesheetState({
             key,
@@ -268,11 +274,14 @@ export default function RulesheetPage() {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeRaw], [rehypeSanitize, sanitizeSchema]]}
                 components={{
-                  table: ({ node: _node, ...props }) => (
-                    <div className="table-scroll">
-                      <table {...props} />
-                    </div>
-                  ),
+                  table: ({ node, ...props }) => {
+                    void node;
+                    return (
+                      <div className="table-scroll">
+                        <table {...props} />
+                      </div>
+                    );
+                  },
                 }}
               >
                 {md}

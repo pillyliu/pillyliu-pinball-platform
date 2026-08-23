@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-type SupportedProvider = "tf" | "pp" | "papa" | "bob";
+type SupportedProvider = "tf" | "prs" | "pp" | "papa" | "bob";
 
 const ACCEPT_HEADER = "text/html,application/json;q=0.9,*/*;q=0.8";
 const USER_AGENT = "Mozilla/5.0 PinballLibraryRulesheetProxy/1.0";
@@ -22,6 +22,9 @@ function escapeHtml(value: string): string {
 
 function normalizeProvider(value: string | null): SupportedProvider | null {
   const provider = (value ?? "").trim().toLowerCase();
+  if (provider === "pinballrulesheets" || provider === "pinball_rulesheets" || provider === "prs") {
+    return "prs";
+  }
   if (provider === "tf" || provider === "pp" || provider === "papa" || provider === "bob") {
     return provider;
   }
@@ -32,6 +35,8 @@ function allowedHosts(provider: SupportedProvider): string[] {
   switch (provider) {
     case "tf":
       return ["tiltforums.com", "www.tiltforums.com"];
+    case "prs":
+      return ["pinballrulesheets.com", "www.pinballrulesheets.com"];
     case "pp":
       return ["pinballprimer.github.io", "pinballprimer.com", "www.pinballprimer.com"];
     case "papa":
@@ -47,7 +52,20 @@ function validateProviderUrl(provider: SupportedProvider, rawUrl: string): strin
   try {
     const parsed = new URL(rawUrl);
     const host = parsed.hostname.toLowerCase();
-    return allowedHosts(provider).some((suffix) => host === suffix || host.endsWith(`.${suffix}`))
+    return allowedHosts(provider).some((suffix) => host === suffix || (provider !== "prs" && host.endsWith(`.${suffix}`)))
+      ? parsed.toString()
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function validateLegacyTiltUrl(rawUrl: string | null): string | null {
+  const value = normalizeString(rawUrl);
+  if (!value) return null;
+  try {
+    const parsed = new URL(value);
+    return ["tiltforums.com", "www.tiltforums.com"].includes(parsed.hostname.toLowerCase())
       ? parsed.toString()
       : null;
   } catch {
@@ -135,6 +153,28 @@ function cleanupPrimerHtml(html: string): string {
   return (h1Match ? cleaned.slice(h1Match.index) : cleaned).trim();
 }
 
+function cleanupPinballRuleSheetsHtml(html: string): string {
+  const match = /<section\b[^>]*\bid\s*=\s*(["'])main_content\1[^>]*>([\s\S]*?)<\/section>/i.exec(html);
+  if (!match?.[2]) {
+    throw new Error("Pinball Rule Sheets page did not include main_content");
+  }
+  return stripHtmlPatterns(match[2], [
+    /<script\b[^>]*>[\s\S]*?<\/script>/gi,
+    /<style\b[^>]*>[\s\S]*?<\/style>/gi,
+    /<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi,
+    /<form\b[^>]*>[\s\S]*?<\/form>/gi,
+    /<object\b[^>]*>[\s\S]*?<\/object>/gi,
+    /<embed\b[^>]*\/?>/gi,
+    /<base\b[^>]*\/?>/gi,
+    /<!--[\s\S]*?-->/g,
+    /\son[a-z0-9_-]+\s*=\s*"[^"]*"/gi,
+    /\son[a-z0-9_-]+\s*=\s*'[^']*'/gi,
+    /\son[a-z0-9_-]+\s*=\s*[^\s>]+/gi,
+    /\s(?:href|src)\s*=\s*"\s*javascript:[^"]*"/gi,
+    /\s(?:href|src)\s*=\s*'\s*javascript:[^']*'/gi,
+  ]).trim();
+}
+
 function cleanupLegacyHtml(html: string, mimeType: string, provider: SupportedProvider): string {
   if (shouldTreatAsPlainText(html, mimeType)) {
     return `<pre class="rulesheet-preformatted">${escapeHtml(html.trim())}</pre>`;
@@ -199,6 +239,12 @@ function sourceMeta(provider: SupportedProvider): { sourceName: string; linkLabe
         linkLabel: "Original thread",
         details: "License/source terms remain with Tilt Forums and the original authors.",
       };
+    case "prs":
+      return {
+        sourceName: "Pinball Rule Sheets",
+        linkLabel: "Original page",
+        details: "Source terms and author/site rights remain with Pinball Rule Sheets and the original authors.",
+      };
     case "pp":
       return {
         sourceName: "Pinball Primer",
@@ -226,7 +272,11 @@ function attributionHtml(provider: SupportedProvider, displayUrl: string, update
   return `<small class="rulesheet-attribution">Source: ${escapeHtml(meta.sourceName)} | ${escapeHtml(meta.linkLabel)}: <a href="${escapeHtml(displayUrl)}">link</a>${updatedText} | ${escapeHtml(meta.details)} | Reformatted for readability and mobile use.</small>`;
 }
 
-async function renderRulesheet(provider: SupportedProvider, rawUrl: string): Promise<{ body: string; sourceUrl: string }> {
+async function renderRulesheet(
+  provider: SupportedProvider,
+  rawUrl: string,
+  legacyTiltUrl: string | null = null,
+): Promise<{ body: string; sourceUrl: string }> {
   if (provider === "tf") {
     const fetched = await httpFetch(tiltForumsApiUrl(rawUrl));
     const payload = JSON.parse(fetched.text) as {
@@ -258,6 +308,16 @@ async function renderRulesheet(provider: SupportedProvider, rawUrl: string): Pro
   }
 
   const fetched = await httpFetch(provider === "bob" ? legacyFetchUrl(provider, rawUrl) : rawUrl);
+  if (provider === "prs") {
+    const body = rebaseRelativeHtmlUrls(cleanupPinballRuleSheetsHtml(fetched.text), fetched.finalUrl);
+    const migrationNote = legacyTiltUrl
+      ? '\n\n<p class="rulesheet-migration-note">Migrated from Tilt Forums.</p>'
+      : "";
+    return {
+      body: `${attributionHtml(provider, fetched.finalUrl, null)}${migrationNote}\n\n<div class="pinball-rulesheet remote-rulesheet pinball-rulesheets-rulesheet">\n${body}\n</div>`,
+      sourceUrl: fetched.finalUrl,
+    };
+  }
   if (provider === "pp") {
     const body = rebaseRelativeHtmlUrls(cleanupPrimerHtml(fetched.text), fetched.finalUrl);
     return {
@@ -284,6 +344,9 @@ export async function handlePinballRulesheetProxyRequest(req: IncomingMessage, r
 
   const provider = normalizeProvider(requestUrl.searchParams.get("provider"));
   const rawUrl = normalizeString(requestUrl.searchParams.get("url"));
+  const legacyTiltUrl = validateLegacyTiltUrl(
+    requestUrl.searchParams.get("legacy_url") ?? requestUrl.searchParams.get("legacyUrl"),
+  );
   if (!provider || !rawUrl) {
     jsonError(res, 400, "Missing provider or url");
     return true;
@@ -296,7 +359,7 @@ export async function handlePinballRulesheetProxyRequest(req: IncomingMessage, r
   }
 
   try {
-    const rendered = await renderRulesheet(provider, validatedUrl);
+    const rendered = await renderRulesheet(provider, validatedUrl, legacyTiltUrl);
     res.setHeader("Cache-Control", `public, max-age=${provider === "tf" ? 300 : 3600}`);
     jsonResponse(res, 200, {
       provider,

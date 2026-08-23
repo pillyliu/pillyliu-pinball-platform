@@ -34,6 +34,9 @@ function escape_html(string $value): string
 function normalize_provider(?string $value): ?string
 {
     $provider = strtolower(trim((string) $value));
+    if (in_array($provider, ['pinballrulesheets', 'pinball_rulesheets', 'prs'], true)) {
+        return 'prs';
+    }
     return in_array($provider, ['tf', 'pp', 'papa', 'bob'], true) ? $provider : null;
 }
 
@@ -49,6 +52,7 @@ function validate_provider_url(string $provider, string $rawUrl): ?string
 
     $allowed = match ($provider) {
         'tf' => ['tiltforums.com', 'www.tiltforums.com'],
+        'prs' => ['pinballrulesheets.com', 'www.pinballrulesheets.com'],
         'pp' => ['pinballprimer.github.io', 'pinballprimer.com', 'www.pinballprimer.com'],
         'papa' => ['pinball.org', 'www.pinball.org'],
         'bob' => ['rules.silverballmania.com', 'silverballmania.com', 'www.silverballmania.com', 'flippers.be', 'www.flippers.be'],
@@ -56,12 +60,28 @@ function validate_provider_url(string $provider, string $rawUrl): ?string
     };
 
     foreach ($allowed as $suffix) {
+        if ($provider === 'prs' && $host === $suffix) {
+            return $rawUrl;
+        }
+        if ($provider === 'prs') {
+            continue;
+        }
         if ($host === $suffix || str_ends_with($host, '.' . $suffix)) {
             return $rawUrl;
         }
     }
 
     return null;
+}
+
+function validate_legacy_tilt_url(?string $rawUrl): ?string
+{
+    $url = normalize_string($rawUrl);
+    if ($url === null || !filter_var($url, FILTER_VALIDATE_URL)) {
+        return null;
+    }
+    $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+    return in_array($host, ['tiltforums.com', 'www.tiltforums.com'], true) ? $url : null;
 }
 
 function http_fetch(string $url): array
@@ -169,6 +189,28 @@ function cleanup_primer_html(string $html): string
     return trim($cleaned);
 }
 
+function cleanup_pinball_rulesheets_html(string $html): string
+{
+    if (preg_match('/<section\b[^>]*\bid\s*=\s*([\'\"])main_content\1[^>]*>([\s\S]*?)<\/section>/i', $html, $matches) !== 1) {
+        throw new RuntimeException('Pinball Rule Sheets page did not include main_content');
+    }
+    return trim(strip_html_patterns($matches[2], [
+        '/<script\b[^>]*>[\s\S]*?<\/script>/i',
+        '/<style\b[^>]*>[\s\S]*?<\/style>/i',
+        '/<iframe\b[^>]*>[\s\S]*?<\/iframe>/i',
+        '/<form\b[^>]*>[\s\S]*?<\/form>/i',
+        '/<object\b[^>]*>[\s\S]*?<\/object>/i',
+        '/<embed\b[^>]*\/?\s*>/i',
+        '/<base\b[^>]*\/?\s*>/i',
+        '/<!--[\s\S]*?-->/',
+        '/\son[a-z0-9_-]+\s*=\s*"[^"]*"/i',
+        "/\\son[a-z0-9_-]+\\s*=\\s*'[^']*'/i",
+        '/\son[a-z0-9_-]+\s*=\s*[^\s>]+/i',
+        '/\s(?:href|src)\s*=\s*"\s*javascript:[^"]*"/i',
+        "/\\s(?:href|src)\\s*=\\s*'\\s*javascript:[^']*'/i",
+    ]));
+}
+
 function cleanup_legacy_html(string $html, string $mimeType, string $provider): string
 {
     if (should_treat_as_plain_text($html, $mimeType)) {
@@ -254,6 +296,11 @@ function source_meta(string $provider): array
             'link_label' => 'Original thread',
             'details' => 'License/source terms remain with Tilt Forums and the original authors.',
         ],
+        'prs' => [
+            'source_name' => 'Pinball Rule Sheets',
+            'link_label' => 'Original page',
+            'details' => 'Source terms and author/site rights remain with Pinball Rule Sheets and the original authors.',
+        ],
         'pp' => [
             'source_name' => 'Pinball Primer',
             'link_label' => 'Original page',
@@ -288,7 +335,7 @@ function attribution_html(string $provider, string $displayUrl, ?string $updated
         ' | Reformatted for readability and mobile use.</small>';
 }
 
-function render_rulesheet(string $provider, string $rawUrl): array
+function render_rulesheet(string $provider, string $rawUrl, ?string $legacyTiltUrl = null): array
 {
     if ($provider === 'tf') {
         $fetched = http_fetch(tilt_forums_api_url($rawUrl));
@@ -315,6 +362,21 @@ function render_rulesheet(string $provider, string $rawUrl): array
     }
 
     $fetched = http_fetch($provider === 'bob' ? legacy_fetch_url($provider, $rawUrl) : $rawUrl);
+    if ($provider === 'prs') {
+        $body = rebase_relative_html_urls(cleanup_pinball_rulesheets_html($fetched['text']), $fetched['final_url']);
+        $migrationNote = $legacyTiltUrl !== null
+            ? "\n\n<p class=\"rulesheet-migration-note\">Migrated from Tilt Forums.</p>"
+            : '';
+        return [
+            'body' => attribution_html($provider, $fetched['final_url'], null) .
+                $migrationNote .
+                "\n\n" .
+                '<div class="pinball-rulesheet remote-rulesheet pinball-rulesheets-rulesheet">' . "\n" .
+                $body . "\n" .
+                '</div>',
+            'source_url' => $fetched['final_url'],
+        ];
+    }
     if ($provider === 'pp') {
         $body = rebase_relative_html_urls(cleanup_primer_html($fetched['text']), $fetched['final_url']);
         return [
@@ -340,6 +402,7 @@ function render_rulesheet(string $provider, string $rawUrl): array
 
 $provider = normalize_provider($_GET['provider'] ?? null);
 $rawUrl = normalize_string($_GET['url'] ?? null);
+$legacyTiltUrl = validate_legacy_tilt_url($_GET['legacy_url'] ?? ($_GET['legacyUrl'] ?? null));
 
 if ($provider === null || $rawUrl === null) {
     json_error(400, 'Missing provider or url');
@@ -353,7 +416,7 @@ if ($validatedUrl === null) {
 $ttl = $provider === 'tf' ? 300 : 3600;
 header('Cache-Control: public, max-age=' . $ttl);
 
-$rendered = render_rulesheet($provider, $validatedUrl);
+$rendered = render_rulesheet($provider, $validatedUrl, $legacyTiltUrl);
 echo json_encode([
     'provider' => $provider,
     'url' => $validatedUrl,
