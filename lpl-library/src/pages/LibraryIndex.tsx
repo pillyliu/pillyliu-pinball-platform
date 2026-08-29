@@ -717,7 +717,7 @@ export default function LibraryIndex() {
           <div className="mt-8 text-neutral-400">
             No data loaded. Confirm the clean foundation files are deployed:
             {" "}
-            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/opdb_export.json</code>,
+            <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/latest-opdb.json</code>,
             {" "}
             <code className="rounded bg-neutral-900 px-2 py-1">/pinball/data/default_pm_venue_sources_v1.json</code>,
             {" "}

@@ -306,6 +306,7 @@ stage_pinball_payload() {
     "api/_lib/.htaccess"
     "api/_lib/PinballMapBroker.php"
     "data/opdb_export.json"
+    "data/latest-opdb.json"
     "data/practice_identity_curations_v1.json"
     "data/backglass_assets.json"
     "data/default_pm_venue_sources_v1.json"

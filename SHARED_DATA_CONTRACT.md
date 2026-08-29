@@ -9,7 +9,8 @@ Use one canonical pinball dataset across website, deploy, and app preload withou
 The source of truth is `../PinProf Admin/workspace`:
 
 - `workspace/data/source` for venue and league CSV inputs
-- `workspace/data/raw/opdb_export.json` for raw OPDB machine/group data
+- `workspace/data/raw/latest-opdb.json` for Match Play's documented native OPDB export
+- `workspace/data/raw/opdb_export.json` for the generated legacy flat compatibility array used by older clients and existing build jobs
 - `workspace/assets/*` for playfields, backglasses, rulesheets, and gameinfo assets
 - `workspace/data/published/*` for generated CAF publish layers
 - app-owned shared support files live in `../Pinball App/Pinball App 2/Pinball App 2/SharedAppSupport`
@@ -21,6 +22,7 @@ This repo is a consumer of the canonical data, not the editing home.
 - `deploy.sh` stages `/pinball` from `PinProf Admin/workspace`
 - `npm run check:smoke` validates the expected PinProf Admin inputs/outputs
 - website apps read the deployed `/pinball/...` payload at runtime
+- current catalog clients read native `/pinball/data/latest-opdb.json`; `/pinball/data/opdb_export.json` remains published for compatibility
 - PinTips publish as a required pair: source-faithful `pintips_v2.json` plus the indefinitely retained legacy-compatible `pintips.json`
 - Playfield assets now publish a single hosted `/pinball/images/playfields/*.webp` path; retired `_700` and `_1400` derivatives are not part of the shared contract.
 

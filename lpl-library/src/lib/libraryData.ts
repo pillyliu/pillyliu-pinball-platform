@@ -123,16 +123,26 @@ export type PlayfieldOption = {
 };
 
 type RawOpdbRow = {
-  opdb_id?: unknown;
-  is_machine?: unknown;
+  opdbId?: unknown;
+  isMachineGroup?: unknown;
+  isMachine?: unknown;
+  isAlias?: unknown;
+  physicalMachine?: unknown;
   name?: unknown;
-  common_name?: unknown;
+  commonName?: unknown;
   shortname?: unknown;
-  manufacture_date?: unknown;
+  year?: unknown;
+  manufactureDate?: unknown;
   manufacturer?: unknown;
   type?: unknown;
   display?: unknown;
   images?: unknown;
+};
+
+type MatchPlayOpdbExportRoot = {
+  machineGroups?: RawOpdbRow[];
+  machines?: RawOpdbRow[];
+  aliases?: RawOpdbRow[];
 };
 
 type DefaultImportedSourcesRoot = {
@@ -276,7 +286,57 @@ type CanonicalLayers = {
   venueLayoutBySourceAndOpdbId: Map<string, VenueLayoutAssetRecord>;
 };
 
-const RAW_OPDB_EXPORT_PATH = "/pinball/data/opdb_export.json";
+const RAW_OPDB_EXPORT_PATH = "/pinball/data/latest-opdb.json";
+const PINPROF_OPDB_EXTENSION: MatchPlayOpdbExportRoot = {
+  machineGroups: [{
+    opdbId: "G900001",
+    isMachineGroup: true,
+    name: "PinProf: The Final Exam",
+    commonName: "PinProf: The Final Exam",
+    shortname: "PinProf",
+    year: "1982",
+    manufacturer: null,
+    images: [],
+  }],
+  machines: [{
+    opdbId: "G900001-1",
+    isMachine: true,
+    physicalMachine: 1,
+    name: "PinProf: The Final Exam",
+    commonName: "PinProf: The Final Exam",
+    shortname: "PinProf",
+    manufactureDate: "1982-09-03",
+    manufacturer: {
+      manufacturerId: 9001,
+      name: "PinProf Labs",
+      fullName: "PinProf Labs",
+    },
+    type: "ss",
+    display: "alphanumeric",
+    images: [
+      {
+        title: "Backglass",
+        primary: true,
+        type: "backglass",
+        urls: {
+          medium: "/pinball/images/backglasses/G900001-1-backglass.webp",
+          large: "/pinball/images/backglasses/G900001-1-backglass.webp",
+        },
+      },
+      {
+        title: "Playfield",
+        primary: true,
+        type: "playfield",
+        urls: {
+          medium: "/pinball/images/playfields/G900001-1-playfield.webp",
+          large: "/pinball/images/playfields/G900001-1-playfield.webp",
+        },
+      },
+    ],
+  }],
+  aliases: [],
+};
+const NON_OWNABLE_OPDB_IDS = new Set(["GZVXY-MyNOq", "Ge1O1-MYeEB"]);
 const PRACTICE_IDENTITY_CURATIONS_PATH = "/pinball/data/practice_identity_curations_v1.json";
 const RULESHEET_ASSETS_PATH = "/pinball/data/rulesheet_assets.json";
 const VIDEO_ASSETS_PATH = "/pinball/data/video_assets.json";
@@ -423,12 +483,6 @@ function parsePracticeIdentityCurations(raw: unknown): Map<string, string> {
     }
   }
   return out;
-}
-
-function resolvePracticeIdentity(opdbIdRaw: string | null | undefined, curatedPracticeIdentities: Map<string, string>): string | null {
-  const { fullId, groupId } = parseOpdbIdParts(opdbIdRaw);
-  if (!fullId) return null;
-  return curatedPracticeIdentities.get(fullId) ?? groupId ?? fullId;
 }
 
 function normalizeCatalogVariantLabel(value: string | null | undefined): string | null {
@@ -695,37 +749,72 @@ function groupByKey<T>(rows: T[], readKey: (row: T) => string | null): Map<strin
   return out;
 }
 
-function parseRawOpdbRows(
-  rows: RawOpdbRow[],
+export function parseMatchPlayOpdbExport(
+  payload: MatchPlayOpdbExportRoot,
   curatedPracticeIdentities: Map<string, string>,
 ): { machines: MachineRecord[]; manufacturerOptions: CatalogManufacturerOption[] } {
+  if (!payload ||
+    typeof payload !== "object" ||
+    Array.isArray(payload) ||
+    !Array.isArray(payload.machineGroups) ||
+    !Array.isArray(payload.machines) ||
+    !Array.isArray(payload.aliases)) {
+    throw new Error("Match Play latest-opdb.json is missing machineGroups, machines, or aliases.");
+  }
   const machines: MachineRecord[] = [];
   const manufacturerBuckets = new Map<string, RawManufacturerSummary & { groupKeys: Set<string> }>();
+  const decodedGroups = Array.isArray(payload.machineGroups) ? payload.machineGroups : [];
+  const decodedRows = [
+    ...(Array.isArray(payload.machines) ? payload.machines : []),
+    ...(Array.isArray(payload.aliases) ? payload.aliases : []),
+  ];
+  const decodedIDs = new Set(decodedRows.map((row) => normalizedOptionalString(row.opdbId)).filter(Boolean));
+  const decodedGroupIDs = new Set(decodedGroups.map((row) => normalizedOptionalString(row.opdbId)).filter(Boolean));
+  const rows = [
+    ...decodedRows,
+    ...(PINPROF_OPDB_EXTENSION.machines ?? []).filter((row) => !decodedIDs.has(normalizedOptionalString(row.opdbId))),
+    ...(PINPROF_OPDB_EXTENSION.aliases ?? []).filter((row) => !decodedIDs.has(normalizedOptionalString(row.opdbId))),
+  ];
+  const machineGroups = new Map<string, RawOpdbRow>();
+  for (const row of [
+    ...decodedGroups,
+    ...(PINPROF_OPDB_EXTENSION.machineGroups ?? []).filter((group) => !decodedGroupIDs.has(normalizedOptionalString(group.opdbId))),
+  ]) {
+    const groupId = normalizedOptionalString(row.opdbId);
+    if (groupId) machineGroups.set(groupId, row);
+  }
 
   for (const row of rows) {
-    const opdbId = normalizedOptionalString(row.opdb_id);
+    const opdbId = normalizedOptionalString(row.opdbId);
     const name = normalizedOptionalString(row.name);
     if (!opdbId || !name) continue;
+    if (NON_OWNABLE_OPDB_IDS.has(opdbId)) continue;
+    if (parseNumber(row.physicalMachine) === 0 && /\([^()]*\/[^()]*\)\s*$/.test(name)) continue;
     const parts = parseOpdbIdParts(opdbId);
-    if (!parts.groupId || !parts.machineId) continue;
-    const practiceIdentity = resolvePracticeIdentity(opdbId, curatedPracticeIdentities);
+    const opdbGroupId = parts.groupId;
+    const opdbMachineId = parts.machineId;
+    if (!opdbGroupId || !opdbMachineId) continue;
+    const practiceIdentity = curatedPracticeIdentities.get(opdbId) ?? opdbGroupId ?? opdbId;
     if (!practiceIdentity) continue;
+    const machineGroup = machineGroups.get(opdbGroupId);
     const manufacturerObject = row.manufacturer && typeof row.manufacturer === "object" && !Array.isArray(row.manufacturer)
       ? row.manufacturer as Record<string, unknown>
       : {};
-    const manufacturerNumericId = normalizedOptionalString(manufacturerObject.manufacturer_id);
+    const manufacturerNumericId = normalizedOptionalString(manufacturerObject.manufacturerId);
     const manufacturerId = manufacturerNumericId ? `manufacturer-${manufacturerNumericId}` : null;
     const manufacturerName = normalizedOptionalString(manufacturerObject.name);
-    const manufactureDate = normalizedOptionalString(row.manufacture_date);
-    const year = manufactureDate && /^\d{4}/.test(manufactureDate) ? Number.parseInt(manufactureDate.slice(0, 4), 10) : null;
+    const manufactureDate = normalizedOptionalString(row.manufactureDate);
+    const year = parseNumber(row.year) ?? (manufactureDate && /^\d{4}/.test(manufactureDate)
+      ? Number.parseInt(manufactureDate.slice(0, 4), 10)
+      : null);
     const variant = resolvedCatalogVariantLabel(name, null);
     const displayTitle = resolvedCatalogDisplayTitle(name, null);
 
     machines.push({
       opdbId,
       practiceIdentity,
-      opdbGroupId: parts.groupId,
-      opdbMachineId: parts.machineId,
+      opdbGroupId,
+      opdbMachineId,
       slug: practiceIdentity,
       name,
       displayTitle,
@@ -739,12 +828,12 @@ function parseRawOpdbRows(
       playfieldImageLargeUrl: selectImageUrl(row.images, "playfield", "large", false),
       opdbType: normalizedOptionalString(row.type),
       opdbDisplay: normalizedOptionalString(row.display),
-      opdbShortname: normalizedOptionalString(row.shortname),
-      opdbCommonName: normalizedOptionalString(row.common_name),
+      opdbShortname: normalizedOptionalString(row.shortname) ?? normalizedOptionalString(machineGroup?.shortname),
+      opdbCommonName: normalizedOptionalString(row.commonName),
       opdbManufactureDate: manufactureDate,
     });
 
-    if (manufacturerId && manufacturerName && parts.groupId) {
+    if (manufacturerId && manufacturerName && opdbGroupId) {
       const current = manufacturerBuckets.get(manufacturerId) ?? (() => {
         const meta = manufacturerMeta(manufacturerName);
         return {
@@ -757,7 +846,7 @@ function parseRawOpdbRows(
           groupKeys: new Set<string>(),
         };
       })();
-      current.groupKeys.add(parts.groupId);
+      current.groupKeys.add(opdbGroupId);
       current.gameCount = current.groupKeys.size;
       manufacturerBuckets.set(manufacturerId, current);
     }
@@ -795,7 +884,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
   if (!canonicalLayersPromise) {
     canonicalLayersPromise = (async () => {
       const [
-        rawOpdbRows,
+        rawOpdbPayload,
         practiceIdentityCurationsRaw,
         rulesheetAssetsRaw,
         videoAssetsRaw,
@@ -803,7 +892,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         gameinfoAssetsRaw,
         venueLayoutAssetsRaw,
       ] = await Promise.all([
-        fetchPinballJson<RawOpdbRow[]>(RAW_OPDB_EXPORT_PATH),
+        fetchPinballJson<MatchPlayOpdbExportRoot>(RAW_OPDB_EXPORT_PATH),
         fetchPinballJson<unknown>(PRACTICE_IDENTITY_CURATIONS_PATH),
         fetchPinballJson<unknown>(RULESHEET_ASSETS_PATH),
         fetchPinballJson<unknown>(VIDEO_ASSETS_PATH),
@@ -813,8 +902,8 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
       ]);
 
       const curatedPracticeIdentities = parsePracticeIdentityCurations(practiceIdentityCurationsRaw);
-      const { machines, manufacturerOptions } = parseRawOpdbRows(
-        Array.isArray(rawOpdbRows) ? rawOpdbRows : [],
+      const { machines, manufacturerOptions } = parseMatchPlayOpdbExport(
+        rawOpdbPayload,
         curatedPracticeIdentities,
       );
       const machineByOpdbId = new Map(machines.map((machine) => [machine.opdbId, machine] as const));
@@ -1747,9 +1836,14 @@ function playfieldSourceLabelForGame(game: LibraryGame): string {
   return "Remote";
 }
 
-function playfieldSourceLabelForUrl(url: string | null | undefined): string {
+function playfieldSourceLabelForUrl(url: string | null | undefined, game?: LibraryGame): string {
   const playfieldUrl = resolveLibraryUrl(url);
   if (!playfieldUrl) return "View";
+  if (game && [game.playfieldImageUrl, game.alternatePlayfieldImageUrl]
+    .map(resolveLibraryUrl)
+    .includes(playfieldUrl)) {
+    return "OPDB";
+  }
   try {
     const parsed = new URL(playfieldUrl, "https://pillyliu.com");
     if (parsed.host.toLowerCase().includes("opdb.org") || parsed.host.toLowerCase().includes("img.opdb.org")) {
@@ -1829,13 +1923,13 @@ export function resolvedPlayfieldOptions(
 
   const primaryUrl = resolveLibraryUrl(game.playfieldImageUrl);
   if (primaryUrl && !usedCandidates.has(primaryUrl)) {
-    options.push({ title: playfieldSourceLabelForUrl(primaryUrl), candidates: [primaryUrl] });
+    options.push({ title: playfieldSourceLabelForUrl(primaryUrl, game), candidates: [primaryUrl] });
     usedCandidates.add(primaryUrl);
   }
 
   const alternateUrl = resolveLibraryUrl(game.alternatePlayfieldImageUrl);
   if (alternateUrl && !usedCandidates.has(alternateUrl)) {
-    options.push({ title: playfieldSourceLabelForUrl(alternateUrl), candidates: [alternateUrl] });
+    options.push({ title: playfieldSourceLabelForUrl(alternateUrl, game), candidates: [alternateUrl] });
     usedCandidates.add(alternateUrl);
   }
 

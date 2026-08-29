@@ -59,6 +59,10 @@ const REQUIRED_PINBALL_FILES = [
     webPath: "/pinball/data/opdb_export.json",
   },
   {
+    filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "latest-opdb.json"),
+    webPath: "/pinball/data/latest-opdb.json",
+  },
+  {
     filePath: path.join(PINPROF_ADMIN_PUBLISHED_DATA_DIR, "practice_identity_curations_v1.json"),
     webPath: "/pinball/data/practice_identity_curations_v1.json",
   },
