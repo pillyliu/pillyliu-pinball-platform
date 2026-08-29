@@ -36,7 +36,7 @@ This is a narrow server-side broker, not a general proxy. It accepts only the al
 }
 ```
 
-`client` is optional. Allowed surfaces are `pinprof-ios`, `pinprof-android`, `pinprof-web`, `pillyliu-library`, `pinprof-vision-ios`, `pinprof-vision-python`, `pinprof-admin`, and `test`.
+`client` is optional. Allowed surfaces are `pinprof-ios`, `pinprof-android`, `pinprof-web`, `pillyliu-library`, `pinprof-vision-ios`, `pinprof-vision-android`, `pinprof-vision-python`, `pinprof-admin`, and `test`.
 
 Unknown fields and unsupported schema versions are rejected.
 

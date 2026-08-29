@@ -23,6 +23,8 @@ This repo is a consumer of the canonical data, not the editing home.
 - `npm run check:smoke` validates the expected PinProf Admin inputs/outputs
 - website apps read the deployed `/pinball/...` payload at runtime
 - current catalog clients read native `/pinball/data/latest-opdb.json`; `/pinball/data/opdb_export.json` remains published for compatibility
+- catalog, curations, facets, credits, Game Note assets, and PinTips activate as one hash-verified cohort; unchanged content-addressed objects are reused rather than downloaded again
+- Field Guide visual overlays publish under `/pinball/field-guide/` and remain independent from catalog/content and league/community revisions
 - PinTips publish as a required pair: source-faithful `pintips_v2.json` plus the indefinitely retained legacy-compatible `pintips.json`
 - Playfield assets now publish a single hosted `/pinball/images/playfields/*.webp` path; retired `_700` and `_1400` derivatives are not part of the shared contract.
 

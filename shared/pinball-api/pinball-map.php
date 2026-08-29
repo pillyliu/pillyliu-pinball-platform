@@ -23,6 +23,7 @@ const PINPROF_CLIENT_SURFACES = [
     'pinprof-web',
     'pillyliu-library',
     'pinprof-vision-ios',
+    'pinprof-vision-android',
     'pinprof-vision-python',
     'pinprof-admin',
     'test',

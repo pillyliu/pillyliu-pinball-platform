@@ -275,6 +275,34 @@ $tests['vision accuracy gate avoids any upstream request'] = static function ():
     }
 };
 
+$tests['vision client identities are explicit and legacy field guide identity remains rejected'] = static function (): void {
+    $directories = make_test_directories();
+    try {
+        $provider = new FakeProvider(static fn (): array => throw new RuntimeException('Provider should not be called.'));
+        $service = service_with($provider, $directories);
+
+        foreach (['pinprof-vision-ios', 'pinprof-vision-android'] as $surface) {
+            $result = $service->handle([
+                'schemaVersion' => 1,
+                'action' => 'vision_nearby',
+                'input' => ['latitude' => 42.0, 'longitude' => -83.0, 'horizontalAccuracyMeters' => 151.0],
+                'client' => ['surface' => $surface],
+            ]);
+            assert_same('location_accuracy_insufficient', $result['data']['status'], "Vision surface {$surface} was rejected.");
+        }
+
+        assert_throws(BrokerProblem::class, static fn () => $service->handle([
+            'schemaVersion' => 1,
+            'action' => 'vision_nearby',
+            'input' => ['latitude' => 42.0, 'longitude' => -83.0, 'horizontalAccuracyMeters' => 151.0],
+            'client' => ['surface' => 'pinprof-field-guide-android'],
+        ]), 'INVALID_REQUEST');
+        assert_same([], $provider->calls, 'Client identity validation must not reach the provider.');
+    } finally {
+        remove_test_directory($directories['root']);
+    }
+};
+
 $tests['vision applies its fractional distance gate locally'] = static function (): void {
     $directories = make_test_directories();
     try {
