@@ -11,11 +11,7 @@ if [[ -d "${ROOT_DIR}/../PinProf.com" ]]; then
   DEFAULT_PINPROF_SITE_REMOTE_ROOT="/home/pillyliu/pinprof.com"
 fi
 
-SSH_USER_HOST="${SSH_USER_HOST:-pillyliu@67.222.24.219}"
-SSH_PORT="${SSH_PORT:-22}"
-SSH_KEY="${SSH_KEY:-$HOME/.ssh/pillyliu_key}"
-REMOTE_ROOT="${REMOTE_ROOT:-/home/pillyliu/public_html}"
-SSH_AUTH_MODE="${SSH_AUTH_MODE:-key}" # key | password
+source "${ROOT_DIR}/tools/pinprof-hosting-config.sh"
 PINPROF_ADMIN_SOURCE_ROOT="${PINPROF_ADMIN_SOURCE_ROOT:-$ROOT_DIR/../PinProf Admin}"
 PINPROF_ADMIN_WORKSPACE_ROOT="${PINPROF_ADMIN_WORKSPACE_ROOT:-$PINPROF_ADMIN_SOURCE_ROOT/workspace}"
 PINPROF_ADMIN_SOURCE_DATA_DIR="${PINPROF_ADMIN_SOURCE_DATA_DIR:-$PINPROF_ADMIN_WORKSPACE_ROOT/data/source}"
@@ -43,16 +39,6 @@ PINPROF_SITE_REMOTE_ROOT="${PINPROF_SITE_REMOTE_ROOT:-$DEFAULT_PINPROF_SITE_REMO
 PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT="${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT:-$PINPROF_ADMIN_SOURCE_ROOT/scripts/publish/rebuild-shared-pinball-payload.sh}"
 PINBALL_REMOTE_PROTECTED_PATHS="${PINBALL_REMOTE_PROTECTED_PATHS:-}"
 PINTIPS_CONTRACT_CHECK_SCRIPT="${PINTIPS_CONTRACT_CHECK_SCRIPT:-$ROOT_DIR/tools/validate-pintips-contract.mjs}"
-RCLONE_BIN="${RCLONE_BIN:-rclone}"
-R2_RCLONE_REMOTE="${R2_RCLONE_REMOTE:-pinprof-r2}"
-R2_BUCKET="${R2_BUCKET:-pinprof-media}"
-R2_PINBALL_PREFIX="${R2_PINBALL_PREFIX:-pinball}"
-R2_PUBLIC_BASE_URL="${R2_PUBLIC_BASE_URL:-https://data.pinprof.com/pinball}"
-R2_CACHE_CONTROL="${R2_CACHE_CONTROL:-public, max-age=14400}"
-R2_IMMUTABLE_CACHE_CONTROL="${R2_IMMUTABLE_CACHE_CONTROL:-public, max-age=31536000, immutable}"
-R2_MANIFEST_CACHE_CONTROL="${R2_MANIFEST_CACHE_CONTROL:-public, max-age=60, must-revalidate}"
-R2_FORCE_UPLOAD="${R2_FORCE_UPLOAD:-0}"
-
 PINBALL_STAGE_DIR=""
 PINBALL_API_STAGE_DIR=""
 PINPROF_ADMIN_STAGE_DIR=""
@@ -289,7 +275,14 @@ stage_pinball_payload() {
     "${PINPROF_ADMIN_FIELD_GUIDE_DIR}" \
     "${PINBALL_STAGE_DIR}/pinball/field-guide" \
     --exclude='.gitkeep' \
-    --exclude='.DS_Store'
+    --exclude='.DS_Store' \
+    --exclude='state/' \
+    --exclude='overlays/active/' \
+    --exclude='overlays/history/' \
+    --exclude='staging/' \
+    --exclude='review/' \
+    --exclude='one-click.lock' \
+    --exclude='provisional-source-lock.json'
 
   if [[ -f "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-manifest.json" ]]; then
     stage_copy_file \
@@ -332,6 +325,8 @@ stage_pinball_payload() {
     "data/venue_layout_assets.json"
     "data/pintips.json"
     "data/pintips_v2.json"
+    "field-guide/release-v1.json"
+    "field-guide/visual-manifest-v1.json"
     "data/LPL_Targets.csv"
     "data/LPL_IFPA_Players.csv"
     "data/lpl_machine_mappings_v1.json"
@@ -341,7 +336,6 @@ stage_pinball_payload() {
     "data/LPL_Stats.csv"
     "data/LPL_Standings.csv"
     "data/redacted_players.csv"
-    "field-guide/visual-manifest-v1.json"
     "gameinfo/GweeP-Ml9pZ-AOvNL-gameinfo.md"
     "images/playfields/fallback-image-not-available_2048.webp"
   )
@@ -353,7 +347,9 @@ stage_pinball_payload() {
     fi
   done
 
-  PINBALL_MANIFEST_SOURCE_DIR="${PINBALL_STAGE_DIR}/pinball" node tools/build-pinball-manifest.mjs
+  PINBALL_MANIFEST_SOURCE_DIR="${PINBALL_STAGE_DIR}/pinball" \
+    PINBALL_MANIFEST_SOURCE_LABEL="workspace/pinball" \
+    node tools/build-pinball-manifest.mjs
 }
 
 stage_pinball_api_payloads() {
@@ -732,7 +728,13 @@ if [[ -n "${PINBALL_REMOTE_PROTECTED_PATHS}" ]]; then
     PINBALL_RSYNC_OPTS+=(--filter="P /${rel_path}")
   done
 fi
-PINBALL_STATIC_RSYNC_OPTS=("${PINBALL_RSYNC_OPTS[@]}" --filter='P /api/')
+PINBALL_STATIC_RSYNC_OPTS=(
+  "${PINBALL_RSYNC_OPTS[@]}"
+  --filter='P /api/***'
+  --filter='P /objects/***'
+  --filter='P /field-guide/releases/***'
+  --filter='P /field-guide/overlays/***'
+)
 PINBALL_API_RSYNC_OPTS=("${RSYNC_OPTS[@]}" --checksum)
 
 REMOTE="${SSH_USER_HOST}:${REMOTE_ROOT}"
