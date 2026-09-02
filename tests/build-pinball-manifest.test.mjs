@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -48,6 +49,16 @@ test("builds the atomic catalog/content cohort and excludes private API files", 
   assert.equal(cohort.atomic, true);
   assert.equal(cohort.files.length, coreNames.length);
   assert.match(cohort.revision, /^[a-f0-9]{64}$/);
+  const canonicalRevision = crypto
+    .createHash("sha256")
+    .update(
+      [...cohort.files]
+        .sort((left, right) => (left.path < right.path ? -1 : left.path > right.path ? 1 : 0))
+        .map((file) => `${file.path}:${file.hash}\n`)
+        .join("")
+    )
+    .digest("hex");
+  assert.equal(cohort.revision, canonicalRevision);
   assert.deepEqual(manifest.mirrors, ["https://data.pinprof.com", "https://pillyliu.com"]);
   assert.equal(Object.keys(manifest.files).some((key) => key.startsWith("/pinball/api/")), false);
 
