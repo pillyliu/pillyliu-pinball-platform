@@ -37,6 +37,9 @@ function normalize_provider(?string $value): ?string
     if (in_array($provider, ['pinballrulesheets', 'pinball_rulesheets', 'prs'], true)) {
         return 'prs';
     }
+    if (in_array($provider, ['pinballcards', 'pinball_cards', 'jlp'], true)) {
+        return 'jlp';
+    }
     return in_array($provider, ['tf', 'pp', 'papa', 'bob'], true) ? $provider : null;
 }
 
@@ -53,6 +56,7 @@ function validate_provider_url(string $provider, string $rawUrl): ?string
     $allowed = match ($provider) {
         'tf' => ['tiltforums.com', 'www.tiltforums.com'],
         'prs' => ['pinballrulesheets.com', 'www.pinballrulesheets.com'],
+        'jlp' => ['pinballcards.net', 'www.pinballcards.net'],
         'pp' => ['pinballprimer.github.io', 'pinballprimer.com', 'www.pinballprimer.com'],
         'papa' => ['pinball.org', 'www.pinball.org'],
         'bob' => ['rules.silverballmania.com', 'silverballmania.com', 'www.silverballmania.com', 'flippers.be', 'www.flippers.be'],
@@ -60,10 +64,10 @@ function validate_provider_url(string $provider, string $rawUrl): ?string
     };
 
     foreach ($allowed as $suffix) {
-        if ($provider === 'prs' && $host === $suffix) {
+        if (in_array($provider, ['prs', 'jlp'], true) && $host === $suffix) {
             return $rawUrl;
         }
-        if ($provider === 'prs') {
+        if (in_array($provider, ['prs', 'jlp'], true)) {
             continue;
         }
         if ($host === $suffix || str_ends_with($host, '.' . $suffix)) {
@@ -211,6 +215,159 @@ function cleanup_pinball_rulesheets_html(string $html): string
     ]));
 }
 
+function html_class_tokens(string $openingTag): array
+{
+    if (preg_match('/\bclass\s*=\s*([\'\"])([\s\S]*?)\1/i', $openingTag, $matches) !== 1) {
+        return [];
+    }
+    $tokens = preg_split('/\s+/', trim($matches[2])) ?: [];
+    return array_fill_keys(array_filter($tokens), true);
+}
+
+function balanced_div_range_at(string $html, int $start): ?array
+{
+    if (preg_match_all('/<\/?div\b[^>]*>/i', $html, $matches, PREG_OFFSET_CAPTURE, $start) === false) {
+        return null;
+    }
+    $depth = 0;
+    $sawOpening = false;
+    foreach ($matches[0] as [$tag, $offset]) {
+        if (!$sawOpening && $offset !== $start) {
+            return null;
+        }
+        if (preg_match('/^<\s*\//', $tag) === 1) {
+            $depth -= 1;
+            if ($sawOpening && $depth === 0) {
+                return ['start' => $start, 'end' => $offset + strlen($tag)];
+            }
+        } else {
+            $sawOpening = true;
+            $depth += 1;
+        }
+    }
+    return null;
+}
+
+function find_balanced_div_range(string $html, callable $predicate): ?array
+{
+    if (preg_match_all('/<div\b[^>]*>/i', $html, $matches, PREG_OFFSET_CAPTURE) === false) {
+        return null;
+    }
+    foreach ($matches[0] as [$tag, $offset]) {
+        if ($predicate($tag, html_class_tokens($tag))) {
+            return balanced_div_range_at($html, $offset);
+        }
+    }
+    return null;
+}
+
+function replace_html_range(string $html, array $range, string $replacement): string
+{
+    return substr($html, 0, $range['start']) . $replacement . substr($html, $range['end']);
+}
+
+function pinball_cards_video_lesson_html(string $html): string
+{
+    $lessons = [];
+    if (preg_match_all('/<a\b(?=[^>]*openVideoLightbox\(\'([^\']+)\'\))[^>]*>([\s\S]*?)<\/a>/i', $html, $matches, PREG_SET_ORDER) !== false) {
+        foreach ($matches as $match) {
+            $url = normalize_string($match[1] ?? null);
+            if ($url === null || preg_match('#^https://(?:www\.)?(?:youtube\.com|youtu\.be)/#i', $url) !== 1) {
+                continue;
+            }
+            $title = 'Video lesson';
+            if (preg_match('/<div\b[^>]*class=[\'\"][^\'\"]*font-semibold[^\'\"]*[\'\"][^>]*>([\s\S]*?)<\/div>/i', $match[2], $titleMatch) === 1) {
+                $candidate = normalize_string(strip_tags($titleMatch[1]));
+                if ($candidate !== null) {
+                    $title = $candidate;
+                }
+            }
+            $duration = preg_match('/Duration:\s*([^<]+)/i', $match[2], $durationMatch) === 1
+                ? normalize_string($durationMatch[1])
+                : null;
+            $lessons[] = ['url' => $url, 'title' => $title, 'duration' => $duration];
+        }
+    }
+    if ($lessons === []) {
+        return '';
+    }
+    $links = '';
+    foreach ($lessons as $lesson) {
+        $links .= '<a class="jlp-video-lesson" href="' . escape_html($lesson['url']) . '">' .
+            '<span>' . escape_html($lesson['title']) . '</span>' .
+            ($lesson['duration'] !== null ? '<small>' . escape_html($lesson['duration']) . '</small>' : '') .
+            '</a>' . "\n";
+    }
+    return '<div class="jlp-video-lessons"><h2>@PinballExplained Video Lessons</h2>' . $links . '</div>';
+}
+
+function cleanup_pinball_cards_html(string $html, string $baseUrl): array
+{
+    $updatedAt = preg_match('/Strategy updated:\s*([^<]+)/i', $html, $updatedMatch) === 1
+        ? normalize_string($updatedMatch[1])
+        : null;
+    $cardRange = find_balanced_div_range($html, static function (string $_tag, array $tokens): bool {
+        return isset($tokens['bg-white'], $tokens['rounded-2xl'], $tokens['space-y-6']);
+    });
+    if ($cardRange === null) {
+        throw new RuntimeException('JLP Pinball Cards page did not include its card wrapper');
+    }
+    $card = substr($html, $cardRange['start'], $cardRange['end'] - $cardRange['start']);
+    $videoLessons = pinball_cards_video_lesson_html($card);
+    $videoOverlay = find_balanced_div_range($card, static function (string $tag): bool {
+        return preg_match('/\bid\s*=\s*([\'\"])video-list-overlay\1/i', $tag) === 1;
+    });
+    if ($videoOverlay !== null) {
+        $card = replace_html_range($card, $videoOverlay, '');
+    }
+    $videoButton = find_balanced_div_range($card, static function (string $_tag, array $tokens): bool {
+        return isset($tokens['-mt-2'], $tokens['mb-2']);
+    });
+    if ($videoButton !== null) {
+        $card = replace_html_range($card, $videoButton, $videoLessons);
+    }
+
+    $mastheadArt = find_balanced_div_range($card, static function (string $tag, array $tokens): bool {
+        return isset($tokens['bg-cover']) && stripos($tag, 'background-image') !== false;
+    });
+    if ($mastheadArt !== null) {
+        $openingEnd = strpos($card, '>', $mastheadArt['start']);
+        $opening = $openingEnd === false ? '' : substr($card, $mastheadArt['start'], $openingEnd - $mastheadArt['start'] + 1);
+        if (preg_match('/background-image\s*:\s*url\(\s*[\'\"]?([^)\'\"\s]+)[\'\"]?\s*\)/i', $opening, $assetMatch) === 1) {
+            $assetUrl = rebase_relative_url($assetMatch[1], $baseUrl);
+            $card = replace_html_range(
+                $card,
+                $mastheadArt,
+                '<img class="jlp-masthead-art" src="' . escape_html($assetUrl) . '" alt="" aria-hidden="true">'
+            );
+        }
+    }
+
+    $card = preg_replace('/^(\s*<div\b[^>]*\bclass\s*=\s*[\'\"])([^\'\"]*)([\'\"])/i', '$1jlp-card $2$3', $card) ?? $card;
+    $card = trim(strip_html_patterns($card, [
+        '/<script\b[^>]*>[\s\S]*?<\/script>/i',
+        '/<style\b[^>]*>[\s\S]*?<\/style>/i',
+        '/<iframe\b[^>]*>[\s\S]*?<\/iframe>/i',
+        '/<form\b[^>]*>[\s\S]*?<\/form>/i',
+        '/<object\b[^>]*>[\s\S]*?<\/object>/i',
+        '/<embed\b[^>]*\/?\s*>/i',
+        '/<base\b[^>]*\/?\s*>/i',
+        '/<button\b[^>]*>[\s\S]*?<\/button>/i',
+        '/<!--[\s\S]*?-->/',
+        '/\son[a-z0-9_-]+\s*=\s*"[^"]*"/i',
+        "/\\son[a-z0-9_-]+\\s*=\\s*'[^']*'/i",
+        '/\son[a-z0-9_-]+\s*=\s*[^\s>]+/i',
+        '/\sstyle\s*=\s*"[^"]*"/i',
+        "/\\sstyle\\s*=\\s*'[^']*'/i",
+        '/\s(?:href|src)\s*=\s*"\s*javascript:[^"]*"/i',
+        "/\\s(?:href|src)\\s*=\\s*'\\s*javascript:[^']*'/i",
+    ]));
+    return [
+        'html' => rebase_relative_html_urls($card, $baseUrl),
+        'updated_at' => $updatedAt,
+    ];
+}
+
 function cleanup_legacy_html(string $html, string $mimeType, string $provider): string
 {
     if (should_treat_as_plain_text($html, $mimeType)) {
@@ -301,6 +458,11 @@ function source_meta(string $provider): array
             'link_label' => 'Original page',
             'details' => 'Source terms and author/site rights remain with Pinball Rule Sheets and the original authors.',
         ],
+        'jlp' => [
+            'source_name' => 'JLP Pinball Cards',
+            'link_label' => 'Original card',
+            'details' => 'JLP Pinball Cards content and credited source assets are reproduced with permission.',
+        ],
         'pp' => [
             'source_name' => 'Pinball Primer',
             'link_label' => 'Original page',
@@ -328,11 +490,14 @@ function attribution_html(string $provider, string $displayUrl, ?string $updated
 {
     $meta = source_meta($provider);
     $updatedText = $updatedAt ? ' | Updated: ' . escape_html($updatedAt) : '';
+    $adaptation = $provider === 'jlp'
+        ? 'Adapted to the PinProf reader while retaining the original card structure, masthead artwork, references, and credits.'
+        : 'Reformatted for readability and mobile use.';
     return '<small class="rulesheet-attribution">Source: ' . escape_html($meta['source_name']) .
         ' | ' . escape_html($meta['link_label']) . ': <a href="' . escape_html($displayUrl) . '">link</a>' .
         $updatedText .
         ' | ' . escape_html($meta['details']) .
-        ' | Reformatted for readability and mobile use.</small>';
+        ' | ' . escape_html($adaptation) . '</small>';
 }
 
 function render_rulesheet(string $provider, string $rawUrl, ?string $legacyTiltUrl = null): array
@@ -362,6 +527,17 @@ function render_rulesheet(string $provider, string $rawUrl, ?string $legacyTiltU
     }
 
     $fetched = http_fetch($provider === 'bob' ? legacy_fetch_url($provider, $rawUrl) : $rawUrl);
+    if ($provider === 'jlp') {
+        $card = cleanup_pinball_cards_html($fetched['text'], $fetched['final_url']);
+        return [
+            'body' => attribution_html($provider, $fetched['final_url'], $card['updated_at']) .
+                "\n\n" .
+                '<div class="pinball-rulesheet remote-rulesheet jlp-pinball-card">' . "\n" .
+                $card['html'] . "\n" .
+                '</div>',
+            'source_url' => $fetched['final_url'],
+        ];
+    }
     if ($provider === 'prs') {
         $body = rebase_relative_html_urls(cleanup_pinball_rulesheets_html($fetched['text']), $fetched['final_url']);
         $migrationNote = $legacyTiltUrl !== null

@@ -77,6 +77,8 @@ function shortRulesheetTitle(link: ReferenceLink): string {
         : "Source";
     case "tf":
       return "TF";
+    case "jlp":
+      return "JLP";
     case "prs":
       return "PRS";
     case "pp":

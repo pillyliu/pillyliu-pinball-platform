@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-type SupportedProvider = "tf" | "prs" | "pp" | "papa" | "bob";
+type SupportedProvider = "tf" | "prs" | "jlp" | "pp" | "papa" | "bob";
 
 const ACCEPT_HEADER = "text/html,application/json;q=0.9,*/*;q=0.8";
 const USER_AGENT = "Mozilla/5.0 PinballLibraryRulesheetProxy/1.0";
@@ -25,6 +25,9 @@ function normalizeProvider(value: string | null): SupportedProvider | null {
   if (provider === "pinballrulesheets" || provider === "pinball_rulesheets" || provider === "prs") {
     return "prs";
   }
+  if (provider === "pinballcards" || provider === "pinball_cards" || provider === "jlp") {
+    return "jlp";
+  }
   if (provider === "tf" || provider === "pp" || provider === "papa" || provider === "bob") {
     return provider;
   }
@@ -37,6 +40,8 @@ function allowedHosts(provider: SupportedProvider): string[] {
       return ["tiltforums.com", "www.tiltforums.com"];
     case "prs":
       return ["pinballrulesheets.com", "www.pinballrulesheets.com"];
+    case "jlp":
+      return ["pinballcards.net", "www.pinballcards.net"];
     case "pp":
       return ["pinballprimer.github.io", "pinballprimer.com", "www.pinballprimer.com"];
     case "papa":
@@ -52,7 +57,7 @@ function validateProviderUrl(provider: SupportedProvider, rawUrl: string): strin
   try {
     const parsed = new URL(rawUrl);
     const host = parsed.hostname.toLowerCase();
-    return allowedHosts(provider).some((suffix) => host === suffix || (provider !== "prs" && host.endsWith(`.${suffix}`)))
+    return allowedHosts(provider).some((suffix) => host === suffix || (!["prs", "jlp"].includes(provider) && host.endsWith(`.${suffix}`)))
       ? parsed.toString()
       : null;
   } catch {
@@ -175,6 +180,131 @@ function cleanupPinballRuleSheetsHtml(html: string): string {
   ]).trim();
 }
 
+type HtmlRange = { start: number; end: number };
+
+function classTokens(openingTag: string): Set<string> {
+  const value = /\bclass\s*=\s*(["'])([\s\S]*?)\1/i.exec(openingTag)?.[2] ?? "";
+  return new Set(value.split(/\s+/).filter(Boolean));
+}
+
+function balancedDivRangeAt(html: string, start: number): HtmlRange | null {
+  const tags = /<\/?div\b[^>]*>/gi;
+  tags.lastIndex = start;
+  let depth = 0;
+  let sawOpening = false;
+  for (let match = tags.exec(html); match; match = tags.exec(html)) {
+    if (!sawOpening && match.index !== start) return null;
+    const closing = /^<\s*\//.test(match[0]);
+    if (closing) {
+      depth -= 1;
+      if (sawOpening && depth === 0) return { start, end: tags.lastIndex };
+    } else {
+      sawOpening = true;
+      depth += 1;
+    }
+  }
+  return null;
+}
+
+function findBalancedDivRange(
+  html: string,
+  predicate: (openingTag: string, tokens: Set<string>) => boolean,
+): HtmlRange | null {
+  const openings = /<div\b[^>]*>/gi;
+  for (let match = openings.exec(html); match; match = openings.exec(html)) {
+    if (predicate(match[0], classTokens(match[0]))) {
+      return balancedDivRangeAt(html, match.index);
+    }
+  }
+  return null;
+}
+
+function replaceRange(html: string, range: HtmlRange, replacement: string): string {
+  return `${html.slice(0, range.start)}${replacement}${html.slice(range.end)}`;
+}
+
+function pinballCardsVideoLessonHtml(html: string): string {
+  const lessons: Array<{ url: string; title: string; duration: string | null }> = [];
+  const links = /<a\b(?=[^>]*openVideoLightbox\('([^']+)'\))[^>]*>([\s\S]*?)<\/a>/gi;
+  for (let match = links.exec(html); match; match = links.exec(html)) {
+    const url = normalizeString(match[1]);
+    if (!url || !/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(url)) continue;
+    const title = normalizeString(
+      /<div\b[^>]*class=["'][^"']*font-semibold[^"']*["'][^>]*>([\s\S]*?)<\/div>/i
+        .exec(match[2])?.[1]
+        ?.replace(/<[^>]+>/g, " "),
+    ) ?? "Video lesson";
+    const duration = normalizeString(/Duration:\s*([^<]+)/i.exec(match[2])?.[1]);
+    lessons.push({ url, title, duration });
+  }
+  if (!lessons.length) return "";
+  const lessonLinks = lessons.map((lesson) => (
+    `<a class="jlp-video-lesson" href="${escapeHtml(lesson.url)}">` +
+      `<span>${escapeHtml(lesson.title)}</span>` +
+      (lesson.duration ? `<small>${escapeHtml(lesson.duration)}</small>` : "") +
+    "</a>"
+  )).join("\n");
+  return `<div class="jlp-video-lessons"><h2>@PinballExplained Video Lessons</h2>${lessonLinks}</div>`;
+}
+
+export function cleanupPinballCardsHtml(
+  html: string,
+  baseUrl: string,
+): { html: string; updatedAt: string | null } {
+  const updatedAt = normalizeString(/Strategy updated:\s*([^<]+)/i.exec(html)?.[1]);
+  const cardRange = findBalancedDivRange(html, (_tag, tokens) => (
+    tokens.has("bg-white") && tokens.has("rounded-2xl") && tokens.has("space-y-6")
+  ));
+  if (!cardRange) throw new Error("JLP Pinball Cards page did not include its card wrapper");
+
+  let card = html.slice(cardRange.start, cardRange.end);
+  const videoLessons = pinballCardsVideoLessonHtml(card);
+  const videoOverlay = findBalancedDivRange(card, (tag) => /\bid\s*=\s*(["'])video-list-overlay\1/i.test(tag));
+  if (videoOverlay) card = replaceRange(card, videoOverlay, "");
+  const videoButton = findBalancedDivRange(card, (_tag, tokens) => tokens.has("-mt-2") && tokens.has("mb-2"));
+  if (videoButton) card = replaceRange(card, videoButton, videoLessons);
+
+  const mastheadArt = findBalancedDivRange(card, (tag, tokens) => (
+    tokens.has("bg-cover") && /background-image\s*:/i.test(tag)
+  ));
+  if (mastheadArt) {
+    const opening = card.slice(mastheadArt.start, card.indexOf(">", mastheadArt.start) + 1);
+    const assetPath = /background-image\s*:\s*url\(\s*['"]?([^)'"\s]+)['"]?\s*\)/i.exec(opening)?.[1] ?? null;
+    if (assetPath) {
+      const assetUrl = rebaseRelativeUrl(assetPath, baseUrl);
+      card = replaceRange(
+        card,
+        mastheadArt,
+        `<img class="jlp-masthead-art" src="${escapeHtml(assetUrl)}" alt="" aria-hidden="true">`,
+      );
+    }
+  }
+
+  card = card.replace(
+    /^(\s*<div\b[^>]*\bclass\s*=\s*["'])([^"']*)(["'])/i,
+    "$1jlp-card $2$3",
+  );
+  card = stripHtmlPatterns(card, [
+    /<script\b[^>]*>[\s\S]*?<\/script>/gi,
+    /<style\b[^>]*>[\s\S]*?<\/style>/gi,
+    /<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi,
+    /<form\b[^>]*>[\s\S]*?<\/form>/gi,
+    /<object\b[^>]*>[\s\S]*?<\/object>/gi,
+    /<embed\b[^>]*\/?>/gi,
+    /<base\b[^>]*\/?>/gi,
+    /<button\b[^>]*>[\s\S]*?<\/button>/gi,
+    /<!--[^]*?-->/g,
+    /\son[a-z0-9_-]+\s*=\s*"[^"]*"/gi,
+    /\son[a-z0-9_-]+\s*=\s*'[^']*'/gi,
+    /\son[a-z0-9_-]+\s*=\s*[^\s>]+/gi,
+    /\sstyle\s*=\s*"[^"]*"/gi,
+    /\sstyle\s*=\s*'[^']*'/gi,
+    /\s(?:href|src)\s*=\s*"\s*javascript:[^"]*"/gi,
+    /\s(?:href|src)\s*=\s*'\s*javascript:[^']*'/gi,
+  ]).trim();
+  return { html: rebaseRelativeHtmlUrls(card, baseUrl), updatedAt };
+}
+
 function cleanupLegacyHtml(html: string, mimeType: string, provider: SupportedProvider): string {
   if (shouldTreatAsPlainText(html, mimeType)) {
     return `<pre class="rulesheet-preformatted">${escapeHtml(html.trim())}</pre>`;
@@ -245,6 +375,12 @@ function sourceMeta(provider: SupportedProvider): { sourceName: string; linkLabe
         linkLabel: "Original page",
         details: "Source terms and author/site rights remain with Pinball Rule Sheets and the original authors.",
       };
+    case "jlp":
+      return {
+        sourceName: "JLP Pinball Cards",
+        linkLabel: "Original card",
+        details: "JLP Pinball Cards content and credited source assets are reproduced with permission.",
+      };
     case "pp":
       return {
         sourceName: "Pinball Primer",
@@ -269,7 +405,10 @@ function sourceMeta(provider: SupportedProvider): { sourceName: string; linkLabe
 function attributionHtml(provider: SupportedProvider, displayUrl: string, updatedAt: string | null): string {
   const meta = sourceMeta(provider);
   const updatedText = updatedAt ? ` | Updated: ${escapeHtml(updatedAt)}` : "";
-  return `<small class="rulesheet-attribution">Source: ${escapeHtml(meta.sourceName)} | ${escapeHtml(meta.linkLabel)}: <a href="${escapeHtml(displayUrl)}">link</a>${updatedText} | ${escapeHtml(meta.details)} | Reformatted for readability and mobile use.</small>`;
+  const adaptation = provider === "jlp"
+    ? "Adapted to the PinProf reader while retaining the original card structure, masthead artwork, references, and credits."
+    : "Reformatted for readability and mobile use.";
+  return `<small class="rulesheet-attribution">Source: ${escapeHtml(meta.sourceName)} | ${escapeHtml(meta.linkLabel)}: <a href="${escapeHtml(displayUrl)}">link</a>${updatedText} | ${escapeHtml(meta.details)} | ${escapeHtml(adaptation)}</small>`;
 }
 
 async function renderRulesheet(
@@ -308,6 +447,13 @@ async function renderRulesheet(
   }
 
   const fetched = await httpFetch(provider === "bob" ? legacyFetchUrl(provider, rawUrl) : rawUrl);
+  if (provider === "jlp") {
+    const card = cleanupPinballCardsHtml(fetched.text, fetched.finalUrl);
+    return {
+      body: `${attributionHtml(provider, fetched.finalUrl, card.updatedAt)}\n\n<div class="pinball-rulesheet remote-rulesheet jlp-pinball-card">\n${card.html}\n</div>`,
+      sourceUrl: fetched.finalUrl,
+    };
+  }
   if (provider === "prs") {
     const body = rebaseRelativeHtmlUrls(cleanupPinballRuleSheetsHtml(fetched.text), fetched.finalUrl);
     const migrationNote = legacyTiltUrl

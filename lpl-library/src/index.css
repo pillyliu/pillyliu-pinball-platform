@@ -304,6 +304,444 @@ body {
   word-break: break-word;
 }
 
+/* JLP Pinball Cards retain the source card grammar while using PinProf chrome. */
+.rulesheet-rich-content .jlp-card {
+  --jlp-link: #7dd3fc;
+  --jlp-rule: rgba(255, 255, 255, 0.14);
+  --jlp-muted: rgb(163 163 163);
+  --jlp-ink: rgb(229 229 229);
+  position: relative;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0;
+  overflow: visible;
+  color: var(--jlp-ink);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: inherit;
+  line-height: 1.55;
+}
+
+.rulesheet-rich-content .jlp-card > * + * {
+  margin-top: 1.5rem;
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child {
+  position: relative;
+  display: flex;
+  min-height: 10.5rem;
+  margin: 0;
+  padding: 1.25rem 1rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 0.9rem;
+}
+
+.rulesheet-rich-content .jlp-card .jlp-masthead-art {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child > div[class*="bg-black/20"] {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child > div[class*="bg-white/80"] {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 32rem);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.84);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.85rem, 6vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child h1 + div {
+  display: flex;
+  margin-top: 0.45rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  color: #334155;
+  font-size: 0.69rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.rulesheet-rich-content .jlp-card > div:first-child h1 + div + div {
+  margin-top: 0.5rem;
+  color: #64748b;
+  font-size: 0.69rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="rounded-xl"] {
+  padding: 0.9rem;
+  color: var(--jlp-ink);
+  background: transparent;
+  border: 0; border-top: 1px solid var(--jlp-rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="bg-blue-100"] {
+  border-left: 3px solid #6095d8;
+  background: rgba(70, 130, 210, 0.09);
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="bg-rose"] {
+  border-left: 3px solid #d9697a;
+  color: var(--jlp-ink);
+  background: rgba(210, 65, 85, 0.08);
+}
+
+.rulesheet-rich-content .jlp-card h2 {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  color: var(--jlp-ink);
+  border: 0;
+  font-size: 1.16rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose {
+  max-width: none;
+  color: var(--jlp-ink);
+  font-size: 1em;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose p {
+  margin: 0.34rem 0;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose ul,
+.rulesheet-rich-content .jlp-card .pinball-prose ol {
+  margin: 0.35rem 0 0.55rem;
+  padding-left: 1.25rem;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose ul {
+  list-style: disc;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose ol {
+  list-style: decimal;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose li {
+  margin: 0.18rem 0;
+  padding-left: 0.12rem;
+}
+
+.rulesheet-rich-content .jlp-card .pinball-prose li::marker {
+  color: #2563eb;
+}
+
+.rulesheet-rich-content .jlp-card strong {
+  color: var(--jlp-ink);
+  font-weight: 700;
+}
+
+.rulesheet-rich-content .jlp-card > div[class~="pt-2"] {
+  width: 100%;
+  padding-top: 0.5rem;
+}
+
+.rulesheet-rich-content .jlp-card > div[class~="pt-2"] img {
+  width: 100%;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="space-y-4"] > div[class~="grid"] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="space-y-4"] a[class*="rounded-xl"] {
+  display: flex;
+  min-width: 0;
+  padding: 0.85rem;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--jlp-link);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--jlp-rule);
+  border-radius: 0.45rem;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="space-y-4"] a[class*="rounded-xl"]:hover {
+  border-radius: 0.45rem;
+  border: 1px solid var(--jlp-rule);
+  color: var(--jlp-link);
+  background: rgba(100, 150, 210, 0.1);
+  border-color: #93c5fd;
+}
+
+.rulesheet-rich-content .jlp-card > div[class*="space-y-4"] a img {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0;
+  flex: 0 0 auto;
+  object-fit: contain;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 999px;
+}
+
+.rulesheet-rich-content .jlp-card [class~="truncate"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rulesheet-rich-content .jlp-card .jlp-video-lessons {
+  box-shadow: none;
+  padding: 0.9rem;
+  color: var(--jlp-ink);
+  background: transparent;
+  border: 0; border-top: 1px solid var(--jlp-rule);
+  border-radius: 0;
+}
+
+.rulesheet-rich-content .jlp-card .jlp-video-lesson {
+  display: flex;
+  padding: 0.75rem 0.85rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--jlp-link);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--jlp-rule);
+  border-radius: 0.45rem;
+}
+
+.rulesheet-rich-content .jlp-card .jlp-video-lesson small {
+  color: var(--jlp-muted);
+}
+
+.jlp-color-token {
+  display: inline-block;
+  padding: 0 0.25rem;
+  color: #0f172a;
+  border-radius: 0.22rem;
+  font-size: 0.9em;
+  font-weight: 700;
+  line-height: 1.35;
+  vertical-align: baseline;
+}
+
+.jlp-color-blue { background: #8cb9ff; }
+.jlp-color-red { background: #ff8585; }
+.jlp-color-yellow { background: #ffe375; }
+.jlp-color-green { background: #99e2a7; }
+.jlp-color-orange { background: #ffae66; }
+.jlp-color-apricot { background: #ffbf78; }
+.jlp-color-purple { background: #bc94ff; }
+.jlp-color-cyan { background: #7fe7e7; }
+.jlp-color-white { background: #fff; box-shadow: inset 0 0 0 1px #cbd5e1; }
+.jlp-color-black { color: #fff; background: #000; }
+.jlp-color-magenta { background: #ff82c3; }
+.jlp-color-pink { background: #ff9eb5; }
+.jlp-color-draingerous {
+  padding-inline: 0;
+  color: transparent;
+  background: linear-gradient(90deg, #990000 0%, #ff6600 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+.jlp-legend-layer {
+  position: fixed;
+  z-index: 80;
+  left: max(1rem, env(safe-area-inset-left));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.jlp-legend-panel::backdrop {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.jlp-legend-button,
+.jlp-legend-panel {
+  position: fixed;
+  inset: auto auto max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.jlp-legend-button {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.72rem;
+  place-items: center;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(255, 191, 0, 0.56);
+  border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(12px);
+}
+
+.jlp-legend-button:hover {
+  color: #ffbf00;
+  background: #0f172a;
+}
+
+.jlp-legend-button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.jlp-legend-panel {
+  width: min(25rem, calc(100vw - 2rem));
+  max-height: min(68vh, 38rem);
+  padding: 1rem;
+  overflow-y: auto;
+  color: #e5e7eb;
+  background: rgba(10, 15, 25, 0.97);
+  border: 1px solid rgba(255, 191, 0, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(16px);
+}
+
+.jlp-legend-button[hidden] { display: none; }
+
+.jlp-reader-frame {
+  max-width: 50rem;
+  margin-inline: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .jlp-legend-panel[open] {
+    transform-origin: bottom left;
+    animation: jlp-legend-expand 220ms ease-out;
+  }
+  @keyframes jlp-legend-expand {
+    from { opacity: 0; transform: scale(0.88); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}
+
+.jlp-legend-heading {
+  display: flex;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.jlp-legend-kicker {
+  color: #ffbf00;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.jlp-legend-heading h2 {
+  margin: 0.08rem 0 0;
+  font-size: 1.25rem;
+}
+
+.jlp-legend-close {
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.jlp-legend-panel ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: #d4d4d8;
+  font-size: 0.84rem;
+  line-height: 1.42;
+}
+
+.jlp-legend-panel li + li {
+  margin-top: 0.42rem;
+}
+
+.jlp-legend-panel a {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: #7dd3fc;
+  font-size: 0.78rem;
+}
+
+@media (min-width: 640px) {
+  .rulesheet-rich-content .jlp-card {
+    padding: 0;
+  }
+
+  .rulesheet-rich-content .jlp-card > div:first-child {
+    min-height: 12rem;
+    margin: 0;
+    padding: 1.5rem;
+  }
+
+  .rulesheet-rich-content .jlp-card > div[class*="rounded-xl"],
+  .rulesheet-rich-content .jlp-card .jlp-video-lessons {
+    padding: 1.25rem;
+  }
+
+  .rulesheet-rich-content .jlp-card > div[class*="space-y-4"] > div[class~="grid"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .library-controls-fixed {
   position: fixed;
   inset-inline: 0;

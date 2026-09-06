@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -79,6 +79,16 @@ function normalizeRulesheet(input: string): string {
   if (sourceUrl) {
     output = rebaseRelativeHtmlUrls(output, sourceUrl);
   }
+  const jlpCardStart = output.search(/<div\b[\s\S]*?\bclass=["'][^"']*\bjlp-card\b[^"']*["'][^>]*>/i);
+  if (jlpCardStart >= 0) {
+    const attribution = output.slice(0, jlpCardStart).trim();
+    // JLP's authored HTML is intentionally readable and heavily indented. Markdown
+    // treats an opening tag split across lines (and later indented lines) as a code
+    // block, so flatten only this already-sanitized HTML fragment before rehype-raw
+    // parses it. HTML whitespace semantics and the card's classes remain unchanged.
+    const card = output.slice(jlpCardStart).replace(/\s*\n\s*/g, " ").trim();
+    output = attribution ? `${attribution}\n\n${card}` : card;
+  }
   return output.trim();
 }
 
@@ -95,6 +105,119 @@ function scrollToHash(hash: string) {
   history.replaceState(null, "", `#${id}`);
 }
 
+const JLP_COLOR_TOKENS = [
+  "blue", "red", "yellow", "green", "orange", "apricot", "purple", "cyan",
+  "white", "black", "magenta", "pink", "draingerous",
+] as const;
+
+function colorizeJlpCard(root: HTMLElement) {
+  const alternation = JLP_COLOR_TOKENS.join("|");
+  const pattern = new RegExp(`\\.(${alternation})\\.|\\b(${alternation})\\b`, "gi");
+  root.querySelectorAll<HTMLElement>(".jlp-card .colorized").forEach((container) => {
+    if (container.dataset.jlpColorized === "true") return;
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (node.parentElement?.closest(".jlp-color-token")) continue;
+      pattern.lastIndex = 0;
+      if (pattern.test(node.nodeValue ?? "")) textNodes.push(node as Text);
+    }
+    textNodes.forEach((node) => {
+      const value = node.nodeValue ?? "";
+      const fragment = document.createDocumentFragment();
+      let cursor = 0;
+      pattern.lastIndex = 0;
+      for (let match = pattern.exec(value); match; match = pattern.exec(value)) {
+        if (match.index > cursor) fragment.append(value.slice(cursor, match.index));
+        if (match[1]) {
+          fragment.append(match[1]);
+        } else {
+          const token = match[2].toLowerCase();
+          const span = document.createElement("span");
+          span.className = `jlp-color-token jlp-color-${token}`;
+          span.textContent = match[2];
+          fragment.append(span);
+        }
+        cursor = match.index + match[0].length;
+      }
+      if (cursor < value.length) fragment.append(value.slice(cursor));
+      node.parentNode?.replaceChild(fragment, node);
+    });
+    container.dataset.jlpColorized = "true";
+  });
+}
+
+function JLPRulesheetLegend({ open, onOpen, onClose }: { open: boolean; onOpen: () => void; onClose: () => void }) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (open) {
+      if (!dialog.open) dialog.showModal();
+      closeRef.current?.focus();
+    } else if (wasOpen.current) {
+      dialog.close();
+      triggerRef.current?.focus();
+    }
+    wasOpen.current = open;
+  }, [open]);
+
+  return (
+    <div className="jlp-legend-layer">
+        <dialog ref={dialogRef} className="jlp-legend-panel" aria-label="JLP Pinball Cards legend"
+          onCancel={(event) => { event.preventDefault(); onClose(); }}
+          onKeyDown={(event) => {
+            if (event.key !== "Tab") return;
+            const controls = event.currentTarget.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]");
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault(); last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault(); first?.focus();
+            }
+          }}
+          onClick={(event) => {
+            if (event.target !== event.currentTarget) return;
+            const bounds = event.currentTarget.getBoundingClientRect();
+            if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) onClose();
+          }}>
+          <div className="jlp-legend-heading">
+            <div>
+              <div className="jlp-legend-kicker">JLP Pinball Cards</div>
+              <h2>Legend</h2>
+            </div>
+            <button ref={closeRef} type="button" className="jlp-legend-close" onClick={onClose} aria-label="Close legend">×</button>
+          </div>
+          <ul>
+            <li>⭐️ — denotes a critical or more desirable choice</li>
+            <li>❗️ — indicates an important rule or feature to be aware of (ex: lock stealing)</li>
+            <li>🥇 — when you have a choice, this is the best option</li>
+            <li>🥈 — when you have a choice, this is the 2nd best option</li>
+            <li>🔒 — initially a locked feature, requiring completing something else to unlock</li>
+            <li><strong>++X</strong> — this shot adds X to the value with each successful shot</li>
+            <li><strong>MB</strong> — Multi-ball, Multiball, Tri-ball, etc…</li>
+            <li><strong>JP</strong> — Jackpot</li>
+            <li><strong>SJP</strong> — Super Jackpot</li>
+            <li><strong>VUK</strong> — Vertical Up-Kicker</li>
+            <li><strong>Bonus X, Playfield X, Shot X</strong> — a multiplier applied to bonus, playfield, or a shot</li>
+            <li><strong>Draingerous</strong> — a shot that is very high risk to drain the ball</li>
+          </ul>
+          <a href="https://pinballcards.net/legend" target="_blank" rel="noreferrer">Original JLP legend</a>
+        </dialog>
+        <button ref={triggerRef} type="button" className="jlp-legend-button" hidden={open} onClick={onOpen} aria-label="Show JLP card legend" aria-haspopup="dialog" aria-expanded={open}>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <rect x="4" y="3" width="16" height="18" rx="3" />
+            <path d="M8 8h8M8 12h8M8 16h5" />
+          </svg>
+        </button>
+    </div>
+  );
+}
+
 export default function RulesheetPage() {
   const { gameId } = useParams();
   const [searchParams] = useSearchParams();
@@ -109,6 +232,8 @@ export default function RulesheetPage() {
     md: null,
     status: "idle",
   });
+  const [jlpLegendOpen, setJlpLegendOpen] = useState(false);
+  const rulesheetContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!gameId) {
@@ -231,17 +356,20 @@ export default function RulesheetPage() {
       clobberPrefix: "",
       attributes: {
         ...attributes,
-        "*": [...(attributes["*"] ?? []), "id", "class", "title"],
-        a: [...(attributes.a ?? []), "href", "target", "rel", "name", "id", "class"],
-        img: [...(attributes.img ?? []), "src", "alt", "width", "height", "loading", "decoding"],
-        span: [...(attributes.span ?? []), "id", "class"],
-        div: [...(attributes.div ?? []), "id", "class"],
-        h1: [...(attributes.h1 ?? []), "id", "class"],
-        h2: [...(attributes.h2 ?? []), "id", "class"],
-        h3: [...(attributes.h3 ?? []), "id", "class"],
-        h4: [...(attributes.h4 ?? []), "id", "class"],
-        h5: [...(attributes.h5 ?? []), "id", "class"],
-        h6: [...(attributes.h6 ?? []), "id", "class"],
+        // HAST represents HTML's `class` attribute as `className`. Retaining it
+        // preserves JLP's authored layout hooks and enables the app-owned color
+        // legend pass; executable attributes remain excluded by the schema.
+        "*": [...(attributes["*"] ?? []), "id", "className", "title"],
+        a: [...(attributes.a ?? []), "href", "target", "rel", "name", "id", "className"],
+        img: [...(attributes.img ?? []), "src", "alt", "width", "height", "loading", "decoding", "className"],
+        span: [...(attributes.span ?? []), "id", "className"],
+        div: [...(attributes.div ?? []), "id", "className"],
+        h1: [...(attributes.h1 ?? []), "id", "className"],
+        h2: [...(attributes.h2 ?? []), "id", "className"],
+        h3: [...(attributes.h3 ?? []), "id", "className"],
+        h4: [...(attributes.h4 ?? []), "id", "className"],
+        h5: [...(attributes.h5 ?? []), "id", "className"],
+        h6: [...(attributes.h6 ?? []), "id", "className"],
       },
     };
   }, []);
@@ -256,6 +384,16 @@ export default function RulesheetPage() {
     return game.rulesheetLinks.find((link) => referenceLinkProvider(link) === requestedSource)
       ?? preferredRulesheetLink(game);
   }, [game, requestedSource]);
+  const isJlpRulesheet = referenceLinkProvider(externalRulesheet) === "jlp";
+
+  useEffect(() => {
+    setJlpLegendOpen(false);
+  }, [stateKey]);
+
+  useEffect(() => {
+    if (!md || !isJlpRulesheet || !rulesheetContentRef.current) return;
+    colorizeJlpCard(rulesheetContentRef.current);
+  }, [isJlpRulesheet, md]);
 
   return (
     <div className="min-h-screen text-neutral-100" style={APP_BACKGROUND_STYLE}>
@@ -265,11 +403,11 @@ export default function RulesheetPage() {
           ← Back
         </Link>
 
-        <Panel className="mt-4 p-4 sm:p-6">
+        <Panel className={`mt-4 p-4 sm:p-6${isJlpRulesheet ? " jlp-reader-frame" : ""}`}>
           {loading ? (
             <div className="text-sm text-neutral-400">Loading rulesheet…</div>
           ) : md ? (
-            <div className="rulesheet-rich-content prose prose-invert max-w-none break-words">
+            <div ref={rulesheetContentRef} className="rulesheet-rich-content prose prose-invert max-w-none break-words">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeRaw], [rehypeSanitize, sanitizeSchema]]}
@@ -308,6 +446,13 @@ export default function RulesheetPage() {
           )}
         </Panel>
       </PageContainer>
+      {md && isJlpRulesheet && (
+        <JLPRulesheetLegend
+          open={jlpLegendOpen}
+          onOpen={() => setJlpLegendOpen(true)}
+          onClose={() => setJlpLegendOpen(false)}
+        />
+      )}
     </div>
   );
 }

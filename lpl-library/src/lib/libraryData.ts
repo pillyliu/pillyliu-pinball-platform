@@ -1262,20 +1262,22 @@ function rulesheetPreferenceOrder(link: ReferenceLink): number {
   switch (provider) {
     case "local":
       return 0;
-    case "prs":
+    case "jlp":
       return 1;
-    case "tf":
+    case "prs":
       return 2;
-    case "pinprof":
+    case "tf":
       return 3;
-    case "bob":
+    case "pinprof":
       return 4;
-    case "papa":
+    case "bob":
       return 5;
-    case "pp":
+    case "papa":
       return 6;
-    default:
+    case "pp":
       return 7;
+    default:
+      return 8;
   }
 }
 
@@ -1940,6 +1942,7 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
   if (!link) return null;
   const explicit = normalizedOptionalString(link.provider)?.toLowerCase();
   if (["pinballrulesheets", "pinball_rulesheets", "prs"].includes(explicit ?? "")) return "prs";
+  if (["pinballcards", "pinball_cards", "jlp"].includes(explicit ?? "")) return "jlp";
   if (explicit) return explicit;
   const label = link.label.toLowerCase();
   const url = normalizedOptionalString(link.url)?.toLowerCase() ?? "";
@@ -1951,6 +1954,7 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
   }
   if (label.includes("(tf)") || url.includes("tiltforums.com")) return "tf";
   if (label.includes("(prs)") || label.includes("pinball rule sheets") || host === "pinballrulesheets.com" || host === "www.pinballrulesheets.com") return "prs";
+  if (label.includes("(jlp)") || label.includes("jlp pinball card") || host === "pinballcards.net" || host === "www.pinballcards.net") return "jlp";
   if (label.includes("(pp)") || url.includes("pinballprimer.github.io") || url.includes("pinballprimer.com")) return "pp";
   if (label.includes("(papa)") || url.includes("pinball.org")) return "papa";
   if (label.includes("(bob)") || url.includes("silverballmania.com") || url.includes("flippers.be") || url.includes("bobs")) return "bob";
@@ -1961,6 +1965,8 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
 
 export function preferredRulesheetLink(game: LibraryGame): ReferenceLink | null {
   const links = game.rulesheetLinks;
+  const preferredJlp = links.find((link) => referenceLinkProvider(link) === "jlp");
+  if (preferredJlp) return preferredJlp;
   const preferredPrs = links.find((link) => referenceLinkProvider(link) === "prs");
   if (preferredPrs) return preferredPrs;
   const preferredTf = links.find((link) => referenceLinkProvider(link) === "tf");
