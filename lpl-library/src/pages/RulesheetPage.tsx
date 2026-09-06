@@ -20,6 +20,8 @@ import {
 
 async function fetchLiveRulesheet(provider: string, url: string, legacyUrl: string | null = null): Promise<string> {
   const params = new URLSearchParams({ provider, url });
+  // Refresh cached adapted cards when the reader's attribution contract changes.
+  if (provider === "jlp") params.set("renderer", "jlp-v2");
   if (legacyUrl) params.set("legacy_url", legacyUrl);
   const endpoint = `/pinball/api/rulesheet.php?${params.toString()}`;
   const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
