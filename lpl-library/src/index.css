@@ -584,7 +584,7 @@ body {
 .jlp-color-draingerous {
   padding-inline: 0;
   color: transparent;
-  background: linear-gradient(90deg, #990000 0%, #ff6600 100%);
+  background: linear-gradient(90deg, color-mix(in srgb, #cf332a 60%, var(--jlp-ink)) 0%, color-mix(in srgb, #bf5600 60%, var(--jlp-ink)) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -607,7 +607,6 @@ body {
   position: fixed;
   inset: auto auto max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   margin: 0;
-  position: relative;
   z-index: 1;
 }
 
@@ -637,6 +636,7 @@ body {
 
 .jlp-legend-panel {
   width: min(25rem, calc(100vw - 2rem));
+  height: fit-content;
   max-height: min(68vh, 38rem);
   padding: 1rem;
   overflow-y: auto;

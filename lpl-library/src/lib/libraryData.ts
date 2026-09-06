@@ -1263,7 +1263,7 @@ function rulesheetPreferenceOrder(link: ReferenceLink): number {
     case "local":
       return 0;
     case "jlp":
-      return 1;
+      return 9;
     case "prs":
       return 2;
     case "tf":
@@ -1965,13 +1965,11 @@ export function referenceLinkProvider(link: ReferenceLink | null | undefined): s
 
 export function preferredRulesheetLink(game: LibraryGame): ReferenceLink | null {
   const links = game.rulesheetLinks;
-  const preferredJlp = links.find((link) => referenceLinkProvider(link) === "jlp");
-  if (preferredJlp) return preferredJlp;
   const preferredPrs = links.find((link) => referenceLinkProvider(link) === "prs");
   if (preferredPrs) return preferredPrs;
   const preferredTf = links.find((link) => referenceLinkProvider(link) === "tf");
   if (preferredTf) return preferredTf;
-  return links[0] ?? (game.rulesheetUrl
+  return [...links].sort((a, b) => rulesheetPreferenceOrder(a) - rulesheetPreferenceOrder(b))[0] ?? (game.rulesheetUrl
     ? { label: "Rulesheet", url: game.rulesheetUrl, provider: null, localPath: null }
     : null);
 }

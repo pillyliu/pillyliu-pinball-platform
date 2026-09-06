@@ -461,7 +461,7 @@ function source_meta(string $provider): array
         'jlp' => [
             'source_name' => 'JLP Pinball Cards',
             'link_label' => 'Original card',
-            'details' => 'JLP Pinball Cards content and credited source assets are reproduced with permission.',
+            'details' => 'JLP Pinball Cards content from pinballcards.net and credited source assets are reproduced with permission.',
         ],
         'pp' => [
             'source_name' => 'Pinball Primer',

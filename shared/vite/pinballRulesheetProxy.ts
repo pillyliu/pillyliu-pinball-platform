@@ -379,7 +379,7 @@ function sourceMeta(provider: SupportedProvider): { sourceName: string; linkLabe
       return {
         sourceName: "JLP Pinball Cards",
         linkLabel: "Original card",
-        details: "JLP Pinball Cards content and credited source assets are reproduced with permission.",
+        details: "JLP Pinball Cards content from pinballcards.net and credited source assets are reproduced with permission.",
       };
     case "pp":
       return {
