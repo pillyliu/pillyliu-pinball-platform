@@ -156,6 +156,10 @@ prune_local_pinball_artifacts() {
   local target_dir="$1"
   rm -f \
     "${target_dir}/.DS_Store" \
+    "${target_dir}/data/LPL_IFPA_Players_audit.csv" \
+    "${target_dir}/data/LPL_IFPA_Players_review.csv" \
+    "${target_dir}/data/LPL_IFPA_Players_check.csv" \
+    "${target_dir}/data/LPL_IFPA_Players_check.md" \
     "${target_dir}/data/codex_missing_group_fetch_targets.json" \
     "${target_dir}/data/local_asset_intake_report.json" \
     "${target_dir}/data/opdb_catalog_v1.json" \
@@ -276,6 +280,7 @@ stage_pinball_payload() {
     "${PINBALL_STAGE_DIR}/pinball/field-guide" \
     --exclude='.gitkeep' \
     --exclude='.DS_Store' \
+    --exclude='cache/' \
     --exclude='state/' \
     --exclude='overlays/active/' \
     --exclude='overlays/history/' \
@@ -543,6 +548,14 @@ publish_pinball_to_r2() {
   fi
 
   echo "Publishing static pinball objects to R2 (${remote_path})..."
+  # Older deploys copied local IFPA review records; remove only those named files.
+  "${RCLONE_BIN}" delete "${remote_path}/data/" \
+    "${transfer_options[@]}" \
+    --max-depth 1 \
+    --include '/LPL_IFPA_Players_audit.csv' \
+    --include '/LPL_IFPA_Players_review.csv' \
+    --include '/LPL_IFPA_Players_check.csv' \
+    --include '/LPL_IFPA_Players_check.md'
   "${RCLONE_BIN}" copy \
     "${source_dir}/" \
     "${remote_path}/" \

@@ -29,7 +29,7 @@ async function writeRequiredCatalog(sourceDir) {
   }
 }
 
-test("builds the atomic catalog/content cohort and excludes private API files", async (context) => {
+test("builds the atomic catalog/content cohort and excludes local maintenance files and caches", async (context) => {
   const sourceDir = await fs.mkdtemp(path.join(os.tmpdir(), "pinprof-manifest-test-"));
   context.after(() => fs.rm(sourceDir, { recursive: true, force: true }));
   await writeRequiredCatalog(sourceDir);
@@ -38,6 +38,17 @@ test("builds the atomic catalog/content cohort and excludes private API files", 
   await fs.writeFile(path.join(sourceDir, "api", "rulesheet.php"), "<?php\n");
   await fs.writeFile(path.join(sourceDir, "api", "_lib", "broker.php"), "<?php\n");
   await fs.writeFile(path.join(sourceDir, "images", "playfields", "example.webp"), "image");
+  await fs.mkdir(path.join(sourceDir, "field-guide", "cache", "derived-assets-v1"), { recursive: true });
+  await fs.writeFile(path.join(sourceDir, "field-guide", "cache", "derived-assets-v1", "example.json"), "{}");
+  const localIfpaFiles = [
+    "LPL_IFPA_Players_audit.csv",
+    "LPL_IFPA_Players_review.csv",
+    "LPL_IFPA_Players_check.csv",
+    "LPL_IFPA_Players_check.md",
+  ];
+  for (const name of localIfpaFiles) {
+    await fs.writeFile(path.join(sourceDir, "data", name), "local maintenance only\n");
+  }
 
   const summary = await buildPinballManifest({ sourceDir });
   const manifest = JSON.parse(
@@ -61,6 +72,10 @@ test("builds the atomic catalog/content cohort and excludes private API files", 
   assert.equal(cohort.revision, canonicalRevision);
   assert.deepEqual(manifest.mirrors, ["https://data.pinprof.com", "https://pillyliu.com"]);
   assert.equal(Object.keys(manifest.files).some((key) => key.startsWith("/pinball/api/")), false);
+  assert.equal(Object.keys(manifest.files).some((key) => key.startsWith("/pinball/field-guide/cache/")), false);
+  for (const name of localIfpaFiles) {
+    assert.equal(manifest.files[`/pinball/data/${name}`], undefined);
+  }
 
   for (const file of cohort.files) {
     assert.match(file.contentPath, /^\/pinball\/objects\/sha256\/[a-f0-9]{64}\//);
