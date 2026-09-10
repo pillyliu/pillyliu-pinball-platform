@@ -518,7 +518,9 @@ publish_pinball_to_r2() {
 
   local source_dir="${PINBALL_STAGE_DIR}/pinball"
   local remote_path="${R2_RCLONE_REMOTE}:${R2_BUCKET}/${R2_PINBALL_PREFIX}"
+  # Avoid timestamp-only S3 copies that can discard existing HTTP cache metadata.
   local transfer_options=(
+    --checksum
     --fast-list
     --transfers 8
     --checkers 16

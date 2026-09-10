@@ -38,9 +38,11 @@ bucket credential is unavailable.
 ./deploy.sh
 ```
 
-The R2 step uses `rclone copy`, so ordinary deploys add or replace changed
-objects without deleting older destination objects. This is intentional while
-the mirror is new and R2 has no native bucket version history.
+The R2 step uses `rclone copy --checksum`, so ordinary deploys add or replace
+changed objects without deleting older destination objects. Checksum comparison
+also avoids timestamp-only server-side copies of unchanged content, which can
+discard HTTP cache metadata. Retaining older objects is intentional while the
+mirror is new and R2 has no native bucket version history.
 
 The publish order is:
 
