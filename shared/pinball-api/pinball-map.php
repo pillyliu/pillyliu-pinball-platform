@@ -4,6 +4,7 @@ declare(strict_types=1);
 use PinProf\PinballMap\BrokerProblem;
 use PinProf\PinballMap\BrokerService;
 use PinProf\PinballMap\CatalogCache;
+use PinProf\PinballMap\ResponseCache;
 use PinProf\PinballMap\CurlProviderClient;
 use PinProf\PinballMap\FileRateLimiter;
 
@@ -60,6 +61,8 @@ $surface = null;
 $responseStatus = 500;
 $errorCode = null;
 $config = null;
+$upstream = null;
+$provider = null;
 
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store, max-age=0');
@@ -132,7 +135,8 @@ try {
     };
     $rateLimiter->enforce('client-' . ($action ?? 'invalid'), $identity, $perActionLimit, 60);
 
-    $provider = new CurlProviderClient((string) $config['api_token'], $rateLimiter);
+    $upstream = new CurlProviderClient((string) $config['api_token'], $rateLimiter);
+    $provider = new ResponseCache($upstream, rtrim((string)$config['cache_dir'], '/') . '/responses-v1');
     $catalog = new CatalogCache(
         $provider,
         (string) $config['cache_dir'],
@@ -188,6 +192,8 @@ try {
             'surface' => $surface,
             'status' => $responseStatus,
             'errorCode' => $errorCode,
+            'upstreamRequestCount' => $upstream?->requestCount ?? 0,
+            'cache' => $provider?->metadata === null ? null : array_diff_key($provider->metadata, array_flip(['anchorLatitude', 'anchorLongitude'])),
             'durationMs' => (int) round((microtime(true) - $startedAt) * 1_000),
         ]);
     }

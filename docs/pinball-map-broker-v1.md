@@ -190,7 +190,13 @@ The private catalog cache is `machines-v2.json`, outside both document roots:
 - At most three missing IDs use filtered `machines.json?id=...` refreshes; more than three trigger one full refresh.
 - Missing/null OPDB IDs stay unresolved.
 
-No search result or venue roster is written to this cache. Clients may keep their existing last-known offline Library lineup, but each user-triggered import/refresh must request a live roster first.
+Venue/search responses are persisted separately in `responses-v1/` for 48 hours. Nearest-venue searches with the same upstream parameters share an original coordinate anchor within 50 metres. Radius searches retain exact coordinates and radius to avoid dropping venues at a moved circle boundary. Address searches retain their address and radius; rosters are keyed by venue ID. Raw responses retain the games returned by Pinball Map. This is incomplete, demand-driven coverage, not an authoritative venue directory.
+
+A short registry lock selects an anchor, then a per-entry lock owns the refresh. Unrelated entries do not wait on network work. Cold duplicates wait up to eight seconds; each upstream call has a six-second timeout and no automatic duplicate retry. During refresh, other callers may receive saved stale evidence immediately. Refresh failure retains the last successful response and starts a shared cooldown of at least 30 seconds (or the provider Retry-After). Successful empty responses replace the current answer. No scheduled bulk refresh occurs, and expiry never deletes saved responses.
+
+`provenance.cache` includes `status`, `fetchedAt`, `expiresAt`, `stale`, `reuseDistanceMeters`, and original anchor coordinates when applicable. Venue distance is recalculated for each caller. `retrievedAt` preserves the upstream fetch time. Existing response fields remain compatible; `rosterFreshness` may now be `cached` or `stale`.
+
+Sanitized request logs include cache status, original fetch/expiry, reuse distance, app surface/action, and actual upstream request count (including catalog fetches). Tokens, raw addresses, and coordinates are excluded from logs; private response storage contains query anchors for cache matching. The two apps persist broker responses and preserve broker expiry/anchors, coalesce matching requests, and retain stale offline fallback.
 
 ## Validation
 

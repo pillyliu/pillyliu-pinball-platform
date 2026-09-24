@@ -90,6 +90,7 @@ final class FileRateLimiter
 
 final class CurlProviderClient implements ProviderClient
 {
+    public int $requestCount = 0;
     public function __construct(
         private readonly string $apiToken,
         private readonly ?FileRateLimiter $rateLimiter = null,
@@ -108,22 +109,9 @@ final class CurlProviderClient implements ProviderClient
 
         $query['api_token'] = $this->apiToken;
         $url = rtrim($this->baseUrl, '/') . '/' . ltrim($path, '/') . '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986);
-        $lastProblem = null;
-
-        for ($attempt = 0; $attempt < 2; $attempt++) {
-            try {
-                $this->rateLimiter?->enforce('provider-global', 'shared-token', 90, 60);
-                return $this->perform($url, $maxBytes, $timeoutSeconds);
-            } catch (BrokerProblem $problem) {
-                $lastProblem = $problem;
-                if (!$problem->retryable || $problem->httpStatus === 429 || $attempt > 0) {
-                    throw $problem;
-                }
-                usleep(100_000);
-            }
-        }
-
-        throw $lastProblem ?? new BrokerProblem('UPSTREAM_UNAVAILABLE', 502, 'Pinball Map is temporarily unavailable.', true);
+        $this->rateLimiter?->enforce('provider-global', 'shared-token', 90, 60);
+        $this->requestCount++;
+        return $this->perform($url, $maxBytes, $timeoutSeconds);
     }
 
     /** @return array<string, mixed> */
@@ -862,6 +850,12 @@ final class BrokerService
         if ($catalogMetadata !== null) {
             $provenance['catalog'] = $catalogMetadata;
         }
+        if ($this->provider instanceof ResponseCache && $this->provider->metadata !== null) {
+            $cache = $this->provider->metadata;
+            $provenance['cache'] = $cache;
+            $provenance['retrievedAt'] = $cache['fetchedAt'];
+            $provenance['rosterFreshness'] = $cache['stale'] ? 'stale' : ($cache['status'] === 'miss' ? $rosterFreshness : 'cached');
+        }
         return ['data' => $data, 'provenance' => $provenance];
     }
 
@@ -1001,4 +995,134 @@ function mapped_opdb_ids(array $machines): array
         }
     }
     return $ids;
+}
+
+/** Persistent provider responses. Registry locks only select anchors; network work owns a per-entry lock. */
+final class ResponseCache implements ProviderClient
+{
+    public ?array $metadata = null;
+    public function __construct(
+        private readonly ProviderClient $provider,
+        private readonly string $directory,
+        private readonly ?Closure $clock = null,
+        private readonly int $ttl = 172800,
+        private readonly float $waitSeconds = 8.0,
+    ) { ensure_private_directory($directory); }
+
+    public function get(string $path, array $query, int $maxBytes = 6_000_000, int $timeoutSeconds = 10): array
+    {
+        if ($path === 'machines.json') { return $this->provider->get($path, $query, $maxBytes, $timeoutSeconds); }
+        [$key, $anchor, $distance] = $this->selectAnchor($path, $query);
+        $file = $this->directory . '/' . $key . '.json';
+        $record = $this->read($file);
+        $now = $this->now();
+        if (isset($record['response']) && $record['fetchedAt'] + $this->ttl > $now) {
+            return $this->answer($record, $query, $anchor, $distance, 'hit');
+        }
+        $lock = fopen($this->directory . '/' . $key . '.lock', 'c');
+        if ($lock === false) { throw new BrokerProblem('CACHE_UNAVAILABLE', 503, 'Venue cache is temporarily unavailable.', true, 30); }
+        $deadline = microtime(true) + $this->waitSeconds;
+        try {
+            while (!flock($lock, LOCK_EX | LOCK_NB)) {
+                $record = $this->read($file);
+                if (isset($record['response'])) { return $this->answer($record, $query, $anchor, $distance, 'shared'); }
+                if (microtime(true) >= $deadline) { throw new BrokerProblem('LOOKUP_PENDING', 503, 'Venue lookup is still running.', true, 2); }
+                usleep(20_000);
+            }
+            // Another worker may have completed the refresh while we acquired the lock.
+            $record = $this->read($file);
+            if (isset($record['response']) && $record['fetchedAt'] + $this->ttl > $this->now()) {
+                return $this->answer($record, $query, $anchor, $distance, 'shared');
+            }
+            if (($record['retryAt'] ?? 0) > $this->now()) {
+                if (isset($record['response'])) { return $this->answer($record, $query, $anchor, $distance, 'cooldown'); }
+                throw new BrokerProblem('UPSTREAM_COOLDOWN', 503, 'Venue lookup is temporarily unavailable.', true, max(1, $record['retryAt'] - $this->now()));
+            }
+            try {
+                // Refresh the original anchor, never drift the meaning of an existing entry.
+                $response = $this->provider->get($path, $anchor, $maxBytes, min(6, $timeoutSeconds));
+                $this->validateResponse($path, $response);
+                $record = ['response' => $response, 'fetchedAt' => $this->now(), 'retryAt' => 0];
+                $this->write($file, $record);
+                return $this->answer($record, $query, $anchor, $distance, 'miss');
+            } catch (BrokerProblem $error) {
+                $record['retryAt'] = $this->now() + max(30, $error->retryAfterSeconds ?? 0);
+                $this->write($file, $record);
+                if (isset($record['response'])) { return $this->answer($record, $query, $anchor, $distance, 'stale_error'); }
+                throw $error;
+            }
+        } finally { flock($lock, LOCK_UN); fclose($lock); }
+    }
+
+    private function selectAnchor(string $path, array $query): array
+    {
+        ksort($query);
+        $spatial = isset($query['lat'], $query['lon']) && !isset($query['send_all_within_distance']);
+        // Radius searches keep exact coordinates: moving a circle can omit venues at its boundary.
+        $parameters = $query;
+        if ($spatial) { unset($parameters['lat'], $parameters['lon']); }
+        $group = hash('sha256', $path . json_encode($parameters));
+        $registry = $this->directory . '/' . $group . '.anchors';
+        $handle = fopen($registry . '.lock', 'c');
+        if ($handle === false || !flock($handle, LOCK_EX)) { throw new BrokerProblem('CACHE_UNAVAILABLE', 503, 'Venue cache is temporarily unavailable.', true, 30); }
+        try {
+            $anchors = $this->read($registry);
+            $best = null;
+            foreach ($anchors as $key => $anchor) {
+                $distance = $spatial ? self::metres((float)$query['lat'], (float)$query['lon'], (float)$anchor['lat'], (float)$anchor['lon']) : 0.0;
+                if ($distance <= 50 && ($best === null || $distance < $best[2])) { $best = [$key, $anchor, $distance]; }
+            }
+            if ($best !== null) { return $best; }
+            $key = hash('sha256', $path . json_encode($query));
+            $anchors[$key] = $query;
+            $this->write($registry, $anchors);
+            return [$key, $query, 0.0];
+        } finally { flock($handle, LOCK_UN); fclose($handle); }
+    }
+
+    private function answer(array $record, array $query, array $anchor, float $distance, string $status): array
+    {
+        $this->metadata = [
+            'status' => $status, 'fetchedAt' => gmdate('c', $record['fetchedAt']),
+            'expiresAt' => gmdate('c', $record['fetchedAt'] + $this->ttl),
+            'stale' => $record['fetchedAt'] + $this->ttl <= $this->now(),
+            'reuseDistanceMeters' => round($distance, 2),
+            'anchorLatitude' => isset($anchor['lat']) ? (float)$anchor['lat'] : null,
+            'anchorLongitude' => isset($anchor['lon']) ? (float)$anchor['lon'] : null,
+        ];
+        $response = $record['response'];
+        if (isset($query['lat'], $query['lon']) && isset($response['location']) && is_array($response['location'])) {
+            $venue = &$response['location'];
+            if (is_numeric($venue['lat'] ?? null) && is_numeric($venue['lon'] ?? null)) {
+                $venue['distance'] = self::metres((float)$query['lat'], (float)$query['lon'], (float)$venue['lat'], (float)$venue['lon']) / 1609.344;
+            } elseif ($distance > 0) { $venue['distance'] = null; }
+        }
+        return $response;
+    }
+
+    private function validateResponse(string $path, array $response): void
+    {
+        $valid = str_contains($path, 'closest_by_')
+            ? (array_key_exists('location', $response) || isset($response['locations']))
+            : (isset($response['id']) && isset($response['location_machine_xrefs']) && is_array($response['location_machine_xrefs']));
+        if (!$valid) { throw new BrokerProblem('UPSTREAM_INVALID_RESPONSE', 502, 'Pinball Map returned incomplete venue data.', true); }
+    }
+
+    public static function metres(float $lat1, float $lon1, float $lat2, float $lon2): float
+    {
+        $a = sin(deg2rad($lat2 - $lat1) / 2) ** 2 + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin(deg2rad($lon2 - $lon1) / 2) ** 2;
+        return 6371000 * 2 * asin(sqrt(min(1, max(0, $a))));
+    }
+    private function now(): int { return $this->clock ? ($this->clock)() : time(); }
+    private function read(string $file): array { return is_file($file) ? (json_decode((string)file_get_contents($file), true) ?: []) : []; }
+    private function write(string $file, array $data): void
+    {
+        $temp = tempnam($this->directory, 'pending-');
+        try {
+            if ($temp === false || file_put_contents($temp, json_encode($data, JSON_THROW_ON_ERROR), LOCK_EX) === false || !rename($temp, $file)) {
+                throw new RuntimeException('Unable to save venue cache.');
+            }
+            chmod($file, 0640);
+        } finally { if ($temp !== false && is_file($temp)) { unlink($temp); } }
+    }
 }

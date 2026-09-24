@@ -386,6 +386,123 @@ $tests['file rate limiter is shared and bounded'] = static function (): void {
     }
 };
 
+$tests['response cache reuses anchored nearest searches, expires, and retains stale evidence'] = static function (): void {
+    $directories = make_test_directories();
+    $now = 1000000;
+    $fail = false;
+    $provider = new FakeProvider(static function () use (&$fail): array {
+        if ($fail) { throw new BrokerProblem('UPSTREAM_TIMEOUT', 504, 'Timeout', true); }
+        return ['location' => ['id' => 1, 'lat' => 42.0, 'lon' => -84.0, 'distance' => 0, 'machine_ids' => [1]]];
+    });
+    try {
+        $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache'], static function () use (&$now): int { return $now; });
+        $path = 'locations/closest_by_lat_lon.json';
+        $query = ['lat' => '42', 'lon' => '-84', 'no_details' => 1];
+        $cache->get($path, $query);
+        $expires = $cache->metadata['expiresAt'];
+        $moved = $cache->get($path, [...$query, 'lat' => '42.0004']);
+        assert_same(1, count($provider->calls), 'Nearby requests duplicated upstream.');
+        assert_true($moved['location']['distance'] > 0, 'Venue distance not recalculated.');
+        assert_same($expires, $cache->metadata['expiresAt'], 'Expiry was extended on a hit.');
+        $cache->get($path, [...$query, 'lat' => '42.0008']);
+        assert_same(2, count($provider->calls), 'Anchor drift reused a distant answer.');
+        $now += 172800;
+        $fail = true;
+        $cache->get($path, $query);
+        assert_true($cache->metadata['stale'], 'Expired fallback not marked stale.');
+        $cache->get($path, $query);
+        assert_same(3, count($provider->calls), 'Failure cooldown did not prevent another request.');
+        $now += 31; $fail = false;
+        $cache->get($path, $query);
+        assert_same(4, count($provider->calls), 'Expired entry not refreshed.');
+        assert_true(!$cache->metadata['stale'], 'Successful refresh remains stale.');
+        $restored = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache'], static function () use (&$now): int { return $now; });
+        $restored->get($path, $query);
+        assert_same(4, count($provider->calls), 'Cache was not persistent.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
+$tests['response cache separates search parameters and preserves successful empty results'] = static function (): void {
+    $directories = make_test_directories();
+    $provider = new FakeProvider(static fn (): array => ['location' => null]);
+    try {
+        $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache']);
+        $query = ['lat' => '42', 'lon' => '-84', 'no_details' => 1];
+        $path = 'locations/closest_by_lat_lon.json';
+        $cache->get($path, $query); $cache->get($path, $query);
+        assert_same(1, count($provider->calls), 'Empty answer not cached.');
+        $cache->get($path, [...$query, 'max_distance' => 1]);
+        $cache->get($path, [...$query, 'send_all_within_distance' => 'true', 'max_distance' => 1]);
+        $cache->get($path, [...$query, 'lat' => '42.0001', 'send_all_within_distance' => 'true', 'max_distance' => 1]);
+        assert_same(4, count($provider->calls), 'Different search semantics shared a result.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
+$tests['simultaneous nearby cold requests make one upstream call'] = static function (): void {
+    if (!function_exists('pcntl_fork')) { throw new RuntimeException('pcntl required for concurrency verification'); }
+    $directories = make_test_directories();
+    try {
+        $calls = $directories['root'] . '/calls';
+        $provider = new FakeProvider(static function () use ($calls): array {
+            file_put_contents($calls, "call\n", FILE_APPEND | LOCK_EX); usleep(200000);
+            return ['location' => null];
+        });
+        $children = [];
+        for ($i = 0; $i < 8; $i++) {
+            $pid = pcntl_fork();
+            if ($pid === 0) {
+                $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache']);
+                $cache->get('locations/closest_by_lat_lon.json', ['lat' => 42 + $i * 0.00001, 'lon' => -84, 'no_details' => 1]);
+                exit(0);
+            }
+            $children[] = $pid;
+        }
+        foreach ($children as $pid) { pcntl_waitpid($pid, $status); assert_same(0, pcntl_wexitstatus($status), 'Worker failed.'); }
+        assert_same(1, count(file($calls)), 'Duplicate concurrent upstream requests.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
+$tests['expired refresh shares stale results without blocking unrelated venues'] = static function (): void {
+    $directories = make_test_directories();
+    try {
+        $now = 1000000; $calls = 0; $cache = null;
+        $query = ['lat' => 42, 'lon' => -84, 'no_details' => 1];
+        $path = 'locations/closest_by_lat_lon.json';
+        $provider = new FakeProvider(static function ($path, $input) use (&$cache, &$calls, $query): array {
+            $calls++;
+            if ($calls === 2) {
+                $saved = $cache->get($path, $query);
+                assert_true($cache->metadata['stale'], 'Concurrent caller did not receive stale evidence.');
+                assert_same(1, $saved['location']['id'], 'Saved answer changed before refresh completed.');
+                $cache->get($path, [...$query, 'lat' => 43]);
+            }
+            return ['location' => ['id' => 1, 'lat' => $input['lat'], 'lon' => $input['lon']]];
+        });
+        $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache'], static function () use (&$now): int { return $now; });
+        $cache->get($path, $query); $now += 172800;
+        $cache->get($path, $query);
+        assert_same(3, $calls, 'Stale or unrelated request handling duplicated or blocked upstream.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
+$tests['cold failures share cooldown and waiting is bounded'] = static function (): void {
+    $directories = make_test_directories();
+    try {
+        $cache = null; $calls = 0;
+        $query = ['lat' => 42, 'lon' => -84, 'no_details' => 1];
+        $path = 'locations/closest_by_lat_lon.json';
+        $provider = new FakeProvider(static function ($path, $input) use (&$cache, &$calls, $query): array {
+            $calls++;
+            assert_throws(BrokerProblem::class, static fn () => $cache->get($path, $query), 'LOOKUP_PENDING');
+            throw new BrokerProblem('UPSTREAM_TIMEOUT', 504, 'Timeout', true);
+        });
+        $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache'], null, 172800, 0.03);
+        assert_throws(BrokerProblem::class, static fn () => $cache->get($path, $query), 'UPSTREAM_TIMEOUT');
+        assert_throws(BrokerProblem::class, static fn () => $cache->get($path, $query), 'UPSTREAM_COOLDOWN');
+        assert_same(1, $calls, 'Cold failure immediately retried upstream.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
 $failures = 0;
 foreach ($tests as $name => $test) {
     try {
