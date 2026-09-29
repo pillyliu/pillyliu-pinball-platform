@@ -1041,6 +1041,7 @@ final class ResponseCache implements ProviderClient
             try {
                 // Refresh the original anchor, never drift the meaning of an existing entry.
                 $response = $this->provider->get($path, $anchor, $maxBytes, min(6, $timeoutSeconds));
+                $response = $this->normalizeEmptyCoordinateSearch($path, $anchor, $response);
                 $this->validateResponse($path, $response);
                 $record = ['response' => $response, 'fetchedAt' => $this->now(), 'retryAt' => 0];
                 $this->write($file, $record);
@@ -1096,6 +1097,21 @@ final class ResponseCache implements ProviderClient
             if (is_numeric($venue['lat'] ?? null) && is_numeric($venue['lon'] ?? null)) {
                 $venue['distance'] = self::metres((float)$query['lat'], (float)$query['lon'], (float)$venue['lat'], (float)$venue['lon']) / 1609.344;
             } elseif ($distance > 0) { $venue['distance'] = null; }
+        }
+        return $response;
+    }
+
+    private function normalizeEmptyCoordinateSearch(string $path, array $query, array $response): array
+    {
+        // Pinball Map's closest_by_lat_lon action returns HTTP 200 with this
+        // errors string when the radius contains no venues. Accept only that
+        // documented empty result; other provider errors must remain failures.
+        if ($path === 'locations/closest_by_lat_lon.json'
+            && is_string($response['errors'] ?? null)
+            && preg_match('/\ANo locations within [0-9]+ miles\.\z/', $response['errors']) === 1
+            && !array_key_exists('location', $response)
+            && !array_key_exists('locations', $response)) {
+            return isset($query['send_all_within_distance']) ? ['locations' => []] : ['location' => null];
         }
         return $response;
     }

@@ -438,6 +438,48 @@ $tests['response cache separates search parameters and preserves successful empt
     } finally { remove_test_directory($directories['root']); }
 };
 
+$tests['provider no-location message is a cached successful empty result for all coordinate actions'] = static function (): void {
+    $directories = make_test_directories();
+    $provider = new FakeProvider(static fn (string $path, array $query): array => [
+        'errors' => 'No locations within ' . ($query['max_distance'] ?? 50) . ' miles.',
+    ]);
+    try {
+        $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache'] . '/responses');
+        $catalog = new CatalogCache($provider, $directories['cache'], $directories['locks']);
+        $service = new BrokerService($cache, $catalog);
+        foreach (['search_coordinates', 'nearest_location_roster', 'vision_nearby'] as $action) {
+            $input = ['latitude' => 33.0997745, 'longitude' => -96.8180769];
+            if ($action === 'search_coordinates') { $input['radiusMiles'] = 1; }
+            if ($action === 'nearest_location_roster') { $input['maxDistanceMiles'] = 1; }
+            $payload = ['schemaVersion' => 1, 'action' => $action, 'input' => $input, 'client' => ['surface' => 'test']];
+            $first = $service->handle($payload);
+            $second = $service->handle($payload);
+            assert_same($first['data'], $second['data'], 'Cached empty result changed.');
+            if ($action === 'search_coordinates') {
+                assert_same([], $first['data']['locations'], 'Nearby search must succeed with no venues.');
+            } else {
+                assert_same(null, $first['data']['location'], 'Nearest search must succeed with no venue.');
+                assert_same([], $first['data']['machines'], 'No venue must not trigger roster/catalog requests.');
+            }
+            if ($action === 'vision_nearby') {
+                assert_same('no_nearby_location', $first['data']['status'], 'Vision must report no nearby venue.');
+            }
+        }
+        assert_same(3, count($provider->calls), 'Empty results must be cached independently without fetching a catalog.');
+    } finally { remove_test_directory($directories['root']); }
+};
+
+$tests['unknown provider errors remain failures rather than empty venues'] = static function (): void {
+    foreach (['Invalid coordinates.', ['No locations within 1 miles.'], 'No locations within 1 miles. Please retry.'] as $message) {
+        $directories = make_test_directories();
+        try {
+            $provider = new FakeProvider(static fn (): array => ['errors' => $message]);
+            $cache = new \PinProf\PinballMap\ResponseCache($provider, $directories['cache']);
+            assert_throws(BrokerProblem::class, static fn () => $cache->get('locations/closest_by_lat_lon.json', ['lat' => 42, 'lon' => -84]), 'UPSTREAM_INVALID_RESPONSE');
+        } finally { remove_test_directory($directories['root']); }
+    }
+};
+
 $tests['simultaneous nearby cold requests make one upstream call'] = static function (): void {
     if (!function_exists('pcntl_fork')) { throw new RuntimeException('pcntl required for concurrency verification'); }
     $directories = make_test_directories();
