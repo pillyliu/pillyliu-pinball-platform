@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PinProf Privacy Policy</title>
+  <title>PinProf and PinProf Field Guide Privacy Policy</title>
   <style>
     :root { color-scheme: light dark; }
     body {
@@ -34,124 +34,69 @@
 </head>
 <body>
   <main>
-    <h1>PinProf Privacy Policy</h1>
-    <p class="meta"><strong>Effective date:</strong> May 17, 2026</p>
+    <h1>PinProf and PinProf Field Guide Privacy Policy</h1>
+    <p class="meta"><strong>Effective date:</strong> October 5, 2026</p>
 
     <div class="card">
-      <p>
-        PinProf ("the App") is provided by Peter Liu ("I," "me," "my").
-        This Privacy Policy explains what information the App processes and how it is used.
-      </p>
+      <p>PinProf and PinProf Field Guide are provided by Peter Liu. This policy covers both apps on iOS and Android. Some features are available only in one app; those differences are explained below.</p>
 
-      <h2>1. Information Collected</h2>
-      <p>
-        The App is designed to work without account sign-in and does not require you to provide personal
-        information to use core features.
-      </p>
-      <p>The App may process:</p>
+      <h2>1. PinProf Field Guide</h2>
+      <p>Field Guide works without an account. Photos, recognized game names and scores, field notes, audio notes, saved venue information, progress, and settings are stored on your device. Photo recognition and score reading run on your device. Field Guide does not upload your photos or audio notes to PinProf for recognition or storage.</p>
+      <p>Field Guide does not use PostHog product analytics or the optional Supabase Cloud Sync feature described below for the original PinProf app.</p>
+
+      <h2>2. Permissions and photo metadata</h2>
       <ul>
-        <li>League and game content files downloaded from the app data source (standings, stats, targets, machine info, rulesheets, images)</li>
-        <li>Information you choose to save in the App, such as practice history, goals, GameRoom records, settings, and local notes</li>
-        <li>Optional Cloud Sync account and sync data, if you choose to sign in and use Cloud Sync</li>
-        <li>Anonymous product analytics, unless you turn analytics off in Settings</li>
-        <li>Current location or venue search text when you choose to search for nearby venues</li>
-        <li>Basic technical request data handled by your device/network stack when fetching remote content (for example, IP address at the network level)</li>
+        <li><strong>Camera:</strong> used when you take a field photo or use an available AR photo feature.</li>
+        <li><strong>Photos:</strong> used to browse and import photos you select, read available capture dates and location metadata, or save a photo to your library. The scope of access depends on the permission you grant and your operating system.</li>
+        <li><strong>Location:</strong> used to suggest nearby Pinball Map venues for a field photo or venue lookup. Imported photo location metadata may also be used to suggest a venue. This can include precise coordinates when available. Background location access is not requested.</li>
+        <li><strong>Microphone:</strong> used when you choose to record an audio note. Listening to narration or existing audio does not require microphone access.</li>
       </ul>
-      <p>No sensitive personal information is intentionally collected through in-app forms.</p>
+      <p>You can change these permissions in your device settings. Denying a permission limits the related feature; you can still browse the guide and use features that do not need that permission. Location permission is optional. Less accurate or unavailable location may prevent an automatic venue suggestion.</p>
 
-      <h2>2. How Information Is Used</h2>
-      <p>Data is used to:</p>
-      <ul>
-        <li>Display league standings, stats, targets, and machine library content</li>
-        <li>Save your app data, preferences, and progress on your device</li>
-        <li>Sync supported text data across your signed-in devices when you choose to use Cloud Sync</li>
-        <li>Find nearby venues when you choose to use current-location venue search</li>
-        <li>Understand which screens and features are used so the App can be improved and debugged</li>
-        <li>Cache content locally for performance and offline-friendly behavior</li>
-        <li>Refresh content metadata and updates</li>
-      </ul>
+      <h2>3. The original PinProf app</h2>
+      <p>The original PinProf app stores downloaded league and game content, practice history, goals, GameRoom records, local notes, and settings on your device. Core features do not require account sign-in.</p>
+      <p>If you choose Cloud Sync, Supabase processes your account email, sign-in information, supported synced text data, and device or sync metadata. Photos, videos, camera images, OCR images, and local media files are not part of the current Cloud Sync feature.</p>
+      <p>The original PinProf app may use PostHog for product analytics. You can turn analytics off in its settings. Events describe product use, such as screens viewed, controls used, app lifecycle events, and time spent on a screen. They are not intended to include typed text, scores, OCR text or images, IFPA or PRPA IDs, email addresses, sign-in codes, names, notes, import files, media files, or file paths. Session replay and screen recording analytics are not enabled.</p>
 
-      <h2>3. Data Storage</h2>
-      <p>
-        The App stores downloaded content files and user-created app data on your device to support local-first use.
-      </p>
-      <ul>
-        <li>Cache data can be cleared by uninstalling/reinstalling the App</li>
-        <li>Cloud Sync is optional and only applies when you choose to sign in and use it</li>
-        <li>Cloud Sync is intended for supported text data. Photos, videos, camera images, OCR images, and local media files are not synced in the current Cloud Sync version.</li>
-      </ul>
+      <h2>4. Venue lookups and network requests</h2>
+      <p>Venue features are powered by Pinball Map. When you use a nearby-venue feature or search by address, the app sends coordinates or search text to a secure PinProf.com endpoint. That endpoint requests results from Pinball Map. Coordinates may come from your device location or a photo's location metadata. The photo itself is not sent with that lookup.</p>
+      <p>The venue service caches lookup parameters and results. Cache anchors can include precise coordinates or address search text, without an app account identifier attached. Results normally refresh after 48 hours, but that refresh interval is not a deletion deadline: cache entries can remain until replaced or removed during maintenance. The service is designed not to write typed addresses or precise coordinates to application logs.</p>
+      <p>Hosting and content services receive technical request information such as an IP address, request time, requested resource, and network or device information. Security controls may use a derived network identifier to limit requests. Technical information may be retained in server logs or security records to operate and protect the services.</p>
 
-      <h2>4. Analytics, Tracking, and Advertising</h2>
-      <p>
-        The App may use PostHog for product analytics. Analytics are used to understand and debug the App, not for advertising.
-        Analytics can be turned off in Settings.
-      </p>
+      <h2>5. Third-party content and links</h2>
+      <p>The apps download game data, rulesheets, images, and other reference content. Field Guide may request YouTube video titles or thumbnails to display a video link. Video playback opens in YouTube or your browser. External services receive the network information needed for those requests and apply their own privacy policies.</p>
+      <p>Relevant providers include <a href="https://pinballmap.com/privacy">Pinball Map</a>, <a href="https://policies.google.com/privacy">Google and YouTube</a>, and, for the original PinProf app's optional services, <a href="https://supabase.com/privacy">Supabase</a> and <a href="https://posthog.com/privacy">PostHog</a>.</p>
+
+      <h2>6. Storage, exports, and deletion</h2>
+      <p>Local app data remains on your device until you delete it in the app, clear app data where supported, or uninstall the app. Your operating system may include some app data in a device backup according to its settings. Field Guide's Android app disables app backup.</p>
+      <p>When you export or share a field photo, audio note, or other file, the destination you choose receives that file and its included metadata. Copies saved to Photos, Files, another app, a cloud drive, or a backup are managed separately and are not removed by deleting the original field note or uninstalling the app.</p>
+      <p>For account, synced-data, or server-data deletion questions, contact the email below. Some server cache records are not tied to an identifiable account, so we may need details of the lookup to find the relevant record. Please do not send passwords or unnecessary personal information.</p>
+
+      <h2>7. Advertising and sharing</h2>
+      <p>We do not sell user data or use third-party advertising SDKs in the apps. We do not track you across apps or websites for targeted advertising.</p>
+      <p>Information is processed by hosting and content providers and, when you use the relevant features, Pinball Map, YouTube, Supabase, or PostHog. We do not provide user data to advertisers or data brokers. Information may also be disclosed when legally required.</p>
+
+      <h2>8. Your choices</h2>
       <ul>
-        <li>No third-party advertising SDKs are used in the App</li>
-        <li>No cross-app tracking is used for targeted advertising</li>
-        <li>Analytics events are explicit named product events, such as screens viewed, buttons or dropdowns used, feature sections opened, app lifecycle events, and time spent on a screen or rulesheet</li>
-        <li>Analytics events do not intentionally include typed values, score values, OCR text, OCR images, IFPA or PRPA IDs, email addresses, auth codes, names, notes, import files, media files, or file paths</li>
-        <li>Session replay, wireframe replay, and screen recording analytics are not enabled for the 3.6.2 release</li>
+        <li>Control camera, photo, location, and microphone access in device settings.</li>
+        <li>Use Field Guide without location access or audio recording.</li>
+        <li>Delete local notes and manage exported copies separately.</li>
+        <li>Turn off analytics in the original PinProf app and choose whether to use Cloud Sync.</li>
+        <li>Choose whether to open external links or share files.</li>
+        <li>Contact us about access or deletion of information held by our services.</li>
       </ul>
 
-      <h2>5. Optional Cloud Sync</h2>
-      <p>
-        If you choose to use Cloud Sync, the App may use Supabase to operate account sign-in and sync.
-        Cloud Sync may process your account email, sign-in code flow, supported synced text data, device/sync metadata, and related support diagnostics.
-      </p>
-      <p>Cloud Sync is optional. The App remains local-first and usable without Cloud Sync.</p>
+      <h2>9. Children's privacy</h2>
+      <p>The apps are not directed to children under 13. We do not knowingly collect personal information from children under 13. Contact us if you believe such information has been provided so we can address it.</p>
 
-      <h2>6. Third-Party Content and Links</h2>
-      <p>The App may display or link to third-party resources, including external websites and YouTube-hosted content.</p>
-      <p>
-        Venue search is powered by Pinball Map. If you use current-location venue search or enter a venue/address search,
-        PinProf sends that location or search text through a secure PinProf.com server endpoint and then to Pinball Map
-        to return nearby venue results. The server endpoint uses request bodies rather than URL parameters and is designed
-        not to write typed addresses or precise coordinates to application logs. New imported venues retain their Pinball Map
-        venue ID for later lineup refreshes instead of requiring the original search text.
-      </p>
-      <p>When you open third-party content, their privacy policies and terms apply.</p>
+      <h2>10. Security</h2>
+      <p>We use reasonable measures to protect app operation and content delivery. No method of transmission or storage is completely secure.</p>
 
-      <h2>7. Children's Privacy</h2>
-      <p>
-        The App is not directed to children under 13. Personal information is not knowingly collected from children.
-      </p>
-
-      <h2>8. Data Sharing</h2>
-      <p>
-        PinProf will never sell user data. PinProf will not share user data with advertisers, data brokers,
-        or other third parties for their own use. Trusted service providers may process limited data only to operate
-        PinProf features, including hosting/content delivery, optional Cloud Sync through Supabase, and product analytics
-        through PostHog. PinProf's hosting provider and Pinball Map process location or venue-search information only when
-        you use a venue lookup or another feature that explicitly requests nearby venue evidence.
-      </p>
-
-      <h2>9. Security</h2>
-      <p>
-        Reasonable measures are used to protect content delivery and app operation.
-        No method of transmission or storage is 100% secure.
-      </p>
-
-      <h2>10. Your Choices</h2>
-      <ul>
-        <li>Turn off product analytics in App Settings</li>
-        <li>Choose not to use Cloud Sync, or stop using Cloud Sync</li>
-        <li>Request account or synced-data deletion by contacting support</li>
-        <li>Stop all data processing by uninstalling the App</li>
-        <li>Avoid opening third-party links if you do not want their services to process data</li>
-      </ul>
-
-      <h2>11. Changes to This Policy</h2>
-      <p>
-        This Privacy Policy may be updated from time to time.
-        Updates will be posted at this URL with a revised effective date.
-      </p>
+      <h2>11. Changes to this policy</h2>
+      <p>Updates will be posted at this URL with a revised effective date.</p>
 
       <h2>12. Contact</h2>
-      <p>
-        If you have questions about this Privacy Policy, contact:<br />
-        Email: <a href="mailto:pillyliu@gmail.com">pillyliu@gmail.com</a>
-      </p>
+      <p>For privacy questions or deletion requests, email <a href="mailto:pillyliu@gmail.com">pillyliu@gmail.com</a>.</p>
     </div>
   </main>
 </body>
