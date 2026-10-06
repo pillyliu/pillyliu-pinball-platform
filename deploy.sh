@@ -438,6 +438,11 @@ stage_pinprof_site_payload() {
     --exclude='/PinProf Logo Upscaled.jpg' \
     --exclude='/practice-*.png' \
     "${site_source_dir}/" "${PINPROF_SITE_STAGE_DIR}/"
+
+  # Both domains publish the same policy from the landing site's source.
+  mkdir -p "${PINPROF_SITE_STAGE_DIR}/privacy"
+  cp "${ROOT_DIR}/pillyliu-landing/public/privacy/index.html" \
+    "${PINPROF_SITE_STAGE_DIR}/privacy/index.html"
 }
 
 sync_shared_app_assets_to_local_apps() {
