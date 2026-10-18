@@ -369,13 +369,14 @@ stage_pinball_api_payloads() {
 
   stage_copy_file "${PINBALL_API_SOURCE_DIR}/.htaccess" "${pinprof_api_dir}/.htaccess"
   stage_copy_file "${PINBALL_API_SOURCE_DIR}/pinball-map.php" "${pinprof_api_dir}/pinball-map.php"
+  stage_copy_file "${PINBALL_API_SOURCE_DIR}/recognition-report.php" "${pinprof_api_dir}/recognition-report.php"
   stage_merge_tree \
     "${PINBALL_API_SOURCE_DIR}/_lib" \
     "${pinprof_api_dir}/_lib" \
     --exclude='.DS_Store'
 
   local required_pillyliu_files=(".htaccess" "rulesheet.php")
-  local required_pinprof_files=(".htaccess" "pinball-map.php" "_lib/.htaccess" "_lib/PinballMapBroker.php")
+  local required_pinprof_files=(".htaccess" "pinball-map.php" "recognition-report.php" "_lib/RecognitionReports.php" "_lib/recognition-report-fields-v1.json" "_lib/.htaccess" "_lib/PinballMapBroker.php")
   local rel_path
 
   for rel_path in "${required_pillyliu_files[@]}"; do
