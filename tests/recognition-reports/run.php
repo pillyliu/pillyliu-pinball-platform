@@ -15,13 +15,13 @@ function expectProblem(string $code, callable $operation): void {
 function request(string $id = '12345678-abcd-4abc-8abc-123456789012'): object {
     return (object)['schema_version' => 1, 'submission_id' => $id, 'platform' => 'android',
         'description' => 'The crop was missing', 'email' => '',
-        'diagnostics' => json_decode('{"capture":{"location":{"latitude":42.123,"longitude":-83.456},"capture_id":"private-id","original_width":2142},"field_photo_selections":{"venue_name":"private-venue","selected_game_title":"Fireball"},"recognition_result":{"crop_status":"no_valid_backglass","runtime_diagnostics":{"operations":{"rfdetr.setup.gpu":{"failed_count":1,"last_error":{"type":"OutOfMemoryError","message":"allocation failed /data/private/photo.jpg"}}}}},"unknown":{"name":"private-name"}}')];
+        'diagnostics' => json_decode('{"capture":{"location":{"latitude":42.123,"longitude":-83.456},"capture_id":"private-id","original_width":2142},"field_photo_selections":{"venue_name":"private-venue","selected_game_title":"Fireball"},"recognition_result":{"crop_status":"no_valid_backglass","runtime_diagnostics":{"operations":{"rfdetr.setup.gpu":{"failed_count":1,"last_error":{"type":"OutOfMemoryError","message":"allocation failed /data/private/photo.jpg"}}}}},"future_diagnostics":{"operator_count":27}}')];
 }
 try {
     $raw = request(); $before = json_encode($raw);
     $first = $store->submit($raw, 1000); $stored = file_get_contents($root . '/reports/' . $first['report_id'] . '/report.json');
     check(!str_contains($stored, 'private-') && !str_contains($stored, 'latitude') && !str_contains($stored, '/data/'), 'Private fields leaked');
-    check(str_contains($stored, 'Fireball') && str_contains($stored, 'category:memory'), 'Useful diagnostics missing');
+    check(str_contains($stored, 'Fireball') && str_contains($stored, 'allocation failed [redacted]') && str_contains($stored, 'operator_count'), 'Useful diagnostics missing');
     check(json_encode($raw) === $before, 'Local evidence mutated');
     check(strtotime($first['expires_at']) === 1000 + 90 * 86400, 'Wrong retention'); $tests++;
     check($store->submit($raw, 1100) === $first, 'Retry created new receipt');
@@ -52,6 +52,17 @@ try {
     check(json_encode($privacy->filter($data)) === json_encode($privacy->filter($privacy->filter($data))), 'Filter is not idempotent'); $tests++;
     check(\PinProf\RecognitionReports\report_client_address(['REMOTE_ADDR' => '1.2.3.4', 'HTTP_CF_CONNECTING_IP' => '5.6.7.8']) === '1.2.3.4', 'Untrusted forwarded address accepted');
     check(\PinProf\RecognitionReports\report_client_address(['REMOTE_ADDR' => '173.245.48.1', 'HTTP_CF_CONNECTING_IP' => '5.6.7.8']) === '5.6.7.8', 'Trusted proxy not resolved'); $tests++;
+    $diagnostic = json_decode('{"result":{"timing_ms":{"processing":77,"total":1623},"backglass_retrieval":{"activated_views":["top"],"query_aspect_ratio":1.4},"backglass_rescue":{"attempted":true,"new_metric":3}},"capture":{"backglass_crop_assessment":{"likely_top_truncated":false,"side_crop_diagnosis":"complete_or_unknown"},"art_crop_diagnostics":{"selected_candidate":{"detector_class":"backglass_art_region","bounds_in_original_pixels":{"x":385,"y":128,"width":1939,"height":1371}}}},"recognition_result":{"runtime_diagnostics":{"operations":{"new_model.setup":{"backend":"gpu","compilation_cache_requested":true}},"events":[{"error":{"type":"IllegalStateException","message":"OpenCL allocation failed for tensor shape [1,3,312,312] at /data/private/photo.jpg"}}]}},"future_diagnostics":{"tensor_histogram":[0,0.25,1],"bin_counts":{"0":17,"1":5},"new_flag":false,"value":null}}');
+    $filtered = $privacy->filter($diagnostic);
+    foreach (['result', 'capture', 'future_diagnostics'] as $key) check($filtered->$key == $diagnostic->$key, 'Diagnostic field lost: ' . $key);
+    check($filtered->recognition_result->runtime_diagnostics->events[0]->error->message === 'OpenCL allocation failed for tensor shape [1,3,312,312] at [redacted]', 'Error detail lost');
+    check($filtered->recognition_result->runtime_diagnostics->operations == $diagnostic->recognition_result->runtime_diagnostics->operations, 'New operation fields lost'); $tests++;
+    $private = json_decode('{"new_diagnostics":{"GPS":{"Latitude":42.5},"deviceName":"private-phone","androidId":"private-device","venueName":"private-place","accessToken":"private-token","state":"failed"},"local_ocr":{"lines":[{"text":"private-name","confidence":0.9,"bounding_box":{"x":0.1,"y":0.2}}],"shared_score_packet":"private-encoded","score_candidates":[{"value":123,"normalized_digits":"123"}]},"new_detail":{"text":"preserved diagnostic text","message":"OpenCL unavailable: person@example.test /Users/Person/cache.bin"}}');
+    $filtered = $privacy->filter($private); $text = json_encode($filtered);
+    check(!str_contains($text, 'private-') && !str_contains($text, 'person@example.test'), 'Private alias or OCR text leaked');
+    check($filtered->new_diagnostics->state === 'failed' && isset($filtered->local_ocr->lines[0]->bounding_box), 'Runtime state or OCR geometry lost');
+    check($filtered->new_detail->text === 'preserved diagnostic text', 'Unrelated diagnostic text lost');
+    check($filtered == $privacy->filter($filtered), 'V2 redaction is not idempotent'); $tests++;
     echo "$tests recognition report tests passed.\n";
 } finally {
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST);

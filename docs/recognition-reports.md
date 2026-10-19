@@ -19,7 +19,7 @@ The same command with `photo REPORT_ID` writes JPEG bytes to stdout; redirect to
 
 ## Privacy and retention
 
-The server repeats the clients' explicit JSON field allowlist from `_lib/recognition-report-fields-v1.json`. Keep it identical to `shared/recognition-report/recognition-report-fields-v1.json` in the vision repository. Unknown fields, capture identifiers, GPS, saved venues, local paths, unrelated history, and raw OCR text are excluded. Free-form runtime errors become categories; typed descriptions and optional email addresses are intentionally preserved. Photos are reencoded again on the server to remove metadata. Visible content in a photo remains visible.
+The server repeats the clients' targeted removal policy from `_lib/recognition-report-privacy-v2.json`. Keep it identical to `shared/recognition-report/recognition-report-privacy-v2.json` in the vision repository. Diagnostic fields, including newly added fields, are preserved by default. Named GPS/location, saved venue, personal/device identifiers, credentials, local media paths, unrelated notes/history, and raw OCR text are removed. Runtime errors retain their diagnostic text with private paths, URLs, and email substrings redacted; errors are no longer reduced to broad categories. Typed descriptions and optional email addresses are separate form fields and intentionally preserved. The legacy v1 contract remains for deployment compatibility; clients that already discarded fields cannot recover them without an updated app and a new submission. Photos are reencoded again on the server to remove metadata. Visible content in a photo remains visible.
 
 The full local payload is unaffected. Report-time device measurements are marked separately from saved scan-time diagnostics. Existing reports cannot recover instrumentation absent from older app builds.
 
@@ -35,6 +35,6 @@ Limits: 7.5 MB request, 512 KB filtered diagnostics, 4.5 MB input JPEG, 4,000 de
 php tests/recognition-reports/run.php
 ```
 
-Nine tests cover filtering, durable storage/idempotency, conflicts, malformed input, photo metadata removal, rate limits, expiry, and trusted proxy handling. Live synthetic uploads verified the endpoint, same-ID retry, private storage, and blocked public access. Synthetic reports were removed after verification. A native Android emulator upload also passed.
+Eleven tests cover targeted redaction, diagnostic preservation, filtering, durable storage/idempotency, conflicts, malformed input, photo metadata removal, rate limits, expiry, and trusted proxy handling. Live synthetic uploads verified the endpoint, same-ID retry, private storage, and blocked public access. Synthetic reports were removed after verification. A native Android emulator upload also passed.
 
 Before a public mobile release, update App Store privacy and Google Play Data safety disclosures for optional diagnostics/performance data, support descriptions, email, and photos. These account forms are separate from the shipped privacy manifest and website policy; this change does not publish a store release.

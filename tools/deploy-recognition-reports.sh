@@ -6,7 +6,7 @@ source "$ROOT/tools/pinprof-hosting-config.sh"
 SSH=(ssh -p "$SSH_PORT" -i "$SSH_KEY" -o BatchMode=yes -o ConnectTimeout=15 -o WarnWeakCrypto=no "$SSH_USER_HOST")
 REMOTE_STAGE="/home/pillyliu/pinprof-private/recognition-reports/deploy-$(date -u +%Y%m%dT%H%M%SZ)"
 "${SSH[@]}" "umask 077; mkdir -p '$REMOTE_STAGE/shared/pinball-api/_lib' '$REMOTE_STAGE/tests/recognition-reports' '$REMOTE_STAGE/tools'"
-for name in RecognitionReports.php recognition-report-fields-v1.json; do
+for name in RecognitionReports.php recognition-report-fields-v1.json recognition-report-privacy-v2.json; do
   scp -q -P "$SSH_PORT" -i "$SSH_KEY" -o BatchMode=yes -o WarnWeakCrypto=no "$ROOT/shared/pinball-api/_lib/$name" "$SSH_USER_HOST:$REMOTE_STAGE/shared/pinball-api/_lib/$name"
 done
 scp -q -P "$SSH_PORT" -i "$SSH_KEY" -o BatchMode=yes -o WarnWeakCrypto=no "$ROOT/shared/pinball-api/recognition-report.php" "$SSH_USER_HOST:$REMOTE_STAGE/shared/pinball-api/recognition-report.php"
@@ -25,7 +25,7 @@ if (!is_file("$private/config.php")) {
     file_put_contents("$private/config.php", "<?php\nreturn " . var_export($config, true) . ";\n", LOCK_EX);
     chmod("$private/config.php", 0600);
 }
-foreach (['_lib/recognition-report-fields-v1.json', '_lib/RecognitionReports.php', 'recognition-report.php'] as $file) {
+foreach (['_lib/recognition-report-fields-v1.json', '_lib/recognition-report-privacy-v2.json', '_lib/RecognitionReports.php', 'recognition-report.php'] as $file) {
     if (!copy("$stage/shared/pinball-api/$file", "$public/$file.pending")) throw new RuntimeException('Upload copy failed');
     chmod("$public/$file.pending", 0644);
     if (!rename("$public/$file.pending", "$public/$file")) throw new RuntimeException('Publish rename failed');
