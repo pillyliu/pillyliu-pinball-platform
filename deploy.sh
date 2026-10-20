@@ -47,15 +47,17 @@ PINPROF_SITE_STAGE_DIR=""
 DRY_RUN=0
 SKIP_BUILD=0
 SKIP_R2=0
+DATA_ONLY=0
 
 for arg in "$@"; do
   case "$arg" in
     --dry-run) DRY_RUN=1 ;;
     --skip-build) SKIP_BUILD=1 ;;
     --skip-r2) SKIP_R2=1 ;;
+    --data-only) DATA_ONLY=1 ;;
     *)
       echo "Unknown option: $arg"
-      echo "Usage: ./deploy.sh [--dry-run] [--skip-build] [--skip-r2]"
+      echo "Usage: ./deploy.sh [--dry-run] [--skip-build] [--skip-r2] [--data-only]"
       exit 1
       ;;
   esac
@@ -538,6 +540,10 @@ publish_pinball_to_r2() {
     --exclude '/cache-update-log.json'
     --exclude '/objects/**'
   )
+  if [[ "$DATA_ONLY" -eq 1 ]]; then
+    # Field Guide feeds have their own validated, multi-base activation step.
+    static_filters+=(--exclude '/field-guide/**')
+  fi
 
   if [[ -d "${source_dir}/api" ]]; then
     echo "Refusing R2 publish because the static stage contains api/." >&2
@@ -788,6 +794,27 @@ fi
 validate_pinprof_pintips_contract
 sync_shared_app_assets_to_local_apps
 sync_mobile_app_preload_to_local_apps
+
+if [[ "$DATA_ONLY" -eq 1 ]]; then
+  stage_pinball_payload
+  DATA_RSYNC_OPTS=("${PINBALL_STATIC_RSYNC_OPTS[@]}" --chmod=u=rwX,go=rX
+    --filter='P /field-guide/***' --exclude='/field-guide/***')
+  echo "Publishing shared pinball data; website pages and Field Guide pointers are unchanged..."
+  rsync "${DATA_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${REMOTE}/pinball/"
+  if [[ -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
+    rsync "${DATA_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/pinball/"
+  fi
+  publish_pinball_to_r2
+  if [[ "$DRY_RUN" -eq 0 ]]; then
+    PINTIPS_REMOTE_ARGS=(--base-url "https://pillyliu.com")
+    if [[ -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
+      PINTIPS_REMOTE_ARGS+=(--base-url "https://pinprof.com")
+    fi
+    node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" "${PINTIPS_REMOTE_ARGS[@]}"
+  fi
+  echo "Shared data deployment complete."
+  exit 0
+fi
 
 if [[ "$SKIP_BUILD" -eq 0 ]]; then
   prepare_build_environment
