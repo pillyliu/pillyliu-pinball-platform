@@ -70,6 +70,16 @@ export default function App() {
         <h2 className='m-0 text-lg font-semibold tracking-tight text-neutral-100'>Projects</h2>
         <div className='mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3'>
           <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
+            <h3 className='m-0 text-base font-semibold text-neutral-100'>PinProf Field Guide</h3>
+            <p className='mt-2 text-sm text-neutral-400'>
+              PinProf Field Guide is a pinball photo journal app. Take pictures of pinball machines with on-device game matching and score recognition. Track your discoveries in an interactive atlas. Features original art, voicework, and music!
+            </p>
+            <a className={CARD_BUTTON_CLASS} href='https://pinprof.com/'>
+              Open PinProf Field Guide
+            </a>
+          </article>
+
+          <article className='rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4'>
             <h3 className='m-0 text-base font-semibold text-neutral-100'>PinProf</h3>
             <p className='mt-2 text-sm text-neutral-400'>
               PinProf is a comprehensive pinball study app. Rulesheets, playfield images, and video tutorials in one place. Easy to use practice and study tracker. Personal pinball collection manager. iOS and Android. Web app coming soon!

@@ -423,6 +423,13 @@ stage_pinprof_site_payload() {
     exit 1
   fi
 
+  # Public book redesign approved for launch on 2026-10-11.
+  # Reject a private-preview HTML file accidentally used as public input.
+  if grep -Eq '/top-secret/media|href="[^"]*-secret\.html' "${site_source_dir}/index.html"; then
+    echo "Refusing to publish HTML that still depends on private preview routes." >&2
+    exit 1
+  fi
+
   PINPROF_SITE_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinprof-site-deploy.XXXXXX")"
   rsync -a \
     --exclude='.git' \
@@ -440,12 +447,18 @@ stage_pinprof_site_payload() {
     --exclude='scripts' \
     --exclude='/PinProf Logo Upscaled.jpg' \
     --exclude='/practice-*.png' \
+    --exclude='/top-secret' \
+    --exclude='/homepage.css' \
+    --exclude='/homepage.js' \
+    --exclude='/gallery.css' \
+    --exclude='/gallery.js' \
+    --exclude='/assets/homepage' \
+    --exclude='/assets/gallery' \
     "${site_source_dir}/" "${PINPROF_SITE_STAGE_DIR}/"
 
-  # Both domains publish the same policy from the landing site's source.
-  mkdir -p "${PINPROF_SITE_STAGE_DIR}/privacy"
-  cp "${ROOT_DIR}/pillyliu-landing/public/privacy/index.html" \
-    "${PINPROF_SITE_STAGE_DIR}/privacy/index.html"
+  # PinProf owns its redesigned policy page and shared navigation.
+  # Preserve the page copied from the canonical PinProf site source.
+
 }
 
 sync_shared_app_assets_to_local_apps() {
@@ -875,7 +888,7 @@ rsync "${RSYNC_OPTS[@]}" --exclude='pinball/' lpl-targets/dist/ "${REMOTE}/lpl-t
 rsync "${RSYNC_OPTS[@]}" --exclude='config.php' "${PINPROF_ADMIN_STAGE_DIR}/" "${REMOTE}/pinprof-admin/"
 if [[ -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
   echo "Deploying PinProf.com..."
-  rsync "${RSYNC_OPTS[@]}" --filter='P .well-known/' --filter='P pinball/' "${PINPROF_SITE_STAGE_DIR}/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/"
+  rsync "${RSYNC_OPTS[@]}" --filter='P .well-known/' --filter='P pinball/' --filter='P /top-secret/***' "${PINPROF_SITE_STAGE_DIR}/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/"
   echo "Mirroring canonical pinball data to PinProf.com..."
   rsync "${PINBALL_STATIC_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/pinball/"
   echo "Deploying pinprof.com Pinball Map broker API..."
