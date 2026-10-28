@@ -239,6 +239,7 @@ validate_pinprof_pintips_contract() {
 }
 
 stage_pinball_payload() {
+  python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/importers/rulesheet_source_mirrors.py"
   PINBALL_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinball-deploy.XXXXXX")"
   mkdir -p "${PINBALL_STAGE_DIR}/pinball"
   mkdir -p \
@@ -277,6 +278,10 @@ stage_pinball_payload() {
     "${PINBALL_STAGE_DIR}/pinball/gameinfo" \
     --exclude='.gitkeep' \
     --exclude='.DS_Store'
+  if [[ -d "${PINPROF_ADMIN_WORKSPACE_ROOT}/assets/source-mirrors" ]]; then
+    python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/importers/rulesheet_source_mirrors.py" \
+      --copy-to "${PINBALL_STAGE_DIR}/pinball"
+  fi
   stage_merge_tree \
     "${PINPROF_ADMIN_FIELD_GUIDE_DIR}" \
     "${PINBALL_STAGE_DIR}/pinball/field-guide" \
@@ -354,9 +359,15 @@ stage_pinball_payload() {
     fi
   done
 
+  python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/publish/filter_public_asset_exclusions.py" \
+    "${PINBALL_STAGE_DIR}/pinball"
   PINBALL_MANIFEST_SOURCE_DIR="${PINBALL_STAGE_DIR}/pinball" \
     PINBALL_MANIFEST_SOURCE_LABEL="workspace/pinball" \
     node tools/build-pinball-manifest.mjs
+  stage_copy_file "${PINPROF_ADMIN_SOURCE_ROOT}/configs/rulesheet_mirror_headers.htaccess" \
+    "${PINBALL_STAGE_DIR}/pinball/source-mirrors/.htaccess"
+  stage_copy_file "${PINPROF_ADMIN_SOURCE_ROOT}/configs/rulesheet_mirror_headers.htaccess" \
+    "${PINBALL_STAGE_DIR}/pinball/objects/.htaccess"
 }
 
 stage_pinball_api_payloads() {
@@ -548,6 +559,7 @@ publish_pinball_to_r2() {
     --s3-no-check-bucket
   )
   local static_filters=(
+    --exclude '**/.htaccess'
     --exclude '/api/**'
     --exclude '/cache-manifest.json'
     --exclude '/cache-update-log.json'
@@ -596,8 +608,18 @@ publish_pinball_to_r2() {
       "${source_dir}/objects/" \
       "${remote_path}/objects/" \
       "${transfer_options[@]}" \
+      --exclude '**/.htaccess' \
       --header-upload "Cache-Control: ${R2_IMMUTABLE_CACHE_CONTROL}"
   fi
+
+  # HTML mirrors must remain byte-identical to the provenance registry.
+  # Refresh metadata even for unchanged files; CDN transformations break hashes.
+  "${RCLONE_BIN}" copy "${source_dir}/source-mirrors/" "${remote_path}/source-mirrors/" \
+    "${transfer_options[@]}" --ignore-times --include '*.html' \
+    --header-upload "Cache-Control: ${R2_CACHE_CONTROL}, no-transform"
+  "${RCLONE_BIN}" copy "${source_dir}/objects/" "${remote_path}/objects/" \
+    "${transfer_options[@]}" --ignore-times --include '*.html' \
+    --header-upload "Cache-Control: ${R2_IMMUTABLE_CACHE_CONTROL}, no-transform"
 
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "R2 dry run complete; verification and manifest publication were not performed."
@@ -617,6 +639,7 @@ publish_pinball_to_r2() {
       "${source_dir}/objects/" \
       "${remote_path}/objects/" \
       --one-way \
+      --exclude '**/.htaccess' \
       --checkers 16
   fi
 
