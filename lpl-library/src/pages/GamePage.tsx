@@ -370,7 +370,7 @@ export default function GamePage() {
                   playfieldOptions.map((option) => (
                     <a
                       key={`${option.title}-${option.candidates[0] ?? "missing"}`}
-                      className={SUBTLE_BUTTON_CLASS}
+                      className={`${SUBTLE_BUTTON_CLASS} whitespace-nowrap shrink-0`}
                       href={option.candidates[0] ?? "#"}
                       target="_blank"
                       rel="noreferrer"

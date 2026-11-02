@@ -51,6 +51,7 @@ export type LibraryGame = {
   groupPlayfieldLocalOriginal: string | null;
   groupPlayfieldLocal: string | null;
   playfieldSourceLabel: string | null;
+  pinProfPlayfields?: PlayfieldOption[];
   gameinfoLocal: string | null;
   rulesheetLocal: string | null;
   rulesheetUrl: string | null;
@@ -1553,6 +1554,15 @@ function buildLibraryGame(
   const rulesheets = rulesheetLinksForMachine(machine, layers);
   const videos = videosForMachine(machine, layers);
   const playfieldAsset = playfieldAssetForMachine(machine, layers);
+  const sourceAssets = (layers.playfieldAssetsByPracticeIdentity.get(machine.practiceIdentity) ?? [])
+    .filter((row) => normalizedOptionalString(row.playfieldLocalPath));
+  const choices = sourceAssets.map((row) => ({
+    tier: pinProfPlayfieldTier(layers.machineByOpdbId.get(row.sourceOpdbMachineId)?.variant, row.playfieldSourceUrl),
+    candidates: dedupeResolvedUrls([resolveLibraryUrl(row.playfieldLocalPath)]),
+  }));
+  const hasPair = choices.some((item) => item.tier === "Pro") && choices.some((item) => item.tier === "Prem/LE");
+  const pinProfPlayfields = hasPair ? choices.filter((item, index) => item.tier && choices.findIndex((other) => other.tier === item.tier) === index)
+    .map((item) => ({title: `PinProf · ${item.tier}`, candidates: item.candidates})) : undefined;
   const gameinfoLocal = gameinfoPathForMachine(machine, layers);
   const layout = source.type === "venue" || source.type === "tournament"
     ? venueLayoutForMachine(source.id, requestedId, machine, layers)
@@ -1589,6 +1599,7 @@ function buildLibraryGame(
     playfieldLocal,
     groupPlayfieldLocalOriginal: null,
     groupPlayfieldLocal: null,
+    pinProfPlayfields,
     playfieldSourceLabel: !hasLocalPlayfield && opdbPlayfieldUrl ? "Playfield (OPDB)" : null,
     gameinfoLocal: normalizedOptionalString(gameinfoLocal),
     rulesheetLocal: rulesheets.localPath,
@@ -1886,6 +1897,11 @@ export function resolvedPlayfieldOptions(
   liveStatus: LivePlayfieldStatus | null,
 ): PlayfieldOption[] {
   const explicitCandidates = explicitPlayfieldCandidates(game);
+  if (game.pinProfPlayfields?.length === 2) {
+    const opdb = dedupeResolvedUrls([game.playfieldImageUrl, game.alternatePlayfieldImageUrl, liveStatus?.effectiveKind === "opdb" ? liveStatus.effectiveUrl : null])
+      .filter((url) => { try { return new URL(url).hostname.endsWith("opdb.org"); } catch { return false; } });
+    return [...game.pinProfPlayfields, ...(opdb.length ? [{ title: "OPDB", candidates: opdb }] : [])];
+  }
   if (liveStatus?.effectiveKind === "missing" && explicitCandidates.length === 0) {
     return [];
   }
@@ -2019,4 +2035,24 @@ export async function fetchVenueMachineIds(locationId: string): Promise<string[]
   }
   const roster = await brokerFetchPinballMapRoster(numericLocationId);
   return roster.mappedOpdbIds;
+}
+
+export function pinProfPlayfieldTier(label: string | null | undefined, sourceUrl: string | null | undefined): string | null {
+  function tier(text: string): string | null {
+    const lower = text.toLowerCase();
+    const words = new Set(lower.split(/[^a-z0-9]+/));
+    if (words.has("home")) return null;
+    if (["premium", "prem", "le"].some((word) => words.has(word)) || lower.includes("limited edition")) return "Prem/LE";
+    return words.has("pro") ? "Pro" : null;
+  }
+  try {
+    const url = new URL(sourceUrl ?? "");
+    if (url.hostname === "sternpinball.com" || url.hostname.endsWith(".sternpinball.com")) {
+      const filename = decodeURIComponent(url.pathname.split("/").at(-1) ?? "");
+      if (filename.toLowerCase().split(/[^a-z0-9]+/).includes("home")) return null;
+      const value = tier(filename);
+      if (value) return value;
+    }
+  } catch { /* Use the catalog label when there is no official filename. */ }
+  return tier(label ?? "");
 }
