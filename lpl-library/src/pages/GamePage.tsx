@@ -11,6 +11,7 @@ import {
 } from "../components/ui";
 import {
   detailArtworkCandidates,
+  fullscreenBackglassUrl,
   type LibraryGame,
   type LivePlayfieldStatus,
   type ReferenceLink,
@@ -300,6 +301,7 @@ export default function GamePage() {
           <Panel className="overflow-hidden">
             <div className="aspect-[4/3] bg-neutral-900">
               {artworkCandidates.length ? (
+                <a href={fullscreenBackglassUrl(game) ?? artworkCandidates[0]} target="_blank" rel="noopener noreferrer" aria-label={`View ${game.name} backglass full size`} className="block h-full w-full">
                 <img
                   src={artworkCandidates[0]}
                   data-fallback-idx={0}
@@ -316,6 +318,7 @@ export default function GamePage() {
                     }
                   }}
                 />
+                </a>
               ) : (
                 <div className="flex h-full w-full items-center justify-center text-sm text-neutral-500">No image</div>
               )}

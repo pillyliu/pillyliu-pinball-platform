@@ -497,8 +497,9 @@ export async function prefetchPinballTextAssets(pathPrefixes: string[] = []): Pr
   const hashStateKey = textHashStateKey();
   const previous = parseJson<Record<string, string>>(localStorage.getItem(hashStateKey)) ?? {};
   const next: Record<string, string> = {};
+  const desiredPaths = new Set<string>();
   const cache = await caches.open(ASSET_CACHE);
-  const writes: Promise<void>[] = [];
+  const writes: Array<() => Promise<void>> = [];
 
   for (const [path, entry] of Object.entries(manifest.files)) {
     const isDefaultTextAsset =
@@ -506,24 +507,35 @@ export async function prefetchPinballTextAssets(pathPrefixes: string[] = []): Pr
       path.includes("/pinball/rulesheets/") ||
       path.includes("/pinball/gameinfo/");
     if (!isDefaultTextAsset || !isRequested(path) || cohortPaths.has(path)) continue;
+    desiredPaths.add(path);
 
-    next[path] = entry.hash;
-    if (previous[path] === entry.hash) continue;
-    writes.push(
-      fetchResponseNetwork(path)
-        .then(({ response, resolvedPath }) => cache.put(resolvedPath, response.clone()))
-        .then(() => undefined)
-        .catch(() => undefined)
-    );
+    if (previous[path] === entry.hash) {
+      next[path] = entry.hash;
+      continue;
+    }
+    writes.push(async () => {
+      try {
+        const { response, resolvedPath } = await fetchResponseNetwork(path);
+        await cache.put(resolvedPath, response.clone());
+        next[path] = entry.hash;
+      } catch {
+        // Retry an unsuccessful download next time; it is not cached yet.
+      }
+    });
   }
 
   for (const oldPath of Object.keys(previous)) {
-    if (!next[oldPath]) {
-      writes.push(cache.delete(oldPath).then(() => undefined).catch(() => undefined));
+    if (!desiredPaths.has(oldPath)) {
+      writes.push(() => cache.delete(oldPath).then(() => undefined).catch(() => undefined));
     }
   }
 
-  await Promise.all(writes);
+  // A full catalog contains thousands of text files. Keep background prefetch
+  // bounded so foreground images and game details retain browser capacity.
+  let nextWork = 0;
+  await Promise.all(Array.from({ length: Math.min(8, writes.length) }, async () => {
+    while (nextWork < writes.length) await writes[nextWork++]();
+  }));
   localStorage.setItem(hashStateKey, JSON.stringify(next));
 }
 

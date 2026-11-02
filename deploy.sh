@@ -125,33 +125,9 @@ stage_merge_tree() {
 stage_playfield_publish_set() {
   local source_dir="$1"
   local target_dir="$2"
-  if [[ ! -d "${source_dir}" ]]; then
-    echo "Missing playfield source directory: ${source_dir}" >&2
-    exit 1
-  fi
-
-  mkdir -p "${target_dir}"
-  while IFS= read -r -d '' source_path; do
-    local filename
-    filename="$(basename "${source_path}")"
-    case "${filename}" in
-      .DS_Store|.gitkeep)
-        continue
-        ;;
-    esac
-
-    local ext="${filename##*.}"
-    local lower_ext
-    lower_ext="$(printf '%s' "${ext}" | tr '[:upper:]' '[:lower:]')"
-    if [[ "${lower_ext}" != "webp" ]]; then
-      local stem="${filename%.*}"
-      if [[ -f "${source_dir}/${stem}.webp" ]]; then
-        continue
-      fi
-    fi
-
-    stage_copy_file "${source_path}" "${target_dir}/${filename}"
-  done < <(find "${source_dir}" -maxdepth 1 -type f -print0)
+  python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/publish/stage_artwork_delivery.py" \
+    --kind playfield --source "${source_dir}" --destination "${target_dir}" \
+    --manifest "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/playfield_assets.json"
 }
 
 prune_local_pinball_artifacts() {
@@ -263,11 +239,10 @@ stage_pinball_payload() {
   stage_playfield_publish_set \
     "${PINPROF_ADMIN_PLAYFIELDS_DIR}" \
     "${PINBALL_STAGE_DIR}/pinball/images/playfields"
-  stage_merge_tree \
-    "${PINPROF_ADMIN_BACKGLASSES_DIR}" \
-    "${PINBALL_STAGE_DIR}/pinball/images/backglasses" \
-    --exclude='.gitkeep' \
-    --exclude='.DS_Store'
+  python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/publish/stage_artwork_delivery.py" \
+    --source "${PINPROF_ADMIN_BACKGLASSES_DIR}" \
+    --destination "${PINBALL_STAGE_DIR}/pinball/images/backglasses" \
+    --manifest "${PINPROF_ADMIN_WORKSPACE_ROOT}/data/published/backglass_assets.json"
   stage_merge_tree \
     "${PINPROF_ADMIN_RULESHEETS_DIR}" \
     "${PINBALL_STAGE_DIR}/pinball/rulesheets" \
@@ -282,19 +257,13 @@ stage_pinball_payload() {
     python3 "${PINPROF_ADMIN_SOURCE_ROOT}/scripts/importers/rulesheet_source_mirrors.py" \
       --copy-to "${PINBALL_STAGE_DIR}/pinball"
   fi
-  stage_merge_tree \
-    "${PINPROF_ADMIN_FIELD_GUIDE_DIR}" \
-    "${PINBALL_STAGE_DIR}/pinball/field-guide" \
-    --exclude='.gitkeep' \
-    --exclude='.DS_Store' \
-    --exclude='cache/' \
-    --exclude='state/' \
-    --exclude='overlays/active/' \
-    --exclude='overlays/history/' \
-    --exclude='staging/' \
-    --exclude='review/' \
-    --exclude='one-click.lock' \
-    --exclude='provisional-source-lock.json'
+  # Field Guide's dedicated publisher validates objects and activates all bases.
+  # These two summaries remain in the shared cache index, but the website deploy
+  # never transfers or activates Field Guide feeds (including during a full build).
+  for summary in release-v1.json visual-manifest-v1.json; do
+    stage_copy_file "${PINPROF_ADMIN_FIELD_GUIDE_DIR}/${summary}" \
+      "${PINBALL_STAGE_DIR}/pinball/field-guide/${summary}"
+  done
 
   if [[ -f "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-manifest.json" ]]; then
     stage_copy_file \
@@ -442,6 +411,7 @@ stage_pinprof_site_payload() {
   fi
 
   PINPROF_SITE_STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/pinprof-site-deploy.XXXXXX")"
+  ensure_npm_dependencies "${site_source_dir}" "pinprof-web"
   rsync -a \
     --exclude='.git' \
     --exclude='.gitignore' \
@@ -451,6 +421,7 @@ stage_pinprof_site_payload() {
     --exclude='.DS_Store' \
     --exclude='README.md' \
     --exclude='package.json' \
+    --exclude='package-lock.json' \
     --exclude='docs' \
     --exclude='output' \
     --exclude='/practice' \
@@ -466,6 +437,10 @@ stage_pinprof_site_payload() {
     --exclude='/assets/homepage' \
     --exclude='/assets/gallery' \
     "${site_source_dir}/" "${PINPROF_SITE_STAGE_DIR}/"
+
+  # The source modules have stable names, while this site caches JS for a year.
+  # Bundle the full import graph under content hashes so returning clients update.
+  node "${site_source_dir}/scripts/build-app-release.mjs" --stage "${PINPROF_SITE_STAGE_DIR}"
 
   # PinProf owns its redesigned policy page and shared navigation.
   # Preserve the page copied from the canonical PinProf site source.
@@ -565,10 +540,8 @@ publish_pinball_to_r2() {
     --exclude '/cache-update-log.json'
     --exclude '/objects/**'
   )
-  if [[ "$DATA_ONLY" -eq 1 ]]; then
-    # Field Guide feeds have their own validated, multi-base activation step.
-    static_filters+=(--exclude '/field-guide/**')
-  fi
+  # Full frontend deployment must also preserve validated Field Guide activation.
+  static_filters+=(--exclude '/field-guide/**')
 
   if [[ -d "${source_dir}/api" ]]; then
     echo "Refusing R2 publish because the static stage contains api/." >&2
@@ -795,8 +768,8 @@ PINBALL_STATIC_RSYNC_OPTS=(
   "${PINBALL_RSYNC_OPTS[@]}"
   --filter='P /api/***'
   --filter='P /objects/***'
-  --filter='P /field-guide/releases/***'
-  --filter='P /field-guide/overlays/***'
+  --filter='P /field-guide/***'
+  --exclude='/field-guide/***'
 )
 PINBALL_API_RSYNC_OPTS=("${RSYNC_OPTS[@]}" --checksum)
 

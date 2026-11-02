@@ -44,6 +44,9 @@ export type LibraryGame = {
   slug: string;
   primaryImageUrl: string | null;
   primaryImageLargeUrl: string | null;
+  backglassOverrideUrls?: string[];
+  backglassThumbnailUrl?: string | null;
+  backglassFullscreenUrl?: string | null;
   playfieldImageUrl: string | null;
   alternatePlayfieldImageUrl: string | null;
   playfieldLocalOriginal: string | null;
@@ -275,7 +278,16 @@ type MachineRecord = {
   opdbManufactureDate: string | null;
 };
 
+type BackglassAssetRecord = {
+  sourceOpdbMachineId: string;
+  coveredAliasIds?: string[];
+  backglassLocalPath?: string | null;
+  backglassWebLocalPath1400?: string | null;
+  backglassWebLocalPath700?: string | null;
+};
+
 type CanonicalLayers = {
+  backglassOverridesByExactId: Map<string, BackglassAssetRecord>;
   machines: MachineRecord[];
   machineByOpdbId: Map<string, MachineRecord>;
   machinesByPracticeIdentity: Map<string, MachineRecord[]>;
@@ -688,7 +700,8 @@ function resolveLibraryUrl(pathOrUrl: string | null | undefined): string | null 
   if (!raw) return null;
   if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
   if (raw.startsWith("/Users/") || raw.startsWith("/private/")) return null;
-  return raw.startsWith("/") ? raw : `/${raw}`;
+  const path = raw.startsWith("/") ? raw : `/${raw}`;
+  return path.startsWith("/pinball/images/") ? `https://data.pinprof.com${path}` : path;
 }
 
 function normalizeLibraryPublishedPlayfieldPath(path: string | null | undefined): string | null {
@@ -889,6 +902,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         practiceIdentityCurationsRaw,
         rulesheetAssetsRaw,
         videoAssetsRaw,
+        backglassAssetsRaw,
         playfieldAssetsRaw,
         gameinfoAssetsRaw,
         venueLayoutAssetsRaw,
@@ -897,6 +911,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
         fetchPinballJson<unknown>(PRACTICE_IDENTITY_CURATIONS_PATH),
         fetchPinballJson<unknown>(RULESHEET_ASSETS_PATH),
         fetchPinballJson<unknown>(VIDEO_ASSETS_PATH),
+        fetchPinballJson<unknown>("/pinball/data/backglass_assets.json").catch(() => ({ records: [] })),
         fetchPinballJson<unknown>(PLAYFIELD_ASSETS_PATH),
         fetchPinballJson<unknown>(GAMEINFO_ASSETS_PATH),
         fetchPinballJson<unknown>(VENUE_LAYOUT_ASSETS_PATH),
@@ -912,6 +927,13 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
 
       const rulesheetAssets = parseAssetLayer<RulesheetAssetRecord>(rulesheetAssetsRaw);
       const videoAssets = parseAssetLayer<VideoAssetRecord>(videoAssetsRaw);
+      const backglassAssets = parseAssetLayer<BackglassAssetRecord>(backglassAssetsRaw);
+      const backglassOverridesByExactId = new Map<string, BackglassAssetRecord>();
+      for (const row of backglassAssets) {
+        for (const alias of row.coveredAliasIds ?? []) backglassOverridesByExactId.set(alias, row);
+      }
+      // An exact edition override outranks another row's shared-art coverage.
+      for (const row of backglassAssets) backglassOverridesByExactId.set(row.sourceOpdbMachineId, row);
       const playfieldAssets = parseAssetLayer<PlayfieldAssetRecord>(playfieldAssetsRaw);
       const gameinfoAssets = parseAssetLayer<GameinfoAssetRecord>(gameinfoAssetsRaw);
       const venueLayoutAssets = parseAssetLayer<VenueLayoutAssetRecord>(venueLayoutAssetsRaw);
@@ -933,6 +955,7 @@ async function loadCanonicalLayers(): Promise<CanonicalLayers> {
       }
 
       return {
+        backglassOverridesByExactId,
         machines,
         machineByOpdbId,
         machinesByPracticeIdentity,
@@ -1505,7 +1528,7 @@ function playfieldAssetForMachine(machine: MachineRecord, layers: CanonicalLayer
 }
 
 function gameinfoPathForMachine(machine: MachineRecord, layers: CanonicalLayers): string | null {
-  for (const candidateId of [machine.practiceIdentity]) {
+  for (const candidateId of [...expandOpdbCandidateIds(machine.opdbId), machine.practiceIdentity]) {
     const rows = (layers.gameinfoAssetsByOpdbId.get(candidateId) ?? [])
       .filter((row) => row.isActive && !row.isHidden && normalizedOptionalString(row.localPath))
       .sort((left, right) => {
@@ -1553,16 +1576,23 @@ function buildLibraryGame(
   const requestedId = normalizedOptionalString(requestedMachineId) ?? machine.opdbId;
   const rulesheets = rulesheetLinksForMachine(machine, layers);
   const videos = videosForMachine(machine, layers);
+  const backglassOverride = layers.backglassOverridesByExactId.get(machine.opdbId);
   const playfieldAsset = playfieldAssetForMachine(machine, layers);
   const sourceAssets = (layers.playfieldAssetsByPracticeIdentity.get(machine.practiceIdentity) ?? [])
-    .filter((row) => normalizedOptionalString(row.playfieldLocalPath));
+    .filter((row, index, rows) => normalizedOptionalString(row.playfieldLocalPath)
+      && rows.findIndex((other) => other.playfieldLocalPath === row.playfieldLocalPath) === index);
   const choices = sourceAssets.map((row) => ({
     tier: pinProfPlayfieldTier(layers.machineByOpdbId.get(row.sourceOpdbMachineId)?.variant, row.playfieldSourceUrl),
+    edition: pinProfPlayfieldShortLabel(layers.machineByOpdbId.get(row.sourceOpdbMachineId)?.variant,
+      layers.machineByOpdbId.get(row.sourceOpdbMachineId)?.name),
     candidates: dedupeResolvedUrls([resolveLibraryUrl(row.playfieldLocalPath)]),
   }));
-  const hasPair = choices.some((item) => item.tier === "Pro") && choices.some((item) => item.tier === "Prem/LE");
-  const pinProfPlayfields = hasPair ? choices.filter((item, index) => item.tier && choices.findIndex((other) => other.tier === item.tier) === index)
-    .map((item) => ({title: `PinProf · ${item.tier}`, candidates: item.candidates})) : undefined;
+  const combinePremium = choices.some((item) => item.tier === "Pro") && choices.filter((item) => item.tier === "Prem/LE").length === 1;
+  const labels = choices.map((item) => pinProfPlayfieldShortLabel(combinePremium && item.tier === "Prem/LE" ? item.tier : item.edition || item.tier));
+  const pinProfPlayfields = choices.length > 1 ? choices.map((item, index) => ({
+    title: `${labels[index] ? `PP · ${labels[index]}` : "PP"}${labels.filter((label) => label === labels[index]).length > 1 ? ` · ${index + 1}` : ""}`,
+    candidates: item.candidates,
+  })) : undefined;
   const gameinfoLocal = gameinfoPathForMachine(machine, layers);
   const layout = source.type === "venue" || source.type === "tournament"
     ? venueLayoutForMachine(source.id, requestedId, machine, layers)
@@ -1591,6 +1621,12 @@ function buildLibraryGame(
     manufacturer: normalizedOptionalString(machine.manufacturerName),
     year: machine.year,
     slug: machine.practiceIdentity,
+    backglassThumbnailUrl: resolveLibraryUrl(backglassOverride?.backglassWebLocalPath700),
+    backglassFullscreenUrl: resolveLibraryUrl(backglassOverride?.backglassLocalPath),
+    backglassOverrideUrls: dedupeResolvedUrls([
+      resolveLibraryUrl(backglassOverride?.backglassWebLocalPath1400),
+      resolveLibraryUrl(backglassOverride?.backglassLocalPath),
+    ]),
     primaryImageUrl: normalizedOptionalString(machine.primaryImageUrl),
     primaryImageLargeUrl: normalizedOptionalString(machine.primaryImageLargeUrl),
     playfieldImageUrl: opdbPlayfieldUrl,
@@ -1831,10 +1867,10 @@ function explicitPlayfieldCandidates(game: LibraryGame): string[] {
 
 function playfieldSourceLabelForGame(game: LibraryGame): string {
   if (game.playfieldSourceLabel) {
-    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "PinProf";
+    return game.playfieldSourceLabel === "Playfield (OPDB)" ? "OPDB" : "PP";
   }
   if (game.playfieldLocalOriginal || game.playfieldLocal || game.groupPlayfieldLocalOriginal || game.groupPlayfieldLocal) {
-    return "PinProf";
+    return "PP";
   }
   const playfieldUrl = resolveLibraryUrl(game.playfieldImageUrl);
   if (!playfieldUrl) return "View";
@@ -1870,6 +1906,8 @@ function playfieldSourceLabelForUrl(url: string | null | undefined, game?: Libra
 
 export function cardArtworkCandidates(game: LibraryGame): string[] {
   return dedupeResolvedUrls([
+    game.backglassThumbnailUrl,
+    ...(game.backglassOverrideUrls ?? []),
     resolveLibraryUrl(game.primaryImageLargeUrl),
     resolveLibraryUrl(game.primaryImageUrl),
     resolveLibraryUrl(MISSING_ARTWORK_PATH),
@@ -1877,7 +1915,11 @@ export function cardArtworkCandidates(game: LibraryGame): string[] {
 }
 
 export function detailArtworkCandidates(game: LibraryGame): string[] {
-  return cardArtworkCandidates(game);
+  return dedupeResolvedUrls([...(game.backglassOverrideUrls ?? []), ...cardArtworkCandidates(game)]);
+}
+
+export function fullscreenBackglassUrl(game: LibraryGame): string | null {
+  return game.backglassFullscreenUrl ?? resolveLibraryUrl(game.primaryImageLargeUrl) ?? resolveLibraryUrl(game.primaryImageUrl);
 }
 
 export function gamePlayfieldCandidates(game: LibraryGame): string[] {
@@ -1897,10 +1939,10 @@ export function resolvedPlayfieldOptions(
   liveStatus: LivePlayfieldStatus | null,
 ): PlayfieldOption[] {
   const explicitCandidates = explicitPlayfieldCandidates(game);
-  if (game.pinProfPlayfields?.length === 2) {
+  if ((game.pinProfPlayfields?.length ?? 0) > 1) {
     const opdb = dedupeResolvedUrls([game.playfieldImageUrl, game.alternatePlayfieldImageUrl, liveStatus?.effectiveKind === "opdb" ? liveStatus.effectiveUrl : null])
       .filter((url) => { try { return new URL(url).hostname.endsWith("opdb.org"); } catch { return false; } });
-    return [...game.pinProfPlayfields, ...(opdb.length ? [{ title: "OPDB", candidates: opdb }] : [])];
+    return [...game.pinProfPlayfields!, ...(opdb.length ? [{ title: "OPDB", candidates: opdb }] : [])];
   }
   if (liveStatus?.effectiveKind === "missing" && explicitCandidates.length === 0) {
     return [];
@@ -2055,4 +2097,20 @@ export function pinProfPlayfieldTier(label: string | null | undefined, sourceUrl
     }
   } catch { /* Use the catalog label when there is no official filename. */ }
   return tier(label ?? "");
+}
+
+export function pinProfPlayfieldShortLabel(value: string | null | undefined, title?: string | null): string | null {
+  const context = `${value ?? ""} ${title ?? ""}`.toLowerCase();
+  if (context.includes("comic art")) return "Comic";
+  if (/\bhome\b/.test(context)) return "Home";
+  const text = value?.trim();
+  if (!text) return null;
+  const anniversary = /^(\d+)(?:st|nd|rd|th)?\s+anniversary/i.exec(text);
+  if (anniversary) return anniversary[1];
+  const labels: Record<string, string> = {"prem/le": "Pre/LE", "pre/le": "Pre/LE", "premium": "Pre", "prem": "Pre",
+    "home edition": "Home", "home": "Home", "limited edition": "LE", "collector's edition": "CE",
+    "collectors edition": "CE", "platinum edition": "PE", "special edition": "SE", "special": "SE",
+    "standard": "Std", "standard edition": "Std", "deluxe": "Dlx", "deluxe le": "Dlx LE",
+    "signature": "Sig", "wizard": "Wiz", "arcade": "Arc", "comic art": "Comic"};
+  return labels[text.toLowerCase().replaceAll("’", "'")] ?? text;
 }
