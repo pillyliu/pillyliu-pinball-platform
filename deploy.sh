@@ -44,6 +44,17 @@ PINBALL_API_STAGE_DIR=""
 PINPROF_ADMIN_STAGE_DIR=""
 PINPROF_SITE_STAGE_DIR=""
 
+WEBSITE_MANIFESTS="${PINPROF_ADMIN_WORKSPACE_ROOT}/cache/website-public-inventory"
+save_website_inventory() {
+  if [[ "$DRY_RUN" -eq 0 ]]; then
+    mkdir -p "${WEBSITE_MANIFESTS}"
+    for name in cache-manifest.json cache-update-log.json; do
+      cp "${PINBALL_STAGE_DIR}/pinball/${name}" "${WEBSITE_MANIFESTS}/${name}.$$"
+      mv "${WEBSITE_MANIFESTS}/${name}.$$" "${WEBSITE_MANIFESTS}/${name}"
+    done
+  fi
+}
+
 DRY_RUN=0
 SKIP_BUILD=0
 SKIP_R2=0
@@ -78,23 +89,6 @@ cleanup() {
   fi
 }
 trap cleanup EXIT
-
-cleanup_local_dist_outputs() {
-  local dist_dirs=(
-    "${ROOT_DIR}/pillyliu-landing/dist"
-    "${ROOT_DIR}/lpl-library/dist"
-    "${ROOT_DIR}/lpl-standings/dist"
-    "${ROOT_DIR}/lpl-stats/dist"
-    "${ROOT_DIR}/lpl-targets/dist"
-    "${PINPROF_ADMIN_FRONTEND_DIST}"
-  )
-
-  for dist_dir in "${dist_dirs[@]}"; do
-    if [[ -d "${dist_dir}" ]]; then
-      rm -rf "${dist_dir}"
-    fi
-  done
-}
 
 stage_copy_tree() {
   local source_dir="$1"
@@ -191,15 +185,16 @@ prepare_build_environment() {
 
 refresh_pinprof_admin_shared_payload() {
   if [[ ! -d "${PINPROF_ADMIN_SOURCE_ROOT}" ]]; then
-    echo "Warning: PinProf Admin source root not found, skipping canonical pinball rebuild: ${PINPROF_ADMIN_SOURCE_ROOT}" >&2
-    return
+    echo "Missing required PinProf Admin source root: ${PINPROF_ADMIN_SOURCE_ROOT}" >&2
+    return 1
   fi
 
   if [[ -f "${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}" ]]; then
     echo "Rebuilding canonical pinball payload from PinProf Admin..."
     bash "${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}"
   else
-    echo "Warning: Missing PinProf Admin rebuild script: ${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}" >&2
+    echo "Missing required PinProf Admin rebuild script: ${PINPROF_ADMIN_REBUILD_SHARED_PAYLOAD_SCRIPT}" >&2
+    return 1
   fi
 }
 
@@ -212,6 +207,14 @@ validate_pinprof_pintips_contract() {
   node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" \
     --legacy "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/pintips.json" \
     --v2 "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/pintips_v2.json"
+}
+
+# macOS openrsync preserves the actual source mode. Normalize only disposable
+# public staging copies; rsync applies mode changes along with the transfer.
+set_public_stage_modes() {
+  local directory="$1"
+  find "${directory}" -type d ! -perm 0755 -exec chmod 755 {} +
+  find "${directory}" -type f ! -perm 0644 -exec chmod 644 {} +
 }
 
 stage_pinball_payload() {
@@ -265,25 +268,16 @@ stage_pinball_payload() {
       "${PINBALL_STAGE_DIR}/pinball/field-guide/${summary}"
   done
 
-  if [[ -f "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-manifest.json" ]]; then
-    stage_copy_file \
-      "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-manifest.json" \
-      "${PINBALL_STAGE_DIR}/pinball/cache-manifest.json"
-  elif [[ -f "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/cache-manifest.json" ]]; then
-    stage_copy_file \
-      "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/cache-manifest.json" \
-      "${PINBALL_STAGE_DIR}/pinball/cache-manifest.json"
-  fi
-
-  if [[ -f "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-update-log.json" ]]; then
-    stage_copy_file \
-      "${PINPROF_ADMIN_MANIFESTS_DIR}/cache-update-log.json" \
-      "${PINBALL_STAGE_DIR}/pinball/cache-update-log.json"
-  elif [[ -f "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/cache-update-log.json" ]]; then
-    stage_copy_file \
-      "${PINPROF_ADMIN_PUBLISHED_DATA_DIR}/cache-update-log.json" \
-      "${PINBALL_STAGE_DIR}/pinball/cache-update-log.json"
-  fi
+  # The website exposes a smaller inventory than the Admin archive.
+  # On migration use the last public inventory, preserving its event history.
+  for name in cache-manifest.json cache-update-log.json; do
+    if [[ -s "${WEBSITE_MANIFESTS}/${name}" ]]; then
+      stage_copy_file "${WEBSITE_MANIFESTS}/${name}" "${PINBALL_STAGE_DIR}/pinball/${name}"
+    else
+      curl -fsSL --retry 2 "${R2_PUBLIC_BASE_URL}/${name}" -o "${PINBALL_STAGE_DIR}/pinball/${name}"
+      jq -e '.schemaVersion == 1' "${PINBALL_STAGE_DIR}/pinball/${name}" >/dev/null
+    fi
+  done
 
   find "${PINBALL_STAGE_DIR}/pinball" -name '.DS_Store' -delete
   prune_local_pinball_artifacts "${PINBALL_STAGE_DIR}/pinball"
@@ -527,6 +521,7 @@ publish_pinball_to_r2() {
   local remote_path="${R2_RCLONE_REMOTE}:${R2_BUCKET}/${R2_PINBALL_PREFIX}"
   # Avoid timestamp-only S3 copies that can discard existing HTTP cache metadata.
   local transfer_options=(
+    -v --no-update-modtime
     --checksum
     --fast-list
     --transfers 8
@@ -585,14 +580,27 @@ publish_pinball_to_r2() {
       --header-upload "Cache-Control: ${R2_IMMUTABLE_CACHE_CONTROL}"
   fi
 
-  # HTML mirrors must remain byte-identical to the provenance registry.
-  # Refresh metadata even for unchanged files; CDN transformations break hashes.
-  "${RCLONE_BIN}" copy "${source_dir}/source-mirrors/" "${remote_path}/source-mirrors/" \
-    "${transfer_options[@]}" --ignore-times --include '*.html' \
-    --header-upload "Cache-Control: ${R2_CACHE_CONTROL}, no-transform"
-  "${RCLONE_BIN}" copy "${source_dir}/objects/" "${remote_path}/objects/" \
-    "${transfer_options[@]}" --ignore-times --include '*.html' \
-    --header-upload "Cache-Control: ${R2_IMMUTABLE_CACHE_CONTROL}, no-transform"
+  # Preserve no-transform on provenance-locked HTML. Repair a metadata-only
+  # difference individually instead of forcing every HTML object to upload.
+  local folder policy file relative target metadata
+  for folder in source-mirrors objects; do
+    [[ -d "${source_dir}/${folder}" ]] || continue
+    policy="${R2_CACHE_CONTROL}, no-transform"
+    if [[ "$folder" == objects ]]; then policy="${R2_IMMUTABLE_CACHE_CONTROL}, no-transform"; fi
+    while IFS= read -r -d '' file; do
+      relative="${file#"${source_dir}/"}"
+      target="${remote_path}/${relative}"
+      "${RCLONE_BIN}" copyto "$file" "$target" "${transfer_options[@]}" --header-upload "Cache-Control: ${policy}"
+      if [[ "$DRY_RUN" -eq 0 ]]; then
+        metadata="$("${RCLONE_BIN}" lsjson --stat --metadata "$target")"
+        if ! jq -e --arg policy "$policy" '.Metadata["cache-control"] == $policy' <<<"$metadata" >/dev/null; then
+          echo "Repairing HTML cache metadata: ${relative}"
+          "${RCLONE_BIN}" copyto "$file" "$target" "${transfer_options[@]}" --ignore-times --header-upload "Cache-Control: ${policy}"
+          "${RCLONE_BIN}" lsjson --stat --metadata "$target" | jq -e --arg policy "$policy" '.Metadata["cache-control"] == $policy' >/dev/null
+        fi
+      fi
+    done < <(find "${source_dir}/${folder}" -type f -name '*.html' -print0)
+  done
 
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "R2 dry run complete; verification and manifest publication were not performed."
@@ -744,7 +752,9 @@ if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
 else
   RSYNC_SSH="ssh -p ${SSH_PORT} -i ${SSH_KEY}"
 fi
-RSYNC_OPTS=(-avz --delete -e "$RSYNC_SSH")
+# Fresh staging timestamps do not identify public content. A changed file
+# receives its transfer time; an identical remote file keeps its existing time.
+RSYNC_OPTS=(-avz --no-times --itemize-changes --checksum --delete -e "$RSYNC_SSH")
 if [[ "$DRY_RUN" -eq 1 ]]; then
   RSYNC_OPTS+=(--dry-run)
 fi
@@ -806,7 +816,8 @@ sync_mobile_app_preload_to_local_apps
 
 if [[ "$DATA_ONLY" -eq 1 ]]; then
   stage_pinball_payload
-  DATA_RSYNC_OPTS=("${PINBALL_STATIC_RSYNC_OPTS[@]}" --chmod=u=rwX,go=rX
+  set_public_stage_modes "${PINBALL_STAGE_DIR}/pinball"
+  DATA_RSYNC_OPTS=("${PINBALL_STATIC_RSYNC_OPTS[@]}"
     --filter='P /field-guide/***' --exclude='/field-guide/***')
   echo "Publishing shared pinball data; website pages and Field Guide pointers are unchanged..."
   rsync "${DATA_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${REMOTE}/pinball/"
@@ -821,6 +832,7 @@ if [[ "$DATA_ONLY" -eq 1 ]]; then
     fi
     node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" "${PINTIPS_REMOTE_ARGS[@]}"
   fi
+  save_website_inventory
   echo "Shared data deployment complete."
   exit 0
 fi
@@ -829,16 +841,20 @@ if [[ "$SKIP_BUILD" -eq 0 ]]; then
   prepare_build_environment
 
   echo "Running app builds + smoke..."
-  npm run build:all
-  npm --prefix "${PINPROF_ADMIN_FRONTEND_DIR}" run build
+  python3 tools/frontend-build-cache.py "${PINPROF_ADMIN_FRONTEND_DIR}" "${PINPROF_ADMIN_WORKSPACE_ROOT}/cache/frontend-builds"
   npm run check:smoke
 fi
 
 stage_pinball_payload
 stage_pinball_api_payloads
 stage_pinprof_admin_payload
+set_public_stage_modes "${PINBALL_STAGE_DIR}/pinball"
+set_public_stage_modes "${PINBALL_API_STAGE_DIR}/pillyliu"
+set_public_stage_modes "${PINBALL_API_STAGE_DIR}/pinprof"
+set_public_stage_modes "${PINPROF_ADMIN_STAGE_DIR}"
 if [[ -n "${PINPROF_SITE_SOURCE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
   stage_pinprof_site_payload
+  set_public_stage_modes "${PINPROF_SITE_STAGE_DIR}"
 fi
 
 echo "Deploying landing..."
@@ -865,17 +881,6 @@ echo "Deploying canonical pinball data..."
 rsync "${PINBALL_STATIC_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${REMOTE}/pinball/"
 echo "Deploying pillyliu.com rulesheet API..."
 rsync "${PINBALL_API_RSYNC_OPTS[@]}" "${PINBALL_API_STAGE_DIR}/pillyliu/" "${REMOTE}/pinball/api/"
-if [[ "$DRY_RUN" -eq 0 ]]; then
-  echo "Normalizing remote pinball permissions..."
-  if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
-    ssh -p "${SSH_PORT}" "${SSH_USER_HOST}" \
-      "find '${REMOTE_ROOT}/pinball' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinball' -type f -exec chmod 644 {} \\;"
-  else
-    ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
-      "find '${REMOTE_ROOT}/pinball' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinball' -type f -exec chmod 644 {} \\;"
-  fi
-fi
-
 echo "Deploying apps..."
 rsync "${RSYNC_OPTS[@]}" --exclude='pinball/' lpl-library/dist/ "${REMOTE}/lpl-library/"
 rsync "${RSYNC_OPTS[@]}" --exclude='pinball/' lpl-stats/dist/ "${REMOTE}/lpl-stats/"
@@ -889,28 +894,6 @@ if [[ -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; the
   rsync "${PINBALL_STATIC_RSYNC_OPTS[@]}" "${PINBALL_STAGE_DIR}/pinball/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/pinball/"
   echo "Deploying pinprof.com Pinball Map broker API..."
   rsync "${PINBALL_API_RSYNC_OPTS[@]}" "${PINBALL_API_STAGE_DIR}/pinprof/" "${SSH_USER_HOST}:${PINPROF_SITE_REMOTE_ROOT}/pinball/api/"
-fi
-
-if [[ "$DRY_RUN" -eq 0 ]]; then
-  echo "Normalizing remote pinprof-admin permissions..."
-  if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
-    ssh -p "${SSH_PORT}" "${SSH_USER_HOST}" \
-      "find '${REMOTE_ROOT}/pinprof-admin' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinprof-admin' -type f -exec chmod 644 {} \\;"
-  else
-    ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
-      "find '${REMOTE_ROOT}/pinprof-admin' -type d -exec chmod 755 {} \\; && find '${REMOTE_ROOT}/pinprof-admin' -type f -exec chmod 644 {} \\;"
-  fi
-fi
-
-if [[ "$DRY_RUN" -eq 0 && -n "${PINPROF_SITE_STAGE_DIR}" && -n "${PINPROF_SITE_REMOTE_ROOT}" ]]; then
-  echo "Normalizing remote PinProf.com permissions..."
-  if [[ "${SSH_AUTH_MODE}" == "password" ]]; then
-    ssh -p "${SSH_PORT}" "${SSH_USER_HOST}" \
-      "find '${PINPROF_SITE_REMOTE_ROOT}' -type d -exec chmod 755 {} \\; && find '${PINPROF_SITE_REMOTE_ROOT}' -type f -exec chmod 644 {} \\;"
-  else
-    ssh -p "${SSH_PORT}" -i "${SSH_KEY}" "${SSH_USER_HOST}" \
-      "find '${PINPROF_SITE_REMOTE_ROOT}' -type d -exec chmod 755 {} \\; && find '${PINPROF_SITE_REMOTE_ROOT}' -type f -exec chmod 644 {} \\;"
-  fi
 fi
 
 publish_pinball_to_r2
@@ -927,9 +910,6 @@ if [[ "$DRY_RUN" -eq 0 ]]; then
   node "${PINTIPS_CONTRACT_CHECK_SCRIPT}" "${PINTIPS_REMOTE_ARGS[@]}"
 fi
 
-if [[ "$DRY_RUN" -eq 0 && "$SKIP_BUILD" -eq 0 ]]; then
-  echo "Removing local dist outputs..."
-  cleanup_local_dist_outputs
-fi
+save_website_inventory
 
 echo "Deploy complete."

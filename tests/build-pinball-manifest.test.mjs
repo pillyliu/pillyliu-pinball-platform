@@ -11,6 +11,7 @@ const coreNames = [
   "latest-opdb.json",
   "practice_identity_curations_v1.json",
   "catalog_facets_v1.json",
+  "pinball_show_calendar_v1.json",
   "rulesheet_assets.json",
   "video_assets.json",
   "playfield_assets.json",
@@ -56,6 +57,11 @@ test("builds the atomic catalog/content cohort and excludes local maintenance fi
   );
   const cohort = manifest.cohorts.catalogContent;
 
+  const beforeLog = await fs.readFile(path.join(sourceDir, "cache-update-log.json"), "utf8");
+  const repeated = await buildPinballManifest({ sourceDir });
+  assert.equal(repeated.generatedAt, summary.generatedAt);
+  assert.equal(repeated.changedCount, 0);
+  assert.equal(await fs.readFile(path.join(sourceDir, "cache-update-log.json"), "utf8"), beforeLog);
   assert.equal(summary.totalFiles, coreNames.length + 1);
   assert.equal(cohort.atomic, true);
   assert.equal(cohort.files.length, coreNames.length);
@@ -95,4 +101,27 @@ test("rejects an incomplete catalog/content publication", async (context) => {
     buildPinballManifest({ sourceDir }),
     /catalogContent cohort is missing required file/
   );
+});
+
+test("Admin archive inventory matches materialized bytes without copying archive objects", async (context) => {
+  const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "pinprof-archive-inventory-"));
+  context.after(() => fs.rm(tmp, { recursive: true, force: true }));
+  const archive = path.join(tmp, "archive");
+  const staged = path.join(tmp, "public");
+  const inventory = path.join(tmp, "inventory");
+  await writeRequiredCatalog(staged);
+  await writeRequiredCatalog(inventory);
+  await fs.mkdir(archive);
+  await fs.writeFile(path.join(archive, "release-v1.json"), "{}");
+  await fs.cp(archive, path.join(staged, "field-guide"), { recursive: true });
+  await fs.mkdir(path.join(archive, "state"));
+  await fs.writeFile(path.join(archive, "state/private"), "excluded");
+  await buildPinballManifest({ sourceDir: staged });
+  await buildPinballManifest({ sourceDir: inventory, archiveRoot: archive });
+  const read = async (root) => JSON.parse(await fs.readFile(path.join(root, "cache-manifest.json"), "utf8"));
+  const a = await read(staged), b = await read(inventory);
+  assert.deepEqual(a.cohorts, b.cohorts);
+  assert.deepEqual(Object.keys(a.files).sort(), Object.keys(b.files).sort());
+  assert.equal(a.files["/pinball/field-guide/release-v1.json"].hash, b.files["/pinball/field-guide/release-v1.json"].hash);
+  await assert.rejects(fs.stat(path.join(inventory, "objects")), { code: "ENOENT" });
 });
